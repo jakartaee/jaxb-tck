@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gYearMonth_minInclusive004_1204">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gYearMonth_minInclusive004_1204]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minInclusive and value=2000-12 and facet=maxInclusive and value=2001-12) and document value=2001-03
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gYearMonth_minInclusive004_1204.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../gYearMonth_minInclusive004.xsd"/>
+        <ExternalData Type="iodata" SourceName="gYearMonth_minInclusive004_1204.sig"/>
+    </CodeSet>
+    <TestCase ID="gYearMonth_minInclusive004_1204">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="gYearMonth_minInclusive004_1204.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../gYearMonth_minInclusive004.xml"/>
+            <ExternalData Type="iodata" SourceName="gyearmonth_mininclusive004_1204-gYearMonth_minInclusive004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

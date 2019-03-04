@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-token-pattern">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-token-pattern]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/token is restricted by facet pattern with value \d{1,5}_([A-Z][a-z]{1,20}_){3}Street_([A-Z][a-z]{1,20}_){3},_[A-Z]{2}_15685 \d{1,5}_([A-Z][a-z]{1,20}_){2}Street_([A-Z][a-z]{1,20}_){1},_[A-Z]{2}_13673 \d{1,5}_([A-Z][a-z]{1,20}_){5}Street_([A-Z][a-z]{1,20}_){1},_[A-Z]{2}_10126 \d{1,5}_([A-Z][a-z]{1,20}_){2}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_12533 \d{1,5}_([A-Z][a-z]{1,20}_){4}Street_([A-Z][a-z]{1,20}_){1},_[A-Z]{2}_13175.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#token">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#token
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-token-pattern.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-token-pattern-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-token-pattern.sig"/>
+    </CodeSet>
+    <TestCase ID="list-token-pattern">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-list-token-pattern-1-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-list-token-pattern-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="list-token-pattern-NISTXML-SV-IV-list-token-pattern-1-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

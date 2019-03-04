@@ -1,0 +1,533 @@
+Specification ROOT {
+    javax.xml.bind {
+        javax.xml.bind|Validator {
+            javax.xml.bind|Validator.setEventHandler(javax.xml.bind.ValidationEventHandler)
+            javax.xml.bind|Validator.getEventHandler()
+            javax.xml.bind|Validator.validate(java.lang.Object)
+            javax.xml.bind|Validator.validateRoot(java.lang.Object)
+            javax.xml.bind|Validator.setProperty(java.lang.String,java.lang.Object)
+            javax.xml.bind|Validator.getProperty(java.lang.String)
+        }
+        javax.xml.bind|ValidationException {
+            javax.xml.bind|ValidationException.ValidationException(java.lang.String)
+            javax.xml.bind|ValidationException.ValidationException(java.lang.String,java.lang.String)
+            javax.xml.bind|ValidationException.ValidationException(java.lang.Throwable)
+            javax.xml.bind|ValidationException.ValidationException(java.lang.String,java.lang.Throwable)
+            javax.xml.bind|ValidationException.ValidationException(java.lang.String,java.lang.String,java.lang.Throwable)
+        }
+        javax.xml.bind|ValidationEventLocator {
+            javax.xml.bind|ValidationEventLocator.getURL()
+            javax.xml.bind|ValidationEventLocator.getOffset()
+            javax.xml.bind|ValidationEventLocator.getLineNumber()
+            javax.xml.bind|ValidationEventLocator.getColumnNumber()
+            javax.xml.bind|ValidationEventLocator.getObject()
+            javax.xml.bind|ValidationEventLocator.getNode()
+        }
+        javax.xml.bind|ValidationEventHandler {
+            javax.xml.bind|ValidationEventHandler.handleEvent(javax.xml.bind.ValidationEvent)
+        }
+        javax.xml.bind|ValidationEvent {
+            javax.xml.bind|ValidationEvent.getSeverity()
+            javax.xml.bind|ValidationEvent.getMessage()
+            javax.xml.bind|ValidationEvent.getLinkedException()
+            javax.xml.bind|ValidationEvent.getLocator()
+            javax.xml.bind|ValidationEvent.WARNING
+            javax.xml.bind|ValidationEvent.ERROR
+            javax.xml.bind|ValidationEvent.FATAL_ERROR
+        }
+        javax.xml.bind|UnmarshallerHandler {
+            javax.xml.bind|UnmarshallerHandler.getResult()
+        }
+        javax.xml.bind|Unmarshaller {
+            javax.xml.bind|Unmarshaller.unmarshal(java.io.File)
+            javax.xml.bind|Unmarshaller.unmarshal(java.io.InputStream)
+            javax.xml.bind|Unmarshaller.unmarshal(java.io.Reader)
+            javax.xml.bind|Unmarshaller.unmarshal(java.net.URL)
+            javax.xml.bind|Unmarshaller.unmarshal(org.xml.sax.InputSource)
+            javax.xml.bind|Unmarshaller.unmarshal(org.w3c.dom.Node)
+            javax.xml.bind|Unmarshaller.unmarshal(org.w3c.dom.Node,java.lang.Class)
+            javax.xml.bind|Unmarshaller.unmarshal(javax.xml.transform.Source)
+            javax.xml.bind|Unmarshaller.unmarshal(javax.xml.transform.Source,java.lang.Class)
+            javax.xml.bind|Unmarshaller.unmarshal(javax.xml.stream.XMLStreamReader)
+            javax.xml.bind|Unmarshaller.unmarshal(javax.xml.stream.XMLStreamReader,java.lang.Class)
+            javax.xml.bind|Unmarshaller.unmarshal(javax.xml.stream.XMLEventReader)
+            javax.xml.bind|Unmarshaller.unmarshal(javax.xml.stream.XMLEventReader,java.lang.Class)
+            javax.xml.bind|Unmarshaller.getUnmarshallerHandler()
+            javax.xml.bind|Unmarshaller.setValidating(boolean)
+            javax.xml.bind|Unmarshaller.isValidating()
+            javax.xml.bind|Unmarshaller.setEventHandler(javax.xml.bind.ValidationEventHandler)
+            javax.xml.bind|Unmarshaller.getEventHandler()
+            javax.xml.bind|Unmarshaller.setProperty(java.lang.String,java.lang.Object)
+            javax.xml.bind|Unmarshaller.getProperty(java.lang.String)
+            javax.xml.bind|Unmarshaller.setSchema(javax.xml.validation.Schema)
+            javax.xml.bind|Unmarshaller.getSchema()
+            javax.xml.bind|Unmarshaller.setAdapter(javax.xml.bind.annotation.adapters.XmlAdapter)
+            javax.xml.bind|Unmarshaller.setAdapter(java.lang.Class,javax.xml.bind.annotation.adapters.XmlAdapter)
+            javax.xml.bind|Unmarshaller.getAdapter(java.lang.Class)
+            javax.xml.bind|Unmarshaller.setAttachmentUnmarshaller(javax.xml.bind.attachment.AttachmentUnmarshaller)
+            javax.xml.bind|Unmarshaller.setListener(javax.xml.bind.Unmarshaller.Listener)
+            javax.xml.bind|Unmarshaller.getListener()
+            javax.xml.bind|Unmarshaller.Listener {
+                javax.xml.bind|Unmarshaller.Listener.beforeUnmarshal(java.lang.Object,java.lang.Object)
+                javax.xml.bind|Unmarshaller.Listener.afterUnmarshal(java.lang.Object,java.lang.Object)
+            }
+        }
+        javax.xml.bind|UnmarshalException {
+            javax.xml.bind|UnmarshalException.UnmarshalException(java.lang.String)
+            javax.xml.bind|UnmarshalException.UnmarshalException(java.lang.String,java.lang.String)
+            javax.xml.bind|UnmarshalException.UnmarshalException(java.lang.Throwable)
+            javax.xml.bind|UnmarshalException.UnmarshalException(java.lang.String,java.lang.Throwable)
+            javax.xml.bind|UnmarshalException.UnmarshalException(java.lang.String,java.lang.String,java.lang.Throwable)
+        }
+        javax.xml.bind|TypeConstraintException {
+            javax.xml.bind|TypeConstraintException.TypeConstraintException(java.lang.String)
+            javax.xml.bind|TypeConstraintException.TypeConstraintException(java.lang.String,java.lang.String)
+            javax.xml.bind|TypeConstraintException.TypeConstraintException(java.lang.Throwable)
+            javax.xml.bind|TypeConstraintException.TypeConstraintException(java.lang.String,java.lang.Throwable)
+            javax.xml.bind|TypeConstraintException.TypeConstraintException(java.lang.String,java.lang.String,java.lang.Throwable)
+            javax.xml.bind|TypeConstraintException.getErrorCode()
+            javax.xml.bind|TypeConstraintException.getLinkedException()
+            javax.xml.bind|TypeConstraintException.setLinkedException(java.lang.Throwable)
+            javax.xml.bind|TypeConstraintException.toString()
+            javax.xml.bind|TypeConstraintException.printStackTrace(java.io.PrintStream)
+            javax.xml.bind|TypeConstraintException.printStackTrace()
+        }
+        javax.xml.bind|SchemaOutputResolver {
+            javax.xml.bind|SchemaOutputResolver.createOutput(java.lang.String,java.lang.String)
+        }
+        javax.xml.bind|PropertyException {
+            javax.xml.bind|PropertyException.PropertyException(java.lang.String)
+            javax.xml.bind|PropertyException.PropertyException(java.lang.String,java.lang.String)
+            javax.xml.bind|PropertyException.PropertyException(java.lang.Throwable)
+            javax.xml.bind|PropertyException.PropertyException(java.lang.String,java.lang.Throwable)
+            javax.xml.bind|PropertyException.PropertyException(java.lang.String,java.lang.String,java.lang.Throwable)
+            javax.xml.bind|PropertyException.PropertyException(java.lang.String,java.lang.Object)
+        }
+        javax.xml.bind|PrintConversionEvent
+        javax.xml.bind|ParseConversionEvent
+        javax.xml.bind|NotIdentifiableEvent
+        javax.xml.bind|Marshaller {
+            javax.xml.bind|Marshaller.marshal(java.lang.Object,javax.xml.transform.Result)
+            javax.xml.bind|Marshaller.marshal(java.lang.Object,java.io.OutputStream)
+            javax.xml.bind|Marshaller.marshal(java.lang.Object,java.io.Writer)
+            javax.xml.bind|Marshaller.marshal(java.lang.Object,org.xml.sax.ContentHandler)
+            javax.xml.bind|Marshaller.marshal(java.lang.Object,org.w3c.dom.Node)
+            javax.xml.bind|Marshaller.marshal(java.lang.Object,javax.xml.stream.XMLStreamWriter)
+            javax.xml.bind|Marshaller.marshal(java.lang.Object,javax.xml.stream.XMLEventWriter)
+            javax.xml.bind|Marshaller.getNode(java.lang.Object)
+            javax.xml.bind|Marshaller.setProperty(java.lang.String,java.lang.Object)
+            javax.xml.bind|Marshaller.getProperty(java.lang.String)
+            javax.xml.bind|Marshaller.setEventHandler(javax.xml.bind.ValidationEventHandler)
+            javax.xml.bind|Marshaller.getEventHandler()
+            javax.xml.bind|Marshaller.setAdapter(javax.xml.bind.annotation.adapters.XmlAdapter)
+            javax.xml.bind|Marshaller.setAdapter(java.lang.Class,javax.xml.bind.annotation.adapters.XmlAdapter)
+            javax.xml.bind|Marshaller.getAdapter(java.lang.Class)
+            javax.xml.bind|Marshaller.setAttachmentMarshaller(javax.xml.bind.attachment.AttachmentMarshaller)
+            javax.xml.bind|Marshaller.setSchema(javax.xml.validation.Schema)
+            javax.xml.bind|Marshaller.getSchema()
+            javax.xml.bind|Marshaller.setListener(javax.xml.bind.Marshaller.Listener)
+            javax.xml.bind|Marshaller.getListener()
+            javax.xml.bind|Marshaller.JAXB_ENCODING
+            javax.xml.bind|Marshaller.JAXB_FORMATTED_OUTPUT
+            javax.xml.bind|Marshaller.JAXB_SCHEMA_LOCATION
+            javax.xml.bind|Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION
+            javax.xml.bind|Marshaller.JAXB_FRAGMENT
+            javax.xml.bind|Marshaller.Listener {
+                javax.xml.bind|Marshaller.Listener.beforeMarshal(java.lang.Object)
+                javax.xml.bind|Marshaller.Listener.afterMarshal(java.lang.Object)
+            }
+        }
+        javax.xml.bind|MarshalException {
+            javax.xml.bind|MarshalException.MarshalException(java.lang.String)
+            javax.xml.bind|MarshalException.MarshalException(java.lang.String,java.lang.String)
+            javax.xml.bind|MarshalException.MarshalException(java.lang.Throwable)
+            javax.xml.bind|MarshalException.MarshalException(java.lang.String,java.lang.Throwable)
+            javax.xml.bind|MarshalException.MarshalException(java.lang.String,java.lang.String,java.lang.Throwable)
+        }
+        javax.xml.bind|JAXBIntrospector {
+            javax.xml.bind|JAXBIntrospector.isElement(java.lang.Object)
+            javax.xml.bind|JAXBIntrospector.getElementName(java.lang.Object)
+            javax.xml.bind|JAXBIntrospector.getValue(java.lang.Object)
+        }
+        javax.xml.bind|JAXBException {
+            javax.xml.bind|JAXBException.JAXBException(java.lang.String)
+            javax.xml.bind|JAXBException.JAXBException(java.lang.String,java.lang.String)
+            javax.xml.bind|JAXBException.JAXBException(java.lang.Throwable)
+            javax.xml.bind|JAXBException.JAXBException(java.lang.String,java.lang.Throwable)
+            javax.xml.bind|JAXBException.JAXBException(java.lang.String,java.lang.String,java.lang.Throwable)
+            javax.xml.bind|JAXBException.getErrorCode()
+            javax.xml.bind|JAXBException.getLinkedException()
+            javax.xml.bind|JAXBException.setLinkedException(java.lang.Throwable)
+            javax.xml.bind|JAXBException.toString()
+            javax.xml.bind|JAXBException.printStackTrace(java.io.PrintStream)
+            javax.xml.bind|JAXBException.printStackTrace()
+            javax.xml.bind|JAXBException.printStackTrace(java.io.PrintWriter)
+        }
+        javax.xml.bind|JAXBElement {
+            javax.xml.bind|JAXBElement.JAXBElement(javax.xml.namespace.QName,java.lang.Class,java.lang.Class,java.lang.Object)
+            javax.xml.bind|JAXBElement.JAXBElement(javax.xml.namespace.QName,java.lang.Class,java.lang.Object)
+            javax.xml.bind|JAXBElement.getDeclaredType()
+            javax.xml.bind|JAXBElement.getName()
+            javax.xml.bind|JAXBElement.setValue(java.lang.Object)
+            javax.xml.bind|JAXBElement.getValue()
+            javax.xml.bind|JAXBElement.getScope()
+            javax.xml.bind|JAXBElement.isNil()
+            javax.xml.bind|JAXBElement.setNil(boolean)
+            javax.xml.bind|JAXBElement.isGlobalScope()
+            javax.xml.bind|JAXBElement.isTypeSubstituted()
+            javax.xml.bind|JAXBElement.name
+            javax.xml.bind|JAXBElement.declaredType
+            javax.xml.bind|JAXBElement.scope
+            javax.xml.bind|JAXBElement.value
+            javax.xml.bind|JAXBElement.nil
+            javax.xml.bind|JAXBElement.GlobalScope
+        }
+        javax.xml.bind|JAXBContext {
+            javax.xml.bind|JAXBContext.newInstance(java.lang.String)
+            javax.xml.bind|JAXBContext.newInstance(java.lang.String,java.lang.ClassLoader)
+            javax.xml.bind|JAXBContext.newInstance(java.lang.String,java.lang.ClassLoader,java.util.Map)
+            javax.xml.bind|JAXBContext.newInstance(java.lang.Class[])
+            javax.xml.bind|JAXBContext.newInstance(java.lang.Class[],java.util.Map)
+            javax.xml.bind|JAXBContext.createUnmarshaller()
+            javax.xml.bind|JAXBContext.createMarshaller()
+            javax.xml.bind|JAXBContext.createValidator()
+            javax.xml.bind|JAXBContext.createBinder(java.lang.Class)
+            javax.xml.bind|JAXBContext.createBinder()
+            javax.xml.bind|JAXBContext.createJAXBIntrospector()
+            javax.xml.bind|JAXBContext.generateSchema(javax.xml.bind.SchemaOutputResolver)
+            javax.xml.bind|JAXBContext.JAXB_CONTEXT_FACTORY
+        }
+        javax.xml.bind|Element
+        javax.xml.bind|DatatypeConverterInterface {
+            javax.xml.bind|DatatypeConverterInterface.parseString(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseInteger(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseInt(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseLong(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseShort(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseDecimal(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseFloat(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseDouble(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseBoolean(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseByte(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseQName(java.lang.String,javax.xml.namespace.NamespaceContext)
+            javax.xml.bind|DatatypeConverterInterface.parseDateTime(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseBase64Binary(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseHexBinary(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseUnsignedInt(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseUnsignedShort(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseTime(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseDate(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.parseAnySimpleType(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.printString(java.lang.String)
+            javax.xml.bind|DatatypeConverterInterface.printInteger(java.math.BigInteger)
+            javax.xml.bind|DatatypeConverterInterface.printInt(int)
+            javax.xml.bind|DatatypeConverterInterface.printLong(long)
+            javax.xml.bind|DatatypeConverterInterface.printShort(short)
+            javax.xml.bind|DatatypeConverterInterface.printDecimal(java.math.BigDecimal)
+            javax.xml.bind|DatatypeConverterInterface.printFloat(float)
+            javax.xml.bind|DatatypeConverterInterface.printDouble(double)
+            javax.xml.bind|DatatypeConverterInterface.printBoolean(boolean)
+            javax.xml.bind|DatatypeConverterInterface.printByte(byte)
+            javax.xml.bind|DatatypeConverterInterface.printQName(javax.xml.namespace.QName,javax.xml.namespace.NamespaceContext)
+            javax.xml.bind|DatatypeConverterInterface.printDateTime(java.util.Calendar)
+            javax.xml.bind|DatatypeConverterInterface.printBase64Binary(byte[])
+            javax.xml.bind|DatatypeConverterInterface.printHexBinary(byte[])
+            javax.xml.bind|DatatypeConverterInterface.printUnsignedInt(long)
+            javax.xml.bind|DatatypeConverterInterface.printUnsignedShort(int)
+            javax.xml.bind|DatatypeConverterInterface.printTime(java.util.Calendar)
+            javax.xml.bind|DatatypeConverterInterface.printDate(java.util.Calendar)
+            javax.xml.bind|DatatypeConverterInterface.printAnySimpleType(java.lang.String)
+        }
+        javax.xml.bind|DatatypeConverter {
+            javax.xml.bind|DatatypeConverter.setDatatypeConverter(javax.xml.bind.DatatypeConverterInterface)
+            javax.xml.bind|DatatypeConverter.parseString(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseInteger(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseInt(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseLong(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseShort(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseDecimal(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseFloat(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseDouble(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseBoolean(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseByte(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseQName(java.lang.String,javax.xml.namespace.NamespaceContext)
+            javax.xml.bind|DatatypeConverter.parseDateTime(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseBase64Binary(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseHexBinary(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseUnsignedInt(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseUnsignedShort(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseTime(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseDate(java.lang.String)
+            javax.xml.bind|DatatypeConverter.parseAnySimpleType(java.lang.String)
+            javax.xml.bind|DatatypeConverter.printString(java.lang.String)
+            javax.xml.bind|DatatypeConverter.printInteger(java.math.BigInteger)
+            javax.xml.bind|DatatypeConverter.printInt(int)
+            javax.xml.bind|DatatypeConverter.printLong(long)
+            javax.xml.bind|DatatypeConverter.printShort(short)
+            javax.xml.bind|DatatypeConverter.printDecimal(java.math.BigDecimal)
+            javax.xml.bind|DatatypeConverter.printFloat(float)
+            javax.xml.bind|DatatypeConverter.printDouble(double)
+            javax.xml.bind|DatatypeConverter.printBoolean(boolean)
+            javax.xml.bind|DatatypeConverter.printByte(byte)
+            javax.xml.bind|DatatypeConverter.printQName(javax.xml.namespace.QName,javax.xml.namespace.NamespaceContext)
+            javax.xml.bind|DatatypeConverter.printDateTime(java.util.Calendar)
+            javax.xml.bind|DatatypeConverter.printBase64Binary(byte[])
+            javax.xml.bind|DatatypeConverter.printHexBinary(byte[])
+            javax.xml.bind|DatatypeConverter.printUnsignedInt(long)
+            javax.xml.bind|DatatypeConverter.printUnsignedShort(int)
+            javax.xml.bind|DatatypeConverter.printTime(java.util.Calendar)
+            javax.xml.bind|DatatypeConverter.printDate(java.util.Calendar)
+            javax.xml.bind|DatatypeConverter.printAnySimpleType(java.lang.String)
+        }
+        javax.xml.bind|Binder {
+            javax.xml.bind|Binder.unmarshal(java.lang.Object)
+            javax.xml.bind|Binder.unmarshal(java.lang.Object,java.lang.Class)
+            javax.xml.bind|Binder.marshal(java.lang.Object,java.lang.Object)
+            javax.xml.bind|Binder.getXMLNode(java.lang.Object)
+            javax.xml.bind|Binder.getJAXBNode(java.lang.Object)
+            javax.xml.bind|Binder.updateXML(java.lang.Object)
+            javax.xml.bind|Binder.updateXML(java.lang.Object,java.lang.Object)
+            javax.xml.bind|Binder.updateJAXB(java.lang.Object)
+            javax.xml.bind|Binder.setSchema(javax.xml.validation.Schema)
+            javax.xml.bind|Binder.getSchema()
+            javax.xml.bind|Binder.setEventHandler(javax.xml.bind.ValidationEventHandler)
+            javax.xml.bind|Binder.getEventHandler()
+            javax.xml.bind|Binder.setProperty(java.lang.String,java.lang.Object)
+            javax.xml.bind|Binder.getProperty(java.lang.String)
+        }
+    }
+    javax.xml.bind.annotation {
+        javax.xml.bind.annotation|XmlValue
+        javax.xml.bind.annotation|XmlType {
+            javax.xml.bind.annotation|XmlType.name()
+            javax.xml.bind.annotation|XmlType.propOrder()
+            javax.xml.bind.annotation|XmlType.namespace()
+            javax.xml.bind.annotation|XmlType.factoryClass()
+            javax.xml.bind.annotation|XmlType.factoryMethod()
+            javax.xml.bind.annotation|XmlType.DEFAULT
+        }
+        javax.xml.bind.annotation|XmlTransient
+        javax.xml.bind.annotation|XmlSchemaTypes {
+            javax.xml.bind.annotation|XmlSchemaTypes.value()
+        }
+        javax.xml.bind.annotation|XmlSchemaType {
+            javax.xml.bind.annotation|XmlSchemaType.type()
+            javax.xml.bind.annotation|XmlSchemaType.DEFAULT
+        }
+        javax.xml.bind.annotation|XmlSchema {
+            javax.xml.bind.annotation|XmlSchema.xmlns()
+            javax.xml.bind.annotation|XmlSchema.namespace()
+            javax.xml.bind.annotation|XmlSchema.elementFormDefault()
+            javax.xml.bind.annotation|XmlSchema.attributeFormDefault()
+        }
+        javax.xml.bind.annotation|XmlRootElement {
+            javax.xml.bind.annotation|XmlRootElement.namespace()
+            javax.xml.bind.annotation|XmlRootElement.name()
+        }
+        javax.xml.bind.annotation|XmlRegistry
+        javax.xml.bind.annotation|XmlNsForm
+        javax.xml.bind.annotation|XmlNs {
+            javax.xml.bind.annotation|XmlNs.prefix()
+            javax.xml.bind.annotation|XmlNs.namespaceURI()
+        }
+        javax.xml.bind.annotation|XmlMixed
+        javax.xml.bind.annotation|XmlMimeType {
+            javax.xml.bind.annotation|XmlMimeType.value()
+        }
+        javax.xml.bind.annotation|XmlList
+        javax.xml.bind.annotation|XmlInlineBinaryData
+        javax.xml.bind.annotation|XmlIDREF
+        javax.xml.bind.annotation|XmlID
+        javax.xml.bind.annotation|XmlEnumValue
+        javax.xml.bind.annotation|XmlEnum {
+            javax.xml.bind.annotation|XmlEnum.value()
+        }
+        javax.xml.bind.annotation|XmlElementWrapper {
+            javax.xml.bind.annotation|XmlElementWrapper.name()
+            javax.xml.bind.annotation|XmlElementWrapper.namespace()
+            javax.xml.bind.annotation|XmlElementWrapper.nillable()
+        }
+        javax.xml.bind.annotation|XmlElements {
+            javax.xml.bind.annotation|XmlElements.value()
+        }
+        javax.xml.bind.annotation|XmlElementRefs
+        javax.xml.bind.annotation|XmlElementRef {
+            javax.xml.bind.annotation|XmlElementRef.type()
+            javax.xml.bind.annotation|XmlElementRef.namespace()
+            javax.xml.bind.annotation|XmlElementRef.DEFAULT
+        }
+        javax.xml.bind.annotation|XmlElementDecl {
+            javax.xml.bind.annotation|XmlElementDecl.scope()
+            javax.xml.bind.annotation|XmlElementDecl.namespace()
+            javax.xml.bind.annotation|XmlElementDecl.name()
+            javax.xml.bind.annotation|XmlElementDecl.substitutionHeadNamespace()
+            javax.xml.bind.annotation|XmlElementDecl.substitutionHeadName()
+            javax.xml.bind.annotation|XmlElementDecl.defaultValue()
+            javax.xml.bind.annotation|XmlElementDecl.GLOBAL
+        }
+        javax.xml.bind.annotation|XmlElement {
+            javax.xml.bind.annotation|XmlElement.name()
+            javax.xml.bind.annotation|XmlElement.nillable()
+            javax.xml.bind.annotation|XmlElement.required()
+            javax.xml.bind.annotation|XmlElement.namespace()
+            javax.xml.bind.annotation|XmlElement.defaultValue()
+            javax.xml.bind.annotation|XmlElement.type()
+            javax.xml.bind.annotation|XmlElement.DEFAULT
+        }
+        javax.xml.bind.annotation|XmlAttribute {
+            javax.xml.bind.annotation|XmlAttribute.name()
+            javax.xml.bind.annotation|XmlAttribute.required()
+            javax.xml.bind.annotation|XmlAttribute.namespace()
+        }
+        javax.xml.bind.annotation|XmlAttachmentRef
+        javax.xml.bind.annotation|XmlAnyElement {
+            javax.xml.bind.annotation|XmlAnyElement.lax()
+            javax.xml.bind.annotation|XmlAnyElement.value()
+        }
+        javax.xml.bind.annotation|XmlAnyAttribute
+        javax.xml.bind.annotation|XmlAccessType {
+            javax.xml.bind.annotation|XmlAccessType.PROPERTY
+            javax.xml.bind.annotation|XmlAccessType.FIELD
+            javax.xml.bind.annotation|XmlAccessType.PUBLIC_MEMBER
+            javax.xml.bind.annotation|XmlAccessType.NONE
+        }
+        javax.xml.bind.annotation|XmlAccessorType {
+            javax.xml.bind.annotation|XmlAccessorType.value()
+        }
+        javax.xml.bind.annotation|XmlAccessorOrder
+        javax.xml.bind.annotation|XmlAccessOrder {
+            javax.xml.bind.annotation|XmlAccessOrder.UNDEFINED
+            javax.xml.bind.annotation|XmlAccessOrder.ALPHABETICAL
+        }
+        javax.xml.bind.annotation|W3CDomHandler {
+            javax.xml.bind.annotation|W3CDomHandler.W3CDomHandler()
+            javax.xml.bind.annotation|W3CDomHandler.W3CDomHandler(javax.xml.parsers.DocumentBuilder)
+        }
+        javax.xml.bind.annotation|DomHandler {
+            javax.xml.bind.annotation|DomHandler.createUnmarshaller(javax.xml.bind.ValidationEventHandler)
+            javax.xml.bind.annotation|DomHandler.getElement(javax.xml.transform.Result)
+            javax.xml.bind.annotation|DomHandler.marshal(java.lang.Object,javax.xml.bind.ValidationEventHandler)
+        }
+    }
+    javax.xml.bind.annotation.adapters {
+        javax.xml.bind.annotation.adapters|XmlJavaTypeAdapters {
+            javax.xml.bind.annotation.adapters|XmlJavaTypeAdapters.value()
+        }
+        javax.xml.bind.annotation.adapters|XmlJavaTypeAdapter {
+            javax.xml.bind.annotation.adapters|XmlJavaTypeAdapter.value()
+            javax.xml.bind.annotation.adapters|XmlJavaTypeAdapter.type()
+            javax.xml.bind.annotation.adapters|XmlJavaTypeAdapter.DEFAULT
+        }
+        javax.xml.bind.annotation.adapters|XmlAdapter {
+            javax.xml.bind.annotation.adapters|XmlAdapter.XmlAdapter()
+            javax.xml.bind.annotation.adapters|XmlAdapter.unmarshal(java.lang.Object)
+            javax.xml.bind.annotation.adapters|XmlAdapter.marshal(java.lang.Object)
+        }
+        javax.xml.bind.annotation.adapters|NormalizedStringAdapter {
+            javax.xml.bind.annotation.adapters|NormalizedStringAdapter.unmarshal(java.lang.String)
+            javax.xml.bind.annotation.adapters|NormalizedStringAdapter.marshal(java.lang.String)
+            javax.xml.bind.annotation.adapters|NormalizedStringAdapter.isWhiteSpaceExceptSpace(char)
+        }
+        javax.xml.bind.annotation.adapters|HexBinaryAdapter
+        javax.xml.bind.annotation.adapters|CollapsedStringAdapter {
+            javax.xml.bind.annotation.adapters|CollapsedStringAdapter.unmarshal(java.lang.String)
+            javax.xml.bind.annotation.adapters|CollapsedStringAdapter.marshal(java.lang.String)
+            javax.xml.bind.annotation.adapters|CollapsedStringAdapter.isWhiteSpace(char)
+        }
+    }
+    javax.xml.bind.attachment {
+        javax.xml.bind.attachment|AttachmentUnmarshaller {
+            javax.xml.bind.attachment|AttachmentUnmarshaller.getAttachmentAsDataHandler(java.lang.String)
+            javax.xml.bind.attachment|AttachmentUnmarshaller.getAttachmentAsByteArray(java.lang.String)
+            javax.xml.bind.attachment|AttachmentUnmarshaller.isXOPPackage()
+        }
+        javax.xml.bind.attachment|AttachmentMarshaller {
+            javax.xml.bind.attachment|AttachmentMarshaller.addMtomAttachment(DataHandler,java.lang.String,java.lang.String)
+            javax.xml.bind.attachment|AttachmentMarshaller.addMtomAttachment(byte[],int,int,java.lang.String,java.lang.String,java.lang.String)
+            javax.xml.bind.attachment|AttachmentMarshaller.isXOPPackage()
+            javax.xml.bind.attachment|AttachmentMarshaller.addSwaRefAttachment(DataHandler)
+        }
+    }
+    javax.xml.bind.helpers {
+        javax.xml.bind.helpers|ValidationEventLocatorImpl {
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl()
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.Locator)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.SAXParseException)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.w3c.dom.Node)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(java.lang.Object)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.setURL(java.net.URL)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.setOffset(int)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.setLineNumber(int)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.setColumnNumber(int)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.setObject(java.lang.Object)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.setNode(org.w3c.dom.Node)
+            javax.xml.bind.helpers|ValidationEventLocatorImpl.toString()
+        }
+        javax.xml.bind.helpers|ValidationEventImpl {
+            javax.xml.bind.helpers|ValidationEventImpl.ValidationEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator)
+            javax.xml.bind.helpers|ValidationEventImpl.ValidationEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable)
+            javax.xml.bind.helpers|ValidationEventImpl.setSeverity(int)
+            javax.xml.bind.helpers|ValidationEventImpl.setMessage(java.lang.String)
+            javax.xml.bind.helpers|ValidationEventImpl.setLinkedException(java.lang.Throwable)
+            javax.xml.bind.helpers|ValidationEventImpl.setLocator(javax.xml.bind.ValidationEventLocator)
+            javax.xml.bind.helpers|ValidationEventImpl.toString()
+        }
+        javax.xml.bind.helpers|PrintConversionEventImpl {
+            javax.xml.bind.helpers|PrintConversionEventImpl.PrintConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator)
+            javax.xml.bind.helpers|PrintConversionEventImpl.PrintConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable)
+        }
+        javax.xml.bind.helpers|ParseConversionEventImpl {
+            javax.xml.bind.helpers|ParseConversionEventImpl.ParseConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator)
+            javax.xml.bind.helpers|ParseConversionEventImpl.ParseConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable)
+        }
+        javax.xml.bind.helpers|NotIdentifiableEventImpl {
+            javax.xml.bind.helpers|NotIdentifiableEventImpl.NotIdentifiableEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator)
+            javax.xml.bind.helpers|NotIdentifiableEventImpl.NotIdentifiableEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable)
+        }
+        javax.xml.bind.helpers|DefaultValidationEventHandler
+        javax.xml.bind.helpers|AbstractUnmarshallerImpl {
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.getXMLReader()
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.unmarshal(org.xml.sax.XMLReader,org.xml.sax.InputSource)
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.isValidating()
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.setEventHandler(javax.xml.bind.ValidationEventHandler)
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.setValidating(boolean)
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.getEventHandler()
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.createUnmarshalException(org.xml.sax.SAXException)
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.setProperty(java.lang.String,java.lang.Object)
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.getProperty(java.lang.String)
+            javax.xml.bind.helpers|AbstractUnmarshallerImpl.validating
+        }
+        javax.xml.bind.helpers|AbstractMarshallerImpl {
+            javax.xml.bind.helpers|AbstractMarshallerImpl.getNode(java.lang.Object)
+            javax.xml.bind.helpers|AbstractMarshallerImpl.getEncoding()
+            javax.xml.bind.helpers|AbstractMarshallerImpl.setEncoding(java.lang.String)
+            javax.xml.bind.helpers|AbstractMarshallerImpl.getSchemaLocation()
+            javax.xml.bind.helpers|AbstractMarshallerImpl.setSchemaLocation(java.lang.String)
+            javax.xml.bind.helpers|AbstractMarshallerImpl.getNoNSSchemaLocation()
+            javax.xml.bind.helpers|AbstractMarshallerImpl.setNoNSSchemaLocation(java.lang.String)
+            javax.xml.bind.helpers|AbstractMarshallerImpl.isFormattedOutput()
+            javax.xml.bind.helpers|AbstractMarshallerImpl.setFormattedOutput(boolean)
+            javax.xml.bind.helpers|AbstractMarshallerImpl.isFragment()
+            javax.xml.bind.helpers|AbstractMarshallerImpl.setFragment(boolean)
+            javax.xml.bind.helpers|AbstractMarshallerImpl.getJavaEncoding(java.lang.String)
+            javax.xml.bind.helpers|AbstractMarshallerImpl.setProperty(java.lang.String,java.lang.Object)
+            javax.xml.bind.helpers|AbstractMarshallerImpl.getProperty(java.lang.String)
+        }
+    }
+    javax.xml.bind.util {
+        javax.xml.bind.util|ValidationEventCollector {
+            javax.xml.bind.util|ValidationEventCollector.getEvents()
+            javax.xml.bind.util|ValidationEventCollector.reset()
+            javax.xml.bind.util|ValidationEventCollector.hasEvents()
+        }
+        javax.xml.bind.util|JAXBSource {
+            javax.xml.bind.util|JAXBSource.JAXBSource(javax.xml.bind.JAXBContext,java.lang.Object)
+            javax.xml.bind.util|JAXBSource.JAXBSource(javax.xml.bind.Marshaller,java.lang.Object)
+        }
+        javax.xml.bind.util|JAXBResult {
+            javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.JAXBContext)
+            javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.Unmarshaller)
+            javax.xml.bind.util|JAXBResult.getResult()
+        }
+    }
+}

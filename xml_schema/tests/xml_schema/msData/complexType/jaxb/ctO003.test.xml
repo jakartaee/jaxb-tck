@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="ctO003">
+    <TestGroupDocumentation>
+        <Title><![CDATA[ctO003]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for top level complexType Declaration : derivation=restriction. Attribute wildcard in base type. Derived type has attribute that is valid with respect to wildcard
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Complex_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Complex_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)ctO003.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../ctO003.xsd"/>
+        <ExternalData Type="iodata" SourceName="ctO003.sig"/>
+    </CodeSet>
+    <TestCase ID="ctO003">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="ctO003.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../ctO003.xml"/>
+            <ExternalData Type="iodata" SourceName="cto003-ctO003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

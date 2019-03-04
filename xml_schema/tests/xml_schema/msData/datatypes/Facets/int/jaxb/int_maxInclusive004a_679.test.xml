@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="int_maxInclusive004a_679">
+    <TestGroupDocumentation>
+        <Title><![CDATA[int_maxInclusive004a_679]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : base facet maxInclusive value=10, derived facet maxInclusive value=10
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)int_maxInclusive004a_679.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../int_maxInclusive004a.xsd"/>
+        <ExternalData Type="iodata" SourceName="int_maxInclusive004a_679.sig"/>
+    </CodeSet>
+    <TestCase ID="int_maxInclusive004a_679">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

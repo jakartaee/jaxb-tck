@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gYear_enumeration001_1212">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gYear_enumeration001_1212]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=enumeration and value=2000 and document value=
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gYear_enumeration001_1212.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../gYear_enumeration001.xsd"/>
+        <ExternalData Type="iodata" SourceName="gYear_enumeration001_1212.sig"/>
+    </CodeSet>
+    <TestCase ID="gYear_enumeration001_1212">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

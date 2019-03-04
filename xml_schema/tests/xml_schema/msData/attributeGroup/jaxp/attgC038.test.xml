@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="attgC038">
+   <TestGroupDocumentation>
+      <Title><![CDATA[attgC038]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for Attribute Declaration (ID) : Test attributeGroup declaration: can only reference global attributeGroup parent is redefine, ref='name of attribute group declared inside a redefine'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Group_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Group_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)attgC038.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../attgC038.xsd"/>
+      <ExternalData Type="iodata" SourceName="../attgC038v1.red"/>
+      <ExternalData Type="iodata" SourceName="../attgC038v2.red"/>
+   </CodeSet>
+   <TestCase ID="attgC038">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="attgC038.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../attgC038.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)attgC038.test.xml	1.1 07/03/27 -->

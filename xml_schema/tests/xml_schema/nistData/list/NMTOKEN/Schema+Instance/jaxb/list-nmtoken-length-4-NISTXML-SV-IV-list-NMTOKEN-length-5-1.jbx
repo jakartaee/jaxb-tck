@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-length-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-length-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>as_bottlenecks_industry.the.the:commerce_discovery</string> 
+   </void> 
+   <void method="add"> 
+    <string>better_processes_registry.s.rapidly.and_Groups.wil</string> 
+   </void> 
+   <void method="add"> 
+    <string>has:test:of-service-simulation_defines:files-with.</string> 
+   </void> 
+   <void method="add"> 
+    <string>incorporated_specifications.Pervasive:signature:to</string> 
+   </void> 
+   <void method="add"> 
+    <string>and_impact-blocks:memory-prototypes-Furthermore.is</string> 
+   </void> 
+   <void method="add"> 
+    <string>body_software-profiles_is-discovery.to:support:doc</string> 
+   </void> 
+   <void method="add"> 
+    <string>the_user-choices:over:aspects-syntax:forum_measure</string> 
+   </void> 
+   <void method="add"> 
+    <string>these.Recommendation_are:including-industry_techno</string> 
+   </void> 
+   <void method="add"> 
+    <string>file.Description.to-is-and_available-filter_large.</string> 
+   </void> 
+   <void method="add"> 
+    <string>s-and.filter-of:reference:the.information.The.set.</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

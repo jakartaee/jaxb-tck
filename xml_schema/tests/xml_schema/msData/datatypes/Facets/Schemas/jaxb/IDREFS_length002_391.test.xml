@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="IDREFS_length002_391">
+   <TestGroupDocumentation>
+      <Title><![CDATA[IDREFS_length002_391]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=length and value=-1
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)IDREFS_length002_391.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../IDREFS_length002.xsd"/>
+   </CodeSet>
+   <TestCase ID="IDREFS_length002_391">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)IDREFS_length002_391.test.xml	1.1 07/03/27 -->

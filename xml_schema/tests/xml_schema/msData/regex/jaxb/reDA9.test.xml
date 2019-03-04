@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="reDA9">
+    <TestGroupDocumentation>
+        <Title><![CDATA[reDA9]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : base='boolean', pattern='(1|true)', value='1', type='valid', RULE=''
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)reDA9.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../reDA9.xsd"/>
+        <ExternalData Type="iodata" SourceName="reDA9.sig"/>
+    </CodeSet>
+    <TestCase ID="reDA9">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="reDA9.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../reDA9.xml"/>
+            <ExternalData Type="iodata" SourceName="reda9-reDA9.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

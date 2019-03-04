@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+
+    Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+<HTML>
+<HEAD>
+<TITLE>
+JXCClassInterview.schemagenWrapperClass
+</title>
+<LINK REL="stylesheet" TYPE="text/css" HREF="../wizard.css" TITLE="Style">
+</head>
+<body>
+When you run schema generation through JavaTest Agent, your schema generator
+will be executed in the Agent's JVM. Your implementation must provide a custom class 
+to invoke your schema generation tool. This class should implement the <code>SchemaGenTool</code> interface:
+<p>
+<code>
+package com.sun.jaxb_tck.lib;<br>
+<br>
+public interface SchemaGenTool {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>javaFiles</i>&nbsp;&nbsp;array of strings containing java files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>outDir</i>&nbsp;&nbsp;output directory where schema file(s) will be generated<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>out</i>&nbsp;&nbsp;output stream for logging<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>err</i>&nbsp;&nbsp;error stream for logging<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@return</b>&nbsp;0 if schema file(s) generated successfully<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int generate(String[] javaFiles, File outDir,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final PrintStream out, final PrintStream err) throws Exception;<br>
+}</code></p>
+<p>
+Schema(s) generations should be accomplished during invocation of <code>generate</code> method.
+<p>
+The JAXB TCK includes the following class that is fully compatible with Sun's reference 
+implementation and that can be used for schema generation: <code>com.sun.jaxb_tck.lib.SchemaGen</code>.
+The realization of the method
+<blockquote>
+<code>generate(String[] javaFiles, File outDir, PrintStream out, PrintStream err)</code>
+</blockquote>
+generates xml schema(s) from java file(s).
+<p>
+If your implementation doesn't provide such a class, please, create it and specify it here. 
+</body>
+</HTML>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="ST_facets00604_">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Enumeration values contain lower case and upper case letters and non-letter characters. (content tree test)]]></Title>
+        <Description><![CDATA[Declare a simple type based on NCName and restricted with several enumeration
+        values that contain lower case and upper case letters and non-letter characters:
+        "aaaa",  "bbbB",  "ccCc",  "ddDD",  "eEee",  
+        "fFfF",  "pPPp",  "gGGG",  "Hhhh",  "IiiI",  "JjJj", 
+        "KkKK",  "LLll",  "MMmM",  "NNNn",  "OOOO", 
+        "bbb0",  "cc0c",  "dd00",  "e0ee",  "f0f0",  "p00p",  "g000", 
+        "bbb_",  "cc_c",  "dd__",  "e_ee",  "f_f_",  "p__p",  "g___", 
+        "H111",  "I11I",  "J1J1",  "K1KK",  "LL11",  "MM1M",  "NNN1", 
+        "H---",  "I--I",  "J-J-",  "K-KK",  "LL--",  "MM-M",  "NNN-". 
+
+        The document uses each of the values.
+        ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)ST_facets00604_CTTests.test.xml	1.3 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="ST_facets00604.xsd"/>
+        <ExternalData Type="iodata" SourceName="ST_facets00604_.sig"/>
+    </CodeSet>
+    <TestCase ID="EnumConstant001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the enum constants.]]></Title>
+            <Description><![CDATA[
+                The test checks that all enum constants are different.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="ST_facets00604_p.xml"/>
+            <ExternalData Type="iodata" SourceName="st_facets00604_-ST_facets00604_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        S [] enumConst = {
+            S.AAAA, S.BBB_B, S.CC_CC, S.DD_DD, S.E_EEE, S.F_FF_F, S.P_P_PP, 
+            S.G_GGG, S.HHHH, S.III_I, S.JJ_JJ, S.KK_KK, S.L_LLL, S.M_MM_M, 
+            S.NN_NN, S.OOOO, S.BBB_0, S.CC_0_C, S.DD_00, S.E_0_EE, S.F_0_F_0, 
+            S.P_00_P, S.G_000, S.BBB, S.CC_C, S.DD, S.E_EE, S.F_F, S.P_P, 
+            S.G, S.H_111, S.I_11_I, S.J_1_J_1, S.K_1_KK, S.LL_11, S.MM_1_M, 
+            S.NNN_1, S.H, S.I_I, S.J_J, S.K_KK, S.LL, S.MM_M, S.NNN
+        };
+
+        String failure = "";
+
+        for(int i = enumConst.length; --i >= 0;) {
+            for(int j = i; --j >= 0;) {
+                if (enumConst[i] == enumConst[j]) {
+                    failure += "; " + enumConst[i] + " == " + enumConst[j];    
+                }
+                if (enumConst[i].equals(enumConst[j])) {
+                    failure += "; " + enumConst[i] + " equals to " + enumConst[j];    
+                }
+            } 
+        } 
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="EnumConstant002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the enumvalue constants.]]></Title>
+            <Description><![CDATA[
+                The test checks that all enumvalue constants are different strings.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="ST_facets00604_p.xml"/>
+            <ExternalData Type="iodata" SourceName="st_facets00604_-ST_facets00604_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        String [] enumValueConst = {
+            S._AAAA, S._BBB_B, S._CC_CC, S._DD_DD, S._E_EEE, S._F_FF_F, S._P_P_PP, 
+            S._G_GGG, S._HHHH, S._III_I, S._JJ_JJ, S._KK_KK, S._L_LLL, S._M_MM_M, 
+            S._NN_NN, S._OOOO, S._BBB_0, S._CC_0_C, S._DD_00, S._E_0_EE, S._F_0_F_0, 
+            S._P_00_P, S._G_000, S._BBB, S._CC_C, S._DD, S._E_EE, S._F_F, S._P_P, 
+            S._G, S._H_111, S._I_11_I, S._J_1_J_1, S._K_1_KK, S._LL_11, S._MM_1_M, 
+            S._NNN_1, S._H, S._I_I, S._J_J, S._K_KK, S._LL, S._MM_M, S._NNN
+        };
+
+        String failure = "";
+
+        for(int i = enumValueConst.length; --i >= 0;) {
+            for(int j = i; --j >= 0;) {
+                if (enumValueConst[i].equals(enumValueConst[j])) {
+                    failure += "; \"" + enumValueConst[i] + "\" equals to \"" + enumValueConst[j] + "\"";    
+                }
+            } 
+        } 
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Get001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the get method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals ST_facets00604_p.xml and expects the returned object
+                to contain a list with all enumeration values.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>java.util.List</Import>
+            <ExternalData Type="iodata" SourceName="ST_facets00604_p.xml"/>
+            <ExternalData Type="iodata" SourceName="st_facets00604_-ST_facets00604_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        S [] enumConst = {
+            S.AAAA, S.BBB_B, S.CC_CC, S.DD_DD, S.E_EEE, S.F_FF_F, S.P_P_PP, 
+            S.G_GGG, S.HHHH, S.III_I, S.JJ_JJ, S.KK_KK, S.L_LLL, S.M_MM_M, 
+            S.NN_NN, S.OOOO, S.BBB_0, S.CC_0_C, S.DD_00, S.E_0_EE, S.F_0_F_0, 
+            S.P_00_P, S.G_000, S.BBB, S.CC_C, S.DD, S.E_EE, S.F_F, S.P_P, 
+            S.G, S.H_111, S.I_11_I, S.J_1_J_1, S.K_1_KK, S.LL_11, S.MM_1_M, 
+            S.NNN_1, S.H, S.I_I, S.J_J, S.K_KK, S.LL, S.MM_M, S.NNN
+        };
+        Root root = (Root)unmarshal("ST_facets00604_p.xml");
+        String failure = "";
+        List list = root.getVal();
+
+        if (list.size() != enumConst.length) {
+            failure += "; list.size() == " + list.size() + ", expected " + enumConst.length;
+        }
+
+        for(int i = enumConst.length; --i >= 0;) {
+            if (!list.contains(enumConst[i])) {
+                failure += "; " + enumConst[i] + " is not found in the list";    
+            } 
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+</TestGroup>

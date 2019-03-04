@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB044">
+   <TestGroupDocumentation>
+      <Title><![CDATA[addB044]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : id="72793" description="xsd: top level attribute should prohibig 'form' attribute"
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)addB044.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../test72793.xsd"/>
+   </CodeSet>
+   <TestCase ID="addB044">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)addB044.test.xml	1.1 07/03/27 -->

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="minExclusive4_Validate">
+    <TestGroupDocumentation>
+        <Title><![CDATA[minExclusive4 Validate Tree Content tests]]></Title>
+        <Description><![CDATA[
+      The tests for validating the content of changed trees got by unmarshalling
+      of the minExclusive-4.xsd based XML documents or created dynamically 
+      via ObjectFactory.
+      The schema defines a double restricted SimpleType with minExclusive value 
+      3877207345453194E213. Various XML documents specify various values in 
+      the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)minExclusive-4_Validate.test.xml	1.6 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <SupportCode> 
+    final double[] validValues = {3877207345453194.0001E214, 7563290780183318.7943E247
+                                , Double.MAX_VALUE
+                                , Double.POSITIVE_INFINITY};
+    
+    final double[] invalidValues = {3877207345453194E213, 0.0, -Double.MAX_VALUE
+                                , Double.NEGATIVE_INFINITY, Double.NaN};
+    
+    JAXBElement&lt;Double&gt; elemObj;
+
+    Status testInvalid() {
+        for (int i = 0; i &lt; invalidValues.length; ++i){
+            
+                elemObj.setValue(invalidValues[i]);
+                Status status = validate(elemObj);
+                if (status.isPassed()) {
+                    return Status.failed("" + invalidValues[i] + " is unexpectedly valid");
+                }
+            
+        }
+        return Status.passed("OK");
+    }
+
+    Status testValid() {
+        for (int i = 0; i &lt; validValues.length; ++i){
+            elemObj.setValue(validValues[i]);
+            Status status = validate(elemObj);
+            if (!status.isPassed()){
+                return Status.failed("" + validValues[i] + " is unexpectedly invalid");
+            }
+        }
+        return Status.passed("OKAY");
+    }
+      </SupportCode>
+        <ExternalSupportClass SourceName="minExclusive-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="minExclusive4_Validate.sig"/>
+    </CodeSet>
+    <TestCase ID="Unmarshalled001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML double minExclusive-4.xsd, validate unmarshalled then legally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls minExclusive-4-1.xml document, sets
+valid values 
+    3877207345453194.0001E214, 
+    7563290780183318.7943E247, 
+    Double.MAX_VALUE, 
+    Double.POSITIVE_INFINITY,
+    Double.NaN
+for the double restricted SimpleType NISTSchema-double-minExclusive-4 element and 
+expects validation to pass. 
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="minExclusive-4-1.xml"/>
+            <ExternalData Type="iodata" SourceName="minexclusive4_validate-minExclusive-4-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        elemObj = (JAXBElement<Double>)unmarshal("minExclusive-4-1.xml");
+        return testValid();
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Unmarshalled002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML double minExclusive-4.xsd, validate unmarshalled then illegally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls minExclusive-4-1.xml document, sets the invalid values 
+    3877207345453194E213, 
+    0.0,
+    -Double.MAX_VALUE,
+    Double.NEGATIVE_INFINITY 
+for the double restricted SimpleType NISTSchema-double-minExclusive-4 element 
+and expects validation to fail. 
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="minExclusive-4-1.xml"/>
+            <ExternalData Type="iodata" SourceName="minexclusive4_validate-minExclusive-4-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        elemObj = (JAXBElement<Double>)unmarshal("minExclusive-4-1.xml");
+        return testInvalid();
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Created001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML double minExclusive-4.xsd, validate created content tree with valid content]]></Title>
+            <Description><![CDATA[
+The test creates the double restricted SimpleType NISTSchema-double-minExclusive-4 element with
+a valid value, sets its value to 
+    3877207345453194.0001E214, 
+    7563290780183318.7943E247, 
+    Double.MAX_VALUE, 
+    Double.POSITIVE_INFINITY,
+    Double.NaN
+then expects validation to pass. 
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.bind.JAXBException</Import>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        
+            elemObj = (JAXBElement<Double>)(new ObjectFactory()).createNISTSchemaDoubleMinExclusive4(1.0);
+        
+        return testValid();
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

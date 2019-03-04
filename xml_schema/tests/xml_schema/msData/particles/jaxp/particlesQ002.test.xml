@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="particlesQ002">
+   <TestGroupDocumentation>
+      <Title><![CDATA[particlesQ002]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :3.9.1 The Particle Schema Component [ check length of element information items ] : Particle Derivation OK (Sequence:Any - NSRecurseCheckCardinality) (Sequence) R drived by restriction from (any) B : B's minOccurs=1, B's maxOccurs=1, R's minOccurs=1, R's maxOccurs=1
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)particlesQ002.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../particlesQ002.xsd"/>
+   </CodeSet>
+   <TestCase ID="particlesQ002">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="particlesQ002.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../particlesQ002.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)particlesQ002.test.xml	1.1 07/03/27 -->

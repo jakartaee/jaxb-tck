@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="short_maxExclusive003_749">
+   <TestGroupDocumentation>
+      <Title><![CDATA[short_maxExclusive003_749]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxExclusive and value=-32769
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)short_maxExclusive003_749.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../short_maxExclusive003.xsd"/>
+   </CodeSet>
+   <TestCase ID="short_maxExclusive003_749">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)short_maxExclusive003_749.test.xml	1.1 07/03/27 -->

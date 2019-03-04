@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-string-pattern-1">
+   <TestGroupDocumentation>
+      <Title><![CDATA[list-string-pattern-1]]></Title>
+      <Description><![CDATA[
+        <p>
+                    
+        Type list/string is restricted by facet pattern with value \d{1,5}_([A-Z][a-z]{1,20}_){1}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_11551-1386 \d{1,5}_([A-Z][a-z]{1,20}_){3}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_15792-1475 \d{1,5}_([A-Z][a-z]{1,20}_){3}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_16933 \d{1,5}_([A-Z][a-z]{1,20}_){5}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_10446 \d{1,5}_([A-Z][a-z]{1,20}_){4}Street_([A-Z][a-z]{1,20}_){3},_[A-Z]{2}_13824 \d{1,5}_([A-Z][a-z]{1,20}_){1}Street_([A-Z][a-z]{1,20}_){1},_[A-Z]{2}_10173-1992 \d{1,5}_([A-Z][a-z]{1,20}_){4}Street_([A-Z][a-z]{1,20}_){3},_[A-Z]{2}_10148-1029.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#string">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#string
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)list-string-pattern-1.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-string-pattern-2.xsd"/>
+   </CodeSet>
+   <TestCase ID="list-string-pattern-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-string-pattern-2-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-string-pattern-2-1.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-string-pattern-2-2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-string-pattern-2-2.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-string-pattern-2-3">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-string-pattern-2-3.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-string-pattern-2-4">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-string-pattern-2-4.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-string-pattern-2-5">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-string-pattern-2-5.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)list-string-pattern-1.test.xml	1.1 07/03/27 -->

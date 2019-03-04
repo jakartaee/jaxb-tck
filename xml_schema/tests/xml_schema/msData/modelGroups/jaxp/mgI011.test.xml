@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="mgI011">
+   <TestGroupDocumentation>
+      <Title><![CDATA[mgI011]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :model groups (ALL) : choice: with children group, any, choice, element, sequence
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)mgI011.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../mgI011.xsd"/>
+   </CodeSet>
+   <TestCase ID="mgI011">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="mgI011.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../mgI011.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)mgI011.test.xml	1.1 07/03/27 -->

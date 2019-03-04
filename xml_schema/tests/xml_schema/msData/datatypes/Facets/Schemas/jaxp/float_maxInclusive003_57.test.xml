@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="float_maxInclusive003_57">
+   <TestGroupDocumentation>
+      <Title><![CDATA[float_maxInclusive003_57]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxInclusive and value=5.55 and facet=maxExclusive and value=5.55
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)float_maxInclusive003_57.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../float_maxInclusive003.xsd"/>
+   </CodeSet>
+   <TestCase ID="float_maxInclusive003_57">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)float_maxInclusive003_57.test.xml	1.1 07/03/27 -->

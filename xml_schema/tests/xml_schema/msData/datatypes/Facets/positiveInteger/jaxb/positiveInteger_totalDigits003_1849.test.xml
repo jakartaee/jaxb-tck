@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="positiveInteger_totalDigits003_1849">
+    <TestGroupDocumentation>
+        <Title><![CDATA[positiveInteger_totalDigits003_1849]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=totalDigits and value=4 and document value=123
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)positiveInteger_totalDigits003_1849.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../positiveInteger_totalDigits003.xsd"/>
+        <ExternalData Type="iodata" SourceName="positiveInteger_totalDigits003_1849.sig"/>
+    </CodeSet>
+    <TestCase ID="positiveInteger_totalDigits003_1849">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="positiveInteger_totalDigits003_1849.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../positiveInteger_totalDigits003.xml"/>
+            <ExternalData Type="iodata" SourceName="positiveinteger_totaldigits003_1849-positiveInteger_totalDigits003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

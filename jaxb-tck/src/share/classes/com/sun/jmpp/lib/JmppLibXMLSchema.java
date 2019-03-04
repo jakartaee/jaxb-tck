@@ -1,0 +1,564 @@
+/*
+ * Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v. 2.0, which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the
+ * Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+ * version 2 with the GNU Classpath Exception, which is available at
+ * https://www.gnu.org/software/classpath/license.html.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+ */
+
+package com.sun.jmpp.lib;
+
+import java.io.File;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.util.Hashtable;
+import java.lang.reflect.Method;
+
+import com.sun.jmpp.share.Options;
+import com.sun.jmpp.share.OptionDescr;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
+
+/**  
+ * Jmpp library for test generation in the api/xml/Schema area.
+ *
+ * @author Ilya V. Neverov
+ * @version 1.14
+ */
+
+public class JmppLibXMLSchema extends JmppLibTest {
+
+        private Hashtable hashAttrs = new Hashtable();
+
+        public static final String TARGET_SPEC_SINGLE_SCHEMA_STR = "targetSpecSingleSchema";
+        public static final String TARGET_SPEC_BISCHEMA_POS_CASE_STR = "targetSpecBiSchemaPositiveCase";
+        public static final String TARGET_SPEC_BISCHEMA_NEG_CASE_STR = "targetSpecBiSchemaNegativeCase";
+        public static final String TARGET_SPEC_SIMPLE_SCHEMA_STR = "targetSpecSimpleSchema";
+        public static final String TARGET_SPEC_BIDOC_POS_CASE_STR = "targetSpecBiDocPositiveCase";
+        public static final String TARGET_SPEC_BIDOC_NEG_CASE_STR = "targetSpecBiDocNegativeCase";
+        public static final String TARGET_SPEC_SINGLE_DOC_STR = "targetSpecSingleDoc";
+
+	protected boolean positiveCase;
+
+	public boolean createPositiveCase;
+	public boolean createNegativeCase;
+	public boolean biDoc = true;
+
+	public boolean biSchema = false;
+	public boolean singleSchema = false;
+	public String schemaFName;
+	public boolean isValidSchema = true;
+	public boolean singleSchemaFlag = false;
+	
+	public JmppLibXMLSchema() {
+	    // JmppLibXMLSchema uses another dir structure
+	    tckCopyrightFile = ".." + File.separator + tckCopyrightFile; 
+	}
+
+	public boolean isDeclared(String method) {
+	    Class c = getClass();
+	    try {
+		c.getDeclaredMethod( method, new Class[]{} );
+		return true;
+	    } catch (NoSuchMethodException nsme) {
+		return false;
+	    }
+	}
+
+	public void chkSourceMethods() {
+	    biSchema     = isDeclared(    "biSchemaSource");
+	    singleSchema = isDeclared("singleSchemaSource");
+	    if ( (biSchema & singleSchema) ||
+		((biSchema | singleSchema) && isDeclared("schemaSource")) )
+		generationError("single schema source method should be declared in the jmpp source");
+            
+            // hook, in case if singleSchema() is invoked, but schemaSource() is used
+            singleSchema = singleSchema | singleSchemaFlag; 
+
+	    biDoc = !isDeclared("docBody");
+	    if ( !biDoc && isDeclared("biTestBody") )
+		generationError("single doc source method should be declared in the jmpp source");
+
+	    if ( biSchema == biDoc )
+		generationError("biSchemaSource and docBody should be used together");
+	}
+
+		//   this method is called from all make(...) methods 
+		//   so it's used for chkSourceMethods() invocation
+	public void initAllTests() {
+	    chkSourceMethods();
+	    super.initAllTests();
+	}
+
+
+	public static void main(String[] argv) {
+		libMain(argv, new JmppLibXMLSchema());
+	}
+
+	protected Options parseOptions(String[] argv, OptionDescr[] validOptions) {
+            Options opts = super.parseOptions(argv, validOptions);
+
+	    if (opts.isSet(OPT_WRK_DIR)) {
+		String workDirTail = lastSegments(workJavaDir, File.separator, 3);
+		String outpDirTail = lastSegments(outputDir,   File.separator, 2);
+		if (outpDirTail.length()>1 && 
+			workDirTail.startsWith(outpDirTail)) {
+		    outputDir += File.separator + lastSegments(workJavaDir, File.separator, 1);
+		}
+	    }
+
+            return opts;
+	}
+
+	public String lastSegments(String s, String delim, int count) {
+	    int pos = s.lastIndexOf(delim);
+	    while (--count>0 && pos>0) {
+		pos = s.lastIndexOf(delim, pos-1);
+	    }
+	    return s.substring(pos+1);
+	}
+
+/**
+ * Overriden JmppLibTest's method which initializes tdGenerator
+ * with the instance of HTMLTDGenerator.
+ */
+        protected void initTDGenerator(){
+            tdGenerator = (TDGenerator) new BiHTML_TDGenerator();
+        }
+
+    /**
+     *   Override this method to create your own header or skip creation of header at all.
+     */
+    public void makeHead() {
+        L("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+
+        String id = "Ident: @(#)" + currentFileName;
+        if (insertAutoGenerated)
+            id += "\n	generated from: " + sccs;
+        id += "\n\n";
+        L(wrapInCommentTags(id + BuildProperties.getPrefixString(null, "test.copyrightNotice", "")));
+        L("");
+    }
+
+    protected String wrapInCommentTags(String s) {
+
+//		XML comment may not contain "--" pair - put space between
+
+        int i = 0;
+        while ((i=s.indexOf("--", i)) >= 0) {
+            i++;
+            s = s.substring(0, i) +" "+ s.substring(i);
+            i++;
+        }
+        return "<!--\n" + s + "\n-->";
+    }
+
+//-----------------------------------------------------------------------------
+
+	public String sharedName() {
+	    return className;
+	}
+
+	public void newSource(	boolean includeToSources, 
+				String fileName, 
+				String extension) 
+	{ newSource(includeToSources, fileName, extension, sharedName()); }
+
+	public void newSource(	boolean includeToSources, 
+				String fileName) 
+	{ newSource(includeToSources, fileName, defaultExtension, sharedName()); }
+
+	public void newSource(	String fileName, 
+				String extension) 
+	{ newSource(true, fileName, extension, sharedName()); }
+
+	public void newSource(	String fileName) 
+	{ newSource(true, fileName, defaultExtension, sharedName()); }
+
+//-----------------------------------------------------------------------------
+
+	public void schemaSource() {
+	    singleSchemaSource();
+	}
+
+	public void singleSchemaSource() {
+	}
+
+	public void biSchemaSource() {
+	}
+
+	public void makeCases() {
+	}
+
+	public void biTestBody() {
+	}
+
+	public void docBody() {
+	}
+
+/**
+ *   Routine to create sources for the test number testNumber. 
+ *   Normally, you neither call nor override this method.
+ *   @param testNumber number of the test to create.
+ */
+	public void createTest(int testNumber) {
+	        clearAttrs();
+		preMakeTest(testNumber);
+		createBothCases();
+                String targetSpecStore;
+                
+	      if (singleSchema) {
+		    if (tID==0) {
+			newSource(sharedName(), "xsd");
+			schemaFName = sharedName() +".xsd";
+			isValidSchema = true;
+			targetSpecStore = targetSpec;
+			schemaSource();
+  			setAttr(TARGET_SPEC_SINGLE_SCHEMA_STR, targetSpec);
+  			targetSpec = targetSpecStore;
+		    } else {
+			filesSectionList.addElement(schemaFName);
+			sourceFiles     .addElement(schemaFName);
+		    }
+	      } else if (biSchema) {
+		makeCases();
+
+		if (createPositiveCase) {
+		    newSource(test+"_p", "xsd");
+		    positiveCase = true;
+		    targetSpecStore = targetSpec;
+		    biSchemaSource();
+		    isValidSchema = true;
+  		    setAttr(TARGET_SPEC_BISCHEMA_POS_CASE_STR, targetSpec);
+  	  	    targetSpec = targetSpecStore;
+		}
+
+		if (createNegativeCase) {
+		    newSource(test+"_n", "xsd");
+		    positiveCase = false;
+		    targetSpecStore = targetSpec;
+		    biSchemaSource();
+		    isValidSchema = false;
+  		    setAttr(TARGET_SPEC_BISCHEMA_NEG_CASE_STR, targetSpec);
+  		    targetSpec = targetSpecStore;
+		}
+	      } else {
+		    newSource(test, "xsd");
+		    isValidSchema = true;
+		    targetSpecStore = targetSpec;
+		    schemaSource();
+  		    setAttr(TARGET_SPEC_SIMPLE_SCHEMA_STR, targetSpec);
+  		    targetSpec = targetSpecStore;
+	      }
+
+	      if (biDoc) {
+		makeCases();
+
+		if (createPositiveCase) {
+		    newSource(test+"_p", "xml");
+		    positiveCase = true;
+		    targetSpecStore = targetSpec;
+		    biTestBody();
+		    setAttr(TARGET_SPEC_BIDOC_POS_CASE_STR, targetSpec);
+  		    targetSpec = targetSpecStore;
+		}
+
+		if (createNegativeCase) {
+		    newSource(test+"_n", "xml");
+		    positiveCase = false;
+		    targetSpecStore = targetSpec;
+		    biTestBody();
+  		    setAttr(TARGET_SPEC_BIDOC_NEG_CASE_STR, targetSpec);
+  		    targetSpec = targetSpecStore;
+		}
+	      } else {
+		    newSource(test, "xml");
+		    targetSpecStore = targetSpec;
+		    docBody();
+  		    setAttr(TARGET_SPEC_SINGLE_DOC_STR, targetSpec);
+  		    targetSpec = targetSpecStore;
+	      }
+
+		keywords = posRuntimeKeywords;
+		executeClass = "javasoft.sqe.tests.api.xml_schema.TestRun";
+//		executeArgs =  // see below: void createTDTable(boolean positive)
+		
+		postMakeTest(testNumber);
+		generateTemplateTable();
+	}
+
+	protected void createPositiveCaseOnly() {
+	    createPositiveCase = true;
+	    createNegativeCase = false;
+	}
+
+	protected void createNegativeCaseOnly() {
+	    createPositiveCase = false;
+	    createNegativeCase = true;
+	}
+
+	protected void createBothCases() {
+	    createPositiveCase = true;
+	    createNegativeCase = true;
+	}
+
+	protected void singleSchema() {
+	    if ( biSchema  )
+		generationError("biSchemaSource method can not be used in singleSchema mode");
+	    singleSchemaFlag = true;
+	}
+
+	protected String schemaURI() {
+	    if (singleSchema)
+		return schemaFName;
+	    return test+".xsd";
+	}
+
+
+	protected String xmlns() {
+	    return     "xmlns=\"http://www.w3.org/2001/XMLSchema\"";
+	}
+	protected String xmlns(String prefix) {
+	    return     "xmlns:"+ prefix +"=\"http://www.w3.org/2001/XMLSchema\"";
+	}
+	protected String xmlnsXsi() {
+	    return "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"";
+	}
+
+
+	public void beginRight() {
+            L("<!-- Positive variant begin " + (positiveCase? "-->": "- -"));
+	}
+	public void beginWrong() {
+            L("<!-- Negative variant begin " + (positiveCase? "- -": "-->"));
+	}
+	public void endRight() {
+            L((positiveCase? "<!--": " - -") + " Positive variant end   -->");
+	}
+	public void endWrong() {
+            L((positiveCase? " - -": "<!--") + " Negative variant end   -->" );
+	}
+
+/**
+ *   Creates table to be inserted to the assertion HTML or specification.
+ */
+	public void generateTemplateTable() {
+		if (!makeTemplateHTML || skipTest)
+			return;
+
+		String href = sharedName()+"/"+test+".html";
+		StringBuffer savedBuffer = outBuffer;
+		outBuffer = templateTableBuffer;
+                int pos = tckCopyrightFile.lastIndexOf("../");
+                if (pos == -1)
+		    generationError("path to copyright file invalid");
+                String tckRootDir = tckCopyrightFile.substring(0, pos + 3);
+        L("<TR>");
+        L("<TD> <img src=\"" + tckRootDir + "doc/glyphs/" +
+          ((keywords.indexOf("negative") == -1) ? "pos" : "neg") +
+          ".gif\"> <a href=\""+href+"\"> "+test+" </a> </TD>");
+        L("<TD> "+title+" </TD>");
+        L("</TR>");
+		outBuffer = savedBuffer;
+	}
+	
+	public void setAttr(String attrName, String attrValue){
+	    if (attrValue != null && !attrValue.trim().equals("")){
+  	        hashAttrs.put(attrName, attrValue);
+  	    }
+	}
+
+	public String getAttr(String attrName){
+	    return (String)hashAttrs.get(attrName);
+	}
+	
+	public void clearAttrs() {
+	    String ts = (String)hashAttrs.get(TARGET_SPEC_SINGLE_SCHEMA_STR);
+	    hashAttrs.clear();
+	    if (ts != null){
+	        hashAttrs.put(TARGET_SPEC_SINGLE_SCHEMA_STR, ts);
+	    }
+	}
+}
+
+/**  
+ * Class for generation HTML test description basing on JmppLibTest variable set.
+ *
+ * @author Ilya V. Neverov
+ * @version 1.0
+ */
+
+
+class BiHTML_TDGenerator implements TDGenerator {
+
+    JmppLibXMLSchema lib;
+/**
+ * The method which is the entry point for test description generation.
+ * @param lib JmppLibTest instance, HTML test description is generated 
+ * basing on its variable set.
+ */
+    public void makeTD(JmppLibTest _lib){
+	this.lib = (JmppLibXMLSchema)_lib;
+	lib.setOutput(false, lib.test, "html", lib.sharedName());
+
+	createHTMLHead();
+			// positive test case first
+	createFilesSection(true);
+	createTDTable     (true);
+			// negative test case second
+	createFilesSection(false);
+	createTDTable     (false);
+
+	createHTMLBottom();
+
+	lib.closeOut();
+    }
+
+//-----------------------------------------------------------------------------
+
+    void createFilesSection(boolean positive) {
+	if (positive ? ! lib.createPositiveCase
+		     : ! lib.createNegativeCase)
+	    return;
+
+	String fnTail = (positive ? "_n" : "_p") + (lib.biSchema? ".xsd" : ".xml");
+
+lib.L("<p><hr>");
+
+//	if ( lib.createPositiveCase == lib.createNegativeCase ) {
+	    String kind = positive ? "Positive" : "Negative";
+lib.L("<h2><A name=\""+ kind +"\">"+ kind +" case</A></h2>");
+//	}
+
+lib.L("<h3>FILES</h3>");
+lib.L("<ul>");
+String fName;
+for (int i=0; i<lib.filesSectionList.size(); i++) {
+	fName = lib.filesSectionList.elementAt(i).toString();
+	if (fName.endsWith(fnTail))
+	    continue;
+	lib.L("<li><a href=\""+fName+"\">"+fName+"</a> ");
+}
+lib.L("</ul>");
+
+    }
+
+//-----------------------------------------------------------------------------
+
+    void createTDTable(boolean positive) {
+	if (positive ? ! lib.createPositiveCase
+		     : ! lib.createNegativeCase)
+	    return;
+
+	String fnTail = (positive ? "_n" : "_p") + (lib.biSchema? ".xsd" : ".xml");
+
+// make list of source files to insert to the HTML
+String sources[] = new String[lib.sourceFiles.size()];
+if (lib.sourceList!=null) {
+	sources=lib.sourceList;
+	lib.sortFileArrayAccordingToSuppliedByTemplateSourceList();
+}
+else
+	lib.sourceFiles.copyInto(sources);
+
+String sourcesList="";
+for (int i=0; i<sources.length; i++) {
+	String fName = sources[i];
+	if (fName.endsWith(fnTail))
+	    continue;
+	sourcesList+=" <a href=\""+fName+"\">"+fName+"</a> ";
+}
+sourcesList.trim();
+
+	String sfx = positive ? "_p" : "_n";
+	String testName = lib.test;
+	String title = lib.title;
+//	if ( lib.createPositiveCase == lib.createNegativeCase ) {
+	    testName += sfx;
+	    title += " ("+ (positive ? "positive" : "negative") +" case)";
+//	}
+
+lib.L("<br>");
+lib.L("<table border=1 class=TestDescription>");
+lib.L("<tr><td><b>title</b></td><td>"+testName+" - "+title+" </td></tr>");
+lib.L("<tr><td><b>name</b></td><td>"+testName+"</td></tr>");
+lib.L("<tr><td><b>source</b></td><td>"+sourcesList+"</td></tr>");
+lib.L("<tr><td><b>executeClass</b></td><td>"+lib.executeClass+"</td></tr>");
+
+	String xsd = (lib.biSchema ? sfx : "")  +".xsd";
+	String xml = (lib.biDoc    ? sfx : "")  +".xml";
+	String schemaURI = lib.singleSchema ? lib.schemaFName
+					    :(lib.test + xsd);
+
+	String executeArgs = "-t $testURL -s "+ schemaURI +" "+ lib.test + xml;
+	if (!positive)
+	   executeArgs = "-negative " + executeArgs;
+
+lib.L("<tr><td><b>executeArgs</b></td><td>"+executeArgs+"</td></tr>");
+
+
+lib.L("<tr><td><b>keywords</b></td><td>"+lib.keywords+"</td></tr>");
+	if (lib.testTimeout>0)
+lib.L("<tr><td><b>timeout</b></td><td>"+lib.testTimeout+"</td></tr>");
+	if (lib.properties!=null)
+lib.L("<tr><td><b>context</b></td><td>"+lib.properties+"</td></tr>");
+lib.L("</table>");
+    }
+
+//-----------------------------------------------------------------------------
+
+    void createHTMLHead() {
+lib.L("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.X//EN\">");
+lib.L("<html>");
+lib.L("<head>");
+lib.L("<title>"+lib.test+"</title>");
+lib.L("</head>");
+lib.L("<body>");
+lib.L("<b><big> TEST "+lib.test+" - "+lib.title+" </big></b>");
+lib.L("<p><hr>");
+if (lib.description!=null) {
+	lib.L("<h3>DESCRIPTION</h3>");
+	lib.L(lib.description);
+}
+if (lib.testComments!=null) {
+	lib.L("<h3>COMMENTS</h3>");
+	lib.L(lib.testComments);
+}
+    }
+
+//-----------------------------------------------------------------------------
+
+    void createHTMLBottom() {
+lib.L("<br>");
+lib.L("<hr>");
+lib.LN("<!-- File: @(#)"+lib.currentFileName);
+
+if (lib.insertAutoGenerated)
+	lib.LN(" generated from: "+lib.sccs);
+
+lib.L("");
+lib.L("Created by "+lib.testDeveloper);
+lib.L("-->");
+if (lib.tckCopyrightFile != null) {
+    String f = ".." + File.separator + lib.tckCopyrightFile;
+    lib.LN("<a href=\"" + f + "\">Copyright</a> ");
+} else {
+    lib.LN("Copyright ");
+}
+lib.L(lib.copyrightInfoHtml);
+lib.L("</body>");
+lib.L("</html>");
+    }
+
+}

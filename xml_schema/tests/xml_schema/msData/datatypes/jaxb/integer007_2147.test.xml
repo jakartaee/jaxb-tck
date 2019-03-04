@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="integer007_2147">
+    <TestGroupDocumentation>
+        <Title><![CDATA[integer007_2147]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=-1
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)integer007_2147.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../integer.xsd"/>
+        <ExternalData Type="iodata" SourceName="integer007_2147.sig"/>
+    </CodeSet>
+    <TestCase ID="integer007_2147">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="integer007_2147.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../integer007.xml"/>
+            <ExternalData Type="iodata" SourceName="integer007_2147-integer007.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

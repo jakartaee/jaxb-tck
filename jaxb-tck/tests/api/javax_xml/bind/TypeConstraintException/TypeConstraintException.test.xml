@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="TypeConstraintException">
+    <TestGroupDocumentation>
+        <Title><![CDATA[General tests of constructors and methods]]></Title>
+        <Description><![CDATA[General tests of constructors and methods.]]></Description>
+        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedClass>TypeConstraintException</TestedClass>
+        <Author><![CDATA[Evgueni Rouban]]></Author>
+    </TestGroupDocumentation>
+
+    <TestGroupAttributes>
+       <AttrElem Name="tdFile">TypeConstraintException</AttrElem>
+       <AttrElem Name="scInfo">@(#)TypeConstraintException.test.xml	1.1 02/11/04</AttrElem>
+       <AttrElem Name="testType">MultiTest</AttrElem>
+       <Keyword>runtime</Keyword>
+       <Keyword>positive</Keyword>
+    </TestGroupAttributes>
+
+    <CodeSet>
+        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>java.io.PrintStream</Import>
+        <Import>java.io.ByteArrayOutputStream</Import>
+        <SupportCode><![CDATA[
+    static final String msg = "test message";
+    static final String err = "error code";
+    static final Throwable linkedException = new Throwable();
+
+    public static class PrintStackTraceDetector extends Throwable {
+        public boolean printStackTraceCalled;
+        public void printStackTrace(java.io.PrintStream s) {
+            printStackTraceCalled = true;
+            super.printStackTrace(s);
+        }
+        public void printStackTrace() {
+            printStackTraceCalled = true;
+            super.printStackTrace();
+        }
+    };
+]]></SupportCode>
+    </CodeSet>
+
+    <TestCase ID="Ctor001">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified detail message. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message)</MemberSig>
+                <ExpectedResultSideEffect>the message is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg);
+    if (tce.getMessage() != msg) {
+        return Status.failed("getMessage() != msg: \"" 
+                           + tce.getMessage() + "\", expected is \"" + msg + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor002">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The errorCode will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message)</MemberSig>
+                <ExpectedResultSideEffect>errorCode is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[ 
+    TypeConstraintException(msg) sets errorCode to null.
+                 ]]></InlineAssertion>
+                <TestTechnique Value="Boundary"/>
+                <MemberSig>public java.lang.String getErrorCode()</MemberSig>
+                <Precondition>errorCode set to null</Precondition>
+                <ExpectedResultValue>null</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg);
+    if (tce.getErrorCode() != null) {
+        return Status.failed("getErrorCode() != null: \"" 
+                           + tce.getErrorCode() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor003">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The linkedException will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg);
+    if (tce.getLinkedException() != null) {
+        return Status.failed("getLinkedException() != null: \"" 
+                           + tce.getLinkedException() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor004">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified detail message. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.String errorCode)</MemberSig>
+                <ExpectedResultSideEffect>the message is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, err);
+    if (tce.getMessage() != msg) {
+        return Status.failed("getMessage() != msg: \"" 
+                           + tce.getMessage() + "\", expected is \"" + msg + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor005">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified errorCode. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.String errorCode)</MemberSig>
+                <ExpectedResultSideEffect>the errorCode is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[ 
+    TypeConstraintException(msg, err) sets errorCode to the specified.
+                 ]]></InlineAssertion>
+                <TestTechnique Value="Boundary"/>
+                <MemberSig>public java.lang.String getErrorCode()</MemberSig>
+                <Precondition>errorCode set to a non-null value</Precondition>
+                <ExpectedResultValue> non-null </ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, err);
+    if (tce.getErrorCode() != err) {
+        return Status.failed("getErrorCode() != err: \"" 
+                           + tce.getErrorCode() + "\", expected is \"" + err + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor006">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The linkedException will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.String errorCode)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, err);
+    if (tce.getLinkedException() != null) {
+        return Status.failed("getLinkedException() != null: \"" 
+                           + tce.getLinkedException() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor007">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified detail message. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.String errorCode, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>the message is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, err, linkedException);
+    if (tce.getMessage() != msg) {
+        return Status.failed("getMessage() != msg: \"" 
+                           + tce.getMessage() + "\", expected is \"" + msg + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor008">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified errorCode. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.String errorCode, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>the errorCode is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Get the vendor specific error code.
+                 ]]></InlineAssertion>
+                <MemberSig>public java.lang.String getErrorCode()</MemberSig>
+                <Precondition>errorCode set to a non-null value</Precondition>
+                <ExpectedResultValue>the errorCode is what set</ExpectedResultValue>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Get the linked exception.
+                 ]]></InlineAssertion>
+                <MemberSig>public java.lang.Throwable getLinkedException()</MemberSig>
+                <Precondition>linkedException set to a non-null value</Precondition>
+                <ExpectedResultValue>the linkedException is what set</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, err, linkedException);
+    if (tce.getErrorCode() != err) {
+        return Status.failed("getErrorCode() != err: \"" 
+                           + tce.getErrorCode() + "\", expected is \"" + err + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor009">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified linkedException. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.String errorCode, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, err, linkedException);
+    if (tce.getLinkedException() != linkedException) {
+        return Status.failed("getLinkedException() != linkedException: \"" 
+                           + tce.getLinkedException() + "\", expected is \"" + linkedException + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor010">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified detail message. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>the message is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, linkedException);
+    if (tce.getMessage() != msg) {
+        return Status.failed("getMessage() != msg: \"" 
+                           + tce.getMessage() + "\", expected is \"" + msg + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor011">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The errorCode will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>errorCode is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, linkedException);
+    if (tce.getErrorCode() != null) {
+        return Status.failed("getErrorCode() != null: \"" 
+                           + tce.getErrorCode() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor012">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified linkedException. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.String message, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, linkedException);
+    if (tce.getLinkedException() != linkedException) {
+        return Status.failed("getLinkedException() != linkedException: \"" 
+                           + tce.getLinkedException() + "\", expected is \"" + linkedException + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor013">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The detail message will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>the message is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(linkedException);
+    if (tce.getMessage() != null) {
+        return Status.failed("getMessage() != null: \"" 
+                           + tce.getMessage() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor014">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The errorCode will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>errorCode is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(linkedException);
+    if (tce.getErrorCode() != null) {
+        return Status.failed("getErrorCode() != null: \"" 
+                           + tce.getErrorCode() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor015">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a TypeConstraintException with the specified linkedException. 
+                 ]]></InlineAssertion>
+                <MemberSig>public TypeConstraintException(java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(linkedException);
+    if (tce.getLinkedException() != linkedException) {
+        return Status.failed("getLinkedException() != linkedException: \"" 
+                           + tce.getLinkedException() + "\", expected is \"" + linkedException + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor016">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns a short description of this TypeConstraintException.
+                 ]]></InlineAssertion>
+                <MemberSig>public java.lang.String toString()</MemberSig>
+                <Precondition>detail message, error code and linked exception are not null</Precondition>
+                <ExpectedResultValue>non-empty string</ExpectedResultValue>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg, err, linkedException);
+    String str = tce.toString();
+
+    if (str == null) {
+        return Status.failed("tce.toString() returns null");
+    }
+
+    if (str.length() <= 0) {
+        return Status.failed("tce.toString().length() returns " + str.length());
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor017">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Add the linked exception.
+                 ]]></InlineAssertion>
+                <MemberSig>public void setLinkedException(java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Add the linked exception.
+                 ]]></InlineAssertion>
+                <TestTechnique Value="Boundary"/>
+                <MemberSig>public void setLinkedException(java.lang.Throwable exception)</MemberSig>
+                <Input Name="exception">non-null</Input>
+                <Precondition>linkedException is not set</Precondition>
+                <ExpectedResultSideEffect>the linkedException is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg);
+
+    tce.setLinkedException(linkedException);
+    if (tce.getLinkedException() == null) {
+        return Status.failed("getLinkedException() == null");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor018">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+A null value is permitted and indicates that the linked exception does 
+not exist or is unknown.
+                ]]></InlineAssertion>
+                <MemberSig>public void setLinkedException(java.lang.Throwable exception)</MemberSig>
+                <Precondition>linkedException is set to a non-null value</Precondition>
+                <ExpectedResultSideEffect>linkedException is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Unspecify the linked exception.
+                 ]]></InlineAssertion>
+                <TestTechnique Value="Boundary"/>
+                <MemberSig>public void setLinkedException(java.lang.Throwable exception)</MemberSig>
+                <Input Name="exception">null</Input>
+                <Precondition>linkedException is set to a non-null value</Precondition>
+                <ExpectedResultSideEffect>the linkedException is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(linkedException);
+
+    tce.setLinkedException(null);
+    if (tce.getLinkedException() != null) {
+        return Status.failed("getLinkedException() != linkedException: \"" 
+                           + tce.getLinkedException() + "\", expected is \"" + linkedException + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor019">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Prints this TypeConstraintException and its stack trace (including the stack trace of the linkedException if it is
+non-null) to the PrintStream.
+                ]]></InlineAssertion>
+                <MemberSig>public void printStackTrace()</MemberSig>
+                <Precondition>linkedException is set to a non-null value</Precondition>
+                <ExpectedResultSideEffect>the linkedException's method printStackTrace() or printStackTrace(PrintStream) is called</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    PrintStackTraceDetector linkedException = new PrintStackTraceDetector();
+    TypeConstraintException tce = new TypeConstraintException(linkedException);
+
+    tce.printStackTrace();
+    if (!linkedException.printStackTraceCalled) {
+        return Status.failed("printStackTrace() of the linked exception has not been called");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor020">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Prints this TypeConstraintException and its stack trace (including the stack trace of the linkedException if it is
+non-null) to the PrintStream.
+                ]]></InlineAssertion>
+                <MemberSig>public void printStackTrace(java.io.PrintStream s)</MemberSig>
+                <Precondition>linkedException is set to a non-null value</Precondition>
+                <ExpectedResultSideEffect>the linkedException's method printStackTrace(PrintStream) is called</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    PrintStackTraceDetector linkedException = new PrintStackTraceDetector();
+    TypeConstraintException tce = new TypeConstraintException(linkedException);
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    PrintStream ps = new PrintStream(baos);
+
+    tce.printStackTrace(ps);
+    ps.close();
+    if (!linkedException.printStackTraceCalled) {
+        return Status.failed("printStackTrace(PrintStream) of the linked exception has not been called");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor021">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Prints this TypeConstraintException and its stack trace to the PrintStream.
+                ]]></InlineAssertion>
+                <MemberSig>public void printStackTrace(java.io.PrintStream s)</MemberSig>
+                <Precondition>error message is set to a non-null value</Precondition>
+                <ExpectedResultSideEffect>at leat one byte has been written to the PrintWriter's stream</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    TypeConstraintException tce = new TypeConstraintException(msg);
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    PrintStream ps = new PrintStream(baos);
+
+    tce.printStackTrace(ps);
+    ps.close();
+    if (baos.size() <= 0) {
+        return Status.failed("no bytes were written to the stream");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+</TestGroup>
+<!-- Ident: @(#)TypeConstraintException.test.xml	1.1 02/11/04 -->

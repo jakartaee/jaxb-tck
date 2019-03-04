@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="ctI015">
+    <TestGroupDocumentation>
+        <Title><![CDATA[ctI015]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for top level complexType Declaration : schema with finalDefault = '' , derived complexType by extension
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Complex_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Complex_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)ctI015.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../ctI015.xsd"/>
+        <ExternalData Type="iodata" SourceName="ctI015.sig"/>
+    </CodeSet>
+    <TestCase ID="ctI015">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="ctI015.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../ctI015.xml"/>
+            <ExternalData Type="iodata" SourceName="cti015-ctI015.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB121">
+   <TestGroupDocumentation>
+      <Title><![CDATA[addB121]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : id="76070" description="xsd: test non-deterministic xsd with sequence (A, ##other{2}, A)"
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)addB121.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../addB121.xsd"/>
+   </CodeSet>
+   <TestCase ID="addB121">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)addB121.test.xml	1.1 07/03/27 -->

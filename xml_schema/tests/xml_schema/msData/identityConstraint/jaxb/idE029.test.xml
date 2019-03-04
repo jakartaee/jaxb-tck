@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="idE029">
+   <TestGroupDocumentation>
+      <Title><![CDATA[idE029]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Identity-constraint Definition Schema Component : field element, content of keyref
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)idE029.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../idE029.xsd"/>
+   </CodeSet>
+   <TestCase ID="idE029">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)idE029.test.xml	1.1 07/03/27 -->

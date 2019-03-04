@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-normalizedString-pattern">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-normalizedString-pattern]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/normalizedString is restricted by facet pattern with value \d{1,5}_([A-Z][a-z]{1,20}_){3}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_13058 \d{1,5}_([A-Z][a-z]{1,20}_){5}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_14172 \d{1,5}_([A-Z][a-z]{1,20}_){4}Street_([A-Z][a-z]{1,20}_){3},_[A-Z]{2}_13454 \d{1,5}_([A-Z][a-z]{1,20}_){5}Street_([A-Z][a-z]{1,20}_){3},_[A-Z]{2}_10133-1061 \d{1,5}_([A-Z][a-z]{1,20}_){5}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_10981 \d{1,5}_([A-Z][a-z]{1,20}_){3}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_16632 \d{1,5}_([A-Z][a-z]{1,20}_){5}Street_([A-Z][a-z]{1,20}_){2},_[A-Z]{2}_19839.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#normalizedString">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#normalizedString
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-normalizedString-pattern.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-normalizedString-pattern-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-normalizedString-pattern.sig"/>
+    </CodeSet>
+    <TestCase ID="list-normalizedString-pattern">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-list-normalizedString-pattern-1-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-list-normalizedString-pattern-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="list-normalizedstring-pattern-NISTXML-SV-IV-list-normalizedString-pattern-1-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

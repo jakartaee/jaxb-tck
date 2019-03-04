@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-maxLength-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-maxLength-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>17_These_And_Techniques_Street_In_Using_,_FL_12677</string> 
+   </void> 
+   <void method="add"> 
+    <string>3275_System_Xml_Computed_Street_Ec_Is_,_DC_12677</string> 
+   </void> 
+   <void method="add"> 
+    <string>7_Work_Standards_Unbiased_Street_Must_Specification_,_KS_12677</string> 
+   </void> 
+   <void method="add"> 
+    <string>8_Is_Particularly_The_Street_Outfitting_Specifications_,_SD_12677</string> 
+   </void> 
+   <void method="add"> 
+    <string>833_The_Other_Sun_Street_That_Security_,_VT_12677</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

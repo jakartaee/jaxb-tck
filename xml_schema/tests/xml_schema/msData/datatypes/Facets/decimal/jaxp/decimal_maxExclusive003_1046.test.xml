@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="decimal_maxExclusive003_1046">
+   <TestGroupDocumentation>
+      <Title><![CDATA[decimal_maxExclusive003_1046]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxExclusive and value=7.7 and document value=5.55
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)decimal_maxExclusive003_1046.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../decimal_maxExclusive003.xsd"/>
+   </CodeSet>
+   <TestCase ID="decimal_maxExclusive003_1046">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="decimal_maxExclusive003_1046.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../decimal_maxExclusive003.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)decimal_maxExclusive003_1046.test.xml	1.1 07/03/27 -->

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="wildI004i">
+    <TestGroupDocumentation>
+        <Title><![CDATA[wildI004i]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Validation - any : 67191 - ensuring that processContents of lax will validate
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)wildI004i.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../wildI004i.xsd"/>
+        <ExternalData Type="iodata" SourceName="wildI004i.sig"/>
+    </CodeSet>
+    <TestCase ID="wildI004i">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

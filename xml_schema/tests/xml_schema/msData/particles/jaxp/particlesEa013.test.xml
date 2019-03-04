@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="particlesEa013">
+   <TestGroupDocumentation>
+      <Title><![CDATA[particlesEa013]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :3.9.1 The Particle Schema Component [ check length of element information items ] : The {term} is a model group with minOccurs=1, maxOccurs=absent, content=all (a,b), and the instant XML has (a,b,a,b)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)particlesEa013.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../particlesEa013.xsd"/>
+   </CodeSet>
+   <TestCase ID="particlesEa013">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="particlesEa013.i">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../particlesEa013.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)particlesEa013.test.xml	1.1 07/03/27 -->

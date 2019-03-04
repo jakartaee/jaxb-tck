@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-duration-pattern-2-NS</string> 
+   <string>NISTSchema-SV-IV-list-duration-pattern-2</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1912Y7M15DT15H51M38S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P2085Y3M1DT9H49M27S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1987Y6M3DT10H52M8S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1801Y1M28DT9H19M35S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1930Y8M27DT6H24M35S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1975Y12M1DT10H38M25S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1732Y5M7DT14H28M45S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1955Y11M13DT8H24M37S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1993Y2M17DT13H29M41S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P1899Y1M4DT4H23M21S</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="idC004">
+   <TestGroupDocumentation>
+      <Title><![CDATA[idC004]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Identity-constraint Definition Schema Component : keyref Declaration with optional attribute id = 'foo123' , name attribute = 'keyrefName' , an imported object with and ID='foo123'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)idC004.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../idC004.xsd"/>
+      <ExternalData Type="iodata" SourceName="../idC004a.xsd"/>
+   </CodeSet>
+   <TestCase ID="idC004">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)idC004.test.xml	1.1 07/03/27 -->

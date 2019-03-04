@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.attrdecl.ad_name.ad_name00104m.ad_name00104m18.Root"> 
+  <void property="ᆫ00"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ᆮ10"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ᆮ11"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ᆯ12"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ᆷ20"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ᆷ21"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ᆸ22"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ᆺ30"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ᆼ40"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ᆿ41"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ᇂ42"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ᇫ50"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ᇰ60"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ᇹ70"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ḁ80"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ṋ81"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ṡ90"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ẕ82"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="length3">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Content Tree tests]]></Title>
+        <Description><![CDATA[
+The tests for checking the content of trees got by unmarshalling
+of the length-3.xsd based XML documents and created dynamically via ObjectFactory. 
+The schema defines a NCName restricted SimpleType.
+Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)length-3_ctt.test.xml	1.4 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.JAXBException</Import>
+        <ExternalSupportClass SourceName="length-3.xsd"/>
+        <ExternalData Type="iodata" SourceName="length3.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet001 - checking the unmarshalled content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the length-3-1.xml document, checks that the document
+has the value 'bthrough.vendors-transmit_and_is_be.is-the'.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="length-3-1.xml"/>
+            <ExternalData Type="iodata" SourceName="length3-length-3-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "bthrough.vendors-transmit_and_is_be.is-the";
+        NISTSchemaNCNameLength3 length_3_1 = (NISTSchemaNCNameLength3)unmarshal("length-3-1.xml");
+
+        String testedValue = length_3_1.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet002 - checking that the method 'get()' returns a set value]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the length-3-2.xml document, changes the document value to
+another value 'x.x.x' and checks that the value is changed.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="length-3-2.xml"/>
+            <ExternalData Type="iodata" SourceName="length3-length-3-2.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "x.x.x";
+        NISTSchemaNCNameLength3 length_3_2 = (NISTSchemaNCNameLength3)unmarshal("length-3-2.xml");
+        length_3_2.setValue(expectedValue);
+
+        String testedValue = length_3_2.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet003">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet003 - checking that the method 'get()' returns a set value]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the value 'a.a-b' and checks that the value is
+set.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "a.a-b";
+        NISTSchemaNCNameLength3 length3 = null;
+        
+        try {
+            length3 = (new ObjectFactory()).createNISTSchemaNCNameLength3();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        length3.setValue(expectedValue);
+
+        String testedValue = length3.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet004">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet004 - setting a valid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the length-3-3.xml document, changes the document value to
+the valid value 'bthrough.vendors-transmit_and_is_be.is-the' and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="length-3-3.xml"/>
+            <ExternalData Type="iodata" SourceName="length3-length-3-3.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "bthrough.vendors-transmit_and_is_be.is-the";
+        NISTSchemaNCNameLength3 length_3_3 = (NISTSchemaNCNameLength3)unmarshal("length-3-3.xml");
+        length_3_3.setValue(expectedValue);
+        
+        Status status = validate(length_3_3);
+        if (!status.isPassed()) {
+            return status;
+        }
+
+        String testedValue = length_3_3.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet005">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet005 - setting an invalid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the length-3-4.xml document, changes the document value to
+the invalid value and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="length-3-4.xml"/>
+            <ExternalData Type="iodata" SourceName="length3-length-3-4.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String invalidValue = "";
+        for (int i = 0; i < 43; i++) {
+            invalidValue += "y";
+        }
+        NISTSchemaNCNameLength3 length_3_4 = (NISTSchemaNCNameLength3)unmarshal("length-3-4.xml");
+        length_3_4.setValue(invalidValue);
+        
+        Status status = validate(length_3_4);
+        if (status.isPassed()) {
+            return Status.failed("Unexpectedly passed for the value '" + invalidValue + "'.");
+        }
+        
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet006">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet006 - setting a valid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the valid value 'bthrough.vendors-transmit_and_is_be.is-the' and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "bthrough.vendors-transmit_and_is_be.is-the";
+        NISTSchemaNCNameLength3 length3 = null;
+        
+        try {
+            length3 = (new ObjectFactory()).createNISTSchemaNCNameLength3();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        length3.setValue(expectedValue);
+        
+        Status status = validate(length3);
+        if (!status.isPassed()) {
+            return status;
+        }
+
+        String testedValue = length3.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet007">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet007 - setting an invalid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the invalid value and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String invalidValue = "";
+        for (int i = 0; i < 43; i++) {
+            invalidValue += "z";
+        }
+        
+        NISTSchemaNCNameLength3 length3 = null;
+        
+        try {
+            length3 = (new ObjectFactory()).createNISTSchemaNCNameLength3();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        length3.setValue(invalidValue);
+        
+        Status status = validate(length3);
+        if (status.isPassed()) {
+            return Status.failed("Unexpectedly passed for the value '" + invalidValue + "'.");
+        }
+        
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

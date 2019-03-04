@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addD001">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addD001]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : xsd 1.0 Prima: the po.xml and po.xsd without targetNamespace
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addD001.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../po1.xsd"/>
+        <ExternalData Type="iodata" SourceName="addD001.sig"/>
+    </CodeSet>
+    <TestCase ID="addD001">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="addD001.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../po1.xml"/>
+            <ExternalData Type="iodata" SourceName="addd001-po1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedShort_pattern001_915">
+   <TestGroupDocumentation>
+      <Title><![CDATA[unsignedShort_pattern001_915]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=pattern and value=\p{Nd}{1,3}
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)unsignedShort_pattern001_915.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../unsignedShort_pattern001.xsd"/>
+   </CodeSet>
+   <TestCase ID="unsignedShort_pattern001_915">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)unsignedShort_pattern001_915.test.xml	1.1 07/03/27 -->

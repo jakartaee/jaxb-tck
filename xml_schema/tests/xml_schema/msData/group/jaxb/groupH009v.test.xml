@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="groupH009v">
+   <TestGroupDocumentation>
+      <Title><![CDATA[groupH009v]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking (id, ref) : parent is restriction: elements in instant XML=0, minOccurs=0, maxOccurs=999999999999999
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cModel_Group_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cModel_Group_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)groupH009v.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../groupH009.xsd"/>
+   </CodeSet>
+   <TestCase ID="groupH009v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="groupH009v.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../groupH009.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)groupH009v.test.xml	1.1 07/03/27 -->

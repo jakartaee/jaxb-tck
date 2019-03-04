@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="elemD004">
+   <TestGroupDocumentation>
+      <Title><![CDATA[elemD004]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :3.3.2 XML Representation of Element Declaration Schema Components : Element type is complexType and default is present
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cElement_Declarations">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cElement_Declarations
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)elemD004.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../elemD004.xsd"/>
+   </CodeSet>
+   <TestCase ID="elemD004">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)elemD004.test.xml	1.1 07/03/27 -->

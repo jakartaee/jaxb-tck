@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.attrdecl.ad_name.ad_name00108m.ad_name00108m21.Root"> 
+  <void property="str00AῨ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str01AῸ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str02Aↀ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str03Aぁ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str04Aァ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str05Aㄅ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str06A가"> 
+   <string>a</string> 
+  </void> 
+  <void property="str10Ὺ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str11Ό"> 
+   <string>b</string> 
+  </void> 
+  <void property="str12ↁ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str13な"> 
+   <string>b</string> 
+  </void> 
+  <void property="str14ネ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str15ㄘ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str16쇑"> 
+   <string>b</string> 
+  </void> 
+  <void property="str20Ῥ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str21Ώ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str22ↂ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str23ゔ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str24ヺ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str25ㄬ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str26힣"> 
+   <string>c</string> 
+  </void> 
+ </object> 
+</java> 

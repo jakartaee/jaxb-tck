@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="wildH006">
+    <TestGroupDocumentation>
+        <Title><![CDATA[wildH006]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Validation - any : ANY (w/ processContents=skip and namespace=##targetNamespace) with schema targetNamespace=http://foobar and instance document has elements from other namespace
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)wildH006.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../wildH006.xsd"/>
+        <ExternalSupportClass SourceName="../wildH006a.xsd"/>
+        <ExternalData Type="iodata" SourceName="wildH006.sig"/>
+    </CodeSet>
+    <TestCase ID="wildH006">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

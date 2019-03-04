@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="idL064">
+    <TestGroupDocumentation>
+        <Title><![CDATA[idL064]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Identity-constraint Definition Schema Component : Test valid XML for keyref definition, field xpath='child::ncname:*' , selector contains *
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)idL064.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../idL064.xsd"/>
+        <ExternalData Type="iodata" SourceName="idL064.sig"/>
+    </CodeSet>
+    <TestCase ID="idL064">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="idL064.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../idL064.xml"/>
+            <ExternalData Type="iodata" SourceName="idl064-idL064.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

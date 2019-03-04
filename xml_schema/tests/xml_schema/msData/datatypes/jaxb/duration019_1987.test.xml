@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="duration019_1987">
+    <TestGroupDocumentation>
+        <Title><![CDATA[duration019_1987]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=P0Y0M0D
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)duration019_1987.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../duration.xsd"/>
+        <ExternalData Type="iodata" SourceName="duration019_1987.sig"/>
+    </CodeSet>
+    <TestCase ID="duration019_1987">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="duration019_1987.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../duration019.xml"/>
+            <ExternalData Type="iodata" SourceName="duration019_1987-duration019.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

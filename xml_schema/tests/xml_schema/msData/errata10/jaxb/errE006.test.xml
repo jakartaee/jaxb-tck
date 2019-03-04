@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="errE006">
+    <TestGroupDocumentation>
+        <Title><![CDATA[errE006]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Primer Errata : E2-22 Clarification: test date, gYearMonth, gMonthDay, gDay, gMonth and gYear permit an optional, trailing time zone specification.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/2004/03/xmlschema-errata">
+            http://www.w3.org/2004/03/xmlschema-errata
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)errE006.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../errE006.xsd"/>
+        <ExternalData Type="iodata" SourceName="errE006.sig"/>
+    </CodeSet>
+    <TestCase ID="errE006">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="errE006.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../errE006.xml"/>
+            <ExternalData Type="iodata" SourceName="erre006-errE006.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

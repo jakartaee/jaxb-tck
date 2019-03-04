@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB078B">
+   <TestGroupDocumentation>
+      <Title><![CDATA[addB078B]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : when attribute has use='required' fixed='123', the attribute must be specified with the fixed valued in the document. Instance has the attribute with missing fixed value.
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)addB078B.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../addB078.xsd"/>
+   </CodeSet>
+   <TestCase ID="addB078B">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)addB078B.test.xml	1.1 07/03/27 -->

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="attgB008">
+   <TestGroupDocumentation>
+      <Title><![CDATA[attgB008]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for Attribute Declaration (ID) : Test attributeGroup declaration with attribute name='msxml'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Group_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Group_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)attgB008.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../attgB008.xsd"/>
+   </CodeSet>
+   <TestCase ID="attgB008">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)attgB008.test.xml	1.1 07/03/27 -->

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="negativeInteger_minExclusive001_1601">
+    <TestGroupDocumentation>
+        <Title><![CDATA[negativeInteger_minExclusive001_1601]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=minExclusive and value=-7 and document value=-7
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)negativeInteger_minExclusive001_1601.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../negativeInteger_minExclusive001.xsd"/>
+        <ExternalData Type="iodata" SourceName="negativeInteger_minExclusive001_1601.sig"/>
+    </CodeSet>
+    <TestCase ID="negativeInteger_minExclusive001_1601">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

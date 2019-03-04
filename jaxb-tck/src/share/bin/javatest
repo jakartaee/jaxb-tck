@@ -1,0 +1,149 @@
+#!/bin/ksh
+#
+# Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Eclipse Public License v. 2.0, which is available at
+# http://www.eclipse.org/legal/epl-2.0.
+#
+# This Source Code may also be made available under the following Secondary
+# Licenses when the conditions for such availability set forth in the
+# Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+# version 2 with the GNU Classpath Exception, which is available at
+# https://www.gnu.org/software/classpath/license.html.
+#
+# SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+#
+
+#
+# !!!!!
+# !!!!! This script provides convenient access to the main entry point into 
+# !!!!! JavaTest. 
+# !!!!!
+# !!!!! It assumes Korn-shell facilities on Solaris(TM), or MKS on 
+# !!!!! Windows 95 and Windows NT.  If you do not have such facilities
+# !!!!! available, you should put the JavaTest classes on your classpath
+# !!!!! (typically found in lib/javatest.jar) and invoke java directly.
+# !!!!!
+# !!!!! JavaTest requires a version of Java equivalent to JDK 1.3.1 or better.
+# !!!!! Some test suites may use plug in code which requires a higher version.
+# !!!!!
+# !!!!! This script can be used to run JCK and similar test suites, or any
+# !!!!! test suite for which you want the ability to fully customize your
+# !!!!! test run.
+# !!!!!
+
+# Usage:
+#    javatest ...args....
+#
+# Run the main JavaTest application with the given arguments
+#
+# The Java runtime used to run JavaTest is found as follows:
+# - $JT_JAVA is used, if it is set
+# - Otherwise, $JAVA_HOME/bin/java is used if $JAVA_HOME is set
+#   (cf JavaSoft JDK.)
+# - Otherwise, "java" is used
+#
+# There are three types of args accepted by this script
+# - Args beginning with -J are passed to the Java runtime, after removing the
+#   leading "-J".
+#   For details of args accepted by the Java runtime, see the docs for the 
+#   version of the Java runtime being used.
+# - If the first arg (excluding any -J... args) is -agent, the main class 
+#   for the standard JavaTest Agent will be started; otherwise, the main
+#   class for the JavaTest harness will be started. 
+#   Note nthat some test suites provide their own agent to be used instead of
+#   the standard JavaTest Agent.
+# - Remaining args are passed to JavaTest or to the JavaTest Agent, depending
+#   whether -agent was specified.
+#   For details of the args accepted by JavaTest, use "javatest -help" or 
+#   see the JavaTest user manual.
+#   For details of the args accepted by the JavaTest Agent, use 
+#   "javatest -agent -help" or see the JavaTest user manual.
+#
+# The JT_HOME environment variable can be used to set the JavaTest installation
+# directory. This is normally the directory containing lib/javatest.jar.
+#
+# The JT_MEMORY environment variable can be used to override the option
+# used to default set the memory allocation of 100Mb. 
+#
+# The JT_SYSPROPS environment variable is used to tunnel system properties to
+# the tests.
+
+# set platform-dependent variables
+OS=`uname -s`
+case "$OS" in
+  SunOS | Linux | Darwin )
+    NULL=/dev/null
+    # This is a hack to get Linux to work when you "sh" this script.
+    # The real solution is to convert the entire script to sh.
+    case "$OS" in
+      SunOS ) MYNAME=`whence $0 2>$NULL` ;;
+      Linux ) MYNAME=`which  $0 2>$NULL` ;;
+      Darwin ) MYNAME=`which  $0 2>$NULL` ;;
+    esac
+    PATHSEP=":"
+    FILESEP="/"
+    DFILESEP=$FILESEP
+    ENV_ARGS="-EDISPLAY=${DISPLAY}"
+    ;;
+  Windows_* )
+    NULL=NUL
+    MYNAME=`whence $0 2>$NULL`
+    PATHSEP=";"
+    FILESEP="\\"
+    #FILESEP='\'
+    DFILESEP=$FILESEP$FILESEP
+    MKSDIR="$(dirname $(whence sh))"
+    case "$OS" in
+      Windows_NT ) ENV_ARGS="-ESystemRoot=${SystemRoot}" ;;
+      Windows_*  ) ENV_ARGS="-Ewindir=${windir}" ;;
+    esac
+    ;;
+  * )
+    echo "Unrecognized system!"
+    exit 1;
+    ;;
+esac
+
+CWD=`pwd`
+MYDIR=`dirname $MYNAME`
+
+# determine JT_HOME if not already set
+if [ -z "${JT_HOME}" ] ; then
+  JT_HOME=`(cd $MYDIR; pcwd=NOSUCHDIR; while [ \$(pwd) != \$pcwd -a ! -f lib${FILESEP}javatest.jar ] ; do pcwd=\$(pwd); cd ..; done; [ \$(pwd) != \$pcwd ] && pwd)`
+fi
+
+# break args apart into Java runtime args, args to set the MAINCLASS, 
+# and args for the main class
+RUNTIME_ARGS=""
+APP_ARGS=""
+for a in "$@" ; do
+    if ja=`expr "$a" : '-J\(..*\)'` ; then 
+	RUNTIME_ARGS="$RUNTIME_ARGS $ja"
+    elif [ $a = -agent -a -z "$APP_ARGS" ]; then
+        MAINCLASS=com.sun.javatest.agent.AgentFrame
+    else
+	APP_ARGS="$APP_ARGS $a"
+    fi
+done
+
+# set the MAINCLASS if not specified in the args
+if [ -z "${MAINCLASS}" ]; then
+    MAINCLASS=com.sun.javatest.tool.Main
+    APP_ARGS="$ENV_ARGS $APP_ARGS"
+fi
+
+# Add JavaTest classes to the front of the class path
+export CLASSPATH="${JAVATEST_JAR_LOC}${FILESEP}javatest.jar${CLASSPATH:+${PATHSEP}${CLASSPATH}}"
+
+# Run the main application, as defined by MAINCLASS
+#
+# The "program" system property is used by JavaTest to identify the command name
+# in the help text generated by the -help or -usage options.
+${JT_JAVA:-${JAVA_HOME:+${JAVA_HOME}${FILESEP}bin${FILESEP}}java} \
+ 	${RUNTIME_ARGS} \
+	${JT_MEMORY:--Xmx100m} \
+	-Dprogram=`basename ${MYNAME}` \
+        ${JT_SYSPROPS+"-DJT_SYSPROPS=${JT_SYSPROPS}"} \
+	${MAINCLASS} ${APP_ARGS}

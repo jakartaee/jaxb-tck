@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="ctL022">
+    <TestGroupDocumentation>
+        <Title><![CDATA[ctL022]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for top level complexType Declaration : ability to use abstract complexType as xsi:type using inline schemas
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Complex_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Complex_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)ctL022.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../test67200.xsd"/>
+        <ExternalData Type="iodata" SourceName="ctL022.sig"/>
+    </CodeSet>
+    <TestCase ID="ctL022">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="ctL022.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../test67200.xml"/>
+            <ExternalData Type="iodata" SourceName="ctl022-test67200.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

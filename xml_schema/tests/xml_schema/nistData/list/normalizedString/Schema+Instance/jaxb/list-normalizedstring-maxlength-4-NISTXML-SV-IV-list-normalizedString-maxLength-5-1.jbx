@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-maxLength-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-maxLength-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>58432_Of_As_Street_Who_Pervasive_Issues_,_RI_16200</string> 
+   </void> 
+   <void method="add"> 
+    <string>7_And_For_Street_Both_Signature_Interoperable_,_PA_16200</string> 
+   </void> 
+   <void method="add"> 
+    <string>57_Information_Capabilities_Street_Used_Oasis_Create_,_WA_16200</string> 
+   </void> 
+   <void method="add"> 
+    <string>622_Match_And_Street_That_System_Than_,_ND_16200</string> 
+   </void> 
+   <void method="add"> 
+    <string>6_Effective_Led_Street_Filter_And_Is_,_DE_16200</string> 
+   </void> 
+   <void method="add"> 
+    <string>2_Of_And_Street_Particularly_Recommending_Files_,_FL_16200</string> 
+   </void> 
+   <void method="add"> 
+    <string>96695_Oasis_And_Street_Known_Pervasive_Information_,_MI_16200</string> 
+   </void> 
+   <void method="add"> 
+    <string>6477_Efforts_For_Street_And_The_Many_,_DE_16200</string> 
+   </void> 
+   <void method="add"> 
+    <string>67_These_Supply_Street_Transact_Made_Create_,_SC_16200</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

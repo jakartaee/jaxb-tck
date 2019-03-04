@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="particlesOb045">
+   <TestGroupDocumentation>
+      <Title><![CDATA[particlesOb045]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :3.9.1 The Particle Schema Component [ check length of element information items ] : Particle Derivation OK (Any:Any- NSSubset) (any) R drived by restriction from (any) B : B's namespace=foo bar', R's namespace=foo, ##local, bar
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)particlesOb045.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../particlesOb045.xsd"/>
+   </CodeSet>
+   <TestCase ID="particlesOb045">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)particlesOb045.test.xml	1.1 07/03/27 -->

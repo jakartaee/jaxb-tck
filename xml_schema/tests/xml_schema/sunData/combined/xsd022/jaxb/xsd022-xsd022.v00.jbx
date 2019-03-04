@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.combined.xsd022.xsd022.Root"> 
+  <void property="child1OrChild2"> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string>http://foo.com</string> 
+      <string>child1</string> 
+     </object> 
+     <class>java.util.List</class> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root</class> 
+     <object class="java.util.ArrayList"> 
+      <void method="add"> 
+       <string>123456</string> 
+      </void> 
+      <void method="add"> 
+       <string>abcdef</string> 
+      </void> 
+      <void method="add"> 
+       <string>xxxxxxxx</string> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object id="QName0" class="javax.xml.namespace.QName"> 
+      <string>http://foo.com</string> 
+      <string>child2</string> 
+     </object> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2</class> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root</class> 
+     <object class="javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2"> 
+      <void property="value"> 
+       <string>true</string> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2</class> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root</class> 
+     <object class="javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2"> 
+      <void property="value"> 
+       <string>false</string> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2</class> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root</class> 
+     <object class="javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2"> 
+      <void property="value"> 
+       <string>0</string> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2</class> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root</class> 
+     <object class="javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2"> 
+      <void property="value"> 
+       <string>1</string> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2</class> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root</class> 
+     <object class="javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2"> 
+      <void property="value"> 
+       <string>abcdef</string> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2</class> 
+     <class>javasoft.sqe.tests.combined.xsd022.xsd022.Root</class> 
+     <object class="javasoft.sqe.tests.combined.xsd022.xsd022.Root$Child2"> 
+      <void property="value"> 
+       <string>xxxxxxxx</string> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

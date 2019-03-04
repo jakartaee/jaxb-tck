@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="idG027">
+    <TestGroupDocumentation>
+        <Title><![CDATA[idG027]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Identity-constraint Definition Schema Component : key category, field points to attribute from imported schema
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)idG027.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../idG027.xsd"/>
+        <ExternalData Type="iodata" SourceName="../idG027a.xsd"/>
+        <ExternalData Type="iodata" SourceName="idG027.sig"/>
+    </CodeSet>
+    <TestCase ID="idG027">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="idG027.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../idG027.xml"/>
+            <ExternalData Type="iodata" SourceName="idg027-idG027.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

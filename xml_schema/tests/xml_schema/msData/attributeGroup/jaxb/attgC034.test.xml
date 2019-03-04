@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="attgC034">
+    <TestGroupDocumentation>
+        <Title><![CDATA[attgC034]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for Attribute Declaration (ID) : Test attributeGroup declaration: parent is redefine, ref='name of a global attribute group declared at the beginning of xsd'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Group_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Group_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)attgC034.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../attgC034.xsd"/>
+        <ExternalData Type="iodata" SourceName="../attgC034.imp"/>
+        <ExternalData Type="iodata" SourceName="attgC034.sig"/>
+    </CodeSet>
+    <TestCase ID="attgC034">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!-- ======================================================================
+     Oct 29, 2006 9:21:14 PM                                                        
+
+     Documentation    
+     Builds and copy documetation for product
+                   
+     SCCS: @(#)doc.ant.xml	1.9 17/08/16 
+     ====================================================================== -->
+<project name="Documentation" default="build-docs">
+	<description>
+            Buidls and copy documetation for product
+    </description>
+
+	<dirname file="${ant.file}" property="tck.build.ws.dir" />
+	<ant antfile="${tck.build.ws.dir}/convert-properties.ant.xml" />
+	<property file="build.properties" />
+	
+	<!--property name="javatest.redist" location="${jct-tools.dir}/redistributables/javatest"/>
+	<property name="javatest.redist.docs" location="${javatest.redist}/doc/javatest"/-->
+	<property name="dist.javatest.docs" value="${dist.docs}/javatest"/>
+	<property name="dist.tck.docs" value="${dist.docs}/tck"/>
+	<property name="dist.tck.dcommon" value="${dist.docs}/dcommon"/>
+
+	<selector id="docs.tck.root">
+		<or>
+			<filename name="COPYRIGHT-tck.html" />
+			<filename name="ReleaseNotes-TCK-JAXB.html" />
+			<filename name="ReleaseNotes-TCK-JAXB.txt" />
+			<filename name="index.html" />
+			<filename name="document.css" />
+		</or>
+	</selector>
+
+	<selector id="docs.html.tck">
+		<filename name="html/**" />
+	</selector>
+
+	<selector id="docs.javatest.root">
+		<or>
+			<filename name="COPYRIGHT-javatest.html" />
+		</or>
+	</selector>
+	<selector id="docs.javatest.doc">
+		<or>
+			<filename name="**/*.html" />
+			<filename name="**/*.pdf" />
+		</or>
+	</selector>
+
+	<selector id="docs.dcommon.ele">
+		<or>
+			<filename name="css/**" />
+			<filename name="gifs/**" />
+			<filename name="html/**" />
+		</or>
+	</selector>
+
+	<!-- ================================= 
+          target: copy-docs - commented as the documentation sopurce is moved to a different repo. 
+         ================================= -->
+	<target name="build-docs"></target>
+	<!--target name="build-docs" depends="dist_root_docs, dist_html_docs, dist_javatest_doc, dist_pdf_doc, dist_dcommon_doc" description=" Buidls and copy documetation for product">
+	</target-->
+
+	<target name="dist_root_docs">
+		<!--copy todir="${dist.dir}/doc">
+			<fileset dir="${repo.docs.dir}">
+                         <include name="**/document.css"/>
+                        </fileset>
+		</copy-->
+		<copy todir="${dist.dir}">
+			<fileset dir="${repo.docs.dir}">
+				<selector refid="docs.tck.root" />
+			</fileset>
+			<!--fileset dir="${javatest.redist}">
+				<selector refid="docs.javatest.root" />
+			</fileset-->
+		</copy>
+	</target>
+
+	<target name="dist_html_docs">
+		<mkdir dir="${dist.tck.docs}" />
+		<copy todir="${dist.tck.docs}">
+			<fileset dir="${repo.docs.dir}/tck">
+				<selector refid="docs.html.tck" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="dist_pdf_doc">
+		<copy todir="${dist.tck.docs}">
+			<fileset dir="${repo.docs.dir}/tck" includes="JAXB-TCK_Users_Guide.pdf" />
+		</copy>
+	</target>
+
+	<target name="dist_javatest_doc">
+		<mkdir dir="${dist.javatest.docs}" />
+		<!--copy todir="${dist.javatest.docs}">
+			<fileset dir="${javatest.redist.docs}">
+				<selector refid="docs.javatest.doc" />
+			</fileset>
+		</copy-->
+	</target>
+
+	<target name="dist_dcommon_doc">
+		<mkdir dir="${dist.tck.dcommon}" />
+		<copy todir="${dist.tck.dcommon}">
+			<fileset dir="${repo.src.dir}/doc/dcommon">
+				<selector refid="docs.dcommon.ele" />
+			</fileset>
+		</copy>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="depends">
+	</target>
+
+</project>

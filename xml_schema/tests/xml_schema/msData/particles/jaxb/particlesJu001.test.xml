@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="particlesJu001">
+   <TestGroupDocumentation>
+      <Title><![CDATA[particlesJu001]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :3.9.1 The Particle Schema Component [ check length of element information items ] : Particle Derivation OK (elt:Any) element R drived by restriction from wildcard (any) B : B's namespace=list (##local, ##targetNamespace, nsFoo, nsBar), R's targetNamespace=absent, B's minOccurs less than R's minOccurs , B's maxOccurs > R's maxOccurs
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)particlesJu001.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../particlesJu001.xsd"/>
+      <ExternalData Type="iodata" SourceName="../particlesJu001.imp"/>
+   </CodeSet>
+   <TestCase ID="particlesJu001">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="particlesJu001.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../particlesJu001.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)particlesJu001.test.xml	1.1 07/03/27 -->

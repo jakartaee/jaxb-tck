@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="errF001">
+   <TestGroupDocumentation>
+      <Title><![CDATA[errF001]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Primer Errata : Errata E2-35: length facet is now allowed with either minLength or maxLength if they are specified in different derivation steps
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/2004/03/xmlschema-errata">
+            http://www.w3.org/2004/03/xmlschema-errata
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)errF001.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../errF001.xsd"/>
+   </CodeSet>
+   <TestCase ID="errF001">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="errF001.i">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../errF001.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)errF001.test.xml	1.1 07/03/27 -->

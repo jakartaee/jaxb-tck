@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedLong_enumeration004_1734">
+    <TestGroupDocumentation>
+        <Title><![CDATA[unsignedLong_enumeration004_1734]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=enumeration and value=0 1 234 and document value=0
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)unsignedLong_enumeration004_1734.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../unsignedLong_enumeration004.xsd"/>
+        <ExternalData Type="iodata" SourceName="unsignedLong_enumeration004_1734.sig"/>
+    </CodeSet>
+    <TestCase ID="unsignedLong_enumeration004_1734">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="unsignedLong_enumeration004_1734.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../unsignedLong_enumeration004.xml"/>
+            <ExternalData Type="iodata" SourceName="unsignedlong_enumeration004_1734-unsignedLong_enumeration004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

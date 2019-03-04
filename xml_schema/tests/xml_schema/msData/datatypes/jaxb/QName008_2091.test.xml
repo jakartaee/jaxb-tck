@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="QName008_2091">
+    <TestGroupDocumentation>
+        <Title><![CDATA[QName008_2091]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=fo:1fo
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)QName008_2091.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../QName.xsd"/>
+        <ExternalData Type="iodata" SourceName="QName008_2091.sig"/>
+    </CodeSet>
+    <TestCase ID="QName008_2091">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

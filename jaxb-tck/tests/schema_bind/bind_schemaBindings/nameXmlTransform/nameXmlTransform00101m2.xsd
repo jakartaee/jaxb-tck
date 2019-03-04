@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright (c) 2007, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<xsd:schema xmlns:test="schemaBindings/nameXmlTransform"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    targetNamespace="schemaBindings/nameXmlTransform" jaxb:version="2.0">
+    <xsd:annotation>
+        <xsd:appinfo>
+            <jaxb:schemaBindings>
+                <jaxb:nameXmlTransform>
+                    <jaxb:elementName suffix="ElementSuf" prefix="ElementPref" />
+                </jaxb:nameXmlTransform>
+            </jaxb:schemaBindings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:complexType name="RootKind">
+        <xsd:sequence>
+            <xsd:element name="child" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:attribute name="attr1" type="xsd:string" use="required"
+                        fixed="value" />
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="test:child2" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="root" type="test:RootKind" />
+
+    <xsd:element name="child2">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="child3" type="xsd:string" />
+                <xsd:element ref="test:root" minOccurs="0" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

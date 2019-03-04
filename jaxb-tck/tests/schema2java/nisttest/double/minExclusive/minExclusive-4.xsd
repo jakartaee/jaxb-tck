@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-double-minExclusive-4-NS"
+        targetNamespace="NISTSchema-double-minExclusive-4-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: minExclusive-4.xsd
+      This schema specifies a datatype, NISTSchema-double-minExclusive-4,
+      which is derived by restriction of built-in type double
+      by facet minExclusive with a value of: 3877207345453194E213
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-double-minExclusive-4" type="nist:NISTSchema-double-minExclusive-4-Type"/>
+
+  <simpleType name="NISTSchema-double-minExclusive-4-Type">
+    <restriction base="double">
+      <minExclusive value="3877207345453194E213"/>
+    </restriction>
+  </simpleType>
+
+</schema>

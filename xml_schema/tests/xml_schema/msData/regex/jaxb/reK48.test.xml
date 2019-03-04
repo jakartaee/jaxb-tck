@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="reK48">
+    <TestGroupDocumentation>
+        <Title><![CDATA[reK48]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : base='string', pattern='\P{Pi}*', value='#xBB;', type='valid', RULE='26,32'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)reK48.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../reK48.xsd"/>
+        <ExternalData Type="iodata" SourceName="reK48.sig"/>
+    </CodeSet>
+    <TestCase ID="reK48">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="reK48.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../reK48.xml"/>
+            <ExternalData Type="iodata" SourceName="rek48-reK48.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

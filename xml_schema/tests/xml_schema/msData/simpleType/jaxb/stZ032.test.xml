@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="stZ032">
+    <TestGroupDocumentation>
+        <Title><![CDATA[stZ032]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for simpleType Declaration : xsd: redefine should persist the last redefine in multiple document or multiple redefine.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)stZ032.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../stZ032.xsd"/>
+        <ExternalData Type="iodata" SourceName="../stZ032_2.xsd"/>
+        <ExternalData Type="iodata" SourceName="stZ032.sig"/>
+    </CodeSet>
+    <TestCase ID="stZ032">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

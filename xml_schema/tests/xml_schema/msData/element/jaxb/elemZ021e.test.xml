@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="elemZ021e">
+    <TestGroupDocumentation>
+        <Title><![CDATA[elemZ021e]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :3.3.2 XML Representation of Element Declaration Schema Components : XSD: member of substitutionGroup and local particle with the same qualified name (5)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cElement_Declarations">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cElement_Declarations
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)elemZ021e.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../test115044_3.xsd"/>
+        <ExternalData Type="iodata" SourceName="../test115044_inc.xsd"/>
+        <ExternalData Type="iodata" SourceName="elemZ021e.sig"/>
+    </CodeSet>
+    <TestCase ID="elemZ021e">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="elemZ021e.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../test115044_a.xml"/>
+            <ExternalData Type="iodata" SourceName="elemz021e-test115044_a.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

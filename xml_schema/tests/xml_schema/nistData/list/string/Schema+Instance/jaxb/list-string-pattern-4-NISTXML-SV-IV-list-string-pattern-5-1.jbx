@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-string-pattern-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-string-pattern-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>64_The_Street_Prototypes_,_MS_17435-1843</string> 
+   </void> 
+   <void method="add"> 
+    <string>5164_Standards_Ebxml_Street_Data_Apis_More_,_CO_16376</string> 
+   </void> 
+   <void method="add"> 
+    <string>3988_Of_Street_Technical_,_HI_11348</string> 
+   </void> 
+   <void method="add"> 
+    <string>8946_Computing_Forum_To_Versions_Street_Web_Building_,_NM_14973</string> 
+   </void> 
+   <void method="add"> 
+    <string>264_Acting_Street_The_And_,_WV_16518-1410</string> 
+   </void> 
+   <void method="add"> 
+    <string>473_Oasis_Will_Industry_Street_The_Tools_And_,_MA_10254-1649</string> 
+   </void> 
+   <void method="add"> 
+    <string>85763_And_Prominent_Street_That_,_IA_17642</string> 
+   </void> 
+   <void method="add"> 
+    <string>539_Achieved_The_Maintains_And_Two_Street_Techniques_Xml_,_WY_18742</string> 
+   </void> 
+   <void method="add"> 
+    <string>2758_Frameworks_Versions_Street_Created_Testing_And_,_MO_17310-1594</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

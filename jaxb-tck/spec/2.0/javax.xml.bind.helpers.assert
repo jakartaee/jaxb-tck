@@ -1,0 +1,131 @@
+<javax.xml.bind.helpers|ValidationEventLocatorImpl c99f63d4> Default implementation of the ValidationEventLocator interface. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl a2ba57b4> JAXB providers are allowed to use whatever class that implements the ValidationEventLocator interface. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl c4ea42d8> This class is just provided for a convenience. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl() bfc652a7> Creates an object with all fields unavailable. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.Locator) bf24b244> Constructs an object from an org.xml.sax.Locator. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.Locator) e9bc9c2a> The object's ColumnNumber, LineNumber, and URL become available from the values returned by the locator's getColumnNumber(), getLineNumber(), and getSystemId() methods respectively. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.Locator) aba7e872> Node, Object, and Offset are not available. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.Locator) 1dbf77aa> @throws:IllegalArgumentException if the Locator is null. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.SAXParseException) 51b1e5b1> Constructs an object from the location information of a SAXParseException. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.SAXParseException) e9bc9c2a> The object's ColumnNumber, LineNumber, and URL become available from the values returned by the locator's getColumnNumber(), getLineNumber(), and getSystemId() methods respectively. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.SAXParseException) aba7e872> Node, Object, and Offset are not available. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.xml.sax.SAXParseException) 1b87e868> @throws:IllegalArgumentException if the SAXParseException is null. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.w3c.dom.Node) f0fe7dc1> Constructs an object that points to a DOM Node. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.w3c.dom.Node) 9407c2c3> The object's Node becomes available. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.w3c.dom.Node) 10f9bfc4> ColumnNumber, LineNumber, Object, Offset, and URL are not available. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(org.w3c.dom.Node) 37f312b> @throws:IllegalArgumentException if the Node is null. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(java.lang.Object) 2e6b0196> Constructs an object that points to a JAXB content object. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(java.lang.Object) cafee746> The object's Object becomes available. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(java.lang.Object) d9d50ca7> ColumnNumber, LineNumber, Node, Offset, and URL are not available. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.ValidationEventLocatorImpl(java.lang.Object) 6459222e> @throws:IllegalArgumentException if the Object is null. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setURL(java.net.URL) c67d82b1> Set the URL field on this event locator. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setURL(java.net.URL) 93c18dd0> Null values are allowed. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setOffset(int) 7ca3ee18> Set the offset field on this event locator. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setLineNumber(int) 7ee7f088> Set the lineNumber field on this event locator. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setColumnNumber(int) e63dd390> Set the columnNumber field on this event locator. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setObject(java.lang.Object) 93e5ffb0> Set the Object field on this event locator. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setObject(java.lang.Object) 93c18dd0> Null values are allowed. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setNode(org.w3c.dom.Node) 715ab92d> Set the Node field on this event locator. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.setNode(org.w3c.dom.Node) 93c18dd0> Null values are allowed. 
+<javax.xml.bind.helpers|ValidationEventLocatorImpl.toString() c75bff54> Returns a string representation of this object in a format helpful to debugging. 
+<javax.xml.bind.helpers|ValidationEventImpl 6b32c4e9> Default implementation of the ValidationEvent interface. 
+<javax.xml.bind.helpers|ValidationEventImpl 8a2a8c9> JAXB providers are allowed to use whatever class that implements the ValidationEvent interface. 
+<javax.xml.bind.helpers|ValidationEventImpl c4ea42d8> This class is just provided for a convenience. 
+<javax.xml.bind.helpers|ValidationEventImpl.ValidationEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator) df35bf27> Create a new ValidationEventImpl. 
+<javax.xml.bind.helpers|ValidationEventImpl.ValidationEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|ValidationEventImpl.ValidationEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable) df35bf27> Create a new ValidationEventImpl. 
+<javax.xml.bind.helpers|ValidationEventImpl.ValidationEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|ValidationEventImpl.setSeverity(int) 884fe4a4> Set the severity field of this event. 
+<javax.xml.bind.helpers|ValidationEventImpl.setSeverity(int) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|ValidationEventImpl.setMessage(java.lang.String) 948da774> Set the message field of this event. 
+<javax.xml.bind.helpers|ValidationEventImpl.setLinkedException(java.lang.Throwable) c3e3c494> Set the linked exception field of this event. 
+<javax.xml.bind.helpers|ValidationEventImpl.setLocator(javax.xml.bind.ValidationEventLocator) 8c7c96ac> Set the locator object for this event. 
+<javax.xml.bind.helpers|ValidationEventImpl.toString() c75bff54> Returns a string representation of this object in a format helpful to debugging. 
+<javax.xml.bind.helpers|PrintConversionEventImpl 80b97723> Default implementation of the PrintConversionEvent interface. 
+<javax.xml.bind.helpers|PrintConversionEventImpl 8a2a8c9> JAXB providers are allowed to use whatever class that implements the ValidationEvent interface. 
+<javax.xml.bind.helpers|PrintConversionEventImpl c4ea42d8> This class is just provided for a convenience. 
+<javax.xml.bind.helpers|PrintConversionEventImpl.PrintConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator) c9444e25> Create a new PrintConversionEventImpl. 
+<javax.xml.bind.helpers|PrintConversionEventImpl.PrintConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|PrintConversionEventImpl.PrintConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable) c9444e25> Create a new PrintConversionEventImpl. 
+<javax.xml.bind.helpers|PrintConversionEventImpl.PrintConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|ParseConversionEventImpl 76bd1374> Default implementation of the ParseConversionEvent interface. 
+<javax.xml.bind.helpers|ParseConversionEventImpl 8a2a8c9> JAXB providers are allowed to use whatever class that implements the ValidationEvent interface. 
+<javax.xml.bind.helpers|ParseConversionEventImpl c4ea42d8> This class is just provided for a convenience. 
+<javax.xml.bind.helpers|ParseConversionEventImpl.ParseConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator) 91f9e572> Create a new ParseConversionEventImpl. 
+<javax.xml.bind.helpers|ParseConversionEventImpl.ParseConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|ParseConversionEventImpl.ParseConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable) 91f9e572> Create a new ParseConversionEventImpl. 
+<javax.xml.bind.helpers|ParseConversionEventImpl.ParseConversionEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|NotIdentifiableEventImpl c41cb4e5> Default implementation of the NotIdentifiableEvent interface. 
+<javax.xml.bind.helpers|NotIdentifiableEventImpl 8a2a8c9> JAXB providers are allowed to use whatever class that implements the ValidationEvent interface. 
+<javax.xml.bind.helpers|NotIdentifiableEventImpl c4ea42d8> This class is just provided for a convenience. 
+<javax.xml.bind.helpers|NotIdentifiableEventImpl.NotIdentifiableEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator) 1653cce7> Create a new NotIdentifiableEventImpl. 
+<javax.xml.bind.helpers|NotIdentifiableEventImpl.NotIdentifiableEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|NotIdentifiableEventImpl.NotIdentifiableEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable) 1653cce7> Create a new NotIdentifiableEventImpl. 
+<javax.xml.bind.helpers|NotIdentifiableEventImpl.NotIdentifiableEventImpl(int,java.lang.String,javax.xml.bind.ValidationEventLocator,java.lang.Throwable) 733779ef> @throws:IllegalArgumentException if an illegal severity field is supplied. 
+<javax.xml.bind.helpers|DefaultValidationEventHandler 5fd9ba5e>  JAXB 1.0 only default validation event handler. 
+<javax.xml.bind.helpers|DefaultValidationEventHandler c41dd69c> This is the default handler for all objects created from a JAXBContext that is managing schema-derived code generated by a JAXB 1.0 binding compiler. 
+<javax.xml.bind.helpers|DefaultValidationEventHandler e4ab208e> This handler causes the unmarshal and validate operations to fail on the first error or fatal error. 
+<javax.xml.bind.helpers|DefaultValidationEventHandler f43e219> This handler is not the default handler for JAXB mapped classes following JAXB 2.0 or later versions. 
+<javax.xml.bind.helpers|DefaultValidationEventHandler ffe2bafd> Default validation event handling has changed and is specified in {@link javax.xml.bind.Unmarshaller} and {@link javax.xml.bind.Marshaller}. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl 8471c772> Partial default Unmarshaller implementation. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl d4d8e562> This class provides a partial default implementation for the {@link javax.xml.bind.Unmarshaller}interface. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl d3fcd2ab> A JAXB Provider has to implement five methods (getUnmarshallerHandler, unmarshal(Node), unmarshal(XMLReader,InputSource), unmarshal(XMLStreamReader), and unmarshal(XMLEventReader). 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.getXMLReader() f35c9f3e> Obtains a configured XMLReader. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.getXMLReader() c5372112> This method is used when the client-specified {@link SAXSource} object doesn't have XMLReader. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.getXMLReader() 6b6c26db> {@link Unmarshaller} is not re-entrant, so we will only use one instance of XMLReader. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.unmarshal(org.xml.sax.XMLReader,org.xml.sax.InputSource) b4bb218> Unmarshals an object by using the specified XMLReader and the InputSource. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.unmarshal(org.xml.sax.XMLReader,org.xml.sax.InputSource) d11849c8> The callee should call the setErrorHandler method of the XMLReader so that errors are passed to the client-specified ValidationEventHandler. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.isValidating() 5601e20e> Indicates whether or not the Unmarshaller is configured to validate during unmarshal operations. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.isValidating() 74e9d70d> Note: I named this method isValidating() to stay in-line with JAXP, as opposed to naming it getValidating(). 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.isValidating() ac69e108> . @return:true if the Unmarshaller is configured to validate during unmarshal operations, false otherwise. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.isValidating() 9808b15a> @throws:JAXBException if an error occurs while retrieving the validating flag. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setEventHandler(javax.xml.bind.ValidationEventHandler) 126e3720> Allow an application to register a validation event handler. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setEventHandler(javax.xml.bind.ValidationEventHandler) c8f47314> The validation event handler will be called by the JAXB Provider if any validation errors are encountered during calls to any of the unmarshal methods. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setEventHandler(javax.xml.bind.ValidationEventHandler) cb494176> If the client application does not register a validation event handler before invoking the unmarshal methods, then all validation events will be silently ignored and may result in unexpected behaviour. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setEventHandler(javax.xml.bind.ValidationEventHandler) 778ea19b> @throws:JAXBException if an error was encountered while setting the event handler. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setValidating(boolean) 7297ff1d> Specifies whether or not the Unmarshaller should validate during unmarshal operations. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setValidating(boolean) e456683a> By default, the Unmarshaller does not validate. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setValidating(boolean) a4f2698e> This method may only be invoked before or after calling one of the unmarshal methods. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setValidating(boolean) e4a51e98> @throws:JAXBException if an error occurred while enabling or disabling validation at unmarshal time. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.getEventHandler() de7fd39f> Return the current event handler or the default event handler if one hasn't been set. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.getEventHandler() ef8f894b> @return:the current ValidationEventHandler or the default event handler if it hasn't been set. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.getEventHandler() 2fe6718a> @throws:JAXBException if an error was encountered while getting the current event handler. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.createUnmarshalException(org.xml.sax.SAXException) 37e3b934> Creates an UnmarshalException from a SAXException. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.createUnmarshalException(org.xml.sax.SAXException) a0ba0d4> This is an utility method provided for the derived classes. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.createUnmarshalException(org.xml.sax.SAXException) bc52747d> When a provider-implemented ContentHandler wants to throw a JAXBException, it needs to wrap the exception by a SAXException. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.createUnmarshalException(org.xml.sax.SAXException) ae48037e> If the unmarshaller implementation blindly wrap SAXException by JAXBException, such an exception will be a JAXBException wrapped by a SAXException wrapped by another JAXBException. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.createUnmarshalException(org.xml.sax.SAXException) 5a582f7a> This is silly. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.createUnmarshalException(org.xml.sax.SAXException) 7727f295> This method checks the nested exception of SAXException and reduce those excessive wrapping. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.createUnmarshalException(org.xml.sax.SAXException) 2ffbe827> @return:the resulting UnmarshalException. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setProperty(java.lang.String,java.lang.Object) 2a603140> Default implementation of the setProperty method always throws PropertyException since there are no required properties. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.setProperty(java.lang.String,java.lang.Object) 2ac4232c> If a provider needs to handle additional properties, it should override this method in a derived class. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.getProperty(java.lang.String) d66c67cc> Default implementation of the getProperty method always throws PropertyException since there are no required properties. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.getProperty(java.lang.String) 2ac4232c> If a provider needs to handle additional properties, it should override this method in a derived class. 
+<javax.xml.bind.helpers|AbstractUnmarshallerImpl.validating 9efd0954> whether or not the unmarshaller will validate. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl d1873018> Partial default Marshaller implementation. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl 9a24c8f8> This class provides a partial default implementation for the {@link javax.xml.bind.Marshaller} interface. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl 18e53de4> The only methods that a JAXB Provider has to implement are {@link Marshaller#marshal(Object, javax.xml.transform.Result) marshal(Object, javax.xml.transform.Result)}, {@link Marshaller#marshal(Object, javax.xml.transform.Result) marshal(Object, javax.xml.stream.XMLStreamWriter)}, and {@link Marshaller#marshal(Object, javax.xml.transform.Result) marshal(Object, javax.xml.stream.XMLEventWriter)}. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getNode(java.lang.Object) 4087af28> By default, the getNode method is unsupported and throw an {@link java.lang.UnsupportedOperationException}. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getNode(java.lang.Object) acefb8ca> Implementations that choose to support this method must override this method. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getEncoding() 1657fa6c> Convenience method for getting the current output encoding. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getEncoding() f8d0c78a> @return:the current encoding or "UTF-8" if it hasn't been set. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.setEncoding(java.lang.String) 42cb7849> Convenience method for setting the output encoding. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getSchemaLocation() ea41a0a2> Convenience method for getting the current schemaLocation. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getSchemaLocation() 38b19c05> @return:the current schemaLocation or null if it hasn't been set. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.setSchemaLocation(java.lang.String) 16b51e7f> Convenience method for setting the schemaLocation. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getNoNSSchemaLocation() 29668a7b> Convenience method for getting the current noNamespaceSchemaLocation. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getNoNSSchemaLocation() a825d5de> @return:the current noNamespaceSchemaLocation or null if it hasn't been set. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.setNoNSSchemaLocation(java.lang.String) 9496e98> Convenience method for setting the noNamespaceSchemaLocation. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.isFormattedOutput() 5ae89cb9> Convenience method for getting the formatted output flag. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.isFormattedOutput() f6d24ce0> @return:the current value of the formatted output flag or false if it hasn't been set. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.setFormattedOutput(boolean) fee531c5> Convenience method for setting the formatted output flag. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.isFragment() 870dc29c> Convenience method for getting the fragment flag. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.isFragment() 64ab7bc3> @return:the current value of the fragment flag or false if it hasn't been set. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.setFragment(boolean) 19e42910> Convenience method for setting the fragment flag. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getJavaEncoding(java.lang.String) 2da2661a> Gets the corresponding Java encoding name from an IANA name. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getJavaEncoding(java.lang.String) 2564dd44> This method is a helper method for the derived class to convert encoding names. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getJavaEncoding(java.lang.String) a18a48fa> @exception:UnsupportedEncodingException If this implementation couldn't find the Java encoding name. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.setProperty(java.lang.String,java.lang.Object) c97e8a11> Default implementation of the setProperty method handles the four defined properties in Marshaller. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.setProperty(java.lang.String,java.lang.Object) 2ac4232c> If a provider needs to handle additional properties, it should override this method in a derived class. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getProperty(java.lang.String) 5d72f305> Default implementation of the getProperty method handles the four defined properties in Marshaller. 
+<javax.xml.bind.helpers|AbstractMarshallerImpl.getProperty(java.lang.String) 69b1eecc> If a provider needs to support additional provider specific properties, it should override this method in a derived class. 

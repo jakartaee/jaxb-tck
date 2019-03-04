@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="short_minInclusive005_1673">
+    <TestGroupDocumentation>
+        <Title><![CDATA[short_minInclusive005_1673]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minInclusive and value=1 and facet=maxExclusive and value=7) and document value=5
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)short_minInclusive005_1673.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../short_minInclusive005.xsd"/>
+        <ExternalData Type="iodata" SourceName="short_minInclusive005_1673.sig"/>
+    </CodeSet>
+    <TestCase ID="short_minInclusive005_1673">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="short_minInclusive005_1673.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../short_minInclusive005.xml"/>
+            <ExternalData Type="iodata" SourceName="short_mininclusive005_1673-short_minInclusive005.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

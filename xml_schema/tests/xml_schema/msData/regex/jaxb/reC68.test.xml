@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="reC68">
+   <TestGroupDocumentation>
+      <Title><![CDATA[reC68]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :branch : base='string', pattern='a{,2}', value='aaa', type='invalid', RULE='2,3,4,5,6,7,8'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)reC68.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../reC68.xsd"/>
+   </CodeSet>
+   <TestCase ID="reC68">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)reC68.test.xml	1.1 07/03/27 -->

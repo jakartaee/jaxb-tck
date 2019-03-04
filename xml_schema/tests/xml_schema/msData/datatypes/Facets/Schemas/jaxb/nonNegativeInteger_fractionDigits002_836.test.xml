@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="nonNegativeInteger_fractionDigits002_836">
+   <TestGroupDocumentation>
+      <Title><![CDATA[nonNegativeInteger_fractionDigits002_836]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=fractionDigits and value=-1
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)nonNegativeInteger_fractionDigits002_836.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../nonNegativeInteger_fractionDigits002.xsd"/>
+   </CodeSet>
+   <TestCase ID="nonNegativeInteger_fractionDigits002_836">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)nonNegativeInteger_fractionDigits002_836.test.xml	1.1 07/03/27 -->

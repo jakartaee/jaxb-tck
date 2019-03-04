@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-minLength-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-minLength-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>6643_Language_Processes_Street_Respect_,_CA_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>243_Working_Product_Street_Specifications_,_NH_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>67_Used_Ec_Street_Retrieval_,_MI_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>7_Graphical_Provide_Street_Discovery_,_NH_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>545_Government_Is_Street_With_,_AL_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>687_Choices_Can_Street_Prominent_,_PA_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>534_Would_Business_Street_At_,_WA_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>26_Those_These_Street_The_,_OK_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>4_Of_File_Street_Complete_,_IA_18806-1139</string> 
+   </void> 
+   <void method="add"> 
+    <string>2_Developed_File_Street_Reviewed_,_MT_18806-1139</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

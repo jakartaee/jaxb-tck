@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="idI152">
+   <TestGroupDocumentation>
+      <Title><![CDATA[idI152]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Identity-constraint Definition Schema Component : selector xpath='qname[predicate]' , field contains *
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)idI152.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../idI152.xsd"/>
+      <ExternalData Type="iodata" SourceName="../idIimp.xsd"/>
+      <ExternalData Type="iodata" SourceName="../idIxpns.xsd"/>
+      <ExternalData Type="iodata" SourceName="../idIxpns1.xsd"/>
+   </CodeSet>
+   <TestCase ID="idI152">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)idI152.test.xml	1.1 07/03/27 -->

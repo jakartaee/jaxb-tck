@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-minLength-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-minLength-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>853_Paradigm_Street_Each_Tool_,_AK_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>74_Test_Street_Discovery_Used_,_MN_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>7_Operating_Street_Aid_Commerce_,_VT_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>9_Build_Street_Access_The_,_DE_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>128_Different_Street_Bottlenecks_Available_,_DE_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>8527_Of_Street_Files_Robust_,_SD_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>7514_Computing_Street_With_Standardization_,_AK_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>6477_Less_Street_That_On_,_MD_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>8659_Software_Street_The_Will_,_FL_11302-1678</string> 
+   </void> 
+   <void method="add"> 
+    <string>39_Transmit_Street_Acting_As_,_IA_11302-1678</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

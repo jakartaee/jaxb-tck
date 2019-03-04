@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB072">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addB072]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : id="74789" description="xsd: type referenced from included xsd file that use namespace from targetNamespace."
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addB072.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../test74789_a.xsd"/>
+        <ExternalData Type="iodata" SourceName="../test74789_b.xsd"/>
+        <ExternalData Type="iodata" SourceName="../test74789_c.xsd"/>
+        <ExternalData Type="iodata" SourceName="addB072.sig"/>
+    </CodeSet>
+    <TestCase ID="addB072">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

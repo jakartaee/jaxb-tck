@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB118">
+   <TestGroupDocumentation>
+      <Title><![CDATA[addB118]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : id="74966" description="xsd: particle derivation by restrrction of 'choice' {1,1} to {0,1} should be invalid"
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)addB118.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../test74966.xsd"/>
+   </CodeSet>
+   <TestCase ID="addB118">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)addB118.test.xml	1.1 07/03/27 -->

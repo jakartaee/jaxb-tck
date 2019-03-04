@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="float_maxExclusive003_1071">
+    <TestGroupDocumentation>
+        <Title><![CDATA[float_maxExclusive003_1071]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxExclusive and value=7.7 and document value=5.55
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)float_maxExclusive003_1071.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../float_maxExclusive003.xsd"/>
+        <ExternalData Type="iodata" SourceName="float_maxExclusive003_1071.sig"/>
+    </CodeSet>
+    <TestCase ID="float_maxExclusive003_1071">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="float_maxExclusive003_1071.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../float_maxExclusive003.xml"/>
+            <ExternalData Type="iodata" SourceName="float_maxexclusive003_1071-float_maxExclusive003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

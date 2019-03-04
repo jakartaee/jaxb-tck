@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="attgD025">
+   <TestGroupDocumentation>
+      <Title><![CDATA[attgD025]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for Attribute Declaration (ID) : Basic AttributeGroup with anyAttribute (w/ namespace=##local), the xml has the attribute instance which is namespace UNqualified
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Group_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Group_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)attgD025.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../attgD025.xsd"/>
+      <ExternalSupportClass SourceName="../attgD025a.xsd"/>
+   </CodeSet>
+   <TestCase ID="attgD025">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="attgD025.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../attgD025.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)attgD025.test.xml	1.1 07/03/27 -->

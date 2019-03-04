@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="elemT012">
+    <TestGroupDocumentation>
+        <Title><![CDATA[elemT012]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :3.3.2 XML Representation of Element Declaration Schema Components : Element with block="#all" and a union used in instant XML
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cElement_Declarations">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cElement_Declarations
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)elemT012.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../elemT012.xsd"/>
+        <ExternalData Type="iodata" SourceName="elemT012.sig"/>
+    </CodeSet>
+    <TestCase ID="elemT012">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

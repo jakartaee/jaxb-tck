@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-decimal-fractionDigits-6">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-decimal-fractionDigits-6]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/decimal is restricted by facet fractionDigits with value 3.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#decimal">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#decimal
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-fractionDigits">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-fractionDigits
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-decimal-fractionDigits-6.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-atomic-decimal-fractionDigits-2.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-decimal-fractionDigits-6.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-decimal-fractionDigits-6">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

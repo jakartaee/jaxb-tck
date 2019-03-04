@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="fields00201m2">
+   <TestGroupDocumentation>
+      <Title><![CDATA[values of the fields are checked for equality: 
+type is decimal, values are 3.0 and 3 (valid schema)]]></Title>
+      <Description><![CDATA[
+        <p>
+                    The equality and inequality conditions appealed to in checking these 
+                             constraints apply to the value of the fields selected, so that for example 
+                             3.0 and 3 would be conflicting keys if they were both number, but 
+                             non-conflicting if they were both strings, or one was a string and 
+                             one a number.
+                              In the test the fields of type decimal have values 3.0 and 
+                             3.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#cIdentity-constraint_Definitions">
+            http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#cIdentity-constraint_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)fields00201m2.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../fields00201m2.xsd"/>
+   </CodeSet>
+   <TestCase ID="fields00201m2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="Negative">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../fields00201m2_n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)fields00201m2.test.xml	1.1 07/03/27 -->

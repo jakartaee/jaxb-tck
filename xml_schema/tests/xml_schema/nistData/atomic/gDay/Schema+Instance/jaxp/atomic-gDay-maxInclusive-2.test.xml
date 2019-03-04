@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-gDay-maxInclusive-2">
+   <TestGroupDocumentation>
+      <Title><![CDATA[atomic-gDay-maxInclusive-2]]></Title>
+      <Description><![CDATA[
+        <p>
+                    
+        Type atomic/gDay is restricted by facet maxInclusive with value ---01.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gDay">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gDay
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxInclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxInclusive
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)atomic-gDay-maxInclusive-2.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-gDay-maxInclusive-3.xsd"/>
+   </CodeSet>
+   <TestCase ID="atomic-gDay-maxInclusive-2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-gDay-maxInclusive-3-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-gDay-maxInclusive-3-1.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)atomic-gDay-maxInclusive-2.test.xml	1.1 07/03/27 -->

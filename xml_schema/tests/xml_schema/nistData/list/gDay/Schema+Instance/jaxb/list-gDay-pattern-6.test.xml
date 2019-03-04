@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-gDay-pattern-6">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-gDay-pattern-6]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/gDay is restricted by facet pattern with value ---\d0 ---1\d ---1\d ---1\d ---\d4 ---\d3 ---\d8 ---\d7 ---2\d ---\d9.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gDay">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gDay
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-gDay-pattern-6.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-list-gDay-pattern-2.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-gDay-pattern-6.sig"/>
+    </CodeSet>
+    <TestCase ID="list-gDay-pattern-6">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

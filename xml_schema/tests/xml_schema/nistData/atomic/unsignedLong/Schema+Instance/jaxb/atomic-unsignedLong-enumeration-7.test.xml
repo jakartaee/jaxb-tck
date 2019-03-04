@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-unsignedLong-enumeration-7">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-unsignedLong-enumeration-7]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/unsignedLong is restricted by facet enumeration.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#unsignedLong">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#unsignedLong
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-enumeration">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-enumeration
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-unsignedLong-enumeration-7.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-atomic-unsignedLong-enumeration-3.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-unsignedLong-enumeration-7.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-unsignedLong-enumeration-7">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

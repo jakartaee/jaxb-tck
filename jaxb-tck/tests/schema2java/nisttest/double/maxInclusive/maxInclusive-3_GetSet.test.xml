@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="maxInclusive3_GetSet">
+    <TestGroupDocumentation>
+        <Title><![CDATA[maxInclusive3 GetSet Tree Content tests]]></Title>
+        <Description><![CDATA[
+      The tests for checking the content of trees got by unmarshalling
+      of the maxInclusive-3.xsd based XML documents or 
+      created dynamically via ObjectFactory.
+      The schema defines a double restricted SimpleType with maxInclusive value of
+      2868007748391511E-391 that corresponds to zero value of the basic value space of type double.
+      Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)maxInclusive-3_GetSet.test.xml	1.5 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <SupportCode>
+    static strictfp boolean equal(double a, double b) { return a == b; };
+      </SupportCode>
+        <ExternalSupportClass SourceName="maxInclusive-3.xsd"/>
+        <ExternalData Type="iodata" SourceName="maxInclusive3_GetSet.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML double maxInclusive-3.xsd, unmarshalled content tree GetSet test]]></Title>
+            <Description><![CDATA[
+The test unmarshalls maxInclusive-3-1.xml, maxInclusive-3-2.xml, maxInclusive-3-3.xml, 
+maxInclusive-3-4.xml, maxInclusive-3-5.xml documents which specify
+the values 
+1E-1075,
+1908143394954933E-880,
+821963620586075E-396,
+1732066263503805E-816,
+2868007748391511E-391
+for the double restricted SimpleType NISTSchema-double-maxInclusive-3 element and 
+expects that elemObj.getValue() returns 0.0 in all the cases, then invokes 
+elemObj.setValue(double), elemObj.getValue() should return set value.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="maxInclusive-3-1.xml"/>
+            <ExternalData Type="iodata" SourceName="maxInclusive-3-2.xml"/>
+            <ExternalData Type="iodata" SourceName="maxInclusive-3-3.xml"/>
+            <ExternalData Type="iodata" SourceName="maxInclusive-3-4.xml"/>
+            <ExternalData Type="iodata" SourceName="maxInclusive-3-5.xml"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        String[] xmlDocNames = {
+            "maxInclusive-3-1.xml", "maxInclusive-3-2.xml", "maxInclusive-3-3.xml",
+            "maxInclusive-3-4.xml", "maxInclusive-3-5.xml"
+        };
+        double[] expectedValues = {0.0, 0.0, 0.0, 0.0, 0.0,};
+        double[] anExpectedValues = {0.0, - Double.MIN_VALUE, -1.0, - Double.MAX_VALUE
+                                    , Double.NEGATIVE_INFINITY};
+        for (int i = 0; i < xmlDocNames.length; ++i){
+            JAXBElement<Double> elemObj = (JAXBElement<Double>)unmarshal(xmlDocNames[i]);
+            if (!equal(elemObj.getValue(), expectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.getValue() != " + expectedValues[i]);
+            }
+            elemObj.setValue(anExpectedValues[i]);
+            if (!equal(elemObj.getValue(), anExpectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.setValue(" + anExpectedValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anExpectedValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML double maxInclusive-3.xsd GetSet test for dynamically created content tree]]></Title>
+            <Description><![CDATA[
+The test creates an instance of double restricted SimpleType NISTSchema-double-maxInclusive-3 type
+with the values 
+    0.0, 
+    -Double.MIN_VALUE, 
+    -1.0, 
+    -Double.MAX_VALUE,
+    Double.NEGATIVE_INFINITY
+and expects that elemObj.getValue() returns 
+specified values, then invokes elemObj.setValue(double) with various values, 
+elemObj.getValue() should return set values.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+        double[] setValues = {0.0, - Double.MIN_VALUE, -1.0, - Double.MAX_VALUE
+                             , Double.NEGATIVE_INFINITY};
+        double[] anSetValues = {Double.NEGATIVE_INFINITY, -1.0, - Double.MAX_VALUE
+                               , - Double.MIN_VALUE, 0.0};
+        JAXBElement<Double> elemObj = null;
+        for (int i = 0; i < setValues.length; ++i){
+            
+                elemObj = (JAXBElement<Double>)(new ObjectFactory()).createNISTSchemaDoubleMaxInclusive3(setValues[i]);
+            
+            if (!equal(elemObj.getValue(), setValues[i])){
+                return Status.failed("dynamically created JAXBElement<Double>, elemObj.getValue() != " + setValues[i]);
+            }
+            elemObj.setValue(anSetValues[i]);
+            if (!equal(elemObj.getValue(), anSetValues[i])){
+                return Status.failed("dynamically created JAXBElement<Double>, elemObj.setValue(" + anSetValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anSetValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

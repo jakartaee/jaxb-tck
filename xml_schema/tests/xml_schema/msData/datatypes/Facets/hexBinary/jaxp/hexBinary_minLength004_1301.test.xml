@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="hexBinary_minLength004_1301">
+   <TestGroupDocumentation>
+      <Title><![CDATA[hexBinary_minLength004_1301]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minLength and value=4 and facet=maxLength and value=6) and document value=abcdef1234 (let's try 5 Octets [ab cd ef 12 34]
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)hexBinary_minLength004_1301.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../hexBinary_minLength004.xsd"/>
+   </CodeSet>
+   <TestCase ID="hexBinary_minLength004_1301">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="hexBinary_minLength004_1301.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../hexBinary_minLength004.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)hexBinary_minLength004_1301.test.xml	1.1 07/03/27 -->

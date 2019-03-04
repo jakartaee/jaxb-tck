@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="RegexTest_1327">
+   <TestGroupDocumentation>
+      <Title><![CDATA[RegexTest_1327]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :branch : RegexTest_1327
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)RegexTest_1327.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../RegexTest_1327.xsd"/>
+   </CodeSet>
+   <TestCase ID="RegexTest_1327">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)RegexTest_1327.test.xml	1.1 07/03/27 -->

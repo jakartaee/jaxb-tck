@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-positiveInteger-totalDigits-3">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-positiveInteger-totalDigits-3]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/positiveInteger is restricted by facet totalDigits with value 13.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#positiveInteger">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#positiveInteger
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-totalDigits">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-totalDigits
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-positiveInteger-totalDigits-3.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-positiveInteger-totalDigits-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-positiveInteger-totalDigits-3.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-positiveInteger-totalDigits-3">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-atomic-positiveInteger-totalDigits-4-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-atomic-positiveInteger-totalDigits-4-1.xml"/>
+            <ExternalData Type="iodata" SourceName="atomic-positiveinteger-totaldigits-3-NISTXML-SV-IV-atomic-positiveInteger-totalDigits-4-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

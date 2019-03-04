@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="particlesFb002">
+   <TestGroupDocumentation>
+      <Title><![CDATA[particlesFb002]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :3.9.1 The Particle Schema Component [ check length of element information items ] : E drived by extension from B, B=sequence, E=sequence with B as the first content particle (follow by all)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)particlesFb002.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../particlesFb002.xsd"/>
+   </CodeSet>
+   <TestCase ID="particlesFb002">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)particlesFb002.test.xml	1.1 07/03/27 -->

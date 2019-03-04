@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root"> 
+  <void property="skipAnyOrLaxAnyOrStrictAny"> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipAny"> 
+     <void property="otherAttributes"> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>undeclared</string> 
+        <string>something</string> 
+       </object> 
+       <string>also allowed</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>a</string> 
+       </object> 
+       <string>bra</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>b</string> 
+       </object> 
+       <string>bra</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipAny"/> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxAny"> 
+     <void property="otherAttributes"> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>undeclared</string> 
+        <string>something</string> 
+       </object> 
+       <string>also allowed</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>undeclared</string> 
+       </object> 
+       <string>OK</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>bar</string> 
+        <string>b</string> 
+       </object> 
+       <string>2</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>a</string> 
+       </object> 
+       <string>5</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxAny"/> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictAny"> 
+     <void property="otherAttributes"> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>zot</string> 
+        <string>a</string> 
+       </object> 
+       <string>52</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>bar</string> 
+        <string>c</string> 
+       </object> 
+       <string>2</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>b</string> 
+       </object> 
+       <string>5</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictAny"/> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipOther"> 
+     <void property="otherAttributes"> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>bar</string> 
+        <string>undeclared</string> 
+       </object> 
+       <string>OK</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>undeclared</string> 
+        <string>local</string> 
+       </object> 
+       <string>OK</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>undeclared</string> 
+        <string>something</string> 
+       </object> 
+       <string>OK</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>bar</string> 
+        <string>a</string> 
+       </object> 
+       <string>brabra</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipOther"/> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxLocal"> 
+     <void property="otherAttributes"> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>att</string> 
+       </object> 
+       <string>whatever</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxLocal"/> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictTarget"> 
+     <void property="otherAttributes"> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>a</string> 
+       </object> 
+       <string>1</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>b</string> 
+       </object> 
+       <string>2</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>c</string> 
+       </object> 
+       <string>3</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictTarget"/> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipBar"> 
+     <void property="otherAttributes"> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>bar</string> 
+        <string>undeclared</string> 
+       </object> 
+       <string>ok</string> 
+      </void> 
+      <void method="put"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string>bar</string> 
+        <string>b</string> 
+       </object> 
+       <string>invali</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipBar"/> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

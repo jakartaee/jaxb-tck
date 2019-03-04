@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="elemZ004">
+   <TestGroupDocumentation>
+      <Title><![CDATA[elemZ004]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :3.3.2 XML Representation of Element Declaration Schema Components : test maxOccurs to take values more than int (2147483647)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cElement_Declarations">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cElement_Declarations
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)elemZ004.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../elemZ004.xsd"/>
+   </CodeSet>
+   <TestCase ID="elemZ004">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)elemZ004.test.xml	1.1 07/03/27 -->

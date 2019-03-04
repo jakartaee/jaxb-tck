@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="enumeration4_Bind1">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Typesafe enumeration class customization with split inline annotation. (valid schema with bindinfo)]]></Title>
+        <Description><![CDATA[Declare a simple type enumeration restriction based on string type. 
+        Bind the type to a Typesafe enumeration class named NISTSchemaStringEnumeration4Type with
+        memebers named Software, Computing, For, Xml, Obtained. Use split inline annotation.
+        ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)enumeration-4_Bind1.test.xml	1.3 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <Keyword>bindinfo</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="enumeration-4_Bind1.bind.xsd"/>
+        <ExternalData Type="iodata" SourceName="enumeration4_Bind1.sig"/>
+    </CodeSet>
+    <TestCase ID="enumeration4_Bind1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="enumeration4_Bind1_p">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of binding to typesafe enum class. (valid document)]]></Title>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-4-1.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration4_bind1-enumeration-4-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

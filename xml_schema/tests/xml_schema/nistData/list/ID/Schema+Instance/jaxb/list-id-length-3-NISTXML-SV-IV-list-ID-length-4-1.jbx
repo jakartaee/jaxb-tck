@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-ID-length-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-ID-length-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>_first-generation.groups.for-of.complete</string> 
+   </void> 
+   <void method="add"> 
+    <string>pfiles-for-registries_transactional_avai</string> 
+   </void> 
+   <void method="add"> 
+    <string>kprogram-most.and_the.of.the.object-comp</string> 
+   </void> 
+   <void method="add"> 
+    <string>xeffectively-via.and_prominent_of.and_as</string> 
+   </void> 
+   <void method="add"> 
+    <string>ywith_manage-for-files-tools-files_struc</string> 
+   </void> 
+   <void method="add"> 
+    <string>gto_into-syntax_the_dynamic_technology.f</string> 
+   </void> 
+   <void method="add"> 
+    <string>othe_find-the_models-alike-that.the-enab</string> 
+   </void> 
+   <void method="add"> 
+    <string>vown_launching-alike-and_the_that_as_inc</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

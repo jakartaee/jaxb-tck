@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="int_minInclusive006g_709">
+    <TestGroupDocumentation>
+        <Title><![CDATA[int_minInclusive006g_709]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : base facet maxExclusive value=10, derived facet minInclusive value=9
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)int_minInclusive006g_709.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../int_minInclusive006g.xsd"/>
+        <ExternalData Type="iodata" SourceName="int_minInclusive006g_709.sig"/>
+    </CodeSet>
+    <TestCase ID="int_minInclusive006g_709">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="mgH016">
+    <TestGroupDocumentation>
+        <Title><![CDATA[mgH016]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :model groups (ALL) : choice: with parent group
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)mgH016.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../mgH016.xsd"/>
+        <ExternalData Type="iodata" SourceName="mgH016.sig"/>
+    </CodeSet>
+    <TestCase ID="mgH016">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="mgH016.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../mgH016.xml"/>
+            <ExternalData Type="iodata" SourceName="mgh016-mgH016.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

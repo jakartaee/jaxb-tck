@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="nonPositiveInteger_minInclusive002_1573">
+    <TestGroupDocumentation>
+        <Title><![CDATA[nonPositiveInteger_minInclusive002_1573]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=minInclusive and value=-5 and document value=-7
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)nonPositiveInteger_minInclusive002_1573.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../nonPositiveInteger_minInclusive002.xsd"/>
+        <ExternalData Type="iodata" SourceName="nonPositiveInteger_minInclusive002_1573.sig"/>
+    </CodeSet>
+    <TestCase ID="nonPositiveInteger_minInclusive002_1573">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

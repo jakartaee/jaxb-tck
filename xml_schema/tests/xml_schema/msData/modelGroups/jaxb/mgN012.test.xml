@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="mgN012">
+    <TestGroupDocumentation>
+        <Title><![CDATA[mgN012]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :model groups (ALL) : parent is sequence, has 2 sequence (E1, E2) (F1,F2), and 2 choice (C1 | C2) (D1 | D2), in the instant XML document ( E1, E2, F1, F2, C1, D1)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)mgN012.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../mgN012.xsd"/>
+        <ExternalData Type="iodata" SourceName="mgN012.sig"/>
+    </CodeSet>
+    <TestCase ID="mgN012">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="mgN012.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../mgN012.xml"/>
+            <ExternalData Type="iodata" SourceName="mgn012-mgN012.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

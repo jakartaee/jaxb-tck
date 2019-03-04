@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="RegexTest_81">
+    <TestGroupDocumentation>
+        <Title><![CDATA[RegexTest_81]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : RegexTest_81
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)RegexTest_81.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../RegexTest_81.xsd"/>
+        <ExternalData Type="iodata" SourceName="RegexTest_81.sig"/>
+    </CodeSet>
+    <TestCase ID="RegexTest_81">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="RegexTest_81.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../RegexTest_81.xml"/>
+            <ExternalData Type="iodata" SourceName="regextest_81-RegexTest_81.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

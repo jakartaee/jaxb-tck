@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB075">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addB075]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : id="75564" description="xsd: we do not check for absolute string in fixed attribute value, when there are invalid char follow the valud value."
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addB075.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../test75564.xsd"/>
+        <ExternalData Type="iodata" SourceName="addB075.sig"/>
+    </CodeSet>
+    <TestCase ID="addB075">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

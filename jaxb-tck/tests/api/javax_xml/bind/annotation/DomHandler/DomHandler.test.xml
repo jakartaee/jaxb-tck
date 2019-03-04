@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="DomHandler">
+  <TestGroupDocumentation>
+    <Title>Provides DomHandler implementation tests</Title>
+    <TestedPackage>javax.xml.bind.annotation</TestedPackage>
+    <TestedClass>DomHandler</TestedClass>
+    <Author>Igor Tseytin</Author>
+  </TestGroupDocumentation>
+  <TestGroupAttributes>
+    <AttrElem Name="tdFile">index</AttrElem>
+    <AttrElem Name="scInfo">@(#)DomHandler.test.xml	1.6 07/06/05</AttrElem>
+    <AttrElem Name="testType">MultiTest</AttrElem>
+    <Keyword>runtime</Keyword>
+  </TestGroupAttributes>
+  <CodeSet>
+    <Import>javax.xml.bind.ValidationEventHandler</Import>
+    <Import>javax.xml.bind.util.ValidationEventCollector</Import>
+    <Import>javax.xml.bind.annotation.W3CDomHandler</Import>
+    <Import>javax.xml.bind.annotation.DomHandler</Import>
+    <Import>javax.xml.parsers.*</Import>
+    <Import>javax.xml.transform.*</Import>
+    <Import>org.w3c.dom.Document</Import>
+    <BaseClass>MultiTest</BaseClass>
+    <SupportCode>
+<![CDATA[
+    void assertT( boolean val, String msg ){
+        if( !val )
+            throw new RuntimeException(msg);
+    }
+]]>
+    </SupportCode>
+  </CodeSet>
+
+  <TestCase ID="createUnmarshaller001">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>the test calls createUnmarshaller method</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    DomHandler/*<Element,DOMResult>*/ instance = new W3CDomHandler();
+    ValidationEventCollector eh = new ValidationEventCollector();
+    Result result = instance.createUnmarshaller( eh );
+    assertT( result != null || eh.hasEvents(), "createUnmarshaller() returns null but doesn't report error into EventHandler" );
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="marshal001">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>the test calls marshal method with wrong parameters</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    DomHandler/*<Element,DOMResult>*/ instance = new W3CDomHandler();
+    ValidationEventCollector eh = new ValidationEventCollector();
+    Source src = null;
+    try {
+        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+        Object element = doc;
+        src = instance.marshal( element, eh );
+    } catch(Exception x) {}
+    assertT( src == null, "DomHandler.marshal() returns non-null value for a wrong argument" );
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="marshal002">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>the test calls marshal method with valid parameters</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    DomHandler/*<Element,DOMResult>*/ instance = new W3CDomHandler();
+    try {
+        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+        ValidationEventCollector eh = new ValidationEventCollector();
+        Object element = doc.getDocumentElement();
+        Source src = instance.marshal( element, eh );
+        assertT( src != null, "DomHandler.marshal() returns null on valid parameters");
+    } catch(ParserConfigurationException x){
+        x.printStackTrace( ref );
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+</TestGroup>
+<!-- Ident: @(#)DomHandler.test.xml	1.6 07/06/05 -->

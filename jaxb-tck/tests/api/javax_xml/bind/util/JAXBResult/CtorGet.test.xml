@@ -1,0 +1,271 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="CtorGet">
+   <TestGroupDocumentation>
+      <Title>JAXBResult tests</Title>
+      <Description>
+      Test descriptions and specifications for JAXBResult tests.
+      </Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)CtorGet.test.xml	1.9 07/04/16</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <AttrElem Name="schemaName">enumeration-1-result.xsd</AttrElem>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Import>javax.xml.bind.util.JAXBResult</Import>
+      <Import>javax.xml.bind.JAXBContext</Import>
+      <Import>javax.xml.bind.JAXBException</Import>
+      <Import>javax.xml.bind.JAXBElement</Import>
+      <Import>javax.xml.bind.Unmarshaller</Import>
+      <Import>javax.xml.bind.Marshaller</Import>
+      <Import>javax.xml.bind.Validator</Import>
+      <ExternalSupportClass SourceName="ObjectFactory.java"/>
+      <ExternalData SourceName="enumeration-1-result.xsd" Type="iodata"/>
+   </CodeSet>
+
+
+
+   <TestCase ID="CtorGet001">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that JAXBResult(JAXBContext context) with valid context throws
+no exceptions.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         try {
+             jc = getJAXBContext();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create a valid context");
+         }
+         try {
+             new JAXBResult(jc);
+         } catch (JAXBException je){
+             return Status.failed("JAXBResult(context) with valid JAXBContext throws JAXBException");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="CtorGet002">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that getResult() throws IllegalStateException if the method is called 
+before an object is unmarshalled. JAXBResult(JAXBContext) constructor is used.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         JAXBResult res = null;
+     
+         try {
+             jc = getJAXBContext();
+             res = new JAXBResult(jc);
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             res.getResult();
+         } catch (JAXBException je){
+             return Status.failed("new JAXBResult(JAXBContext).getResult() throws JAXBException");
+         } catch (IllegalStateException ise){
+             return Status.passed("OKAY, IllegalStateException is thrown");
+         }
+         return Status.failed("new JAXBResult(JAXBContext).getResult() does not throw IllegalStateException");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="CtorGet003">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that JAXBResult((JAXBContext)null) throws JAXBException.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+
+         try {
+             new JAXBResult((JAXBContext)null);
+         } catch (JAXBException je){
+             return Status.passed("OKAY");
+         }
+         return Status.failed("JAXBResult((JAXBContext)null) throws no exceptions");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="CtorGet004">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that JAXBResult(Unmarshaller unmarshaller) with valid unmarshaller throws
+no exceptions.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+             new JAXBResult(um);
+             return Status.passed("OKAY");
+         } catch (JAXBException je){
+             return Status.failed("JAXBException: unable to create valid context or unmarshaller");
+         }
+
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="CtorGet005">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that JAXBResult((Unmarshaller)null) throws JAXBException.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+
+         try {
+             new JAXBResult((Unmarshaller)null);
+         } catch (JAXBException je){
+             return Status.passed("OKAY");
+         }
+         return Status.failed("JAXBResult((Unmarshaller)null) throws no exceptions");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="CtorGet006">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that getResult() throws IllegalStateException if the method is 
+called before an object is unmarshalled. JAXBResult(Unmarshaller) constructor is used.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Unmarshaller um = null;
+         JAXBResult res = null;
+     
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+             res = new JAXBResult(um);
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             res.getResult();
+         } catch (JAXBException je){
+             return Status.failed("new JAXBResult(Unmarshaller).getResult() throws JAXBException");
+         } catch (IllegalStateException ise){
+             return Status.passed("OKAY, IllegalStateException is thrown");
+         }
+         return Status.failed("new JAXBResult(Unmarshaller).getResult() does not throw IllegalStateException");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="CtorGet007">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that getResult() returns the unmarshalled object created by the transformation -
+non-null object. Resulted object is equal to the original.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="enumeration-1-result.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Unmarshaller um = null;
+         Marshaller m = null;
+         JAXBResult res = null;
+         Object obj = null;
+         Object objRes = null;
+         
+         obj = unmarshal("enumeration-1-result.xml");
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+              m = jc.createMarshaller();
+             res = new JAXBResult(um);
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or marshaller or unmarshaller object");
+         }
+
+         try {
+             m.marshal(obj, res);
+         } catch (JAXBException je){
+             return Status.failed("JAXBException: unable to marshal valid object into JAXBResult");
+         }
+         try {
+             if ((objRes = res.getResult()) == null){
+                 return Status.failed("after marshalling of valid object into JAXBResult, getResult() returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("after successfull unmarshalling JAXBResult.getResult() throws JAXBException");
+         }
+         if (!((JAXBElement<Long>)obj).getValue().equals(((JAXBElement<Long>)objRes).getValue())){
+             return Status.failed("transformation result object is not equivalent to the original");
+         }
+         try {
+             if ((objRes = res.getResult()) == null){
+                 return Status.failed("after marshalling of valid object into JAXBResult, second call to getResult() returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("after successfull unmarshalling second call to JAXBResult.getResult() throws JAXBException");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+</TestGroup>
+<!-- Ident: @(#)CtorGet.test.xml	1.9 07/04/16 -->

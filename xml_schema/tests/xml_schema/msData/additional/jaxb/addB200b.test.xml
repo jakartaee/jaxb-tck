@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB200b">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addB200b]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : zero width unicode characeter test identity constraints(2)
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addB200b.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../idc.xsd"/>
+        <ExternalData Type="iodata" SourceName="addB200b.sig"/>
+    </CodeSet>
+    <TestCase ID="addB200b">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

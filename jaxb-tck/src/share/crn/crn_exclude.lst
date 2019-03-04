@@ -1,0 +1,23 @@
+# UTF-16 xml files
+tests/java2schema/StandardClasses/String/neg01_01.xml
+tests/java2schema/StandardClasses/String/neg01_02.xml
+tests/java2schema/StandardClasses/String/neg01_03.xml
+tests/java2schema/StandardClasses/String/neg01_04.xml
+tests/java2schema/StandardClasses/String/neg01_05.xml
+tests/java2schema/StandardClasses/String/neg01_09.xml
+tests/java2schema/StandardClasses/String/pos01_01.xml
+tests/java2schema/StandardClasses/String/pos01_02.xml
+tests/java2schema/StandardClasses/String/pos01_03.xml
+tests/java2schema/StandardClasses/String/pos01_04.xml
+tests/java2schema/StandardClasses/String/pos01_05.xml
+tests/java2schema/StandardClasses/String/pos01_06.xml
+tests/java2schema/StandardClasses/String/pos01_07.xml
+tests/java2schema/StandardClasses/String/pos01_08.xml
+tests/java2schema/StandardClasses/String/pos01_09.xml
+tests/java2schema/StandardClasses/String/pos01_10.xml
+tests/java2schema/StandardClasses/String/pos01_11.xml
+tests/java2schema/StandardClasses/String/pos01_12.xml
+tests/java2schema/StandardClasses/String/pos01_13.xml
+tests/java2schema/StandardClasses/String/pos01_14.xml
+tests/java2schema/StandardClasses/String/pos01_15.xml
+

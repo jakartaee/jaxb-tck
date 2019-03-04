@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-unsignedShort-maxLength-2">
+   <TestGroupDocumentation>
+      <Title><![CDATA[list-unsignedShort-maxLength-2]]></Title>
+      <Description><![CDATA[
+        <p>
+                    
+        Type list/unsignedShort is restricted by facet maxLength with value 7.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#unsignedShort">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#unsignedShort
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxLength">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxLength
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)list-unsignedShort-maxLength-2.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-unsignedShort-maxLength-3.xsd"/>
+   </CodeSet>
+   <TestCase ID="list-unsignedShort-maxLength-2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-unsignedShort-maxLength-3-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-unsignedShort-maxLength-3-1.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-unsignedShort-maxLength-3-2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-unsignedShort-maxLength-3-2.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-unsignedShort-maxLength-3-3">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-unsignedShort-maxLength-3-3.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-unsignedShort-maxLength-3-4">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-unsignedShort-maxLength-3-4.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-unsignedShort-maxLength-3-5">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-unsignedShort-maxLength-3-5.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)list-unsignedShort-maxLength-2.test.xml	1.1 07/03/27 -->

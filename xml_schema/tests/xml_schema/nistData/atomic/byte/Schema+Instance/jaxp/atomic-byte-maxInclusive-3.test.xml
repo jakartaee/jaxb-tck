@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-byte-maxInclusive-3">
+   <TestGroupDocumentation>
+      <Title><![CDATA[atomic-byte-maxInclusive-3]]></Title>
+      <Description><![CDATA[
+        <p>
+                    
+        Type atomic/byte is restricted by facet maxInclusive with value -47.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#byte">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#byte
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxInclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxInclusive
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)atomic-byte-maxInclusive-3.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-byte-maxInclusive-4.xsd"/>
+   </CodeSet>
+   <TestCase ID="atomic-byte-maxInclusive-3">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-byte-maxInclusive-4-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-byte-maxInclusive-4-1.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-byte-maxInclusive-4-2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-byte-maxInclusive-4-2.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-byte-maxInclusive-4-3">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-byte-maxInclusive-4-3.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-byte-maxInclusive-4-4">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-byte-maxInclusive-4-4.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-byte-maxInclusive-4-5">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-byte-maxInclusive-4-5.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)atomic-byte-maxInclusive-3.test.xml	1.1 07/03/27 -->

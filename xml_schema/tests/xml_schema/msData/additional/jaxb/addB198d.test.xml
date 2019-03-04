@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB198d">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addB198d]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : zero width unicode characeter test with minLength facet(2)
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addB198d.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../minLength.xsd"/>
+        <ExternalData Type="iodata" SourceName="addB198d.sig"/>
+    </CodeSet>
+    <TestCase ID="addB198d">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="addB198d.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../minLength2.xml"/>
+            <ExternalData Type="iodata" SourceName="addb198d-minLength2.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="AD_name00114_">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Attribute names contain lower case and upper case letters and non-letter characters. (content tree test)]]></Title>
+        <Description><![CDATA[Declare an element with several attributes of type int. Name them as follows:
+        "aaaa",  "bbbB",  "ccCc",  "ddDD",  "eEee",  
+        "fFfF",  "pPPp",  "gGGG",  "Hhhh",  "IiiI",  "JjJj", 
+        "KkKK",  "LLll",  "MMmM",  "NNNn",  "OOOO", 
+        "bbb0",  "cc0c",  "dd00",  "e0ee",  "f0f0",  "p00p",  "g000", 
+        "bbb_",  "cc_c",  "dd__",  "e_ee",  "f_f_",  "p__p",  "g___", 
+        "H111",  "I11I",  "J1J1",  "K1KK",  "LL11",  "MM1M",  "NNN1", 
+        "H---",  "I--I",  "J-J-",  "K-KK",  "LL--",  "MM-M",  "NNN-". 
+
+        The document AD_name00114_p.xml sets all the attributes.
+        ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)AD_name00114_CTTests.test.xml	1.3 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="AD_name00114.xsd"/>
+        <ExternalData Type="iodata" SourceName="AD_name00114_.sig"/>
+    </CodeSet>
+    <TestCase ID="Get001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the get method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals AD_name00114_p.xml and expects the returned object
+                to contain attributes to be set to values specified in the document.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="AD_name00114_p.xml"/>
+            <ExternalData Type="iodata" SourceName="ad_name00114_-AD_name00114_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        Root root = (Root)unmarshal("AD_name00114_p.xml");
+        String failure = "";
+
+        if (root.getJjJj() != 10) {
+            failure += "; root.getJjJj() returns " + root.getJjJj();
+        }
+        if (root.getBbb0() != 20) {
+            failure += "; root.getBbb0() returns " + root.getBbb0();
+        }
+        if (root.getMMM() != 85) {
+            failure += "; root.getMMM() returns " + root.getMMM(); 
+        }
+        if (root.getKKK() != 83) {
+            failure += "; root.getKKK() returns " + root.getKKK(); 
+        }
+        if (root.getK1KK() != 63) {
+            failure += "; root.getK1KK() returns " + root.getK1KK();
+        }
+        if (root.getNNN1() != 66) {
+            failure += "; root.getNNN1() returns " + root.getNNN1();
+        }
+        if (root.getDd00() != 22) {
+            failure += "; root.getDd00() returns " + root.getDd00();
+        }
+        if (root.getDdDD() != 3) {
+            failure += "; root.getDdDD() returns " + root.getDdDD();
+        }
+        if (root.getNNNn() != 14) {
+            failure += "; root.getNNNn() returns " + root.getNNNn();
+        }
+        if (root.getKkKK() != 11) {
+            failure += "; root.getKkKK() returns " + root.getKkKK();
+        }
+        if (root.getDd() != 42) {
+            failure += "; root.getDd() returns " + root.getDd();
+        }
+        if (root.getMMmM() != 13) {
+            failure += "; root.getMMmM() returns " + root.getMMmM();
+        }
+        if (root.getFFfF() != 5) {
+            failure += "; root.getFFfF() returns " + root.getFFfF();
+        }
+        if (root.getLL11() != 64) {
+            failure += "; root.getLL11() returns " + root.getLL11();
+        }
+        if (root.getAaaa() != 0) {
+            failure += "; root.getAaaa() returns " + root.getAaaa();
+        }
+        if (root.getHhhh() != 8) {
+            failure += "; root.getHhhh() returns " + root.getHhhh();
+        }
+        if (root.getII() != 81) {
+            failure += "; root.getII() returns " + root.getII();
+        }
+        if (root.getPPPp() != 6) {
+            failure += "; root.getPPPp() returns " + root.getPPPp();
+        }
+        if (root.getMM1M() != 65) {
+            failure += "; root.getMM1M() returns " + root.getMM1M();
+        }
+        if (root.getF0F0() != 24) {
+            failure += "; root.getF0F0() returns " + root.getF0F0();
+        }
+        if (root.getCc0C() != 21) {
+            failure += "; root.getCc0C() returns " + root.getCc0C();
+        }
+        if (root.getNNN() != 86) {
+            failure += "; root.getNNN() returns " + root.getNNN();
+        }
+        if (root.getJ1J1() != 62) {
+            failure += "; root.getJ1J1() returns " + root.getJ1J1();
+        }
+        if (root.getE0Ee() != 23) {
+            failure += "; root.getE0Ee() returns " + root.getE0Ee();
+        }
+        if (root.getG000() != 26) {
+            failure += "; root.getG000() returns " + root.getG000();
+        }
+        if (root.getH111() != 60) {
+            failure += "; root.getH111() returns " + root.getH111();
+        }
+        if (root.getH() != 80) {
+            failure += "; root.getH() returns " + root.getH();
+        }
+        if (root.getG() != 46) {
+            failure += "; root.getG() returns " + root.getG();
+        }
+        if (root.getEEe() != 43) {
+            failure += "; root.getEEe() returns " + root.getEEe();
+        }
+        if (root.getCcC() != 41) {
+            failure += "; root.getCcC() returns " + root.getCcC();
+        }
+        if (root.getBbb() != 40) {
+            failure += "; root.getBbb() returns " + root.getBbb();
+        }
+        if (root.getP00P() != 25) {
+            failure += "; root.getP00P() returns " + root.getP00P();
+        }
+        if (root.getLLll() != 12) {
+            failure += "; root.getLLll() returns " + root.getLLll();
+        }
+        if (root.getLL() != 84) {
+            failure += "; root.getLL() returns " + root.getLL();
+        }
+        if (root.getGGGG() != 7) {
+            failure += "; root.getGGGG() returns " + root.getGGGG();
+        }
+        if (root.getCcCc() != 2) {
+            failure += "; root.getCcCc() returns " + root.getCcCc();
+        }
+        if (root.getJJ() != 82) {
+            failure += "; root.getJJ() returns " + root.getJJ();
+        }
+        if (root.getFF() != 44) {
+            failure += "; root.getFF() returns " + root.getFF();
+        }
+        if (root.getI11I() != 61) {
+            failure += "; root.getI11I() returns " + root.getI11I();
+        }
+        if (root.getEEee() != 4) {
+            failure += "; root.getEEee() returns " + root.getEEee();
+        }
+        if (root.getIiiI() != 9) {
+            failure += "; root.getIiiI() returns " + root.getIiiI();
+        }
+        if (root.getPP() != 45) {
+            failure += "; root.getPP() returns " + root.getPP();
+        }
+        if (root.getOOOO() != 15) {
+            failure += "; root.getOOOO() returns " + root.getOOOO();
+        }
+        if (root.getBbbB() != 1) {
+            failure += "; root.getBbbB() returns " + root.getBbbB();
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Set001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the set method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals AD_name00114_p.xml, sets its attributes to 
+                some values and expects the returned object
+                to contain attributes to be set to those values.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="AD_name00114_p.xml"/>
+            <ExternalData Type="iodata" SourceName="ad_name00114_-AD_name00114_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        Root root = (Root)unmarshal("AD_name00114_p.xml");
+        String failure = "";
+
+        root.setJjJj(1077);
+        root.setBbb0(2077);
+        root.setMMM(8577);
+        root.setKKK(8377);
+        root.setK1KK(6377);
+        root.setNNN1(6677);
+        root.setDd00(2277);
+        root.setDdDD(377);
+        root.setNNNn(1477);
+        root.setKkKK(1177);
+        root.setDd(4277);
+        root.setMMmM(1377);
+        root.setFFfF(577);
+        root.setLL11(6477);
+        root.setAaaa(077);
+        root.setHhhh(877);
+        root.setII(8177);
+        root.setPPPp(677);
+        root.setMM1M(6577);
+        root.setF0F0(2477);
+        root.setCc0C(2177);
+        root.setNNN(8677);
+        root.setJ1J1(6277);
+        root.setE0Ee(2377);
+        root.setG000(2677);
+        root.setH111(6077);
+        root.setH(8077);
+        root.setG(4677);
+        root.setEEe(4377);
+        root.setCcC(4177);
+        root.setBbb(4077);
+        root.setP00P(2577);
+        root.setLLll(1277);
+        root.setLL(8477);
+        root.setGGGG(777);
+        root.setCcCc(277);
+        root.setJJ(8277);
+        root.setFF(4477);
+        root.setI11I(6177);
+        root.setEEee(477);
+        root.setIiiI(977);
+        root.setPP(4577);
+        root.setOOOO(1577);
+        root.setBbbB(177);
+
+        if (root.getJjJj() != 1077) {
+            failure += "; root.getJjJj() returns " + root.getJjJj();
+        }
+        if (root.getBbb0() != 2077) {
+            failure += "; root.getBbb0() returns " + root.getBbb0();
+        }
+        if (root.getMMM() != 8577) {
+            failure += "; root.getMMM() returns " + root.getMMM(); 
+        }
+        if (root.getKKK() != 8377) {
+            failure += "; root.getKKK() returns " + root.getKKK(); 
+        }
+        if (root.getK1KK() != 6377) {
+            failure += "; root.getK1KK() returns " + root.getK1KK();
+        }
+        if (root.getNNN1() != 6677) {
+            failure += "; root.getNNN1() returns " + root.getNNN1();
+        }
+        if (root.getDd00() != 2277) {
+            failure += "; root.getDd00() returns " + root.getDd00();
+        }
+        if (root.getDdDD() != 377) {
+            failure += "; root.getDdDD() returns " + root.getDdDD();
+        }
+        if (root.getNNNn() != 1477) {
+            failure += "; root.getNNNn() returns " + root.getNNNn();
+        }
+        if (root.getKkKK() != 1177) {
+            failure += "; root.getKkKK() returns " + root.getKkKK();
+        }
+        if (root.getDd() != 4277) {
+            failure += "; root.getDd() returns " + root.getDd();
+        }
+        if (root.getMMmM() != 1377) {
+            failure += "; root.getMMmM() returns " + root.getMMmM();
+        }
+        if (root.getFFfF() != 577) {
+            failure += "; root.getFFfF() returns " + root.getFFfF();
+        }
+        if (root.getLL11() != 6477) {
+            failure += "; root.getLL11() returns " + root.getLL11();
+        }
+        if (root.getAaaa() != 077) {
+            failure += "; root.getAaaa() returns " + root.getAaaa();
+        }
+        if (root.getHhhh() != 877) {
+            failure += "; root.getHhhh() returns " + root.getHhhh();
+        }
+        if (root.getII() != 8177) {
+            failure += "; root.getII() returns " + root.getII();
+        }
+        if (root.getPPPp() != 677) {
+            failure += "; root.getPPPp() returns " + root.getPPPp();
+        }
+        if (root.getMM1M() != 6577) {
+            failure += "; root.getMM1M() returns " + root.getMM1M();
+        }
+        if (root.getF0F0() != 2477) {
+            failure += "; root.getF0F0() returns " + root.getF0F0();
+        }
+        if (root.getCc0C() != 2177) {
+            failure += "; root.getCc0C() returns " + root.getCc0C();
+        }
+        if (root.getNNN() != 8677) {
+            failure += "; root.getNNN() returns " + root.getNNN();
+        }
+        if (root.getJ1J1() != 6277) {
+            failure += "; root.getJ1J1() returns " + root.getJ1J1();
+        }
+        if (root.getE0Ee() != 2377) {
+            failure += "; root.getE0Ee() returns " + root.getE0Ee();
+        }
+        if (root.getG000() != 2677) {
+            failure += "; root.getG000() returns " + root.getG000();
+        }
+        if (root.getH111() != 6077) {
+            failure += "; root.getH111() returns " + root.getH111();
+        }
+        if (root.getH() != 8077) {
+            failure += "; root.getH() returns " + root.getH();
+        }
+        if (root.getG() != 4677) {
+            failure += "; root.getG() returns " + root.getG();
+        }
+        if (root.getEEe() != 4377) {
+            failure += "; root.getEEe() returns " + root.getEEe();
+        }
+        if (root.getCcC() != 4177) {
+            failure += "; root.getCcC() returns " + root.getCcC();
+        }
+        if (root.getBbb() != 4077) {
+            failure += "; root.getBbb() returns " + root.getBbb();
+        }
+        if (root.getP00P() != 2577) {
+            failure += "; root.getP00P() returns " + root.getP00P();
+        }
+        if (root.getLLll() != 1277) {
+            failure += "; root.getLLll() returns " + root.getLLll();
+        }
+        if (root.getLL() != 8477) {
+            failure += "; root.getLL() returns " + root.getLL();
+        }
+        if (root.getGGGG() != 777) {
+            failure += "; root.getGGGG() returns " + root.getGGGG();
+        }
+        if (root.getCcCc() != 277) {
+            failure += "; root.getCcCc() returns " + root.getCcCc();
+        }
+        if (root.getJJ() != 8277) {
+            failure += "; root.getJJ() returns " + root.getJJ();
+        }
+        if (root.getFF() != 4477) {
+            failure += "; root.getFF() returns " + root.getFF();
+        }
+        if (root.getI11I() != 6177) {
+            failure += "; root.getI11I() returns " + root.getI11I();
+        }
+        if (root.getEEee() != 477) {
+            failure += "; root.getEEee() returns " + root.getEEee();
+        }
+        if (root.getIiiI() != 977) {
+            failure += "; root.getIiiI() returns " + root.getIiiI();
+        }
+        if (root.getPP() != 4577) {
+            failure += "; root.getPP() returns " + root.getPP();
+        }
+        if (root.getOOOO() != 1577) {
+            failure += "; root.getOOOO() returns " + root.getOOOO();
+        }
+        if (root.getBbbB() != 177) {
+            failure += "; root.getBbbB() returns " + root.getBbbB();
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+</TestGroup>

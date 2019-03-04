@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="reJ17">
+    <TestGroupDocumentation>
+        <Title><![CDATA[reJ17]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : base='string', pattern='\p{Lm}*', value='#x2B0;#xFF9F;', type='valid', RULE='25,29'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)reJ17.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../reJ17.xsd"/>
+        <ExternalData Type="iodata" SourceName="reJ17.sig"/>
+    </CodeSet>
+    <TestCase ID="reJ17">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="reJ17.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../reJ17.xml"/>
+            <ExternalData Type="iodata" SourceName="rej17-reJ17.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

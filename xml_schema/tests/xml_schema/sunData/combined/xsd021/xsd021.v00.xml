@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!--
+Ident: @(#)xsd021.v00.xml	1.4 03/10/10
+
+-->
+
+<f:root
+	xmlns:f="foo"
+	xmlns:b="bar"
+	xmlns:z="zot"
+	xmlns:u="undeclared">
+
+	<f:skipAny f:a="bra" f:b="bra" u:something="also allowed" />
+	<f:skipAny />
+	
+	<f:laxAny  f:a="5" f:undeclared="OK" b:b="2" u:something="also allowed" />
+	<f:laxAny />
+	
+	<f:strictAny f:b="5" b:c="2" z:a="52" />
+	<f:strictAny />
+	
+	<f:skipOther b:a="brabra" b:undeclared="OK" u:something="OK" u:local="OK"/>
+	<f:skipOther />
+	
+	<f:laxLocal att="whatever" />
+	<f:laxLocal />
+	
+	<f:strictTarget f:a="1" f:b="2" f:c="3" />
+	<f:strictTarget />
+	
+	<f:skipBar b:b="invali" b:undeclared="ok" />
+	<f:skipBar />
+</f:root>

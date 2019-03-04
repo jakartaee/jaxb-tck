@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-positiveInteger-enumeration-1">
+   <TestGroupDocumentation>
+      <Title><![CDATA[list-positiveInteger-enumeration-1]]></Title>
+      <Description><![CDATA[
+        <p>
+                    
+        Type list/positiveInteger is restricted by facet enumeration.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#positiveInteger">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#positiveInteger
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-enumeration">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-enumeration
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)list-positiveInteger-enumeration-1.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-positiveInteger-enumeration-2.xsd"/>
+   </CodeSet>
+   <TestCase ID="list-positiveInteger-enumeration-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-positiveInteger-enumeration-2-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-positiveInteger-enumeration-2-1.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-positiveInteger-enumeration-2-2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-positiveInteger-enumeration-2-2.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-positiveInteger-enumeration-2-3">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-positiveInteger-enumeration-2-3.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-positiveInteger-enumeration-2-4">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-positiveInteger-enumeration-2-4.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-list-positiveInteger-enumeration-2-5">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-list-positiveInteger-enumeration-2-5.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)list-positiveInteger-enumeration-1.test.xml	1.1 07/03/27 -->

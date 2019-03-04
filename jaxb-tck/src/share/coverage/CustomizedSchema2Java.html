@@ -1,0 +1,1966 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>Customized binding XML Schema to Java</title>
+  <meta http-equiv="content-type"
+ content="text/html; charset=iso-8859-1">
+  <link type="text/css" href="style.css" rel="stylesheet">
+</head>
+<body>
+<table style="text-align: left; width: 100%;" border="1"
+ bordercolor="#000000" cellpadding="4" cellspacing="0">
+  <tbody>
+    <tr>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">Assertion
+IDs<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; white-space: nowrap; text-align: center;">JAXB
+2.0 Specification<br>
+Section<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">Assertion</th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">Required<br>
+to be<br>
+tested<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">Depen-<br>
+dency on<br>
+other<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">Implementation<br>
+specific<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">Defined<br>
+by<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">Status<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">Testable<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">tested<br>
+      </th>
+      <th
+ style="vertical-align: top; background-color: rgb(204, 204, 204); font-weight: bold; text-align: center;">test(s)<br>
+      </th>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="11" rowspan="1"
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold; font-style: italic;">7.1 Binding
+Language</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0501</td>
+      <td style="vertical-align: top; white-space: nowrap;">7.1.1<br>
+Extending the Binding Language<br>
+      </td>
+      <td style="vertical-align: top;">The namespaces
+containing
+extension binding declarations are specified to a JAXB processor by the
+occurrence of the global attribute<br>
+&lt;jaxb:extensionBindingPrefixes&gt; within an instance of
+&lt;xs:schema&gt; element. The value of this attribute is a
+whitespace-separated list of namespace prefixes. The namespace bound to
+each of the prefixes is designated as a customization declaration
+namespace. Prefixes are resolved on the &lt;xs:schema&gt;
+element that
+carries this attribute. It is an error if the prefix fails to resolve. <br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb <br>
+technology</td>
+      <td style="vertical-align: top; text-align: center;">active<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0502</td>
+      <td style="vertical-align: top; white-space: nowrap;">7.1.3.1<br>
+Restrictions<br>
+      </td>
+      <td style="vertical-align: top;">The external
+binding
+element &lt;jaxb:bindings&gt; is only recognized for processing
+by a
+JAXB processor when its parent is an &lt;xs:appinfo&gt; element </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0503 </td>
+      <td style="vertical-align: top;">7.1.3.1<br>
+Restrictions </td>
+      <td style="vertical-align: top;">The external
+binding
+element &lt;jaxb:bindings&gt; is only recognized for processing
+by a
+JAXB processor when it is an ancestor of another
+&lt;jaxb:bindings&gt; element<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0504 </td>
+      <td style="vertical-align: top;">7.1.3.1<br>
+Restrictions </td>
+      <td style="vertical-align: top;">The external
+binding
+element &lt;jaxb:bindings&gt; is only recognized for processing
+by a
+JAXB processor when it is root element of a document </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0505 </td>
+      <td style="vertical-align: top;">7.1.3.1<br>
+Restrictions </td>
+      <td style="vertical-align: top;">The top-most
+&lt;jaxb:binding&gt; element within an
+&lt;xs:appinfo&gt; element or
+the root element of an external binding file must have its
+schemaLocation attribute set.<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0506 </td>
+      <td style="vertical-align: top;">7.1.4<br>
+Version Attribute </td>
+      <td style="vertical-align: top;">If customizations
+are specified in inline annotations, the version attribute must be
+specified in &lt;xs:schema&gt; element of the source schema.
+For
+example,<br>
+&lt;xs:schema jaxb:version="2.0"&gt;<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0507 </td>
+      <td style="vertical-align: top;">7.1.4<br>
+Version Attribute </td>
+      <td style="vertical-align: top;">If customizations
+are
+specified in an external binding file, then the jaxb:version attribute
+must be specified in the root element &lt;jaxb:bindings&gt; in
+the
+external binding file. Alternately, a local version attribute may be
+used. Thus the version can be specified either as &lt;jaxb:bindings
+version="2.0" ... /&gt; or &lt;jaxb:bindings jaxb:version="2.0"
+...
+/&gt;&nbsp; Specification of both version and
+&lt;jaxb:version&gt; must
+result in an invalid customization as specified in Section 7.1.5,
+"Invalid Customizations."<br>
+      <br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0508 </td>
+      <td style="vertical-align: top;">7.1.5<br>
+Invalid Customizations </td>
+      <td style="vertical-align: top;">A non conforming
+binding
+declaration is a binding declaration in the
+jaxb namespace but does not conform to this specification. A non
+conforming binding declaration results in a customization error. The
+binding compiler must report the customization error. The exact error
+is not specified here.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="11" rowspan="1"
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold; font-style: italic;">7.4
+Customization Overview</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0509 </td>
+      <td style="vertical-align: top;">7.4.1 <br>
+Scope </td>
+      <td style="vertical-align: top;">global scope: A
+customization value defined in &lt;globalBindings&gt; has
+global scope.
+A global scope covers all the schema elements in the source schema.<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;">xml_schema/schema_bind/bind_globalBindings/collectionType/collectionType00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/collectionType/collectionType00101m2.html<br>
+xml_schema/schema_bind/bind_globalBindings/elem_serializable/elem_serializable00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/elem_serializable/elem_serializable00102m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/enableJavaNamingConventions/AD_valConstr00101m_Bind2.html<br>
+xml_schema/schema_bind/bind_globalBindings/enableJavaNamingConventions/AD_valConstr00101m_Bind3.html<br>
+xml_schema/schema_bind/bind_globalBindings/fixedAttributeAsConstantProperty/AD_valConstr00101m_Bind.html<br>
+xml_schema/schema_bind/bind_globalBindings/generateIsSetMethod/AD_valConstr00101m_Bind1.html<br>
+xml_schema/schema_bind/bind_globalBindings/localScoping/localScoping00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/localScoping/localScoping00103m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/localScoping/localScoping00104m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/mapSimpleTypeDef/typesafeEnumMemberName00101m2.html<br>
+xml_schema/schema_bind/bind_globalBindings/typesafeEnumBase/typesafeEnumBase00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/typesafeEnumBase/typesafeEnumBase00201m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/typesafeEnumMemberName/typesafeEnumMemberName00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/underscoreBinding/particles00303m1_Bind.html<br>
+xml_schema/schema_bind/bind_globalBindings/underscoreBinding/particles00303m1_Bind1.html<br>
+xml_schema/schema_bind/bind_globalBindings/underscoreBinding/particles00303m1_Bind2.html<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0510 </td>
+      <td style="vertical-align: top;">7.4.1 <br>
+Scope </td>
+      <td style="vertical-align: top;">global scope: A
+customization value defined in &lt;globalBindings&gt; has
+global scope.
+A global scope covers all the schema elements in any schemas
+that are included by the source
+schema.<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0511 </td>
+      <td style="vertical-align: top;">7.4.1 <br>
+Scope </td>
+      <td style="vertical-align: top;">global scope: A
+customization value defined in &lt;globalBindings&gt; has
+global scope.
+A global scope covers all the schema elements in any schemas
+that are imported by the source
+schema.<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0512 </td>
+      <td style="vertical-align: top;">7.4.1 <br>
+Scope </td>
+      <td style="vertical-align: top;">schema scope: A
+customization value defined in &lt;schemaBindings&gt; has
+schema scope. A schema scope covers all the schema elements in the
+target namespace of a schema.<br>
+      <br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">false<br>
+      </td>
+      <td style="vertical-align: top;">jaxb tech.<br>
+      </td>
+      <td style="vertical-align: top;">active<br>
+      </td>
+      <td style="vertical-align: top;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0513 </td>
+      <td style="vertical-align: top;">7.4.1 <br>
+Scope </td>
+      <td style="vertical-align: top;">definition scope: A
+customization value in binding declarations of a type definition or
+global
+declaration has definition scope. A definition
+scope covers all schema elements that reference
+the type definition or the global declaration. <br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">false<br>
+      </td>
+      <td style="vertical-align: top;">jaxb tech.<br>
+      </td>
+      <td style="vertical-align: top;">active<br>
+      </td>
+      <td style="vertical-align: top;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0514 </td>
+      <td style="vertical-align: top;">7.4.1 <br>
+Scope </td>
+      <td>component scope: A customization value in
+a binding declaration has component scope if the customization value
+applies only to the schemaelement that was annotated with the
+binding declaration. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">false<br>
+      </td>
+      <td style="vertical-align: top;">jaxb tech.<br>
+      </td>
+      <td style="vertical-align: top;">active<br>
+      </td>
+      <td style="vertical-align: top;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="11" rowspan="1"
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold; font-style: italic;">7.5&lt;globalBindings&gt;
+Declaration</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0515 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">collectionType</span>
+if specified, must be either
+"indexed" or any
+fully qualified class name that implements java.util.List. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/collectionType/collectionType00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/collectionType/collectionType00101m2.html<br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0516 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">fixedAttributeAsConstantProperty</span>
+if specified , defines
+the customization value
+fixedAttributeAsConstantProperty. The value must be one
+of "true", false", "1" or"0". </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/fixedAttributeAsConstantProperty/AD_valConstr00101m_Bind.html<br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0517 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">generateIsSetMethod</span>
+if specified, defines the
+customization
+value of generateIsSetMethod.The value must be one of
+"true", false", "1" or"0". </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/generateIsSetMethod/AD_valConstr00101m_Bind1.html<br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0518 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">enableFailFastCheck</span>
+if specified, defines the
+customization
+value enableFailFastCheck.The value must be one of "true",
+"false", "1" or"0". If enableFailFastCheck is "true"
+or "1" and the JAXB implementation supports this optional checking,
+type constraint checking when setting a property is performed as
+described in Section 5.5, "Properties". </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0519 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">choiceContentProperty</span>
+if specified,defines the
+customization
+value choiceContentProperty . The value must be one of
+"true", false", "1" or"0". </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0522 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">typesafeEnumBase</span>
+if specified, defines the
+customization value
+typesafeEnumBase. The value must be a list of QNames, each of
+which must resolve to a simple type definition. Only simple type
+definitions with an enumeration facet and a restriction base type
+listed in
+typesafeEnumBase or derived from a type listed in
+typesafeEnumBase is bound to a typesafeEnumClass by
+default as specified in Section 6.2.3, "Enum Type". </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/typesafeEnumBase/typesafeEnumBase00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/typesafeEnumBase/typesafeEnumBase00201m1.html<br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0523 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td>The <span style="font-style: italic;">typesafeEnumBase</span>
+cannot contain the following simple
+types
+and therefore a JAXB implementation is not required to support the
+binding of the these types to typesafe enumeration class:
+"xs:QName", "xs:NOTATIION", xs:base64Binary",
+"xs:hexBinary", "xs:date", "xs:time",
+"xs:dateTime", "xs:duration", "xs:gDay",
+"xs:gMonth", "xs:gYear", "xs:gMonthDay",
+"xs:gYearMonth", "xs:IDREF",
+"xs:ID". If any of them
+are specified, it must result in an invalid customization as specified
+in
+Section 7.1.5, "Invalid Customizations." </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0525 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">typesafeEnumMaxMembers</span>
+if specified, defines the
+maximum number
+of enum facets that a simple type definition can have and be consider
+to
+binding to an enum type by default. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0526 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">generateElementClass</span>
+if specified as true, a
+schema-derived
+Element class, as specified in Section 5.6.2, "Java Element
+Class", is
+generated for each element declaration that has an element factory
+method generated for it. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0527 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">generateValueClass</span>
+if specified as true, a
+schema-derived Java
+value class is generated for each complex type definiton.Value class is
+specified in Section 5.4.1, "Value Class," on page
+53. If
+generateValueClass is specified as false, a schema-derived interface
+and
+implementation class is generated for each complex type definition as
+specified in Section 5.4.2, "Java Content
+Interface". </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0528 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">optionalProperty</span>
+controls how a JAXB property with a
+primitive
+base type that represents an optional non-nillable element/
+attribute is bound. If the attribute has the value "wrapper", then
+the base type of the JAXB property is the wrapper class for the
+primitive type. A user can indicate that this optional property
+is not set by calling the setter with "null" value.
+If the
+attribute&acirc;&#8364;&#8482;s value is "primitive", it binds as it did in JAXB
+1.0.
+If the attribute&acirc;&#8364;&#8482;s value is "isSet", it
+binds the optional
+property using the primitive base type and also the isSet/unset
+methods are generated for the optional property. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0529 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">mapSimpleTypeDef</span>
+controls whether a JAXB mapped class
+should be
+generated for each simple type definition as specified in Section
+6.2.2.2,
+"Bind to a JAXB mapped class". </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/mapSimpleTypeDef/typesafeEnumMemberName00101m2.html<br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0530 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td><span style="font-style: italic;">localScoping</span>
+attribute can have the value of either
+nested or toplevel.
+This attribute describes the JAXB binding of nested XML schema
+component to either a nested schema-derived JAXB class or a toplevel
+schema-derived JAXB class. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/localScoping/localScoping00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/localScoping/localScoping00103m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/localScoping/localScoping00104m1.html<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">JAXB:SPEC:CS2J:05301<br>
+      </td>
+      <td valign="top">7.5.1<br>
+Usage</td>
+      <td valign="top"><i>generateElementProperty</i> if specified,
+controls the&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+generation of JAXBElement property. The value must be one of &nbsp;
+"true", "false", "1", or "0". The default is absence of the value.<br>
+      </td>
+      <td align="center" valign="top">true<br>
+      </td>
+      <td align="center" valign="top"><br>
+      </td>
+      <td align="center" valign="top">false<br>
+      </td>
+      <td align="center" valign="top">jaxb tech.<br>
+      </td>
+      <td align="center" valign="top">active<br>
+      </td>
+      <td align="center" valign="top">true<br>
+      </td>
+      <td align="center" valign="top">false<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0531 </td>
+      <td>7.5.1<br>
+Usage</td>
+      <td>For inline annotation, a &lt;globalBindings&gt;
+is
+valid only in the annotation
+element of the &lt;schema&gt; element. There must only be a
+single
+instance of a
+&lt;globalBindings&gt; declaration in the annotation element of
+the &lt;schema&gt; element. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0532"></a>JAXB:SPEC:CS2J:0532 </td>
+      <td>7.5.2<br>
+Customized Name Mapping</td>
+      <td>If <span style="font-style: italic;">enableJavaNamingConventions</span>
+is defined and the value
+is "true" or "1", then the customization name (except for constant
+name) specified in the
+section from where this section is referenced must be mapped to Java
+identifier
+which follows the Java language naming conventions as specified in
+Section
+D.6, "Conforming Java Identifier Algorithm";
+otherwise
+the customized name must be used as is.</td>
+      <td style="vertical-align: top; text-align: center;">true</td>
+      <td><a href="#JAXB:SPEC:CS2J:0521"><br>
+      </a></td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/enableJavaNamingConventions/AD_valConstr00101m_Bind2.html<br>
+xml_schema/schema_bind/bind_globalBindings/enableJavaNamingConventions/AD_valConstr00101m_Bind3.html<br>
+      </td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0533"></a>JAXB:SPEC:CS2J:0533 </td>
+      <td>7.5.3<br>
+Underscore Handling</td>
+      <td>The default value for @underscoreBinding is
+"asWordSeparator" and categorizes underscore, &acirc;&#8364;&#732;_&acirc;&#8364;&#8482;,
+as a punctuation mark
+in the XML name to Java identifier algorithm specified in Appendix D.2.
+The resulting algorithm transforms one or more consecutive underscores
+in an XML name to camel
+case separated words in the derived Java class and method names.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/underscoreBinding/particles00303m1_Bind1.html<br>
+xml_schema/schema_bind/bind_globalBindings/underscoreBinding/particles00303m1_Bind2.html</td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0534"></a>JAXB:SPEC:CS2J:0534 </td>
+      <td>7.5.3<br>
+Underscore Handling</td>
+      <td>When @underscoreBinding is "asCharInWord",
+underscore
+(&acirc;&#8364;&#732;_&acirc;&#8364;&#8482;) is
+considered a special letter within a word. The result is that all
+underscore
+characters from the original XML name are preserved in the derived Java
+identifier. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/underscoreBinding/particles00303m1_Bind.html<br>
+xml_schema/schema_bind/bind_globalBindings/underscoreBinding/particles00303m1_Bind2.html</td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0535"></a>JAXB:SPEC:CS2J:0535 </td>
+      <td>7.5.5<br>
+@typesafeEnumMemberName</td>
+      <td><span style="font-style: italic;">skipGeneration</span>
+An enum type is not generated. This is the default behavior if
+typesafeEnumMemberName has not been specified. A binding
+compiler may report a warning on why the simple type definition was not
+bound to an enum type. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0536"></a>JAXB:SPEC:CS2J:0536 </td>
+      <td>7.5.5<br>
+@typesafeEnumMemberName</td>
+      <td><span style="font-style: italic;">generateName</span>
+The constant fields name is "VALUE_&lt;N&gt;" where
+&lt;N&gt; is 1 for the first
+enumeration value and increments by 1 to represent each value within
+the
+XML enumeration. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/typesafeEnumMemberName/typesafeEnumMemberName00101m1.html</td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0537"></a>JAXB:SPEC:CS2J:0537 </td>
+      <td>7.5.5<br>
+@typesafeEnumMemberName</td>
+      <td><span style="font-style: italic;">generateError</span>
+An error must be reported. </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0538 </td>
+      <td>7.5.6<br>
+&lt;serializable&gt; Declaration</td>
+      <td>When the serializable customization is specified, all
+schema-derived classes implement java.io.Serializable. Each class is
+generated with a serialVersionUID field set to the value specified by
+@uid.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_globalBindings/elem_serializable/elem_serializable00101m1.html<br>
+xml_schema/schema_bind/bind_globalBindings/elem_serializable/elem_serializable00102m1.html</td>
+    </tr>
+    <tr>
+      <td valign="top">JAXB:SPEC:CS2J:0538</td>
+      <td valign="top">7.5.7 <br>
+      <i>@generateElementProperty</i><br>
+      </td>
+      <td valign="top">&nbsp;&nbsp;&nbsp; Some schemas use both
+minOccurs="0" on element as well as nillable="true", causing the
+generation of JAXBElement. This customization lets you control this
+behavior. This attribute may take two values:<br>
+      <br>
+true:<br>
+&nbsp;&nbsp;&nbsp; Always generate properties to use JAXBElement,
+unless overriden by &lt;jaxb:property
+generateElementProperty="false"/&gt; on individual property.<br>
+      <br>
+false:<br>
+&nbsp;&nbsp;&nbsp; When generating properties from &lt;element
+nillable="true" minOccurs="0" /&gt;, generate a property not to use
+JAXBElement, as if the element declaration were just &lt;element
+nillable="true"/&gt;, unless overriden by &lt;jaxb:property
+generateElementProperty="true" /&gt; on individual property.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is an error to specify
+this customization, when the property is required to be JAXBElement
+(such as when a property contains multiple elements with different
+names but of the same type.)<br>
+      <br>
+      </td>
+      <td valign="top">true<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">false<br>
+      </td>
+      <td valign="top">jaxb tech.<br>
+      </td>
+      <td valign="top">active t<br>
+      </td>
+      <td valign="top">true<br>
+      </td>
+      <td valign="top">false<br>
+      </td>
+      <td valign="top"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="11" rowspan="1"
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold; font-style: italic;">7.6
+&lt;schemaBindings&gt; Declaration</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:05381 </td>
+      <td>7.6.1 Usage<br>
+      </td>
+      <td><span style="font-weight: bold;">map</span> if specified,
+prevents the classes from being generated from this schema. When the
+value is &#8220;0&#8221; or &#8220;false&#8221;, then no class/interface/enum will be generated
+from this package. map defaults to true.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.<br>
+2.1<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>
+        schema_bind/bind_schemaBindings/map/map00101m1.html<br>
+        schema_bind/bind_schemaBindings/map/map00101m2.html<br>
+        schema_bind/bind_schemaBindings/map/map00101m3.html
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0539 </td>
+      <td>7.6.1.1 <br>
+package</td>
+      <td><span style="font-style: italic;">name</span>
+if specified, defines the customization value packageName. packageName
+must be a valid Java package name.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>
+        schema_bind/bind_schemaBindings/package/package00101m1.html
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0540 </td>
+      <td>7.6.1.1 <br>
+package</td>
+      <td><span style="font-style: italic;">&lt;javadoc&gt;</span>
+if specified, customizes the
+package level Javadoc. <span style="font-style: italic;">&lt;javadoc&gt;</span>
+must be specified as described in Section 7.11,
+"&lt;javadoc&gt; Declaration." The Javadoc
+must be generated as specified
+in Section 7.11.3, "Javadoc Customization."</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0541 </td>
+      <td>7.6.1.2 <br>
+nameXmlTransform</td>
+      <td>&lt;typeName&gt; for the symbol space
+"type definitions"<br>
+      <ul>
+        <li>suffix</li>
+        <li>prefix</li>
+      </ul>
+If suffix is specified, it must be appended to all the default XML
+names in the
+symbol space. The prefix if specified, must be prepended to the default
+XML name.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>
+        schema_bind/bind_schemaBindings/nameXmlTransform/nameXmlTransform00101m1.html
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0542 </td>
+      <td>7.6.1.2 <br>
+nameXmlTransform</td>
+      <td>&lt;elementName&gt; for the symbol space
+"element definitions"<br>
+      <ul>
+        <li>suffix</li>
+        <li>prefix</li>
+      </ul>
+If suffix is specified, it must be appended to all the default XML
+names in the
+symbol space. The prefix if specified, must be prepended to the default
+XML name.<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>
+        schema_bind/bind_schemaBindings/nameXmlTransform/nameXmlTransform00101m2.html
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0543 </td>
+      <td>7.6.1.2 <br>
+nameXmlTransform</td>
+      <td>&lt;modelGroupName&gt; for the symbol space
+"model group definitions."<br>
+      <ul>
+        <li>suffix</li>
+        <li>prefix</li>
+      </ul>
+If suffix is specified, it must be appended to all the default XML
+names in the
+symbol space. The prefix if specified, must be prepended to the default
+XML name.<br>
+      <ul>
+      </ul>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0544 </td>
+      <td>7.6.1.2 <br>
+nameXmlTransform</td>
+      <td>&lt;anonymousTypeName&gt; for customizing Java
+value class to which an anonymous type is bound.<br>
+      <ul>
+        <li>suffix</li>
+        <li>prefix</li>
+      </ul>
+If suffix is specified, it must be appended to all the default XML
+names in the
+symbol space. The prefix if specified, must be prepended to the default
+XML name.
+      <ul>
+      </ul>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>
+        schema_bind/bind_schemaBindings/nameXmlTransform/nameXmlTransform00101m3.html
+      </td>
+    </tr>
+    <tr>
+      <td colspan="11" rowspan="1"
+ style="vertical-align: top; background-color: rgb(204, 204, 204);"><span
+ style="font-weight: bold; font-style: italic;">7.7
+&lt;class&gt; Declaration</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0546"></a>JAXB:SPEC:CS2J:0546 </td>
+      <td>7.7.1<br>
+Usage<br>
+7.7.2<br>
+Customization Overrides</td>
+      <td><span style="font-style: italic;">className</span>
+is the name of the derived value class, if specified. It must
+be a legal Java class name and must not contain a package prefix. The
+package prefix is inherited from the current value of package.
+Overrides defaults. </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0547"></a>JAXB:SPEC:CS2J:0547 </td>
+      <td><br>
+      </td>
+      <td><span style="font-style: italic;">implClass</span>
+if specified, is the name of the implementation class for
+className and must include the complete package name. Note that
+this customization only impacts the return value for
+className&acirc;&#8364;&#8482;s
+factory method. This customization is ignored when new is used to
+create instances of a schema-derived Value class.&nbsp;</td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0547"></a>JAXB:SPEC:CS2J:05471 </td>
+      <td><br>
+      </td>
+      <td><span style="font-style: italic;">ref</span> if specified, is
+the name of the value class that is provided outside the schema
+compiler. This customization causes a schema compiler to refer to this
+external class, as opposed to generate a definition. It must include
+the complete package name. This attribute is mutually exclusive with
+the className attribute and the implClass attribute. </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0548"></a>JAXB:SPEC:CS2J:0548 </td>
+      <td><br>
+      </td>
+      <td>&lt;javadoc&gt; element, if specified
+customizes the Javadoc for the
+derived value class. &lt;javadoc&gt; must be specified as
+described in
+Section 7.11, "&lt;javadoc&gt;
+Declaration." Overrides defaults. </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td><a name="JAXB:SPEC:CS2J:0549"></a>JAXB:SPEC:CS2J:0549 </td>
+      <td><br>
+      </td>
+      <td><span style="font-weight: bold;">package
+name:</span> The name of the package is packageName
+inherited from a scope that covers this schema element.</td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0550 </td>
+      <td style="vertical-align: top;">7.7.3.1<br>
+&nbsp;Complex Type Definition</td>
+      <td style="vertical-align: top;">When &lt;class&gt;
+customization specified in
+the annotation element of the
+complex type definition, the complex type definition must be bound to a
+Java
+value class as specified in Section 6.3.2, "Java value
+class"</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1" rowspan="1">JAXB:SPEC:CS2J:0551</td>
+      <td rowspan="1"><br>
+      </td>
+      <td rowspan="1"><span style="font-style: italic;">className</span>
+is the name of the derived value class, if specified. It must
+be a legal Java class name and must not contain a package prefix. The
+package prefix is inherited from the current value of package.
+Overrides defaults.</td>
+      <td style="text-align: center;">true<br>
+      </td>
+      <td><a href="#JAXB:SPEC:CS2J:0546">JAXB:SPEC:CS2J:0546</a><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      <br>
+      </td>
+      <td>xml_schema/schema_bind/bind_class/name/name00102m_Bind.html<br>
+xml_schema/schema_bind/bind_class/name/name00103m1.html</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0552</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;">implClass</span>
+if specified, is the name of the implementation class for
+className and must include the complete package name. Note that
+this customization only impacts the return value for
+className&acirc;&#8364;&#8482;s
+factory method. This customization is ignored when new is used to
+create instances of a schema-derived Value class. <br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true</td>
+      <td style="vertical-align: top;"><a href="#JAXB:SPEC:CS2J:0547">JAXB:SPEC:CS2J:0547</a><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      <br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0553</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">&lt;javadoc&gt; element, if<span
+ style="font-style: italic;">className</span>
+is the name of the derived value class, if specified. It must
+be a legal Java class name and must not contain a package prefix. The
+package prefix is inherited from the current value of package.
+Overrides defaults. specified
+customizes the Javadoc for the
+derived value class. &lt;javadoc&gt; must be specified as
+described in
+Section 7.11, "&lt;javadoc&gt;
+Declaration." Overrides defaults.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><a href="#JAXB:SPEC:CS2J:0548">JAXB:SPEC:CS2J:0548</a><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1" rowspan="1">JAXB:SPEC:CS2J:0554 </td>
+      <td colspan="1" rowspan="1">7.7.3.2 <br>
+Simple Type Definition</td>
+      <td colspan="1" rowspan="1">When
+&lt;class&gt; customization specified in
+the annotation element of a simple type definition, the simple type
+definition must be bound to a Java
+value class as specified in Section 6.2.2.2<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true </td>
+      <td style="vertical-align: top; text-align: center;"> <br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true</td>
+      <td>xml_schema/schema_bind/bind_class/name/name00104m1.html</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0555</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;">className</span>
+is the name of the derived value class, if specified. It must
+be a legal Java class name and must not contain a package prefix. The
+package prefix is inherited from the current value of package.
+Overrides defaults.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><a
+ href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0546">JAXB:SPEC:CS2J:0546</a></td>
+      <td style="vertical-align: top; text-align: center;">false</td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true </td>
+      <td style="vertical-align: top;">xml_schema/schema_bind/bind_class/name/name00104m1.html
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="1" style="vertical-align: top;">JAXB:SPEC:CS2J:0556</td>
+      <td rowspan="1" style="vertical-align: top;"><br>
+      </td>
+      <td rowspan="1" style="vertical-align: top;"><span
+ style="font-style: italic;">implClass</span>
+if specified, is the name of the implementation class for
+className and must include the complete package name. Note that
+this customization only impacts the return value for
+className&acirc;&#8364;&#8482;s
+factory method. This customization is ignored when new is used to
+create instances of a schema-derived Value class. <br>
+      </td>
+      <td style="text-align: center;">true</td>
+      <td><a href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0547">JAXB:SPEC:CS2J:0547</a></td>
+      <td style="vertical-align: top; text-align: center;">false <br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="text-align: center;">false</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="1" style="vertical-align: top;">JAXB:SPEC:CS2J:0557</td>
+      <td rowspan="1" style="vertical-align: top;"><br>
+      </td>
+      <td rowspan="1" style="vertical-align: top;">&lt;javadoc&gt;
+element, if specified
+customizes the Javadoc for the
+derived value class. &lt;javadoc&gt; must be specified as
+described in
+Section 7.11, "&lt;javadoc&gt;
+Declaration." Overrides defaults.</td>
+      <td style="text-align: center;">true</td>
+      <td><a href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0548">JAXB:SPEC:CS2J:0548</a></td>
+      <td style="vertical-align: top; text-align: center;">false</td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="text-align: center;">false</td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0558 </td>
+      <td>7.7.3.3 <br>
+Model Group Definition</td>
+      <td>It is invalid to place a &lt;jaxb:class&gt;
+customization on a model group.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td> xml_schema/schema_bind/bind_class/name/name00105m1.html</td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0559 </td>
+      <td>7.7.3.4 <br>
+Model Group</td>
+      <td>It is invalid to place a &lt;jaxb:class&gt;
+customization on an unnamed model group.<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1" rowspan="1">JAXB:SPEC:CS2J:0560 </td>
+      <td colspan="1" rowspan="1">7.7.3.5 <br>
+Global Element Declaration</td>
+      <td>A &lt;class&gt; declaration is allowed in the
+annotation element of the global
+element declaration. However, the implClass attribute is not allowed.
+The
+global element declaration must be bound as specified in Section 6.7.2,
+"Bind to
+Element Class" applying the customization overrides specified
+in Section 7.7.2,
+"Customization Overrides."</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td><br>
+      <a href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0549"><br>
+      </a></td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="1" style="vertical-align: top;">JAXB:SPEC:CS2J:0561</td>
+      <td rowspan="1" style="vertical-align: top;"><br>
+      </td>
+      <td><span style="font-style: italic;">className</span>
+is the name of the derived value class, if specified. It must
+be a legal Java class name and must not contain a package prefix. The
+package prefix is inherited from the current value of package.
+Overrides defaults.</td>
+      <td style="text-align: center;">true<br>
+      </td>
+      <td><a href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0546">JAXB:SPEC:CS2J:0546</a></td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_class/name/name00101m_Bind.html<br>
+xml_schema/schema_bind/bind_class/name/name00107m1.html </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0562</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td>&lt;javadoc&gt; element, if specified
+customizes the Javadoc for the
+derived value class. &lt;javadoc&gt; must be specified as
+described in
+Section 7.11, "&lt;javadoc&gt;
+Declaration." Overrides defaults.</td>
+      <td style="text-align: center;">true<br>
+      </td>
+      <td><a href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0548">JAXB:SPEC:CS2J:0548</a></td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0563 </td>
+      <td>7.7.3.6 <br>
+Local Element</td>
+      <td>A &lt;class&gt; customization on local element
+reference must
+result in an invalid
+customization as specified in Section 7.1.5, "Invalid
+Customizations"
+since a
+local element reference is never bound to a Java Element class.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;"><a
+ href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0549"><br>
+      </a> </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td>xml_schema/schema_bind/bind_class/name/term00101m_Bind.html</td>
+    </tr>
+    <tr>
+      <td>JAXB:SPEC:CS2J:0564 </td>
+      <td><br>
+      </td>
+      <td>A &lt;class&gt; customization on local element
+declaration applies only when a
+local element declaration is bound to a Java Element class. Otherwise
+it must
+result in an invalid customization as specified in Section 7.1.5,
+"Invalid
+Customizations." If applicable, a local element must be bound
+as specified in
+Section 6.7.1, "Bind to JAXBElement&lt;T&gt;
+Instance" applying the
+customization overrides as specified in Section 7.7.2,
+"Customization
+Overrides."</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0565</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-style: italic;">className</span>
+is the name of the derived value class, if specified. It must
+be a legal Java class name and must not contain a package prefix. The
+package prefix is inherited from the current value of package.
+Overrides defaults.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><a
+ href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0546">JAXB:SPEC:CS2J:0546</a>&nbsp;</td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;">xml_schema/schema_bind/bind_class/name/typeDef00402m_Bind.html
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JAXB:SPEC:CS2J:0566</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">&lt;javadoc&gt; element, if
+specified
+customizes the Javadoc for the
+derived value class. &lt;javadoc&gt; must be specified as
+described in
+Section 7.11, "&lt;javadoc&gt;
+Declaration." Overrides defaults.</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top;"><a
+ href="CustomizedSchema2Java.html#JAXB:SPEC:CS2J:0548">JAXB:SPEC:CS2J:0548</a>&nbsp;</td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">jaxb
+tech.</td>
+      <td style="vertical-align: top; text-align: center;">active</td>
+      <td style="vertical-align: top; text-align: center;">true<br>
+      </td>
+      <td style="vertical-align: top; text-align: center;">false<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

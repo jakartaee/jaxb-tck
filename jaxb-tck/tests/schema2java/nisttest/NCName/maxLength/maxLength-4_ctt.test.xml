@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="maxLength4">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Content Tree tests]]></Title>
+        <Description><![CDATA[
+The tests for checking the content of trees got by unmarshalling
+of the maxLength-4.xsd based XML documents and created dynamically via ObjectFactory. 
+The schema defines a NCName restricted SimpleType.
+Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)maxLength-4_ctt.test.xml	1.4 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.JAXBException</Import>
+        <ExternalSupportClass SourceName="maxLength-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="maxLength4.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet001 - checking the unmarshalled content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the maxLength-4-1.xml document, checks that the document
+has the value 'd'.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="maxLength-4-1.xml"/>
+            <ExternalData Type="iodata" SourceName="maxlength4-maxLength-4-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "d";
+        NISTSchemaNCNameMaxLength4 maxLength_4_1 = (NISTSchemaNCNameMaxLength4)unmarshal("maxLength-4-1.xml");
+
+        String testedValue = maxLength_4_1.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet002 - checking that the method 'get()' returns a set value]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the maxLength-4-2.xml document, changes the document value to
+another value 'x' and checks that the value is changed.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="maxLength-4-2.xml"/>
+            <ExternalData Type="iodata" SourceName="maxlength4-maxLength-4-2.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "x";
+        NISTSchemaNCNameMaxLength4 maxLength_4_2 = (NISTSchemaNCNameMaxLength4)unmarshal("maxLength-4-2.xml");
+        maxLength_4_2.setValue(expectedValue);
+
+        String testedValue = maxLength_4_2.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet003">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet003 - checking that the method 'get()' returns a set value]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the value 'a' and checks that the value is
+set.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "a";
+        NISTSchemaNCNameMaxLength4 maxLength4 = null;
+        
+        try {
+            maxLength4 = (new ObjectFactory()).createNISTSchemaNCNameMaxLength4();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        maxLength4.setValue(expectedValue);
+
+        String testedValue = maxLength4.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet004">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet004 - setting a valid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the maxLength-4-3.xml document, changes the document value to
+the valid value 'dto_t' and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="maxLength-4-3.xml"/>
+            <ExternalData Type="iodata" SourceName="maxlength4-maxLength-4-3.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "dto_t";
+        NISTSchemaNCNameMaxLength4 maxLength_4_3 = (NISTSchemaNCNameMaxLength4)unmarshal("maxLength-4-3.xml");
+        maxLength_4_3.setValue(expectedValue);
+        
+        Status status = validate(maxLength_4_3);
+        if (!status.isPassed()) {
+            return status;
+        }
+
+        String testedValue = maxLength_4_3.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet005">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet005 - setting an invalid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the maxLength-4-4.xml document, changes the document value to
+the invalid value and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="maxLength-4-4.xml"/>
+            <ExternalData Type="iodata" SourceName="maxlength4-maxLength-4-4.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String invalidValue = "";
+        for (int i = 0; i < 36; i++) {
+            invalidValue += "y";
+        }
+        NISTSchemaNCNameMaxLength4 maxLength_4_4 = (NISTSchemaNCNameMaxLength4)unmarshal("maxLength-4-4.xml");
+        maxLength_4_4.setValue(invalidValue);
+        
+        Status status = validate(maxLength_4_4);
+        if (status.isPassed()) {
+            return Status.failed("Unexpectedly passed for the value '" + invalidValue + "'.");
+        }
+        
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet006">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet006 - setting a valid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the valid value 'dto_t' and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "dto_t";
+        NISTSchemaNCNameMaxLength4 maxLength4 = null;
+        
+        try {
+            maxLength4 = (new ObjectFactory()).createNISTSchemaNCNameMaxLength4();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        maxLength4.setValue(expectedValue);
+        
+        Status status = validate(maxLength4);
+        if (!status.isPassed()) {
+            return status;
+        }
+
+        String testedValue = maxLength4.getValue();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet007">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet007 - setting an invalid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the invalid value and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String invalidValue = "";
+        for (int i = 0; i < 36; i++) {
+            invalidValue += "z";
+        }
+        
+        NISTSchemaNCNameMaxLength4 maxLength4 = null;
+        
+        try {
+            maxLength4 = (new ObjectFactory()).createNISTSchemaNCNameMaxLength4();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        maxLength4.setValue(invalidValue);
+        
+        Status status = validate(maxLength4);
+        if (status.isPassed()) {
+            return Status.failed("Unexpectedly passed for the value '" + invalidValue + "'.");
+        }
+        
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

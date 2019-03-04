@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.additional.test74834.Datafile"> 
+  <void property="nonstringsection"> 
+   <object class="javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection"> 
+    <void property="bigintOrIntOrSmallint"> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName0" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>bigint</string> 
+       </object> 
+       <class>java.lang.Long</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <long>-92232036854775808</long> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName0"/> 
+       <class>java.lang.Long</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <long>-1</long> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName0"/> 
+       <class>java.lang.Long</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <long>0</long> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName0"/> 
+       <class>java.lang.Long</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <long>1</long> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName0"/> 
+       <class>java.lang.Long</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <long>92232036854775807</long> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName1" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>int</string> 
+       </object> 
+       <class>java.lang.Integer</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <int>-2147483648</int> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName1"/> 
+       <class>java.lang.Integer</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <int>-1</int> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName1"/> 
+       <class>java.lang.Integer</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <int>0</int> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName1"/> 
+       <class>java.lang.Integer</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <int>1</int> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName1"/> 
+       <class>java.lang.Integer</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <int>2147483647</int> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName2" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>smallint</string> 
+       </object> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>-32768</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName2"/> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>-1</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName2"/> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>0</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName2"/> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>1</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName2"/> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>32767</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName3" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>tinyint</string> 
+       </object> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>0</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName3"/> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>1</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName3"/> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>33</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName3"/> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>254</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName3"/> 
+       <class>java.lang.Short</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <short>255</short> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName4" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>decimal</string> 
+       </object> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>-9954645.9999</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>-99232423454645.999900</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>0.9999</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>995464234235.999900</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>9954645.9999</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>-9954645.9999</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>-99232423454645.999900</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>0.9999</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>995464234235.999900</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName4"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>9954645.9999</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName5" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>money</string> 
+       </object> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>-18888888888.5808</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName5"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>-188.5808</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName5"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>0</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName5"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>188.5808</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName5"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>18888888888.5808</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName6" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>smallmoney</string> 
+       </object> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>-121212.1112</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName6"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>-1.11</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName6"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>0.0</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName6"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>1.11</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName6"/> 
+       <class>java.math.BigDecimal</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="java.math.BigDecimal"> 
+        <string>121212.1112</string> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName7" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>float</string> 
+       </object> 
+       <class>java.lang.Double</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <double>-1.79E308</double> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName7"/> 
+       <class>java.lang.Double</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <double>-1.79</double> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName7"/> 
+       <class>java.lang.Double</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <double>0.0</double> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName7"/> 
+       <class>java.lang.Double</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <double>1.79</double> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName7"/> 
+       <class>java.lang.Double</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <double>1.79E308</double> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName8" class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>real</string> 
+       </object> 
+       <class>java.lang.Float</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <float>-3.4E38</float> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName8"/> 
+       <class>java.lang.Float</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <float>2.79E38</float> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName8"/> 
+       <class>java.lang.Float</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <float>0.0</float> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName8"/> 
+       <class>java.lang.Float</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <float>2.79E38</float> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName8"/> 
+       <class>java.lang.Float</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <float>3.4E38</float> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>datetime</string> 
+       </object> 
+       <class>javasoft.sqe.tests.additional.test74834.MyDateTime</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="javasoft.sqe.tests.additional.test74834.MyDateTime"> 
+        <void property="date"> 
+         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+          <string>2000-10-10</string> 
+         </object> 
+        </void> 
+        <void property="localizedDt"> 
+         <string>12-May-2000 12:54:00.345 AM</string> 
+        </void> 
+        <void property="time"> 
+         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+          <string>12:54:00.000</string> 
+         </object> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object class="javax.xml.namespace.QName"> 
+        <string></string> 
+        <string>smalldatetime</string> 
+       </object> 
+       <class>javasoft.sqe.tests.additional.test74834.MySmallDateTime</class> 
+       <class>javasoft.sqe.tests.additional.test74834.Datafile$Nonstringsection</class> 
+       <object class="javasoft.sqe.tests.additional.test74834.MySmallDateTime"> 
+        <void property="date"> 
+         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+          <string>2000-10-10</string> 
+         </object> 
+        </void> 
+        <void property="localizedSdt"> 
+         <string>10-15-2001 12:03:00 PM</string> 
+        </void> 
+        <void property="time"> 
+         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+          <string>12:54:00</string> 
+         </object> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+    </void> 
+   </object> 
+  </void> 
+  <void property="stringsection"> 
+   <object class="javasoft.sqe.tests.additional.test74834.Datafile$Stringsection"> 
+    <void property="string"> 
+     <void method="add"> 
+      <string>aqopkde#^90d</string> 
+     </void> 
+     <void method="add"> 
+      <string>qpweipqweiaqopkde#^90d</string> 
+     </void> 
+     <void method="add"> 
+      <string>aqopkde#^90asdaskdl;asd</string> 
+     </void> 
+     <void method="add"> 
+      <string>aqopkdejgdlepsdf#^90d</string> 
+     </void> 
+     <void method="add"> 
+      <string>aqopkde#^90kl;345l3;lkldf345d</string> 
+     </void> 
+     <void method="add"> 
+      <string>alg;ldfqopkde34059-fld;#^90d</string> 
+     </void> 
+     <void method="add"> 
+      <string>aqodfflkgd;flpkd%$e(*34534)$#%#^90d</string> 
+     </void> 
+     <void method="add"> 
+      <string>aqopfskdjflknmvkde#^90d</string> 
+     </void> 
+     <void method="add"> 
+      <string>sdfsdfsdaqopkde#^90d430985dflskjsdf</string> 
+     </void> 
+     <void method="add"> 
+      <string>aqopdsflsd;lf0495-304kde#^90d</string> 
+     </void> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

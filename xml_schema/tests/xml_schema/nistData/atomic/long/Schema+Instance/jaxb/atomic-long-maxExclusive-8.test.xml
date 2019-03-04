@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-long-maxExclusive-8">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-long-maxExclusive-8]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/long is restricted by facet maxExclusive with value 911347761427307999.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#long">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#long
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxExclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxExclusive
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-long-maxExclusive-8.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-atomic-long-maxExclusive-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-long-maxExclusive-8.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-long-maxExclusive-8">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

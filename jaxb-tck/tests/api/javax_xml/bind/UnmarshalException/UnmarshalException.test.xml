@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="UnmarshalException">
+    <TestGroupDocumentation>
+        <Title><![CDATA[General tests of constructors and methods]]></Title>
+        <Description><![CDATA[General tests of constructors and methods.]]></Description>
+        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedClass>UnmarshalException</TestedClass>
+        <Author><![CDATA[Evgueni Rouban]]></Author>
+    </TestGroupDocumentation>
+
+    <TestGroupAttributes>
+       <AttrElem Name="tdFile">UnmarshalException</AttrElem>
+       <AttrElem Name="scInfo">@(#)UnmarshalException.test.xml	1.1 02/11/04</AttrElem>
+       <AttrElem Name="testType">MultiTest</AttrElem>
+       <Keyword>runtime</Keyword>
+       <Keyword>positive</Keyword>
+    </TestGroupAttributes>
+
+    <CodeSet>
+        <Import>javax.xml.bind.UnmarshalException</Import>
+        <SupportCode><![CDATA[
+    static final String msg = "test message";
+    static final String err = "error code";
+    static final Throwable linkedException = new Throwable();
+]]></SupportCode>
+    </CodeSet>
+
+    <TestCase ID="Ctor001">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified detail message. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message)</MemberSig>
+                <ExpectedResultSideEffect>the message is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg);
+    if (me.getMessage() != msg) {
+        return Status.failed("getMessage() != msg: \"" 
+                           + me.getMessage() + "\", expected is \"" + msg + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor002">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The errorCode will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message)</MemberSig>
+                <ExpectedResultSideEffect>errorCode is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg);
+    if (me.getErrorCode() != null) {
+        return Status.failed("getErrorCode() != null: \"" 
+                           + me.getErrorCode() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor003">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The linkedException will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg);
+    if (me.getLinkedException() != null) {
+        return Status.failed("getLinkedException() != null: \"" 
+                           + me.getLinkedException() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor004">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified detail message. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.String errorCode)</MemberSig>
+                <ExpectedResultSideEffect>the message is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, err);
+    if (me.getMessage() != msg) {
+        return Status.failed("getMessage() != msg: \"" 
+                           + me.getMessage() + "\", expected is \"" + msg + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor005">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified errorCode. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.String errorCode)</MemberSig>
+                <ExpectedResultSideEffect>the errorCode is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, err);
+    if (me.getErrorCode() != err) {
+        return Status.failed("getErrorCode() != err: \"" 
+                           + me.getErrorCode() + "\", expected is \"" + err + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor006">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The linkedException will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.String errorCode)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, err);
+    if (me.getLinkedException() != null) {
+        return Status.failed("getLinkedException() != null: \"" 
+                           + me.getLinkedException() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor007">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified detail message. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.String errorCode, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>the message is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, err, linkedException);
+    if (me.getMessage() != msg) {
+        return Status.failed("getMessage() != msg: \"" 
+                           + me.getMessage() + "\", expected is \"" + msg + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor008">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified errorCode. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.String errorCode, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>the errorCode is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, err, linkedException);
+    if (me.getErrorCode() != err) {
+        return Status.failed("getErrorCode() != err: \"" 
+                           + me.getErrorCode() + "\", expected is \"" + err + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor009">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified linkedException. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.String errorCode, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, err, linkedException);
+    if (me.getLinkedException() != linkedException) {
+        return Status.failed("getLinkedException() != linkedException: \"" 
+                           + me.getLinkedException() + "\", expected is \"" + linkedException + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor010">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified detail message. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>the message is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, linkedException);
+    if (me.getMessage() != msg) {
+        return Status.failed("getMessage() != msg: \"" 
+                           + me.getMessage() + "\", expected is \"" + msg + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor011">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The errorCode will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>errorCode is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, linkedException);
+    if (me.getErrorCode() != null) {
+        return Status.failed("getErrorCode() != null: \"" 
+                           + me.getErrorCode() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor012">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified linkedException. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.String message, java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(msg, linkedException);
+    if (me.getLinkedException() != linkedException) {
+        return Status.failed("getLinkedException() != linkedException: \"" 
+                           + me.getLinkedException() + "\", expected is \"" + linkedException + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor013">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The detail message will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>the message is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(linkedException);
+    if (me.getMessage() != null) {
+        return Status.failed("getMessage() != null: \"" 
+                           + me.getMessage() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor014">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+The errorCode will default to null.
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>errorCode is null</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(linkedException);
+    if (me.getErrorCode() != null) {
+        return Status.failed("getErrorCode() != null: \"" 
+                           + me.getErrorCode() + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor015">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a UnmarshalException with the specified linkedException. 
+                 ]]></InlineAssertion>
+                <MemberSig>public UnmarshalException(java.lang.Throwable exception)</MemberSig>
+                <ExpectedResultSideEffect>linkedException is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    UnmarshalException me = new UnmarshalException(linkedException);
+    if (me.getLinkedException() != linkedException) {
+        return Status.failed("getLinkedException() != linkedException: \"" 
+                           + me.getLinkedException() + "\", expected is \"" + linkedException + "\"");
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+</TestGroup>
+<!-- Ident: @(#)UnmarshalException.test.xml	1.1 02/11/04 -->

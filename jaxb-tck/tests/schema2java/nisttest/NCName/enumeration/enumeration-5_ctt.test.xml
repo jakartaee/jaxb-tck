@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="enumeration5">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Content Tree tests (enumeration-5.xsd)]]></Title>
+        <Description><![CDATA[
+The tests for checking the content of trees got by unmarshalling
+of the enumeration-5.xsd based XML documents and created dynamically via ObjectFactory. 
+The schema defines a NCName restricted SimpleType.
+Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)enumeration-5_ctt.test.xml	1.5 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.JAXBException</Import>
+        <ExternalSupportClass SourceName="enumeration-5.xsd"/>
+        <ExternalData Type="iodata" SourceName="enumeration5.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet001 - checking the unmarshalled content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the enumeration-5-1.xml document, checks that the document
+has the value 'xsoftware.and_as.technologies.for-must.are_software.of-its_t'.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-5-1.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration5-enumeration-5-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "xsoftware.and_as.technologies.for-must.are_software.of-its_t";
+        NISTSchemaNCNameEnumeration5 enumeration_5_1 = (NISTSchemaNCNameEnumeration5)unmarshal("enumeration-5-1.xml");
+
+        String testedValue = enumeration_5_1.getValue().toString();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet002 - checking that the method 'get()' returns a set value]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the enumeration-5-2.xml document, changes the document value to
+another value '_result-by_business_those.wa' and checks that the value is changed.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-5-2.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration5-enumeration-5-2.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "_result-by_business_those.wa";
+        NISTSchemaNCNameEnumeration5 enumeration_5_2 = (NISTSchemaNCNameEnumeration5)unmarshal("enumeration-5-2.xml");
+        enumeration_5_2.setValue(NISTSchemaNCNameEnumeration5Type.fromString(expectedValue));
+
+        String testedValue = enumeration_5_2.getValue().toString();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet003">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet003 - checking that the method 'get()' returns a set value]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the value '_result-by_business_those.wa' and checks that the value is
+set.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "_result-by_business_those.wa";
+        NISTSchemaNCNameEnumeration5 enumeration5 = null;
+        
+        try {
+            enumeration5 = (new ObjectFactory()).createNISTSchemaNCNameEnumeration5();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        enumeration5.setValue(NISTSchemaNCNameEnumeration5Type.fromString(expectedValue));
+
+        String testedValue = enumeration5.getValue().toString();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet004">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet004 - setting a valid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the enumeration-5-3.xml document, changes the document value to
+the valid value '_result-by_business_those.wa' and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-5-3.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration5-enumeration-5-3.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "_result-by_business_those.wa";
+        NISTSchemaNCNameEnumeration5 enumeration_5_3 = (NISTSchemaNCNameEnumeration5)unmarshal("enumeration-5-3.xml");
+        enumeration_5_3.setValue(NISTSchemaNCNameEnumeration5Type.fromString(expectedValue));
+        
+        Status status = validate(enumeration_5_3);
+        if (!status.isPassed()) {
+            return status;
+        }
+
+        String testedValue = enumeration_5_3.getValue().toString();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet005">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet005 - setting a valid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the valid value '_result-by_business_those.wa' and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String expectedValue = "_result-by_business_those.wa";
+        NISTSchemaNCNameEnumeration5 enumeration5 = null;
+        
+        try {
+            enumeration5 = (new ObjectFactory()).createNISTSchemaNCNameEnumeration5();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        enumeration5.setValue(NISTSchemaNCNameEnumeration5Type.fromString(expectedValue));
+        
+        Status status = validate(enumeration5);
+        if (!status.isPassed()) {
+            return status;
+        }
+
+        String testedValue = enumeration5.getValue().toString();
+
+        if (!expectedValue.equals(testedValue)) {
+            String msg = "Wrong value: " + testedValue;
+            msg += " Expected: " + expectedValue;
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

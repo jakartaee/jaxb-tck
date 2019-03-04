@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="DefaultMappingTest">
+  <TestGroupDocumentation>
+    <Title>Tests to check default mapping</Title>
+    <Author>auto generated</Author>
+  </TestGroupDocumentation>
+  <TestGroupAttributes>
+    <AttrElem Name="scInfo">@(#)DefaultMappingTest.test.xml	1.1 07/04/19</AttrElem>
+    <AttrElem Name="testType">J2XTestWTB</AttrElem>
+    <Keyword>positive</Keyword>
+<!--
+    <Keyword>java_to_schema</Keyword>
+-->
+    <Keyword>runtime</Keyword>
+    <Keyword>jaxb</Keyword>
+  </TestGroupAttributes>
+  <CodeSet>
+    <Dependency>
+        <Lib>jaxb.j2x</Lib>
+    </Dependency>
+    <BaseClass>javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTestExt</BaseClass>
+  </CodeSet>
+  <TestCase ID="BooleanTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.Boolean'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.Boolean'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="BooleanTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "booleanTest", "java.lang.Boolean", "http://www.w3.org/2001/XMLSchema", "boolean" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="ByteTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.Byte'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.Byte'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ByteTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "byteTest", "java.lang.Byte", "http://www.w3.org/2001/XMLSchema", "byte" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="ShortTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.Short'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.Short'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ShortTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "shortTest", "java.lang.Short", "http://www.w3.org/2001/XMLSchema", "short" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="IntegerTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.Integer'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.Integer'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="IntegerTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "integerTest", "java.lang.Integer", "http://www.w3.org/2001/XMLSchema", "int" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="LongTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.Long'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.Long'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="LongTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "longTest", "java.lang.Long", "http://www.w3.org/2001/XMLSchema", "long" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="FloatTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.Float'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.Float'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="FloatTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "floatTest", "java.lang.Float", "http://www.w3.org/2001/XMLSchema", "float" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="DoubleTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.Double'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.Double'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="DoubleTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "doubleTest", "java.lang.Double", "http://www.w3.org/2001/XMLSchema", "double" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="StringTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.String'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.String'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="StringTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "stringTest", "java.lang.String", "http://www.w3.org/2001/XMLSchema", "string" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="BigIntegerTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.math.BigInteger'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.math.BigInteger'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="BigIntegerTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "bigIntegerTest", "java.math.BigInteger", "http://www.w3.org/2001/XMLSchema", "integer" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="BigDecimalTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.math.BigDecimal'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.math.BigDecimal'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="BigDecimalTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "bigDecimalTest", "java.math.BigDecimal", "http://www.w3.org/2001/XMLSchema", "decimal" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="CalendarTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.util.Calendar'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.util.Calendar'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="CalendarTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "calendarTest", "java.util.Calendar", "http://www.w3.org/2001/XMLSchema", "dateTime" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="DateTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.util.Date'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.util.Date'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="DateTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "dateTest", "java.util.Date", "http://www.w3.org/2001/XMLSchema", "dateTime" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="QNameTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'javax.xml.namespace.QName'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'javax.xml.namespace.QName'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="QNameTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "qNameTest", "javax.xml.namespace.QName", "http://www.w3.org/2001/XMLSchema", "QName" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="URITest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.net.URI'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.net.URI'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="URITest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "uriTest", "java.net.URI", "http://www.w3.org/2001/XMLSchema", "string" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="XMLGregorianCalendarTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'javax.xml.datatype.XMLGregorianCalendar'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'javax.xml.datatype.XMLGregorianCalendar'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="XMLGregorianCalendarTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "xmlGregorianCalendarTest", "javax.xml.datatype.XMLGregorianCalendar", "http://www.w3.org/2001/XMLSchema", "anySimpleType" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="DurationTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'javax.xml.datatype.Duration'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'javax.xml.datatype.Duration'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="DurationTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "durationTest", "javax.xml.datatype.Duration", "http://www.w3.org/2001/XMLSchema", "duration" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="ObjectTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.lang.Object'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.lang.Object'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ObjectTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "objectTest", "java.lang.Object", "http://www.w3.org/2001/XMLSchema", "anyType" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="ImageTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.awt.Image'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.awt.Image'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ImageTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "imageTest", "java.awt.Image", "http://www.w3.org/2001/XMLSchema", "base64Binary" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="DataHandlerTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'javax.activation.DataHandler'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'javax.activation.DataHandler'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="DataHandlerTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "dataHandlerTest", "javax.activation.DataHandler", "http://www.w3.org/2001/XMLSchema", "base64Binary" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="SourceTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'javax.xml.transform.Source'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'javax.xml.transform.Source'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="SourceTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "sourceTest", "javax.xml.transform.Source", "http://www.w3.org/2001/XMLSchema", "base64Binary" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="UUIDTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.util.UUID'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.util.UUID'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="UUIDTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "uuidTest", "java.util.UUID", "http://www.w3.org/2001/XMLSchema", "string" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="ByteArrayTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'byte[]'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'byte[]'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ByteArrayTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "byteArrayTest", "byte[]", "http://www.w3.org/2001/XMLSchema", "base64Binary" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="GenericTTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping '&amp;lt;T&amp;gt;'' to 'T'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping '&amp;lt;T&amp;gt;'' to 'T'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="GenericTTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "genericTTest", "T", "http://www.w3.org/2001/XMLSchema", "anyType" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="GenericTExtendsTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping '&amp;lt;T extends javax.xml.namespace.QName&amp;gt;'' to 'T'</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping '&amp;lt;T extends javax.xml.namespace.QName&amp;gt;'' to 'T'</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="GenericTExtendsTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "genericTExtendsTest", "T", "http://www.w3.org/2001/XMLSchema", "QName" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="ListGenericExtendsTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.util.List&amp;lt;? extends javax.xml.namespace.QName&amp;gt;''</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.util.List&amp;lt;? extends javax.xml.namespace.QName&amp;gt;''</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ListGenericExtendsTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "listGenericExtendsTest", "java.util.List&lt;? extends javax.xml.namespace.QName&gt;", "http://www.w3.org/2001/XMLSchema", "QName" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="ListGenericSuperTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping 'null' to 'java.util.List&amp;lt;? super javax.xml.namespace.QName&amp;gt;''</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping 'null' to 'java.util.List&amp;lt;? super javax.xml.namespace.QName&amp;gt;''</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ListGenericSuperTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkElementType( "listGenericSuperTest", "java.util.List&lt;? super javax.xml.namespace.QName&gt;", "http://www.w3.org/2001/XMLSchema", "anyType" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$CollectionTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.Collection' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.Collection' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.CollectionTest", "ContainersTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$beans$beancontext$BeanContextTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.beans.beancontext.BeanContext' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.beans.beancontext.BeanContext' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.beans.beancontext.BeanContextTest", "ContainersTest", "f1" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$beans$beancontext$BeanContextServicesTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.beans.beancontext.BeanContextServices' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.beans.beancontext.BeanContextServices' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.beans.beancontext.BeanContextServicesTest", "ContainersTest", "f2" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$BlockingQueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.BlockingQueue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.BlockingQueue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.concurrent.BlockingQueueTest", "ContainersTest", "f3" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$ListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.List' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.List' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.ListTest", "ContainersTest", "f4" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$QueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.Queue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.Queue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.QueueTest", "ContainersTest", "f5" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$SetTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.Set' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.Set' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.SetTest", "ContainersTest", "f6" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$SortedSetTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.SortedSet' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.SortedSet' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.SortedSetTest", "ContainersTest", "f7" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$AbstractCollectionTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.AbstractCollection' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.AbstractCollection' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.AbstractCollectionTest", "ContainersTest", "f8" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$AbstractListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.AbstractList' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.AbstractList' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.AbstractListTest", "ContainersTest", "f9" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$AbstractQueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.AbstractQueue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.AbstractQueue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.AbstractQueueTest", "ContainersTest", "f10" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$AbstractSequentialListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.AbstractSequentialList' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.AbstractSequentialList' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.AbstractSequentialListTest", "ContainersTest", "f11" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$AbstractSetTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.AbstractSet' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.AbstractSet' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.AbstractSetTest", "ContainersTest", "f12" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$ArrayBlockingQueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.ArrayBlockingQueue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.ArrayBlockingQueue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.concurrent.ArrayBlockingQueueTest", "ContainersTest", "f13" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$ArrayListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.ArrayList' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.ArrayList' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.ArrayListTest", "ContainersTest", "f14" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="javax$management$AttributeListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'javax.management.AttributeList' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'javax.management.AttributeList' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "javax.management.AttributeListTest", "ContainersTest", "f15" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$beans$beancontext$BeanContextServicesSupportTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.beans.beancontext.BeanContextServicesSupport' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.beans.beancontext.BeanContextServicesSupport' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.beans.beancontext.BeanContextServicesSupportTest", "ContainersTest", "f16" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$beans$beancontext$BeanContextSupportTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.beans.beancontext.BeanContextSupport' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.beans.beancontext.BeanContextSupport' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.beans.beancontext.BeanContextSupportTest", "ContainersTest", "f17" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$ConcurrentLinkedQueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.ConcurrentLinkedQueue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.ConcurrentLinkedQueue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.concurrent.ConcurrentLinkedQueueTest", "ContainersTest", "f18" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$CopyOnWriteArrayListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.CopyOnWriteArrayList' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.CopyOnWriteArrayList' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.concurrent.CopyOnWriteArrayListTest", "ContainersTest", "f19" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$CopyOnWriteArraySetTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.CopyOnWriteArraySet' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.CopyOnWriteArraySet' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.concurrent.CopyOnWriteArraySetTest", "ContainersTest", "f20" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$HashSetTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.HashSet' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.HashSet' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.HashSetTest", "ContainersTest", "f22" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$LinkedBlockingQueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.LinkedBlockingQueue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.LinkedBlockingQueue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.concurrent.LinkedBlockingQueueTest", "ContainersTest", "f23" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$LinkedHashSetTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.LinkedHashSet' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.LinkedHashSet' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.LinkedHashSetTest", "ContainersTest", "f24" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$LinkedListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.LinkedList' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.LinkedList' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.LinkedListTest", "ContainersTest", "f25" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$PriorityBlockingQueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.PriorityBlockingQueue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.PriorityBlockingQueue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.concurrent.PriorityBlockingQueueTest", "ContainersTest", "f26" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$PriorityQueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.PriorityQueue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.PriorityQueue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.PriorityQueueTest", "ContainersTest", "f27" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="javax$management$relation$RoleListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'javax.management.relation.RoleList' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'javax.management.relation.RoleList' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "javax.management.relation.RoleListTest", "ContainersTest", "f28" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="javax$management$relation$RoleUnresolvedListTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'javax.management.relation.RoleUnresolvedList' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'javax.management.relation.RoleUnresolvedList' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "javax.management.relation.RoleUnresolvedListTest", "ContainersTest", "f29" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$StackTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.Stack' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.Stack' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.StackTest", "ContainersTest", "f30" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$SynchronousQueueTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.SynchronousQueue' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.SynchronousQueue' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.concurrent.SynchronousQueueTest", "ContainersTest", "f31" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$TreeSetTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.TreeSet' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.TreeSet' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.TreeSetTest", "ContainersTest", "f32" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$VectorTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.Vector' container</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.Vector' container</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ContainersTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkContainer( "java.util.VectorTest", "ContainersTest", "f33" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$MapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.Map' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.Map' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="MapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.MapTest", "MapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$ConcurrentMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.ConcurrentMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.ConcurrentMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ConcurrentMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.concurrent.ConcurrentMapTest", "ConcurrentMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$SortedMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.SortedMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.SortedMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="SortedMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.SortedMapTest", "SortedMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$AbstractMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.AbstractMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.AbstractMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="AbstractMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.AbstractMapTest", "AbstractMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$jar$AttributesTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.jar.Attributes' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.jar.Attributes' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="AttributesTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.jar.AttributesTest", "AttributesTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$security$AuthProviderTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.security.AuthProvider' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.security.AuthProvider' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="AuthProviderTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.security.AuthProviderTest", "AuthProviderTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$concurrent$ConcurrentHashMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.concurrent.ConcurrentHashMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.concurrent.ConcurrentHashMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ConcurrentHashMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.concurrent.ConcurrentHashMapTest", "ConcurrentHashMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$HashMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.HashMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.HashMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="HashMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.HashMapTest", "HashMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$HashtableTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.Hashtable' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.Hashtable' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="HashtableTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.HashtableTest", "HashtableTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$IdentityHashMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.IdentityHashMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.IdentityHashMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="IdentityHashMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.IdentityHashMapTest", "IdentityHashMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$LinkedHashMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.LinkedHashMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.LinkedHashMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="LinkedHashMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.LinkedHashMapTest", "LinkedHashMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$PropertiesTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.Properties' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.Properties' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="PropertiesTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.PropertiesTest", "PropertiesTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$security$ProviderTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.security.Provider' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.security.Provider' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="ProviderTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.security.ProviderTest", "ProviderTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$awt$RenderingHintsTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.awt.RenderingHints' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.awt.RenderingHints' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="RenderingHintsTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.awt.RenderingHintsTest", "RenderingHintsTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="javax$management$openmbean$TabularDataSupportTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'javax.management.openmbean.TabularDataSupport' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'javax.management.openmbean.TabularDataSupport' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="TabularDataSupportTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "javax.management.openmbean.TabularDataSupportTest", "TabularDataSupportTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$TreeMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.TreeMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.TreeMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="TreeMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.TreeMapTest", "TreeMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="javax$swing$UIDefaultsTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'javax.swing.UIDefaults' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'javax.swing.UIDefaults' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="UIDefaultsTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "javax.swing.UIDefaultsTest", "UIDefaultsTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+  <TestCase ID="java$util$WeakHashMapTest">
+    <TestCaseDocumentation>
+      <Title>tests mapping of 'java.util.WeakHashMap' map</Title>
+      <TestCaseSpec>
+        <InlineAssertion>tests mapping of 'java.util.WeakHashMap' map</InlineAssertion>
+      </TestCaseSpec>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalSupportClass SourceLang="java" SourceName="WeakHashMapTest.java"/>
+    </CodeSet>
+    <TestCode SourceLang="java">checkMap( "java.util.WeakHashMapTest", "WeakHashMapTest", "f0" ); return Status.passed("OK");</TestCode>
+  </TestCase>
+</TestGroup>

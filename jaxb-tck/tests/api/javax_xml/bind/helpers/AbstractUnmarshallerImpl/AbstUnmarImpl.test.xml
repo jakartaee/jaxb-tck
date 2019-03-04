@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="AbstUnmarImpl">
+    <TestGroupDocumentation>
+        <Title>Tests for AbstractUnmarshallerImpl class methods</Title>
+        <Description>
+Tests for AbstractUnmarshallerImpl class methods.
+        </Description>
+        <TestedPackage>javax.xml.bind.helpers</TestedPackage>
+        <TestedClass>AbstractUnmarshallerImpl</TestedClass>
+        <Author>Evgueni Astigueevitch</Author>
+    </TestGroupDocumentation>
+
+    <TestGroupAttributes>
+       <AttrElem Name="tdFile">index</AttrElem>
+       <AttrElem Name="scInfo">@(#)AbstUnmarImpl.test.xml	1.2 11/20/02 15:25:26</AttrElem>
+       <AttrElem Name="testType">MultiTest</AttrElem>
+       <Keyword>runtime</Keyword>
+       <Keyword>positive</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.helpers.AbstractUnmarshallerImpl</Import>
+        <Import>org.xml.sax.XMLReader</Import>
+        <Import>org.xml.sax.SAXException</Import>
+        <Import>org.xml.sax.InputSource</Import>
+        <Import>javax.xml.bind.JAXBException</Import>
+        <Import>javax.xml.bind.UnmarshallerHandler</Import>
+        <Import>javax.xml.bind.UnmarshalException</Import>
+        <Import>javax.xml.bind.helpers.DefaultValidationEventHandler</Import>
+        <Import>org.w3c.dom.Node</Import>
+        <Import>org.xml.sax.XMLReader</Import>
+        <Import>java.io.File</Import>
+        <BaseClass>MultiTest</BaseClass>
+        <SupportCode>
+<![CDATA[
+    class Stub extends AbstractUnmarshallerImpl{
+        public Stub() {
+            super();
+        }
+        
+        protected Object unmarshal(XMLReader reader, InputSource source) throws JAXBException {
+            return null;
+        }
+        
+        public UnmarshallerHandler getUnmarshallerHandler() {
+            return null;
+        }
+        
+        public Object unmarshal(Node node) throws JAXBException {
+            return null;
+        }
+        
+        public Status test() {
+            return Status.passed("OKEY");
+        }
+    }
+]]>
+        </SupportCode>
+    </CodeSet>
+
+<!-- ===============  AbstractUnmarshallerImpl() tests  ==================== -->
+    <TestCase ID="AbstUnmarImpl001">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion>
+AbstractUnmarshallerImpl(): no exception is thrown if it is invoked by the child class
+                </InlineAssertion>
+                <MemberSig>public AbstractUnmarshallerImpl()</MemberSig>
+                <ExpectedResultSideEffect>no exceptions</ExpectedResultSideEffect>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+
+        <TestCode>
+<![CDATA[
+    Stub s = new Stub();
+    return Status.passed("OK");
+]]></TestCode>
+    </TestCase>
+<!-- ======================================================================= -->
+
+<!-- ===============  createUnmarshalException(SAXException e) tests  ==================== -->
+    <TestCase ID="AbstUnmarImpl002">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion>
+createUnmarshalException(org.xml.sax.SAXException e): creates an UnmarshalException from a SAXException
+                </InlineAssertion>
+                <MemberSig>protected UnmarshalException createUnmarshalException(org.xml.sax.SAXException e)</MemberSig>
+                <ExpectedResultSideEffect>UnmarshalException object with the specified SAXException object</ExpectedResultSideEffect>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+
+        <TestCode>
+<![CDATA[
+    final SAXException saxException = new SAXException("Test");
+    Stub s = new Stub() {
+        public Status test() {
+            UnmarshalException unmException = super.createUnmarshalException(saxException);
+            if (unmException == null) {
+                return Status.failed("null was returned.");
+            }
+            
+            if (!saxException.equals(unmException.getLinkedException())) {
+                return Status.failed("Unexpected linked exception.");
+            }
+            
+            return Status.passed("OK");
+        }
+    };
+    return s.test();
+]]></TestCode>
+    </TestCase>
+<!-- ======================================================================= -->
+
+<!-- ===============  get/setEventHandler() tests  ==================== -->
+    <TestCase ID="AbstUnmarImpl003">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion>
+getEventHandler(): returns the current ValidationEventHandler
+                </InlineAssertion>
+                <MemberSig>public ValidationEventHandler getEventHandler() throws JAXBException</MemberSig>
+                <ExpectedResultSideEffect>ValidationEventHandler object</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            <TestCaseSpec>
+                <InlineAssertion>
+setEventHandler(): sets the ValidationEventHandler
+                </InlineAssertion>
+                <MemberSig>public void setEventHandler(ValidationEventHandler handler) throws JAXBException</MemberSig>
+                <ExpectedResultSideEffect>no exceptions, the current ValidationEventHandler will be set to the specified one</ExpectedResultSideEffect>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+
+        <TestCode>
+<![CDATA[
+    DefaultValidationEventHandler handler = new DefaultValidationEventHandler();
+    Stub s = new Stub();
+    try {
+        s.setEventHandler(handler);
+        if (!handler.equals(s.getEventHandler())) {
+            return Status.failed("Wrong event handler returned.");
+        }
+        
+        return Status.passed("OK");
+    } catch (JAXBException e) {
+        return Status.failed(e.toString());
+    }
+]]></TestCode>
+    </TestCase>
+<!-- ======================================================================= -->
+
+<!-- ===============  is/setValidating() tests  ==================== -->
+    <TestCase ID="AbstUnmarImpl004">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion>
+isValidating(): returns true if the Unmarshaller is configured to validate during unmarshal operations
+                </InlineAssertion>
+                <MemberSig>public boolean isValidating() throws JAXBException</MemberSig>
+                <ExpectedResultSideEffect>true</ExpectedResultSideEffect>
+            </TestCaseSpec>
+            <TestCaseSpec>
+                <InlineAssertion>
+setValidating(): sets that the Unmarshaller should validate during unmarshal
+                </InlineAssertion>
+                <MemberSig>public void setValidating(boolean validating) throws JAXBException</MemberSig>
+                <ExpectedResultSideEffect>the method isValidating() will return true</ExpectedResultSideEffect>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+
+        <TestCode>
+<![CDATA[
+    Stub s = new Stub();
+    try {
+        s.setValidating(true);
+        if (!s.isValidating()) {
+            return Status.failed("false was returned instead of true");
+        }
+        
+        return Status.passed("OK");
+    } catch (JAXBException e) {
+        return Status.failed(e.toString());
+    }
+]]></TestCode>
+    </TestCase>
+<!-- ======================================================================= -->
+
+<!-- ===============  getXMLReader() tests  ==================== -->
+    <TestCase ID="AbstUnmarImpl005">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion>
+getXMLReader(): obtains a configured XMLReader
+                </InlineAssertion>
+                <MemberSig>protected org.xml.sax.XMLReader getXMLReader() throws JAXBException</MemberSig>
+                <ExpectedResultSideEffect>XMLReader object</ExpectedResultSideEffect>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCode>
+<![CDATA[
+    Stub s = new Stub() {
+        public Status test() {
+            try {
+                XMLReader reader = super.getXMLReader();
+                if (reader == null) {
+                    return Status.failed("null was returned.");
+                }
+                
+                return Status.passed("OK");
+            } catch (JAXBException e) {
+                return Status.failed(e.toString());
+            }
+        }
+    };
+    return s.test();
+]]></TestCode>
+    </TestCase>
+<!-- ======================================================================= -->
+
+</TestGroup>
+<!-- Ident: @(#)AbstUnmarImpl.test.xml	1.2 11/20/02 15:25:26 -->

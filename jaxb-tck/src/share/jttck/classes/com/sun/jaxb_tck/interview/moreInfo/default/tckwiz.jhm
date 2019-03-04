@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN http://java.sun.com/products/javahelp/map_1_0.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<map version="1.0">
+<!-- Detail IDs -->
+    <mapID target="BasicInterviewParameters.prolog"								url="Common/prolog.html" />
+    <mapID target="StandardInterview.envName"                           		url="Common/envName.html" />
+    <mapID target="StandardInterview.description"                       		url="Common/description.html" />
+    <mapID target="TestPlatformInterview.multiJVM" 								url="Common/sameJVM.html" />
+    <mapID target="TestPlatformInterview.local" 								url="Common/local.html" />
+
+    <mapID target="AgentModeInterview.agentType" 								url="Common/agentType.html" />
+    <mapID target="AgentModeInterview.agentPassiveHost" 						url="Common/agentPassiveHost.html" />
+    <mapID target="AgentModeInterview.useAgentPortDefault" 						url="Common/useAgentPortDefault.html" />
+    <mapID target="AgentModeInterview.agentPassivePort" 						url="Common/agentPassivePort.html" />
+    <mapID target="AgentModeInterview.fileSeparator" 							url="Common/fileSeparator.html" />
+    <mapID target="AgentModeInterview.pathSeparator" 							url="Common/pathSeparator.html" />
+    <mapID target="AgentModeInterview.mapArgs"    								url="Common/mapArgs.html" />
+    <mapID target="CmdLineInterview.cmdAsFile" 									url="Common/cmdAsFile.html" />
+    <mapID target="CmdLineInterview.otherOpts" 									url="Common/optOther.html" />
+    <mapID target="CmdLineInterview.otherEnvVars"                				url="Common/otherEnvVars.html" />
+    <mapID target="JAXBClassesInterview.jaxbClasses"            				url="Common/jaxbClasses.html" />
+    <mapID target="JAXBClassesInterview.needJaxbClasses"        				url="Common/needJaxbClasses.html" />
+    
+    <mapID target="XSDCompilerInterview.intro"									url="Compile/intro.html" />
+    <mapID target="XSDCompilerInterview.defaultOperationMode" 					url="Compile/defaultOperationMode.html" />
+    <mapID target="XSDCompilerInterview.skipValidationOptional" 					url="Compile/skip.html" />
+    <mapID target="XJCCmdLineInterview.xjcCmd" 									url="Compile/xjcCmd.html" />
+    <mapID target="XJCClassInterview.compilerWrapperClass"						url="Compile/compilerWrapperClass.html" />
+    
+    <mapID target="SchemagenInterview.intro"                   					url="Schemagen/intro.html" />
+    <mapID target="SchemagenInterview.skipJ2XOptional"             				url="Schemagen/skip.html" />
+    <mapID target="JXCClassInterview.schemagenWrapperClass"     				url="Schemagen/class.html" />
+    <mapID target="JXCCmdLineInterview.jxcCmd"                  				url="Schemagen/jxcCmd.html" />
+    
+    <mapID target="JAXBTCKParameters.parameters"                        		url="Common/parameters.html" />
+    <mapID target="BasicInterviewParameters.epilog"								url="Common/epilog.html" />
+</map>

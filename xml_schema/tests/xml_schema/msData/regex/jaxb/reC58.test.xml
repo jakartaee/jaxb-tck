@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="reC58">
+    <TestGroupDocumentation>
+        <Title><![CDATA[reC58]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : base='string', pattern='ab{2,}', value='ababababababababababababababababababababababababababababababababab', type='valid', RULE='2,3,4,5,6,7,8'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)reC58.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../reC58.xsd"/>
+        <ExternalData Type="iodata" SourceName="reC58.sig"/>
+    </CodeSet>
+    <TestCase ID="reC58">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="reC58.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../reC58.xml"/>
+            <ExternalData Type="iodata" SourceName="rec58-reC58.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

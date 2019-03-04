@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="particlesJl003">
+   <TestGroupDocumentation>
+      <Title><![CDATA[particlesJl003]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :3.9.1 The Particle Schema Component [ check length of element information items ] : Particle Derivation OK (elt:Any) element R drived by restriction from wildcard (any) B : B's namespace=list (uriReferences [ foo, bar ]), R's targetNamespace=ref to an elt from another namespace that is NOT in the restricted uriReferences
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)particlesJl003.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../particlesJl003.xsd"/>
+      <ExternalData Type="iodata" SourceName="../particlesJl003.imp"/>
+      <ExternalData Type="iodata" SourceName="../particlesJl003v1.imp"/>
+   </CodeSet>
+   <TestCase ID="particlesJl003">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)particlesJl003.test.xml	1.1 07/03/27 -->

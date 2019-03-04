@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gDay_minExclusive005_1273">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gDay_minExclusive005_1273]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minExclusive and value=- - -01 and facet=maxExclusive and value=- - -30) and document value=- - -15
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gDay_minExclusive005_1273.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../gDay_minExclusive005.xsd"/>
+        <ExternalData Type="iodata" SourceName="gDay_minExclusive005_1273.sig"/>
+    </CodeSet>
+    <TestCase ID="gDay_minExclusive005_1273">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="gDay_minExclusive005_1273.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../gDay_minExclusive005.xml"/>
+            <ExternalData Type="iodata" SourceName="gday_minexclusive005_1273-gDay_minExclusive005.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

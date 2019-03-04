@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="ID_test70681_2241">
+    <TestGroupDocumentation>
+        <Title><![CDATA[ID_test70681_2241]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : ID/IDREF should not allow heading or trailing whitespace like NCNAME
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)ID_test70681_2241.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../datatypes.xsd"/>
+        <ExternalData Type="iodata" SourceName="ID_test70681_2241.sig"/>
+    </CodeSet>
+    <TestCase ID="ID_test70681_2241">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="ID_test70681_2241.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../ID_test70681.xml"/>
+            <ExternalData Type="iodata" SourceName="id_test70681_2241-ID_test70681.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

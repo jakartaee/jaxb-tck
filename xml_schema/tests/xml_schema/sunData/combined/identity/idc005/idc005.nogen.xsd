@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!--
+Ident: @(#)idc005.nogen.xsd	1.4 03/10/10
+
+-->
+
+<!--
+	very naive test of identity constraint
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.publishing.org"
+		xmlns:p="http://www.publishing.org"
+		elementFormDefault="qualified">
+	<xsd:element name="BookCatalogue">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Book"  minOccurs="1" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:all>
+							<xsd:element name="Title" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+							<xsd:element name="Author" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+							<xsd:element name="Date" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+							<!-- ISBN element is optional for the sake of testing -->
+							<xsd:element name="ISBN" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+							<xsd:element name="Publisher" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+						</xsd:all>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+		<xsd:key name="ISBNnumber">
+			<xsd:selector	xpath="p:Book"/>
+			<xsd:field		xpath="p:ISBN"/>
+		</xsd:key>
+	</xsd:element>
+</xsd:schema>
+

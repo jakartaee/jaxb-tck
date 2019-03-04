@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-NCName-enumeration-3-NS"
+        targetNamespace="NISTSchema-NCName-enumeration-3-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-3.xsd
+      This schema specifies a datatype, NISTSchema-NCName-enumeration-3,
+      which is derived by restriction of built-in type NCName
+      by facet enumeration with values of:
+          _leader
+          qand_the.trans
+          dvirtually.structured.by.is-of_to.acces
+          fas.envir
+          _of-international_wi
+          nnetworking_for-database.can_market-with-has.
+          _help_in-such-simplicity-directions_ef
+          _devices-discovery-
+          vwell.and
+          _significant_the_has_via.will_involved.sense_work
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-NCName-enumeration-3" type="nist:NISTSchema-NCName-enumeration-3-Type"/>
+
+  <simpleType name="NISTSchema-NCName-enumeration-3-Type">
+    <restriction base="NCName">
+          <enumeration value="_leader"/>
+          <enumeration value="qand_the.trans"/>
+          <enumeration value="dvirtually.structured.by.is-of_to.acces"/>
+          <enumeration value="fas.envir"/>
+          <enumeration value="_of-international_wi"/>
+          <enumeration value="nnetworking_for-database.can_market-with-has."/>
+          <enumeration value="_help_in-such-simplicity-directions_ef"/>
+          <enumeration value="_devices-discovery-"/>
+          <enumeration value="vwell.and"/>
+          <enumeration value="_significant_the_has_via.will_involved.sense_work"/>
+    </restriction>
+  </simpleType>
+
+</schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="positiveInteger004_2238">
+    <TestGroupDocumentation>
+        <Title><![CDATA[positiveInteger004_2238]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=+1
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)positiveInteger004_2238.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../positiveInteger.xsd"/>
+        <ExternalData Type="iodata" SourceName="positiveInteger004_2238.sig"/>
+    </CodeSet>
+    <TestCase ID="positiveInteger004_2238">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="positiveInteger004_2238.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../positiveInteger004.xml"/>
+            <ExternalData Type="iodata" SourceName="positiveinteger004_2238-positiveInteger004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

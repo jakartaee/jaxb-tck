@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-hexBinary-minLength-2-NS</string> 
+   <string>NISTSchema-SV-IV-list-hexBinary-minLength-2</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>646D65676B616669787166706A726B62647974656C68786D6F747062786E7166797562</string> 
+   </void> 
+   <void method="add"> 
+    <string>6A71697577616665746A656B6F7370696466726A72796D74757975646D7176676C6B62</string> 
+   </void> 
+   <void method="add"> 
+    <string>656C796A6E676574706F7567697078786A6B73646B646A766D70776C6A6E7674626775</string> 
+   </void> 
+   <void method="add"> 
+    <string>756B756C796471667672696E65646B736D6C6B7471746F7371766C656E70646A6E646D</string> 
+   </void> 
+   <void method="add"> 
+    <string>746F79746B776E6E64617263786C7763786673726A7863696173696C636367766C6E68</string> 
+   </void> 
+   <void method="add"> 
+    <string>797377706A72676B77746B6E6C64736277786C6665756B6B78676F666A67796365766F</string> 
+   </void> 
+   <void method="add"> 
+    <string>63756B6D75626A6865716D686E656F737177767162686F617167706C786A70796E6A63</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

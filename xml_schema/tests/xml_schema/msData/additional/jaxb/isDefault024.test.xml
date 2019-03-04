@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="isDefault024">
+    <TestGroupDocumentation>
+        <Title><![CDATA[isDefault024]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : Check IsDefault(default) for Element with invalid value
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)isDefault024.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../isdefault003.xsd"/>
+        <ExternalData Type="iodata" SourceName="isDefault024.sig"/>
+    </CodeSet>
+    <TestCase ID="isDefault024">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="isDefault024.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../isdefault024.xml"/>
+            <ExternalData Type="iodata" SourceName="isdefault024-isdefault024.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

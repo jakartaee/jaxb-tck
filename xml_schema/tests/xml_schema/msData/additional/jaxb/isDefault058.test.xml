@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="isDefault058">
+    <TestGroupDocumentation>
+        <Title><![CDATA[isDefault058]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : Attributes: IsDefault(fixed) Local Element with no attributes, schema has no targetNamespace
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)isDefault058.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../isdefault052.xsd"/>
+        <ExternalData Type="iodata" SourceName="isDefault058.sig"/>
+    </CodeSet>
+    <TestCase ID="isDefault058">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="isDefault058.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../isdefault058.xml"/>
+            <ExternalData Type="iodata" SourceName="isdefault058-isdefault058.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

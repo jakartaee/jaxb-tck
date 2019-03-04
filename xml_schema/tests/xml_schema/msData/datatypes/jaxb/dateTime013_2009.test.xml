@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="dateTime013_2009">
+    <TestGroupDocumentation>
+        <Title><![CDATA[dateTime013_2009]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : should we allow '+'(plus sign) preceding datetime/date?
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)dateTime013_2009.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../datatypes.xsd"/>
+        <ExternalData Type="iodata" SourceName="dateTime013_2009.sig"/>
+    </CodeSet>
+    <TestCase ID="dateTime013_2009">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

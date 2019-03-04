@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="stC032">
+   <TestGroupDocumentation>
+      <Title><![CDATA[stC032]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for simpleType Declaration : Restriction. content of simpleType and length=5
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)stC032.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../stC032.xsd"/>
+   </CodeSet>
+   <TestCase ID="stC032">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)stC032.test.xml	1.1 07/03/27 -->

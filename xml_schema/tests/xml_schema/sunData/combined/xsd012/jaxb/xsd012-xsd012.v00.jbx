@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.combined.xsd012.xsd012.Root"> 
+  <void property="mixedOrElementOnly"> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd012.xsd012.Root$Mixed"> 
+     <void property="content"> 
+      <void method="add"> 
+       <string>
+		abcdef
+	</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd012.xsd012.Root$Mixed"> 
+     <void property="content"> 
+      <void method="add"> 
+       <object class="javax.xml.bind.JAXBElement"> 
+        <object id="QName0" class="javax.xml.namespace.QName"> 
+         <string>foo</string> 
+         <string>a</string> 
+        </object> 
+        <class>java.lang.Object</class> 
+        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
+         <string>foo</string> 
+         <string>a</string> 
+         <string></string> 
+        </object> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <string> mi </string> 
+      </void> 
+      <void method="add"> 
+       <object class="javax.xml.bind.JAXBElement"> 
+        <object id="QName1" class="javax.xml.namespace.QName"> 
+         <string>foo</string> 
+         <string>b</string> 
+        </object> 
+        <class>java.lang.Object</class> 
+        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
+         <string>foo</string> 
+         <string>b</string> 
+         <string></string> 
+        </object> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <string> xed </string> 
+      </void> 
+      <void method="add"> 
+       <object class="javax.xml.bind.JAXBElement"> 
+        <object class="javax.xml.namespace.QName"> 
+         <string>foo</string> 
+         <string>c</string> 
+        </object> 
+        <class>java.lang.Object</class> 
+        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
+         <string>foo</string> 
+         <string>c</string> 
+         <string></string> 
+        </object> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <string> content
+	</string> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.combined.xsd012.xsd012.Root$ElementOnly"> 
+     <void property="AOrBOrC"> 
+      <void method="add"> 
+       <object class="javax.xml.bind.JAXBElement"> 
+        <object idref="QName0"/> 
+        <class>java.lang.Object</class> 
+        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
+         <string>foo</string> 
+         <string>a</string> 
+         <string></string> 
+        </object> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="javax.xml.bind.JAXBElement"> 
+        <object idref="QName1"/> 
+        <class>java.lang.Object</class> 
+        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
+         <string>foo</string> 
+         <string>b</string> 
+         <string></string> 
+        </object> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="javax.xml.bind.JAXBElement"> 
+        <object idref="QName0"/> 
+        <class>java.lang.Object</class> 
+        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
+         <string>foo</string> 
+         <string>a</string> 
+         <string></string> 
+        </object> 
+       </object> 
+      </void> 
+     </void> 
+    </object> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

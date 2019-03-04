@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="token_enumeration004_1416">
+    <TestGroupDocumentation>
+        <Title><![CDATA[token_enumeration004_1416]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=enumeration and value=foo foo123 fu1 and document value=foo
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)token_enumeration004_1416.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../token_enumeration004.xsd"/>
+        <ExternalData Type="iodata" SourceName="token_enumeration004_1416.sig"/>
+    </CodeSet>
+    <TestCase ID="token_enumeration004_1416">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="token_enumeration004_1416.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../token_enumeration004.xml"/>
+            <ExternalData Type="iodata" SourceName="token_enumeration004_1416-token_enumeration004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

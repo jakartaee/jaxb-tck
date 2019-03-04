@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root"> 
+  <void property="elementOrElementRefOrElementRefs"> 
+   <void method="add"> 
+    <object id="JAXBElement0" class="javax.xml.bind.JAXBElement"> 
+     <object id="QName0" class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>Element</string> 
+     </object> 
+     <class>java.lang.String</class> 
+     <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 
+     <string>e001</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object id="QName1" class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>ElementRef</string> 
+     </object> 
+     <class>java.lang.Object</class> 
+     <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 
+     <object idref="JAXBElement0"/> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object id="QName2" class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>ElementRefs</string> 
+     </object> 
+     <class>java.util.List</class> 
+     <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 
+     <object class="java.util.ArrayList"> 
+      <void method="add"> 
+       <object idref="JAXBElement0"/> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object id="JAXBElement1" class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.String</class> 
+     <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 
+     <string>e002</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName1"/> 
+     <class>java.lang.Object</class> 
+     <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 
+     <object idref="JAXBElement0"/> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName2"/> 
+     <class>java.util.List</class> 
+     <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 
+     <object class="java.util.ArrayList"> 
+      <void method="add"> 
+       <object idref="JAXBElement0"/> 
+      </void> 
+      <void method="add"> 
+       <object idref="JAXBElement1"/> 
+      </void> 
+     </object> 
+    </object> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

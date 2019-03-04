@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-gYearMonth-pattern">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-gYearMonth-pattern]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/gYearMonth is restricted by facet pattern with value 18\d\d-0\d \d\d92-\d2 \d\d99-0\d \d\d49-\d4 19\d\d-\d1 \d\d74-0\d 18\d\d-\d5 19\d\d-1\d \d\d68-0\d.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gYearMonth">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gYearMonth
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-gYearMonth-pattern.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-gYearMonth-pattern-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-gYearMonth-pattern.sig"/>
+    </CodeSet>
+    <TestCase ID="list-gYearMonth-pattern">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-list-gYearMonth-pattern-1-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-list-gYearMonth-pattern-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="list-gyearmonth-pattern-NISTXML-SV-IV-list-gYearMonth-pattern-1-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

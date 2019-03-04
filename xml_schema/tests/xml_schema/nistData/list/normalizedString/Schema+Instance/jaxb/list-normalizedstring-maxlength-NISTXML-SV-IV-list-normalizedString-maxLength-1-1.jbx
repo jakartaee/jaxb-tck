@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-maxLength-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-maxLength-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>482_Data_And_Pervasive_Such_Primary_Street_Tools_Provides_,_RI_19573-1388</string> 
+   </void> 
+   <void method="add"> 
+    <string>83884_Years_That_Led_Efforts_Helping_Street_For_Dynamic_,_MN_19573-1388</string> 
+   </void> 
+   <void method="add"> 
+    <string>27_Discussions_Automatically_Obvious_The_Issues_Street_Would_The_,_PA_19573-1388</string> 
+   </void> 
+   <void method="add"> 
+    <string>415_Manipulation_Ebxml_Cpu_Basis_And_Street_And_And_,_AR_19573-1388</string> 
+   </void> 
+   <void method="add"> 
+    <string>48_Manual_Graphical_Devices_Dom_For_Street_For_Data_,_AR_19573-1388</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

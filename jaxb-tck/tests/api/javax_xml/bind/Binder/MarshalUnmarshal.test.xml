@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="MarshalUnmarshal_">
+    <TestGroupDocumentation>
+        <Title>Binder.unmarshal - Binder.marshal</Title>
+        <Description>
+            Compile a simple schema to create a java binding classes.
+            Test an available implementation of the
+            javax.xml.bind.Binder marshal/unmarshal methods.
+        </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)MarshalUnmarshal.test.xml	1.10 07/04/16</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <AttrElem Name="schemaName">Binder.xsd</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>java.io.IOException</Import>
+        <Import>java.net.URL</Import>
+        <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+        <Import>javax.xml.bind.annotation.*</Import>
+        <Import>javax.xml.bind.Binder</Import>
+        <Import>javax.xml.bind.JAXBContext</Import>
+        <Import>javax.xml.bind.JAXBException</Import>
+        <Import>javax.xml.bind.UnmarshalException</Import>
+        <Import>javax.xml.bind.MarshalException</Import>
+        <Import>javax.xml.bind.JAXBElement</Import>
+        <Import>javax.xml.namespace.QName</Import>
+        <Import>javax.xml.parsers.DocumentBuilder</Import>
+        <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+        <Import>javax.xml.parsers.ParserConfigurationException</Import>
+        <Import>org.w3c.dom.Document</Import>
+        <Import>org.w3c.dom.Element</Import>
+        <Import>org.w3c.dom.Node</Import>
+        <Import>org.xml.sax.SAXException</Import>
+        <SupportCode>
+            <![CDATA[
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "MyClass", propOrder = { "name", "street", "city", "country" })
+    static public class MyClass {
+        public String name = "name", street = "street", city = null, country;
+    }
+
+    public Binder<Node> getBinder() throws JAXBException{
+        JAXBContext jaxbContext = getJAXBContext();
+        return jaxbContext.createBinder();
+    }
+
+    public Binder<Node> getBinderObject(JAXBContext jaxbContext) {
+        try {
+            if(jaxbContext == null)
+                 jaxbContext = getJAXBContext();
+            return jaxbContext.createBinder();
+        } catch( JAXBException x ){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+    }
+
+    public Document getDocument(String doc) throws ParserConfigurationException, SAXException, IOException{
+        URL documentURL = getDocumentURL(doc);
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        documentBuilderFactory.setNamespaceAware(true);
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        return documentBuilder.parse(documentURL.openStream());
+    }
+
+    public Document getDocumentObject(String doc) {
+        try {
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            documentBuilderFactory.setNamespaceAware(true);
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            URL documentURL = getDocumentURL(doc);
+            return documentBuilder.parse(documentURL.openStream());
+        } catch( Exception x ){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+    }
+
+    Document createNewDocument() {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        documentBuilderFactory.setNamespaceAware(true);
+        try {
+            return documentBuilderFactory.newDocumentBuilder().newDocument();
+        } catch ( ParserConfigurationException x ){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+    }
+
+    ]]>
+        </SupportCode>
+        <ExternalSupportClass SourceName="MyValidationEventHandler.java"/>
+        <ExternalData SourceName="Binder.xsd" Type="iodata"/>
+    </CodeSet>
+    <TestCase ID="unmarshal001">
+        <TestCaseDocumentation>
+            <Title>
+                Binder{org.w3c.dom.Node}.unmarshal(org.w3c.dom.Node)
+            </Title>
+            <Description>
+                The test checks that
+                Binder{org.w3c.dom.Node}.unmarshal(org.w3c.dom.Node)
+                unmarshals XML data from the DOM tree and return the
+                resulting content tree. unmarshal(org.w3c.dom.Node)
+                returns a non null object. The validation is switched
+                off by default.
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData SourceName="Binder.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode>
+            <![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+        Binder<Node> binder;
+        try{
+            binder = getBinder();
+        }catch(JAXBException e){
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        try{
+            eh.setParent(binder.getEventHandler());
+            binder.setEventHandler(eh);
+        }catch(JAXBException e){
+            e.printStackTrace(ref);
+            return Status.failed("Error on setting event handler");
+        }
+        try{
+            Object o = binder.unmarshal(getDocument("Binder.xml"));
+            if(o == null){
+                return Status.failed("unmarshal(\"Binder.xml\") returns null");
+            }
+            if(!eh.hasEvents()){
+                return Status.passed("OK");
+            }
+            return Status.failed("No exception is thrown but some error events are handled");
+        }catch(JAXBException jaxbe){
+            jaxbe.printStackTrace(ref);
+            if (!eh.hasEvents()) {
+                return Status.failed("no error events are handled but " + jaxbe + " is thrown");
+            }
+            return Status.failed(jaxbe.toString());
+        }catch(Exception e){
+            e.printStackTrace(ref);
+            return Status.failed("Exception is thrown: "+e);
+        }finally{
+            eh.printEvents(ref);
+        }]]>
+        </TestCode>
+    </TestCase>
+    <TestCase ID="unmarshal002">
+        <TestCaseDocumentation>
+            <Title>
+                Binder{org.w3c.dom.Node}.unmarshal(org.w3c.dom.Node) - with validation
+            </Title>
+            <Description>
+                The test checks that
+                Binder{org.w3c.dom.Node}.unmarshal(org.w3c.dom.Node)
+                unmarshals XML data from the DOM tree and return the
+                resulting content tree. unmarshal(org.w3c.dom.Node)
+                returns a non null object. The validation is switched
+                on.
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData SourceName="Binder.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+        Binder<Node> binder;
+        try{
+            binder = getBinder();
+        }catch(JAXBException e){
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+
+        binder.setSchema(schema);
+
+        try{
+            eh.setParent(binder.getEventHandler());
+            binder.setEventHandler(eh);
+        }catch(JAXBException e){
+            e.printStackTrace(ref);
+            return Status.failed("Error on setting event handler");
+        }
+        try{
+            Object o = binder.unmarshal(getDocument("Binder.xml"));
+            if(o == null){
+                return Status.failed("unmarshal(\"Binder.xml\") returns null");
+            }
+            if(!eh.hasEvents()){
+                return Status.passed("OK");
+            }
+            return Status.failed("No exception is thrown but some error events are handled");
+        }catch(JAXBException jaxbe){
+            jaxbe.printStackTrace(ref);
+            if (!eh.hasEvents()) {
+                return Status.failed("no error events are handled but " + jaxbe + " is thrown");
+            }
+            return Status.failed(jaxbe.toString());
+        }catch(Exception e){
+            e.printStackTrace(ref);
+            return Status.failed("Exception is thrown: "+e);
+        }finally{
+            eh.printEvents(ref);
+        }]]></TestCode>
+    </TestCase>
+    <TestCase ID="unmarshal003">
+        <TestCaseDocumentation>
+            <Title>
+                Binder{org.w3c.dom.Node}.unmarshal(org.w3c.dom.Node) - invalid data
+            </Title>
+            <Description>
+                The test checks that
+                Binder{org.w3c.dom.Node}.unmarshal(org.w3c.dom.Node)
+                unmarshals XML data from the DOM tree. The DOM tree is invalid.
+                The vaildation is switched on. Registered validation event handler
+                always returns true.
+                unmarshal(org.w3c.dom.Node) does not throw exception,
+                returns a non-null object.
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+          <AttrElem Name="validity">0</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="Binder_invalid.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        MyValidationEventHandler validationEventHandler = new MyValidationEventHandler();
+        Binder<Node> binder;
+        try{
+            binder = getBinder();
+        }catch(JAXBException e){
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+
+        binder.setSchema(schema);
+
+        try{
+            binder.setEventHandler(validationEventHandler);
+        }catch(JAXBException e){
+            e.printStackTrace(ref);
+            return Status.failed("Error on setting event handler");
+        }
+        try{
+            Object o = binder.unmarshal(getDocument("Binder_invalid.xml"));
+            if(o == null){
+                return Status.failed("unmarshal(\"Binder_invalid.xml\") returns null");
+            }
+            if(!validationEventHandler.hasEvents()){
+                return Status.failed("No validation events are handled");
+            }
+            if(o instanceof JAXBElement){
+                JAXBElement jaxbElement = (JAXBElement) o;
+                if(jaxbElement.getValue() instanceof PurchaseOrder){
+                    return Status.passed("Ok.");
+                }
+            }
+            return Status.failed("Result unrecognized.");
+        }catch(JAXBException jaxbe){
+            jaxbe.printStackTrace(ref);
+            if (!validationEventHandler.hasEvents()) {
+                return Status.failed("no error events are handled but " + jaxbe + " is thrown");
+            }
+            return Status.failed(jaxbe.toString());
+        }catch(Exception e){
+            e.printStackTrace(ref);
+            return Status.failed("Exception is thrown: "+e);
+        }finally{
+            validationEventHandler.printEvents(ref);
+        }]]></TestCode>
+    </TestCase>
+    <TestCase ID="unmarshal004">
+        <TestCaseDocumentation>
+            <Description>
+                This method throws UnmarshalException when the Binder's JAXBContext does not have a mapping for the XML element name or the type, specifiable via @xsi:type, of xmlNode  to a JAXB mapped class.
+            </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+          <AttrElem Name="validity">0</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="unmarshal004.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode>
+            <![CDATA[
+        try {
+            getBinderObject(null).unmarshal(getDocumentObject("unmarshal004.xml"));
+            return Status.failed("expected exception UnmarshalException was not thrown");
+        } catch(UnmarshalException e){
+            return Status.passed("OK");
+        } catch(JAXBException x){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+        ]]>
+        </TestCode>
+    </TestCase>
+    <TestCase ID="unmarshal005">
+        <TestCaseDocumentation>
+            <Description>
+                Throws: IllegalArgumentException - If the node parameter is null
+            </Description>
+        </TestCaseDocumentation>
+        <TestCode>
+            <![CDATA[
+        try {
+            getBinderObject(null).unmarshal(null);
+            return Status.failed("expected exception IllegalArgumentException was not thrown");
+        } catch(IllegalArgumentException e){
+            return Status.passed("OK");
+        } catch(JAXBException x){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+        ]]>
+        </TestCode>
+    </TestCase>
+    <TestCase ID="unmarshal006">
+        <TestCaseDocumentation>
+            <Description>
+                When getSchema() is non-null, xmlNode  and its descendants is validated during this operation.
+            </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+          <AttrElem Name="validity">0</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="Binder_invalid.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode>
+            <![CDATA[
+        try {
+            Binder<Node> binder = getBinderObject(null);
+            Document document = getDocumentObject("Binder_invalid.xml");
+            binder.setSchema( null ); // disable validation (for sure)
+            binder.unmarshal( document );
+
+            binder.setSchema(schema);
+            try {
+                binder.unmarshal( document );
+            } catch( UnmarshalException x ){
+                return Status.passed("OK");
+            }
+            return Status.failed("expected exception UnmarshalException was not thrown");
+        } catch(JAXBException x){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+        ]]>
+        </TestCode>
+    </TestCase>
+    <TestCase ID="unmarshal007">
+        <TestCaseDocumentation>
+            <Description>
+                Unmarshal XML root element by provided declaredType to a JAXB object tree.
+            </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+          <AttrElem Name="validity">0</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="unmarshal004.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode>
+            <![CDATA[
+        try {
+            // JAXBElement<PurchaseOrder> elem =
+            getBinderObject(null).unmarshal( getDocumentObject("unmarshal004.xml"),
+                                            PurchaseOrder.class );
+            return Status.passed("OK");
+        } catch(JAXBException x){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+        ]]>
+        </TestCode>
+    </TestCase>
+    <TestCase ID="unmarshal008">
+        <TestCaseDocumentation>
+            <Description>
+                Throws: IllegalArgumentException - If any of the input parameters are null
+            </Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData SourceName="Binder.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode>
+            <![CDATA[
+        try {
+            Binder<Node> binder = getBinderObject(null);
+            try {
+                binder.unmarshal( null, PurchaseOrder.class );
+                return Status.failed("expected exception IllegalArgumentException was not thrown. (null, class)");
+            } catch(IllegalArgumentException e){}
+            try {
+                binder.unmarshal( getDocumentObject("Binder.xml"), null );
+                return Status.failed("expected exception IllegalArgumentException was not thrown. (doc, null)");
+            } catch(IllegalArgumentException e){}
+            try {
+                binder.unmarshal( null, null );
+                return Status.failed("expected exception IllegalArgumentException was not thrown. (null, null)");
+            } catch(IllegalArgumentException e){}
+            return Status.passed("OK");
+        } catch(JAXBException x){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+        ]]>
+        </TestCode>
+    </TestCase>
+    <TestCase ID="unmarshal009">
+        <TestCaseDocumentation>
+            <Description>
+                When getSchema() is non-null, xmlNode and its descendants is validated during this operation.
+            </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+          <AttrElem Name="validity">0</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="unmarshal004.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode>
+            <![CDATA[
+        try {
+            Binder<Node> binder = getBinderObject(null);
+            Document document = getDocumentObject("unmarshal004.xml");
+            binder.setSchema( null ); // disable validation (for sure)
+            binder.unmarshal( document, PurchaseOrder.class );
+
+            binder.setSchema(schema);
+            try {
+                binder.unmarshal( document, PurchaseOrder.class );
+            } catch( UnmarshalException x ){
+                return Status.passed("OK");
+            }
+            return Status.failed("expected exception UnmarshalException was not thrown");
+        } catch(JAXBException x){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+        ]]>
+        </TestCode>
+    </TestCase>
+
+    <TestCase ID="marshal001">
+        <TestCaseDocumentation>
+            <Title>
+                Binder{org.w3c.dom.Node}.marshal(java.lang.Object,org.w3c.dom.Node)
+            </Title>
+            <Description>
+                The test checks that
+                Binder{org.w3c.dom.Node}.marshal(java.lang.Object,org.w3c.dom.Node)
+                marshals an Object data to a DOM tree.
+                marshal(java.lang.Object,org.w3c.dom.Node) does not throw exception,
+                resulting DOM is checked.
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        //Create PurchaseOrder object
+        Address shipTo = new Address();
+
+        shipTo.setName("Alice Smith");
+        shipTo.setStreet("123 Maple Street");
+        shipTo.setCity("Mill Valley,CA");
+        shipTo.setCountry("US");
+
+        Items items = new Items();
+        items.getItem().add("Item 1");
+        items.getItem().add("Item 2");
+
+        PurchaseOrder po = new PurchaseOrder();
+        po.setShipTo(shipTo);
+        po.setItems(items);
+
+        //Create document
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        documentBuilderFactory.setNamespaceAware(true);
+        Document doc;
+        try {
+            doc = documentBuilderFactory.newDocumentBuilder().newDocument();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create Document due to exception: "+e);
+        }
+        try {
+            binder.marshal((new ObjectFactory()).createPurchaseOrder(po),doc);
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Exception on marshal: "+e);
+        }
+
+        Element purchaseOrderElement = doc.getDocumentElement();
+        //check PurchaseOrder
+        if(purchaseOrderElement == null || !"purchaseOrder".equals(purchaseOrderElement.getLocalName())){
+            return Status.failed("Result unrecognized");
+        }
+        Node n = purchaseOrderElement.getFirstChild();
+        while(n != null && n.getNodeType() != Node.ELEMENT_NODE){
+            n = n.getNextSibling();
+        }
+        Element elem = (Element)n;
+        if(elem == null || !"shipTo".equals(elem.getLocalName())){
+            return Status.failed("Result unrecognized");
+        }
+        n = n.getNextSibling();
+        while(n != null && n.getNodeType() != Node.ELEMENT_NODE){
+            n = n.getNextSibling();
+        }
+        elem = (Element)n;
+        if(elem == null || !"items".equals(elem.getLocalName())){
+            return Status.failed("Result unrecognized");
+        }
+        return Status.passed("Ok");
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="marshal002">
+        <TestCaseDocumentation>
+            <Title>
+                Binder{org.w3c.dom.Node}.marshal(java.lang.Object,org.w3c.dom.Node) - jaxb object is null
+            </Title>
+            <Description>
+                The test checks that
+                Binder{org.w3c.dom.Node}.marshal(java.lang.Object jaxbObject,org.w3c.dom.Node node)
+                throws an IllegalArgumentException if jaxbObject parameter is null.
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+
+        //Create document
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        documentBuilderFactory.setNamespaceAware(true);
+        Document doc;
+        try {
+            doc = documentBuilderFactory.newDocumentBuilder().newDocument();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create Document due to exception: "+e);
+        }
+        try {
+            binder.marshal(null,doc);
+            return Status.failed("Binder.marshal(null,somenode) must throw an IllegalArgumentException");
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.marshal(null,somenode) has thrown an JAXBException instead of IllegalArgumentException: "+e);
+        } catch (IllegalArgumentException x){
+            return Status.passed("Ok");
+        } catch (NullPointerException npe){
+            npe.printStackTrace(ref);
+            return Status.failed("Binder.marshal(null,somenode) has thrown a NullPointerException instead of IllegalArgumentException: "+npe);
+        }
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="marshal003">
+        <TestCaseDocumentation>
+            <Title>
+                Binder{org.w3c.dom.Node}.marshal(java.lang.Object,org.w3c.dom.Node) - node is null
+            </Title>
+            <Description>
+                The test checks that
+                Binder{org.w3c.dom.Node}.marshal(java.lang.Object jaxbObject,org.w3c.dom.Node node)
+                throws an IllegalArgumentException if node parameter is null.
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        //Create PurchaseOrder object
+        Address shipTo = new Address();
+
+        shipTo.setName("Alice Smith");
+        shipTo.setStreet("123 Maple Street");
+        shipTo.setCity("Mill Valley,CA");
+        shipTo.setCountry("US");
+
+        Items items = new Items();
+        items.getItem().add("Item 1");
+        items.getItem().add("Item 2");
+
+        PurchaseOrder po = new PurchaseOrder();
+        po.setShipTo(shipTo);
+        po.setItems(items);
+
+        try {
+            binder.marshal((new ObjectFactory()).createPurchaseOrder(po),null);
+            return Status.failed("Binder.marshal(jaxbObject,null) must throw an IllegalArgumentException");
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.marshal(jaxbObject,null) has thrown an JAXBException instead of IllegalArgumentException: "+e);
+        } catch (IllegalArgumentException x){
+            return Status.passed("Ok");
+        }  catch (NullPointerException npe){
+            npe.printStackTrace(ref);
+            return Status.failed("Binder.marshal(jaxbObject,null) has thrown a NullPointerException instead of IllegalArgumentException: "+npe);
+        }
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="marshal004">
+        <TestCaseDocumentation>
+            <Description>
+                When getSchema() is non-null, the marshalled xml content is validated during this operation.
+            </Description>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        MyClass my = new MyClass();
+
+        try {
+            Binder<Node> binder = getBinderObject( JAXBContext.newInstance(MyClass.class) );
+            binder.marshal(new JAXBElement<MyClass>( new QName("jck-jaxb-test/Binder", "MyClass"), MyClass.class, my ),
+                                            createNewDocument());
+            binder.setSchema(schema);
+            try {
+                binder.marshal(new JAXBElement<MyClass>( new QName("jck-jaxb-test/Binder", "MyClass"), MyClass.class, my ),
+                                                createNewDocument());
+                return Status.failed( "expected exception MarshalException was not thrown." );
+            } catch( MarshalException x ){
+                return Status.passed("OK");
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            throw new RuntimeException(e);
+        }
+        ]]></TestCode>
+    </TestCase>
+</TestGroup>
+<!-- Ident: @(#)MarshalUnmarshal.test.xml	1.10 07/04/16 -->

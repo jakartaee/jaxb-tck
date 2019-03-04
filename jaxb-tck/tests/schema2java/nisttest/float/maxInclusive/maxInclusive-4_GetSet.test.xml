@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="maxInclusive4_GetSet">
+    <TestGroupDocumentation>
+        <Title><![CDATA[maxInclusive4 GetSet Tree Content tests]]></Title>
+        <Description><![CDATA[
+      The tests for checking the content of trees got by unmarshalling
+      of the maxInclusive-4.xsd based XML documents or 
+      created dynamically via ObjectFactory.
+      The schema defines a float restricted SimpleType with maxInclusive value 
+      13663412E67 that corresponds to INF value of the basic value space of type float.
+      Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)maxInclusive-4_GetSet.test.xml	1.5 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <SupportCode>
+    static strictfp boolean equal(float a, float b) { return a == b; };
+      </SupportCode>
+        <ExternalSupportClass SourceName="maxInclusive-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="maxInclusive4_GetSet.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML float maxInclusive-4.xsd, unmarshalled content tree GetSet test]]></Title>
+            <Description><![CDATA[
+The test unmarshalls maxInclusive-4-1.xml, maxInclusive-4-2.xml, maxInclusive-4-3.xml, 
+maxInclusive-4-4.xml, maxInclusive-4-5.xml documents which specify
+the values 1E-149, 4837947E-135, 7861749E-76, 4391583E-13, 13663412E67 
+for the float restricted SimpleType NISTSchema-float-maxInclusive-4 element and 
+expects that elemObj.getValue() returns respectively 0.0F, 0.0F, 0.0F, 4.391583E-7F, 
+Infinity, then invokes elemObj.setValue(float), elemObj.getValue() 
+should return set value.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="maxInclusive-4-1.xml"/>
+            <ExternalData Type="iodata" SourceName="maxInclusive-4-2.xml"/>
+            <ExternalData Type="iodata" SourceName="maxInclusive-4-3.xml"/>
+            <ExternalData Type="iodata" SourceName="maxInclusive-4-4.xml"/>
+            <ExternalData Type="iodata" SourceName="maxInclusive-4-5.xml"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        String[] xmlDocNames = {
+            "maxInclusive-4-1.xml", "maxInclusive-4-2.xml", "maxInclusive-4-3.xml",
+            "maxInclusive-4-4.xml", "maxInclusive-4-5.xml"
+        };
+        float[] expectedValues = {0.0F, 0.0F, 0.0F, 4.391583E-7F, Float.POSITIVE_INFINITY};
+        float[] anExpectedValues = {0.0F, - Float.MAX_VALUE, Float.MIN_VALUE, - Float.MIN_VALUE
+                                   , Float.POSITIVE_INFINITY};
+        for (int i = 0; i < xmlDocNames.length; ++i){
+            JAXBElement<Float> elemObj = (JAXBElement<Float>)unmarshal(xmlDocNames[i]);
+            if (!equal(elemObj.getValue(), expectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.getValue() != " + expectedValues[i]);
+            }
+            elemObj.setValue(anExpectedValues[i]);
+            if (!equal(elemObj.getValue(), anExpectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.setValue(" + anExpectedValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anExpectedValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML float maxInclusive-4.xsd GetSet test for dynamically created content tree]]></Title>
+            <Description><![CDATA[
+The test creates an instance of float restricted SimpleType NISTSchema-float-maxInclusive-4 type
+with the values 0.0F, 4.391583E-7F, Infinity and expects that elemObj.getValue() returns 
+specified values, then invokes elemObj.setValue(float) with various values, 
+elemObj.getValue() should return set values.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+        float[] setValues = {0.0F, 4.391583E-7F, Float.POSITIVE_INFINITY
+                            , Float.MAX_VALUE, Float.MIN_VALUE};
+        float[] anSetValues = {0.0F, Float.MAX_VALUE, Float.MIN_VALUE, - Float.MIN_VALUE
+                              , Float.POSITIVE_INFINITY};
+        JAXBElement<Float> elemObj = null;
+        for (int i = 0; i < setValues.length; ++i){
+            
+                elemObj = (JAXBElement<Float>)(new ObjectFactory()).createNISTSchemaFloatMaxInclusive4(setValues[i]);
+            
+            if (!equal(elemObj.getValue(), setValues[i])){
+                return Status.failed("dynamically created JAXBElement<Float>, elemObj.getValue() != " + setValues[i]);
+            }
+            elemObj.setValue(anSetValues[i]);
+            if (!equal(elemObj.getValue(), anSetValues[i])){
+                return Status.failed("dynamically created JAXBElement<Float>, elemObj.setValue(" + anSetValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anSetValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

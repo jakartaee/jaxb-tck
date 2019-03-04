@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-dateTime-minInclusive">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-dateTime-minInclusive]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/dateTime is restricted by facet minInclusive with value 1970-01-01T00:00:00.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#dateTime">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#dateTime
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-minInclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-minInclusive
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-dateTime-minInclusive.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-dateTime-minInclusive-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-dateTime-minInclusive.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-dateTime-minInclusive">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-atomic-dateTime-minInclusive-1-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-atomic-dateTime-minInclusive-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="atomic-datetime-mininclusive-NISTXML-SV-IV-atomic-dateTime-minInclusive-1-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

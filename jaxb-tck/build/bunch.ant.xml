@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!-- ======================================================================
+     Mar 26, 2007 6:52:37 PM                                                        
+
+     bunch-build    
+     Runs all <forkant file=""> targets from bunch-build.xml file
+                   
+	 SCCS: @(#)bunch.ant.xml	1.8 07/05/03
+     ====================================================================== -->
+<project name="bunch-build" default="default">
+	<description>
+            Bunch buildfiles runner
+    </description>
+    <property name="bunch.file" value="bunch-build.xml" />
+	<macrodef name="forkant">
+		<attribute name="file" />
+		<attribute name="failonerror" default="false" />
+		<sequential>
+
+			<echo>Run file @{file}</echo>
+<!--		    <subant antfile="@{file}" />
+
+-->		
+			<java classname="org.apache.tools.ant.Main" 
+				failonerror="@{failonerror}" timeout="120000"
+				output="@{file}.log" fork="true">
+				<classpath>
+					<pathelement path="${java.class.path}" />
+				</classpath>
+				<arg value="-buildfile" />
+				<arg file="@{file}" />
+			</java>
+		</sequential>
+	</macrodef>
+	<target name="default">
+		<echo>Empty target</echo>
+	</target>
+</project>

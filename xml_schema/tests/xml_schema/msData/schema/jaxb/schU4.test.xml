@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="schU4">
+   <TestGroupDocumentation>
+      <Title><![CDATA[schU4]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : Circulcar redefines handeling (4)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)schU4.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../schU4_a.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_b.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_d.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_c.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_e.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_f.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_h.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_g.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_g.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_c.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_d.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_e.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_f.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_h.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_g.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schU4_g.xsd"/>
+   </CodeSet>
+   <TestCase ID="schU4">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)schU4.test.xml	1.1 07/03/27 -->

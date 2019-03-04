@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="groupD004">
+   <TestGroupDocumentation>
+      <Title><![CDATA[groupD004]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking (id, ref) : Test particles: parent is redefine can't have maxOccurs, maxOccurs=1
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cModel_Group_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cModel_Group_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)groupD004.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../groupD004.xsd"/>
+      <ExternalData Type="iodata" SourceName="../groupD004.red"/>
+   </CodeSet>
+   <TestCase ID="groupD004">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)groupD004.test.xml	1.1 07/03/27 -->

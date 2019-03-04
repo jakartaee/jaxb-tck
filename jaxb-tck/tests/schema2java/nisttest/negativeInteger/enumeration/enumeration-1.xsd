@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-negativeInteger-enumeration-1-NS"
+        targetNamespace="NISTSchema-negativeInteger-enumeration-1-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-1.xsd
+      This schema specifies a datatype, NISTSchema-negativeInteger-enumeration-1,
+      which is derived by restriction of built-in type negativeInteger
+      by facet enumeration with values of:
+          -59
+          -1100366
+          -27354619498689081
+          -528658858
+          -4155613
+          -998174005610134473
+          -709647298338194731
+          -5195709623
+          -246111632071438
+          -16605891804330308
+          -716908467
+          -7631138542947550895
+          -3027941073677
+          -4233598
+          -7729606
+          -53236688
+          -67291024
+          -716648
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-negativeInteger-enumeration-1" type="nist:NISTSchema-negativeInteger-enumeration-1-Type"/>
+
+  <simpleType name="NISTSchema-negativeInteger-enumeration-1-Type">
+    <restriction base="negativeInteger">
+          <enumeration value="-59"/>
+          <enumeration value="-1100366"/>
+          <enumeration value="-27354619498689081"/>
+          <enumeration value="-528658858"/>
+          <enumeration value="-4155613"/>
+          <enumeration value="-998174005610134473"/>
+          <enumeration value="-709647298338194731"/>
+          <enumeration value="-5195709623"/>
+          <enumeration value="-246111632071438"/>
+          <enumeration value="-16605891804330308"/>
+          <enumeration value="-716908467"/>
+          <enumeration value="-7631138542947550895"/>
+          <enumeration value="-3027941073677"/>
+          <enumeration value="-4233598"/>
+          <enumeration value="-7729606"/>
+          <enumeration value="-53236688"/>
+          <enumeration value="-67291024"/>
+          <enumeration value="-716648"/>
+    </restriction>
+  </simpleType>
+
+</schema>

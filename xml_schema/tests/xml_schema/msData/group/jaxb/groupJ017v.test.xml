@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="groupJ017v">
+    <TestGroupDocumentation>
+        <Title><![CDATA[groupJ017v]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking (id, ref) : parent is sequence: elements in instant XML=1, minOccurs=1, maxOccurs=2
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cModel_Group_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cModel_Group_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)groupJ017v.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../groupJ017.xsd"/>
+        <ExternalData Type="iodata" SourceName="groupJ017v.sig"/>
+    </CodeSet>
+    <TestCase ID="groupJ017v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="groupJ017v.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../groupJ017.xml"/>
+            <ExternalData Type="iodata" SourceName="groupj017v-groupJ017.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="long009_2175">
+    <TestGroupDocumentation>
+        <Title><![CDATA[long009_2175]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : Test for simpleType list of Long
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)long009_2175.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../long009.xsd"/>
+        <ExternalData Type="iodata" SourceName="long009_2175.sig"/>
+    </CodeSet>
+    <TestCase ID="long009_2175">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="long009_2175.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../long009.xml"/>
+            <ExternalData Type="iodata" SourceName="long009_2175-long009.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

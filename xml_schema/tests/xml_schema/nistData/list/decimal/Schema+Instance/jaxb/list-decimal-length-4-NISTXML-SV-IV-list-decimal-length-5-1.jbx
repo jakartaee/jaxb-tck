@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-decimal-length-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-decimal-length-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>3377953172224448.88</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>4838679446638593.07</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>4486147868886838.80</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>4844412723593282.27</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>2828252484885513.28</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>3124248258785827.61</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>1596695759481475.61</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>2771822654737834.79</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>3326515226645363.84</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigDecimal"> 
+     <string>6638423598276538.29</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

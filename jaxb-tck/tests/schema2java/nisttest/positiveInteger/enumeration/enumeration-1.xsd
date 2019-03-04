@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-positiveInteger-enumeration-1-NS"
+        targetNamespace="NISTSchema-positiveInteger-enumeration-1-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-1.xsd
+      This schema specifies a datatype, NISTSchema-positiveInteger-enumeration-1,
+      which is derived by restriction of built-in type positiveInteger
+      by facet enumeration with values of:
+          550215893734272
+          846254534438580785
+          43876110718277
+          7792480394466
+          9936
+          5547
+          4305434507488021
+          652408347111
+          68527470033184856301
+          421066425355950
+          6991035
+          9793440067111577
+          865014204294391
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-positiveInteger-enumeration-1" type="nist:NISTSchema-positiveInteger-enumeration-1-Type"/>
+
+  <simpleType name="NISTSchema-positiveInteger-enumeration-1-Type">
+    <restriction base="positiveInteger">
+          <enumeration value="550215893734272"/>
+          <enumeration value="846254534438580785"/>
+          <enumeration value="43876110718277"/>
+          <enumeration value="7792480394466"/>
+          <enumeration value="9936"/>
+          <enumeration value="5547"/>
+          <enumeration value="4305434507488021"/>
+          <enumeration value="652408347111"/>
+          <enumeration value="68527470033184856301"/>
+          <enumeration value="421066425355950"/>
+          <enumeration value="6991035"/>
+          <enumeration value="9793440067111577"/>
+          <enumeration value="865014204294391"/>
+    </restriction>
+  </simpleType>
+
+</schema>

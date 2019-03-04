@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="groupE004v">
+    <TestGroupDocumentation>
+        <Title><![CDATA[groupE004v]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking (id, ref) : parent is extension: check that minOccurs default is 1, elements in instant XML = 1, minOccurs=absent, maxOccurs=absent
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cModel_Group_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cModel_Group_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)groupE004v.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../groupE004.xsd"/>
+        <ExternalData Type="iodata" SourceName="groupE004v.sig"/>
+    </CodeSet>
+    <TestCase ID="groupE004v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="groupE004v.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../groupE004.xml"/>
+            <ExternalData Type="iodata" SourceName="groupe004v-groupE004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="name00803_">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Element names contain digits followed by a non-digit characters. (content tree test)]]></Title>
+        <Description><![CDATA[Declare an element with a sequence of three integer elements. Name them 
+        as follows: "aa111a2Aa", "aa22B3c", "aa3-4_".
+        The document name00803_p.xml sets the elements to 0, 1 and 2 respectively.
+        ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)name00803_CTTests.test.xml	1.4 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="name00803.xsd"/>
+        <ExternalData Type="iodata" SourceName="name00803_.sig"/>
+    </CodeSet>
+    <TestCase ID="Get001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the get method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals name00803_p.xml and expects the returned object
+                to contain elements to be set to 0, 1 and 2 respectively.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="name00803_p.xml"/>
+            <ExternalData Type="iodata" SourceName="name00803_-name00803_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        Root root = (Root)unmarshal("name00803_p.xml");
+        String failure = "";
+
+        if (root.getAa111A2Aa() != 0) {
+            failure += "; root.getAa111A2Aa() returns " + root.getAa111A2Aa();
+        }
+        if (root.getAa22B3C() != 1) {
+            failure += "; root.getAa22B3C() returns " + root.getAa22B3C();
+        }
+        if (root.getAa34() != 2) {
+            failure += "; root.getAa34() returns " + root.getAa34();
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Set001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the set method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals name00803_p.xml, sets its elements to 
+                values 11, 22, 33 and expects the returned object
+                to contain elements to be set to 11, 22 and 33 respectively.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="name00803_p.xml"/>
+            <ExternalData Type="iodata" SourceName="name00803_-name00803_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        Root root = (Root)unmarshal("name00803_p.xml");
+        String failure = "";
+
+        root.setAa111A2Aa(11);
+        root.setAa22B3C(22);
+        root.setAa34(33);
+
+        if (root.getAa111A2Aa() != 11) {
+            failure += "; root.getAa111A2Aa() returns " + root.getAa111A2Aa();
+        }
+        if (root.getAa22B3C() != 22) {
+            failure += "; root.getAa22B3C() returns " + root.getAa22B3C();
+        }
+        if (root.getAa34() != 33) {
+            failure += "; root.getAa34() returns " + root.getAa34();
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+</TestGroup>

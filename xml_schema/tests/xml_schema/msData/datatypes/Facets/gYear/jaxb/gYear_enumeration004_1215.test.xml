@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gYear_enumeration004_1215">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gYear_enumeration004_1215]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=enumeration and value=2000 1999 2038 and document value=2000
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gYear_enumeration004_1215.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../gYear_enumeration004.xsd"/>
+        <ExternalData Type="iodata" SourceName="gYear_enumeration004_1215.sig"/>
+    </CodeSet>
+    <TestCase ID="gYear_enumeration004_1215">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="gYear_enumeration004_1215.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../gYear_enumeration004.xml"/>
+            <ExternalData Type="iodata" SourceName="gyear_enumeration004_1215-gYear_enumeration004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,457 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!-- the test is similar to the AbstractMarshallerImpl test -->
+<TestGroup ID="Marshaller_">
+    <TestGroupDocumentation>
+        <Title>Providers Marshaller implementation tests. (content tree test)</Title>
+        <Description>Compile a simple schema to create a java binding classes. Test an
+        available implementation of the javax.xml.bind.Marshaller interface using this 
+        context.
+        </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)Marshaller_CTTests.test.xml	1.6 07/04/16</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <AttrElem Name="schemaName">Marshaller.xsd</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.Marshaller</Import>
+        <Import>javax.xml.transform.Result</Import>
+        <Import>javax.xml.bind.JAXBContext</Import>
+        <Import>javax.xml.bind.JAXBException</Import>
+        <Import>javax.xml.bind.Marshaller</Import>
+        <Import>javax.xml.bind.helpers.DefaultValidationEventHandler</Import>
+        <Import>javax.xml.bind.ValidationEventHandler</Import>
+        <Import>java.io.UnsupportedEncodingException</Import>
+        <Import>org.xml.sax.helpers.DefaultHandler</Import>
+        <Import>org.xml.sax.ContentHandler</Import>
+        <Import>org.xml.sax.SAXException</Import>
+        <SupportCode><![CDATA[
+    Marshaller getMarshaller() throws JAXBException {
+        JAXBContext jc = getJAXBContext();
+        return jc.createMarshaller();
+    }
+    
+    static class CustomHandler extends DefaultHandler {
+        public StringBuffer log = new StringBuffer();
+        public void startDocument() throws SAXException {
+            log.append("startDocument();\n");
+            super.startDocument();
+        }
+        public void endDocument() throws SAXException {
+            log.append("endDocument();\n");
+            super.endDocument();
+        }
+    }]]></SupportCode>
+        <ExternalSupportClass SourceName="ObjectFactory.java" />
+        <ExternalData SourceName="Marshaller.xsd" Type="iodata" />
+    </CodeSet>
+
+    <TestCase ID="Get001">
+        <TestCaseDocumentation>
+            <Title>getEventHandler() returns default event handler if one hasn't been set.</Title>
+            <Description>
+                The default event handler is returned by getEventHandler() if no handler has been set.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            ValidationEventHandler veh = pm.getEventHandler();
+    
+            if (veh == null) {
+                return Status.failed("getEventHandler() returns null");
+            }
+
+            return Status.passed("OKAY");
+
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Get003">
+        <TestCaseDocumentation>
+            <Title>getProperty(name) throws PropertyException if there is no such property</Title>
+            <Description>
+                getProperty(name) throws PropertyException when there is an error 
+                retrieving the given property or value property name.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.bind.PropertyException</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            Object prop = pm.getProperty("unexistentProperty");
+    
+            return Status.failed("getProperty(\"unexistentProperty\") returns " + prop
+                               + ", but should throw PropertyException");
+
+        } catch (PropertyException pe) {
+            return Status.passed("OKAY");
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Get004">
+        <TestCaseDocumentation>
+            <Title>getProperty("jaxb.encoding") returns what has been set</Title>
+            <Description>
+                setProperty("jaxb.encoding", "UTF-8"), then expect 
+                getProperty("jaxb.encoding") to return what has been set.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.bind.PropertyException</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            pm.setProperty("jaxb.encoding", "UTF-8");
+            Object prop = pm.getProperty("jaxb.encoding");
+
+            if (prop == null || ! (prop.equals("UTF-8"))) {
+                return Status.failed("what getProperty(\"jaxb.encoding\") returns " + prop
+                                   + " instead of \"UTF-8\"");
+            }
+
+            return Status.passed("OKAY");
+        } catch (PropertyException pe) {
+            pe.printStackTrace(ref);
+            return Status.failed(pe.toString());
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Marshal001">
+        <TestCaseDocumentation>
+            <Title>marshal(Object obj, ContentHandler handler)</Title>
+            <Description>
+                marshal(Object obj, ContentHandler handler) marshals the content 
+                tree rooted at obj into SAX2 events.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            CustomHandler ch = new CustomHandler();
+
+            pm.marshal((new ObjectFactory()).createRoot("test"), ch);
+
+            if (ch.log.toString().indexOf("startDocument();") == -1) {
+                ref.println("Marshal001: " + ch.log);
+                return Status.failed("no startDocument() event is logged.");
+            }
+
+            if (ch.log.toString().indexOf("endDocument();") == -1) {
+                ref.println("Marshal001: " + ch.log);
+                return Status.failed("no endDocument() event is logged.");
+            }
+
+            return Status.passed("OKAY");
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Marshal002">
+        <TestCaseDocumentation>
+            <Title>marshal(Object obj, Node node)</Title>
+            <Description>
+                marshal(Object obj, Node node) marshals the content 
+                tree rooted at obj into a DOM tree.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+            <Import>javax.xml.parsers.FactoryConfigurationError</Import>
+            <Import>javax.xml.parsers.ParserConfigurationException</Import>
+            <Import>org.w3c.dom.Node</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            Node node = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+
+            pm.marshal((new ObjectFactory()).createRoot("test"), node);
+
+            if (! (node.hasChildNodes())) {
+                return Status.failed("the node gets no child nodes.");
+            }
+
+            return Status.passed("OKAY");
+        } catch (FactoryConfigurationError fce) {
+            return Status.failed(fce.toString());
+        } catch (ParserConfigurationException pce) {
+            return Status.failed(pce.toString());
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Marshal003">
+        <TestCaseDocumentation>
+            <Title>marshal(Object obj, OutputStream os)</Title>
+            <Description>
+                marshal(Object obj, OutputStream os) marshals the content 
+                tree rooted at obj into an output stream.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>java.io.OutputStream</Import>
+            <Import>java.io.IOException</Import>
+            <SupportCode><![CDATA[
+    static class StringBufferOutputStream extends OutputStream {
+        public StringBuffer buffer = new StringBuffer();
+        public void write(int b) throws IOException {
+            buffer.append((char)b);
+        }
+    }]]></SupportCode>
+        </CodeSet>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            StringBufferOutputStream sbos = new StringBufferOutputStream();
+
+            pm.marshal((new ObjectFactory()).createRoot("test.Marshal003"), sbos);
+
+            if (sbos.buffer.toString().indexOf("test.Marshal003") == -1) {
+                return Status.failed("cannot find string \"test.Marshal003\" in " 
+                               + "the marshalled document: " + sbos.buffer);
+            }
+
+            return Status.passed("OKAY");
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Marshal004">
+        <TestCaseDocumentation>
+            <Title>marshal(Object obj, Writer w)</Title>
+            <Description>
+                marshal(Object obj, Writer w) marshals the content 
+                tree rooted at obj into a Writer.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>java.io.StringWriter</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            StringWriter sw = new StringWriter();
+
+            pm.marshal((new ObjectFactory()).createRoot("test.Marshal004"), sw);
+
+            if (sw.getBuffer().toString().indexOf("test.Marshal004") == -1) {
+                return Status.failed("cannot find string \"test.Marshal004\" in " 
+                               + "the marshalled document: " + sw.toString());
+            }
+
+            return Status.passed("OKAY");
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Marshal005">
+        <TestCaseDocumentation>
+            <Title>marshal(Object obj, Result result)</Title>
+            <Description>
+                marshal(Object obj, Result result) marshals the content 
+                tree rooted at obj into a DOMResult.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+            <Import>javax.xml.parsers.FactoryConfigurationError</Import>
+            <Import>javax.xml.parsers.ParserConfigurationException</Import>
+            <Import>org.w3c.dom.Node</Import>
+            <Import>javax.xml.transform.dom.DOMResult</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            Node node = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+            DOMResult domResult = new DOMResult(node);
+
+            pm.marshal((new ObjectFactory()).createRoot("test"), (Result)domResult);
+
+            if (! (domResult.getNode().hasChildNodes())) {
+                return Status.failed("the node gets no child nodes.");
+            }
+
+            return Status.passed("OKAY");
+        } catch (FactoryConfigurationError fce) {
+            return Status.failed(fce.toString());
+        } catch (ParserConfigurationException pce) {
+            return Status.failed(pce.toString());
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Marshal006">
+        <TestCaseDocumentation>
+            <Title>marshal(Object obj, Result result)</Title>
+            <Description>
+                marshal(Object obj, Result result) marshals the content 
+                tree rooted at obj into a SAXResult.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.transform.sax.SAXResult</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            CustomHandler ch = new CustomHandler();
+            SAXResult saxResult = new SAXResult(ch);
+
+            pm.marshal((new ObjectFactory()).createRoot("test"), (Result)saxResult);
+
+            if (ch.log.toString().indexOf("startDocument();") == -1) {
+                ref.println("Marshal006: " + ch.log);
+                return Status.failed("no startDocument() event is logged.");
+            }
+
+            if (ch.log.toString().indexOf("endDocument();") == -1) {
+                ref.println("Marshal006: " + ch.log);
+                return Status.failed("no endDocument() event is logged.");
+            }
+
+            return Status.passed("OKAY");
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Marshal007">
+        <TestCaseDocumentation>
+            <Title>marshal(Object obj, Result result)</Title>
+            <Description>
+                marshal(Object obj, Result result) marshals the content 
+                tree rooted at obj into a StreamResult.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>java.io.StringWriter</Import>
+            <Import>javax.xml.transform.stream.StreamResult</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        try {
+            Marshaller pm = getMarshaller();
+
+            StringWriter sw = new StringWriter();
+            StreamResult streamResult = new StreamResult(sw);
+
+            pm.marshal((new ObjectFactory()).createRoot("test.Marshal007"), (Result)streamResult);
+
+            if (sw.getBuffer().toString().indexOf("test.Marshal007") == -1) {
+                return Status.failed("cannot find string \"test.Marshal007\" in " 
+                               + "the marshalled document: " + sw.toString());
+            }
+
+            return Status.passed("OKAY");
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Set001">
+        <TestCaseDocumentation>
+            <Title>setEventHandler(ValidationEventHandler handler)</Title>
+            <Description>
+                setEventHandler(ValidationEventHandler handler) allows 
+                an application to register a validation event handler.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>java.io.StringWriter</Import>
+            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+
+        try {
+            Marshaller pm = getMarshaller();
+
+            pm.setEventHandler(eh);
+            if (pm.getEventHandler() != eh) {
+                return Status.passed("getEventHandler() returns " + pm.getEventHandler() 
+                                   + " instead of " + eh);
+            }
+
+            return Status.passed("OKAY");
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        }    
+        ]]></TestCode>
+    </TestCase>
+
+</TestGroup>
+<!-- Ident: @(#)Marshaller_CTTests.test.xml	1.6 07/04/16 -->

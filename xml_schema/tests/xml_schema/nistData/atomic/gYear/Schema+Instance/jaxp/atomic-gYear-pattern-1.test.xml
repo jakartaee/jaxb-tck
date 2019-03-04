@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-gYear-pattern-1">
+   <TestGroupDocumentation>
+      <Title><![CDATA[atomic-gYear-pattern-1]]></Title>
+      <Description><![CDATA[
+        <p>
+                    
+        Type atomic/gYear is restricted by facet pattern with value \d\d61.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gYear">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gYear
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)atomic-gYear-pattern-1.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-gYear-pattern-2.xsd"/>
+   </CodeSet>
+   <TestCase ID="atomic-gYear-pattern-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-gYear-pattern-2-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-gYear-pattern-2-1.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-gYear-pattern-2-2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-gYear-pattern-2-2.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-gYear-pattern-2-3">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-gYear-pattern-2-3.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-gYear-pattern-2-4">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-gYear-pattern-2-4.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-gYear-pattern-2-5">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-gYear-pattern-2-5.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)atomic-gYear-pattern-1.test.xml	1.1 07/03/27 -->

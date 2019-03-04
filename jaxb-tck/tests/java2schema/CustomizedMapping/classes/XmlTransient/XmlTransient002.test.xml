@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="XmlTransient002">
+    <TestGroupDocumentation>
+        <Title>XmlTransient</Title>
+        <Description>Test on XmlTransient annotation.</Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)XmlTransient002.test.xml	1.1 07/06/26</AttrElem>
+        <AttrElem Name="testType">J2XTest</AttrElem>
+        <Keyword>runtime</Keyword>
+        <Keyword>positive</Keyword>
+        <Keyword>java_to_schema</Keyword>
+        <Keyword>jaxb</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.j2x</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="package-info.java"/>
+        <ExternalSupportClass SourceName="XmlTransient002c.java"/>
+        <ExternalSupportClass SourceName="XmlTransient002d.java"/>
+    </CodeSet>
+    <TestCase ID="testCase0001">
+        <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: JAXB:SPEC:J2S:01221
+          Mapping: <b>@XmlTransient</b> is used to prevent the mapping of a class.<br>
+          The class must not be mapped.<br>
+          Any reference to this class from the other XML bound classes will treated as<br>
+          if they are refering to the nearest XML-bound ancestor of this class<br>
+          (which could be java.lang.Object, which guarantees that there always exists such a class.) .]]>
+         </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">positive</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="XmlTransient002.p.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+    <TestCase ID="testCase0002">
+        <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: JAXB:SPEC:J2S:01221
+          Mapping: <b>@XmlTransient</b> is used to prevent the mapping of a class.<br>
+          The class must not be mapped.<br>
+          Any reference to this class from the other XML bound classes will treated as<br>
+          if they are refering to the nearest XML-bound ancestor of this class<br>
+          (which could be java.lang.Object, which guarantees that there always exists such a class.) .]]>
+         </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">negative</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="XmlTransient002a.n.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+    <TestCase ID="testCase0003">
+        <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: JAXB:SPEC:J2S:01221
+          Mapping: <b>@XmlTransient</b> is used to prevent the mapping of a class.<br>
+          The class must not be mapped.<br>
+          Any reference to this class from the other XML bound classes will treated as<br>
+          if they are refering to the nearest XML-bound ancestor of this class<br>
+          (which could be java.lang.Object, which guarantees that there always exists such a class.) .]]>
+         </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">negative</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="XmlTransient002b.n.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

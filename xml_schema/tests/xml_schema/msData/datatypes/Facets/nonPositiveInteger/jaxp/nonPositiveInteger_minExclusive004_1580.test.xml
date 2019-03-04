@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="nonPositiveInteger_minExclusive004_1580">
+   <TestGroupDocumentation>
+      <Title><![CDATA[nonPositiveInteger_minExclusive004_1580]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minExclusive and value=-7 and facet=maxInclusive and value=-1) and document value=-5
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)nonPositiveInteger_minExclusive004_1580.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../nonPositiveInteger_minExclusive004.xsd"/>
+   </CodeSet>
+   <TestCase ID="nonPositiveInteger_minExclusive004_1580">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="nonPositiveInteger_minExclusive004_1580.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../nonPositiveInteger_minExclusive004.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)nonPositiveInteger_minExclusive004_1580.test.xml	1.1 07/03/27 -->

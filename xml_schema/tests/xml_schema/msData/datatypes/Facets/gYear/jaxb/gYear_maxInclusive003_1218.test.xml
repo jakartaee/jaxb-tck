@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gYear_maxInclusive003_1218">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gYear_maxInclusive003_1218]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxInclusive and value=2002 and document value=2000
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gYear_maxInclusive003_1218.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../gYear_maxInclusive003.xsd"/>
+        <ExternalData Type="iodata" SourceName="gYear_maxInclusive003_1218.sig"/>
+    </CodeSet>
+    <TestCase ID="gYear_maxInclusive003_1218">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="gYear_maxInclusive003_1218.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../gYear_maxInclusive003.xml"/>
+            <ExternalData Type="iodata" SourceName="gyear_maxinclusive003_1218-gYear_maxInclusive003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

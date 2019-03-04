@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="positiveInteger_minInclusive004_1000">
+   <TestGroupDocumentation>
+      <Title><![CDATA[positiveInteger_minInclusive004_1000]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=minInclusive and value=7 and facet=maxInclusive and value=1
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)positiveInteger_minInclusive004_1000.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../positiveInteger_minInclusive004.xsd"/>
+   </CodeSet>
+   <TestCase ID="positiveInteger_minInclusive004_1000">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)positiveInteger_minInclusive004_1000.test.xml	1.1 07/03/27 -->

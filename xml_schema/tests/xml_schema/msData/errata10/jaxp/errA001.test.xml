@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="errA001">
+   <TestGroupDocumentation>
+      <Title><![CDATA[errA001]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Primer Errata : E0-23 Clarification: test that facet fractionDigits can be added to all numeric datatypes as long as value is 0 (except for decimal which takes any value)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/2004/03/xmlschema-errata">
+            http://www.w3.org/2004/03/xmlschema-errata
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)errA001.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../errA001.xsd"/>
+   </CodeSet>
+   <TestCase ID="errA001">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="errA001.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../errA001.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)errA001.test.xml	1.1 07/03/27 -->

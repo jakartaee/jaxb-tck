@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="isDefault021">
+    <TestGroupDocumentation>
+        <Title><![CDATA[isDefault021]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : Check IsDefault(default) for Empty Element with no end tag
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)isDefault021.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../isdefault003.xsd"/>
+        <ExternalData Type="iodata" SourceName="isDefault021.sig"/>
+    </CodeSet>
+    <TestCase ID="isDefault021">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="isDefault021.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../isdefault021.xml"/>
+            <ExternalData Type="iodata" SourceName="isdefault021-isdefault021.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

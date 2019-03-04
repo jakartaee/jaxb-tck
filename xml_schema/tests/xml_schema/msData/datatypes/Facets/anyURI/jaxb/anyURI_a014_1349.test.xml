@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="anyURI_a014_1349">
+    <TestGroupDocumentation>
+        <Title><![CDATA[anyURI_a014_1349]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : test anyAttribute/namespace as anyURI type, by setting value to excluded uri character '>' or '"'(http://www.ietf.org/rfc/rfc2396.txt)
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)anyURI_a014_1349.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../anyURI_a014.xsd"/>
+        <ExternalData Type="iodata" SourceName="anyURI_a014_1349.sig"/>
+    </CodeSet>
+    <TestCase ID="anyURI_a014_1349">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

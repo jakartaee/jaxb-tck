@@ -1,0 +1,91 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="NameSpace015">
+   <TestGroupDocumentation>
+      <Title>XmlElement</Title>
+      <Description><![CDATA[
+      JAXB specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
+      <b>@XmlType</b> is used to map a Java class to a schema type.<br>
+      A class annotated with @XmlType must be mapped as specified:<br>
+      Mapping: Class to Complex Type Definition<br>
+      {target namespace} ::=<br>
+      if @XmlType.namespace() is "##default" && @XmlType.name() is "" and class is annotated with @XmlRootElement, then<br>
+      as specified in Table 8-7, "Mapping: Class to Element Declaration,"<br>
+      if @XmlRootElement.namespace() is not "##default", then<br>
+      @XmlRootElement.namespace()
+      ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)NameSpace015.test.xml	1.6 08/04/04</AttrElem>
+       <AttrElem Name="testType">J2XTest</AttrElem>
+      <Keyword>runtime</Keyword> 
+      <Keyword>positive</Keyword>
+       <Keyword>java_to_schema</Keyword>
+       <Keyword>jaxb</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <ExternalSupportClass SourceName="NameSpace015.java"/>
+   </CodeSet>
+   <!-- test case -->
+   <TestCase ID="testCase0001">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+      JAXB specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
+      <b>@XmlType</b> is used to map a Java class to a schema type.<br>
+      A class annotated with @XmlType must be mapped as specified:<br>
+      Mapping: Class to Complex Type Definition<br>
+      {target namespace} ::=<br>
+      if @XmlType.namespace() is "##default" && @XmlType.name() is "" and class is annotated with @XmlRootElement, then<br>
+      as specified in Table 8-7, "Mapping: Class to Element Declaration,"<br>
+      if @XmlRootElement.namespace() is not "##default", then<br>
+      @XmlRootElement.namespace()
+          ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">positive</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="NameSpace015.p.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <!-- test case -->
+   <TestCase ID="testCase0002">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+      JAXB specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
+      <b>@XmlType</b> is used to map a Java class to a schema type.<br>
+      A class annotated with @XmlType must be mapped as specified:<br>
+      Mapping: Class to Complex Type Definition<br>
+      {target namespace} ::=<br>
+      if @XmlType.namespace() is "##default" && @XmlType.name() is "" and class is annotated with @XmlRootElement, then<br>
+      as specified in Table 8-7, "Mapping: Class to Element Declaration,"<br>
+      if @XmlRootElement.namespace() is not "##default", then<br>
+      @XmlRootElement.namespace()
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="NameSpace015.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>

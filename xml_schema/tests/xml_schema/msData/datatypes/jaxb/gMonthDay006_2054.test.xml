@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gMonthDay006_2054">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gMonthDay006_2054]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : gMonthDay should disallow "--02-30" and "--02-31"
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gMonthDay006_2054.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../datatypes.xsd"/>
+        <ExternalData Type="iodata" SourceName="gMonthDay006_2054.sig"/>
+    </CodeSet>
+    <TestCase ID="gMonthDay006_2054">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

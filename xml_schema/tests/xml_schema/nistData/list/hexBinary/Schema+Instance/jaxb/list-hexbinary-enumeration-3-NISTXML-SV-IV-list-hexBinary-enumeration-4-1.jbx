@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-hexBinary-enumeration-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-hexBinary-enumeration-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>7168</string> 
+   </void> 
+   <void method="add"> 
+    <string>777275626c6363707476636b7162706f6b70686b7862676e646e68706f677779726968696b646e656a627472676c6f</string> 
+   </void> 
+   <void method="add"> 
+    <string>626c776f63737665747779736f6b77716b69</string> 
+   </void> 
+   <void method="add"> 
+    <string>61647977697674746762</string> 
+   </void> 
+   <void method="add"> 
+    <string>6977786f707669636d68706f6d7672777370636a666e6e6f627572777778726a6e7975707274636669616b6667646b6f75646774</string> 
+   </void> 
+   <void method="add"> 
+    <string>77666f67626c6a747368676b7969746865666c6679707966756a676168636a6f666c68646f6d77666a69766370766f</string> 
+   </void> 
+   <void method="add"> 
+    <string>70707369796f766b68</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

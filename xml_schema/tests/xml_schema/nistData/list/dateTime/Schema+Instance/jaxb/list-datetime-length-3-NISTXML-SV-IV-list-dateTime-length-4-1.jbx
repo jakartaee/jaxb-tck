@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-dateTime-length-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-dateTime-length-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+     <string>1959-04-22T08:06:17</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+     <string>1999-04-28T08:07:16</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+     <string>1986-09-23T18:05:19</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+     <string>1986-05-24T08:03:13</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+     <string>1966-01-20T18:09:12</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+     <string>1942-03-23T08:09:11</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+     <string>1994-06-23T18:05:18</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+     <string>1904-04-26T18:04:15</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

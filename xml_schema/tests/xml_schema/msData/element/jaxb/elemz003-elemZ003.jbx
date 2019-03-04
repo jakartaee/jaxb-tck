@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>http://www.microsoft.com/schema/1</string> 
+   <string>container</string> 
+  </object> 
+  <class>javasoft.sqe.tests.element.elemz003.CONTAINER</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="javasoft.sqe.tests.element.elemz003.CONTAINER"> 
+   <void property="a"> 
+    <void method="add"> 
+     <object class="javax.xml.bind.JAXBElement"> 
+      <object class="javax.xml.namespace.QName"> 
+       <string>http://www.microsoft.com/schema/1</string> 
+       <string>a</string> 
+      </object> 
+      <class>javasoft.sqe.tests.element.elemz003.ATYPE</class> 
+      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <object class="javasoft.sqe.tests.element.elemz003.ATYPE"/> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javax.xml.bind.JAXBElement"> 
+      <object class="javax.xml.namespace.QName"> 
+       <string>http://www.microsoft.com/schema/1</string> 
+       <string>b</string> 
+      </object> 
+      <class>javasoft.sqe.tests.element.elemz003.BTYPE</class> 
+      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <object class="javasoft.sqe.tests.element.elemz003.BTYPE"/> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javax.xml.bind.JAXBElement"> 
+      <object class="javax.xml.namespace.QName"> 
+       <string>http://www.microsoft.com/schema/1</string> 
+       <string>c</string> 
+      </object> 
+      <class>javasoft.sqe.tests.element.elemz003.CTYPE</class> 
+      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <object class="javasoft.sqe.tests.element.elemz003.CTYPE"/> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javax.xml.bind.JAXBElement"> 
+      <object class="javax.xml.namespace.QName"> 
+       <string>http://www.microsoft.com/schema/1</string> 
+       <string>d</string> 
+      </object> 
+      <class>javasoft.sqe.tests.element.elemz003.DTYPE</class> 
+      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <object class="javasoft.sqe.tests.element.elemz003.DTYPE"/> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javax.xml.bind.JAXBElement"> 
+      <object class="javax.xml.namespace.QName"> 
+       <string>http://www.microsoft.com/schema/1</string> 
+       <string>e</string> 
+      </object> 
+      <class>javasoft.sqe.tests.element.elemz003.ETYPE</class> 
+      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <object class="javasoft.sqe.tests.element.elemz003.ETYPE"/> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javax.xml.bind.JAXBElement"> 
+      <object class="javax.xml.namespace.QName"> 
+       <string>http://www.microsoft.com/schema/1</string> 
+       <string>f</string> 
+      </object> 
+      <class>javasoft.sqe.tests.element.elemz003.FTYPE</class> 
+      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <object class="javasoft.sqe.tests.element.elemz003.FTYPE"/> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javax.xml.bind.JAXBElement"> 
+      <object class="javax.xml.namespace.QName"> 
+       <string>http://www.microsoft.com/schema/1</string> 
+       <string>g</string> 
+      </object> 
+      <class>javasoft.sqe.tests.element.elemz003.FTYPE</class> 
+      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <object class="javasoft.sqe.tests.element.elemz003.FTYPE"/> 
+     </object> 
+    </void> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

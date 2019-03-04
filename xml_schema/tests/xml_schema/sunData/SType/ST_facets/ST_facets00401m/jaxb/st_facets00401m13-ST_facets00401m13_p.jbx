@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.Root"> 
+  <void property="value"> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>എ_00</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ഏ_0</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ഐ_A_0</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ഒ_01</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ഝ_1</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ന_A_1</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>പ_02</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>റ_2</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ഹ_A_2</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ൠ_03</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ൠ_3</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ൡ_A_3</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ก_04</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ท_4</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ฮ_A_4</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ะ_05</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>า_06</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>า_6</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ำ_A_6</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>เ_07</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>โ_7</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ๅ_A_7</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ກ_08</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ກ_8</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ຂ_A_8</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javasoft.sqe.tests.stype.st_facets.st_facets00401m.st_facets00401m13.S" method="valueOf"> 
+     <string>ຄ_09</string> 
+    </object> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

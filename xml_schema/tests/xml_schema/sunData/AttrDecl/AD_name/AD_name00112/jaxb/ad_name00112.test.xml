@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="ad_name00112">
+   <TestGroupDocumentation>
+      <Title><![CDATA[Attribute name contains 7 punctuation characters. (valid schema)]]></Title>
+      <Description><![CDATA[
+        <p>
+                    Declare an element with two attributes of type int. Name the first one
+                                     using 7 punctuation characters: 
+                                     hyphen ('-', \u002D, HYPHEN-MINUS), period ('.', \u002E, FULL STOP),
+                                     underscore ('_', \u005F, LOW LINE),
+                                     dot ('.', \u00B7, MIDDLE DOT), \u0387, GREEK ANO TELEIA,
+                                     \u06DD, ARABIC END OF AYAH and \u06DE, ARABIC START OF RUB EL HIZB. Name the 
+                                     second attribute with the same name except the characters described.
+                             
+                                     The document AD_name00112_p.xml sets the attributes to 0 and 1 respectively.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#cAttribute_Declarations">
+            http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#cAttribute_Declarations
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)ad_name00112.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../AD_name00112.xsd"/>
+   </CodeSet>
+   <TestCase ID="ad_name00112">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="AD_name00112_p">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../AD_name00112_p.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)ad_name00112.test.xml	1.1 07/03/27 -->

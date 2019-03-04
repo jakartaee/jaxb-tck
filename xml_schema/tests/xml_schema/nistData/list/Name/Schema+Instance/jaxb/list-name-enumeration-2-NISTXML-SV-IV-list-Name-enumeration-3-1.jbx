@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-Name-enumeration-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-Name-enumeration-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>jto:to-utilities.appropriat</string> 
+   </void> 
+   <void method="add"> 
+    <string>eissues-and_associated:bec</string> 
+   </void> 
+   <void method="add"> 
+    <string>nis_testing_in:retrie</string> 
+   </void> 
+   <void method="add"> 
+    <string>sin-resources_that:fr</string> 
+   </void> 
+   <void method="add"> 
+    <string>xtransactional.methods-better_of_complete_directions:resou</string> 
+   </void> 
+   <void method="add"> 
+    <string>stechnologies_a-define:manipulate-base_and.and-tec</string> 
+   </void> 
+   <void method="add"> 
+    <string>_to:also_man</string> 
+   </void> 
+   <void method="add"> 
+    <string>ris-results_into_that-for-of.need:be:has.t</string> 
+   </void> 
+   <void method="add"> 
+    <string>gare_sense:fed-database.b</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="time_maxInclusive001_1152">
+    <TestGroupDocumentation>
+        <Title><![CDATA[time_maxInclusive001_1152]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxInclusive and value=10:21:00-05:00 and document value=10:21:00-05:00
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)time_maxInclusive001_1152.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../time_maxInclusive001.xsd"/>
+        <ExternalData Type="iodata" SourceName="time_maxInclusive001_1152.sig"/>
+    </CodeSet>
+    <TestCase ID="time_maxInclusive001_1152">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="time_maxInclusive001_1152.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../time_maxInclusive001.xml"/>
+            <ExternalData Type="iodata" SourceName="time_maxinclusive001_1152-time_maxInclusive001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

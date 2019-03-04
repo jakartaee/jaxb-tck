@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-QName-length-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-QName-length-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>qto_be.joint.will-health.a_providing_exch</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>uobject_investigation.address_and_the.ele</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>uto-is_ability.aid.and.tests_formed_resou</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>qtremendous.of_is_software-as.compatibili</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>jchallenges_to.dynamic.it-provides-suppor</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>clanguage-configuration-are.other.be.amon</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>sand.of.build-discovery.being_related_tes</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>_the-intuitive-into.for_including.e.high-</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>nsuch.and_and-recognition_measure-from-tu</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>xto.be_of.the-many.developers.alike-devel</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="annotA014" Deleted="true">
+   <TestGroupDocumentation>
+      <Title><![CDATA[annotA014]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Annotation Tests : Basic annotation in include element
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAnnotations">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAnnotations
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)annotA014.test.xml	1.3 08/03/21</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>empty_output</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../annotA014.xsd"/>
+   </CodeSet>
+   <TestCase ID="annotA014">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)annotA014.test.xml	1.3 08/03/21 -->

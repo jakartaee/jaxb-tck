@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NMTOKENS-length-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-NMTOKENS-length-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>the.a:In.Develop.as_then:of_ha</string> 
+   </void> 
+   <void method="add"> 
+    <string>of:in-heterogeneous-industry:l</string> 
+   </void> 
+   <void method="add"> 
+    <string>to_law.the.accomplish-having:r</string> 
+   </void> 
+   <void method="add"> 
+    <string>APIs:Investigators.tools_in.fo</string> 
+   </void> 
+   <void method="add"> 
+    <string>the-data_known:interconnecting</string> 
+   </void> 
+   <void method="add"> 
+    <string>of:the:and_able_groups:NSRL:wi</string> 
+   </void> 
+   <void method="add"> 
+    <string>Internet:specifications:them:k</string> 
+   </void> 
+   <void method="add"> 
+    <string>is:are-Extensible_build.It_pos</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

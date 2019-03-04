@@ -1,0 +1,294 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="JAXBContext_">
+    <TestGroupDocumentation>
+        <Title>createMarshaller, createUnmarshaller and createValidator tests. (content tree test)</Title>
+        <Description>Compile a simple schema to create a java binding classes. Test the methods
+        createMarshaller, createUnmarshaller and createValidator using this context.
+        </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)JAXBContext_CTTests.test.xml	1.12 07/04/16</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <AttrElem Name="schemaName">JAXBContext.xsd</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>java.net.URL</Import>
+        <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+        <Import>javax.xml.bind.Binder</Import>
+        <Import>javax.xml.bind.JAXBContext</Import>
+        <Import>javax.xml.bind.JAXBException</Import>
+        <Import>javax.xml.bind.JAXBIntrospector</Import>
+        <Import>javax.xml.bind.Marshaller</Import>
+        <Import>javax.xml.bind.Unmarshaller</Import>
+        <Import>javax.xml.parsers.DocumentBuilder</Import>
+        <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+        <Import>org.w3c.dom.Document</Import>
+        <Import>org.w3c.dom.Node</Import>
+        <ExternalSupportClass SourceName="ObjectFactory.java" />
+        <ExternalData SourceName="JAXBContext.xsd" Type="iodata" />
+    </CodeSet>
+
+    <TestCase ID="createMarshaller001">
+        <TestCaseDocumentation>
+            <Title>createMarshaller creates a marshaller object</Title>
+            <Description>
+                The test creates a marshaller object, creates a java content tree and marshals it
+                using the marshaller.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+
+        try {
+            JAXBContext jc = getJAXBContext();
+
+            Object docInstance = (new ObjectFactory()).createRoot("createMarshaller001");
+
+            Marshaller m = jc.createMarshaller();
+            if (m == null) {
+                return Status.failed("createMarshaller returns null");
+            }
+
+            m.setEventHandler(eh);
+            m.marshal(docInstance, getOut());
+
+            return Status.passed("OK");
+
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        } finally {
+            eh.printEvents(ref);
+        }
+        ]]></TestCode>
+    </TestCase>
+<!-- Validator is not available in jaxb 2.0
+    <TestCase ID="createValidator001">
+        <TestCaseDocumentation>
+            <Title>createValidator creates a validator object</Title>
+            <Description>
+                The test creates a validator object, creates a java content tree and validate it
+                using the validator.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.bind.JAXBContext</Import>
+            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>javax.xml.bind.Validator</Import>
+            <Import>javax.xml.bind.ValidationException</Import>
+            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        boolean isValid;
+
+        ErrorCollector eh = new ErrorCollector();
+
+        try {
+            JAXBContext jc = getJAXBContext();
+
+            Object docInstance = (new ObjectFactory()).createRoot("createValidator001");
+
+            Validator v = jc.createValidator();
+            if (v == null) {
+                return Status.failed("createValidator returns null");
+            }
+
+            v.setEventHandler(eh);
+
+            isValid = v.validateRoot(docInstance);
+
+        } catch (ValidationException ve) {
+            ve.printStackTrace(ref);
+            isValid = false;
+        } catch (JAXBException jaxbe) {
+            jaxbe.printStackTrace(ref);
+            return Status.failed(jaxbe.toString());
+        } finally {
+            eh.printEvents(ref);
+        }
+
+        if (isValid) {
+            if (!eh.hasEvents()) {
+                return Status.passed("OK");
+            } else {
+                return Status.failed("validation passed but some error events are handled");
+            }
+        } else {
+            if (eh.hasEvents()) {
+                return Status.failed("validation failed and some error events are handled");
+            } else {
+                return Status.failed("validation failed but no error events are handled");
+            }
+        }
+        ]]></TestCode>
+    </TestCase>
+-->
+    <TestCase ID="createUnmarshaller001">
+        <TestCaseDocumentation>
+            <Title>createUnmarshaller creates a unmarshaller object</Title>
+            <Description>
+                The test creates a unmarshaller object and unmarshals JAXBContext.xml.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData SourceName="JAXBContext.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+
+        try {
+            JAXBContext jc = getJAXBContext();
+            Unmarshaller u = jc.createUnmarshaller();
+
+            eh.setParent(u.getEventHandler());
+            u.setSchema(schema);
+            u.setEventHandler(eh);
+
+            Object obj = u.unmarshal(getDocumentURL("JAXBContext.xml"));
+
+            if (!eh.hasEvents()) {
+                return Status.passed("OKAY");
+            }
+
+            return Status.failed("No exception is thrown but some error events are handled");
+
+        } catch (JAXBException jaxbe) {
+            if (!eh.hasEvents()) {
+                return Status.failed("no error events are handled but " + jaxbe + " is thrown");
+            }
+            return Status.failed(jaxbe.toString());
+        } finally {
+            eh.printEvents(ref);
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="createBinder001">
+        <TestCaseDocumentation>
+            <Title>createBinder creates a binder object</Title>
+            <Description>
+                The test creates a binder object, unmarshals JAXBContext.xml and then modifies result.
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+		try{
+			JAXBContext jc = getJAXBContext();
+			Binder<Node> binder = jc.createBinder();
+			eh.setParent(binder.getEventHandler());
+			binder.setEventHandler(eh);
+			URL documentURL = getDocumentURL("JAXBContext.xml");
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+			docBuilderFactory.setNamespaceAware(true);
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(documentURL.openStream());
+			Object o = binder.unmarshal(doc);
+			//perform updateXML and updateJAXB without changing
+			//document and object
+			binder.updateXML(o);
+			binder.updateJAXB(doc);
+			if(!eh.hasEvents()){
+				return Status.passed("OK");
+			}
+			return Status.failed("No exception is thrown but some error events are handled");
+		}catch(JAXBException jaxbe){
+		    jaxbe.printStackTrace(ref);
+			if (!eh.hasEvents()) {
+                return Status.failed("no error events are handled but " + jaxbe + " is thrown");
+            }
+            return Status.failed(jaxbe.toString());
+		}catch(Exception x){
+		    x.printStackTrace(ref);
+			return Status.failed(x.toString());
+		}finally{
+			eh.printEvents(ref);
+		}
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="createBinder002">
+        <TestCaseDocumentation>
+            <Description><![CDATA[public <T> Binder<T> createBinder(Class<T> domType) Returns always a new valid Binder object.]]></Description>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+		try{
+			JAXBContext jc = getJAXBContext();
+			Binder<Node> binder = jc.createBinder(Node.class);
+            Binder<Node> binder1 = jc.createBinder(Node.class);
+            if( binder == binder1 )
+                return Status.failed( "public <T> Binder<T> createBinder(Class<T> domType) returns same object twice" );
+		} catch( Exception x ){
+            x.printStackTrace(ref);
+            return Status.failed( x.toString() );
+		}
+        return Status.passed("OK");
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="createJAXBIntrospector001">
+        <TestCaseDocumentation>
+            <Title>createJAXBIntrospector creates a JAXBIntrospector object</Title>
+            <Description>
+                The test creates a JAXBIntrospector object.
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+            <TestCaseSpec>
+    			<InlineAssertion><![CDATA[createJAXBIntrospector() creates introspector that is not null.]]></InlineAssertion>
+                <MemberSig>public JAXBIntrospector createJAXBIntrospector()</MemberSig>
+    		</TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[
+        JAXBContext jaxbContext;
+        try {
+            jaxbContext = getJAXBContext();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context");
+        }
+        JAXBIntrospector introspector = jaxbContext.createJAXBIntrospector();
+        if(introspector == null){
+            return Status.failed("JAXBIntrospector is not created");
+        }
+        Object o = unmarshal("JAXBContext.xml");
+        if(!introspector.isElement(o)){
+            return Status.failed("Introspector is created successfully, but it does " +
+                    "not recognize root of unmarshalled object tree as element.");
+        }
+        javax.xml.namespace.QName qName = introspector.getElementName(o);
+        if(!"root".equals(qName.getLocalPart())||
+           !"api/JAXBContext".equals(qName.getNamespaceURI())){
+            return Status.failed("Introspector returns invalid element name.");
+        }
+
+        if(!"createUnmarshaller001".equals(JAXBIntrospector.getValue(o))){
+            return Status.failed("Introspector returns invalid element value.");
+        }
+        return Status.passed("Ok");
+        ]]></TestCode>
+    </TestCase>
+
+</TestGroup>
+<!-- Ident: @(#)JAXBContext_CTTests.test.xml	1.12 07/04/16 -->

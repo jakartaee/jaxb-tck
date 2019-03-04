@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="isDefault075">
+    <TestGroupDocumentation>
+        <Title><![CDATA[isDefault075]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : default value on mixed content
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)isDefault075.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../isdefault075.xsd"/>
+        <ExternalData Type="iodata" SourceName="isDefault075.sig"/>
+    </CodeSet>
+    <TestCase ID="isDefault075">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="isDefault075.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../isdefault075.xml"/>
+            <ExternalData Type="iodata" SourceName="isdefault075-isdefault075.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

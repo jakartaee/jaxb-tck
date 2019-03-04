@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.attrdecl.ad_name.ad_name00104m.ad_name00104m11.Root"> 
+  <void property="ஜ00"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ஞ10"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ஞ11"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ட12"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ண20"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ண21"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="த22"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ந30"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ன31"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ப32"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ம40"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ற41"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="வ42"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ஷ50"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ஸ51"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ஹ52"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="అ60"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ఈ61"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ఌ62"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ఎ70"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ఏ71"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ఐ72"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ఒ80"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="ఝ81"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="న82"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+  <void property="ప90"> 
+   <object class="java.math.BigInteger"> 
+    <string>0</string> 
+   </object> 
+  </void> 
+  <void property="మ91"> 
+   <object class="java.math.BigInteger"> 
+    <string>1</string> 
+   </object> 
+  </void> 
+  <void property="ళ92"> 
+   <object class="java.math.BigInteger"> 
+    <string>2</string> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

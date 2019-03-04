@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="stE050">
+    <TestGroupDocumentation>
+        <Title><![CDATA[stE050]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for simpleType Declaration : Union with Fixed Value (1)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)stE050.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../stE050.xsd"/>
+        <ExternalData Type="iodata" SourceName="stE050.sig"/>
+    </CodeSet>
+    <TestCase ID="stE050">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="stE050.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../stE050.xml"/>
+            <ExternalData Type="iodata" SourceName="ste050-stE050.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

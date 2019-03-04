@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="stG010">
+    <TestGroupDocumentation>
+        <Title><![CDATA[stG010]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for simpleType Declaration : list of NMTOKEN type with facet of 'enumeration' value = 'CA' instance document has 'CA' value
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)stG010.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../stG010.xsd"/>
+        <ExternalData Type="iodata" SourceName="stG010.sig"/>
+    </CodeSet>
+    <TestCase ID="stG010">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="stG010.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../stG010.xml"/>
+            <ExternalData Type="iodata" SourceName="stg010-stG010.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="particlesOa006">
+    <TestGroupDocumentation>
+        <Title><![CDATA[particlesOa006]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :3.9.1 The Particle Schema Component [ check length of element information items ] : Particle Derivation OK (Any:Any- NSSubset) (any) R drived by restriction from (any) B : B's minOccurs=absent, B's maxOccurs=absent, R's minOccurs=absent, R's maxOccurs=1
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cParticles
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)particlesOa006.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../particlesOa006.xsd"/>
+        <ExternalData Type="iodata" SourceName="particlesOa006.sig"/>
+    </CodeSet>
+    <TestCase ID="particlesOa006">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="particlesOa006.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../particlesOa006.xml"/>
+            <ExternalData Type="iodata" SourceName="particlesoa006-particlesOa006.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

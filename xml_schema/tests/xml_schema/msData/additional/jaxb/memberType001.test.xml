@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="memberType001">
+    <TestGroupDocumentation>
+        <Title><![CDATA[memberType001]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : Element : membertype of union(bool,int,string)
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)memberType001.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../memberType001.xsd"/>
+        <ExternalData Type="iodata" SourceName="memberType001.sig"/>
+    </CodeSet>
+    <TestCase ID="memberType001">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="memberType001.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../memberType001.xml"/>
+            <ExternalData Type="iodata" SourceName="membertype001-memberType001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

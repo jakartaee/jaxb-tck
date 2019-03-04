@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-hexBinary-enumeration-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-hexBinary-enumeration-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>62637175726676736e6970796b72696c656969656d7478766b75746b7276676f67766a616f6e6b66736164796f</string> 
+   </void> 
+   <void method="add"> 
+    <string>6e616478616365706178786a6e7073776f6a61676b74666f6979617475</string> 
+   </void> 
+   <void method="add"> 
+    <string>6a6d76656a756d636361716a686373726c686469676a65656c63666b6f6b61756863777271646c72746c6d68756f637666687270</string> 
+   </void> 
+   <void method="add"> 
+    <string>77736b677164777270796c7266706e716c6a646473726868737276686a7171</string> 
+   </void> 
+   <void method="add"> 
+    <string>6b6a737164637577747865656a6672736c796565787869756d6c72706e6c717673756363746f6168666b687967616e7077746376637575726c6a6d676666696c6b6973757971686772</string> 
+   </void> 
+   <void method="add"> 
+    <string>6d776777616461796364706b6e74656f6f6e786f6569786d677075626d6963686d68786d6e6f7974616b6d786f636a726177627570656f7075756a70</string> 
+   </void> 
+   <void method="add"> 
+    <string>696975646a656979646f6f7961686271696d78687273656d717864716f74626e71706f71</string> 
+   </void> 
+   <void method="add"> 
+    <string>796b6e706a7571656e796e63716f626b647165777172716479726264786d66646375706978746d616f617963706e6c6679726b7861</string> 
+   </void> 
+   <void method="add"> 
+    <string>6e786a786972736174716878646868706b636a716a6e64746c69656b71706e637766626c7471756c797673697474746371747268</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

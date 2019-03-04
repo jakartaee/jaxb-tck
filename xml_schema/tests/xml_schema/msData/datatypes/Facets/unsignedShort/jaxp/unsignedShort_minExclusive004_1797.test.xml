@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedShort_minExclusive004_1797">
+   <TestGroupDocumentation>
+      <Title><![CDATA[unsignedShort_minExclusive004_1797]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minExclusive and value=1 and facet=maxInclusive and value=7) and document value=5
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)unsignedShort_minExclusive004_1797.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../unsignedShort_minExclusive004.xsd"/>
+   </CodeSet>
+   <TestCase ID="unsignedShort_minExclusive004_1797">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="unsignedShort_minExclusive004_1797.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../unsignedShort_minExclusive004.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)unsignedShort_minExclusive004_1797.test.xml	1.1 07/03/27 -->

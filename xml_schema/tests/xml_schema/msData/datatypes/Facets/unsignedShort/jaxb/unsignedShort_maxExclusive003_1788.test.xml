@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedShort_maxExclusive003_1788">
+    <TestGroupDocumentation>
+        <Title><![CDATA[unsignedShort_maxExclusive003_1788]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxExclusive and value=7 and document value=5
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)unsignedShort_maxExclusive003_1788.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../unsignedShort_maxExclusive003.xsd"/>
+        <ExternalData Type="iodata" SourceName="unsignedShort_maxExclusive003_1788.sig"/>
+    </CodeSet>
+    <TestCase ID="unsignedShort_maxExclusive003_1788">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="unsignedShort_maxExclusive003_1788.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../unsignedShort_maxExclusive003.xml"/>
+            <ExternalData Type="iodata" SourceName="unsignedshort_maxexclusive003_1788-unsignedShort_maxExclusive003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

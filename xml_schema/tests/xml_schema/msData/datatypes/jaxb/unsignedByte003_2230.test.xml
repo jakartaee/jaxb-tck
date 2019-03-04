@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedByte003_2230">
+    <TestGroupDocumentation>
+        <Title><![CDATA[unsignedByte003_2230]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=0
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)unsignedByte003_2230.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../unsignedByte.xsd"/>
+        <ExternalData Type="iodata" SourceName="unsignedByte003_2230.sig"/>
+    </CodeSet>
+    <TestCase ID="unsignedByte003_2230">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="unsignedByte003_2230.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../unsignedByte003.xml"/>
+            <ExternalData Type="iodata" SourceName="unsignedbyte003_2230-unsignedByte003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

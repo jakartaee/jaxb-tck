@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="duration_maxInclusive001_1108">
+    <TestGroupDocumentation>
+        <Title><![CDATA[duration_maxInclusive001_1108]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxInclusive and value=P1Y1MT1H and document value=P1Y1MT1H
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)duration_maxInclusive001_1108.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../duration_maxInclusive001.xsd"/>
+        <ExternalData Type="iodata" SourceName="duration_maxInclusive001_1108.sig"/>
+    </CodeSet>
+    <TestCase ID="duration_maxInclusive001_1108">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="duration_maxInclusive001_1108.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../duration_maxInclusive001.xml"/>
+            <ExternalData Type="iodata" SourceName="duration_maxinclusive001_1108-duration_maxInclusive001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

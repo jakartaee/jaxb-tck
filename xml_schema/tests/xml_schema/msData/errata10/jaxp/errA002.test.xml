@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="errA002">
+   <TestGroupDocumentation>
+      <Title><![CDATA[errA002]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Primer Errata : E0-10 Error, E1-11 Error: test that ##other namespace is any namespace other than the target namespace
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/2004/03/xmlschema-errata">
+            http://www.w3.org/2004/03/xmlschema-errata
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)errA002.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../errA002.xsd"/>
+      <ExternalSupportClass SourceName="../errA002a.xsd"/>
+      <ExternalSupportClass SourceName="../errA002b.xsd"/>
+   </CodeSet>
+   <TestCase ID="errA002">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="errA002.i">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../errA002.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)errA002.test.xml	1.1 07/03/27 -->

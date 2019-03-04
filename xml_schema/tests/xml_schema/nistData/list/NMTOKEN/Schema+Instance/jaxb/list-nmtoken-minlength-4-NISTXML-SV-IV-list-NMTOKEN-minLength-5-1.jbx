@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-minLength-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-minLength-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>needed-tools_the_industry:primary.being_thei</string> 
+   </void> 
+   <void method="add"> 
+    <string>SOC-and-any:for_XML-address-XML.Only-known:t</string> 
+   </void> 
+   <void method="add"> 
+    <string>which:process:some_from-ultimate-is.developm</string> 
+   </void> 
+   <void method="add"> 
+    <string>discussions_series_Specify:are-use:analysis_</string> 
+   </void> 
+   <void method="add"> 
+    <string>a:XML_and_the:software.rigorous.subject:unam</string> 
+   </void> 
+   <void method="add"> 
+    <string>implementation:XML.revolutionize:repository_</string> 
+   </void> 
+   <void method="add"> 
+    <string>standardization_industry.partners_exchange-d</string> 
+   </void> 
+   <void method="add"> 
+    <string>the-consistency.organizations:find.methods-u</string> 
+   </void> 
+   <void method="add"> 
+    <string>used-and_emerging.Language:revisions_be-retr</string> 
+   </void> 
+   <void method="add"> 
+    <string>for-can_with.To_XML:software:known.implement</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

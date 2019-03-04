@@ -1,0 +1,57 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="XmlTransient001">
+  <TestGroupDocumentation>
+    <Title>XmlTransient</Title>
+    <Description>Test on XmlTransient annotation.</Description>
+  </TestGroupDocumentation>
+  <TestGroupAttributes>
+    <AttrElem Name="scInfo">@(#)XmlTransient001.test.xml	1.3 08/04/04</AttrElem>
+    <AttrElem Name="testType">J2XTest</AttrElem>
+    <TargetSpec ID="JAXB" Version="2.1-"/>
+    <Keyword>positive</Keyword>
+    <Keyword>runtime</Keyword> 
+    <Keyword>java_to_schema</Keyword>
+    <Keyword>empty_output</Keyword>
+    <Keyword>jaxb</Keyword>
+  </TestGroupAttributes>
+  <CodeSet>
+    <ExternalSupportClass SourceName="XmlTransient001.java"/>
+  </CodeSet>
+  <!-- test case -->
+  <TestCase ID="XmlTransient001n">
+    <TestCaseDocumentation>
+      <Description><![CDATA[
+      JAXB specification assertion: JAXB:SPEC:J2S:01221
+      Mapping: <b>@XmlTransient</b> is used to prevent the mapping of a class.<br>
+      The class must not be mapped.<br>
+      Any reference to this class from the other XML bound classes will treated as<br>
+      if they are refering to the nearest XML-bound ancestor of this class<br>
+      (which could be java.lang.Object, which guarantees that there always exists such a class.) .]]></Description>
+      <Author>Leonid Kuskov</Author>
+    </TestCaseDocumentation>
+    <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+     </TestCaseAttributes>
+  </TestCase>
+</TestGroup>
+
+<!-- Ident: @(#)XmlTransient001.test.xml	1.3 08/04/04 -->

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-negativeInteger-maxExclusive-1">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-negativeInteger-maxExclusive-1]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/negativeInteger is restricted by facet maxExclusive with value -866521354558973720.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#negativeInteger">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#negativeInteger
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxExclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxExclusive
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-negativeInteger-maxExclusive-1.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-negativeInteger-maxExclusive-2.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-negativeInteger-maxExclusive-1.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-negativeInteger-maxExclusive-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-atomic-negativeInteger-maxExclusive-2-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-atomic-negativeInteger-maxExclusive-2-1.xml"/>
+            <ExternalData Type="iodata" SourceName="atomic-negativeinteger-maxexclusive-1-NISTXML-SV-IV-atomic-negativeInteger-maxExclusive-2-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

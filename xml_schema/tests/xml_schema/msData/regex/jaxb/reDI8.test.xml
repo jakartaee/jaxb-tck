@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="reDI8">
+    <TestGroupDocumentation>
+        <Title><![CDATA[reDI8]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : base='byte', pattern='(\- | \+)?((1[0-2]?[0-7]?)|([1-9]?[0-9]?))|(\+?128)', value='128', type='valid', RULE=''
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)reDI8.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../reDI8.xsd"/>
+        <ExternalData Type="iodata" SourceName="reDI8.sig"/>
+    </CodeSet>
+    <TestCase ID="reDI8">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="reDI8.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../reDI8.xml"/>
+            <ExternalData Type="iodata" SourceName="redi8-reDI8.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gYearMonth_pattern001_1190">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gYearMonth_pattern001_1190]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=pattern and value=[0-9]{4}-[0-9]{2} and document value=2001-03
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gYearMonth_pattern001_1190.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../gYearMonth_pattern001.xsd"/>
+        <ExternalData Type="iodata" SourceName="gYearMonth_pattern001_1190.sig"/>
+    </CodeSet>
+    <TestCase ID="gYearMonth_pattern001_1190">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="gYearMonth_pattern001_1190.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../gYearMonth_pattern001.xml"/>
+            <ExternalData Type="iodata" SourceName="gyearmonth_pattern001_1190-gYearMonth_pattern001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

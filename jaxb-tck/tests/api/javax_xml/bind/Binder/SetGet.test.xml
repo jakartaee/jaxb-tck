@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup PUBLIC "testgenspec.dtd" "testgenspec.dtd" >
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="SetGet_">
+	<TestGroupDocumentation>
+		<Title>Binder setXXX getXXX tests.</Title>
+		<Description>
+			Test descriptions and specifications for Binder setXXX getXXX tests.
+		</Description>
+	</TestGroupDocumentation>
+	<TestGroupAttributes>
+		<AttrElem Name="scInfo">@(#)SetGet.test.xml	1.6 07/04/16</AttrElem>
+		<AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <AttrElem Name="schemaName">Binder.xsd</AttrElem>
+	</TestGroupAttributes>
+	<CodeSet>
+		<Import>java.util.Map</Import>
+		<Import>java.util.LinkedHashMap</Import>
+		<Import>javax.xml.bind.Binder</Import>
+		<Import>javax.xml.bind.JAXBContext</Import>
+		<Import>javax.xml.bind.JAXBException</Import>
+		<Import>org.w3c.dom.Node</Import>
+		<Import>javax.xml.bind.ValidationEventHandler</Import>
+		<Import>javax.xml.bind.util.ValidationEventCollector</Import>
+		<Import>javax.xml.bind.PropertyException</Import>
+    	<SupportCode SourceLang="java"><![CDATA[
+	public static final String[] SUPPORTED_PROPERTY_NAMES = new String[]{
+            "jaxb.encoding",
+            "jaxb.formatted.output",
+            "jaxb.schemaLocation",
+            "jaxb.noNamespaceSchemaLocation",
+            "jaxb.fragment"
+        };
+    public static final String NOT_SUPPORTED_PROPERTY = "__!not_supported_by_jaxbimpl???";
+    public static final Object[] SAMPLE_SUPPORTED_PROPERTY_VALUES = new Object[]{
+            "UTF-8",
+            Boolean.TRUE,
+            "schema-location",
+            "no-namespace-schema-location",
+            Boolean.TRUE
+        };
+
+    public Binder<Node> getBinder() throws JAXBException{
+		JAXBContext jaxbContext = getJAXBContext();
+		return jaxbContext.createBinder();
+	}
+		]]></SupportCode>
+	    <ExternalSupportClass SourceName="MyValidationEventHandler.java"/>
+        <ExternalSupportClass SourceName="Address.java"/>
+        <ExternalSupportClass SourceName="Items.java"/>
+        <ExternalSupportClass SourceName="PurchaseOrder.java"/>
+        <ExternalSupportClass SourceName="ObjectFactory.java"/>
+        <ExternalSupportClass SourceName="package-info.java"/>
+        <ExternalData SourceName="Binder.xsd" Type="iodata"/>
+
+	</CodeSet>
+	<TestCase ID="SetGet001">
+		<TestCaseDocumentation>
+			<Title>getEventHandler() - default</Title>
+			<Description>
+				The test checks the presence of eventHandler by default. EventHandler property of javax.xml.Binder is not null.
+			</Description>
+			<Author>Alexey Vishentsev</Author>
+		</TestCaseDocumentation>
+		<TestCode SourceLang="java"><![CDATA[
+		Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        try {
+            if(binder.getEventHandler() == null){
+                return Status.failed("Binder.getEventHandler() returns null");
+            }
+            return Status.passed("Binder.getEventHandler() returns default event handler - Ok");
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.getEventHandler has thrown an exception: "+e);
+        }
+		]]></TestCode>
+	</TestCase>
+	<TestCase ID="SetGet002">
+		<TestCaseDocumentation>
+			<Title>setEventHandler(ValidationEventHandler)</Title>
+			<Description>The test sets validation event handler to binder and checks that
+				event handler property is not null.
+			</Description>
+			<Author>Alexey Vishentsev</Author>
+		</TestCaseDocumentation>
+		
+		<TestCode SourceLang="java"><![CDATA[
+		Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        ValidationEventHandler validationEventHandler = new ValidationEventCollector();
+        try {
+            binder.setEventHandler(validationEventHandler);
+            ref.println("Binder.setEventHandler(new ValidationEventCollector()) - ok");
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.setEventHandler() has thrown an exception "+e);
+        }
+        try {
+            if(binder.getEventHandler() == null){
+                return Status.failed("Binder.getEventHandler() returns null after validation event handler has been set");
+            }
+            return Status.passed("Binder.getEventHandler() returns non-null value - ok");
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.getEventHandler() has thrown an exception: "+e);
+        }]]>	
+		</TestCode>
+	</TestCase>
+	<TestCase ID="SetGet003">
+		<TestCaseDocumentation>
+			<Title>setEventHandler with null parameter</Title>
+			<Description>
+				The test calls setEventHandler(null) to force binder to revert
+				back to default event handler. getEventHandler() returns non-null value.
+			</Description>
+		</TestCaseDocumentation>
+		<TestCode SourceLang="java"><![CDATA[
+		Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        try {
+            binder.setEventHandler(null);
+            ref.println("Binder.setEventHandler(null) - ok");
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.setEventHandler(null) has thrown an exception "+e);
+        }
+        try{
+            if(binder.getEventHandler() == null){
+                return Status.failed("Binder.getEventHandler() returns null after validation event handler has been unset");
+            }
+            return Status.passed("Binder.getEventHandler() returns non-null value - ok");
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.getEventHandler() has thrown an exception: "+e);
+        }
+		]]></TestCode>
+	</TestCase>
+	<TestCase ID="SetGet004">
+		<TestCaseDocumentation>
+			<Title>getProperty(null) throws IllegalArgumentException</Title>
+			<Description>getProperty(String name) throws IllegalArgumentException - If the name parameter is null</Description>
+			<Author>Alexey Vishentsev</Author>
+		</TestCaseDocumentation>
+		<TestCode><![CDATA[
+		Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        try{
+            binder.getProperty(null);
+            return Status.failed("Binder.getProperty(null) should throw IllegalArgumentException");
+        }catch(PropertyException pe){
+            return Status.failed("Binder.getProperty(null) has thrown PropertyException but should throw IllegalArgumentException");
+        }catch(IllegalArgumentException ie){
+            //ok
+            return Status.passed("Binder.getProperty(null) has thrown an IllegalArgumentException - ok");
+        }]]></TestCode>
+	</TestCase>
+	<TestCase ID="SetGet005">
+		<TestCaseDocumentation>
+			<Title>getProperty(String name) - standard JAXB defined unmarshal/marshal properties</Title>
+			<Description>The test calls getProperty for standard JAXB defined unmarshal/marshal properties.
+				No exception should be thrown.
+			</Description>
+			<Author>Alexey Vishentsev</Author>
+		</TestCaseDocumentation>
+		<TestCode SourceLang="java"><![CDATA[
+		Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+
+        LinkedHashMap<String,PropertyException> unsupportedRequiredProperties = new LinkedHashMap<String,PropertyException>();
+
+        for(String property:SUPPORTED_PROPERTY_NAMES){
+            try {
+                binder.getProperty(property);
+                ref.println("Binder.getProperty(\""+property+"\") - ok");
+            } catch (PropertyException e) {
+                unsupportedRequiredProperties.put(property,e);
+            }
+        }
+        if(!unsupportedRequiredProperties.isEmpty()){
+            StringBuffer buffer = new StringBuffer();
+            buffer.append('[');
+            for(Map.Entry<String,PropertyException> e:unsupportedRequiredProperties.entrySet()){
+                String property = e.getKey();
+                ref.println(property);
+                e.getValue().printStackTrace(ref);
+                buffer.append(property).append(',');
+            }
+            buffer.setLength(buffer.length()-1);
+            buffer.append(']');
+            return Status.failed("Unexpected PropertyException on getting following properties: "+buffer);
+        }
+        return Status.passed("Ok");
+		]]></TestCode>
+	</TestCase>
+	<TestCase ID="SetGet006">
+		<TestCaseDocumentation>
+			<Title>getProperty(String name) - unsupported property.</Title>
+			<Description>getProperty(String name) throws PropertyException if property name is undefined.</Description>
+			<Author>Alexey Vishentsev</Author>
+		</TestCaseDocumentation>
+		<TestCode><![CDATA[
+		Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        try {
+            binder.getProperty(NOT_SUPPORTED_PROPERTY);
+            return Status.failed("PropertyException is not thrown from Binder.getProperty(\""+NOT_SUPPORTED_PROPERTY+"\")");
+        } catch (PropertyException e) {
+            //ok
+            return Status.passed("Bunder.getProperty(\""+NOT_SUPPORTED_PROPERTY+"\") has thrown PropertyException - ok");
+        }]]></TestCode>
+	</TestCase>
+	<TestCase ID="SetGet007">
+		<TestCaseDocumentation>
+			<Title>setProperty(String name,Object value) - name is null</Title>
+			<Description>
+			setProperty(String name,Object value) throws
+			IllegalArgumentException if the name parameter is null
+			</Description>
+			<Author>Alexey Vishentsev</Author>
+		</TestCaseDocumentation>
+		<TestCode SourceLang="java"><![CDATA[
+        Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+
+        try{
+            binder.setProperty(null,"-");
+            return Status.failed("Binder.setProperty(null,someValue) should throw IllegalArgumentException");
+        }catch(PropertyException pe){
+            return Status.failed("Binder.setProperty(null,someValue) has thrown PropertyException but should throw IllegalArgumentException");
+        }catch(IllegalArgumentException ie){
+            //ok
+            return Status.passed("Binder.setProperty(null,someValue) has thrown an IllegalArgumentException - ok");
+        }]]></TestCode>
+	</TestCase>
+	<TestCase ID="SetGet008">
+		<TestCaseDocumentation>
+			<Title>setProperty(String name,Object value) - standard JAXB-defined properties</Title>
+			<Description>
+				The test calls setProperty for standard JAXB defined unmarshal/marshal properties.
+				No exception should be thrown.
+			</Description>
+			<Author>Alexey Vishentsev</Author>
+		</TestCaseDocumentation>
+		<TestCode SourceLang="java"><![CDATA[
+		Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+
+        LinkedHashMap<Integer,PropertyException> indexToException = new LinkedHashMap<Integer,PropertyException>();
+        for(int i = 0; i<SUPPORTED_PROPERTY_NAMES.length;i++){
+            try {
+                binder.setProperty(SUPPORTED_PROPERTY_NAMES[i],SAMPLE_SUPPORTED_PROPERTY_VALUES[i]);
+                ref.println("Binder.setProperty(\""+SUPPORTED_PROPERTY_NAMES[i]+"\","+SAMPLE_SUPPORTED_PROPERTY_VALUES[i]+") - ok");
+            } catch (PropertyException e) {
+                indexToException.put(i,e);
+            }
+        }
+
+        if(!indexToException.isEmpty()){
+            StringBuffer buffer = new StringBuffer();
+            buffer.append('[');
+            for(Map.Entry<Integer,PropertyException> e: indexToException.entrySet()){
+                int index = e.getKey().intValue();
+                String property = SUPPORTED_PROPERTY_NAMES[index];
+                Object value = SAMPLE_SUPPORTED_PROPERTY_VALUES[index];
+                ref.println(property);
+                e.getValue().printStackTrace(ref);
+                buffer.append(property).append('=').append(SAMPLE_SUPPORTED_PROPERTY_VALUES[index]).append(',');
+            }
+            buffer.setLength(buffer.length()-1);
+            buffer.append(']');
+            return Status.failed("Unexpected PropertyException on setting following properties: "+buffer);
+        }
+        return Status.passed("Ok");
+		]]></TestCode>
+	</TestCase>
+	<TestCase ID="SetGet009">
+		<TestCaseDocumentation>
+			<Title>setProperty(String name,Object value) - unsupported property</Title>
+			<Description>setProperty(String name,Object value) throws PropertyException if
+			property name is undefined</Description>
+			<Author>Alexey Vishentsev</Author>
+		</TestCaseDocumentation>
+		<TestCode><![CDATA[
+		Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+
+        try {
+            binder.setProperty(NOT_SUPPORTED_PROPERTY,"-");
+            return Status.failed("PropertyException is not thrown from Binder.setProperty(\""+NOT_SUPPORTED_PROPERTY+"\",\"-\")");
+        } catch (PropertyException e) {
+            return Status.passed("Bunder.setProperty(\""+NOT_SUPPORTED_PROPERTY+"\",\"-\") has thrown PropertyException - ok");
+        }
+		]]></TestCode>
+	</TestCase>
+
+	<TestCase ID="SetGet_Schema001">
+		<TestCaseDocumentation>
+			<Description>
+            getSchema: Gets the last Schema object (including null) set by the setSchema(Schema) method.
+            setSchema: Specifies whether marshal, unmarshal and update methods performs validation on their XML content.
+            </Description>
+		</TestCaseDocumentation>
+		<TestCode><![CDATA[
+        try {
+            Binder<Node> binder = getBinder();
+            if( binder.getSchema() != null )
+                return Status.failed( "Binder.getSchema() initial value isn't null" );
+            binder.setSchema( schema );
+            if( !schema.equals( binder.getSchema() ) )
+                return Status.failed( "Binder.getSchema() isn't equal to a schema that set right before" );
+            binder.setSchema( null );
+            if( binder.getSchema() != null )
+                return Status.failed( "Binder.getSchema() isn't null after 'binder.setSchema( null )'" );
+            return Status.passed("OK");
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+		]]></TestCode>
+	</TestCase>	
+</TestGroup>
+<!-- Ident: @(#)SetGet.test.xml	1.6 07/04/16 -->

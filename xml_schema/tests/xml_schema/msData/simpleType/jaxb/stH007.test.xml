@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="stH007">
+    <TestGroupDocumentation>
+        <Title><![CDATA[stH007]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for simpleType Declaration : union derived from list of states with restriction facet 'enumeration' with a value of 'CA' instance document has state = 'CA'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Simple_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)stH007.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../stH007.xsd"/>
+        <ExternalData Type="iodata" SourceName="stH007.sig"/>
+    </CodeSet>
+    <TestCase ID="stH007">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="stH007.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../stH007.xml"/>
+            <ExternalData Type="iodata" SourceName="sth007-stH007.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

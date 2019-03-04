@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-anyURI-enumeration-2-NS"
+        targetNamespace="NISTSchema-anyURI-enumeration-2-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-2.xsd
+      This schema specifies a datatype, NISTSchema-anyURI-enumeration-2,
+      which is derived by restriction of built-in type anyURI
+      by facet enumeration with values of:
+          ftp://theacomputersunambiguousnextOrganizationinvolvedhardw.edu/
+          http://www.canthisthanmoretomanualshavetocommercedefineTherelatedwillu.org/
+          ftp://wellsignifi.edu/
+          ftp://ftp.ofthetremendousandgovernmentwhoDelawareindu.com/
+          gopher://offerforensicsindustryexercisemanagetoensuretolawthelawrapid.edu/
+          http://www.forestablishXML.org/
+          ftp://ftp.ofallofmeettheforofmakevocabularyasbethisthetohelpandthed.org/
+          telnet://filesoftheapplication.org/
+          gopher://definingtheofXMLte.gov/
+          ftp://intoautomatingprojectinclu.edu/
+          ftp://ftp.commercetheadventembeddedtoStructuredandXM.com/
+          telnet://capabilitiesAfromdisplayingkeyindustrykn.com/
+          ftp://ftp.andtheprintmeans.com/
+          gopher://Asaddition.gov/
+          http://www.gprofilesasofrecentobjectsdirectionsandwi.com/
+          http://www.vend.org/
+          http://AnPervasivehasconsortiums.edu/
+          http://toandlanguagetoreferencesetConfo.org/
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-anyURI-enumeration-2" type="nist:NISTSchema-anyURI-enumeration-2-Type"/>
+
+  <simpleType name="NISTSchema-anyURI-enumeration-2-Type">
+    <restriction base="anyURI">
+          <enumeration value="ftp://theacomputersunambiguousnextOrganizationinvolvedhardw.edu/"/>
+          <enumeration value="http://www.canthisthanmoretomanualshavetocommercedefineTherelatedwillu.org/"/>
+          <enumeration value="ftp://wellsignifi.edu/"/>
+          <enumeration value="ftp://ftp.ofthetremendousandgovernmentwhoDelawareindu.com/"/>
+          <enumeration value="gopher://offerforensicsindustryexercisemanagetoensuretolawthelawrapid.edu/"/>
+          <enumeration value="http://www.forestablishXML.org/"/>
+          <enumeration value="ftp://ftp.ofallofmeettheforofmakevocabularyasbethisthetohelpandthed.org/"/>
+          <enumeration value="telnet://filesoftheapplication.org/"/>
+          <enumeration value="gopher://definingtheofXMLte.gov/"/>
+          <enumeration value="ftp://intoautomatingprojectinclu.edu/"/>
+          <enumeration value="ftp://ftp.commercetheadventembeddedtoStructuredandXM.com/"/>
+          <enumeration value="telnet://capabilitiesAfromdisplayingkeyindustrykn.com/"/>
+          <enumeration value="ftp://ftp.andtheprintmeans.com/"/>
+          <enumeration value="gopher://Asaddition.gov/"/>
+          <enumeration value="http://www.gprofilesasofrecentobjectsdirectionsandwi.com/"/>
+          <enumeration value="http://www.vend.org/"/>
+          <enumeration value="http://AnPervasivehasconsortiums.edu/"/>
+          <enumeration value="http://toandlanguagetoreferencesetConfo.org/"/>
+    </restriction>
+  </simpleType>
+
+</schema>

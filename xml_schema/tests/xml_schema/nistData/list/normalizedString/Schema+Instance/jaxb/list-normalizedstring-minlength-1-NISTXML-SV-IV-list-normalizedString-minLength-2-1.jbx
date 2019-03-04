@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-minLength-2-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-minLength-2</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>997_Are_Images_The_User_Street_Define_Than_,_DC_17958</string> 
+   </void> 
+   <void method="add"> 
+    <string>53726_And_Depends_Is_Model_Street_Technical_The_,_TX_17958</string> 
+   </void> 
+   <void method="add"> 
+    <string>223_The_Industries_Its_Over_Street_Exchange_Java_,_NV_17958</string> 
+   </void> 
+   <void method="add"> 
+    <string>26_Draft_Measure_Provide_Which_Street_Own_Created_,_LA_17958</string> 
+   </void> 
+   <void method="add"> 
+    <string>32846_To_These_And_No_Street_Of_Original_,_OR_17958</string> 
+   </void> 
+   <void method="add"> 
+    <string>3355_Communications_Language_It_Of_Street_Interoperability_Conference_,_HI_17958</string> 
+   </void> 
+   <void method="add"> 
+    <string>474_Interoperability_In_Documents_Pervasive_Street_The_And_,_CA_17958</string> 
+   </void> 
+   <void method="add"> 
+    <string>6253_And_The_To_Electronic_Street_Benefits_Investigations_,_ME_17958</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

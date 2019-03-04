@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="schG14">
+   <TestGroupDocumentation>
+      <Title><![CDATA[schG14]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : B added; A imports B but with bad schemaLocation, B should still be imported.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)schG14.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../schG14a.xsd"/>
+      <ExternalSupportClass SourceName="../schG14.xsd"/>
+   </CodeSet>
+   <TestCase ID="schG14">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)schG14.test.xml	1.1 07/03/27 -->

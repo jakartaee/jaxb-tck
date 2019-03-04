@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="addA003">
+   <TestGroupDocumentation>
+      <Title><![CDATA[addA003]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : XSD has element pointing to nonexistant type, XML uses xsi:type to access the same nonexistant type
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)addA003.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../adhocAddA003e.xsd"/>
+   </CodeSet>
+   <TestCase ID="addA003">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)addA003.test.xml	1.1 07/03/27 -->

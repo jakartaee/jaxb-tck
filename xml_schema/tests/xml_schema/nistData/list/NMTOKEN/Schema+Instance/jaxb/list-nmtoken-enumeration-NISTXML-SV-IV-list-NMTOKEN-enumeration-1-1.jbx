@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-enumeration-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-enumeration-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>developing.of_Structured:ebXML-bottlenecks.define-NSR</string> 
+   </void> 
+   <void method="add"> 
+    <string>automate.in-house-consortium:and_eliminate</string> 
+   </void> 
+   <void method="add"> 
+    <string>build-any_are_A.and-thr</string> 
+   </void> 
+   <void method="add"> 
+    <string>and_XML-of.applications-computing-is:To:digital_due_</string> 
+   </void> 
+   <void method="add"> 
+    <string>th</string> 
+   </void> 
+   <void method="add"> 
+    <string>in-also-pervasive.XML:Control-</string> 
+   </void> 
+   <void method="add"> 
+    <string>four-by:One.a_specifications_will_lack_bas</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

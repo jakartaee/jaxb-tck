@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (see http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/).
+      File: minLength-1-2.xml
+      XML instance number 2 in a series of 
+      5 conforming to NIST test schema
+      minLength-1.xsd.
+-->
+
+<NISTSchema-NCName-minLength-1
+    xmlns="NISTSchema-NCName-minLength-1-NS"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="NISTSchema-NCName-minLength-1-NS minLength-1.xsd">gregistry_chain.</NISTSchema-NCName-minLength-1>

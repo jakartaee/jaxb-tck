@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="CtorHandle">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Constructor tests]]></Title>
+        <Description><![CDATA[
+Constructor tests.
+        ]]></Description>
+        <TestedPackage>javax.xml.bind.helpers</TestedPackage>
+        <TestedClass>ValidationEventCollector</TestedClass>
+        <Author><![CDATA[Oleg Oleinik]]></Author>
+    </TestGroupDocumentation>
+
+    <TestGroupAttributes>
+       <AttrElem Name="tdFile">index</AttrElem>
+       <AttrElem Name="scInfo">@(#)CtorHandle.test.xml	1.3 02/12/17</AttrElem>
+       <AttrElem Name="testType">MultiTest</AttrElem>
+       <Keyword>runtime</Keyword>
+       <Keyword>positive</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.util.ValidationEventCollector</Import>
+        <Import>javax.xml.bind.ValidationEventLocator</Import>
+        <Import>javax.xml.bind.ValidationEvent</Import>
+        <Import>java.util.Vector</Import>
+        <BaseClass>MultiTest</BaseClass>
+        <SupportCode><![CDATA[
+    Throwable[] valid_exception = {new Error("error"), new Exception("exception"), 
+        new RuntimeException("runtime exception"), new Throwable("throwable")};
+
+    String[] valid_message = {"error"};
+
+    Vector valid_locator = getLocators();
+
+    Vector getLocators(){
+        Vector locators = new Vector();
+        int[] valid_offset = {0, -1, 100};
+        int[] valid_lineNumber = {0, -1, 100};
+        int[] valid_columnNumber = {0, -1, 100};
+        Object[] valid_object = {null, new Object()};
+        org.w3c.dom.Node[] valid_node = {null};
+        java.net.URL[] valid_url = null;
+        try {
+            valid_url = new java.net.URL[] {null, new java.net.URL("http://www.sun.com/dir/index.html?query#fragment")};
+        } catch (java.net.MalformedURLException me){
+            throw new RuntimeException(me.toString());
+        }
+        for (int i_offset = 0; i_offset < valid_offset.length; ++i_offset){
+            for (int i_lineNumber = 0; i_lineNumber < valid_lineNumber.length; ++i_lineNumber){
+                for (int i_columnNumber = 0; i_columnNumber < valid_columnNumber.length; ++i_columnNumber){
+                    for (int i_object = 0; i_object < valid_object.length; ++i_object){
+                        for (int i_url = 0; i_url < valid_url.length; ++i_url){
+                            for (int i_node = 0; i_node < valid_node.length; ++i_node){
+
+                                ValidationEventLocator eventLocator = new MyValidationEventLocator(valid_url[i_url], 
+                                     valid_offset[i_offset], valid_lineNumber[i_lineNumber], 
+                                     valid_columnNumber[i_columnNumber], valid_object[i_object], 
+                                     valid_node[i_node]);
+
+                                locators.add(eventLocator);
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return locators;
+   }
+]]></SupportCode>
+
+        <InlineSupportClass>
+            <CodeSource><![CDATA[
+
+    class MyValidationEventLocator implements ValidationEventLocator {
+        java.net.URL url = null;
+        int offset = -1;
+        int lineNumber = -1;
+        int columnNumber = -1;
+        Object object = null;
+        org.w3c.dom.Node node = null;
+        
+        public MyValidationEventLocator (java.net.URL url, int offset, int lineNumber, 
+                int columnNumber, Object object, org.w3c.dom.Node node){
+            this.url = url;
+            this.offset = offset;
+            this.lineNumber = lineNumber;
+            this.columnNumber = columnNumber;
+            this.object = object;
+            this.node = node;
+        }
+        public java.net.URL getURL(){
+            return url;
+        }
+        public int getOffset(){
+            return offset;
+        }
+        public int getLineNumber(){
+            return lineNumber;
+        }
+        public int getColumnNumber(){
+            return columnNumber;
+        }
+        public java.lang.Object getObject(){
+            return object;
+        }
+        public org.w3c.dom.Node getNode(){
+            return node;
+        }
+    }
+    
+    class MyValidationEvent implements ValidationEvent {
+        java.lang.Throwable throwable = null;
+        ValidationEventLocator locator = null;
+        String message = "";
+        int severity = ValidationEvent.WARNING;
+
+        public MyValidationEvent(java.lang.Throwable t, ValidationEventLocator l, String m, int s){
+             throwable = t;
+             locator = l;
+             message = m;
+             severity = s;
+        }
+
+        public java.lang.Throwable getLinkedException(){
+            return throwable;
+        }
+        public ValidationEventLocator getLocator(){
+            return locator;
+        }
+        public java.lang.String getMessage(){
+            return message;
+        }
+        public int getSeverity(){
+            return severity;
+        }
+    }
+]]></CodeSource>
+        </InlineSupportClass>
+    </CodeSet>
+
+
+
+<!-- ===============  ValidationEventCollector(), handleEvent(ValidationEvent) tests  ==================== -->
+
+
+    <TestCase ID="CtorHandle001">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+ValidationEventCollector(): no exceptions are thrown.
+             ]]></InlineAssertion>
+            <MemberSig>public ValidationEventCollector()</MemberSig>
+            <ExpectedResultSideEffect>no exceptions</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+handleEvent(ValidationEvent event): event severity is ERROR, handleEvent(event) is invoked to cover handling ERRORs.
+             ]]></InlineAssertion>
+            <MemberSig>public boolean handleEvent(ValidationEvent event)</MemberSig>
+            <ExpectedResultSideEffect> </ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    ValidationEventCollector handler = new ValidationEventCollector();
+
+    for (int i_message = 0; i_message < valid_message.length; ++i_message){
+        for (int i_exception = 0; i_exception < valid_exception.length; ++i_exception){
+            for (int i_locator = 0; i_locator < valid_locator.size(); ++i_locator){
+                ValidationEvent event = new MyValidationEvent(valid_exception[i_exception], 
+                                       (ValidationEventLocator)valid_locator.get(i_locator),
+                                        valid_message[i_message], ValidationEvent.ERROR);
+                try {
+                    handler.handleEvent(event);
+                } catch (RuntimeException re){
+                }
+            }
+        }
+    }
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+
+    <TestCase ID="CtorHandle002">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+handleEvent(ValidationEvent event): event severity is FATAL_ERROR, handleEvent(event) returns false.
+             ]]></InlineAssertion>
+            <MemberSig>public boolean handleEvent(ValidationEvent event)</MemberSig>
+            <ExpectedResultSideEffect>handleEvent(event) returns false</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    ValidationEventCollector handler = new ValidationEventCollector();
+
+    for (int i_message = 0; i_message < valid_message.length; ++i_message){
+        for (int i_exception = 0; i_exception < valid_exception.length; ++i_exception){
+            for (int i_locator = 0; i_locator < valid_locator.size(); ++i_locator){
+                ValidationEvent event = new MyValidationEvent(valid_exception[i_exception], 
+                                       (ValidationEventLocator)valid_locator.get(i_locator),
+                                        valid_message[i_message], ValidationEvent.FATAL_ERROR);
+                try {
+                    if (handler.handleEvent(event) != false){
+                        return Status.failed("handleEvent(event) returns true for FATAL_ERROR event");
+                    }
+                } catch (RuntimeException re){
+                }
+            }
+        }
+    }    
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+
+    <TestCase ID="CtorHandle003">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+handleEvent(ValidationEvent event): event severity is WARNING, handleEvent(event) is invoked to cover handling WARNINGs.
+             ]]></InlineAssertion>
+            <MemberSig>public boolean handleEvent(ValidationEvent event)</MemberSig>
+            <ExpectedResultSideEffect> </ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    ValidationEventCollector handler = new ValidationEventCollector();
+
+    for (int i_message = 0; i_message < valid_message.length; ++i_message){
+        for (int i_exception = 0; i_exception < valid_exception.length; ++i_exception){
+            for (int i_locator = 0; i_locator < valid_locator.size(); ++i_locator){
+                ValidationEvent event = new MyValidationEvent(valid_exception[i_exception], 
+                                       (ValidationEventLocator)valid_locator.get(i_locator),
+                                        valid_message[i_message], ValidationEvent.WARNING);
+                try {
+                    handler.handleEvent(event);
+                } catch (RuntimeException re){
+                }
+            }
+        }
+    }    
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+
+    <TestCase ID="CtorHandle004">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+handleEvent(null) is invoked, subsequent handleEvent(event) with FATAL_ERROR returns false.
+             ]]></InlineAssertion>
+            <MemberSig>public boolean handleEvent(ValidationEvent event)</MemberSig>
+            <ExpectedResultSideEffect>handleEvent(null) does not affect subsequent hasEvents(), handleEvent(event), getEvents()</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    ValidationEventCollector handler = new ValidationEventCollector();
+    try {
+        boolean b = handler.handleEvent(null);
+        log.println("handleEvent(null) returns " + b);
+    } catch (RuntimeException e){
+        log.println("handleEvent(null) throws " + e);
+    }
+    boolean he = handler.hasEvents();
+    ValidationEvent event = new MyValidationEvent(valid_exception[0], 
+                            (ValidationEventLocator)valid_locator.get(0),
+                             valid_message[0], ValidationEvent.FATAL_ERROR);
+    try {
+        if (handler.handleEvent(event) == true){
+            return Status.failed("handleEvent(event) with FATAL_ERROR event returns true after handleEvent(null)");
+        }
+    } catch (RuntimeException e){
+    }
+    ValidationEvent[] ve = handler.getEvents();
+    if (ve.length == 0 || ve.length > 2){
+        return Status.failed("handleEvent(null), handleEvent(event), getEvents() returns array of length " + ve.length);
+    }
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+
+
+    <TestCase ID="CtorHandle005">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+handleEvent(ValidationEvent event), event severity is: WARNING, ERROR, FATAL_ERROR, totally 6 events, getEvents() returns a copy 
+of all the collected errors and warnings.
+             ]]></InlineAssertion>
+            <MemberSig>public ValidationEvent[] getEvents()</MemberSig>
+            <ExpectedResultSideEffect>getEvents() returns array of length 6, returned events are copies of handled</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    ValidationEvent[] handledEvents = null;
+    ValidationEventCollector handler = new ValidationEventCollector();
+    int[] severities = {ValidationEvent.FATAL_ERROR, ValidationEvent.WARNING, ValidationEvent.ERROR, ValidationEvent.FATAL_ERROR, ValidationEvent.WARNING, ValidationEvent.ERROR};
+    for (int i = 0; i < severities.length; ++i){
+        ValidationEvent event = new MyValidationEvent(valid_exception[0], 
+                                (ValidationEventLocator)valid_locator.get(0),
+                                 valid_message[0], severities[i]);
+        try {
+            handler.handleEvent(event);
+        } catch (RuntimeException e){
+        }
+        handledEvents = handler.getEvents();
+        if (handledEvents.length != (i + 1)){
+            return Status.failed((i + 1) + " events were handled, getEvents() returns array of length " + handledEvents.length);
+        }
+    }
+    handledEvents = handler.getEvents();
+    int[] ss = {0, 0, 0};
+    for (int i = 0; i < handledEvents.length; ++i){
+        if (!valid_message[0].equals(handledEvents[i].getMessage())){
+            return Status.failed("handledEvents[i].getMessage() returns " + handledEvents[i].getMessage() + " instead of " + valid_message[0]);
+        }
+        int s = handledEvents[i].getSeverity();
+        int j = (s == ValidationEvent.FATAL_ERROR ? 0 : (s == ValidationEvent.ERROR ? 1 : 2));
+        ++ss[j];
+    }
+    if (ss[0] != 2 || ss[1] != 2 || ss[2] != 2){
+        return Status.failed("2 ERROR, 2 FATAL_ERROR, 2 WARNING events were registered, returned array contains events with wrong severities");
+    }
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+
+    <TestCase ID="CtorHandle006">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+no events were handled, getEvents() returns an empty array if there weren't any.
+             ]]></InlineAssertion>
+            <MemberSig>public ValidationEvent[] getEvents()</MemberSig>
+            <ExpectedResultSideEffect>getEvents() returns array of length 0</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+no events were handled, reset() clears all collected errors and warnings.
+             ]]></InlineAssertion>
+            <MemberSig>public void reset()</MemberSig>
+            <ExpectedResultSideEffect>reset() throws no exceptions, does not affect the empty collector</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+no events were handled, hasEvents() returns false if this event collector contains no events.
+             ]]></InlineAssertion>
+            <MemberSig>public boolean hasEvents()</MemberSig>
+            <ExpectedResultSideEffect>hasEvents() returns false</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    ValidationEventCollector handler = new ValidationEventCollector();
+    if (handler.hasEvents()){
+        return Status.failed("no events are handled, hasEvents() returns true");
+    }
+    ValidationEvent[] handledEvents = handler.getEvents();
+    if (handledEvents == null){
+        return Status.failed("no events were handled, getEvents() returns null instead of an empty array");
+    }
+    if (handledEvents.length > 0){
+        return Status.failed("no events are handled, getEvents() returns array of length " + handledEvents.length);
+    }
+    handler.reset();
+    if (handler.hasEvents()){
+        return Status.failed("no events are handled, reset() is invoked, hasEvents() returns true");
+    }
+    handledEvents = handler.getEvents();
+    if (handledEvents == null){
+        return Status.failed("no events were handled, reset() is invoked, getEvents() returns null instead of an empty array");
+    }
+    if (handledEvents.length > 0){
+        return Status.failed("no events are handled, reset() is invoked, getEvents() returns array of length " + handledEvents.length);
+    }
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+
+
+    <TestCase ID="CtorHandle007">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+collector was cleared by reset(), getEvents() returns an empty array if there are not events collected.
+             ]]></InlineAssertion>
+            <MemberSig>public ValidationEvent[] getEvents()</MemberSig>
+            <ExpectedResultSideEffect>getEvents() returns an empty array</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+several events were handled, reset() clears all collected errors and warnings.
+             ]]></InlineAssertion>
+            <MemberSig>public void reset()</MemberSig>
+            <ExpectedResultSideEffect>reset() clears all collected errors and warnings</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+collector was cleared by reset(), hasEvents() returns false if this event collector contains no events, otherwise true.
+             ]]></InlineAssertion>
+            <MemberSig>public boolean hasEvents()</MemberSig>
+            <ExpectedResultSideEffect>hasEvents() returns true if events were handled, false after the collector was reset</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    ValidationEventCollector handler = new ValidationEventCollector();
+    ValidationEventCollector handler2 = new ValidationEventCollector();
+    ValidationEvent[] handledEvents = null;
+    int[] severities = {ValidationEvent.FATAL_ERROR, ValidationEvent.WARNING, ValidationEvent.ERROR};
+    for (int i = 0; i < severities.length; ++i){
+        ValidationEvent event = new MyValidationEvent(valid_exception[0], 
+                                (ValidationEventLocator)valid_locator.get(0),
+                                 valid_message[0], severities[i]);
+        ValidationEvent event2 = new MyValidationEvent(valid_exception[0], 
+                                (ValidationEventLocator)valid_locator.get(0),
+                                 valid_message[0], severities[i]);
+        try {
+            handler.handleEvent(event);
+            handler2.handleEvent(event2);
+        } catch (RuntimeException e){
+        }
+        if (!handler.hasEvents()){
+            return Status.failed("event was handled, hasEvents() returns false");
+        }
+        handler.reset();
+        if (handler.hasEvents()){
+            return Status.failed("collector was cleared by reset(), hasEvents() returns true");
+        }
+        handledEvents = handler.getEvents();
+        if (handledEvents == null){
+            return Status.failed("collector was cleared by reset(), getEvents() returns null instead of an empty array");
+        }
+        if (handledEvents.length > 0){
+            return Status.failed("collector was cleared by reset(), getEvents() returns array of length " + handledEvents.length);
+        }
+    }
+    if (!handler2.hasEvents()){
+        return Status.failed("several events were handled, hasEvents() returns false");
+    }
+    handler2.reset();
+    if (handler2.hasEvents()){
+        return Status.failed("collector with several events was cleared by reset(), hasEvents() returns true");
+    }
+    handledEvents = handler2.getEvents();
+    if (handledEvents == null){
+        return Status.failed("collector with several events was cleared by reset(), getEvents() returns null instead of an empty array");
+    }
+    if (handledEvents.length > 0){
+        return Status.failed("collector with several events was cleared by reset(), getEvents() returns array of length " + handledEvents.length);
+    }
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+<!-- ======================================================================= -->
+
+
+</TestGroup>
+<!-- Ident: @(#)CtorHandle.test.xml	1.3 02/12/17 -->
+

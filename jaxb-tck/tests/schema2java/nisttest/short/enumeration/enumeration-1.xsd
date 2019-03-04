@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-short-enumeration-1-NS"
+        targetNamespace="NISTSchema-short-enumeration-1-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-1.xsd
+      This schema specifies a datatype, NISTSchema-short-enumeration-1,
+      which is derived by restriction of built-in type short
+      by facet enumeration with values of:
+          6154
+          -63
+          -74
+          474
+          75
+          -7
+          -4
+          8
+          604
+          2
+          -69
+          613
+          -77
+          689
+          -262
+          77
+          -6262
+          -54
+          -4
+          -37
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-short-enumeration-1" type="nist:NISTSchema-short-enumeration-1-Type"/>
+
+  <simpleType name="NISTSchema-short-enumeration-1-Type">
+    <restriction base="short">
+          <enumeration value="6154"/>
+          <enumeration value="-63"/>
+          <enumeration value="-74"/>
+          <enumeration value="474"/>
+          <enumeration value="75"/>
+          <enumeration value="-7"/>
+          <enumeration value="-4"/>
+          <enumeration value="8"/>
+          <enumeration value="604"/>
+          <enumeration value="2"/>
+          <enumeration value="-69"/>
+          <enumeration value="613"/>
+          <enumeration value="-77"/>
+          <enumeration value="689"/>
+          <enumeration value="-262"/>
+          <enumeration value="77"/>
+          <enumeration value="-6262"/>
+          <enumeration value="-54"/>
+          <enumeration value="-4"/>
+          <enumeration value="-37"/>
+    </restriction>
+  </simpleType>
+
+</schema>

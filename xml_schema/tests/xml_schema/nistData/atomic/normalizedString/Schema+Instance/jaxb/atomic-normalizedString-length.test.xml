@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-normalizedString-length">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-normalizedString-length]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/normalizedString is restricted by facet length with value 0.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#normalizedString">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#normalizedString
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-length">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-length
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-normalizedString-length.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-normalizedString-length-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-normalizedString-length.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-normalizedString-length">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-atomic-normalizedString-length-1-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-atomic-normalizedString-length-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="atomic-normalizedstring-length-NISTXML-SV-IV-atomic-normalizedString-length-1-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

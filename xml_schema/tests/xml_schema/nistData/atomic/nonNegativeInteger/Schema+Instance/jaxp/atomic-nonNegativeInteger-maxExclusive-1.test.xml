@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-nonNegativeInteger-maxExclusive-1">
+   <TestGroupDocumentation>
+      <Title><![CDATA[atomic-nonNegativeInteger-maxExclusive-1]]></Title>
+      <Description><![CDATA[
+        <p>
+                    
+        Type atomic/nonNegativeInteger is restricted by facet maxExclusive with value 671945496538646879.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#nonNegativeInteger">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#nonNegativeInteger
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxExclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxExclusive
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)atomic-nonNegativeInteger-maxExclusive-1.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-nonNegativeInteger-maxExclusive-2.xsd"/>
+   </CodeSet>
+   <TestCase ID="atomic-nonNegativeInteger-maxExclusive-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-1.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-2">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-2.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-3">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-3.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-4">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-4.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-5">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../NISTXML-SV-IV-atomic-nonNegativeInteger-maxExclusive-2-5.xml"
+                       Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)atomic-nonNegativeInteger-maxExclusive-1.test.xml	1.1 07/03/27 -->

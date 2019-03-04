@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedInt_minExclusive004_1773">
+    <TestGroupDocumentation>
+        <Title><![CDATA[unsignedInt_minExclusive004_1773]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minExclusive and value=1 and facet=maxInclusive and value=7) and document value=5
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)unsignedInt_minExclusive004_1773.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../unsignedInt_minExclusive004.xsd"/>
+        <ExternalData Type="iodata" SourceName="unsignedInt_minExclusive004_1773.sig"/>
+    </CodeSet>
+    <TestCase ID="unsignedInt_minExclusive004_1773">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="unsignedInt_minExclusive004_1773.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../unsignedInt_minExclusive004.xml"/>
+            <ExternalData Type="iodata" SourceName="unsignedint_minexclusive004_1773-unsignedInt_minExclusive004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

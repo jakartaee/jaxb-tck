@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-length-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-length-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>486_Computing_Street_To_Lies_,_UT_19463-1966</string> 
+   </void> 
+   <void method="add"> 
+    <string>4_Build_Street_System_Working_,_KS_19463-1966</string> 
+   </void> 
+   <void method="add"> 
+    <string>45_Body_Street_Measure_Pervasive_,_NM_19463-1966</string> 
+   </void> 
+   <void method="add"> 
+    <string>91_Created_Street_Is_Documents_,_VT_19463-1966</string> 
+   </void> 
+   <void method="add"> 
+    <string>8114_Organization_Street_The_Used_,_WY_19463-1966</string> 
+   </void> 
+   <void method="add"> 
+    <string>271_And_Street_Defining_Files_,_UT_19463-1966</string> 
+   </void> 
+   <void method="add"> 
+    <string>185_Be_Street_Particularly_Body_,_MT_19463-1966</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

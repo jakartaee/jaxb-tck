@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="idH021">
+    <TestGroupDocumentation>
+        <Title><![CDATA[idH021]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Identity-constraint Definition Schema Component : keyref category, selector points to element outside of targetNamespace in a non-imported schema
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cIdentity-constraint_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)idH021.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../idH021.xsd"/>
+        <ExternalData Type="iodata" SourceName="../idH001.xsd"/>
+        <ExternalData Type="iodata" SourceName="idH021.sig"/>
+    </CodeSet>
+    <TestCase ID="idH021">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="idH021.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../idH021.xml"/>
+            <ExternalData Type="iodata" SourceName="idh021-idH021.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,1511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup PUBLIC "testgenspec.dtd" "testgenspec.dtd" >
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="DatatypeConverter">
+	<TestGroupDocumentation>
+        <Title>Provides DatatypeConverter tests.</Title>
+        <Description>
+        	DatatypeConverter tests. Conversion tests are done while unmarshalling
+        	xml data.
+        </Description>
+        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedClass>DatatypeConverter</TestedClass>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)DatatypeConverter.test.xml	1.1 05/08/20</AttrElem>
+      <AttrElem Name="testType">MultiTest</AttrElem>
+      <Keyword>runtime</Keyword>
+      <Keyword>positive</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+		<Import>java.math.BigDecimal</Import>
+		<Import>java.math.BigInteger</Import>
+		<Import>java.net.URL</Import>
+		<Import>java.util.Calendar</Import>
+		<Import>java.util.Collections</Import>
+		<Import>java.util.Iterator</Import>
+		<Import>java.util.TimeZone</Import>		
+		<Import>javax.xml.XMLConstants</Import>
+		<Import>javax.xml.bind.DatatypeConverterInterface</Import>
+		<Import>javax.xml.bind.JAXBContext</Import>
+		<Import>javax.xml.bind.JAXBException</Import>
+		<Import>javax.xml.bind.Unmarshaller</Import>
+		<Import>javax.xml.bind.DatatypeConverter</Import>
+		<Import>javax.xml.namespace.NamespaceContext</Import>
+		<Import>javax.xml.namespace.QName</Import>
+		<Import>java.io.StringReader</Import>
+ 		<SupportCode><![CDATA[
+ 	private static NamespaceContext xsdNamespaceContext = new NamespaceContext(){
+
+        public String getNamespaceURI(String prefix) {
+            if("xsd".equals(prefix)){
+                return XMLConstants.W3C_XML_SCHEMA_NS_URI;
+            }
+            return null;
+        }
+
+        public String getPrefix(String namespaceURI) {
+            if(XMLConstants.W3C_XML_SCHEMA_NS_URI.equals(namespaceURI)){
+                return "xsd";
+            }
+            return null;
+        }
+
+        public Iterator getPrefixes(String namespaceURI) {
+            return Collections.singleton("xsd").iterator();
+        }
+        
+    }; 
+    
+    
+    public Status test(DatatypeConverterTestDriver.Test test){
+        String document = 
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?> \n"+
+        "<jck:root xmlns:jck=\"jck-jaxb-test/DatatypeConverter\"\n"+ 
+        "          xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"+ 
+        "          xsi:schemaLocation=\"jck-jaxb-test/DatatypeConverter DatatypeConverter.xsd \">\n"+
+        "    <child>test</child>\n"+
+        "</jck:root>";
+        JAXBContext context;
+        try {
+            context = JAXBContext.newInstance(Root.class);
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create an instance of JAXB context: "+e);
+        }
+        Unmarshaller unmarshaller; 
+        try {
+            unmarshaller = context.createUnmarshaller();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create unmarshaller: "+e);
+        }
+        DatatypeConverterTestDriver.init(test);
+        try {
+            unmarshaller.unmarshal(new StringReader(document));
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Error on unmarshalling: "+e);
+        }
+        return DatatypeConverterTestDriver.returnStatus();
+    }
+ 		]]></SupportCode>
+ 		<ExternalSupportClass SourceName="DatatypeConverterTestDriver.java"/>
+ 		<ExternalSupportClass SourceName="package-info.java" />
+ 		<ExternalSupportClass SourceName="Root.java" />
+    </CodeSet>
+    
+    <TestCase ID="parseString001">
+    	<TestCaseDocumentation>
+    		<Title>parseString</Title>
+    		<Description>Tests parseString method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+    		    <InlineAssertion><![CDATA[
+				parseString method test.
+ 			 ]]></InlineAssertion>
+ 			 	<MemberSig>public static java.lang.String parseString(java.lang.String lexicalXSDString)</MemberSig>
+    		</TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = "string";
+                String parsed = DatatypeConverter.parseString(str);
+                if(!str.equals(parsed)){
+                    return Status.failed("\""+str+"\" --> \""+parsed+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseInteger001">
+    	<TestCaseDocumentation>
+    		<Title>parseInteger</Title>
+    		<Description>Tests parseInteger method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+    		    <InlineAssertion><![CDATA[
+				 parseInteger method test.
+ 			 ]]></InlineAssertion>
+ 			 	<MemberSig>public static java.math.BigInteger parseInteger(java.lang.String lexicalXSDInteger)</MemberSig>
+    		</TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " +238 ";
+                BigInteger bigI = DatatypeConverter.parseInteger(str);
+                if(!bigI.equals(new BigInteger("238"))){
+                    return Status.failed("\""+str+"\" --> \""+bigI+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseInt001">
+    	<TestCaseDocumentation>
+    		<Title>parseInt</Title>
+    		<Description>Tests parseInt001 method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseInt method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static int parseInt(java.lang.String lexicalXSDInt)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " +238 ";
+                int i = DatatypeConverter.parseInt(str);
+                if(i != 238){
+                    return Status.failed("\""+str+"\" --> \""+i+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseLong001">
+    	<TestCaseDocumentation>
+    		<Title>parseLong</Title>
+    		<Description>Tests parseLong method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseLong method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static long parseLong(java.lang.String lexicalXSDLong)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " +238 ";
+                long l = DatatypeConverter.parseLong(str);
+                if(l != 238L){
+                    return Status.failed("\""+str+"\" --> \""+l+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseShort001">
+    	<TestCaseDocumentation>
+    		<Title>parseShort</Title>
+    		<Description>Tests parseShort method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseShort method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static short parseShort(java.lang.String lexicalXSDShort)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " +32767 ";
+                short s = DatatypeConverter.parseShort(str);
+                if(s != 32767){
+                    return Status.failed("\""+str+"\" --> \""+s+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseDecimal001">
+    	<TestCaseDocumentation>
+    		<Title>parseDecimal</Title>
+    		<Description>Tests parseDecimal method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseDecimal method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.math.BigDecimal parseDecimal(java.lang.String lexicalXSDDecimal)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " +12678967.543233 ";
+                BigDecimal bigD = DatatypeConverter.parseDecimal(str);
+                if(!bigD.equals(new BigDecimal("12678967.543233"))){
+                    return Status.failed("\""+str+"\" --> \""+bigD+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseFloat001">
+    	<TestCaseDocumentation>
+    		<Title>parseFloat</Title>
+    		<Description>Tests parseFloat001 method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseFloat method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static float parseFloat(java.lang.String lexicalXSDFloat)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " 1.278e-2 ";
+                float f = DatatypeConverter.parseFloat(str);
+                if(Math.abs(f-0.01278f)>0.0000001f){
+                    return Status.failed("\""+str+"\" --> \""+f+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseDouble001">
+    	<TestCaseDocumentation>
+    		<Title>parseDouble</Title>
+    		<Description>Tests parseDouble method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseDouble method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static double parseDouble(java.lang.String lexicalXSDDouble)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " 1.278e-2 ";
+                double d = DatatypeConverter.parseDouble(str);
+                if(Math.abs(d-0.01278)>0.0000001f){
+                    return Status.failed("\""+str+"\" --> \""+d+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseBoolean001">
+    	<TestCaseDocumentation>
+    		<Title>parseBoolean</Title>
+    		<Description>Tests parseBoolean method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseBoolean method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static boolean parseBoolean(java.lang.String lexicalXSDBoolean)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " true ";
+                boolean b = DatatypeConverter.parseBoolean(str);
+                if(!b){
+                    return Status.failed("\""+str+"\" --> \""+b+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseBoolean002">
+    	<TestCaseDocumentation>
+    		<Title>parseBoolean</Title>
+    		<Description>Tests parseBoolean002 method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseBoolean method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static boolean parseBoolean(java.lang.String lexicalXSDBoolean)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " 1 ";
+                boolean b = DatatypeConverter.parseBoolean(str);
+                if(!b){
+                    return Status.failed("\""+str+"\" --> \""+b+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseBoolean003">
+    	<TestCaseDocumentation>
+    		<Title>parseBoolean</Title>
+    		<Description>Tests parseBoolean003 method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseBoolean method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static boolean parseBoolean(java.lang.String lexicalXSDBoolean)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " 0 ";
+                boolean b = DatatypeConverter.parseBoolean(str);
+                if(b){
+                    return Status.failed("\""+str+"\" --> \""+b+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseBoolean004">
+    	<TestCaseDocumentation>
+    		<Title>parseBoolean</Title>
+    		<Description>Tests parseBoolean method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseBoolean method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static boolean parseBoolean(java.lang.String lexicalXSDBoolean)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " false ";
+                boolean b = DatatypeConverter.parseBoolean(str);
+                if(b){
+                    return Status.failed("\""+str+"\" --> \""+b+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseByte001">
+    	<TestCaseDocumentation>
+    		<Title>parseByte</Title>
+    		<Description>Tests parseByte method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseByte method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static byte parseByte(java.lang.String lexicalXSDByte)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " 126 ";
+                byte b = DatatypeConverter.parseByte(str);
+                if(b != 126){
+                    return Status.failed("\""+str+"\" --> \""+b+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseQName001">
+    	<TestCaseDocumentation>
+    		<Title>parseQName</Title>
+    		<Description>Tests parseQName method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseQName method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static javax.xml.namespace.QName parseQName(java.lang.String lexicalXSDQName,javax.xml.namespace.NamespaceContext nsc)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " xsd:element ";
+                QName qname = DatatypeConverter.parseQName(str,xsdNamespaceContext);
+                if(!"element".equals(qname.getLocalPart()) || !"xsd".equals(qname.getPrefix()) || !XMLConstants.W3C_XML_SCHEMA_NS_URI.equals(qname.getNamespaceURI())){
+                    return Status.failed("\""+str+"\" --> \""+qname+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseDateTime001">
+    	<TestCaseDocumentation>
+    		<Title>parseDateTime</Title>
+    		<Description>Tests parseDateTime method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseDateTime method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.util.Calendar parseDateTime(java.lang.String lexicalXSDDateTime)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = "2000-01-20T12:00:00.7+12:00";
+                
+                Calendar cal = DatatypeConverter.parseDateTime(str);
+                if(cal.get(Calendar.YEAR) !=2000                   || 
+                   cal.get(Calendar.MONTH) != Calendar.JANUARY     ||
+                   cal.get(Calendar.DAY_OF_MONTH) != 20            ||
+                   cal.get(Calendar.HOUR_OF_DAY) != 12             ||
+                   cal.get(Calendar.MINUTE) != 0                   ||
+                   cal.get(Calendar.SECOND) != 0                   ||
+                   cal.get(Calendar.MILLISECOND) != 700            ||
+                   cal.get(Calendar.ZONE_OFFSET) != 12/*hours*/*60/*minutes*/*60/*seconds*/*1000/*milliseconds*/){
+                   
+                    return Status.failed("\""+str+"\" --> \""+cal+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseBase64Binary001">
+    	<TestCaseDocumentation>
+    		<Title>parseBase64Binary</Title>
+    		<Description>Tests parseBase64Binary method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseBase64Binary method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static byte[] parseBase64Binary(java.lang.String lexicalXSDBase64Binary)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = "51IK0w==";
+                byte[] bytes = new byte[]{-25,82,10,-45};
+                byte[] decoded = DatatypeConverter.parseBase64Binary(str);
+                
+                StringBuffer bytesBuffer = new StringBuffer();
+                for(byte b: bytes){
+                    bytesBuffer.append(b).append(',');
+                }
+                bytesBuffer.setLength(bytesBuffer.length()-1);
+                StringBuffer decodedBuffer = new StringBuffer();
+                for(byte b: decoded){
+                    decodedBuffer.append(b).append(',');
+                }
+                decodedBuffer.setLength(decodedBuffer.length()-1);
+                if(bytesBuffer.length() != decodedBuffer.length() || !bytesBuffer.toString().equals(decodedBuffer.toString())){
+                    return Status.failed("\""+str+"\" ("+bytesBuffer+") --> ("+decodedBuffer+")");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseHexBinary001">
+    	<TestCaseDocumentation>
+    		<Title>parseHexBinary</Title>
+    		<Description>Tests parseHexBinary method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseHexBinary method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static byte[] parseHexBinary(java.lang.String lexicalXSDHexBinary)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = "E7520AD3";
+                byte[] bytes = new byte[]{-25,82,10,-45};
+                byte[] decoded = DatatypeConverter.parseHexBinary(str);
+                
+                StringBuffer bytesBuffer = new StringBuffer();
+                for(byte b: bytes){
+                    bytesBuffer.append(b).append(',');
+                }
+                bytesBuffer.setLength(bytesBuffer.length()-1);
+                StringBuffer decodedBuffer = new StringBuffer();
+                for(byte b: decoded){
+                    decodedBuffer.append(b).append(',');
+                }
+                decodedBuffer.setLength(decodedBuffer.length()-1);
+                if(bytesBuffer.length() != decodedBuffer.length() || !bytesBuffer.toString().equals(decodedBuffer.toString())){
+                    return Status.failed("\""+str+"\" ("+bytesBuffer+") --> ("+decodedBuffer+")");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseUnsignedInt001">
+    	<TestCaseDocumentation>
+    		<Title>parseUnsignedInt</Title>
+    		<Description>Tests parseUnsignedInt method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseUnsignedInt method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static long parseUnsignedInt(java.lang.String lexicalXSDUnsignedInt)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " 126 ";
+                long l = DatatypeConverter.parseUnsignedInt(str);
+                if(l != 126){
+                    return Status.failed("\""+str+"\" --> \""+l+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseUnsignedShort001">
+    	<TestCaseDocumentation>
+    		<Title>parseUnsignedShort</Title>
+    		<Description>Tests parseUnsignedShort method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseUnsignedShort method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static int parseUnsignedShort(java.lang.String lexicalXSDUnsignedShort)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = " 65534 ";
+                int i = DatatypeConverter.parseUnsignedShort(str);
+                if(i != 65534){
+                    return Status.failed("\""+str+"\" --> \""+i+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseTime001">
+    	<TestCaseDocumentation>
+    		<Title>parseTime</Title>
+    		<Description>Tests parseTime method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseTime method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.util.Calendar parseTime(java.lang.String lexicalXSDTime)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = "03:15:25.05-03:00";
+                
+                Calendar cal = DatatypeConverter.parseDate(str);
+                if(cal.get(Calendar.HOUR_OF_DAY) !=3               || 
+                   cal.get(Calendar.MINUTE) != 15                  ||
+                   cal.get(Calendar.SECOND) != 25                  ||
+                   cal.get(Calendar.MILLISECOND) != 50             ||
+                   cal.get(Calendar.ZONE_OFFSET) != -3/*hours*/*60/*minutes*/*60/*seconds*/*1000/*milliseconds*/){
+                   
+                    return Status.failed("\""+str+"\" --> \""+cal+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseDate001">
+    	<TestCaseDocumentation>
+    		<Title>parseDate</Title>
+    		<Description>Tests parseDate method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseDate method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.util.Calendar parseDate(java.lang.String lexicalXSDDate)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = "03:15:25.05-03:00";
+                
+                Calendar cal = DatatypeConverter.parseDate(str);
+                if(cal.get(Calendar.HOUR_OF_DAY) !=3               || 
+                   cal.get(Calendar.MINUTE) != 15                  ||
+                   cal.get(Calendar.SECOND) != 25                  ||
+                   cal.get(Calendar.MILLISECOND) != 50             ||
+                   cal.get(Calendar.ZONE_OFFSET) != -3/*hours*/*60/*minutes*/*60/*seconds*/*1000/*milliseconds*/){
+                   
+                    return Status.failed("\""+str+"\" --> \""+cal+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="parseAnySimpleType001">
+    	<TestCaseDocumentation>
+    		<Title>parseAnySimpleType</Title>
+    		<Description>Tests parseAnySimpleType method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 parseAnySimpleType method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String parseAnySimpleType(java.lang.String lexicalXSDAnySimpleType)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = "string";
+                String parsed = DatatypeConverter.parseAnySimpleType(str);
+                if(!str.equals(parsed)){
+                    return Status.failed("\""+str+"\" --> \""+parsed+"\"");
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printString001">
+    	<TestCaseDocumentation>
+    		<Title>printString</Title>
+    		<Description>Tests printString method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printString method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printString(java.lang.String val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String str = "string";
+                String expectedResult = str;
+                String printed = DatatypeConverter.printString(str);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+str+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printInteger001">
+    	<TestCaseDocumentation>
+    		<Title>printInteger</Title>
+    		<Description>Tests printInteger method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printInteger method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printInteger(java.math.BigInteger val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                BigInteger bigI = new BigInteger("12382");
+                String expectedResult = bigI.toString();
+                String printed = DatatypeConverter.printInteger(bigI);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+bigI+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printInt001">
+    	<TestCaseDocumentation>
+    		<Title>printInt</Title>
+    		<Description>Tests printInt method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printInt method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printInt(int val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                int i = 123472;
+                String expectedResult = ""+i;
+                String printed = DatatypeConverter.printInt(i);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+i+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printLong001">
+    	<TestCaseDocumentation>
+    		<Title>printLong</Title>
+    		<Description>Tests printLong method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printLong method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printLong(long val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                long l = 123472;
+                String expectedResult = ""+l;
+                String printed = DatatypeConverter.printLong(l);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+l+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printShort001">
+    	<TestCaseDocumentation>
+    		<Title>printShort</Title>
+    		<Description>Tests printShort method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printShort method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printShort(short val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                short s = 23000;
+                String expectedResult = ""+s;
+                String printed = DatatypeConverter.printShort(s);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+s+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printDecimal001">
+    	<TestCaseDocumentation>
+    		<Title>printDecimal</Title>
+    		<Description>Tests printDecimal method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printDecimal method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printDecimal(java.math.BigDecimal val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                BigDecimal bigD = new BigDecimal("12382.234");
+                String expectedResult = bigD.toString();
+                String printed = DatatypeConverter.printDecimal(bigD);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+bigD+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printFloat001">
+    	<TestCaseDocumentation>
+    		<Title>printFloat</Title>
+    		<Description>Tests printFloat method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printFloat method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printFloat(float val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                float f = 123.32442f;
+                String expectedResult = ""+f;
+                String printed = DatatypeConverter.printFloat(f);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+f+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printDouble001">
+    	<TestCaseDocumentation>
+    		<Title>printDouble</Title>
+    		<Description>Tests printDouble method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printDouble method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printDouble(double val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                double d = 123.32442;
+                String expectedResult = ""+d;
+                String printed = DatatypeConverter.printDouble(d);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+d+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printBoolean001">
+    	<TestCaseDocumentation>
+    		<Title>printBoolean</Title>
+    		<Description>Tests printBoolean method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printBoolean method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printBoolean(boolean val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                boolean b = true;
+                String expectedResult = "true";
+                String printed = DatatypeConverter.printBoolean(b);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+b+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printBoolean002">
+    	<TestCaseDocumentation>
+    		<Title>printBoolean</Title>
+    		<Description>Tests printBoolean method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printBoolean method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printBoolean(boolean val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                boolean b = false;
+                String expectedResult = "false";
+                String printed = DatatypeConverter.printBoolean(b);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+b+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printByte001">
+    	<TestCaseDocumentation>
+    		<Title>printByte</Title>
+    		<Description>Tests printByte method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printByte method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printByte(byte val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                byte b = 123;
+                String expectedResult = ""+b;
+                String printed = DatatypeConverter.printByte(b);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+b+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printQName001">
+    	<TestCaseDocumentation>
+    		<Title>printQName</Title>
+    		<Description>Tests printQName method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printQName method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printQName(javax.xml.namespace.QName val,javax.xml.namespace.NamespaceContext nsc)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                QName qname = new QName(XMLConstants.W3C_XML_SCHEMA_NS_URI,"element");
+                String expectedResult = "xsd:element";
+                String printed = DatatypeConverter.printQName(qname,xsdNamespaceContext);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+qname+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printDateTime001">
+    	<TestCaseDocumentation>
+    		<Title>printDateTime</Title>
+    		<Description>Tests printDateTime method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printDateTime method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printDateTime(java.util.Calendar val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+12"));
+                cal.set(Calendar.YEAR,2000);
+                cal.set(Calendar.MONTH,Calendar.JANUARY);
+                cal.set(Calendar.DAY_OF_MONTH,20);
+                cal.set(Calendar.HOUR_OF_DAY,12);
+                cal.set(Calendar.MINUTE,0);
+                cal.set(Calendar.SECOND,0);
+                cal.set(Calendar.MILLISECOND,0);
+                String expectedResult = "2000-01-20T12:00:00+12:00";
+                String printed = DatatypeConverter.printDateTime(cal);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+cal+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printBase64Binary001">
+    	<TestCaseDocumentation>
+    		<Title>printBase64Binary</Title>
+    		<Description>Tests printBase64Binary method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printBase64Binary method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printBase64Binary(byte[] val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                byte[] bytes = new byte[]{-25,82,10,-45};
+                String expectedResult = "51IK0w==";
+                String printed = DatatypeConverter.printBase64Binary(bytes);
+                if(!expectedResult.equals(printed)){
+                    StringBuffer bytesBuffer = new StringBuffer();
+                    bytesBuffer.append('(');
+                    for(byte b: bytes){
+                        bytesBuffer.append(b).append(',');
+                    }
+                    bytesBuffer.setLength(bytesBuffer.length()-1);
+                    bytesBuffer.append(')');
+                    return Status.failed("\""+bytesBuffer+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printHexBinary001">
+    	<TestCaseDocumentation>
+    		<Title>printHexBinary</Title>
+    		<Description>Tests printHexBinary method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printHexBinary method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printHexBinary(byte[] val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                byte[] bytes = new byte[]{-25,82,10,-45};
+                String expectedResult = "E7520AD3";
+                String printed = DatatypeConverter.printHexBinary(bytes);
+                if(!expectedResult.equals(printed)){
+                    StringBuffer bytesBuffer = new StringBuffer();
+                    bytesBuffer.append('(');
+                    for(byte b: bytes){
+                        bytesBuffer.append(b).append(',');
+                    }
+                    bytesBuffer.setLength(bytesBuffer.length()-1);
+                    bytesBuffer.append(')');
+                    return Status.failed("\""+bytesBuffer+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printUnsignedInt001">
+    	<TestCaseDocumentation>
+    		<Title>printUnsignedInt</Title>
+    		<Description>Tests printUnsignedInt method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printUnsignedInt method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printUnsignedInt(long val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                long ui = 123;
+                String expectedResult = ""+ui;
+                String printed = DatatypeConverter.printUnsignedInt(ui);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+ui+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printUnsignedShort001">
+    	<TestCaseDocumentation>
+    		<Title>printUnsignedShort</Title>
+    		<Description>Tests printUnsignedShort method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printUnsignedShort method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printUnsignedShort(int val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                int us = 123;
+                String expectedResult = ""+us;
+                String printed = DatatypeConverter.printUnsignedShort(us);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+us+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printTime001">
+    	<TestCaseDocumentation>
+    		<Title>printTime</Title>
+    		<Description>Tests printTime method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printTime method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printTime(java.util.Calendar val) </MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+12"));
+                cal.set(Calendar.YEAR,2000);
+                cal.set(Calendar.MONTH,Calendar.JANUARY);
+                cal.set(Calendar.DAY_OF_MONTH,20);
+                cal.set(Calendar.HOUR_OF_DAY,12);
+                cal.set(Calendar.MINUTE,0);
+                cal.set(Calendar.SECOND,0);
+                cal.set(Calendar.MILLISECOND,0);
+                String expectedResult = "12:00:00+12:00";
+                String printed = DatatypeConverter.printTime(cal);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+cal+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printDate001">
+    	<TestCaseDocumentation>
+    		<Title>printDate</Title>
+    		<Description>Tests printDate method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printDate method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printDate(java.util.Calendar val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+12"));
+                cal.set(Calendar.YEAR,2000);
+                cal.set(Calendar.MONTH,Calendar.JANUARY);
+                cal.set(Calendar.DAY_OF_MONTH,20);
+                cal.set(Calendar.HOUR_OF_DAY,12);
+                cal.set(Calendar.MINUTE,0);
+                cal.set(Calendar.SECOND,0);
+                cal.set(Calendar.MILLISECOND,0);
+                String expectedResult = "2000-01-20+12:00";
+                String printed = DatatypeConverter.printDate(cal);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+cal+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="printAnySimpleType001">
+    	<TestCaseDocumentation>
+    		<Title>printAnySimpleType</Title>
+    		<Description>Tests printAnySimpleType method.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 printAnySimpleType method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static java.lang.String printAnySimpleType(java.lang.String val)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	return test(new DatatypeConverterTestDriver.Test(ref){
+            public Status test() {
+                String anySimpleType = "string";
+                String expectedResult = anySimpleType;
+                String printed = DatatypeConverter.printAnySimpleType(anySimpleType);
+                if(!expectedResult.equals(printed)){
+                    return Status.failed("\""+anySimpleType+"\" --> \""+printed+"\"  expected: "+expectedResult);
+                }
+                return Status.passed("Ok");
+            }
+        });
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="setDatatypeConverter001">
+    	<TestCaseDocumentation>
+    		<Title>setDatatypeConverter</Title>
+    		<Description>Tests setDatatypeConverter method. Multiple invockations of setDatatypeConverter.
+    		No exception is thrown.
+    		</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 setDatatypeConverter method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static void setDatatypeConverter(DatatypeConverterInterface converter)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	DatatypeConverterInterface aConverter = new DatatypeConverterInterface(){
+            public String parseString(String lexicalXSDString) {
+                return null;
+            }
+
+            public BigInteger parseInteger(String lexicalXSDInteger) {
+                return null;
+            }
+
+            public int parseInt(String lexicalXSDInt) {
+                return 0;
+            }
+
+            public long parseLong(String lexicalXSDLong) {
+                return 0;
+            }
+
+            public short parseShort(String lexicalXSDShort) {
+                return 0;
+            }
+
+            public BigDecimal parseDecimal(String lexicalXSDDecimal) {
+                return null;
+            }
+
+            public float parseFloat(String lexicalXSDFloat) {
+                return 0;
+            }
+
+            public double parseDouble(String lexicalXSDDouble) {
+                return 0;
+            }
+
+            public boolean parseBoolean(String lexicalXSDBoolean) {
+                return false;
+            }
+
+            public byte parseByte(String lexicalXSDByte) {
+                return 0;
+            }
+
+            public QName parseQName(String lexicalXSDQName, NamespaceContext nsc) {
+                return null;
+            }
+
+            public Calendar parseDateTime(String lexicalXSDDateTime) {
+                return null;
+            }
+
+            public byte[] parseBase64Binary(String lexicalXSDBase64Binary) {
+                return null;
+            }
+
+            public byte[] parseHexBinary(String lexicalXSDHexBinary) {
+                return null;
+            }
+
+            public long parseUnsignedInt(String lexicalXSDUnsignedInt) {
+                return 0;
+            }
+
+            public int parseUnsignedShort(String lexicalXSDUnsignedShort) {
+                return 0;
+            }
+
+            public Calendar parseTime(String lexicalXSDTime) {
+                return null;
+            }
+
+            public Calendar parseDate(String lexicalXSDDate) {
+                return null;
+            }
+
+            public String parseAnySimpleType(String lexicalXSDAnySimpleType) {
+                return null;
+            }
+
+            public String printString(String val) {
+                return null;
+            }
+
+            public String printInteger(BigInteger val) {
+                return null;
+            }
+
+            public String printInt(int val) {
+                return null;
+            }
+
+            public String printLong(long val) {
+                return null;
+            }
+
+            public String printShort(short val) {
+                return null;
+            }
+
+            public String printDecimal(BigDecimal val) {
+                return null;
+            }
+
+            public String printFloat(float val) {
+                return null;
+            }
+
+            public String printDouble(double val) {
+                return null;
+            }
+
+            public String printBoolean(boolean val) {
+                return null;
+            }
+
+            public String printByte(byte val) {
+                return null;
+            }
+
+            public String printQName(QName val, NamespaceContext nsc) {
+                return null;
+            }
+
+            public String printDateTime(Calendar val) {
+                return null;
+            }
+
+            public String printBase64Binary(byte[] val) {
+                return null;
+            }
+
+            public String printHexBinary(byte[] val) {
+                return null;
+            }
+
+            public String printUnsignedInt(long val) {
+                return null;
+            }
+
+            public String printUnsignedShort(int val) {
+                return null;
+            }
+
+            public String printTime(Calendar val) {
+                return null;
+            }
+
+            public String printDate(Calendar val) {
+                return null;
+            }
+
+            public String printAnySimpleType(String val) {
+                return null;
+            }
+        };
+        try{
+            DatatypeConverter.setDatatypeConverter(aConverter);
+            DatatypeConverter.setDatatypeConverter(aConverter);
+        }catch(Throwable t){
+            t.printStackTrace(ref);
+            return Status.failed("Datatype converter has thrown "+t);
+        }
+        return Status.passed("Ok");
+    	]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="setDatatypeConverter002">
+    	<TestCaseDocumentation>
+    		<Title>setDatatypeConverter</Title>
+    		<Description>Tests setDatatypeConverter method. IllegalArgumentException is thrown
+    		when parameter is null.</Description>
+    		<Author>Alexey Vishentsev</Author>
+    		<TestCaseSpec>
+                <InlineAssertion><![CDATA[
+                 setDatatypeConverter method test.
+             ]]></InlineAssertion>
+                <MemberSig>public static void setDatatypeConverter(DatatypeConverterInterface converter)</MemberSig>
+            </TestCaseSpec>
+    	</TestCaseDocumentation>
+    	<TestCode><![CDATA[
+    	try{
+            DatatypeConverter.setDatatypeConverter(null);
+        }catch(IllegalArgumentException x){
+            return Status.passed("Ok");
+        }catch(Throwable t){
+            t.printStackTrace(ref);
+            return Status.failed("setDatatypeConverter with null parameter should throw IllegalArgumentException, but what thrown is "+t);
+        }
+        return Status.failed("setDatatypeConverter with null parameter should throw IllegalArgumentException.");
+    	]]></TestCode>
+    </TestCase>
+</TestGroup>

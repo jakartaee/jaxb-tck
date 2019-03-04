@@ -1,0 +1,1209 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="Unmarshal">
+   <TestGroupDocumentation>
+      <Title>Unmarshaller unmarshal(XXX) tests</Title>
+      <Description>
+      Test descriptions and specifications for Unmarshaller unmarshal(XXX) tests.
+      
+      </Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)Unmarshal.test.xml	1.6 07/04/16</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <AttrElem Name="schemaName">Unmarshaller-1.xsd</AttrElem>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Import>javax.xml.bind.Unmarshaller</Import>
+      <Import>javax.xml.bind.JAXBContext</Import>
+      <Import>javax.xml.bind.JAXBException</Import>
+      <Import>javax.xml.bind.JAXBElement</Import>
+      <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+      <Import>javax.xml.parsers.DocumentBuilder</Import>
+      <Import>javax.xml.transform.sax.SAXSource</Import>
+      <Import>javax.xml.transform.stream.StreamSource</Import>
+      <Import>javax.xml.transform.dom.DOMSource</Import>
+      <Import>org.xml.sax.InputSource</Import>
+      <Import>org.w3c.dom.Document</Import>
+      <Import>java.io.File</Import>
+      <Import>java.io.FileInputStream</Import>
+      <Import>java.net.URL</Import>
+      <ExternalSupportClass SourceName="MyValidationEventHandler.java" />
+      <ExternalSupportClass SourceName="ObjectFactory.java" />
+      <ExternalData SourceName="Unmarshaller-1.xsd"/>
+   </CodeSet>
+
+
+   <TestCase ID="Unmarshal001">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.io.File) test</Title>
+         <Description>
+The test checks that unmarshal(java.io.File) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched off by default.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             obj = um.unmarshal(new File(doc_path));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal002">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.io.File) test</Title>
+         <Description>
+The test checks that unmarshal(java.io.File) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched on.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             obj = um.unmarshal(new File(doc_path));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal003">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.io.File) test</Title>
+         <Description>
+The test checks that unmarshal(java.io.File) unmarshals XML data from the specified file. 
+The file is invalid. The vaildation is switched on. Registered validation event handler
+always returns true. unmarshal(File) does not throw exceptions, returns non-null object.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+        <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+         <ExternalData SourceName="MyValidationEventHandler.java" Type="iodata"/>
+      </CodeSet>
+      <TestCode SourceLang="java"><![CDATA[
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setEventHandler(new MyValidationEventHandler(true));
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler() throws JAXBException");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-bad.xml"));
+         try {
+             obj = um.unmarshal(new File(doc_path));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") unexpectedly throws JAXBException");
+         }
+         ((JAXBElement<Long>)obj).setValue(new Long(1));
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+   <TestCase ID="Unmarshal004">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.io.InputStream) test</Title>
+         <Description>
+The test checks that unmarshal(java.io.InputStream) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched off by default.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             obj = um.unmarshal(new FileInputStream(doc_path));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.FileNotFoundException fne){
+             return Status.failed("FileNotFoundException: unmarshal-1.xml");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal005">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.io.InputStream) test</Title>
+         <Description>
+The test checks that unmarshal(java.io.InputStream) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched on.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             obj = um.unmarshal(new FileInputStream(doc_path));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.FileNotFoundException fne){
+             return Status.failed("FileNotFoundException: unmarshal-1.xml");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal006">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.io.InputStream) test</Title>
+         <Description>
+The test checks that unmarshal(java.io.InputStream) unmarshals XML data from the specified file. 
+The file is invalid. The vaildation is switched on. Registered validation event handler
+always returns true. unmarshal(java.io.InputStream) does not throw exceptions, returns non-null object.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+        <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+         <ExternalData SourceName="MyValidationEventHandler.java" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setEventHandler(new MyValidationEventHandler(true));
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler() throws JAXBException");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-bad.xml"));
+         try {
+             obj = um.unmarshal(new FileInputStream(doc_path));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.FileNotFoundException fne){
+             return Status.failed("FileNotFoundException: unmarshal-bad.xml");
+         }
+         ((JAXBElement<Long>)obj).setValue(new Long(1));
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal007">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.net.URL) test</Title>
+         <Description>
+The test checks that unmarshal(java.net.URL) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched off by default.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             obj = um.unmarshal(getDocumentURL("unmarshal-1.xml"));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal008">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.net.URL) test</Title>
+         <Description>
+The test checks that unmarshal(java.net.URL) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched on.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         um.setSchema(schema);
+         try {
+             obj = um.unmarshal(getDocumentURL("unmarshal-1.xml"));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal009">
+      <TestCaseDocumentation>
+         <Title>unmarshal(java.net.URL) test</Title>
+         <Description>
+The test checks that unmarshal(java.net.URL) unmarshals XML data from the specified file. 
+The file is invalid. The vaildation is switched on. Registered validation event handler
+always returns true. unmarshal(java.net.URL) does not throw exceptions, returns non-null object.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+        <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+         <ExternalData SourceName="MyValidationEventHandler.java" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setEventHandler(new MyValidationEventHandler(true));
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler() throws JAXBException");
+         }
+         um.setSchema(schema);
+         try {
+             obj = um.unmarshal(getDocumentURL("unmarshal-bad.xml"));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") unexpectedly throws JAXBException");
+         }
+         ((JAXBElement<Long>)obj).setValue(new Long(1));
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal010">
+      <TestCaseDocumentation>
+         <Title>unmarshal(org.xml.sax.InputSource) test</Title>
+         <Description>
+The test checks that unmarshal(org.xml.sax.InputSource) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched off by default.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             obj = um.unmarshal(new org.xml.sax.InputSource(new java.io.FileInputStream(doc_path)));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.FileNotFoundException fne){
+             return Status.failed("FileNotFoundException: unmarshal-1.xml");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal011">
+      <TestCaseDocumentation>
+         <Title>unmarshal(org.xml.sax.InputSource) test</Title>
+         <Description>
+The test checks that unmarshal(org.xml.sax.InputSource) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched on.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             obj = um.unmarshal(new org.xml.sax.InputSource(new java.io.FileInputStream(doc_path)));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.FileNotFoundException fne){
+             return Status.failed("FileNotFoundException: unmarshal-1.xml");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal012">
+      <TestCaseDocumentation>
+         <Title>unmarshal(org.xml.sax.InputSource) test</Title>
+         <Description>
+The test checks that unmarshal(org.xml.sax.InputSource) unmarshals XML data from the specified file. 
+The file is invalid. The vaildation is switched on. Registered validation event handler
+always returns true. unmarshal(org.xml.sax.InputSource) does not throw exceptions, returns non-null object.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+        <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+         <ExternalData SourceName="MyValidationEventHandler.java" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setEventHandler(new MyValidationEventHandler(true));
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler() throws JAXBException");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-bad.xml"));
+         try {
+             obj = um.unmarshal(new org.xml.sax.InputSource(new java.io.FileInputStream(doc_path)));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.FileNotFoundException fne){
+             return Status.failed("FileNotFoundException: unmarshal-1.xml");
+         }
+         ((JAXBElement<Long>)obj).setValue(new Long(1));
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal013">
+      <TestCaseDocumentation>
+         <Title>unmarshal(org.w3c.dom.Node) test</Title>
+         <Description>
+The test checks that unmarshal(org.w3c.dom.Node) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched off by default.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             dbf.setNamespaceAware(true);
+             DocumentBuilder db = dbf.newDocumentBuilder();
+             Document doc = db.parse(new File(doc_path));
+             obj = um.unmarshal(doc);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (javax.xml.parsers.ParserConfigurationException pe){
+             return Status.failed("unexpected ParserConfigurationException");
+         } catch (org.xml.sax.SAXException se){
+             return Status.failed("unexpected SAXException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+   <TestCase ID="Unmarshal014">
+      <TestCaseDocumentation>
+         <Title>unmarshal(org.w3c.dom.Node) test</Title>
+         <Description>
+The test checks that unmarshal(org.w3c.dom.Node) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched on.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             dbf.setNamespaceAware(true);
+             DocumentBuilder db = dbf.newDocumentBuilder();
+             Document doc = db.parse(new File(doc_path));
+             obj = um.unmarshal(doc);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (javax.xml.parsers.ParserConfigurationException pe){
+             return Status.failed("unexpected ParserConfigurationException");
+         } catch (org.xml.sax.SAXException se){
+             return Status.failed("unexpected SAXException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal015">
+      <TestCaseDocumentation>
+         <Title>unmarshal(org.w3c.dom.Node) test</Title>
+         <Description>
+The test checks that unmarshal(org.w3c.dom.Node) unmarshals XML data from the specified file. 
+The file is invalid. The vaildation is switched on. Registered validation event handler
+always returns true. unmarshal(org.w3c.dom.Node) does not throw exceptions, returns non-null object.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+        <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+         <ExternalData SourceName="MyValidationEventHandler.java" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setEventHandler(new MyValidationEventHandler(true));
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler() throws JAXBException");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-bad.xml"));
+         try {
+             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             dbf.setNamespaceAware(true);
+             DocumentBuilder db = dbf.newDocumentBuilder();
+             Document doc = db.parse(new File(doc_path));
+             obj = um.unmarshal(doc);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") unexpectedly throws JAXBException");
+         } catch (javax.xml.parsers.ParserConfigurationException pe){
+             return Status.failed("unexpected ParserConfigurationException");
+         } catch (org.xml.sax.SAXException se){
+             return Status.failed("unexpected SAXException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         ((JAXBElement<Long>)obj).setValue(new Long(1));
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal016">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(SAXSource) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched off by default.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             SAXSource src = new SAXSource(new org.xml.sax.InputSource(new java.io.FileInputStream(doc_path)));
+             obj = um.unmarshal(src);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+   <TestCase ID="Unmarshal017">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(SAXSource) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched on.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             SAXSource src = new SAXSource(new org.xml.sax.InputSource(new java.io.FileInputStream(doc_path)));
+             obj = um.unmarshal(src);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal018">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(SAXSource) unmarshals XML data from the specified file. 
+The file is invalid. The vaildation is switched on. Registered validation event handler
+always returns true. unmarshal(SAXSource) does not throw exceptions, returns non-null object.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+        <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+         <ExternalData SourceName="MyValidationEventHandler.java" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setEventHandler(new MyValidationEventHandler(true));
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler() throws JAXBException");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-bad.xml"));
+         try {
+             SAXSource src = new SAXSource(new org.xml.sax.InputSource(new java.io.FileInputStream(doc_path)));
+             obj = um.unmarshal(src);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") unexpectedly throws JAXBException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         ((JAXBElement<Long>)obj).setValue(new Long(1));
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal019">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(StreamSource) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched off by default.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             StreamSource src = new StreamSource(new File(doc_path));
+             obj = um.unmarshal(src);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+   <TestCase ID="Unmarshal020">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(StreamSource) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched on.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             StreamSource src = new StreamSource(new File(doc_path));
+             obj = um.unmarshal(src);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal021">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(StreamSource) unmarshals XML data from the specified file. 
+The file is invalid. The vaildation is switched on. Registered validation event handler
+always returns true. unmarshal(StreamSource) does not throw exceptions, returns non-null object.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+        <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+         <ExternalData SourceName="MyValidationEventHandler.java" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setEventHandler(new MyValidationEventHandler(true));
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler() throws JAXBException");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-bad.xml"));
+         try {
+             StreamSource src = new StreamSource(new File(doc_path));
+             obj = um.unmarshal(src);
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") unexpectedly throws JAXBException");
+         }
+         ((JAXBElement<Long>)obj).setValue(new Long(1));
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal022">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(DOMSource) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched off by default.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             dbf.setNamespaceAware(true);
+             DocumentBuilder db = dbf.newDocumentBuilder();
+             Document doc = db.parse(new File(doc_path));
+             obj = um.unmarshal(new DOMSource(doc));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (javax.xml.parsers.ParserConfigurationException pe){
+             return Status.failed("unexpected ParserConfigurationException");
+         } catch (org.xml.sax.SAXException se){
+             return Status.failed("unexpected SAXException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+   <TestCase ID="Unmarshal023">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(DOMSource) unmarshals XML data from the specified file 
+and return the resulting content tree. The content tree corresponds to the xml data.
+The vaildation is switched on.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-1.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-1.xml"));
+         try {
+             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             dbf.setNamespaceAware(true);
+             DocumentBuilder db = dbf.newDocumentBuilder();
+             Document doc = db.parse(new File(doc_path));
+             obj = um.unmarshal(new DOMSource(doc));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-1.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-1.xml\") unexpectedly throws JAXBException");
+         } catch (javax.xml.parsers.ParserConfigurationException pe){
+             return Status.failed("unexpected ParserConfigurationException");
+         } catch (org.xml.sax.SAXException se){
+             return Status.failed("unexpected SAXException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         if (((JAXBElement<Long>)obj).getValue().longValue() != 717){
+             return Status.failed("unmarshalled object: getValue() returns " + ((JAXBElement<Long>)obj).getValue() + " instead of 717");
+         }
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="Unmarshal024">
+      <TestCaseDocumentation>
+         <Title>unmarshal(javax.xml.transform.Source) test</Title>
+         <Description>
+The test checks that unmarshal(DOMSource) unmarshals XML data from the specified file. 
+The file is invalid. The vaildation is switched on. Registered validation event handler
+always returns true. unmarshal(DOMSource) does not throw exceptions, returns non-null object.
+         </Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+        <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+         <ExternalData SourceName="MyValidationEventHandler.java" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setEventHandler(new MyValidationEventHandler(true));
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler() throws JAXBException");
+         }
+         um.setSchema(schema);
+         String doc_path = getDocumentPath(getDocumentURL("unmarshal-bad.xml"));
+         try {
+             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             dbf.setNamespaceAware(true);
+             DocumentBuilder db = dbf.newDocumentBuilder();
+             Document doc = db.parse(new File(doc_path));
+             obj = um.unmarshal(new DOMSource(doc));
+             if (obj == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") unexpectedly throws JAXBException");
+         } catch (javax.xml.parsers.ParserConfigurationException pe){
+             return Status.failed("unexpected ParserConfigurationException");
+         } catch (org.xml.sax.SAXException se){
+             return Status.failed("unexpected SAXException");
+         } catch (java.io.IOException ioe){
+             return Status.failed("unexpected IOException");
+         }
+         ((JAXBElement<Long>)obj).setValue(new Long(1));
+         return Status.passed("OK");
+      ]]></TestCode>
+   </TestCase>
+
+
+</TestGroup>
+<!-- Ident: @(#)Unmarshal.test.xml	1.6 07/04/16 -->

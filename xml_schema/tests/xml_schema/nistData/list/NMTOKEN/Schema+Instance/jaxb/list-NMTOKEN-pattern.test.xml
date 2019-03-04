@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-NMTOKEN-pattern">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-NMTOKEN-pattern]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/NMTOKEN is restricted by facet pattern with value \c{40} \c{21} \c{50} \c{36} \c{35} \c{42} \c{54} \c{48}.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#NMTOKEN">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#NMTOKEN
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-NMTOKEN-pattern.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-NMTOKEN-pattern-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-NMTOKEN-pattern.sig"/>
+    </CodeSet>
+    <TestCase ID="list-NMTOKEN-pattern">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-list-NMTOKEN-pattern-1-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-list-NMTOKEN-pattern-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="list-nmtoken-pattern-NISTXML-SV-IV-list-NMTOKEN-pattern-1-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

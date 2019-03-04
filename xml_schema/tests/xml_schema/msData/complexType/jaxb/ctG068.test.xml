@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="ctG068">
+    <TestGroupDocumentation>
+        <Title><![CDATA[ctG068]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for top level complexType Declaration : complexContent, content of restriction and content with attributeGroup then attributeGroup
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Complex_Type_Definitions">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Complex_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)ctG068.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../ctG068.xsd"/>
+        <ExternalData Type="iodata" SourceName="ctG068.sig"/>
+    </CodeSet>
+    <TestCase ID="ctG068">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="ctG068.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../ctG068.xml"/>
+            <ExternalData Type="iodata" SourceName="ctg068-ctG068.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

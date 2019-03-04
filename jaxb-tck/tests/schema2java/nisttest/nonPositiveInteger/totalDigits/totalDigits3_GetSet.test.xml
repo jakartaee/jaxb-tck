@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="totalDigits3_GetSet">
+    <TestGroupDocumentation>
+        <Title><![CDATA[totalDigits3 GetSet Tree Content tests  ]]></Title>
+        <Description><![CDATA[
+      The tests for checking the content of trees got by unmarshalling
+      of the totalDigits-3.xsd based XML documents and created dynamically via ObjectFactory. 
+      The schema defines a nonPositiveInteger restricted SimpleType with totalDigits value 9.
+      Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)totalDigits3_GetSet.test.xml	1.6 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <Import>java.math.BigInteger</Import>
+        <ExternalSupportClass SourceName="totalDigits-3.xsd"/>
+        <ExternalData Type="iodata" SourceName="totalDigits3_GetSet.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger totalDigits-3.xsd, unmarshalled content tree GetSet test]]></Title>
+            <Description><![CDATA[
+The test unmarshalls totalDigits-3-1.xml,...,totalDigits-3-5.xml documents which specify
+the values -2, -209, -62220, -2733613, -385521297 for the nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-totalDigits-3
+element and expects that elemObj.getValue() returns specified in xml value, then invokes 
+elemObj.setValue(nonPositiveInteger), elemObj.getValue() should return set value.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="totalDigits-3-1.xml"/>
+            <ExternalData Type="iodata" SourceName="totalDigits-3-2.xml"/>
+            <ExternalData Type="iodata" SourceName="totalDigits-3-3.xml"/>
+            <ExternalData Type="iodata" SourceName="totalDigits-3-4.xml"/>
+            <ExternalData Type="iodata" SourceName="totalDigits-3-5.xml"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        String[] xmlDocNames = {
+            "totalDigits-3-1.xml", "totalDigits-3-2.xml", "totalDigits-3-3.xml",
+            "totalDigits-3-4.xml", "totalDigits-3-5.xml"
+        };
+        BigInteger[] expectedValues = {new BigInteger("-2"), new BigInteger("-209"), new BigInteger("-62220"), 
+                                       new BigInteger("-2733613"), new BigInteger("-385521297")};
+        BigInteger[] anExpectedValues = {new BigInteger("-1"), new BigInteger("0"), new BigInteger("-100000000"), 
+                                         new BigInteger("-2733613"), new BigInteger("-325024874")};
+        
+        for (int i = 0; i < xmlDocNames.length; ++i){
+            JAXBElement<BigInteger> elemObj = (JAXBElement<BigInteger>)unmarshal(xmlDocNames[i]);
+            if (!elemObj.getValue().equals(expectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.getValue() != " + expectedValues[i]);
+            }
+            elemObj.setValue(anExpectedValues[i]);
+            if (!elemObj.getValue().equals(anExpectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.setValue(" + anExpectedValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anExpectedValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger totalDigits-3.xsd GetSet test for dynamically created content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-totalDigits-3 type
+with the values -2, -209, -62220, -2733613, -385521297 and expects that elemObj.getValue() returns specified 
+values, then invokes elemObj.setValue(nonPositiveInteger) with various values, elemObj.getValue() should return
+set values.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        BigInteger[] setValues = {new BigInteger("-2"), new BigInteger("-209"), new BigInteger("-62220"), 
+                                       new BigInteger("-2733613"), new BigInteger("-385521297")};
+        BigInteger[] anSetValues = {new BigInteger("-1"), new BigInteger("0"), new BigInteger("-100000000"), 
+                                         new BigInteger("-2733613"), new BigInteger("-325024874")};
+
+        JAXBElement<BigInteger> elemObj = null;
+        for (int i = 0; i < setValues.length; ++i){
+            
+                elemObj = (JAXBElement<BigInteger>)(new ObjectFactory()).createNISTSchemaNonPositiveIntegerTotalDigits3(setValues[i]);
+            
+            if (!elemObj.getValue().equals(setValues[i])){
+                return Status.failed("dynamically created JAXBElement<BigInteger>, elemObj.getValue() != " + setValues[i]);
+            }
+            elemObj.setValue(anSetValues[i]);
+            if (!elemObj.getValue().equals(anSetValues[i])){
+                return Status.failed("dynamically created JAXBElement<BigInteger>, elemObj.setValue(" + anSetValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anSetValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-pattern-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-pattern-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>81_To_Street_An_Fed_,_MS_17466-1733</string> 
+   </void> 
+   <void method="add"> 
+    <string>3_And_Number_The_Nations_From_Street_Xml_Transmit_,_IA_16877</string> 
+   </void> 
+   <void method="add"> 
+    <string>25_Used_Many_An_Street_System_,_IL_16698-1324</string> 
+   </void> 
+   <void method="add"> 
+    <string>1_Developed_Versions_Reference_Street_And_By_Structure_,_DE_18587</string> 
+   </void> 
+   <void method="add"> 
+    <string>2781_Security_Creation_On_Street_It_,_RI_10792</string> 
+   </void> 
+   <void method="add"> 
+    <string>16_Able_Can_The_Will_That_Street_Documents_In_,_KY_11619-1091</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

@@ -1,0 +1,168 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="srcDefault">
+   <TestGroupDocumentation>
+      <Title>XmlAccessorType</Title>
+      <Description>Test of XmlAccessorType annotation</Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)srcDefault.test.xml	1.6 08/04/04</AttrElem>
+       <AttrElem Name="testType">J2XTest</AttrElem>
+       <Keyword>runtime</Keyword>
+       <Keyword>positive</Keyword>
+       <Keyword>java_to_schema</Keyword>
+       <Keyword>jaxb</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+          <Lib>jaxb.j2x</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="srcDefault.java"/>
+   </CodeSet>
+   <TestCase ID="testCase0001">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00044</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          XmlAccessorType(AccessType.PUBLIC_MEMBER) By Default<br>
+          PUBLIC_MEMBER - Every public getter/setter pair and every public field 
+          will be automatically bound to XML, unless annotated by XmlTransient.<br>
+          Note: Positive test. Xml consists of all required fileds and properties<br> 
+          without extra fields or properties.
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">positive</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="posPublic1.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="testCase0002">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00044</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          XmlAccessorType(AccessType.PUBLIC_MEMBER) By Default<br>
+          PUBLIC_MEMBER - Every public getter/setter pair and every public field 
+          will be automatically bound to XML, unless annotated by XmlTransient.<br>
+          Note: Negative test. Required field is absent in xml file.
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negPublic1.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="testCase0003">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00044</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          XmlAccessorType(AccessType.PUBLIC_MEMBER) By Default<br>
+          PUBLIC_MEMBER - Every public getter/setter pair and every public field 
+          will be automatically bound to XML, unless annotated by XmlTransient.<br>
+          Note: Negative test. Required property is absent in xml file.
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negPublic2.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="testCase0004">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00044</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          XmlAccessorType(AccessType.PUBLIC_MEMBER) By Default<br>
+          PUBLIC_MEMBER - Every public getter/setter pair and every public field 
+          will be automatically bound to XML, unless annotated by XmlTransient.<br>
+          Note: Negative test. Xml file contains extraneous field (field with a default access in java file)
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negPublic3.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="testCase0005">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00044</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          XmlAccessorType(AccessType.PUBLIC_MEMBER) By Default<br>
+          PUBLIC_MEMBER - Every public getter/setter pair and every public field 
+          will be automatically bound to XML, unless annotated by XmlTransient.<br>
+          Note: Negative test. Xml file contains extraneous property (getter/setter with a default access in java file)
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negPublic4.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="testCase0006">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00044</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          XmlAccessorType(AccessType.PUBLIC_MEMBER) By Default<br>
+          PUBLIC_MEMBER - Every public getter/setter pair and every public field 
+          will be automatically bound to XML, unless annotated by XmlTransient.<br>
+          Note: Negative test. Xml file contains extraneous field (transient field in java file)
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negPublic5.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="testCase0007">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00044</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          XmlAccessorType(AccessType.PUBLIC_MEMBER) By Default<br>
+          PUBLIC_MEMBER - Every public getter/setter pair and every public field 
+          will be automatically bound to XML, unless annotated by XmlTransient.<br>
+          Note: Negative test. Xml file contains extraneous property (transient getter/setter in java file)
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negPublic6.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+

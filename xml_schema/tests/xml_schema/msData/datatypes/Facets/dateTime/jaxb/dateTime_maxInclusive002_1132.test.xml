@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="dateTime_maxInclusive002_1132">
+    <TestGroupDocumentation>
+        <Title><![CDATA[dateTime_maxInclusive002_1132]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxInclusive and value=1981-03-12T10:30:00 and document value=1985-04-12T10:30:00
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)dateTime_maxInclusive002_1132.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../dateTime_maxInclusive002.xsd"/>
+        <ExternalData Type="iodata" SourceName="dateTime_maxInclusive002_1132.sig"/>
+    </CodeSet>
+    <TestCase ID="dateTime_maxInclusive002_1132">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

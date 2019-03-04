@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+
+    Copyright (c) 2009, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<HTML>
+<HEAD>
+<TITLE>
+CmdLineInterview.otherOpts
+</title>
+<LINK REL="stylesheet" TYPE="text/css" HREF="../wizard.css" TITLE="Style">
+</head>
+<body>
+
+Specify any command-line options that JavaTest should set
+for the Java launcher when it runs the tests on your system.<br>
+For example you may want to specify:
+<dl>
+<dd><code>-Xmx256m -Xms128m</code>
+</dl>
+to change the default maximum and initial Java heap size.<br><br>
+<b><i>Important!</i></b>&nbsp;&nbsp; <br/>
+If you use Java launcher version 8 to run the
+tests, specify the following option:<br>
+On Solaris or Linux platforms, type
+<dl>
+<dd><code>-Djava.endorsed.dirs=$PATH_TO_jaxb-api.jar</code>
+</dl>
+For example:
+<dl>
+<dd><code>-Djava.endorsed.dirs=/usr/java/JAXB2.3/lib</code>
+</dl>
+On Win32 systems, type
+<dl>
+<dd><code>-Djava.endorsed.dirs=%PATH_TO_jaxb-api.jar%</code>
+</dl>
+For example:
+<dl>
+<dd><code>-Djava.endorsed.dirs=C:\java\JAXB2.3\lib</code>
+</dl>
+Note: The path available to -Djava.endorsed.dirs should only contain jaxb-api.jar
+<br/>
+<b><i>Important!</i></b>&nbsp;&nbsp; <br/>
+If you use Java launcher version 9, use this option to pass module options.
+<br/>
+For example, for Oracle RI the values are: <br/>
+<code>-add-modules java.xml.bind --upgrade-module-path &lt;JAXB-RI-HOME&gt;/lib/jaxb-api.jar </code>
+
+</body>
+</HTML>
+

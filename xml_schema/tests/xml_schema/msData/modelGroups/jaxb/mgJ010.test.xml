@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="mgJ010">
+    <TestGroupDocumentation>
+        <Title><![CDATA[mgJ010]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :model groups (ALL) : choice: elements in instant XML=1, minOccurs=0, maxOccurs=1
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)mgJ010.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../mgJ010.xsd"/>
+        <ExternalData Type="iodata" SourceName="mgJ010.sig"/>
+    </CodeSet>
+    <TestCase ID="mgJ010">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="mgJ010.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../mgJ010.xml"/>
+            <ExternalData Type="iodata" SourceName="mgj010-mgJ010.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

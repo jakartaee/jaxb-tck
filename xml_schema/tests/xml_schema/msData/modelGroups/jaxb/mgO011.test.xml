@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="mgO011">
+    <TestGroupDocumentation>
+        <Title><![CDATA[mgO011]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :model groups (ALL) : group' with 'all', appear under 'complexType', whiche is part of a complexType, and particles in all has maxOccurs=minOccurs (absent)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)mgO011.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../mgO011.xsd"/>
+        <ExternalData Type="iodata" SourceName="mgO011.sig"/>
+    </CodeSet>
+    <TestCase ID="mgO011">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="mgO011.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../mgO011.xml"/>
+            <ExternalData Type="iodata" SourceName="mgo011-mgO011.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-hexBinary-enumeration-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-hexBinary-enumeration-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>6f64776b636d6c64796f666a616c636167697665727668666f756667696f6c736e7564666f796c66686f7076</string> 
+   </void> 
+   <void method="add"> 
+    <string>6a6f74677973746a72666a667062616a676169776d646368796b</string> 
+   </void> 
+   <void method="add"> 
+    <string>73636265696a777266656378787865696a637973676b7472</string> 
+   </void> 
+   <void method="add"> 
+    <string>79786468686f6b7072666c76757472657261706d6e77687377</string> 
+   </void> 
+   <void method="add"> 
+    <string>716e637568686f686b716e656179746d7470707373646464696372797474646a6a76</string> 
+   </void> 
+   <void method="add"> 
+    <string>706d706f6f6575746e6967756875636c69656866676177636c6e6f706f686b6c76686f646478646b696775</string> 
+   </void> 
+   <void method="add"> 
+    <string>6d66696e616674656272696762767165656a</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

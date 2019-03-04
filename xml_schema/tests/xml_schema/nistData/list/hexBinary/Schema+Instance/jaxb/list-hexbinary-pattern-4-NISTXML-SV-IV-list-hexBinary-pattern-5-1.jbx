@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-hexBinary-pattern-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-hexBinary-pattern-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>6A786B6F6361747774716474636674</string> 
+   </void> 
+   <void method="add"> 
+    <string>6D</string> 
+   </void> 
+   <void method="add"> 
+    <string>76796975797365746D</string> 
+   </void> 
+   <void method="add"> 
+    <string>7766616863666F77696B6E69666B6662</string> 
+   </void> 
+   <void method="add"> 
+    <string>7677686672746B6C6C676C6B69747363786D786A77616E656C79</string> 
+   </void> 
+   <void method="add"> 
+    <string>65676E69756B746264766571666D75</string> 
+   </void> 
+   <void method="add"> 
+    <string>79767669786E6269796A71786B6D61</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

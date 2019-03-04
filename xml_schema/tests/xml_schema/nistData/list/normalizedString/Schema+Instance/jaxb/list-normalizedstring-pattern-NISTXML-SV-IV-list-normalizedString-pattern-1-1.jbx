@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-pattern-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-pattern-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>95_Specification_Of_Of_Street_To_For_,_AR_13058</string> 
+   </void> 
+   <void method="add"> 
+    <string>1575_Environment_Users_Of_Xml_The_Street_Both_Pervasive_,_MD_14172</string> 
+   </void> 
+   <void method="add"> 
+    <string>7423_Between_Projector_To_The_Street_Of_Including_Chi_,_SD_13454</string> 
+   </void> 
+   <void method="add"> 
+    <string>63_Data_Generation_Supply_Language_Ability_Street_Object_Provide_Permitting_,_DE_10133-1061</string> 
+   </void> 
+   <void method="add"> 
+    <string>36612_Analysis_The_And_Involved_Computing_Street_Wireless_Xsl_,_CO_10981</string> 
+   </void> 
+   <void method="add"> 
+    <string>5549_Documents_Divisions_Tools_Street_And_Back_,_WA_16632</string> 
+   </void> 
+   <void method="add"> 
+    <string>843_Can_Neutral_Pages_Using_Industry_Street_Process_Simulation_,_AR_19839</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

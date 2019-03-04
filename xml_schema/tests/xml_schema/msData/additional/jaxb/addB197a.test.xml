@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB197a">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addB197a]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : zero width unicode characeter test with enumeration value(1)
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addB197a.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../enum1.xsd"/>
+        <ExternalData Type="iodata" SourceName="addB197a.sig"/>
+    </CodeSet>
+    <TestCase ID="addB197a">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="addB197a.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../enum1a.xml"/>
+            <ExternalData Type="iodata" SourceName="addb197a-enum1a.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

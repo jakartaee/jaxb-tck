@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-pattern-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-pattern-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>872_Conformance_Sun_Additionally_Chains_Challenges_Street_Investigation_Dependability_,_AL_14600</string> 
+   </void> 
+   <void method="add"> 
+    <string>841_Be_Implementation_Street_Process_Has_Networks_,_AR_15165-1290</string> 
+   </void> 
+   <void method="add"> 
+    <string>7686_Xml_Street_Objective_Utilities_Partners_,_OR_17813-1396</string> 
+   </void> 
+   <void method="add"> 
+    <string>884_And_Ambiguities_And_Industries_Street_Rigorous_Infrastructure_One_,_WA_18970</string> 
+   </void> 
+   <void method="add"> 
+    <string>599_Of_Necessary_Project_Street_The_,_VT_13025</string> 
+   </void> 
+   <void method="add"> 
+    <string>88_Create_Of_Street_Tools_Oasis_Application_,_MD_15706-1707</string> 
+   </void> 
+   <void method="add"> 
+    <string>3_Via_Containing_Same_Language_Street_Creation_,_AR_16336</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

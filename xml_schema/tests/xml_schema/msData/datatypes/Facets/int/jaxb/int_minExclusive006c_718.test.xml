@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="int_minExclusive006c_718">
+    <TestGroupDocumentation>
+        <Title><![CDATA[int_minExclusive006c_718]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : Base facet=minExclusive value=10, derived facet=minExclusive value=11
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)int_minExclusive006c_718.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../int_minExclusive006c.xsd"/>
+        <ExternalData Type="iodata" SourceName="int_minExclusive006c_718.sig"/>
+    </CodeSet>
+    <TestCase ID="int_minExclusive006c_718">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

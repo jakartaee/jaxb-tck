@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-nonPositiveInteger-minExclusive-5-NS"
+        targetNamespace="NISTSchema-nonPositiveInteger-minExclusive-5-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: minExclusive-5.xsd
+      This schema specifies a datatype, NISTSchema-nonPositiveInteger-minExclusive-5,
+      which is derived by restriction of built-in type nonPositiveInteger
+      by facet minExclusive with a value of: -1
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-nonPositiveInteger-minExclusive-5" type="nist:NISTSchema-nonPositiveInteger-minExclusive-5-Type"/>
+
+  <simpleType name="NISTSchema-nonPositiveInteger-minExclusive-5-Type">
+    <restriction base="nonPositiveInteger">
+      <minExclusive value="-1"/>
+    </restriction>
+  </simpleType>
+
+</schema>

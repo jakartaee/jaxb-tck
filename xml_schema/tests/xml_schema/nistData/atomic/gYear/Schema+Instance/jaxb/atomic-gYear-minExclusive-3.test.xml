@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-gYear-minExclusive-3">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-gYear-minExclusive-3]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/gYear is restricted by facet minExclusive with value 2012.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gYear">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#gYear
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-minExclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-minExclusive
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-gYear-minExclusive-3.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-gYear-minExclusive-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-gYear-minExclusive-3.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-gYear-minExclusive-3">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-atomic-gYear-minExclusive-4-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-atomic-gYear-minExclusive-4-1.xml"/>
+            <ExternalData Type="iodata" SourceName="atomic-gyear-minexclusive-3-NISTXML-SV-IV-atomic-gYear-minExclusive-4-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

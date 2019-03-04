@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="dateTime_enumeration002_99">
+    <TestGroupDocumentation>
+        <Title><![CDATA[dateTime_enumeration002_99]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=enumeration and value=1985-04-12T10:30:00 1985-04-12T12:00:00 1999-07-31T01:00:00
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)dateTime_enumeration002_99.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../dateTime_enumeration002.xsd"/>
+        <ExternalData Type="iodata" SourceName="dateTime_enumeration002_99.sig"/>
+    </CodeSet>
+    <TestCase ID="dateTime_enumeration002_99">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

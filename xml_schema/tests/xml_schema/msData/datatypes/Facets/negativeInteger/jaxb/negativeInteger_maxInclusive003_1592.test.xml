@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="negativeInteger_maxInclusive003_1592">
+    <TestGroupDocumentation>
+        <Title><![CDATA[negativeInteger_maxInclusive003_1592]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxInclusive and value=-1 and document value=-5
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)negativeInteger_maxInclusive003_1592.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../negativeInteger_maxInclusive003.xsd"/>
+        <ExternalData Type="iodata" SourceName="negativeInteger_maxInclusive003_1592.sig"/>
+    </CodeSet>
+    <TestCase ID="negativeInteger_maxInclusive003_1592">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="negativeInteger_maxInclusive003_1592.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../negativeInteger_maxInclusive003.xml"/>
+            <ExternalData Type="iodata" SourceName="negativeinteger_maxinclusive003_1592-negativeInteger_maxInclusive003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

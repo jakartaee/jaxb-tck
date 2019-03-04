@@ -1,0 +1,105 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="srcNone">
+  <TestGroupDocumentation>
+    <Title>XmlAccessorType</Title>
+    <Description>Test of XmlAccessorType annotation</Description>
+  </TestGroupDocumentation>
+  <TestGroupAttributes>
+    <AttrElem Name="scInfo">@(#)srcNone.test.xml	1.5 08/04/04</AttrElem>
+    <AttrElem Name="testType">J2XTest</AttrElem>
+    <Keyword>runtime</Keyword>
+    <Keyword>positive</Keyword>
+    <Keyword>java_to_schema</Keyword>
+    <Keyword>jaxb</Keyword>
+  </TestGroupAttributes>
+  <CodeSet>
+    <Dependency>
+        <Lib>jaxb.j2x</Lib>
+    </Dependency>
+    <ExternalSupportClass SourceName="srcNone.java" />
+  </CodeSet>
+  <!-- test case -->
+  <TestCase ID="testCase0001">
+    <TestCaseDocumentation>
+      <Description>
+        <![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          <b>XmlAccessorType(AccessType.NONE)<b><br>
+          NONE - None of the fields or properties is bound to XML unless<br> 
+          they are specifically annotated with some of the JAXB annotations.<br>
+          Note: Positive test. Xml consists of all required fileds and properties<br> 
+          that are specifically annotated with some of the JAXB annotations without extra fields or properties.
+        ]]>
+      </Description>
+    </TestCaseDocumentation>
+    <TestCaseAttributes>
+      <AttrElem Name="pos_neg">positive</AttrElem>
+    </TestCaseAttributes>
+    <CodeSet>
+      <ExternalData SourceName="posNone1.xml" Type="iodata" />
+    </CodeSet>
+  </TestCase>
+  <!-- test case -->
+  <TestCase ID="testCase0002">
+    <TestCaseDocumentation>
+      <Description>
+        <![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          <b>XmlAccessorType(AccessType.NONE)<b><br>
+          NONE - None of the fields or properties is bound to XML unless<br> 
+          they are specifically annotated with some of the JAXB annotations.<br>
+          Note: Negative test. Required field that are specifically annotated with some of the JAXB annotations is absent in xml file.
+        ]]>
+      </Description>
+    </TestCaseDocumentation>
+    <TestCaseAttributes>
+      <AttrElem Name="pos_neg">negative</AttrElem>
+    </TestCaseAttributes>
+    <CodeSet>
+      <ExternalData SourceName="negNone1.xml" Type="iodata" />
+    </CodeSet>
+  </TestCase>
+  <!-- test case -->
+  <TestCase ID="testCase0003">
+    <TestCaseDocumentation>
+      <Description>
+        <![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
+          Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
+          <b>XmlAccessorType(AccessType.NONE)<b><br>
+          NONE - None of the fields or properties is bound to XML unless<br> 
+          they are specifically annotated with some of the JAXB annotations.<br>
+          Note: Negative test. Xml consists of public fileds and properties that are not specifically annotated with some of the JAXB annotations
+        ]]>
+      </Description>
+    </TestCaseDocumentation>
+    <TestCaseAttributes>
+      <AttrElem Name="pos_neg">negative</AttrElem>
+    </TestCaseAttributes>
+    <CodeSet>
+      <ExternalData SourceName="negNone2.xml" Type="iodata" />
+    </CodeSet>
+  </TestCase>
+</TestGroup>
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-token-minLength-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-token-minLength-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>5_Both_Provided_These_University_Street_Industry_,_DC_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>61_Sensors_For_Software_Meet_Street_Well_,_RI_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>335_Electronic_Designed_Asked_And_Street_Is_,_PA_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>5663_Specific_Widely_Meet_Profiles_Street_The_,_MD_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>45_By_Has_The_Software_Street_Including_,_OH_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>5471_Documents_The_In_The_Street_Templates_,_HI_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>88234_Documents_Industry_Help_Launching_Street_From_,_HI_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>894_Resides_Analysis_Chair_By_Street_As_,_NV_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>5989_Way_Investigators_Industries_In_Street_In_,_MN_14439-1845</string> 
+   </void> 
+   <void method="add"> 
+    <string>25678_The_Set_Set_Manipulate_Street_Be_,_ND_14439-1845</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

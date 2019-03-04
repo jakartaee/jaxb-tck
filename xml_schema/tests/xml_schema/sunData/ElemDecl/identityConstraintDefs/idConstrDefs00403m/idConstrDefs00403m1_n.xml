@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!--
+Ident: @(#)idConstrDefs00403m1_n.xml
+   generated from: @(#)idConstrDefs00403m.jmpp	1.1 02/04/10
+
+-->
+
+<test:root
+  xmlns:test="ElemDecl/identityConstraintDefs"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="ElemDecl/identityConstraintDefs idConstrDefs00403m.xsd">
+
+  <person ssn="p008">William Smith</person>
+  <person ssn="p011">Anna Brown</person>
+
+<!-- Positive variant begin - -
+  <person ssn="p007" parents="p008 p011">John Smith</person>
+ - - Positive variant end   -->
+<!-- Negative variant begin -->
+  <person ssn="p007" parents="p009 p011">John Smith</person>
+<!-- Negative variant end   -->
+
+</test:root>

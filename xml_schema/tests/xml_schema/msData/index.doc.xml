@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE TestSuite SYSTEM "testsuite.dtd">
+<TestSuite>
+    <Title><![CDATA[W3C XML Schema Test Suite]]></Title>
+    <Description><![CDATA[
+<h1>W3C XML Schema Test Suite</h1>
+        ]]></Description>
+    <Contents Format="list"/>
+    <AttrElem Name="scInfo">@(#)index.doc.xml	1.1 07/03/23</AttrElem>
+</TestSuite>
+<!-- Ident: @(#)index.doc.xml 1.1 07/03/23 -->

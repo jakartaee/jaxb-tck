@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="errC001">
+    <TestGroupDocumentation>
+        <Title><![CDATA[errC001]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Primer Errata : E1-40 Clarification: test that anySimpleType whitespace normalization is set to preserve
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/2004/03/xmlschema-errata">
+            http://www.w3.org/2004/03/xmlschema-errata
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)errC001.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../errC001.xsd"/>
+        <ExternalData Type="iodata" SourceName="errC001.sig"/>
+    </CodeSet>
+    <TestCase ID="errC001">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="errC001.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../errC001.xml"/>
+            <ExternalData Type="iodata" SourceName="errc001-errC001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

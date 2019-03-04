@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="test006">
+   <TestGroupDocumentation>
+      <Title><![CDATA[test]]></Title>
+      <Description><![CDATA[
+        <p>
+                    
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)test006.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../test.xsd"/>
+   </CodeSet>
+   <TestCase ID="test006">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="test.1.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.1.v.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.10.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.10.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.11.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.11.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.12.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.12.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.13.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.13.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.14.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.14.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.15.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.15.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.16.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.16.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.17.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.17.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.18.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.18.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.19.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.19.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.2.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.2.v.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.20.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.20.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.21.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.21.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.22.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.22.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.23.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.23.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.24.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.24.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.25.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.25.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.26.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.26.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.27.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.27.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.28.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.28.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.29.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.29.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.3.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.3.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.30.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.30.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.31.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.31.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.32.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.32.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.33.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.33.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.34.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.34.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.4.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.4.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.5.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.5.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.6.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.6.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.7.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.7.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.8.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.8.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="test.9.n">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../test.9.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)test006.test.xml	1.1 07/03/27 -->

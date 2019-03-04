@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="annotD004">
+   <TestGroupDocumentation>
+      <Title><![CDATA[annotD004]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Annotation Tests : Declare Annotation with documentation with source=http://www.w3.org/TR/Schema-0/ and text content
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAnnotations">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAnnotations
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)annotD004.test.xml	1.2 08/03/13</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>empty_output</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../annotD004.xsd"/>
+   </CodeSet>
+   <TestCase ID="annotD004">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)annotD004.test.xml	1.2 08/03/13 -->

@@ -1,0 +1,53 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="map00101m3">
+    <TestGroupDocumentation>
+        <Title>
+            Customization with schemaBindings. (valid schema with bindinfo)
+        </Title>
+        <Description>
+            Checks that map="0" prevents the class from being generated.
+        </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)map00101m3.test.xml	1.3 08/10/14</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <Keyword>empty_output</Keyword>
+        <Keyword>bindinfo</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="map00101m3.xsd" />
+    </CodeSet>
+
+    <TestCase ID="map00101m3">
+        <TestCaseDocumentation>
+            <Title>
+                Checks that class is not created for this schema. (valid schema)
+            </Title>
+            <Author>Alexey Shurygin</Author>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+
+</TestGroup>
+<!-- Ident: @(#)map00101m3.test.xml	1.3 08/10/14 -->

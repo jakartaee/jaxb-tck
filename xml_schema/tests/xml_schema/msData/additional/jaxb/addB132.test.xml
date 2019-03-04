@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB132">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addB132]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : id="66745" description="xsd validation:xsd substitutionGroup "
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addB132.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../test66745_a.xsd"/>
+        <ExternalSupportClass SourceName="../test66745_b.xsd"/>
+        <ExternalData Type="iodata" SourceName="../test66745_b.xsd"/>
+        <ExternalData Type="iodata" SourceName="addB132.sig"/>
+    </CodeSet>
+    <TestCase ID="addB132">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="addB132.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../test66745.xml"/>
+            <ExternalData Type="iodata" SourceName="addb132-test66745.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

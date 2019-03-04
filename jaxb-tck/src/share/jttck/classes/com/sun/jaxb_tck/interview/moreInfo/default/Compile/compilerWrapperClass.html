@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+
+    Copyright (c) 2006, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+<HTML>
+<HEAD>
+<TITLE>
+XJCClassInterview.compilerWrapperClass
+</title>
+<LINK REL="stylesheet" TYPE="text/css" HREF="../wizard.css" TITLE="Style">
+</head>
+<body>
+When you run schema compilation through the JavaTest Agent, your schema compiler
+will be executed in the Agent's JVM. Your implementation must provide a custom class 
+to invoke your schema compilation tool. This class should implement the <code>SchemaCompilerTool</code> interface:
+<p><code>
+package com.sun.jaxb_tck.lib;<br>
+<br>
+public interface SchemaCompilerTool {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>xsdFiles</i>&nbsp;&nbsp;array of strings containing schema files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>packageName</i>&nbsp;&nbsp;the target package<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>outDir</i>&nbsp;&nbsp;output directory where java file(s) will be generated<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>out</i>&nbsp;&nbsp;output stream for logging<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@param</b>&nbsp;<i>err</i>&nbsp;&nbsp;error stream for logging<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<b>@return</b>&nbsp;0 if java file(s) generated successfully<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int compile(String[] xsdFiles, String packageName, File outDir,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final PrintStream out, final PrintStream err) throws Exception;<br>
+}</code>
+</p>
+<p>
+Schema compilation should be accomplished during invocation of <code>compile</code> method.
+<p>
+The JAXB TCK includes the following class that is fully compatible with Sun's reference 
+implementation and that can be used for schema compilation: <code>com.sun.jaxb_tck.lib.SchemaCompiler</code>. 
+The realization of the method
+<blockquote>
+<code>compile(String[] xsdFiles, String packageName, File outDir, PrintStream out, PrintStream err)</code>
+</blockquote>
+compiles a schema(s) into java source(s).
+<p>
+If your implementation doesn't provide such a class, please, create it and specify it here. 
+</body>
+</HTML>

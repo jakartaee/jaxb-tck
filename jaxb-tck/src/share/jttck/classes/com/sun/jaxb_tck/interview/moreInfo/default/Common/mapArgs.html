@@ -1,0 +1,56 @@
+<!--
+
+    Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>
+AgentMapInterview.mapArgs
+</title>
+<LINK REL="stylesheet" TYPE="text/css" HREF="../wizard.css" TITLE="Style">
+</head>
+<body>
+
+Because
+JavaTest and the JavaTest Agent run on different
+systems, values such as path names and variable names
+may differ on each system.  For example, if a file
+is accessed over a network, it might be mounted as
+<code>/home/tests/lib</code> on the JavaTest system and as
+<code>F:\tests\lib</code> on the system running the
+JavaTest Agent.
+<p>
+The map file is used to associate values used on the
+JavaTest Agent with those used by JavaTest.  The map file
+is specified on the JavaTest Agent, but the use of the map
+must be enabled here. 
+<p>
+For example, these are map file entries when you pass the interview on 
+Solaris but run the Agent on Windows:
+<br>
+# mapping for TCK directory:
+<br><code>/usr/local/home/jaxb/jaxb_tck c:\jaxb\jaxb_tck</code>
+<br>
+# mapping for working directory:
+<br><code>/usr/local/home/jaxb/tck/work h:\jaxb\tck\work</code>
+<p>
+For more information about map files, refer to the <em>JavaTest
+User's Guide</em> or to the <em>JAXB TCK User's Guide</em>.
+
+
+</body>
+</HTML>

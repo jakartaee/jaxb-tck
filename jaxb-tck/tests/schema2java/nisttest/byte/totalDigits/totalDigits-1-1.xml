@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (see http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/).
+      File: totalDigits-1-1.xml
+      XML instance number 1 in a series of 
+      5 conforming to NIST test schema
+      totalDigits-1.xsd.
+-->
+
+<NISTSchema-byte-totalDigits-1
+    xmlns="NISTSchema-byte-totalDigits-1-NS"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="NISTSchema-byte-totalDigits-1-NS totalDigits-1.xsd">2</NISTSchema-byte-totalDigits-1>

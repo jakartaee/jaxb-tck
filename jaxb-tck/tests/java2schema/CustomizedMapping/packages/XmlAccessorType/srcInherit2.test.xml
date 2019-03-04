@@ -1,0 +1,130 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="srcInherit2">
+   <TestGroupDocumentation>
+      <Title>XmlAccessorType</Title>
+      <Description>Test of XmlAccessorType annotation checks inheritance of class XmlAccessType from parent class</Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)srcInherit2.test.xml	1.7 08/04/04</AttrElem>
+       <AttrElem Name="testType">J2XTest</AttrElem>
+       <Keyword>runtime</Keyword>
+       <Keyword>positive</Keyword>
+       <Keyword>java_to_schema</Keyword>
+       <Keyword>jaxb</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+          <Lib>jaxb.j2x</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="srcInherit2.java"/>
+   </CodeSet>
+   <!-- Inherited XmlAccessType is AccessType.FIELD, xml files from tests on AccessType.Field are used here. -->
+   <!-- test case -->
+   <TestCase ID="testCase0001">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:1045</i><br>
+          Mapping: @XmlAccessorType annotation allows control over default serialization of fields and properties.<br>
+          <b>@XmlAccessorType(AccessType.FIELD)</b><br><br>
+          The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
+          The following inheritance semantics apply:<br>
+          If there is a XmlAccessorType on a class, then it is used.<br>
+          Otherwise, if a XmlAccessorType exists on one of its super classes, then it is inherited.<br>
+          Otherwise, the XmlAccessorType  on a package is inherited.<br> 
+          Note: Positive test. Xml consists of all required fileds without extra fields or properties.
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">positive</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="posField1.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <!-- test case -->
+   <TestCase ID="testCase0002">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:1045</i><br>
+          Mapping: @XmlAccessorType annotation allows control over default serialization of fields and properties.<br>
+          <b>@XmlAccessorType(AccessType.FIELD)</b><br><br>
+          The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
+          The following inheritance semantics apply:<br>
+          If there is a XmlAccessorType on a class, then it is used.<br>
+          Otherwise, if a XmlAccessorType exists on one of its super classes, then it is inherited.<br>
+          Otherwise, the XmlAccessorType  on a package is inherited.<br> 
+          Note: Negative test. Required field is absent in xml file.
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negField1.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <!-- test case -->
+   <TestCase ID="testCase0003">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:1045</i><br>
+          Mapping: @XmlAccessorType annotation allows control over default serialization of fields and properties.<br>
+          <b>@XmlAccessorType(AccessType.FIELD)</b><br><br>
+          The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
+          The following inheritance semantics apply:<br>
+          If there is a XmlAccessorType on a class, then it is used.<br>
+          Otherwise, if a XmlAccessorType exists on one of its super classes, then it is inherited.<br>
+          Otherwise, the XmlAccessorType  on a package is inherited.<br> 
+          Note: Negative test. Xml file contains extraneous property.
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negField2.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <!-- test case -->
+   <TestCase ID="testCase0004">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion: <i>JAXB:SPEC:J2S:1045</i><br>
+          Mapping: @XmlAccessorType annotation allows control over default serialization of fields and properties.<br>
+          <b>@XmlAccessorType(AccessType.FIELD)</b><br><br>
+          The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
+          The following inheritance semantics apply:<br>
+          If there is a XmlAccessorType on a class, then it is used.<br>
+          Otherwise, if a XmlAccessorType exists on one of its super classes, then it is inherited.<br>
+          Otherwise, the XmlAccessorType  on a package is inherited.<br> 
+          Note: Negative test. Xml file contains extraneous field (transient field in java file)
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="negField3.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+

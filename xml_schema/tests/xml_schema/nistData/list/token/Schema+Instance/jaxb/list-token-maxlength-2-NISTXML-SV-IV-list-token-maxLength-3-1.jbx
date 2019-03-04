@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-token-maxLength-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-token-maxLength-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>9175_Available_Made_Community_Street_For_,_GA_16950</string> 
+   </void> 
+   <void method="add"> 
+    <string>178_Wireless_Browsers_Xml_Street_Vocabularies_,_WA_16950</string> 
+   </void> 
+   <void method="add"> 
+    <string>358_To_Nations_For_Street_Result_,_VT_16950</string> 
+   </void> 
+   <void method="add"> 
+    <string>4_With_Partnerships_Document_Street_Better_,_CO_16950</string> 
+   </void> 
+   <void method="add"> 
+    <string>372_Among_And_That_Street_Industries_,_MD_16950</string> 
+   </void> 
+   <void method="add"> 
+    <string>8537_To_Also_Provide_Street_Role_,_IA_16950</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-nonNegativeInteger-pattern-2-NS</string> 
+   <string>NISTSchema-SV-IV-list-nonNegativeInteger-pattern-2</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>8</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>445</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>92824</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>1324192</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>888522687</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>32525856442</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>9427532798247</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>333885548692114</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>977226648243585778</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

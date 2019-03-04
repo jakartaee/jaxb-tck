@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="anyURI009_2081">
+    <TestGroupDocumentation>
+        <Title><![CDATA[anyURI009_2081]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=file:///C:/TestSuites/XSD%20Spec/CR-xmlschema-2-20001024.htm#dc-minInclusive
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)anyURI009_2081.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../anyURI.xsd"/>
+        <ExternalData Type="iodata" SourceName="anyURI009_2081.sig"/>
+    </CodeSet>
+    <TestCase ID="anyURI009_2081">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="anyURI009_2081.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../anyURI009.xml"/>
+            <ExternalData Type="iodata" SourceName="anyuri009_2081-anyURI009.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

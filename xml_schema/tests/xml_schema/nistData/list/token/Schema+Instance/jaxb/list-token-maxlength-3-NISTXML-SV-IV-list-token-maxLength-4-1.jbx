@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-token-maxLength-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-token-maxLength-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>259_And_Includes_This_Street_Of_And_Heterogeneous_,_MS_15412-1079</string> 
+   </void> 
+   <void method="add"> 
+    <string>326_Computer_In_International_Street_Is_Software_Ensure_,_WV_15412-1079</string> 
+   </void> 
+   <void method="add"> 
+    <string>69_Chi_By_The_Street_Such_Subcommittee_As_,_AR_15412-1079</string> 
+   </void> 
+   <void method="add"> 
+    <string>8858_Consistency_Led_Wide_Street_Specifications_Through_Of_,_MA_15412-1079</string> 
+   </void> 
+   <void method="add"> 
+    <string>8823_The_Build_Compatibility_Street_Used_Repository_Donate_,_IL_15412-1079</string> 
+   </void> 
+   <void method="add"> 
+    <string>2_Tools_Ability_That_Street_Creation_For_The_,_GA_15412-1079</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

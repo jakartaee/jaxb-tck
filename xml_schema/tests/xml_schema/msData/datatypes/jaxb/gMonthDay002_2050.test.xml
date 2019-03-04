@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gMonthDay002_2050">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gMonthDay002_2050]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=- -03-15
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gMonthDay002_2050.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../gMonthDay.xsd"/>
+        <ExternalData Type="iodata" SourceName="gMonthDay002_2050.sig"/>
+    </CodeSet>
+    <TestCase ID="gMonthDay002_2050">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="gMonthDay002_2050.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../gMonthDay002.xml"/>
+            <ExternalData Type="iodata" SourceName="gmonthday002_2050-gMonthDay002.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

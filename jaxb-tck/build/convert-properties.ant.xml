@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!-- ======================================================================
+     Oct 24, 2006 11:29:24 PM                                                        
+
+     convert-properties    
+     Generates propery file for ant scripts from Defs.*.mk 
+     Default values for properties stored in common.properties
+     Property values can be customized using common.local.properties
+                   
+     SCCS: @(#)convert-properties.ant.xml	1.7 07/04/24
+     ====================================================================== -->
+<project name="convert-properties" default="default">
+	<description>
+		Generates propery file for ant scripts from Defs.*.mk 
+		Default values for properties stored in common.properties
+		Property values could be customized using common.local.properties
+    </description>
+
+	<property name="aux-prefix" value="common-props."/>
+	
+	<!-- Ability to customize properties -->
+	<property file="common.local.properties" />
+	<property file="common.local.properties" prefix="${aux-prefix}"/>
+
+	<condition property="tck.build.domain" value="sparc">
+		<available file="/set/java-sqe" />
+	</condition>
+
+	<property name="tck.build.domain" value="SFBay" />
+
+	
+	<dirname file="${ant.file}" property="tck.build.ws.dir" />
+	<basename file="${ant.file}" property="ant.file.name"/>
+	<basename file="${tck.build.ws.dir}/.." property="repo.dir.name" />
+	<property name="makefiles" value="Makefile,Defs.mk,Defs.${tck.build.domain}.mk" />
+
+	<property name="${aux-prefix}tck.build.ws.dir" value="${tck.build.ws.dir}"/>
+	<property name="${aux-prefix}repo.dir.name" value="${repo.dir.name}"/>
+
+	<!--
+		Temporary file to out properties get from make
+	-->
+	<property name="make.properties.file" value="make.properties" />
+	<!--
+		File to out main properties
+	-->
+	<property name="build.properties.file" value="build.properties" />
+	<property name="build.properties.xml.file" value="build.properties.xml" />
+		
+	<!--
+		Dependency defenition
+	-->
+	
+	<filelist id="makefiles.list" dir="${tck.build.ws.dir}" files="${makefiles}" />
+	<filelist id="ant.build.files" dir="${tck.build.ws.dir}" 
+		files="${ant.file.name},common.properties" />
+	
+	<dependset>
+		<srcfilelist refid="makefiles.list" />
+		<srcfilelist refid="ant.build.files"/>
+		<targetfilelist dir="${tck.build.ws.dir}" files="${make.properties.file}" />
+	</dependset>
+
+	<dependset>
+		<srcfilelist dir="${tck.build.ws.dir}" files="${make.properties.file}" />
+		<targetfilelist dir="${basedir}" files="${build.properties.file}" />
+	</dependset>
+	
+	<available file="${build.properties.file}" property="build.properties.file.exists" />
+	<available file="${tck.build.ws.dir}/${make.properties.file}" property="make.properties.file.exists" />
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="default" unless="skip-convert-properties">
+		<antcall target="define-properties" />
+	</target>
+
+	<target name="define-properties" depends="filter_makefiles" unless="build.properties.file.exists" description="--> Generates propery file build.properties for ant scripts from Defs.*.mk ">
+		<loadproperties srcfile="${tck.build.ws.dir}/${make.properties.file}" />
+
+		<property file="${tck.build.ws.dir}/common.properties" prefix="${aux-prefix}"/>
+
+		<propertyset id="props-to-save">
+			<propertyref prefix="${aux-prefix}"/>
+			<mapper type="glob" from="${aux-prefix}*" to="*"/>
+		</propertyset>
+		
+		<echoproperties>
+			<propertyset refid="props-to-save"></propertyset>
+		</echoproperties>
+		
+		<echoproperties destfile="${build.properties.file}">
+			<propertyset refid="props-to-save" />
+		</echoproperties>
+		
+		<property name="full.build.properties.file.path" location="${build.properties.file}" />
+
+		<echo>Propety file saved: ${full.build.properties.file.path}</echo>
+	</target>
+	
+	<target name="filter_makefiles" unless="make.properties.file.exists">
+		<concat destfile="${tck.build.ws.dir}/${make.properties.file}">
+			<filelist dir="${tck.build.ws.dir}" files="${makefiles}" />
+			<filterchain>
+				<replaceregex pattern="^.*:sh\).*" replace=""/>
+				<linecontainsregexp>
+					<regexp pattern="^[[\w\.]&amp;&amp;[^sh]]+\s*=.*" />
+				</linecontainsregexp>
+				<replaceregex pattern="^(.*)\\($)" replace="\1\2"/>
+				<replaceregex pattern="^(.*)#.*($)" replace="\1\2"/>
+				<replaceregex flags="g" pattern="\$\(([^\)]*)\)" replace="$${\1}"/>
+			</filterchain>
+		</concat>
+		<echo>Makefiles were joined into ${tck.build.ws.dir}/${make.properties.file}</echo>
+	</target>
+
+	<!-- Try to use MAKE for resolving properties value -->
+	<target name="convert_properties">
+
+		<copy tofile="${make.properties.file}">
+			<fileset>
+				<filename name="Makefile" />
+				<filename name="Defs.mk" />
+				<filename name="Defs.${tck.build.domain}.mk" />
+			</fileset>
+			<filterchain>
+				<linecontainsregexp>
+					<regexp pattern="[\w]+ =.*" />
+				</linecontainsregexp>
+			</filterchain>
+		</copy>
+
+		<exec dir="${tck.build.ws.dir}" executable="make" output="${make.properties.file}">
+			<arg line="-p" />
+			<arg line="-f Makefile" />
+			<redirector>
+				<outputfilterchain>
+					<containsregex pattern="^[A-Z]+.*" />
+				</outputfilterchain>
+			</redirector>
+		</exec>
+		<exec dir="${tck.build.ws.dir}" executable="make" output="${make.properties.file}" append="true">
+			<arg line="-p" />
+			<arg line="-f Defs.mk" />
+			<redirector>
+				<outputfilterchain>
+					<containsregex pattern="^[A-Z]+.*" />
+				</outputfilterchain>
+			</redirector>
+		</exec>
+		<exec dir="${tck.build.ws.dir}" executable="make" output="${make.properties.file}" append="true">
+			<arg line="-p" />
+			<arg line="-f Defs.sparc.mk" />
+			<redirector>
+				<outputfilterchain>
+					<containsregex pattern="^[A-Z]+.*" />
+				</outputfilterchain>
+			</redirector>
+		</exec>
+
+		<loadproperties srcfile="${make.properties.file}">
+			<filterchain>
+				<replaceregex pattern="\$\((.*?)\)" replace="$\{\1\}" flags="g" />
+				<striplinecomments>
+					<comment value="#" />
+					<comment value="--" />
+					<comment value="= " />
+					<comment value="rem " />
+					<comment value="//" />
+				</striplinecomments>
+			</filterchain>
+		</loadproperties>
+	</target>
+
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+    <target name="clean" description="--> Clean generated property files.">
+        <delete>
+        	<fileset dir=".">
+        		<filename name="${make.properties.file}"/>
+        		<filename name="${build.properties.file}"/>
+        	</fileset>
+        </delete>
+    </target>
+</project>

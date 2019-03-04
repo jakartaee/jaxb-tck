@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="negativeInteger_totalDigits003_1608">
+    <TestGroupDocumentation>
+        <Title><![CDATA[negativeInteger_totalDigits003_1608]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=totalDigits and value=4 and document value=-123
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)negativeInteger_totalDigits003_1608.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../negativeInteger_totalDigits003.xsd"/>
+        <ExternalData Type="iodata" SourceName="negativeInteger_totalDigits003_1608.sig"/>
+    </CodeSet>
+    <TestCase ID="negativeInteger_totalDigits003_1608">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="negativeInteger_totalDigits003_1608.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../negativeInteger_totalDigits003.xml"/>
+            <ExternalData Type="iodata" SourceName="negativeinteger_totaldigits003_1608-negativeInteger_totalDigits003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

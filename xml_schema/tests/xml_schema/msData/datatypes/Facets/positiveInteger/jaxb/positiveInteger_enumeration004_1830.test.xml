@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="positiveInteger_enumeration004_1830">
+    <TestGroupDocumentation>
+        <Title><![CDATA[positiveInteger_enumeration004_1830]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=enumeration and value=567 1 234 and document value=567
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)positiveInteger_enumeration004_1830.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../positiveInteger_enumeration004.xsd"/>
+        <ExternalData Type="iodata" SourceName="positiveInteger_enumeration004_1830.sig"/>
+    </CodeSet>
+    <TestCase ID="positiveInteger_enumeration004_1830">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="positiveInteger_enumeration004_1830.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../positiveInteger_enumeration004.xml"/>
+            <ExternalData Type="iodata" SourceName="positiveinteger_enumeration004_1830-positiveInteger_enumeration004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

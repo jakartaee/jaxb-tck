@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NCName-pattern-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-NCName-pattern-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>rstandards.with-that.of-well_and_elimina</string> 
+   </void> 
+   <void method="add"> 
+    <string>qissues-organiza</string> 
+   </void> 
+   <void method="add"> 
+    <string>iallows_more.with-tools_</string> 
+   </void> 
+   <void method="add"> 
+    <string>bthese_global-is.the_define_over_manipulate_l</string> 
+   </void> 
+   <void method="add"> 
+    <string>gemerging.of.helping.effectively-of_to.and_these.facilit</string> 
+   </void> 
+   <void method="add"> 
+    <string>_compliant-the-must</string> 
+   </void> 
+   <void method="add"> 
+    <string>lthe.them_clean-images_recent-and_the_quality</string> 
+   </void> 
+   <void method="add"> 
+    <string>_o</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

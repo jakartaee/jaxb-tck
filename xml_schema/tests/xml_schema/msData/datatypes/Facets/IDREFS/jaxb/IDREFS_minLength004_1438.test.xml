@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="IDREFS_minLength004_1438">
+    <TestGroupDocumentation>
+        <Title><![CDATA[IDREFS_minLength004_1438]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minLength and value=4 and facet=maxLength and value=6) and document value=foofo
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)IDREFS_minLength004_1438.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../IDREFS_minLength004.xsd"/>
+        <ExternalData Type="iodata" SourceName="IDREFS_minLength004_1438.sig"/>
+    </CodeSet>
+    <TestCase ID="IDREFS_minLength004_1438">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="IDREFS_minLength004_1438.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../IDREFS_minLength004.xml"/>
+            <ExternalData Type="iodata" SourceName="idrefs_minlength004_1438-IDREFS_minLength004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

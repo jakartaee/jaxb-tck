@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="schB4">
+   <TestGroupDocumentation>
+      <Title><![CDATA[schB4]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : Schema Location resolved to not-wf XML, test the resolution of schemaLoction on include (SRC 1)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)schB4.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../schB4_a.xsd"/>
+   </CodeSet>
+   <TestCase ID="schB4">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)schB4.test.xml	1.1 07/03/27 -->

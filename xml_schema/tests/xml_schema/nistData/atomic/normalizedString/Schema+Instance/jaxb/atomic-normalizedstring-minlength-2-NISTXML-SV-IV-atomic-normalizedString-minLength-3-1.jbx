@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-atomic-normalizedString-minLength-3-NS</string> 
+   <string>NISTSchema-SV-IV-atomic-normalizedString-minLength-3</string> 
+  </object> 
+  <class>java.lang.String</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <string>The advent of Internet-enabled browsers and a first-generation language for defining data  known as HTML  has led to the creation of the world s first digital library  Using the simplicity of HTML with more advanced concepts from the publishing community has led to the creation of a second-generation Internet language called the Extensible Markup Language  XML   which is rapidly becoming one of the most popular languages in the world  XML is being incorporated into web pages and applications alike  particularly in those involved in electronic commerce applications  It is a language that describes information in a way tha</string> 
+ </object> 
+</java> 

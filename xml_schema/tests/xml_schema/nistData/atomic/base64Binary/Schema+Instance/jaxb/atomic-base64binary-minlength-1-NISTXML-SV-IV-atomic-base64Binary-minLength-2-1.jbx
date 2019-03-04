@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-atomic-base64Binary-minLength-2-NS</string> 
+   <string>NISTSchema-SV-IV-atomic-base64Binary-minLength-2</string> 
+  </object> 
+  <class>[B</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <array class="byte" length="27"> 
+   <void index="0"> 
+    <byte>104</byte> 
+   </void> 
+   <void index="1"> 
+    <byte>102</byte> 
+   </void> 
+   <void index="2"> 
+    <byte>100</byte> 
+   </void> 
+   <void index="3"> 
+    <byte>111</byte> 
+   </void> 
+   <void index="4"> 
+    <byte>98</byte> 
+   </void> 
+   <void index="5"> 
+    <byte>110</byte> 
+   </void> 
+   <void index="6"> 
+    <byte>111</byte> 
+   </void> 
+   <void index="7"> 
+    <byte>108</byte> 
+   </void> 
+   <void index="8"> 
+    <byte>117</byte> 
+   </void> 
+   <void index="9"> 
+    <byte>99</byte> 
+   </void> 
+   <void index="10"> 
+    <byte>106</byte> 
+   </void> 
+   <void index="11"> 
+    <byte>117</byte> 
+   </void> 
+   <void index="12"> 
+    <byte>97</byte> 
+   </void> 
+   <void index="13"> 
+    <byte>120</byte> 
+   </void> 
+   <void index="14"> 
+    <byte>101</byte> 
+   </void> 
+   <void index="15"> 
+    <byte>109</byte> 
+   </void> 
+   <void index="16"> 
+    <byte>100</byte> 
+   </void> 
+   <void index="17"> 
+    <byte>113</byte> 
+   </void> 
+   <void index="18"> 
+    <byte>111</byte> 
+   </void> 
+   <void index="19"> 
+    <byte>100</byte> 
+   </void> 
+   <void index="20"> 
+    <byte>112</byte> 
+   </void> 
+   <void index="21"> 
+    <byte>107</byte> 
+   </void> 
+   <void index="22"> 
+    <byte>113</byte> 
+   </void> 
+   <void index="23"> 
+    <byte>121</byte> 
+   </void> 
+   <void index="24"> 
+    <byte>118</byte> 
+   </void> 
+   <void index="25"> 
+    <byte>106</byte> 
+   </void> 
+   <void index="26"> 
+    <byte>112</byte> 
+   </void> 
+  </array> 
+ </object> 
+</java> 

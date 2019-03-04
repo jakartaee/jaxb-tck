@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-ID-maxLength-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-ID-maxLength-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>sbody_great_the.for.many-has_a-facilitates_use_s_by_f</string> 
+   </void> 
+   <void method="add"> 
+    <string>son-constituent_commerce_contribute-file_the.that-and</string> 
+   </void> 
+   <void method="add"> 
+    <string>gengineering-different_of_full_the.the-was.be_the-a-b</string> 
+   </void> 
+   <void method="add"> 
+    <string>ocommerce-with_on-and-industry_as-and.2000-and_and-we</string> 
+   </void> 
+   <void method="add"> 
+    <string>hof_from-foster-working.tests-e_000-be.into_browsers_</string> 
+   </void> 
+   <void method="add"> 
+    <string>sbase-manage_electronic_technical_automate.files.all.</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

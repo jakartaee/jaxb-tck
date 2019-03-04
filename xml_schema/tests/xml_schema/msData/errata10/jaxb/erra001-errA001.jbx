@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.errata10.erra001.Root"> 
+  <void property="testByteOrTestUnsignedByteOrTestInteger"> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testByte</string> 
+     </object> 
+     <class>java.lang.Byte</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <byte>-100</byte> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testUnsignedByte</string> 
+     </object> 
+     <class>java.lang.Short</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <short>100</short> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testInteger</string> 
+     </object> 
+     <class>java.math.BigInteger</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <object class="java.math.BigInteger"> 
+      <string>-32000</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testPositiveInteger</string> 
+     </object> 
+     <class>java.math.BigInteger</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <object class="java.math.BigInteger"> 
+      <string>50000</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testNegativeInteger</string> 
+     </object> 
+     <class>java.math.BigInteger</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <object class="java.math.BigInteger"> 
+      <string>-50000</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testNonNegativeInteger</string> 
+     </object> 
+     <class>java.math.BigInteger</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <object class="java.math.BigInteger"> 
+      <string>50000</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testNonPositiveInteger</string> 
+     </object> 
+     <class>java.math.BigInteger</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <object class="java.math.BigInteger"> 
+      <string>-50000</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testInt</string> 
+     </object> 
+     <class>java.lang.Integer</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <int>-32000</int> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testUnsignedInt</string> 
+     </object> 
+     <class>java.lang.Long</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <long>50000</long> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testLong</string> 
+     </object> 
+     <class>java.lang.Long</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <long>-123456789012345</long> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testUnsignedLong</string> 
+     </object> 
+     <class>java.math.BigInteger</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <object class="java.math.BigInteger"> 
+      <string>12345789012345</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testShort</string> 
+     </object> 
+     <class>java.lang.Short</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <short>-12345</short> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testUnsignedShort</string> 
+     </object> 
+     <class>java.lang.Integer</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <int>12345</int> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>testDecimal</string> 
+     </object> 
+     <class>java.math.BigDecimal</class> 
+     <class>javasoft.sqe.tests.errata10.erra001.Root</class> 
+     <object class="java.math.BigDecimal"> 
+      <string>123456789.12345</string> 
+     </object> 
+    </object> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

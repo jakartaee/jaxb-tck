@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-pattern-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-pattern-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>and_semantics-registry:be:provided:The:for.By</string> 
+   </void> 
+   <void method="add"> 
+    <string>type-</string> 
+   </void> 
+   <void method="add"> 
+    <string>and.It:Conformance_browsers.today.to.of.with-Standards-a</string> 
+   </void> 
+   <void method="add"> 
+    <string>and_the:achieved_has-tools:and:rigorous:to:la</string> 
+   </void> 
+   <void method="add"> 
+    <string>all-and:its_creation_the-Subcommi</string> 
+   </void> 
+   <void method="add"> 
+    <string>models:and_signatures_with:accomplish</string> 
+   </void> 
+   <void method="add"> 
+    <string>manufacturers:to:donate:and-and.to-the.and.Ad</string> 
+   </void> 
+   <void method="add"> 
+    <string>known.allow:chosen-addressing.donate.and</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

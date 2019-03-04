@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="reI82">
+    <TestGroupDocumentation>
+        <Title><![CDATA[reI82]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : base='string', pattern="\\.,\\s,\\S,\\i,\\I,\\c,\\C,\\d,\\D,\\w,\\W", value='\.,\s,\S,\i,\I,\c,\C,\d,\D,\w,\W', type='valid', RULE='24'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)reI82.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../reI82.xsd"/>
+        <ExternalData Type="iodata" SourceName="reI82.sig"/>
+    </CodeSet>
+    <TestCase ID="reI82">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="reI82.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../reI82.xml"/>
+            <ExternalData Type="iodata" SourceName="rei82-reI82.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-normalizedString-length-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-normalizedString-length-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>4231_And_Vocabularies_Street_Helping_Prominent_,_SD_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>419_At_Of_Street_Data_Compatibility_,_WY_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>1438_Computing_Developers_Street_Simulation_The_,_MI_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>57362_Data_Objects_Street_These_Conformance_,_NV_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>675_Allow_Information_Street_Revisions_International_,_RI_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>6287_Tools_Define_Street_Accomplish_Correctness_,_OK_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>248_Maintained_Via_Street_Additionally_Being_,_VA_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>66_On_Industry_Street_Tools_And_,_RI_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>1536_On_And_Street_And_It_,_MS_17629</string> 
+   </void> 
+   <void method="add"> 
+    <string>23_Computing_Designed_Street_Adoption_Will_,_RI_17629</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

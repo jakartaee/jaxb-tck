@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="schD10">
+    <TestGroupDocumentation>
+        <Title><![CDATA[schD10]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : validate instance against 'chameleon' include schema (2)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)schD10.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../schD10_a.xsd"/>
+        <ExternalData Type="iodata" SourceName="../schD10_b.xsd"/>
+        <ExternalData Type="iodata" SourceName="../schD10_c.xsd"/>
+        <ExternalData Type="iodata" SourceName="schD10.sig"/>
+    </CodeSet>
+    <TestCase ID="schD10">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="schD10.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../schD10.xml"/>
+            <ExternalData Type="iodata" SourceName="schd10-schD10.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

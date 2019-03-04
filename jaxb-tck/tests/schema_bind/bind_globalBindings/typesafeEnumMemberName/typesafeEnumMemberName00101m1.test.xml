@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="typesafeEnumMemberName00101m1">
+    <TestGroupDocumentation>
+        <Title><![CDATA[
+			Global customization of typesafeEnumMemberName. (valid schema with
+			bindinfo)
+		]]></Title>
+        <Description><![CDATA[
+			Schema compiler should generate enum values using pattern
+			for constant fields name "VALUE_<N>" where <N>
+			is 1 for the first enumeration value and increments by 1 to
+			represent each value within the XML enumeration.
+		]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)typesafeEnumMemberName00101m1.test.xml	1.3 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <Keyword>bindinfo</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="typesafeEnumMemberName00101m1.xsd"/>
+        <ExternalData Type="iodata" SourceName="typesafeEnumMemberName00101m1.sig"/>
+    </CodeSet>
+    <TestCase ID="typesafeEnumMemberName00101m1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="typesafeEnumMemberName00101m1_p">
+        <TestCaseDocumentation>
+            <Title><![CDATA[
+				General check of binding schema components to java
+				representation. (valid document)
+			]]></Title>
+            <Author>Vladimir Sosnin</Author>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="typesafeEnumMemberName00101m1.xml"/>
+            <ExternalData Type="iodata" SourceName="typesafeenummembername00101m1-typesafeEnumMemberName00101m1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

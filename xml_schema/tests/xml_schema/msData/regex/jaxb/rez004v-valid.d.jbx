@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.regex.schema_d.Doc"> 
+  <void property="value"> 
+   <void method="add"> 
+    <string>0</string> 
+   </void> 
+   <void method="add"> 
+    <string>1</string> 
+   </void> 
+   <void method="add"> 
+    <string>2</string> 
+   </void> 
+   <void method="add"> 
+    <string>3</string> 
+   </void> 
+   <void method="add"> 
+    <string>4</string> 
+   </void> 
+   <void method="add"> 
+    <string>5</string> 
+   </void> 
+   <void method="add"> 
+    <string>6</string> 
+   </void> 
+   <void method="add"> 
+    <string>7</string> 
+   </void> 
+   <void method="add"> 
+    <string>8</string> 
+   </void> 
+   <void method="add"> 
+    <string>9</string> 
+   </void> 
+   <void method="add"> 
+    <string>٠</string> 
+   </void> 
+   <void method="add"> 
+    <string>١</string> 
+   </void> 
+   <void method="add"> 
+    <string>٢</string> 
+   </void> 
+   <void method="add"> 
+    <string>٣</string> 
+   </void> 
+   <void method="add"> 
+    <string>٤</string> 
+   </void> 
+   <void method="add"> 
+    <string>٥</string> 
+   </void> 
+   <void method="add"> 
+    <string>٦</string> 
+   </void> 
+   <void method="add"> 
+    <string>٧</string> 
+   </void> 
+   <void method="add"> 
+    <string>٨</string> 
+   </void> 
+   <void method="add"> 
+    <string>٩</string> 
+   </void> 
+   <void method="add"> 
+    <string>۰</string> 
+   </void> 
+   <void method="add"> 
+    <string>۱</string> 
+   </void> 
+   <void method="add"> 
+    <string>۲</string> 
+   </void> 
+   <void method="add"> 
+    <string>۳</string> 
+   </void> 
+   <void method="add"> 
+    <string>۴</string> 
+   </void> 
+   <void method="add"> 
+    <string>۵</string> 
+   </void> 
+   <void method="add"> 
+    <string>۶</string> 
+   </void> 
+   <void method="add"> 
+    <string>۷</string> 
+   </void> 
+   <void method="add"> 
+    <string>۸</string> 
+   </void> 
+   <void method="add"> 
+    <string>۹</string> 
+   </void> 
+   <void method="add"> 
+    <string>०</string> 
+   </void> 
+   <void method="add"> 
+    <string>१</string> 
+   </void> 
+   <void method="add"> 
+    <string>२</string> 
+   </void> 
+   <void method="add"> 
+    <string>३</string> 
+   </void> 
+   <void method="add"> 
+    <string>४</string> 
+   </void> 
+   <void method="add"> 
+    <string>५</string> 
+   </void> 
+   <void method="add"> 
+    <string>६</string> 
+   </void> 
+   <void method="add"> 
+    <string>७</string> 
+   </void> 
+   <void method="add"> 
+    <string>८</string> 
+   </void> 
+   <void method="add"> 
+    <string>९</string> 
+   </void> 
+   <void method="add"> 
+    <string>০</string> 
+   </void> 
+   <void method="add"> 
+    <string>১</string> 
+   </void> 
+   <void method="add"> 
+    <string>২</string> 
+   </void> 
+   <void method="add"> 
+    <string>৩</string> 
+   </void> 
+   <void method="add"> 
+    <string>৪</string> 
+   </void> 
+   <void method="add"> 
+    <string>৫</string> 
+   </void> 
+   <void method="add"> 
+    <string>৬</string> 
+   </void> 
+   <void method="add"> 
+    <string>৭</string> 
+   </void> 
+   <void method="add"> 
+    <string>৮</string> 
+   </void> 
+   <void method="add"> 
+    <string>৯</string> 
+   </void> 
+   <void method="add"> 
+    <string>੦</string> 
+   </void> 
+   <void method="add"> 
+    <string>੧</string> 
+   </void> 
+   <void method="add"> 
+    <string>੨</string> 
+   </void> 
+   <void method="add"> 
+    <string>੩</string> 
+   </void> 
+   <void method="add"> 
+    <string>੪</string> 
+   </void> 
+   <void method="add"> 
+    <string>੫</string> 
+   </void> 
+   <void method="add"> 
+    <string>੬</string> 
+   </void> 
+   <void method="add"> 
+    <string>੭</string> 
+   </void> 
+   <void method="add"> 
+    <string>੮</string> 
+   </void> 
+   <void method="add"> 
+    <string>੯</string> 
+   </void> 
+   <void method="add"> 
+    <string>૦</string> 
+   </void> 
+   <void method="add"> 
+    <string>૧</string> 
+   </void> 
+   <void method="add"> 
+    <string>૨</string> 
+   </void> 
+   <void method="add"> 
+    <string>૩</string> 
+   </void> 
+   <void method="add"> 
+    <string>૪</string> 
+   </void> 
+   <void method="add"> 
+    <string>૫</string> 
+   </void> 
+   <void method="add"> 
+    <string>૬</string> 
+   </void> 
+   <void method="add"> 
+    <string>૭</string> 
+   </void> 
+   <void method="add"> 
+    <string>૮</string> 
+   </void> 
+   <void method="add"> 
+    <string>૯</string> 
+   </void> 
+   <void method="add"> 
+    <string>୦</string> 
+   </void> 
+   <void method="add"> 
+    <string>୧</string> 
+   </void> 
+   <void method="add"> 
+    <string>୨</string> 
+   </void> 
+   <void method="add"> 
+    <string>୩</string> 
+   </void> 
+   <void method="add"> 
+    <string>୪</string> 
+   </void> 
+   <void method="add"> 
+    <string>୫</string> 
+   </void> 
+   <void method="add"> 
+    <string>୬</string> 
+   </void> 
+   <void method="add"> 
+    <string>୭</string> 
+   </void> 
+   <void method="add"> 
+    <string>୮</string> 
+   </void> 
+   <void method="add"> 
+    <string>୯</string> 
+   </void> 
+   <void method="add"> 
+    <string>௧</string> 
+   </void> 
+   <void method="add"> 
+    <string>௨</string> 
+   </void> 
+   <void method="add"> 
+    <string>௩</string> 
+   </void> 
+   <void method="add"> 
+    <string>௪</string> 
+   </void> 
+   <void method="add"> 
+    <string>௫</string> 
+   </void> 
+   <void method="add"> 
+    <string>௬</string> 
+   </void> 
+   <void method="add"> 
+    <string>௭</string> 
+   </void> 
+   <void method="add"> 
+    <string>௮</string> 
+   </void> 
+   <void method="add"> 
+    <string>௯</string> 
+   </void> 
+   <void method="add"> 
+    <string>౦</string> 
+   </void> 
+   <void method="add"> 
+    <string>౧</string> 
+   </void> 
+   <void method="add"> 
+    <string>౨</string> 
+   </void> 
+   <void method="add"> 
+    <string>౩</string> 
+   </void> 
+   <void method="add"> 
+    <string>౪</string> 
+   </void> 
+   <void method="add"> 
+    <string>౫</string> 
+   </void> 
+   <void method="add"> 
+    <string>౬</string> 
+   </void> 
+   <void method="add"> 
+    <string>౭</string> 
+   </void> 
+   <void method="add"> 
+    <string>౮</string> 
+   </void> 
+   <void method="add"> 
+    <string>౯</string> 
+   </void> 
+   <void method="add"> 
+    <string>೦</string> 
+   </void> 
+   <void method="add"> 
+    <string>೧</string> 
+   </void> 
+   <void method="add"> 
+    <string>೨</string> 
+   </void> 
+   <void method="add"> 
+    <string>೩</string> 
+   </void> 
+   <void method="add"> 
+    <string>೪</string> 
+   </void> 
+   <void method="add"> 
+    <string>೫</string> 
+   </void> 
+   <void method="add"> 
+    <string>೬</string> 
+   </void> 
+   <void method="add"> 
+    <string>೭</string> 
+   </void> 
+   <void method="add"> 
+    <string>೮</string> 
+   </void> 
+   <void method="add"> 
+    <string>೯</string> 
+   </void> 
+   <void method="add"> 
+    <string>൦</string> 
+   </void> 
+   <void method="add"> 
+    <string>൧</string> 
+   </void> 
+   <void method="add"> 
+    <string>൨</string> 
+   </void> 
+   <void method="add"> 
+    <string>൩</string> 
+   </void> 
+   <void method="add"> 
+    <string>൪</string> 
+   </void> 
+   <void method="add"> 
+    <string>൫</string> 
+   </void> 
+   <void method="add"> 
+    <string>൬</string> 
+   </void> 
+   <void method="add"> 
+    <string>൭</string> 
+   </void> 
+   <void method="add"> 
+    <string>൮</string> 
+   </void> 
+   <void method="add"> 
+    <string>൯</string> 
+   </void> 
+   <void method="add"> 
+    <string>๐</string> 
+   </void> 
+   <void method="add"> 
+    <string>๑</string> 
+   </void> 
+   <void method="add"> 
+    <string>๒</string> 
+   </void> 
+   <void method="add"> 
+    <string>๓</string> 
+   </void> 
+   <void method="add"> 
+    <string>๔</string> 
+   </void> 
+   <void method="add"> 
+    <string>๕</string> 
+   </void> 
+   <void method="add"> 
+    <string>๖</string> 
+   </void> 
+   <void method="add"> 
+    <string>๗</string> 
+   </void> 
+   <void method="add"> 
+    <string>๘</string> 
+   </void> 
+   <void method="add"> 
+    <string>๙</string> 
+   </void> 
+   <void method="add"> 
+    <string>໐</string> 
+   </void> 
+   <void method="add"> 
+    <string>໑</string> 
+   </void> 
+   <void method="add"> 
+    <string>໒</string> 
+   </void> 
+   <void method="add"> 
+    <string>໓</string> 
+   </void> 
+   <void method="add"> 
+    <string>໔</string> 
+   </void> 
+   <void method="add"> 
+    <string>໕</string> 
+   </void> 
+   <void method="add"> 
+    <string>໖</string> 
+   </void> 
+   <void method="add"> 
+    <string>໗</string> 
+   </void> 
+   <void method="add"> 
+    <string>໘</string> 
+   </void> 
+   <void method="add"> 
+    <string>໙</string> 
+   </void> 
+   <void method="add"> 
+    <string>༠</string> 
+   </void> 
+   <void method="add"> 
+    <string>༡</string> 
+   </void> 
+   <void method="add"> 
+    <string>༢</string> 
+   </void> 
+   <void method="add"> 
+    <string>༣</string> 
+   </void> 
+   <void method="add"> 
+    <string>༤</string> 
+   </void> 
+   <void method="add"> 
+    <string>༥</string> 
+   </void> 
+   <void method="add"> 
+    <string>༦</string> 
+   </void> 
+   <void method="add"> 
+    <string>༧</string> 
+   </void> 
+   <void method="add"> 
+    <string>༨</string> 
+   </void> 
+   <void method="add"> 
+    <string>༩</string> 
+   </void> 
+   <void method="add"> 
+    <string>၀</string> 
+   </void> 
+   <void method="add"> 
+    <string>၁</string> 
+   </void> 
+   <void method="add"> 
+    <string>၂</string> 
+   </void> 
+   <void method="add"> 
+    <string>၃</string> 
+   </void> 
+   <void method="add"> 
+    <string>၄</string> 
+   </void> 
+   <void method="add"> 
+    <string>၅</string> 
+   </void> 
+   <void method="add"> 
+    <string>၆</string> 
+   </void> 
+   <void method="add"> 
+    <string>၇</string> 
+   </void> 
+   <void method="add"> 
+    <string>၈</string> 
+   </void> 
+   <void method="add"> 
+    <string>၉</string> 
+   </void> 
+   <void method="add"> 
+    <string>፩</string> 
+   </void> 
+   <void method="add"> 
+    <string>፪</string> 
+   </void> 
+   <void method="add"> 
+    <string>፫</string> 
+   </void> 
+   <void method="add"> 
+    <string>፬</string> 
+   </void> 
+   <void method="add"> 
+    <string>፭</string> 
+   </void> 
+   <void method="add"> 
+    <string>፮</string> 
+   </void> 
+   <void method="add"> 
+    <string>፯</string> 
+   </void> 
+   <void method="add"> 
+    <string>፰</string> 
+   </void> 
+   <void method="add"> 
+    <string>፱</string> 
+   </void> 
+   <void method="add"> 
+    <string>០</string> 
+   </void> 
+   <void method="add"> 
+    <string>១</string> 
+   </void> 
+   <void method="add"> 
+    <string>២</string> 
+   </void> 
+   <void method="add"> 
+    <string>៣</string> 
+   </void> 
+   <void method="add"> 
+    <string>៤</string> 
+   </void> 
+   <void method="add"> 
+    <string>៥</string> 
+   </void> 
+   <void method="add"> 
+    <string>៦</string> 
+   </void> 
+   <void method="add"> 
+    <string>៧</string> 
+   </void> 
+   <void method="add"> 
+    <string>៨</string> 
+   </void> 
+   <void method="add"> 
+    <string>៩</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠐</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠑</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠒</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠓</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠔</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠕</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠖</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠗</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠘</string> 
+   </void> 
+   <void method="add"> 
+    <string>᠙</string> 
+   </void> 
+   <void method="add"> 
+    <string>０</string> 
+   </void> 
+   <void method="add"> 
+    <string>１</string> 
+   </void> 
+   <void method="add"> 
+    <string>２</string> 
+   </void> 
+   <void method="add"> 
+    <string>３</string> 
+   </void> 
+   <void method="add"> 
+    <string>４</string> 
+   </void> 
+   <void method="add"> 
+    <string>５</string> 
+   </void> 
+   <void method="add"> 
+    <string>６</string> 
+   </void> 
+   <void method="add"> 
+    <string>７</string> 
+   </void> 
+   <void method="add"> 
+    <string>８</string> 
+   </void> 
+   <void method="add"> 
+    <string>９</string> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

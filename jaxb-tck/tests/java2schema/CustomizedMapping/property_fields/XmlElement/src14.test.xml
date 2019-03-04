@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="src14">
+    <TestGroupDocumentation>
+        <Title>XmlElement</Title>
+        <Description>
+
+Test of XmlElement annotations. 
+
+      </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)src14.test.xml	1.2 04/03/06 17:58:41</AttrElem>
+        <AttrElem Name="testType">J2XTest</AttrElem>
+        <Keyword>runtime</Keyword>
+        <Keyword>positive</Keyword>
+        <Keyword>java_to_schema</Keyword>
+        <Keyword>jaxb</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.j2x</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="src14.java"/>
+    </CodeSet>
+    <TestCase ID="testCase0001">
+        <TestCaseDocumentation>
+            <Description>
+          Positive test. Assertion from API doc, XmlElement, type:
+          The Java class being referenced.
+        </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">positive</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="pos14_1.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+    <TestCase ID="testCase0002">
+        <TestCaseDocumentation>
+            <Description>
+          Negative test. Assertion from API doc, XmlElement, type:
+          The Java class being referenced.
+        </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">negative</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="neg14_1.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

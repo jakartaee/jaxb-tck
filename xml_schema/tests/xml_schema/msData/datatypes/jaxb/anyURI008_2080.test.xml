@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="anyURI008_2080">
+    <TestGroupDocumentation>
+        <Title><![CDATA[anyURI008_2080]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=telnet://melvyl.ucop.edu/
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)anyURI008_2080.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../anyURI.xsd"/>
+        <ExternalData Type="iodata" SourceName="anyURI008_2080.sig"/>
+    </CodeSet>
+    <TestCase ID="anyURI008_2080">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="anyURI008_2080.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../anyURI008.xml"/>
+            <ExternalData Type="iodata" SourceName="anyuri008_2080-anyURI008.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

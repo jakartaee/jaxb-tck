@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="schA5" Deleted="true">
+   <TestGroupDocumentation>
+      <Title><![CDATA[schA5]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : Schema Collection:(A,a.xsd) (B, b.xsd), SchemaLocation:(B,a.xsd), NoNSSchemaLocation:, xmlinstance should conform to (A,a.xsd)(B,b.xsd), ignore the inline SchemaLocation (B,a.xsd)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)schA5.test.xml	1.2 08/04/17</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../schA5_a.xsd"/>
+      <ExternalSupportClass SourceName="../schA5_b.xsd"/>
+   </CodeSet>
+   <TestCase ID="schA5">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)schA5.test.xml	1.2 08/04/17 -->

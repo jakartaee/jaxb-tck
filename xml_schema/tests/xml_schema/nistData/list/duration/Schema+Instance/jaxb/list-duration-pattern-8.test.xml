@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-duration-pattern-8">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-duration-pattern-8]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/duration is restricted by facet pattern with value P\d\d84Y\d5M2\dDT\d4H\d5M3\dS P19\d\dY\d4M1\dDT\d9H\d3M4\dS P19\d\dY0\dM\d1DT\d2H1\dM3\dS P\d\d09Y0\dM\d2DT\d2H\d5M\d6S P\d\d89Y\d1M\d1DT\d8H\d7M4\dS P19\d\dY0\dM2\dDT1\dH4\dM\d4S P\d\d22Y1\dM\d7DT\d2H\d3M\d7S P\d\d47Y\d9M\d6DT\d1H\d1M5\dS P17\d\dY0\dM\d0DT0\dH1\dM\d3S.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#duration">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#duration
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-duration-pattern-8.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-list-duration-pattern-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-duration-pattern-8.sig"/>
+    </CodeSet>
+    <TestCase ID="list-duration-pattern-8">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

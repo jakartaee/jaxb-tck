@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="addD003">
+   <TestGroupDocumentation>
+      <Title><![CDATA[addD003]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : xsd 1.0 Structure: the XSD for XSD at the end of the spec, modify to load - striped the DTD, change any Entity Reference to 'foo' - added some simpleType for missing types - removed some invalid partical derication of 'group', 'any' and 'anyAttribute'
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)addD003.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../xsd.xsd"/>
+   </CodeSet>
+   <TestCase ID="addD003">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)addD003.test.xml	1.1 07/03/27 -->

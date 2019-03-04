@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="length2_GetSet">
+    <TestGroupDocumentation>
+        <Title><![CDATA[length2 GetSet Tree Content tests]]></Title>
+        <Description><![CDATA[
+      The tests for validating the content of changed trees got by unmarshalling
+      of the length-2.xsd based XML documents or created dynamically 
+      via ObjectFactory.
+      The schema defines a base64Binary restricted SimpleType with length value 2.
+      Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)length-2_GetSet.test.xml	1.5 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <SupportCode>
+    static strictfp boolean equal(byte [] a, byte [] b) { 
+        if (a.length != b.length) {
+            return false;
+        }
+        for (int i = a.length; --i &gt;= 0; ) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    static final String base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+
+    static byte [] getBytes(String base64) {
+        if (base64.length()%4 != 0) {
+            throw new TestFailureException("test error: wrong length of base64 encoded data:" + base64);
+        }
+        int nOctets = base64.length() / 4 * 3;
+        if (base64.endsWith("==")) {
+            nOctets -= 2;
+        } else if (base64.endsWith("=")) {
+            nOctets -= 1;
+        }
+        byte [] bytes = new byte[nOctets];
+        for (int i = (base64.length() / 4) - 1; i &gt;= 0; --i) {
+            int threeBytes = ((base64Chars.indexOf(base64.charAt(i*4)) &amp; 0x3f) &lt;&lt; 18)
+                       | ((base64Chars.indexOf(base64.charAt(i*4 + 1)) &amp; 0x3f) &lt;&lt; 12)
+                       | ((base64Chars.indexOf(base64.charAt(i*4 + 2)) &amp; 0x3f) &lt;&lt; 6)
+                       | ((base64Chars.indexOf(base64.charAt(i*4 + 3)) &amp; 0x3f));
+            bytes[i*3] = (byte)((threeBytes &gt;&gt; 16) &amp; 0xff);
+            if (base64.charAt(i*4 + 2) != '=') {
+                bytes[i*3 + 1] = (byte)((threeBytes &gt;&gt; 8) &amp; 0xff);
+                if (base64.charAt(i*4 + 3) != '=') {
+                    bytes[i*3 + 2] = (byte)((threeBytes) &amp; 0xff);
+                }
+            }
+        }
+        return bytes;
+    }
+
+    JAXBElement&lt;byte[]&gt; elemObj;
+    
+      </SupportCode>
+        <ExternalSupportClass SourceName="length-2.xsd"/>
+        <ExternalData Type="iodata" SourceName="length2_GetSet.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML base64Binary length-2.xsd, unmarshalled content tree GetSet test]]></Title>
+            <Description><![CDATA[
+The test unmarshalls length-2-1.xml, length-2-2.xml, length-2-3.xml, 
+length-2-4.xml, length-2-5.xml documents which specify
+the values "cmM=", "Ynk=", "cXM=", "a3c=", "c20="
+for the base64Binary restricted SimpleType NISTSchema-base64Binary-length-2 element and 
+expects that elemObj.getValue() returns appropriate byte sequences, then 
+invokes elemObj.setValue(byte[]), elemObj.getValue() should return set value.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="length-2-1.xml"/>
+            <ExternalData Type="iodata" SourceName="length-2-2.xml"/>
+            <ExternalData Type="iodata" SourceName="length-2-3.xml"/>
+            <ExternalData Type="iodata" SourceName="length-2-4.xml"/>
+            <ExternalData Type="iodata" SourceName="length-2-5.xml"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        String[] xmlDocNames = {
+            "length-2-1.xml", "length-2-2.xml", "length-2-3.xml",
+            "length-2-4.xml", "length-2-5.xml"
+        };
+        String [] initialValues = {"cmM=", "Ynk=", "cXM=", "a3c=", "c20="};
+        String [] setValues = {"AAA=", "/nk=", "Y3c=", "//M=", "--k="};
+        for (int i = 0; i < xmlDocNames.length; ++i){
+            JAXBElement<byte[]> elemObj = (JAXBElement<byte[]>)unmarshal(xmlDocNames[i]);
+            if (!equal(elemObj.getValue(), getBytes(initialValues[i]))){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.getValue() != " + initialValues[i]);
+            }
+            elemObj.setValue(getBytes(setValues[i]));
+            if (!equal(elemObj.getValue(), getBytes(setValues[i]))){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.setValue(" + setValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + setValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML base64Binary length-2.xsd GetSet test for dynamically created content tree]]></Title>
+            <Description><![CDATA[
+The test creates an instance of base64Binary restricted SimpleType NISTSchema-base64Binary-length-2 type
+with the values "cmM=", "Ynk=", "cXM=", "a3c=", "c20=" and expects that 
+elemObj.getValue() returns specified values, then invokes elemObj.setValue(byte[]) with 
+various values, elemObj.getValue() should return set values.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+        String [] initialValues = {"cmM=", "Ynk=", "cXM=", "a3c=", "c20="};
+        String [] setValues = {"AAA=", "/nk=", "Y3c=", "//M=", "--k="};
+    
+        for (int i = 0; i < initialValues.length; ++i){
+            
+                elemObj = (JAXBElement<byte[]>)(new ObjectFactory()).createNISTSchemaBase64BinaryLength2(getBytes(initialValues[i]));
+            
+            if (!equal(elemObj.getValue(), getBytes(initialValues[i]))){
+                return Status.failed("dynamically created JAXBElement<byte[]>, elemObj.getValue() != " + initialValues[i]);
+            }
+            elemObj.setValue(getBytes(setValues[i]));
+            if (!equal(elemObj.getValue(), getBytes(setValues[i]))){
+                return Status.failed("dynamically created JAXBElement<byte[]>, elemObj.setValue(" + setValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + setValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

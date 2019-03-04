@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-duration-maxLength-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-duration-maxLength-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P2094Y4M27DT4H15M38S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P2096Y4M7DT9H5M38S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P2029Y4M17DT7H55M38S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P2009Y4M17DT2H35M28S</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+     <string>P2080Y4M7DT7H15M28S</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

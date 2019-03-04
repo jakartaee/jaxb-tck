@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="schT6">
+    <TestGroupDocumentation>
+        <Title><![CDATA[schT6]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : redefine with an attributeGroup, attribute group's content items are a subset of the redefined group, test that attribute uses are not inherited. Have a use=optional on redefined attriubte, but have use=required in redefining attribute, and instance xml has no attribute, (SRC 7.2.2)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)schT6.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../schT6_a.xsd"/>
+        <ExternalData Type="iodata" SourceName="../schT6_b.xsd"/>
+        <ExternalData Type="iodata" SourceName="schT6.sig"/>
+    </CodeSet>
+    <TestCase ID="schT6">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

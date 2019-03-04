@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="XmlAdapter">
+  <TestGroupDocumentation>
+    <Title>Provides XmlAdapter implementation tests</Title>
+    <TestedPackage>javax.xml.bind.annotation.adapters</TestedPackage>
+    <TestedClass>XmlAdapter</TestedClass>
+    <Author>Igor Tseytin</Author>
+  </TestGroupDocumentation>
+  <TestGroupAttributes>
+    <AttrElem Name="tdFile">index</AttrElem>
+    <AttrElem Name="scInfo">@(#)XmlAdapter.test.xml	1.3 07/03/21</AttrElem>
+    <AttrElem Name="testType">MultiTest</AttrElem>
+    <Keyword>runtime</Keyword>
+  </TestGroupAttributes>
+  <CodeSet>
+    <Import>java.io.StringReader</Import>
+    <Import>java.util.Map</Import>
+    <Import>java.util.HashMap</Import>
+    <Import>java.util.TreeMap</Import>
+    <Import>javax.xml.bind.*</Import>
+    <Import>javax.xml.bind.annotation.*</Import>
+    <Import>javax.xml.bind.annotation.adapters.*</Import>
+    <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+    <Import>javax.xml.transform.*</Import>
+    <Import>javax.xml.transform.dom.DOMSource</Import>
+    <Import>javax.xml.transform.stream.StreamResult</Import>
+    <Import>javax.xml.xpath.*</Import>
+    <Import>org.w3c.dom.*</Import>
+    <Import>org.xml.sax.InputSource</Import>
+    <BaseClass>MultiTest</BaseClass>
+    <SupportCode>
+<![CDATA[
+    Binder<Node> binder = null;
+    {
+        try {
+            binder = JAXBContext.newInstance(Elem.class).createBinder();
+        } catch( JAXBException x ){
+            x.printStackTrace( ref );
+            throw new RuntimeException( x );
+        }
+    }
+    DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+
+    static void assertT( boolean val ){
+        if( !val )
+            throw new RuntimeException();
+    }
+
+    static void assertT( boolean val, String msg ){
+        if( !val )
+            throw new RuntimeException( msg );
+    }
+
+    static public class Entry {
+        public Entry(){};
+        public Entry( Integer key, String value, Entry next ){
+            this.key = key;
+            this.value = value;
+            this.next = next;
+        }
+
+        @XmlAttribute
+        public Integer key = -1;
+
+        @XmlAttribute
+        public String value = null;
+
+        @XmlElement
+        public Entry next = null;
+    }
+
+    @XmlRootElement
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "Element", propOrder = { "key", "value" })
+    static public class Elem {
+        public Integer key;
+        @XmlJavaTypeAdapter(EntryAdapter.class)
+        public Map<Integer, String> value;
+
+        public String toString(){
+            return String.format( "[key = %s, value = %s]", key, value.toString() );
+        }
+    }
+
+    static public class EntryAdapter extends XmlAdapter<Entry, Map<Integer, String>> {
+        static public final int MARSHAL_F = 1;
+        static public final int UNMARSHAL_F = 2;
+        static public int flags = 0;
+        public Entry marshal(Map<Integer, String> v) throws Exception {
+            flags |= MARSHAL_F;
+            Entry tail = null;
+            for(Map.Entry<Integer, String> entry : v.entrySet()){
+                tail = new Entry( entry.getKey(), entry.getValue(), tail );
+            }
+            return tail;
+        }
+
+        public Map<Integer, String> unmarshal(Entry v) throws Exception {
+            flags |= UNMARSHAL_F;
+            Map<Integer, String> map = new TreeMap<Integer, String>();
+            while( v != null ){
+                map.put( v.key, v.value );
+                v = v.next;
+            }
+            return map;
+        }
+    }
+
+    static class UnmarshalChecker {
+        XmlAdapter<String, String> adapter;
+        UnmarshalChecker( XmlAdapter<String, String> adapter ){
+            this.adapter = adapter;
+        }
+        void check( String result, String raw ){
+            try {
+                String unres = adapter.unmarshal( raw );
+                assertT( result.equals( unres ),
+                    String.format( "unexpected result of NormalizedStringAdapter.unmarshal('%s'): '%s'. Expected '%s'.",
+                                    raw, unres, result ) );
+            } catch( RuntimeException x ){
+                throw x;
+            } catch( Exception x ){
+                throw new RuntimeException( x );
+            }
+        }
+    };
+
+    void checkMarshalNoop( XmlAdapter<String, String> adapter ){
+        try {
+            assertT( "\t \r\ntext text\r\n \t".equals( adapter.marshal( "\t \r\ntext text\r\n \t" ) ) );
+            assertT( "\t \r\ntext\ttext\r\n \t".equals( adapter.marshal( "\t \r\ntext\ttext\r\n \t" ) ) );
+            assertT( "\t \r\ntext\rtext\r\n \t".equals( adapter.marshal( "\t \r\ntext\rtext\r\n \t" ) ) );
+            assertT( "\t \r\ntext\ntext\r\n \t".equals( adapter.marshal( "\t \r\ntext\ntext\r\n \t" ) ) );
+            assertT( "text\t\r\ntext".equals( adapter.marshal( "text\t\r\ntext" ) ) );
+        } catch( Exception x ){
+            throw new RuntimeException( x );
+        }
+    }
+
+    static XPath xpath;
+    static { 
+        xpath = XPathFactory.newInstance().newXPath();
+        /*xpath.setNamespaceContext( new NamespaceContext() {
+            final String xs = XMLConstants.W3C_XML_SCHEMA_NS_URI;
+            public String getNamespaceURI(String prefix) {
+                if( "xs".equals( prefix ) )
+                    return xs;
+                return "";
+            }
+            public String getPrefix(String namespaceURI) {
+                if( xs.equals( namespaceURI ) )
+                    return "xs";
+                return "";
+            }
+            public Iterator getPrefixes(String namespaceURI) {
+                return Collections.singleton( getPrefix(namespaceURI) ).iterator();
+            }
+        } );*/
+    }
+]]>
+    </SupportCode>
+  </CodeSet>
+
+  <TestCase ID="XmlAdapter_marshal">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>the test checks that Binder.marshal uses the 'marshal' method of custom XmlAdapter</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    Elem elem = new Elem();
+    elem.key = -1;
+    elem.value = new HashMap<Integer, String>();
+    String[] numbers = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero" };
+    for( int i = 0; i < numbers.length; i++){
+        elem.value.put( (i + 1) % 10, numbers[ i ] );
+    }
+    try {
+        Document doc = documentBuilderFactory.newDocumentBuilder().newDocument();
+
+        EntryAdapter.flags = 0;
+        binder.marshal(elem, doc);
+        assertT( EntryAdapter.flags == EntryAdapter.MARSHAL_F );
+        // check 
+        XPathExpression xpathExpr = xpath.compile( "//*[@key]" );
+        NodeList l = (NodeList)xpathExpr.evaluate( doc.getDocumentElement(), XPathConstants.NODESET );
+        assertT( l.getLength() == 10 );
+
+        boolean f[] = new boolean[10];
+        for( int i = 0; i < l.getLength(); i++){
+            org.w3c.dom.Element el = (org.w3c.dom.Element)l.item( i );
+            int key = Integer.parseInt( el.getAttribute("key") );
+            assertT( key >= 0 && key < 10 );
+            f[ key ] = true;
+        }
+        for( boolean b : f ){
+            assertT( b );
+        }
+    } catch ( Exception ex ) {
+        ex.printStackTrace( ref );
+        return Status.failed( ex.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+
+  <TestCase ID="XmlAdapter_unmarshal">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>the test checks that Binder.unmarshal uses the 'unmarshal' method of custom XmlAdapter</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    String xml =
+        "<?xml version='1.0' encoding='UTF-8' standalone='no'?>"+
+        "<elem>"+
+        "   <key>0</key>"+
+        "   <value key='9' value='nine'>"+
+        "       <next key='8' value='eight'>"+
+        "           <next key='7' value='seven'>"+
+        "               <next key='6' value='six'/>"+
+        "           </next>"+
+        "       </next>"+
+        "   </value>"+
+        "</elem>";
+    try {
+        Document doc = documentBuilderFactory.newDocumentBuilder().parse( new InputSource( new StringReader( xml ) ) );
+
+        EntryAdapter.flags = 0;
+        JAXBElement<Elem> result = binder.unmarshal(doc, Elem.class);
+        assertT( EntryAdapter.flags == EntryAdapter.UNMARSHAL_F );
+
+        System.out.println(result.getValue());
+        Map<Integer, String> res = result.getValue().value;
+        assertT( res.size() == 4 );
+        assertT( "nine".equals( res.get( 9 ) ) );
+        assertT( "eight".equals( res.get( 8 ) ) );
+        assertT( "seven".equals( res.get( 7 ) ) );
+        assertT( "six".equals( res.get( 6 ) ) );
+    } catch (Exception ex) {
+        ex.printStackTrace( ref );
+        return Status.failed( ex.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+
+<!-- NormalizedStringAdapter -->
+  <TestCase ID="NormalizedStringAdapter_unmarshal">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>unmarshal() Removes leading and trailing whitespaces of the string given as the parameter, then replace any tab, CR, and LF by a whitespace character ' '.</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    NormalizedStringAdapter adapter = new NormalizedStringAdapter();
+    UnmarshalChecker t = new UnmarshalChecker( adapter );
+    t.check( "    1text text    ", "\t \r\n1text text\r\n \t" );
+    t.check( "    2text text    ", "\t \r\n2text\ttext\r\n \t" );
+    t.check( "    3text text    ", "\t \r\n3text\rtext\r\n \t" );
+    t.check( "    4text text    ", "\t \r\n4text\ntext\r\n \t" );
+    t.check( "5text   text", "5text\t\r\ntext" );
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="NormalizedStringAdapter_marshal">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>marshal() No-op. Just return the same string given as the parameter.</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    checkMarshalNoop( new NormalizedStringAdapter() );
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+<!-- we can't access protected method of final class
+  <TestCase ID="NormalizedStringAdapter_isWhiteSpaceExceptSpace">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>Returns true if the specified char is a white space character but not 0x20.</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    new NormalizedStringAdapter(){{
+        assertT( isWhiteSpaceExceptSpace('\n') );
+        assertT( isWhiteSpaceExceptSpace('\r') );
+        assertT( isWhiteSpaceExceptSpace('\t') );
+        assertT( !isWhiteSpaceExceptSpace(' ') );
+        assertT( !isWhiteSpaceExceptSpace('n') );
+        assertT( !isWhiteSpaceExceptSpace('r') );
+        assertT( !isWhiteSpaceExceptSpace('t') );
+    }}
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+-->
+  
+<!-- CollapsedStringAdapter -->
+  <TestCase ID="CollapsedStringAdapter_unmarshal">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>unmarshal() Removes leading and trailing whitespaces of the string given as the parameter, then truncate any sequnce of tab, CR, LF, and SP by a single whitespace character ' '.</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    CollapsedStringAdapter adapter = new CollapsedStringAdapter();
+    UnmarshalChecker t = new UnmarshalChecker( adapter );
+    t.check( "text text", "\t \r\ntext text\r\n \t" );
+    t.check( "text text", "\t \r\ntext\ttext\r\n \t" );
+    t.check( "text text", "\t \r\ntext\rtext\r\n \t" );
+    t.check( "text text", "\t \r\ntext\ntext\r\n \t" );
+    t.check( "text text", "text\t\r\ntext" );
+    t.check( "text text", "text \n \r text" );
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="CollapsedStringAdapter_marshal">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>marshal() No-op. Just return the same string given as the parameter.</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    checkMarshalNoop( new CollapsedStringAdapter() );
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="CollapsedStringAdapter_isWhiteSpace">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>returns true if the specified char is a white space character.</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    new CollapsedStringAdapter(){{
+        assertT( isWhiteSpace('\n') );
+        assertT( isWhiteSpace('\r') );
+        assertT( isWhiteSpace('\t') );
+        assertT( isWhiteSpace(' ') );
+        assertT( !isWhiteSpace('n') );
+        assertT( !isWhiteSpace('r') );
+        assertT( !isWhiteSpace('t') );
+    }};
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+
+<!-- HexBinaryAdapter -->
+  <TestCase ID="HexBinaryAdapter_unmarshal">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>unmarshal() Throws exception - if there's an error during the conversion.</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+      HexBinaryAdapter adapter = new HexBinaryAdapter();
+      try {
+           byte[] result = adapter.unmarshal( "\t \r\n 010203FFGG \r\n \t" );
+      } catch(Exception ex) {
+        return Status.passed("Ok");
+      }
+      return Status.failed("No exception is thrown as expected");
+    ]]></TestCode>
+  </TestCase>
+  
+  <TestCase ID="HexBinaryAdapter_marshal">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>marshal() Convert a bound type to a value type.</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    HexBinaryAdapter adapter = new HexBinaryAdapter();
+    String result = adapter.marshal( new byte[] { 0, 1, 2, 3, 4, 5, 0x7F, (byte)0x80, (byte)0xFC, (byte)0xFD, (byte)0xFE, (byte)0xFF } );
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+
+</TestGroup>
+<!-- Ident: @(#)XmlAdapter.test.xml	1.3 07/03/21 -->

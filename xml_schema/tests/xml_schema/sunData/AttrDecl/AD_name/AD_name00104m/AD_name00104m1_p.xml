@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!--
+Ident: @(#)AD_name00104m1_p.xml
+   generated from: @(#)AD_name00104m.jmpp	1.3 02/11/14
+
+-->
+
+<td:root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:td="AttrDecl/name"
+    xsi:schemaLocation="AttrDecl/name AD_name00104m1.xsd"
+    A00="0"
+    M01="1"
+    Z02="2"
+    a10="0"
+    d11="1"
+    h12="2"
+    j20="0"
+    r21="1"
+    z22="2"
+    À30="0"
+    Ë31="1"
+    Ö32="2"
+    Ø40="0"
+    Û41="1"
+    Þ42="2"
+    à50="0"
+    ë51="1"
+    ö52="2"
+    ø60="0"
+    û61="1"
+    ÿ62="2"
+    Ā70="0"
+    Ę71="1"
+    ı72="2"
+    Ĵ80="0"
+    Ĺ81="1"
+    ľ82="2"
+    Ł90="0"
+    ń91="1"
+    ň92="2"
+/>

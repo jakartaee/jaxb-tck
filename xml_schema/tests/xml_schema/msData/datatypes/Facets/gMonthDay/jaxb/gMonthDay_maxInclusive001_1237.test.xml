@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="gMonthDay_maxInclusive001_1237">
+    <TestGroupDocumentation>
+        <Title><![CDATA[gMonthDay_maxInclusive001_1237]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxInclusive and value=- -01-01 and document value=- -01-01
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)gMonthDay_maxInclusive001_1237.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../gMonthDay_maxInclusive001.xsd"/>
+        <ExternalData Type="iodata" SourceName="gMonthDay_maxInclusive001_1237.sig"/>
+    </CodeSet>
+    <TestCase ID="gMonthDay_maxInclusive001_1237">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="gMonthDay_maxInclusive001_1237.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../gMonthDay_maxInclusive001.xml"/>
+            <ExternalData Type="iodata" SourceName="gmonthday_maxinclusive001_1237-gMonthDay_maxInclusive001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

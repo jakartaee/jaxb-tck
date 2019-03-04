@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-token-pattern-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-token-pattern-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>63427_And_Automatically_Street_Devices_The_Can_,_DE_11426-1564</string> 
+   </void> 
+   <void method="add"> 
+    <string>365_Information_Computing_Permitting_An_Street_Reach_Registries_,_AR_12210</string> 
+   </void> 
+   <void method="add"> 
+    <string>9755_Object_Applications_As_Improved_Street_Software_Oasis_By_,_ND_10273</string> 
+   </void> 
+   <void method="add"> 
+    <string>6333_Utilize_Test_The_Is_To_Street_The_Advent_,_OR_15228-1341</string> 
+   </void> 
+   <void method="add"> 
+    <string>678_Offer_Methods_Repository_Additionally_Users_Street_Industries_Dynamic_Appropriate_,_UT_19382</string> 
+   </void> 
+   <void method="add"> 
+    <string>89_The_The_Street_Retrieves_Via_And_,_OR_15012-1071</string> 
+   </void> 
+   <void method="add"> 
+    <string>854_With_Street_Be_Other_,_MI_16723</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

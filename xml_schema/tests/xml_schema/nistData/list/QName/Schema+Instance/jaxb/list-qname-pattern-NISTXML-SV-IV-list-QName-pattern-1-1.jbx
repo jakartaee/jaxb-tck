@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-QName-pattern-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-QName-pattern-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>kas_available-discover.law-partners-low-cost-m</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>_and-file_tools_etc_configuration_20_information_with-the-spe</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>rrange-popular_called_no_to-inf</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>_and.can-build.with_resources_provided.and-test</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>wby-and-than.new-way-ability-for_to.to</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>kobjects-bandwidth_support-is_networks.support-software_</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>xintelligent_are-help_and_use-allows_files-object-to-th</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

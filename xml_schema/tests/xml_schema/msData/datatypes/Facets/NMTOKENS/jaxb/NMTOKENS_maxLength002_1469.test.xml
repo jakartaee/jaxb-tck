@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="NMTOKENS_maxLength002_1469">
+    <TestGroupDocumentation>
+        <Title><![CDATA[NMTOKENS_maxLength002_1469]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxLength and value=5 and document value=foofo
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)NMTOKENS_maxLength002_1469.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NMTOKENS_maxLength002.xsd"/>
+        <ExternalData Type="iodata" SourceName="NMTOKENS_maxLength002_1469.sig"/>
+    </CodeSet>
+    <TestCase ID="NMTOKENS_maxLength002_1469">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NMTOKENS_maxLength002_1469.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NMTOKENS_maxLength002.xml"/>
+            <ExternalData Type="iodata" SourceName="nmtokens_maxlength002_1469-NMTOKENS_maxLength002.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

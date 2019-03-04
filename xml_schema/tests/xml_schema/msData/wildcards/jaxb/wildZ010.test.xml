@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="wildZ010">
+    <TestGroupDocumentation>
+        <Title><![CDATA[wildZ010]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Validation - any : xsd: namespace='' on wildcard any should match against ##any
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)wildZ010.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../wildZ010_a.xsd"/>
+        <ExternalData Type="iodata" SourceName="../wildZ010_b.xsd"/>
+        <ExternalData Type="iodata" SourceName="wildZ010.sig"/>
+    </CodeSet>
+    <TestCase ID="wildZ010">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="wildZ010.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../wildZ010.xml"/>
+            <ExternalData Type="iodata" SourceName="wildz010-wildZ010.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

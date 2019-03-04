@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="Ctor">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Constructor tests]]></Title>
+        <Description><![CDATA[
+Constructor tests.
+        ]]></Description>
+        <TestedPackage>javax.xml.bind.helpers</TestedPackage>
+        <TestedClass>NotIdentifiableEventImpl</TestedClass>
+        <Author><![CDATA[Oleg Oleinik]]></Author>
+    </TestGroupDocumentation>
+
+    <TestGroupAttributes>
+       <AttrElem Name="tdFile">index</AttrElem>
+       <AttrElem Name="scInfo">@(#)Ctor.test.xml	1.3 02/12/17</AttrElem>
+       <AttrElem Name="testType">MultiTest</AttrElem>
+       <Keyword>runtime</Keyword>
+       <Keyword>positive</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.helpers.NotIdentifiableEventImpl</Import>
+        <Import>javax.xml.bind.ValidationEventLocator</Import>
+        <Import>javax.xml.bind.ValidationEvent</Import>
+        <BaseClass>MultiTest</BaseClass>
+
+        <SupportCode><![CDATA[
+    int[] valid_severity = {ValidationEvent.ERROR, ValidationEvent.FATAL_ERROR, ValidationEvent.WARNING};
+    int[] invalid_severity = {3, -1, 65535};
+
+    ValidationEventLocator[] valid_locator = null;
+    {
+        try {
+            valid_locator = new ValidationEventLocator[]{new MyValidationEventLocator(new java.net.URL("http://www.sun.com"), 10, 10, 10, null, null)};
+        } catch (java.net.MalformedURLException me){
+            throw new RuntimeException(me.toString());
+        }
+    }
+    ValidationEventLocator[] invalid_locator = {null};
+
+    Throwable[] valid_exception = {new Error("error"), new Exception("exception"), 
+        new RuntimeException("runtime exception"), new Throwable("throwable")};
+    Throwable[] invalid_exception = {null};
+
+    String[] valid_message = {"error"};
+    String[] invalid_message = {"", null};
+]]></SupportCode>
+
+        <InlineSupportClass>
+            <CodeSource><![CDATA[
+    class MyValidationEventLocator implements ValidationEventLocator {
+        java.net.URL url = null;
+        int offset = -1;
+        int lineNumber = -1;
+        int columnNumber = -1;
+        Object object = null;
+        org.w3c.dom.Node node = null;
+        
+        public MyValidationEventLocator (java.net.URL url, int offset, int lineNumber, 
+                int columnNumber, Object object, org.w3c.dom.Node node){
+            this.url = url;
+            this.offset = offset;
+            this.lineNumber = lineNumber;
+            this.columnNumber = columnNumber;
+            this.object = object;
+            this.node = node;
+        }
+        public java.net.URL getURL(){
+            return url;
+        }
+        public int getOffset(){
+            return offset;
+        }
+        public int getLineNumber(){
+            return lineNumber;
+        }
+        public int getColumnNumber(){
+            return columnNumber;
+        }
+        public java.lang.Object getObject(){
+            return object;
+        }
+        public org.w3c.dom.Node getNode(){
+            return node;
+        }
+    }
+]]></CodeSource>
+        </InlineSupportClass>
+   </CodeSet>
+
+<!-- ===============  NotIdentifiableEventImpl(int, String, ValidationEventLocator) tests  ==================== -->
+
+
+    <TestCase ID="Ctor001">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator): no exception is thrown if all arguments are non-null, valid.
+             ]]></InlineAssertion>
+            <TestTechnique Value="EqClass"/>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator)</MemberSig>
+            <Input Name="_severity">ERROR, FATAL_ERROR, WARNING</Input>
+            <Input Name="_message">valid, non-null, non-empty string</Input>
+            <Input Name="_locator">valid, non-null object</Input>
+            <ExpectedResultSideEffect>no exceptions</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator) with all arguments non-null, valid: getSeverity() returns 
+the severity code for this warning/error.
+             ]]></InlineAssertion>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator)</MemberSig>
+            <ExpectedResultSideEffect>returns the severity code with which NotIdentifiableEventImpl object was created</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator) with all arguments non-null, valid: getMessage() returns 
+the text message for this warning/error.
+             ]]></InlineAssertion>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator)</MemberSig>
+            <ExpectedResultSideEffect> returns the text message with which NotIdentifiableEventImpl object was created</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator) with all arguments non-null, valid: getLocator() returns 
+the locator for this warning/error.
+             ]]></InlineAssertion>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator)</MemberSig>
+            <ExpectedResultSideEffect> returns the locator with which NotIdentifiableEventImpl object was created</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator) with all arguments non-null, valid: getLinkedException() returns 
+null if the linked exception wasn't set.
+             ]]></InlineAssertion>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator)</MemberSig>
+            <ExpectedResultSideEffect>returns null</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    for (int i_severity = 0; i_severity < valid_severity.length; ++i_severity){
+        for (int i_message = 0; i_message < valid_message.length; ++i_message){
+            for (int i_locator = 0; i_locator < valid_locator.length; ++i_locator){
+                NotIdentifiableEventImpl event = new NotIdentifiableEventImpl(valid_severity[i_severity], valid_message[i_message], 
+                     valid_locator[i_locator]);
+                if (event.getSeverity() != valid_severity[i_severity]){
+                    return Status.failed("NotIdentifiableEventImpl(" + valid_severity[i_severity] + ", \"" + valid_message[i_message] + 
+                    "\", non-null locator):  getSeverity() returns " + event.getSeverity());
+                }
+                if (!valid_message[i_message].equals(event.getMessage())){
+                    return Status.failed("NotIdentifiableEventImpl(" + valid_severity[i_severity] + ", \"" + valid_message[i_message] + 
+                    "\", non-null locator):  getMessage() returns " + event.getMessage());
+                }
+                ValidationEventLocator locator = event.getLocator();
+                if (locator.getOffset() != 10 || locator.getLineNumber() != 10 || locator.getColumnNumber() != 10){
+                    return Status.failed("NotIdentifiableEventImpl(" + valid_severity[i_severity] + ", \"" + valid_message[i_message] + 
+                    "\", non-null locator):  getLocator() returns wrong object");
+                }
+                if (event.getLinkedException() != null){
+                    return Status.failed("NotIdentifiableEventImpl(" + valid_severity[i_severity] + ", \"" + valid_message[i_message] + 
+                    "\", non-null locator):  getLinkedException() returns non-null value");
+                }
+            }
+        }
+    }    
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+
+<!-- ===============  NotIdentifiableEventImpl(int, String, ValidationEventLocator, Throwable) tests  ==================== -->
+
+
+    <TestCase ID="Ctor101">
+    <TestCaseDocumentation>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator, Throwable): no exception is thrown if all arguments are non-null, valid.
+             ]]></InlineAssertion>
+            <TestTechnique Value="EqClass"/>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator, java.lang.Throwable _linkedException)</MemberSig>
+            <Input Name="_severity">ERROR, FATAL_ERROR, WARNING</Input>
+            <Input Name="_message">valid, non-null, non-empty string</Input>
+            <Input Name="_locator">valid, non-null object</Input>
+            <Input Name="_linkedException">valid, non-null object</Input>
+            <ExpectedResultSideEffect>no exceptions</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator, Throwable) with all arguments non-null, valid: getSeverity() returns 
+the severity code for this warning/error.
+             ]]></InlineAssertion>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator, java.lang.Throwable _linkedException)</MemberSig>
+            <ExpectedResultSideEffect>returns the severity code with which NotIdentifiableEventImpl object was created</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator, Throwable) with all arguments non-null, valid: getMessage() returns 
+the text message for this warning/error.
+             ]]></InlineAssertion>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator, java.lang.Throwable _linkedException)</MemberSig>
+            <ExpectedResultSideEffect> returns the text message with which NotIdentifiableEventImpl object was created</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator, Throwable) with all arguments non-null, valid: getLocator() returns 
+the locator for this warning/error.
+             ]]></InlineAssertion>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator, java.lang.Throwable _linkedException)</MemberSig>
+            <ExpectedResultSideEffect> returns the locator with which NotIdentifiableEventImpl object was created </ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+        <TestCaseSpec>
+            <InlineAssertion><![CDATA[ 
+NotIdentifiableEventImpl(int, String, ValidationEventLocator, Throwable) with all arguments non-null, valid: getLinkedException() returns 
+the linked exception for this warning/error.
+             ]]></InlineAssertion>
+            <MemberSig>public NotIdentifiableEventImpl(int _severity, java.lang.String _message, ValidationEventLocator _locator, java.lang.Throwable _linkedException)</MemberSig>
+            <ExpectedResultSideEffect>returns the exception with which NotIdentifiableEventImpl object was created</ExpectedResultSideEffect>
+        </TestCaseSpec>
+
+    </TestCaseDocumentation>
+    <TestCaseAttributes></TestCaseAttributes>
+
+   <TestCode><![CDATA[
+    for (int i_severity = 0; i_severity < valid_severity.length; ++i_severity){
+        for (int i_message = 0; i_message < valid_message.length; ++i_message){
+            for (int i_locator = 0; i_locator < valid_locator.length; ++i_locator){
+                for (int i_exception = 0; i_exception < valid_exception.length; ++i_exception){
+                    NotIdentifiableEventImpl event = new NotIdentifiableEventImpl(valid_severity[i_severity], valid_message[i_message], 
+                        valid_locator[i_locator], valid_exception[i_exception]);
+                    if (event.getSeverity() != valid_severity[i_severity]){
+                        return Status.failed("NotIdentifiableEventImpl(" + valid_severity[i_severity] + ", \"" + valid_message[i_message] + 
+                        "\", non-null locator, non-null exception):  getSeverity() returns " + event.getSeverity());
+                    }
+                    if (!valid_message[i_message].equals(event.getMessage())){
+                        return Status.failed("NotIdentifiableEventImpl(" + valid_severity[i_severity] + ", \"" + valid_message[i_message] + 
+                        "\", non-null locator, non-null exception):  getMessage() returns " + event.getMessage());
+                    }
+                    ValidationEventLocator locator = event.getLocator();
+                    if (locator.getOffset() != 10 || locator.getLineNumber() != 10 || locator.getColumnNumber() != 10){
+                        return Status.failed("NotIdentifiableEventImpl(" + valid_severity[i_severity] + ", \"" + valid_message[i_message] + 
+                        "\", non-null locator, non-null exception):  getLocator() returns wrong object");
+                    }
+                    Throwable e = event.getLinkedException();
+                    if (!(valid_exception[i_exception].getClass().isInstance(e)) || !(e.getMessage().equals(valid_exception[i_exception].getMessage()))){
+                        return Status.failed("NotIdentifiableEventImpl(" + valid_severity[i_severity] + ", \"" + valid_message[i_message] + 
+                        "\", non-null locator, non-null exception):  getLinkedException() returns wrong value");
+                    }
+                }
+            }
+        }
+    }    
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+
+<!-- ======================================================================= -->
+
+
+</TestGroup>
+<!-- Ident: @(#)Ctor.test.xml	1.3 02/12/17 -->
+

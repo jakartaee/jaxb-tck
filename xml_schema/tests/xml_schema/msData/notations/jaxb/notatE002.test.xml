@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="notatE002">
+   <TestGroupDocumentation>
+      <Title><![CDATA[notatE002]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Notations : Notation with an attribute a:b="c" where a doesn't have a non-schema namespace
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cNotation_Declarations">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cNotation_Declarations
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)notatE002.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../notatE002.xsd"/>
+   </CodeSet>
+   <TestCase ID="notatE002">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)notatE002.test.xml	1.1 07/03/27 -->

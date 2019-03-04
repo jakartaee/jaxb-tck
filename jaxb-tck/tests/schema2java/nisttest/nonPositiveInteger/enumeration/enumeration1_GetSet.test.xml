@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="enumeration1_GetSet">
+    <TestGroupDocumentation>
+        <Title><![CDATA[enumeration1 GetSet Tree Content tests  ]]></Title>
+        <Description><![CDATA[
+      The tests for checking the content of trees got by unmarshalling
+      of the enumeration-1.xsd based XML documents and created dynamically via ObjectFactory. 
+      The schema defines a nonPositiveInteger restricted SimpleType with enumeration values:
+      -17416230241, -8643589967190224987, -676843, -497359738618, -45554400334776878, -8782453402663260577,
+      -1874884102, -941995830152, -72, -117573, -1437611345877, -51399307227677, -821329, -716997651572763294,
+      -39713096218389, -8095, -905538, -69233349799300.
+      Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)enumeration1_GetSet.test.xml	1.6 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <Import>java.math.BigInteger</Import>
+        <ExternalSupportClass SourceName="enumeration-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="enumeration1_GetSet.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger enumeration-1.xsd, unmarshalled content tree GetSet test]]></Title>
+            <Description><![CDATA[
+The test unmarshalls enumeration-1-1.xml,...,enumeration-1-5.xml documents which specify
+the values -905538, -39713096218389, -51399307227677, -941995830152, -8643589967190224987 for the nonPositiveInteger 
+restricted SimpleType NISTSchema-nonPositiveInteger-enumeration-1
+element and expects that elemObj.getValue() returns specified in xml value, then invokes 
+elemObj.setValue(nonPositiveInteger) with valid values, elemObj.getValue() should return set value.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration-1-2.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration-1-3.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration-1-4.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration-1-5.xml"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        String[] xmlDocNames = {
+            "enumeration-1-1.xml", "enumeration-1-2.xml", "enumeration-1-3.xml",
+            "enumeration-1-4.xml", "enumeration-1-5.xml"
+        };
+        BigInteger[] expectedValues = {new BigInteger("-905538"), new BigInteger("-39713096218389"), new BigInteger("-51399307227677"),
+                                       new BigInteger("-941995830152"), new BigInteger("-8643589967190224987")};
+        BigInteger[] anExpectedValues = {new BigInteger("-72"), new BigInteger("-821329"), new BigInteger("-45554400334776878"),
+                                         new BigInteger("-905538"), new BigInteger("-8643589967190224987")};
+        
+        for (int i = 0; i < xmlDocNames.length; ++i){
+            JAXBElement<BigInteger> elemObj = (JAXBElement<BigInteger>)unmarshal(xmlDocNames[i]);
+            if (!elemObj.getValue().equals(expectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.getValue() != " + expectedValues[i]);
+            }
+            elemObj.setValue(anExpectedValues[i]);
+            if (!elemObj.getValue().equals(anExpectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.setValue(" + anExpectedValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anExpectedValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger enumeration-1.xsd GetSet test for dynamically created content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-enumeration-1 type
+with the values -905538, -39713096218389, -51399307227677, -941995830152, -8643589967190224987 and expects that elemObj.getValue() 
+returns specified values, then invokes elemObj.setValue(nonPositiveInteger) with various valid values, elemObj.getValue() 
+should return set values.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        BigInteger[] setValues = {new BigInteger("-905538"), new BigInteger("-39713096218389"), new BigInteger("-51399307227677"),
+                                       new BigInteger("-941995830152"), new BigInteger("-8643589967190224987")};
+        BigInteger[] anSetValues = {new BigInteger("-72"), new BigInteger("-821329"), new BigInteger("-45554400334776878"),
+                                         new BigInteger("-905538"), new BigInteger("-8643589967190224987")};
+
+        JAXBElement<BigInteger> elemObj = null;
+        for (int i = 0; i < setValues.length; ++i){
+            
+                elemObj = (JAXBElement<BigInteger>)(new ObjectFactory()).createNISTSchemaNonPositiveIntegerEnumeration1(setValues[i]);
+            
+            if (!elemObj.getValue().equals(setValues[i])){
+                return Status.failed("dynamically created JAXBElement<BigInteger>, elemObj.getValue() != " + setValues[i]);
+            }
+            elemObj.setValue(anSetValues[i]);
+            if (!elemObj.getValue().equals(anSetValues[i])){
+                return Status.failed("dynamically created JAXBElement<BigInteger>, elemObj.setValue(" + anSetValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anSetValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

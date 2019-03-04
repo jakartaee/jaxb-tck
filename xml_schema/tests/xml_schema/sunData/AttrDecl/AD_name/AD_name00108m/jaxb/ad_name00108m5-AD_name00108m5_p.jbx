@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.attrdecl.ad_name.ad_name00108m.ad_name00108m5.Root"> 
+  <void property="str00AӐ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str01AӮ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str02AӸ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str03AԱ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str04Aՙ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str05Aա"> 
+   <string>a</string> 
+  </void> 
+  <void property="str06Aא"> 
+   <string>a</string> 
+  </void> 
+  <void property="str07Aװ"> 
+   <string>a</string> 
+  </void> 
+  <void property="str08Aء"> 
+   <string>a</string> 
+  </void> 
+  <void property="str09Aف"> 
+   <string>a</string> 
+  </void> 
+  <void property="str10Ӝ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str11Ӱ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str12Ӹ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str13Ճ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str15Ճ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str16ם"> 
+   <string>b</string> 
+  </void> 
+  <void property="str17ױ"> 
+   <string>b</string> 
+  </void> 
+  <void property="str18ح"> 
+   <string>b</string> 
+  </void> 
+  <void property="str19م"> 
+   <string>b</string> 
+  </void> 
+  <void property="str20Ӫ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str21Ӵ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str22Ӹ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str23Ֆ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str25Ֆ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str26ת"> 
+   <string>c</string> 
+  </void> 
+  <void property="str27ײ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str28غ"> 
+   <string>c</string> 
+  </void> 
+  <void property="str29ي"> 
+   <string>c</string> 
+  </void> 
+ </object> 
+</java> 

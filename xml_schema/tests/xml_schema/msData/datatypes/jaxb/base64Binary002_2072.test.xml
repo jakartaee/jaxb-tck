@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="base64Binary002_2072">
+    <TestGroupDocumentation>
+        <Title><![CDATA[base64Binary002_2072]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : test for simpleType list of base64Binary
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)base64Binary002_2072.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../base64Binary002.xsd"/>
+        <ExternalData Type="iodata" SourceName="base64Binary002_2072.sig"/>
+    </CodeSet>
+    <TestCase ID="base64Binary002_2072">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="base64Binary002_2072.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../base64Binary002.xml"/>
+            <ExternalData Type="iodata" SourceName="base64binary002_2072-base64Binary002.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

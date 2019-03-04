@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="ValidationEventLocatorImpl">
+    <TestGroupDocumentation>
+        <Title><![CDATA[General tests of constructors and methods]]></Title>
+        <Description><![CDATA[General tests of constructors and methods.]]></Description>
+        <TestedPackage>javax.xml.bind.helpers</TestedPackage>
+        <TestedClass>ValidationEventLocatorImpl</TestedClass>
+        <Author><![CDATA[Evgueni Rouban]]></Author>
+    </TestGroupDocumentation>
+
+    <TestGroupAttributes>
+       <AttrElem Name="tdFile">ValidationEventLocatorImpl</AttrElem>
+       <AttrElem Name="scInfo">@(#)ValidationEventLocatorImpl.test.xml	1.3 07/01/24</AttrElem>
+       <AttrElem Name="testType">MultiTest</AttrElem>
+       <Keyword>runtime</Keyword>
+       <Keyword>positive</Keyword>
+    </TestGroupAttributes>
+
+    <CodeSet>
+        <Import>java.net.URL</Import>
+        <Import>java.net.MalformedURLException</Import>
+        <Import>javax.xml.bind.helpers.ValidationEventLocatorImpl</Import>
+        <Import>javax.xml.bind.ValidationEventLocator</Import>
+        <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+        <Import>javax.xml.parsers.FactoryConfigurationError</Import>
+        <Import>javax.xml.parsers.ParserConfigurationException</Import>
+        <Import>org.w3c.dom.Node</Import>
+        <Import>org.xml.sax.Locator</Import>
+        <Import>org.xml.sax.helpers.LocatorImpl</Import>
+        <Import>org.xml.sax.SAXParseException</Import>
+        <SupportCode>
+<![CDATA[
+    void assertT( boolean val, String msg ){
+        if( !val )
+            throw new RuntimeException(msg);
+    }
+]]>
+        </SupportCode>
+    </CodeSet>
+
+    <TestCase ID="Ctor001">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Construct a ValidationEventLocatorImpl without any specified parameters.
+So all parameters are unavailable.
+                 ]]></InlineAssertion>
+                <MemberSig>public ValidationEventLocatorImpl()</MemberSig>
+                <ExpectedResultSideEffect>no parameters are available</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns -1 if the column number is unavailable.
+                 ]]></InlineAssertion>
+                <MemberSig>public int getColumnNumber()</MemberSig>
+                <Precondition>created by constructor ValidationEventLocatorImpl()</Precondition>
+                <ExpectedResultValue>-1</ExpectedResultValue>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns -1 if the line number is unavailable.
+                 ]]></InlineAssertion>
+                <MemberSig>public int getLineNumber()</MemberSig>
+                <Precondition>created by constructor ValidationEventLocatorImpl()</Precondition>
+                <ExpectedResultValue>-1</ExpectedResultValue>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns null if the node is unavailable.
+                 ]]></InlineAssertion>
+                <MemberSig>public org.w3c.dom.Node getNode()</MemberSig>
+                <Precondition>created by constructor ValidationEventLocatorImpl()</Precondition>
+                <ExpectedResultValue>null</ExpectedResultValue>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns null if the object in the Java content tree is unavailable.
+                 ]]></InlineAssertion>
+                <MemberSig>public java.lang.Object getObject()</MemberSig>
+                <Precondition>created by constructor ValidationEventLocatorImpl()</Precondition>
+                <ExpectedResultValue>null</ExpectedResultValue>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns -1 if the offset is unavailable.
+                 ]]></InlineAssertion>
+                <MemberSig>public int getOffset()</MemberSig>
+                <Precondition>created by constructor ValidationEventLocatorImpl()</Precondition>
+                <ExpectedResultValue>-1</ExpectedResultValue>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns null if the name of the XML source as a URL is unavailable.
+                 ]]></InlineAssertion>
+                <MemberSig>public java.net.URL getURL()</MemberSig>
+                <Precondition>created by constructor ValidationEventLocatorImpl()</Precondition>
+                <ExpectedResultValue>null</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    ValidationEventLocator vel = new ValidationEventLocatorImpl();
+
+    String result = "";
+
+    if (vel.getColumnNumber() != -1) {
+        result += "; getColumnNumber() != -1: " + vel.getColumnNumber();
+    }
+
+    if (vel.getLineNumber() != -1) {
+        result += "; getLineNumber() != -1: " + vel.getLineNumber();
+    }
+
+    if (vel.getNode() != null) {
+        result += "; getNode() != null: " + vel.getNode();
+    }
+
+    if (vel.getObject() != null) {
+        result += "; getObject() != null: " + vel.getObject();
+    }
+
+    if (vel.getOffset() != -1) {
+        result += "; getOffset() != -1: " + vel.getOffset();
+    }
+
+    if (vel.getURL() != null) {
+        result += "; getURL() != null: " + vel.getURL();
+    }
+
+    if (result.length() > 0) {
+        return Status.failed(result.substring(2));
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor002">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Constructs an object from an org.xml.sax.Locator.
+ColumnNumber and LineNumber are available from the locator.
+                 ]]></InlineAssertion>
+                <MemberSig>public ValidationEventLocatorImpl(org.xml.sax.Locator loc)</MemberSig>
+                <ExpectedResultSideEffect>ColumnNumber and LineNumber are what the locator has</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    LocatorImpl locator = new LocatorImpl();
+    locator.setColumnNumber(1);
+    locator.setLineNumber(2);
+    ValidationEventLocator vel = new ValidationEventLocatorImpl(locator);
+
+    String result = "";
+
+    if (vel.getColumnNumber() != 1) {
+        result += "; getColumnNumber() != 1: " + vel.getColumnNumber();
+    }
+
+    if (vel.getLineNumber() != 2) {
+        result += "; getLineNumber() != 2: " + vel.getLineNumber();
+    }
+
+    if (result.length() > 0) {
+        return Status.failed(result.substring(2));
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor003">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Constructs an object that points to a DOM Node.
+Node is available.
+                 ]]></InlineAssertion>
+                <MemberSig>public ValidationEventLocatorImpl(org.w3c.dom.Node _node)</MemberSig>
+                <ExpectedResultSideEffect>the node is available</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    Node node;
+
+    try {
+        node = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+    } catch (FactoryConfigurationError fce) {
+        return Status.failed(fce.toString());
+    } catch (ParserConfigurationException pce) {
+        return Status.failed(pce.toString());
+    }
+
+    ValidationEventLocator vel = new ValidationEventLocatorImpl(node);
+
+    if (vel.getNode() != node) {
+        return Status.failed("getNode() returns " + vel.getNode() + ", expected is " + node);
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor004">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Constructs an object that points to a JAXB content object.
+Object parameter is available.
+                 ]]></InlineAssertion>
+                <MemberSig>public ValidationEventLocatorImpl(java.lang.Object _object)</MemberSig>
+                <ExpectedResultSideEffect>the object is available</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    Object obj = new Object();
+
+    ValidationEventLocator vel = new ValidationEventLocatorImpl(obj);
+
+    if (vel.getObject() != obj) {
+        return Status.failed("getObject() returns " + vel.getObject() + ", expected is " + obj);
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Ctor005">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Constructs an object from the location information of a SAXParseException.
+ColumnNumber and LineNumber are available from the SAXParseException.
+                 ]]></InlineAssertion>
+                <MemberSig>public ValidationEventLocatorImpl(org.xml.sax.SAXParseException e)</MemberSig>
+                <ExpectedResultSideEffect>ColumnNumber and LineNumber are what the exception has</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    SAXParseException spe = new SAXParseException("message", "publicId", "systemId", 3, 2);
+    ValidationEventLocator vel = new ValidationEventLocatorImpl(spe);
+
+    String result = "";
+
+    if (vel.getColumnNumber() != 2) {
+        result += "; getColumnNumber() != 2: " + vel.getColumnNumber();
+    }
+
+    if (vel.getLineNumber() != 3) {
+        result += "; getLineNumber() != 3: " + vel.getLineNumber();
+    }
+
+    if (result.length() > 0) {
+        return Status.failed(result.substring(2));
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Set001">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Sets the column number.
+                 ]]></InlineAssertion>
+                <MemberSig>public void setColumnNumber(int _columnNumber)</MemberSig>
+                <ExpectedResultSideEffect>ColumnNumber is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns the column number if available.
+                 ]]></InlineAssertion>
+                <MemberSig>public int getColumnNumber()</MemberSig>
+                <Precondition>the column number is set</Precondition>
+                <ExpectedResultValue>what set</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    ValidationEventLocatorImpl vel = new ValidationEventLocatorImpl();
+
+    vel.setColumnNumber(3);
+
+    if (vel.getColumnNumber() != 3) {
+        return Status.failed("getColumnNumber() != 3: " + vel.getColumnNumber());
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Set002">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Sets the line number.
+                 ]]></InlineAssertion>
+                <MemberSig>public void setLineNumber(int _lineNumber)</MemberSig>
+                <ExpectedResultSideEffect>LineNumber is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns the line number if available.
+                 ]]></InlineAssertion>
+                <MemberSig>public int getLineNumber()</MemberSig>
+                <Precondition>the line number is set</Precondition>
+                <ExpectedResultValue>what set</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    ValidationEventLocatorImpl vel = new ValidationEventLocatorImpl();
+
+    vel.setLineNumber(2);
+
+    if (vel.getLineNumber() != 2) {
+        return Status.failed("getLineNumber() != 2: " + vel.getLineNumber());
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Set003">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Sets the node.
+                 ]]></InlineAssertion>
+                <MemberSig>public void setNode(org.w3c.dom.Node _node)</MemberSig>
+                <ExpectedResultSideEffect>Node is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns the node if available.
+                 ]]></InlineAssertion>
+                <MemberSig>public org.w3c.dom.Node getNode()</MemberSig>
+                <Precondition>the node is set</Precondition>
+                <ExpectedResultValue>what set</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    Node node;
+
+    try {
+        node = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+    } catch (FactoryConfigurationError fce) {
+        return Status.failed(fce.toString());
+    } catch (ParserConfigurationException pce) {
+        return Status.failed(pce.toString());
+    }
+
+    ValidationEventLocatorImpl vel = new ValidationEventLocatorImpl();
+
+    vel.setNode(node);
+
+    if (vel.getNode() != node) {
+        return Status.failed("getNode() != " + node + ": " + vel.getNode());
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Set004">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Sets the JAXB content object.
+                 ]]></InlineAssertion>
+                <MemberSig>public void setObject(java.lang.Object _object)</MemberSig>
+                <ExpectedResultSideEffect>Object is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns the JAXB content object if available.
+                 ]]></InlineAssertion>
+                <MemberSig>public java.lang.Object getObject()</MemberSig>
+                <Precondition>the JAXB content object is set</Precondition>
+                <ExpectedResultValue>what set</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    Object object = new Object();
+
+    ValidationEventLocatorImpl vel = new ValidationEventLocatorImpl();
+
+    vel.setObject(object);
+
+    if (vel.getObject() != object) {
+        return Status.failed("getObject() != " + object + ": " + vel.getObject());
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Set005">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Sets the offset.
+                 ]]></InlineAssertion>
+                <MemberSig>public void setOffset(int _offset)</MemberSig>
+                <ExpectedResultSideEffect>Offset is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns the offset if available.
+                 ]]></InlineAssertion>
+                <MemberSig>public int getOffset()</MemberSig>
+                <Precondition>the offset is set</Precondition>
+                <ExpectedResultValue>what set</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    ValidationEventLocatorImpl vel = new ValidationEventLocatorImpl();
+
+    vel.setOffset(12);
+
+    if (vel.getOffset() != 12) {
+        return Status.failed("getOffset() != 12: " + vel.getOffset());
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="Set006">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Sets the name of the XML source.
+                 ]]></InlineAssertion>
+                <MemberSig>public void setURL(java.net.URL _url)</MemberSig>
+                <ExpectedResultSideEffect>URL is what set</ExpectedResultSideEffect>
+            </TestCaseSpec>
+
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+Returns the name of the XML source if available.
+                 ]]></InlineAssertion>
+                <MemberSig>public java.net.URL getURL()</MemberSig>
+                <Precondition>the name of the XML source is set</Precondition>
+                <ExpectedResultValue>what set</ExpectedResultValue>
+            </TestCaseSpec>
+
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <TestCode><![CDATA[
+    URL url;
+
+    try {
+        url = new URL("http://java.sun.com");
+    } catch(MalformedURLException e) {
+        return Status.failed(e.toString());
+    }
+
+    ValidationEventLocatorImpl vel = new ValidationEventLocatorImpl();
+
+    vel.setURL(url);
+
+    if (vel.getURL() != url) {
+        return Status.failed("getURL() != " + url + ": " + vel.getURL());
+    }
+
+    return Status.passed("OKAY");
+]]></TestCode>
+    </TestCase>
+
+	<TestCase ID="Ctor002a">
+		<TestCaseDocumentation>
+			<TestCaseSpec>
+                <InlineAssertion>ValidationEventLocatorImpl(Locator loc) Throws: IllegalArgumentException - if the Locator is null</InlineAssertion>
+			</TestCaseSpec>
+        </TestCaseDocumentation>
+		<TestCode><![CDATA[
+        try {
+            new ValidationEventLocatorImpl( (Locator)null );
+            return Status.failed( "expected IllegalArgumentException was not thrown" );
+        } catch(IllegalArgumentException e) {
+            return Status.passed("OK");
+        }
+		]]></TestCode>
+	</TestCase>	
+	<TestCase ID="Ctor003a">
+		<TestCaseDocumentation>
+			<TestCaseSpec>
+                <InlineAssertion>ValidationEventLocatorImpl(SAXParseException e) Throws: IllegalArgumentException - if the SAXParseException is null</InlineAssertion>
+			</TestCaseSpec>
+        </TestCaseDocumentation>
+		<TestCode><![CDATA[
+        try {
+            new ValidationEventLocatorImpl( (SAXParseException)null );
+            return Status.failed( "expected IllegalArgumentException was not thrown" );
+        } catch(IllegalArgumentException e) {
+            return Status.passed("OK");
+        }
+		]]></TestCode>
+	</TestCase>	
+	<TestCase ID="Ctor004a">
+		<TestCaseDocumentation>
+			<TestCaseSpec>
+                <InlineAssertion>ValidationEventLocatorImpl(Node _node) Throws: IllegalArgumentException - if the Node is null</InlineAssertion>
+			</TestCaseSpec>
+        </TestCaseDocumentation>
+		<TestCode><![CDATA[
+        try {
+            new ValidationEventLocatorImpl( (Node)null );
+            return Status.failed( "expected IllegalArgumentException was not thrown" );
+        } catch(IllegalArgumentException e) {
+            return Status.passed("OK");
+        }
+		]]></TestCode>
+	</TestCase>	
+	<TestCase ID="Ctor005a">
+		<TestCaseDocumentation>
+			<TestCaseSpec>
+                <InlineAssertion>ValidationEventLocatorImpl(Object _object) Throws: IllegalArgumentException - if the Object is null</InlineAssertion>
+			</TestCaseSpec>
+        </TestCaseDocumentation>
+		<TestCode><![CDATA[
+        try {
+            new ValidationEventLocatorImpl( (Object)null );
+            return Status.failed( "expected IllegalArgumentException was not thrown" );
+        } catch(IllegalArgumentException e) {
+            return Status.passed("OK");
+        }
+		]]></TestCode>
+	</TestCase>	
+
+	<TestCase ID="SetURL_null">
+		<TestCaseDocumentation>
+			<TestCaseSpec>
+                <InlineAssertion>Null values are allowed.</InlineAssertion>
+			</TestCaseSpec>
+        </TestCaseDocumentation>
+		<TestCode><![CDATA[
+        ValidationEventLocatorImpl l = new ValidationEventLocatorImpl();
+        l.setURL(null);
+        assertT( l.getURL() == null, "getURL() returns unexpectedly non-null value" );
+        return Status.passed("OK");
+		]]></TestCode>
+	</TestCase>	
+	<TestCase ID="SetObject_null">
+		<TestCaseDocumentation>
+			<TestCaseSpec>
+                <InlineAssertion>Null values are allowed.</InlineAssertion>
+			</TestCaseSpec>
+        </TestCaseDocumentation>
+		<TestCode><![CDATA[
+        ValidationEventLocatorImpl l = new ValidationEventLocatorImpl();
+        l.setObject(null);
+        assertT( l.getObject() == null, "getObject() returns unexpectedly non-null value" );
+        return Status.passed("OK");
+		]]></TestCode>
+	</TestCase>	
+	<TestCase ID="SetNode_null">
+		<TestCaseDocumentation>
+			<TestCaseSpec>
+                <InlineAssertion>Null values are allowed.</InlineAssertion>
+			</TestCaseSpec>
+        </TestCaseDocumentation>
+		<TestCode><![CDATA[
+        ValidationEventLocatorImpl l = new ValidationEventLocatorImpl();
+        l.setNode(null);
+        assertT( l.getNode() == null, "getNode() returns unexpectedly non-null value" );
+        return Status.passed("OK");
+		]]></TestCode>
+	</TestCase>	
+
+</TestGroup>
+<!-- Ident: @(#)ValidationEventLocatorImpl.test.xml	1.3 07/01/24 -->

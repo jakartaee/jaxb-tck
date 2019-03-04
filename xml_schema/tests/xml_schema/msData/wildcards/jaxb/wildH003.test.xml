@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="wildH003">
+    <TestGroupDocumentation>
+        <Title><![CDATA[wildH003]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Validation - any : ANY (w/ processContents=lax and namespace=##targetNamespace) with schema targetNamespace=http://foobar and instance document has elements from targetNamespace
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)wildH003.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../wildH003.xsd"/>
+        <ExternalData Type="iodata" SourceName="wildH003.sig"/>
+    </CodeSet>
+    <TestCase ID="wildH003">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="wildH003.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../wildH003.xml"/>
+            <ExternalData Type="iodata" SourceName="wildh003-wildH003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

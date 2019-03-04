@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="integer_minInclusive004_553">
+   <TestGroupDocumentation>
+      <Title><![CDATA[integer_minInclusive004_553]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : minInclusive cannot be greater than maxInclusive for the same datatype
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)integer_minInclusive004_553.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../integer_minInclusive004.xsd"/>
+   </CodeSet>
+   <TestCase ID="integer_minInclusive004_553">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)integer_minInclusive004_553.test.xml	1.1 07/03/27 -->

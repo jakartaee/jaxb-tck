@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="decimal_pattern001_1036">
+    <TestGroupDocumentation>
+        <Title><![CDATA[decimal_pattern001_1036]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=pattern and value=[0-9]{0,2}.[0-9]{0,2} and document value=5.55
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)decimal_pattern001_1036.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../decimal_pattern001.xsd"/>
+        <ExternalData Type="iodata" SourceName="decimal_pattern001_1036.sig"/>
+    </CodeSet>
+    <TestCase ID="decimal_pattern001_1036">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="decimal_pattern001_1036.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../decimal_pattern001.xml"/>
+            <ExternalData Type="iodata" SourceName="decimal_pattern001_1036-decimal_pattern001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

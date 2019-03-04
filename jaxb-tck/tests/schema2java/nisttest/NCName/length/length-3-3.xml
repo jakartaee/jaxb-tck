@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (see http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/).
+      File: length-3-3.xml
+      XML instance number 3 in a series of 
+      5 conforming to NIST test schema
+      length-3.xsd.
+-->
+
+<NISTSchema-NCName-length-3
+    xmlns="NISTSchema-NCName-length-3-NS"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="NISTSchema-NCName-length-3-NS length-3.xsd">xthe-browsers.a_the.their.of.divisions.lie</NISTSchema-NCName-length-3>

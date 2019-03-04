@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-NCName-maxLength-7">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-NCName-maxLength-7]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/NCName is restricted by facet maxLength with value 56.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#NCName">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#NCName
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxLength">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxLength
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-NCName-maxLength-7.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-atomic-NCName-maxLength-3.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-NCName-maxLength-7.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-NCName-maxLength-7">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

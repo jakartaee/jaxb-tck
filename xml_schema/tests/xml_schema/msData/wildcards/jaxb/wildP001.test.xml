@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="wildP001">
+    <TestGroupDocumentation>
+        <Title><![CDATA[wildP001]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Validation - any : ANYAttribute (w/ processContents=strict and namespace=##targetNamespace) with schema targetNamespace=http://foobar, attribute declared and instance document has attributes from targetNamespace
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Wildcards
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)wildP001.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../wildP001.xsd"/>
+        <ExternalData Type="iodata" SourceName="wildP001.sig"/>
+    </CodeSet>
+    <TestCase ID="wildP001">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="wildP001.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../wildP001.xml"/>
+            <ExternalData Type="iodata" SourceName="wildp001-wildP001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

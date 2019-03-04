@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-unsignedShort-minInclusive-6">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-unsignedShort-minInclusive-6]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/unsignedShort is restricted by facet minInclusive with value 3790.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#unsignedShort">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#unsignedShort
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-minInclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-minInclusive
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-unsignedShort-minInclusive-6.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-atomic-unsignedShort-minInclusive-3.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-unsignedShort-minInclusive-6.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-unsignedShort-minInclusive-6">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

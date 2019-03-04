@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="negativeInteger_minInclusive004_1599">
+    <TestGroupDocumentation>
+        <Title><![CDATA[negativeInteger_minInclusive004_1599]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minInclusive and value=-7 and facet=maxInclusive and value=-1) and document value=-5
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)negativeInteger_minInclusive004_1599.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../negativeInteger_minInclusive004.xsd"/>
+        <ExternalData Type="iodata" SourceName="negativeInteger_minInclusive004_1599.sig"/>
+    </CodeSet>
+    <TestCase ID="negativeInteger_minInclusive004_1599">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="negativeInteger_minInclusive004_1599.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../negativeInteger_minInclusive004.xml"/>
+            <ExternalData Type="iodata" SourceName="negativeinteger_mininclusive004_1599-negativeInteger_minInclusive004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

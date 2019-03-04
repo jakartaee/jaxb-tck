@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="duration029_1997">
+    <TestGroupDocumentation>
+        <Title><![CDATA[duration029_1997]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : For duration, the designator 'T' shall be absent if all of the time items are absent
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)duration029_1997.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../datatypes.xsd"/>
+        <ExternalData Type="iodata" SourceName="duration029_1997.sig"/>
+    </CodeSet>
+    <TestCase ID="duration029_1997">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

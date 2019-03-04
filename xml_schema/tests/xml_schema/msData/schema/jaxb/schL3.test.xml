@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="schL3">
+   <TestGroupDocumentation>
+      <Title><![CDATA[schL3]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : test group as child of redefine, group (all, sequence, choice), all, is a superset of their original def by self referencing This violate the content of 'all', because it does not allow 'group' as child.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)schL3.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../schL3_a.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schL3_b.xsd"/>
+   </CodeSet>
+   <TestCase ID="schL3">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)schL3.test.xml	1.1 07/03/27 -->

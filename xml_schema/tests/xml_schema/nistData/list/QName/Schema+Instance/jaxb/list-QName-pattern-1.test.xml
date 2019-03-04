@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-QName-pattern-1">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-QName-pattern-1]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/QName is restricted by facet pattern with value ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{47} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{11} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{35} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{11} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{43} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{32} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{22} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{21} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{46} ([\i-[:]][\c-[:]]*:)?[\i-[:]][\c-[:]]{33}.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#QName">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#QName
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-QName-pattern-1.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-QName-pattern-2.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-QName-pattern-1.sig"/>
+    </CodeSet>
+    <TestCase ID="list-QName-pattern-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-list-QName-pattern-2-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-list-QName-pattern-2-1.xml"/>
+            <ExternalData Type="iodata" SourceName="list-qname-pattern-1-NISTXML-SV-IV-list-QName-pattern-2-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup PUBLIC "testgenspec.dtd" "testgenspec.dtd" >
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="JAXBIntrospector_">
+	<TestGroupDocumentation>
+        <Title>javax.xml.bind.JAXBIntrospector tests</Title>
+        <Description>Compile a simple schema to create a java binding classes. Test javax.xml.bind.JAXBIntrospector using this context.
+        </Description>
+        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedClass>JAXBIntrospector</TestedClass>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)JAXBIntrospector_CTTests.test.xml	1.5 07/04/16</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <AttrElem Name="schemaName">Introspector.xsd</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+    	<Import>javax.xml.bind.JAXBContext</Import>
+		<Import>javax.xml.bind.JAXBElement</Import>
+		<Import>javax.xml.bind.JAXBException</Import>
+		<Import>javax.xml.bind.JAXBIntrospector</Import>
+		<Import>javax.xml.namespace.QName</Import>
+		<ExternalSupportClass SourceName="Element.java"/>
+        <ExternalSupportClass SourceName="ChildType.java"/>
+        <ExternalSupportClass SourceName="RootType.java"/>
+        <ExternalSupportClass SourceName="ObjectFactory.java"/>
+        <ExternalSupportClass SourceName="package-info.java"/>
+        <ExternalData SourceName="Introspector.xsd" Type="iodata"/>
+        <ExternalData SourceName="Introspector.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCase ID="isElement001">
+        <TestCaseDocumentation>
+            <Title>isElement(Object object) - true </Title>
+            <Description>
+                isElement(Object object) returns true if an object is JAXBElement
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+ isElement(Object object) returns true if an object is JAXBElement
+             ]]></InlineAssertion>
+             <MemberSig>public abstract boolean isElement(Object object)</MemberSig>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[      
+        JAXBContext context;
+        try {
+            context = getJAXBContext();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create an instance of JAXB context: "+e);
+        }
+        JAXBIntrospector introspector = context.createJAXBIntrospector();
+        if(introspector == null){
+            return Status.failed("JAXBContext.createJAXBIntrospector() has returned null");
+        }
+        JAXBElement jaxbElement = new JAXBElement<String>(new QName("jck-jaxb-test/Introspector","element"),
+                String.class,null,"value");
+        boolean test = introspector.isElement(jaxbElement);
+        if(!test){
+            return Status.failed("JAXBIntrospector.isElement() has returned false on passing an instance of JAXBElement as a parameter.");
+        }
+        return Status.passed("OK");
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="isElement002">
+        <TestCaseDocumentation>
+            <Title>isElement(Object object) - true</Title>
+            <Description>
+                isElement(Object object) returns true if an object is recognized by current JAXBContext and annotated with XmlRootElement
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+ isElement(Object object) returns true object is recognized by current JAXBContext and annotated with @XmlRootElement.
+             ]]></InlineAssertion>
+             <MemberSig>public abstract boolean isElement(Object object)</MemberSig>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[      
+        JAXBContext context;
+        try {
+            context = JAXBContext.newInstance(Element.class);
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create an instance of JAXB context: "+e);
+        }
+        JAXBIntrospector introspector = context.createJAXBIntrospector();
+        if(introspector == null){
+            return Status.failed("JAXBContext.createJAXBIntrospector() has returned null");
+        }
+        Element element = new Element();
+        boolean test = introspector.isElement(element);
+        if(!test){
+            return Status.failed("JAXBIntrospector.isElement() has returned false on passing an instance of JAXBElement as a parameter.");
+        }
+        return Status.passed("OK");
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="isElement003">
+        <TestCaseDocumentation>
+            <Title>isElement(Object object) - false</Title>
+            <Description>
+                isElement(Object object) returns false if object is not annotated with XmlRootElement,and not an JAXBElement
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+ isElement(Object object) returns false if object is not annotated with XmlRootElement,and not an JAXBElement
+             ]]></InlineAssertion>
+             <MemberSig>public abstract boolean isElement(Object object)</MemberSig>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[      
+        JAXBContext context;
+        try {
+            context = JAXBContext.newInstance(Element.class);
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create an instance of JAXB context: "+e);
+        }
+        JAXBIntrospector introspector = context.createJAXBIntrospector();
+        if(introspector == null){
+            return Status.failed("JAXBContext.createJAXBIntrospector() has returned null");
+        }
+        String testString = "object";
+        boolean test = introspector.isElement(testString);
+        if(test){
+            return Status.failed("JAXBIntrospector.isElement() has returned false on passing an java.lang.String as a parameter");
+        }
+        return Status.passed("OK");
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="getElementName001">
+        <TestCaseDocumentation>
+            <Title>getElementName(Object object) - null</Title>
+            <Description>
+                getElementName(Object jaxbElement) returns null if object is not annotated with XmlRootElement,and not an JAXBElement
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+ getElementName(Object jaxbElement) returns null if object is not annotated with XmlRootElement,and not an JAXBElement
+             ]]></InlineAssertion>
+             <MemberSig>public abstract javax.xml.namespace.QName getElementName(Object jaxbElement)</MemberSig>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[      
+        JAXBContext context;
+        try {
+            context = JAXBContext.newInstance(Element.class);
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create an instance of JAXB context: "+e);
+        }
+        JAXBIntrospector introspector = context.createJAXBIntrospector();
+        if(introspector == null){
+            return Status.failed("JAXBContext.createJAXBIntrospector() has returned null");
+        }
+        String testString = "object";
+        QName qname = introspector.getElementName(testString);
+        if(qname != null){
+            return Status.failed("JAXBIntrospector.getElementName() has returned non-null value on passing an java.lang.String as a parameter");
+        }
+        return Status.passed("OK");
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="getElementName002">
+        <TestCaseDocumentation>
+            <Title>getElementName(Object object)</Title>
+            <Description>
+                Test unmarshalls a simple content tree and verifies that 
+                getElementName(Object jaxbElement) returns a correct element name. 
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+ getElementName(Object jaxbElement) returns correct element name
+             ]]></InlineAssertion>
+             <MemberSig>public abstract javax.xml.namespace.QName getElementName(Object jaxbElement)</MemberSig>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[      
+        JAXBContext context;
+        try {
+            context = JAXBContext.newInstance(Element.class);
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Cannot create an instance of JAXB context: "+e);
+        }
+        JAXBIntrospector introspector = context.createJAXBIntrospector();
+        if(introspector == null){
+            return Status.failed("JAXBContext.createJAXBIntrospector() has returned null");
+        }
+        Object o = unmarshal("Introspector.xml");
+        QName qname = introspector.getElementName(o);
+        if(qname == null){
+            return Status.failed("getElementName() returns null");
+        }
+        if(
+                !"jck-jaxb-test/Introspector".equals(qname.getNamespaceURI())||
+                !"root".equals(qname.getLocalPart())
+        ){
+            return Status.failed("JAXBIntrospector.getElementName() has returned invalid element name");
+        }
+        return Status.passed("OK");
+        ]]></TestCode>
+    </TestCase>
+    
+    <TestCase ID="getValue001">
+        <TestCaseDocumentation>
+            <Title>getValue(Object jaxbElement)</Title>
+            <Description>
+                Tests a convenience method JAXBIntrospector.getValue() 
+            </Description>
+            <Author>Alexey Vishentsev</Author>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[
+ getValue(Object jaxbElement) returns value of JAXBElement if object is an instance of JAXBElement
+ getValue(Object jaxbElement) returns an object if object is not instance of JAXBElement
+             ]]></InlineAssertion>
+             <MemberSig>public static Object getValue(Object jaxbElement)</MemberSig>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCode><![CDATA[      
+        String value = "value";
+        Object val = JAXBIntrospector.getValue(new JAXBElement<String>(new QName("jck-jaxb-test/Introspector","element"),
+                String.class,null,value));
+        if(!value.equals(val)){
+            return Status.failed("getValue(Object jaxbElement) does not return value of JAXBElement if object is an instance of JAXBElement");
+        }
+        
+        val = JAXBIntrospector.getValue(value);
+        if(!value.equals(val)){
+            return Status.failed("getValue(Object jaxbElement) does not return an object if object is not instance of JAXBElement");
+        }
+        return Status.passed("Ok");
+        ]]></TestCode>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!--
+Ident: @(#)test.2.v.xml	1.2 02/12/25
+
+-->
+
+				<root xmlns="foo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<eB><foo/></eB>
+					<eB xsi:type="B"><foo/></eB>
+					<eB xsi:type="Dr"><foo/></eB>
+					<eB xsi:type="De"><foo/></eB>
+					<eB xsi:type="Drr"><foo/></eB>
+					<eB xsi:type="Dre"><foo/></eB>
+					<eB xsi:type="Der"><foo/></eB>
+					<eB xsi:type="Dee"><foo/></eB>
+					
+					<eDr><foo/></eDr>
+					<eDr xsi:type="Dr"><foo/></eDr>
+					<eDr xsi:type="Drr"><foo/></eDr>
+					<eDr xsi:type="Dre"><foo/></eDr>
+					
+					<eDe><foo/></eDe>
+					<eDe xsi:type="De"><foo/></eDe>
+					<eDe xsi:type="Der"><foo/></eDe>
+					<eDe xsi:type="Dee"><foo/></eDe>
+					
+					<eDrr><foo/></eDrr>
+					<eDrr xsi:type="Drr"><foo/></eDrr>
+					
+					<eDre><foo/></eDre>
+					<eDre xsi:type="Dre"><foo/></eDre>
+					
+					<eDer><foo/></eDer>
+					<eDer xsi:type="Der"><foo/></eDer>
+					
+					<eDee><foo/></eDee>
+					<eDee xsi:type="Dee"><foo/></eDee>
+				</root>

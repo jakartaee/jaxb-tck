@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.element.elemz018.Root"> 
+  <void property="aaa"> 
+   <object class="javasoft.sqe.tests.element.elemz018.Aaa"> 
+    <void property="bbb"> 
+     <object class="javasoft.sqe.tests.element.elemz018.Bbb"> 
+      <void property="ccc"> 
+       <object class="javasoft.sqe.tests.element.elemz018.Ccc"> 
+        <void property="ddd"> 
+         <object class="javasoft.sqe.tests.element.elemz018.Ddd"> 
+          <void property="eee"> 
+           <object class="javasoft.sqe.tests.element.elemz018.Eee"> 
+            <void property="fff"> 
+             <object class="javasoft.sqe.tests.element.elemz018.Fff"> 
+              <void property="ggg"> 
+               <object class="javasoft.sqe.tests.element.elemz018.Ggg"> 
+                <void property="hhh"> 
+                 <object class="javasoft.sqe.tests.element.elemz018.Hhh"> 
+                  <void property="iii"> 
+                   <object class="javasoft.sqe.tests.element.elemz018.Iii"> 
+                    <void property="jjj"> 
+                     <object class="javasoft.sqe.tests.element.elemz018.Jjj"> 
+                      <void property="kkk"> 
+                       <object class="javasoft.sqe.tests.element.elemz018.Kkk"> 
+                        <void property="lll"> 
+                         <object class="javasoft.sqe.tests.element.elemz018.Lll"> 
+                          <void property="mmm"> 
+                           <object class="javasoft.sqe.tests.element.elemz018.Mmm"> 
+                            <void property="nnn"> 
+                             <object class="javasoft.sqe.tests.element.elemz018.Nnn"> 
+                              <void property="ooo"> 
+                               <object class="javasoft.sqe.tests.element.elemz018.Ooo"> 
+                                <void property="ppp"> 
+                                 <object class="javasoft.sqe.tests.element.elemz018.Ppp"> 
+                                  <void property="qqq"> 
+                                   <object class="javasoft.sqe.tests.element.elemz018.Qqq"> 
+                                    <void property="rrr"> 
+                                     <object class="javasoft.sqe.tests.element.elemz018.Rrr"> 
+                                      <void property="sss"> 
+                                       <object class="javasoft.sqe.tests.element.elemz018.Sss"> 
+                                        <void property="ttt"> 
+                                         <object class="javasoft.sqe.tests.element.elemz018.Ttt"> 
+                                          <void property="uuu"> 
+                                           <object class="javasoft.sqe.tests.element.elemz018.Uuu"> 
+                                            <void property="www"> 
+                                             <object class="javasoft.sqe.tests.element.elemz018.Www"> 
+                                              <void property="xxx"> 
+                                               <object class="javasoft.sqe.tests.element.elemz018.Xxx"> 
+                                                <void property="yyy"> 
+                                                 <object class="javasoft.sqe.tests.element.elemz018.Yyy"> 
+                                                  <void property="zzz"> 
+                                                   <object class="javasoft.sqe.tests.element.elemz018.Zzz"> 
+                                                    <void property="signatures"> 
+                                                     <object class="javasoft.sqe.tests.element.elemz018.Signatures"/> 
+                                                    </void> 
+                                                   </object> 
+                                                  </void> 
+                                                 </object> 
+                                                </void> 
+                                               </object> 
+                                              </void> 
+                                             </object> 
+                                            </void> 
+                                           </object> 
+                                          </void> 
+                                         </object> 
+                                        </void> 
+                                       </object> 
+                                      </void> 
+                                     </object> 
+                                    </void> 
+                                   </object> 
+                                  </void> 
+                                 </object> 
+                                </void> 
+                               </object> 
+                              </void> 
+                             </object> 
+                            </void> 
+                           </object> 
+                          </void> 
+                         </object> 
+                        </void> 
+                       </object> 
+                      </void> 
+                     </object> 
+                    </void> 
+                   </object> 
+                  </void> 
+                 </object> 
+                </void> 
+               </object> 
+              </void> 
+             </object> 
+            </void> 
+           </object> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

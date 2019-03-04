@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="hexBinary_enumeration002_1306">
+    <TestGroupDocumentation>
+        <Title><![CDATA[hexBinary_enumeration002_1306]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=enumeration and value=adf789 and document value=adf789
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)hexBinary_enumeration002_1306.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../hexBinary_enumeration002.xsd"/>
+        <ExternalData Type="iodata" SourceName="hexBinary_enumeration002_1306.sig"/>
+    </CodeSet>
+    <TestCase ID="hexBinary_enumeration002_1306">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="hexBinary_enumeration002_1306.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../hexBinary_enumeration002.xml"/>
+            <ExternalData Type="iodata" SourceName="hexbinary_enumeration002_1306-hexBinary_enumeration002.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

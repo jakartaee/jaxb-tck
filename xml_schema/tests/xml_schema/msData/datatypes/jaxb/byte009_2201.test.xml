@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="byte009_2201">
+    <TestGroupDocumentation>
+        <Title><![CDATA[byte009_2201]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : Test simpleType List of byte
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)byte009_2201.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../byte009.xsd"/>
+        <ExternalData Type="iodata" SourceName="byte009_2201.sig"/>
+    </CodeSet>
+    <TestCase ID="byte009_2201">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="byte009_2201.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../byte009.xml"/>
+            <ExternalData Type="iodata" SourceName="byte009_2201-byte009.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

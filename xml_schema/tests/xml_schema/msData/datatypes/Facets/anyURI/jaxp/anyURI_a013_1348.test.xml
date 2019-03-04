@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="anyURI_a013_1348">
+   <TestGroupDocumentation>
+      <Title><![CDATA[anyURI_a013_1348]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : test documentation/source as anyURI type, by setting value to excluded uri character '>' or '"'(http://www.ietf.org/rfc/rfc2396.txt)
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)anyURI_a013_1348.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../anyURI_a013.xsd"/>
+   </CodeSet>
+   <TestCase ID="anyURI_a013_1348">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)anyURI_a013_1348.test.xml	1.1 07/03/27 -->

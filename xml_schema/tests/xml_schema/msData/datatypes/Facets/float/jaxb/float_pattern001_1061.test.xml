@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="float_pattern001_1061">
+    <TestGroupDocumentation>
+        <Title><![CDATA[float_pattern001_1061]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=pattern and value=[0-9]{0,2}.[0-9]{0,2} and document value=5.55
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)float_pattern001_1061.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../float_pattern001.xsd"/>
+        <ExternalData Type="iodata" SourceName="float_pattern001_1061.sig"/>
+    </CodeSet>
+    <TestCase ID="float_pattern001_1061">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="float_pattern001_1061.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../float_pattern001.xml"/>
+            <ExternalData Type="iodata" SourceName="float_pattern001_1061-float_pattern001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

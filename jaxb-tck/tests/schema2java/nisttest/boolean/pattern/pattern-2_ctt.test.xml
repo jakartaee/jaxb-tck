@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="pattern2">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Content Tree tests]]></Title>
+        <Description><![CDATA[
+The tests for checking the content of trees got by unmarshalling
+of the pattern-2.xsd based XML documents and created dynamically via ObjectFactory. 
+The schema defines a boolean restricted SimpleType.
+Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)pattern-2_ctt.test.xml	1.4 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.JAXBException</Import>
+        <ExternalSupportClass SourceName="pattern-2.xsd"/>
+        <ExternalData Type="iodata" SourceName="pattern2.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet001 - checking the unmarshalled content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the pattern-2-1.xml document, checks that the document
+has the value 'true'.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="pattern-2-1.xml"/>
+            <ExternalData Type="iodata" SourceName="pattern2-pattern-2-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        Object obj = unmarshal("pattern-2-1.xml");
+        NISTSchemaBooleanPattern2 pattern_2_1 = (NISTSchemaBooleanPattern2)unmarshal("pattern-2-1.xml");
+
+        if (!pattern_2_1.isValue()) {
+            String msg = "Wrong value: false. Expected: true.";
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet002 - checking that the method 'get()' returns a set value]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the pattern-2-1.xml document, changes the document value to
+another value 'true' and checks that the value is changed.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="pattern-2-1.xml"/>
+            <ExternalData Type="iodata" SourceName="pattern2-pattern-2-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        NISTSchemaBooleanPattern2 pattern_2_1 = (NISTSchemaBooleanPattern2)unmarshal("pattern-2-1.xml");
+        pattern_2_1.setValue(true);
+
+        if (!pattern_2_1.isValue()) {
+            String msg = "Wrong value: false. Expected: true.";
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet003">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet003 - checking that the method 'get()' returns a set value]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the value 'true' and checks that the value is
+set.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        NISTSchemaBooleanPattern2 pattern2 = null;
+        
+        try {
+            pattern2 = (new ObjectFactory()).createNISTSchemaBooleanPattern2();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        pattern2.setValue(true);
+
+        if (!pattern2.isValue()) {
+            String msg = "Wrong value: false. Expected: true.";
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet004">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet004 - setting a valid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the pattern-2-1.xml document, changes the document value to
+the valid value 'true' and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="pattern-2-1.xml"/>
+            <ExternalData Type="iodata" SourceName="pattern2-pattern-2-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        NISTSchemaBooleanPattern2 pattern_2_1 = (NISTSchemaBooleanPattern2)unmarshal("pattern-2-1.xml");
+        pattern_2_1.setValue(true);
+        
+        Status status = validate(pattern_2_1);
+        if (!status.isPassed()) {
+            return status;
+        }
+
+        if (!pattern_2_1.isValue()) {
+            String msg = "Wrong value: false. Expected: true.";
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet005">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet005 - setting an invalid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test unmarshalls the pattern-2-1.xml document, changes the document value to
+the invalid value and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="pattern-2-1.xml"/>
+            <ExternalData Type="iodata" SourceName="pattern2-pattern-2-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        NISTSchemaBooleanPattern2 pattern_2_1 = (NISTSchemaBooleanPattern2)unmarshal("pattern-2-1.xml");
+        pattern_2_1.setValue(false);
+        
+        Status status = validate(pattern_2_1);
+        if (status.isPassed()) {
+            return Status.failed("Unexpectedly passed for the for the value 'false'.");
+        }
+        
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet006">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet006 - setting a valid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the valid value 'true' and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        NISTSchemaBooleanPattern2 pattern2 = null;
+        
+        try {
+            pattern2 = (new ObjectFactory()).createNISTSchemaBooleanPattern2();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        pattern2.setValue(true);
+        
+        Status status = validate(pattern2);
+        if (!status.isPassed()) {
+            return status;
+        }
+
+        if (!pattern2.isValue()) {
+            String msg = "Wrong value: false. Expected: true.";
+            return Status.failed(msg);
+        }
+
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet007">
+        <TestCaseDocumentation>
+            <Title><![CDATA[GetSet007 - setting an invalid value and validating a content tree using Validator]]></Title>
+            <Description><![CDATA[
+The test creates a document, sets the document value to
+the invalid value and validates the content tree.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        NISTSchemaBooleanPattern2 pattern2 = null;
+        
+        try {
+            pattern2 = (new ObjectFactory()).createNISTSchemaBooleanPattern2();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed(e.toString());
+        }
+        
+        pattern2.setValue(false);
+        
+        Status status = validate(pattern2);
+        if (status.isPassed()) {
+            return Status.failed("Unexpectedly passed for the value 'false'.");
+        }
+        
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

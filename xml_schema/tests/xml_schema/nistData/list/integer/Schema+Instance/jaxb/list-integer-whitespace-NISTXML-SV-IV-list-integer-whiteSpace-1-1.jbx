@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-integer-whiteSpace-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-integer-whiteSpace-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>-999999999999999999</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>11192127490397218</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>-740552574276885033</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>945080088066195810</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>928914649808016744</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>383869271821196011</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>564340720103634562</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="java.math.BigInteger"> 
+     <string>999999999999999999</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

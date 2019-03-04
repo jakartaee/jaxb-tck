@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>urn:products</string> 
+   <string>products</string> 
+  </object> 
+  <class>javasoft.sqe.tests.datatypes.id_test64335.ProductList</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="javasoft.sqe.tests.datatypes.id_test64335.ProductList"> 
+   <void property="bookOrDvdOrClothing"> 
+    <void method="add"> 
+     <object class="javasoft.sqe.tests.datatypes.id_test64335.Apparel"> 
+      <void property="description"> 
+       <string>Nice pink crew-neck t-shirt.</string> 
+      </void> 
+      <void property="id"> 
+       <string>cl101</string> 
+      </void> 
+      <void property="price"> 
+       <object class="java.math.BigDecimal"> 
+        <string>32.11</string> 
+       </object> 
+      </void> 
+      <void property="size"> 
+       <string>M</string> 
+      </void> 
+      <void property="style"> 
+       <string>T</string> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javasoft.sqe.tests.datatypes.id_test64335.CD"> 
+      <void property="artist"> 
+       <string>Gambardella, Matthew</string> 
+      </void> 
+      <void property="category"> 
+       <string>Computer</string> 
+      </void> 
+      <void property="description"> 
+       <string>An in-depth look at creating applications with
+      XML.</string> 
+      </void> 
+      <void property="id"> 
+       <string>cd101</string> 
+      </void> 
+      <void property="price"> 
+       <object class="java.math.BigDecimal"> 
+        <string>44.95</string> 
+       </object> 
+      </void> 
+      <void property="releaseDate"> 
+       <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+        <string>2000-10-01</string> 
+       </object> 
+      </void> 
+      <void property="title"> 
+       <string>XML Developer&apos;s Guide</string> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javasoft.sqe.tests.datatypes.id_test64335.Book"> 
+      <void property="author"> 
+       <string>Gambardella, Matthew</string> 
+      </void> 
+      <void property="category"> 
+       <string>Computer</string> 
+      </void> 
+      <void property="description"> 
+       <string>An in-depth look at creating applications with
+      XML.</string> 
+      </void> 
+      <void property="id"> 
+       <string>bk101</string> 
+      </void> 
+      <void property="price"> 
+       <object class="java.math.BigDecimal"> 
+        <string>44.95</string> 
+       </object> 
+      </void> 
+      <void property="publishDate"> 
+       <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+        <string>2000-10-01</string> 
+       </object> 
+      </void> 
+      <void property="title"> 
+       <string>XML Developer&apos;s Guide</string> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="javasoft.sqe.tests.datatypes.id_test64335.DVD"> 
+      <void property="category"> 
+       <string>Foreign</string> 
+      </void> 
+      <void property="description"> 
+       <string>Two fellow travellers hook up and engage in mad-cap tomfoolery while stowaways on a British Merchant ship filled with anxious limeys.</string> 
+      </void> 
+      <void property="director"> 
+       <string>Hancock, Trevor</string> 
+      </void> 
+      <void property="id"> 
+       <string>dvd102</string> 
+      </void> 
+      <void property="price"> 
+       <object class="java.math.BigDecimal"> 
+        <string>23.95</string> 
+       </object> 
+      </void> 
+      <void property="releaseDate"> 
+       <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+        <string>2000-10-01</string> 
+       </object> 
+      </void> 
+      <void property="title"> 
+       <string>Adventures of John Dong and Don Gill</string> 
+      </void> 
+     </object> 
+    </void> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

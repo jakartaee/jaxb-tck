@@ -1,0 +1,17 @@
+There are scripts for generating test groups from W3C XML Schema Test Suite.
+For generation following sample code can be used:
+
+UPDIR=`pwd`
+OUTDIR=xml_schema/tests/xml_schema
+SAXON_LIB=!!! please define where saxon8/jar is located !!!
+for dir in $OUTDIR/*Meta; do
+        cd $UPDIR;
+        cp jaxb.xsl jaxp.xsl main.xsl $dir
+        cd $dir;
+        for XSL in jaxb.xsl jaxp.xsl; do
+                for i in `ls -1 *.testSet *.xml 2>/dev/null`; do
+                        echo META FILE: $dir/$i;
+                        java -jar $SAXON_LIB/saxon8.jar
+                done
+        done
+done 2>&1 | tee testgen.log

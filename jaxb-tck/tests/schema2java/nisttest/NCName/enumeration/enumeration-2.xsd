@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-NCName-enumeration-2-NS"
+        targetNamespace="NISTSchema-NCName-enumeration-2-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-2.xsd
+      This schema specifies a datatype, NISTSchema-NCName-enumeration-2,
+      which is derived by restriction of built-in type NCName
+      by facet enumeration with values of:
+          xfoster-a.is.information_ensure.re
+          _and.act-a.in_in_personal.software-tool-hardware.o
+          ntargeted-choices.system.co
+          sincorporat
+          itools_and_incorporate
+          vknown_g
+          jtoo
+          _for.recognition-will_to-defining_methods-for-having
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-NCName-enumeration-2" type="nist:NISTSchema-NCName-enumeration-2-Type"/>
+
+  <simpleType name="NISTSchema-NCName-enumeration-2-Type">
+    <restriction base="NCName">
+          <enumeration value="xfoster-a.is.information_ensure.re"/>
+          <enumeration value="_and.act-a.in_in_personal.software-tool-hardware.o"/>
+          <enumeration value="ntargeted-choices.system.co"/>
+          <enumeration value="sincorporat"/>
+          <enumeration value="itools_and_incorporate"/>
+          <enumeration value="vknown_g"/>
+          <enumeration value="jtoo"/>
+          <enumeration value="_for.recognition-will_to-defining_methods-for-having"/>
+    </restriction>
+  </simpleType>
+
+</schema>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-nonNegativeInteger-fractionDigits">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-nonNegativeInteger-fractionDigits]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/nonNegativeInteger is restricted by facet fractionDigits with value 0.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#nonNegativeInteger">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#nonNegativeInteger
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-fractionDigits">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-fractionDigits
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-nonNegativeInteger-fractionDigits.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-nonNegativeInteger-fractionDigits-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-nonNegativeInteger-fractionDigits.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-nonNegativeInteger-fractionDigits">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-atomic-nonNegativeInteger-fractionDigits-1-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-atomic-nonNegativeInteger-fractionDigits-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="atomic-nonnegativeinteger-fractiondigits-NISTXML-SV-IV-atomic-nonNegativeInteger-fractionDigits-1-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

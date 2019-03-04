@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="ad_name00108m13">
+   <TestGroupDocumentation>
+      <Title><![CDATA[Attributes have names that end with the basic characters 0x0d0e, 0x0d0f, 0x0d10, 0x0d12, 0x0d1d, 0x0d28, 0x0d2a, 0x0d31, 0x0d39, 0x0d60, 0x0d60, 0x0d61, 0x0e01, 0x0e17, 0x0e2e, 0x0e30, 0x0e32, 0x0e32, 0x0e33, 0x0e40, 0x0e42, 0x0e45, 0x0e81, 0x0e81, 0x0e82, 0x0e84 (valid schema)]]></Title>
+      <Description><![CDATA[
+        <p>
+                    Declare 26 local string attributes with the names that end with the following 
+                             basic characters: 0x0d0e, 0x0d0f, 0x0d10, 0x0d12, 0x0d1d, 0x0d28, 0x0d2a, 0x0d31, 0x0d39, 0x0d60, 0x0d60, 0x0d61, 0x0e01, 0x0e17, 0x0e2e, 0x0e30, 0x0e32, 0x0e32, 0x0e33, 0x0e40, 0x0e42, 0x0e45, 0x0e81, 0x0e81, 0x0e82, 0x0e84 respectively. The document set their values to 0, 1 or 2.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#cAttribute_Declarations">
+            http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#cAttribute_Declarations
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)ad_name00108m13.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../AD_name00108m13.xsd"/>
+   </CodeSet>
+   <TestCase ID="ad_name00108m13">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="Positive">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../AD_name00108m13_p.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)ad_name00108m13.test.xml	1.1 07/03/27 -->

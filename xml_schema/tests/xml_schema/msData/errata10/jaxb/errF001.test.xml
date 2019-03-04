@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="errF001">
+   <TestGroupDocumentation>
+      <Title><![CDATA[errF001]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Primer Errata : Errata E2-35: length facet is now allowed with either minLength or maxLength if they are specified in different derivation steps
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/2004/03/xmlschema-errata">
+            http://www.w3.org/2004/03/xmlschema-errata
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)errF001.test.xml	1.2 08/03/04</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../errF001.xsd"/>
+      <ExternalData Type="iodata" SourceName="errF001.sig"/>
+   </CodeSet>
+   <TestCase ID="errF001">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)errF001.test.xml	1.2 08/03/04 -->

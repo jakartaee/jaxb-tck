@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-double-maxExclusive-2-NS"
+        targetNamespace="NISTSchema-double-maxExclusive-2-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: maxExclusive-2.xsd
+      This schema specifies a datatype, NISTSchema-double-maxExclusive-2,
+      which is derived by restriction of built-in type double
+      by facet maxExclusive with a value of: 1426699201180684.8415E689
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-double-maxExclusive-2" type="nist:NISTSchema-double-maxExclusive-2-Type"/>
+
+  <simpleType name="NISTSchema-double-maxExclusive-2-Type">
+    <restriction base="double">
+      <maxExclusive value="1426699201180684.8415E689"/>
+    </restriction>
+  </simpleType>
+
+</schema>

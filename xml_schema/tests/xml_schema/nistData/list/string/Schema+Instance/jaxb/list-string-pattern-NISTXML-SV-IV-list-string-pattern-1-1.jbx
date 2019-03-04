@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-string-pattern-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-string-pattern-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>5638_Use_Great_Information_Implementations_Street_Obvious_Enforcement_Oasis_,_MI_19751</string> 
+   </void> 
+   <void method="add"> 
+    <string>68547_Reproduced_Pervasive_And_Street_Lies_,_IL_11837-1623</string> 
+   </void> 
+   <void method="add"> 
+    <string>2_Dom_Models_Street_With_Software_,_MI_14030</string> 
+   </void> 
+   <void method="add"> 
+    <string>384_Technologies_Able_Street_Xml_Opportunity_,_MS_13653-1327</string> 
+   </void> 
+   <void method="add"> 
+    <string>27_Of_Rigorous_Particularly_Street_Known_Led_,_MO_18424-1338</string> 
+   </void> 
+   <void method="add"> 
+    <string>83181_Component_As_Quality_Defines_Street_Appropriate_Development_Files_,_MA_19584-1412</string> 
+   </void> 
+   <void method="add"> 
+    <string>46142_Internet_To_Tools_Street_Repository_Open_Discover_,_MN_11267</string> 
+   </void> 
+   <void method="add"> 
+    <string>237_Is_Must_Repository_Environment_Street_And_Them_Into_,_WV_16578</string> 
+   </void> 
+   <void method="add"> 
+    <string>45_As_Conformant_Street_Requires_Able_,_WA_14818-1281</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

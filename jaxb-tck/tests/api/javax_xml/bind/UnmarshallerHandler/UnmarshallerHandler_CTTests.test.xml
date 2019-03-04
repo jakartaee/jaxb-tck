@@ -1,0 +1,236 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="UnmarshallerHandler_">
+    <TestGroupDocumentation>
+        <Title>getResult tests. (content tree test)</Title>
+        <Description>Compile a simple schema to create a java binding classes. Test 
+        UnmarshallerHandler's method getResult() using this JAXB context's unmarshaller.
+        </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)UnmarshallerHandler_CTTests.test.xml	1.4 07/04/16</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <AttrElem Name="schemaName">UnmarshallerHandler.xsd</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.UnmarshallerHandler</Import>
+        <ExternalSupportClass SourceName="ObjectFactory.java" />
+        <ExternalData SourceName="UnmarshallerHandler.xsd" Type="iodata"/>
+    </CodeSet>
+
+    <TestCase ID="getResult001">
+        <TestCaseDocumentation>
+            <Title>getResult obtains the unmarshalled result.</Title>
+            <Description>
+                The test creates an unmarshaller object and parse a simple xml document
+                by calling directly methods of the class UnmarshallerHandler.
+                Then call the method getResult() to obtain the unmarshalled object.
+                The object is expected to be an instance of the class JAXBElement{String} and contain 
+                some string.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>org.xml.sax.helpers.AttributesImpl</Import>
+            <Import>org.xml.sax.SAXException</Import>
+            <Import>javax.xml.bind.JAXBContext</Import>
+            <Import>javax.xml.bind.JAXBElement</Import>
+            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>javax.xml.bind.Unmarshaller</Import>
+            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+
+        try {
+            JAXBContext jc = getJAXBContext();
+            Unmarshaller u = jc.createUnmarshaller();
+
+            eh.setParent(u.getEventHandler());
+            u.setSchema(schema);
+            u.setEventHandler(eh);
+
+            UnmarshallerHandler uh = u.getUnmarshallerHandler();
+
+            // emulate SAX parsing of the document:
+            // <test:root 
+            //      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            //      xmlns:test="api/UnmarshallerHandler"
+            //      xsi:schemaLocation="api/UnmarshallerHandler UnmarshallerHandler.xsd"
+            // >a</test:root>
+            uh.startDocument();
+             uh.startPrefixMapping("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+              uh.startPrefixMapping("test", "api/UnmarshallerHandler");
+               uh.startElement("api/UnmarshallerHandler", "root", "test:root", new AttributesImpl());
+                uh.characters(new char[] {'a'}, 0, 1);
+               uh.endElement("api/UnmarshallerHandler", "root", "test:root");
+              uh.endPrefixMapping("test");
+             uh.endPrefixMapping("xsi");
+            uh.endDocument();
+
+            Object obj = uh.getResult();
+
+            if (obj == null) {
+                return Status.failed("uh.getResult() returns null");
+            }
+
+            if (! (obj instanceof JAXBElement)) {
+                return Status.failed("uh.getResult() doesn't return an instance of JAXBElement: " + obj);
+            }
+
+            JAXBElement<String> root = (JAXBElement<String>)obj;
+
+            if (!root.getValue().equals("a")) {
+                return Status.failed("uh.getResult() returns unexpected root object: "
+                                   + root.getValue() + ", expected is 'a'");
+            }
+
+            return Status.passed("OKAY");
+
+        } catch (SAXException se) {
+            return Status.failed(se.toString());
+        } catch (JAXBException jaxbe) {
+            if (!eh.hasEvents()) {
+                return Status.failed("no error events are handled but " + jaxbe + " is thrown");
+            }
+            return Status.failed(jaxbe.toString());
+        } finally {
+            eh.printEvents(ref);
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="getResult002">
+        <TestCaseDocumentation>
+            <Title>getResult is called before startDocument event.</Title>
+            <Description>
+                The test creates an unmarshaller object then call the method getResult().
+                The method is expected to throw IllegalStateException.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.bind.JAXBContext</Import>
+            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>javax.xml.bind.Unmarshaller</Import>
+            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+
+        try {
+            JAXBContext jc = getJAXBContext();
+            Unmarshaller u = jc.createUnmarshaller();
+
+            eh.setParent(u.getEventHandler());
+            u.setSchema(schema);
+            u.setEventHandler(eh);
+
+            UnmarshallerHandler uh = u.getUnmarshallerHandler();
+
+            Object obj = uh.getResult();
+
+            return Status.failed("getResult() called before endDocument event does not " 
+                               + "throw IllegalStateException, it returns " + obj);
+
+        } catch (IllegalStateException ise) {
+            return Status.passed("OKAY");
+        } catch (JAXBException jaxbe) {
+            if (!eh.hasEvents()) {
+                return Status.failed("no error events are handled but " + jaxbe + " is thrown");
+            }
+            return Status.failed(jaxbe.toString());
+        } finally {
+            eh.printEvents(ref);
+        }
+        ]]></TestCode>
+    </TestCase>
+
+    <TestCase ID="getResult003">
+        <TestCaseDocumentation>
+            <Title>getResult is called before startDocument event.</Title>
+            <Description>
+                The test creates an unmarshaller object and parse a simple xml document
+                by calling directly methods of the class UnmarshallerHandler. Before the
+                method endDocument the method getResult() is called. The method is expected 
+                to throw IllegalStateException.
+            </Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>org.xml.sax.helpers.AttributesImpl</Import>
+            <Import>org.xml.sax.SAXException</Import>
+            <Import>javax.xml.bind.JAXBContext</Import>
+            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>javax.xml.bind.Unmarshaller</Import>
+            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+        </CodeSet>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+
+        try {
+            JAXBContext jc = getJAXBContext();
+            Unmarshaller u = jc.createUnmarshaller();
+
+            eh.setParent(u.getEventHandler());
+            u.setSchema(schema);
+            u.setEventHandler(eh);
+
+            UnmarshallerHandler uh = u.getUnmarshallerHandler();
+
+            // emulate SAX parsing of the document:
+            // <test:root 
+            //      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            //      xmlns:test="api/UnmarshallerHandler"
+            //      xsi:schemaLocation="api/UnmarshallerHandler UnmarshallerHandler.xsd"
+            // >a</test:root>
+            uh.startDocument();
+             uh.startPrefixMapping("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+              uh.startPrefixMapping("test", "api/UnmarshallerHandler");
+               uh.startElement("api/UnmarshallerHandler", "root", "test:root", new AttributesImpl());
+                uh.characters(new char[] {'a'}, 0, 1);
+               uh.endElement("api/UnmarshallerHandler", "root", "test:root");
+              uh.endPrefixMapping("test");
+             uh.endPrefixMapping("xsi");
+            // uh.endDocument();
+
+            Object obj = uh.getResult();
+
+            return Status.failed("getResult() called before endDocument event does not " 
+                               + "throw IllegalStateException, it returns " + obj);
+
+        } catch (IllegalStateException ise) {
+            return Status.passed("OKAY");
+        } catch (SAXException se) {
+            return Status.failed(se.toString());
+        } catch (JAXBException jaxbe) {
+            if (!eh.hasEvents()) {
+                return Status.failed("no error events are handled but " + jaxbe + " is thrown");
+            }
+            return Status.failed(jaxbe.toString());
+        } finally {
+            eh.printEvents(ref);
+        }
+        ]]></TestCode>
+    </TestCase>
+
+</TestGroup>
+<!-- Ident: @(#)UnmarshallerHandler_CTTests.test.xml	1.4 07/04/16 -->

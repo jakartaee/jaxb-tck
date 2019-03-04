@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<keywords>
+	<keyword name="abstract" replacement="_abstract" />
+	<keyword name="default" replacement="_default" />
+	<keyword name="if" replacement="_if" />
+	<keyword name="private" replacement="_private" />
+	<keyword name="this" replacement="_this" />
+	<keyword name="boolean" replacement="_boolean" />
+	<keyword name="do" replacement="_do" />
+	<keyword name="implements" replacement="_implements" />
+	<keyword name="protected" replacement="_protected" />
+	<keyword name="throw" replacement="_throw" />
+	<keyword name="break" replacement="_break" />
+	<keyword name="double" replacement="_double" />
+	<keyword name="import" replacement="_import" />
+	<keyword name="public" replacement="_public" />
+	<keyword name="throws" replacement="_throws" />
+	<keyword name="byte" replacement="_byte" />
+	<keyword name="else" replacement="_else" />
+	<keyword name="instanceof" replacement="_instanceof" />
+	<keyword name="return" replacement="_return" />
+	<keyword name="transient" replacement="_transient" />
+	<keyword name="case" replacement="_case" />
+	<keyword name="extends" replacement="_extends" />
+	<keyword name="int" replacement="_int" />
+	<keyword name="short" replacement="_short" />
+	<keyword name="try" replacement="_try" />
+	<keyword name="catch" replacement="_catch" />
+	<keyword name="final" replacement="_final" />
+	<keyword name="interface" replacement="_interface" />
+	<keyword name="static" replacement="_static" />
+	<keyword name="void" replacement="_void" />
+	<keyword name="char" replacement="_char" />
+	<keyword name="finally" replacement="_finally" />
+	<keyword name="long" replacement="_long" />
+	<keyword name="strictfp" replacement="_strictfp" />
+	<keyword name="volatile" replacement="_volatile" />
+	<keyword name="class" replacement="_class" />
+	<keyword name="float" replacement="_float" />
+	<keyword name="native" replacement="_native" />
+	<keyword name="super" replacement="_super" />
+	<keyword name="while" replacement="_while" />
+	<keyword name="const" replacement="_const" />
+	<keyword name="for" replacement="_for" />
+	<keyword name="new" replacement="_new" />
+	<keyword name="switch" replacement="_switch" />
+	<keyword name="continue" replacement="_continue" />
+	<keyword name="goto" replacement="_goto" />
+	<keyword name="package" replacement="_package" />
+	<keyword name="synchronized" replacement="_synchronized" />
+</keywords>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="AD_name00118_">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Attribute names contain an uncased letter followed by upper or lower case letter. (content tree test)]]></Title>
+        <Description><![CDATA[Declare an element with two attributes of type int. Name them using 
+        Unicode letter #x01BB which is neither upper nor lower.
+
+        The document AD_name00118_p.xml sets all the attributes.
+        ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)AD_name00118_CTTests.test.xml	1.4 08/08/05</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="AD_name00118.xsd"/>
+        <ExternalData Type="iodata" SourceName="AD_name00118_.sig"/>
+    </CodeSet>
+    <TestCase ID="Get001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the get method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals AD_name00118_p.xml and expects the returned object
+                to contain attributes to be set to values specified in the document.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="AD_name00118_p.xml"/>
+            <ExternalData Type="iodata" SourceName="ad_name00118_-AD_name00118_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        Root root = (Root)unmarshal("AD_name00118_p.xml");
+        String failure = "";
+
+        if (root.getA\u01bbA() != 0) {
+            failure += "; root.getA\u01bbA() returns " + root.getA\u01bbA();
+        }
+        if (root.getB\u01bbB() != 1) {
+            failure += "; root.getB\u01bbB() returns " + root.getB\u01bbB();
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Set001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the set method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals AD_name00118_p.xml, sets its attributes to 
+                some values and expects the returned object
+                to contain attributes to be set to those values.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="AD_name00118_p.xml"/>
+            <ExternalData Type="iodata" SourceName="ad_name00118_-AD_name00118_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        Root root = (Root)unmarshal("AD_name00118_p.xml");
+        String failure = "";
+
+        root.setA\u01bbA(10);
+        root.setB\u01bbB(20);
+
+        if (root.getA\u01bbA() != 10) {
+            failure += "; root.getA\u01bbA() returns " + root.getA\u01bbA();
+        }
+        if (root.getB\u01bbB() != 20) {
+            failure += "; root.getB\u01bbB() returns " + root.getB\u01bbB();
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+</TestGroup>

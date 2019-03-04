@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-dateTime-pattern-9">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-dateTime-pattern-9]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/dateTime is restricted by facet pattern with value 19\d\d-\d4-2\dT\d7:\d0:\d8 \d\d28-\d5-1\dT1\d:2\d:\d1 \d\d84-\d6-2\dT\d1:\d8:\d3 17\d\d-\d1-2\dT\d7:\d2:\d1 \d\d12-0\d-\d9T\d5:0\d:4\d \d\d51-\d7-\d6T\d9:1\d:\d5 \d\d23-\d2-0\dT\d9:1\d:\d4 18\d\d-0\d-\d4T\d5:\d8:3\d \d\d37-\d5-2\dT\d5:5\d:\d2.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#dateTime">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#dateTime
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-dateTime-pattern-9.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-list-dateTime-pattern-5.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-dateTime-pattern-9.sig"/>
+    </CodeSet>
+    <TestCase ID="list-dateTime-pattern-9">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

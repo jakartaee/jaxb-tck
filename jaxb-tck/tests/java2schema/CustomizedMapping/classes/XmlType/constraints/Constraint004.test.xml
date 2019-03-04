@@ -1,0 +1,60 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="Constraint004">
+   <TestGroupDocumentation>
+      <Title>XmlElement</Title>
+     <Description><![CDATA[
+      JAXB specification assertion: <i>JAXB:SPEC:J2S:0065</i><br>
+      <b>@XmlType</b> is used to map a Java class to a schema type.<br>
+      The schema type is computed from its annotation element values.<br>
+      @XmlType.propOrder must not include a field or property annotated with @XmlTransient.
+      Negative test. ]]></Description>
+     </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)Constraint004.test.xml	1.4 08/04/04</AttrElem>
+       <AttrElem Name="testType">J2XTest</AttrElem>
+       <Keyword>negative</Keyword>
+       <Keyword>runtime</Keyword> 
+       <Keyword>java_to_schema</Keyword>
+       <Keyword>jaxb</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <ExternalSupportClass SourceName="package-info.java"/>
+      <ExternalSupportClass SourceName="Constraint004.java"/>
+   </CodeSet>
+   <!-- test case -->
+   <TestCase ID="testCase0001">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+      JAXB specification assertion: <i>JAXB:SPEC:J2S:0065</i><br>
+      <b>@XmlType</b> is used to map a Java class to a schema type.<br>
+      The schema type is computed from its annotation element values.<br>
+      @XmlType.propOrder must not include a field or property annotated with @XmlTransient.
+      Negative test. 
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+      </CodeSet>
+   </TestCase>
+</TestGroup>

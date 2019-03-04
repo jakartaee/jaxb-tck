@@ -1,0 +1,5 @@
+# TCK Make Log Printer Map file
+# SCCS: @(#)tck.mlm	1.3 02/09/05
+
+# Fixup for /usr/re
+/usr/re/			/net/mizu.eng/usr/re/

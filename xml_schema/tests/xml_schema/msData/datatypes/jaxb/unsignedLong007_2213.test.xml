@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedLong007_2213">
+    <TestGroupDocumentation>
+        <Title><![CDATA[unsignedLong007_2213]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : test for simpleType list of unsignedLong
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)unsignedLong007_2213.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../unsignedLong007.xsd"/>
+        <ExternalData Type="iodata" SourceName="unsignedLong007_2213.sig"/>
+    </CodeSet>
+    <TestCase ID="unsignedLong007_2213">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="unsignedLong007_2213.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../unsignedLong007.xml"/>
+            <ExternalData Type="iodata" SourceName="unsignedlong007_2213-unsignedLong007.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,427 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="SetGet">
+   <TestGroupDocumentation>
+      <Title>Unmarshaller  setXXX getXXX tests</Title>
+      <Description>
+      Test descriptions and specifications for Unmarshaller setXXX getXXX tests.
+      
+      </Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)SetGet.test.xml	1.6 07/04/16</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <AttrElem Name="schemaName">Unmarshaller-1.xsd</AttrElem>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Import>javax.xml.bind.Unmarshaller</Import>
+      <Import>javax.xml.bind.JAXBContext</Import>
+      <Import>javax.xml.bind.JAXBException</Import>
+      <Import>javax.xml.bind.UnmarshallerHandler</Import>
+      <Import>javax.xml.bind.UnmarshalException</Import>
+      <Import>java.io.File</Import>
+      <ExternalSupportClass SourceName="ObjectFactory.java" />
+      <ExternalSupportClass SourceName="MyValidationEventHandler.java" />
+      <ExternalData SourceName="Unmarshaller-1.xsd" Type="iodata" />
+   </CodeSet>
+
+<!-- setValidating is deprecated since JAXB 2.0. Test case deleted -->
+   <TestCase ID="SetGet001" Deleted="true">
+      <TestCaseDocumentation>
+         <Title>setValidating(boolean) test</Title>
+         <Description>
+The test checks that by default, the Unmarshaller does not validate - isValidating()
+returns false.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             if (um.isValidating() == true){
+                 return Status.failed("isValidating() returns true by default");
+             }
+         } catch (JAXBException je){
+             return Status.failed("isValidating() unexpectedly throws JAXBException");
+         }
+         return Status.passed("OKAY");
+      ]]></TestCode>
+   </TestCase>
+
+<!-- setValidating is deprecated since JAXB 2.0. Test case deleted -->
+   <TestCase ID="SetGet002" Deleted="true">
+      <TestCaseDocumentation>
+         <Title>setValidating(boolean) test</Title>
+         <Description>
+The test checks that by default, the Unmarshaller does not validate - invalid xml document
+is parsed successfully, returned object is non-null, validation event handler contains no 
+events.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalSupportClass SourceName="MyValidationEventHandler.java"/>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         MyValidationEventHandler veh = new MyValidationEventHandler();
+         try {
+             um.setEventHandler(veh);
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler(handler) unexpectedly throws JAXBException");
+         }
+         try {
+             if ((obj = um.unmarshal(getDocumentURL("unmarshal-bad.xml"))) == null){
+                 return Status.failed("unmarshal(\"unmarshal-bad.xml\") returns null");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") throws JAXBException, despite of switched off by default validation");
+         }
+         try {
+             if (((MyValidationEventHandler)um.getEventHandler()).hasEvents()){
+                 return Status.failed("unmarshalling validation is switched off by default, but validation event handler received events");
+             }
+         } catch (JAXBException je){
+             return Status.failed("getEventHandler() throws JAXBException unexpectedly");
+         }
+         try {
+              if (um.isValidating()){
+                  return Status.failed("isValidating() returns true after unmarshalling with default false validation");
+              }
+              um.setValidating(false);
+         } catch (JAXBException je){
+             return Status.failed("setValidating(false) or isValidating() unexpectedly throws JAXBException");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+<!-- setValidating is deprecated since JAXB 2.0. Test case deleted -->
+   <TestCase ID="SetGet003" Deleted="true">
+      <TestCaseDocumentation>
+         <Title>setValidating(boolean) test</Title>
+         <Description>
+The test checks that setValidating(true) specifies that the default validation mechanism of 
+the Unmarshaller should validate during unmarshal operations - isValidating() returns true.
+         </Description>
+      </TestCaseDocumentation>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setValidating(true);
+             if (um.isValidating() == false){
+                 return Status.failed("isValidating() returns false after setValidating(true)");
+             }
+             um.setValidating(true);
+         } catch (JAXBException je){
+             return Status.failed("isValidating() or setValidating(true) unexpectedly throws JAXBException");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+<!-- setValidating is deprecated since JAXB 2.0. Test case deleted -->
+   <TestCase ID="SetGet004" Deleted="true">
+      <TestCaseDocumentation>
+         <Title>setValidating(boolean) test</Title>
+         <Description>
+The test checks that setValidating(true) specifies that the default validation mechanism of 
+the Unmarshaller should validate during unmarshal operations - invalid xml document can not be
+unmarshalled, custom validation event handler returning false is registered, unmarshal(File) 
+should throw UnmarshalException.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalSupportClass SourceName="MyValidationEventHandler.java"/>
+         <ExternalData SourceName="unmarshal-bad.xml" Type="iodata"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             um.setValidating(true);
+         } catch (JAXBException je){
+             return Status.failed("setValidating(true) unexpectedly throws JAXBException");
+         }
+         MyValidationEventHandler veh = new MyValidationEventHandler();
+         try {
+             um.setEventHandler(veh);
+         } catch (JAXBException je){
+             return Status.failed("setEventHandler(handler) unexpectedly throws JAXBException");
+         }
+         try {
+             obj = um.unmarshal(getDocumentURL("unmarshal-bad.xml"));
+             return Status.failed("validation is set to true, validation event handler returns false, invalid document is unmarshalled, unmarshal throws no JAXBException");
+         } catch (UnmarshalException ue){
+             try {
+                 if (!((MyValidationEventHandler)um.getEventHandler()).hasEvents()){
+                     return Status.failed("for invalid xml document, validation set to true, validation event hadler contains no events");
+                 }
+             } catch (JAXBException je){
+                 return Status.failed("getEventHandler() throws JAXBException unexpectedly");
+             }
+         } catch (JAXBException je){
+             return Status.failed("unmarshal(\"unmarshal-bad.xml\") throws unexpected JAXBException");
+         }
+         try {
+              if (!um.isValidating()){
+                  return Status.failed("isValidating() returns false after unmarshalling with validation set to true");
+              }
+              um.setValidating(true);
+         } catch (JAXBException je){
+             return Status.failed("setValidating(true) or isValidating() unexpectedly throws JAXBException");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+   <TestCase ID="SetGet005">
+      <TestCaseDocumentation>
+         <Title>getEventHandler() test</Title>
+         <Description>
+The test checks that getEventHandler() returns the default event handler - non-null value.
+         </Description>
+      </TestCaseDocumentation>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         try {
+             if (um.getEventHandler() == null){
+                 return Status.failed("getEventHandler() returns null instead of default event handler");
+             }
+         } catch (JAXBException je){
+             return Status.failed("getEventHandler() unexpectedly throws JAXBException");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+   <TestCase ID="SetGet006">
+      <TestCaseDocumentation>
+         <Title>setEventHandler(), getEventHandler() test</Title>
+         <Description>
+The test checks that setEventHandler() registers validation event handler - getEventHandler()
+returns registered value.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalSupportClass SourceName="MyValidationEventHandler.java"/>
+      </CodeSet>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         MyValidationEventHandler veh = new MyValidationEventHandler();
+         try {
+             um.setEventHandler(veh);
+             if (um.getEventHandler() != veh){
+                 return Status.failed("getEventHandler() returns not registered event handler");
+             }
+         } catch (JAXBException je){
+             return Status.failed("getEventHandler() or setEventHandler() unexpectedly throws JAXBException");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+
+   <TestCase ID="SetGet007">
+      <TestCaseDocumentation>
+         <Title>getUnmarshallerHandler() test</Title>
+         <Description>
+The test checks that getUnmarshallerHandler() returns the unmarshaller handler object - a non-null object.
+         </Description>
+      </TestCaseDocumentation>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um = null;
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         if (um.getUnmarshallerHandler() == null){
+             return Status.failed("getUnmarshallerHandler() returns null");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+
+   <TestCase ID="SetGet008">
+      <TestCaseDocumentation>
+         <Title>getUnmarshallerHandler() test</Title>
+         <Description>
+The test checks that for different unmarshallers getUnmarshallerHandler() returns different unmarshaller handler objects.
+         </Description>
+      </TestCaseDocumentation>
+
+      <TestCode SourceLang="java"><![CDATA[
+
+         JAXBContext jc = null;
+         Object obj = null;
+         Unmarshaller um1 = null, um2 = null;
+         UnmarshallerHandler umh1 = null, umh2 = null;
+         
+         try {
+             jc = getJAXBContext();
+             um1 = jc.createUnmarshaller();
+             um2 = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaller");
+         }
+         if ((umh1 = um1.getUnmarshallerHandler()) == null){
+             return Status.failed("getUnmarshallerHandler() returns null");
+         }
+         if ((umh2 = um2.getUnmarshallerHandler()) == null){
+             return Status.failed("getUnmarshallerHandler() returns null");
+         }
+         if (umh1 == umh2){
+             return Status.failed("two different unmarshallers: getUnmarshallerHandler() returns the same object");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+       
+   <TestCase ID="SetGet009">
+    <TestCaseDocumentation>
+       <Title>setListener(),getListener() test</Title>
+       <Description>
+The test checks that getListener() returns previously set listener or null if null has been set.
+       </Description>
+    </TestCaseDocumentation>    
+    <TestCode SourceLang="java"><![CDATA[
+       JAXBContext jc = null;
+       Unmarshaller um = null;
+       try {
+           jc = getJAXBContext();
+           um = jc.createUnmarshaller();
+       } catch (JAXBException je){
+           return Status.failed("Unable to create valid context or unmarshaller");
+       }
+       
+       class ListenerStub extends Unmarshaller.Listener{
+           private String _refName;
+           public ListenerStub(String refName){
+               _refName = refName;
+           }
+           
+           public String toString(){
+               return super.toString()+" ref: "+_refName;
+           }
+       }
+       
+       ListenerStub ls1 = new ListenerStub("ls1");
+       ListenerStub ls2 = new ListenerStub("ls2");
+       
+       um.setListener(ls1);
+       if(ls1 != um.getListener()){
+           return Status.failed("Cannot set listener: getListener() returned: "+um.getListener());
+       }
+       um.setListener(ls2);
+       if(ls2 != um.getListener()){
+           return Status.failed("Cannot reset listener: getListener() returned: "+um.getListener());
+       }
+       um.setListener(null);
+       if(um.getListener() != null){
+           return Status.failed("Cannot reset listener to null: getListener() returned: "+um.getListener());
+       }
+       return Status.passed("OKAY");
+    ]]></TestCode>
+   </TestCase>
+
+
+</TestGroup>
+<!-- Ident: @(#)SetGet.test.xml	1.6 07/04/16 -->

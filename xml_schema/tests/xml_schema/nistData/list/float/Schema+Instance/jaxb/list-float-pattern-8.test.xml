@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-float-pattern-8">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-float-pattern-8]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/float is restricted by facet pattern with value \d{1}E\-\d{2} \d{2}E\-\d{1} \d{1}\.\d{2}E\d{1} \d{4}E\d{2} \d{1}\.\d{4}E\-\d{2} \d{1}\.\d{5}E\-\d{1} \d{1}\.\d{6}E\d{1} \d{1}\.\d{7}E\d{2}.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#float">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#float
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-float-pattern-8.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-list-float-pattern-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-float-pattern-8.sig"/>
+    </CodeSet>
+    <TestCase ID="list-float-pattern-8">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

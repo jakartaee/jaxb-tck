@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-string-length-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-string-length-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>4_Law_Street_And_,_NC_18956-1769</string> 
+   </void> 
+   <void method="add"> 
+    <string>42_Effectively_Street_Utilities_,_WA_18956-1769</string> 
+   </void> 
+   <void method="add"> 
+    <string>31537_With_Street_Networking_,_AL_18956-1769</string> 
+   </void> 
+   <void method="add"> 
+    <string>8827_Filter_Street_Defines_,_IA_18956-1769</string> 
+   </void> 
+   <void method="add"> 
+    <string>55273_Program_Street_Partner_,_MT_18956-1769</string> 
+   </void> 
+   <void method="add"> 
+    <string>5657_Automatically_Street_Academy_,_WI_18956-1769</string> 
+   </void> 
+   <void method="add"> 
+    <string>8_Complex_Street_Specific_,_MS_18956-1769</string> 
+   </void> 
+   <void method="add"> 
+    <string>732_To_Street_To_,_WY_18956-1769</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

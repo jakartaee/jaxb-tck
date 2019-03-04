@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+
+    Copyright (c) 2009, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<HTML>
+<HEAD>
+<TITLE>
+EnvVarsInterview.otherEnvVars
+</title>
+<LINK REL="stylesheet" TYPE="text/css" HREF="../wizard.css" TITLE="Style">
+</head>
+<body>
+
+
+Specify any environment variables that JavaTest should use in its
+environment while generating or compiling schemas on your system.  Specify
+the variables using <em>name</em>=<em>value</em> pairs.
+<p>
+It is necessary for the reference implementation TCK XJC and SCHEMAGEN scripts to 
+specify variables: JAVA_HOME, JAXB_HOME and JAXB_ENDORSED.
+<p>
+For example, on Solaris:
+<dl>
+<dd><code>JAVA_HOME=/jdk1.8.0/solaris-sparc JAXB_HOME=/jaxb-2.3 JAXB_ENDORSED=/path/to/jaxb-api.jar</code>
+</dl>
+on Windows:
+<dl>
+<dd><code>JAVA_HOME=d:\jdk1.8.0\windows-i586 JAXB_HOME=d:\jaxb-2.3 JAXB_ENDORSED=d:\path\to\jaxb-api.jar</code>
+</dl> 
+<br>
+Where the path to the directory of J2SE on Solaris should be specified in JAVA_HOME,
+JAXB_HOME points to the directory under which the bin/, docs/, examples/, and lib/ 
+directories reside and JAXB_ENDORSED points to the directory which contains only jaxb-api.jar.
+<p>
+<b>Important!</b>
+Options to the scripts for JDK9 can be made available by setting the following variables:
+TCK_JAXB_OPTIONS, TCK_JAXB_OTHER_OPTIONS
+
+For Oracle RI, these variables can take the following values:
+<code>TCK_JAXB_OPTIONS=--add-modules=jdk.xml.bind --upgrade-module-path=&lt;JAXB-RI&gt;\lib\jaxb-api.jar</code>
+<code>TCK_JAXB_OTHER_OPTIONS=--add-modules=jdk.xml.bind --upgrade-module-path=&lt;JAXB-RI&gt;\lib\jaxb-api.jar</code>
+<p>
+JavaTest cannot inherit environment variables from your
+operating system environment.  If you find that your tests
+run correctly outside of JavaTest, but do not run correctly
+using JavaTest, it may be because a value is set in your
+operating system environment that is not available to the
+test.  If you check your operating system environment and
+determine that this is the case, set the missing values
+here.
+
+</body>
+</HTML>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup PUBLIC "testgenspec.dtd" "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="XmlSeeAlso">
+    <TestGroupDocumentation>
+        <Title><![CDATA[@XmlSeeAlso implementation tests]]></Title>
+        <Description><![CDATA[@XmlSeeAlso implementation tests]]></Description>
+        <TestedPackage>javax.xml.bind.annotation</TestedPackage>
+        <TestedClass>XmlSeeAlso</TestedClass>
+        <Author><![CDATA[Leonid Kuskov]]></Author>
+    </TestGroupDocumentation>
+
+    <TestGroupAttributes>
+       <AttrElem Name="tdFile">index</AttrElem>
+       <AttrElem Name="scInfo">@(#)XmlSeeAlso.test.xml	1.2 07/06/27</AttrElem>
+       <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+       <AttrElem Name="schemaName">XmlSeeAlso001.xsd</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>java.io.File</Import>
+        <Import>java.io.IOException</Import>
+        <Import>java.net.URL</Import>
+  
+        <Import>javax.xml.bind.Binder</Import>
+        <Import>javax.xml.bind.JAXBContext</Import>
+        <Import>javax.xml.bind.UnmarshalException</Import>
+        <Import>javax.xml.parsers.DocumentBuilder</Import>
+        <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+        <Import>javax.xml.parsers.ParserConfigurationException</Import>
+        <Import>javax.xml.transform.stream.StreamSource</Import>
+        <Import>javax.xml.validation.Schema</Import>
+        <Import>javax.xml.validation.SchemaFactory</Import>
+  
+        <Import>org.w3c.dom.Document</Import>
+        <Import>org.w3c.dom.Node</Import>
+        <Import>org.xml.sax.SAXException</Import>
+        <SupportCode><![CDATA[ 
+    	public Document getDocument(String doc)
+    			throws ParserConfigurationException, SAXException, IOException {
+    		URL documentURL = getDocumentURL(doc);
+    		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    		dbf.setNamespaceAware(true);
+    		DocumentBuilder documentBuilder = dbf.newDocumentBuilder();
+    		return documentBuilder.parse(documentURL.openStream());
+    	}
+      
+    	public Schema getSchema(String schemaName) {
+    		Schema schema;
+    		ErrorCollector errorHandler;
+    		try {
+                URL schemaURL = getDocumentURL(schemaName);
+    			StreamSource ss = new StreamSource(schemaURL.toExternalForm());
+    			SchemaFactory factory = SchemaFactory.newInstance(
+                                  javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI);
+    			errorHandler = new ErrorCollector();
+    			factory.setErrorHandler(errorHandler);
+    			schema = factory.newSchema(ss);
+    		} catch (Exception e) {
+    	          throw new RuntimeException( e );			
+    		}
+    		if ( errorHandler.hasEvents() ) {
+    			ref.println("Schema Compilation: ");
+    			errorHandler.printEvents( ref );
+                return null;
+    		}
+    		return schema;
+    	}
+        ]]></SupportCode>
+        <ExternalSupportClass SourceName="data001/XmlSeeAlso001b.java"/>
+        <ExternalSupportClass SourceName="data001/XmlSeeAlso001c.java"/>
+        <ExternalSupportClass SourceName="data001/XmlSeeAlso001a.java"/>
+    </CodeSet>
+
+    <TestCase ID="TestCase001">
+        <TestCaseDocumentation>
+            <TestCaseSpec>
+                <InlineAssertion><![CDATA[@XmlSeeAlso anotation instructs JAXB to also bind other classes when binding this class.]]></InlineAssertion>
+            </TestCaseSpec>
+        </TestCaseDocumentation>
+        <TestCaseAttributes/>
+        <CodeSet>
+            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <ExternalData SourceName="XmlSeeAlso001.xsd"   Type="iodata"/>
+            <ExternalData SourceName="XmlSeeAlso001c.xml" Type="iodata"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        ErrorCollector eh = new ErrorCollector();
+        try {
+          JAXBContext jc = JAXBContext.newInstance( javasoft.sqe.tests.api.javax.xml.bind.annotation.XmlSeeAlso.data001.XmlSeeAlso001a.class );
+          if (jc == null)
+            return Status.failed("JAXBContext is null for XmlSeeAlso001a.class");
+
+          Schema schema = getSchema("XmlSeeAlso001.xsd");
+
+          Binder<Node> binder = jc.createBinder();
+          Document document = getDocument("XmlSeeAlso001c.xml");
+
+          if ( schema == null ) 
+              return Status.failed("Schema compilation of XmlSeeAlso001.xsd failed.");
+          
+          binder.setSchema(schema);
+          try {
+            binder.unmarshal(document);
+          } catch (UnmarshalException x) {
+            x.printStackTrace(ref);
+            return Status.failed("Unexpected UnmarshalException was thrown");
+          }
+        } catch (Exception x) {
+          x.printStackTrace( ref );
+          return Status.failed("Unexpected exception " + x);
+        }
+        return Status.passed("OK");
+     ]]></TestCode>
+    </TestCase>
+</TestGroup>
+<!-- Ident: @(#)XmlSeeAlso.test.xml	1.2 07/06/27 -->

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NCName-whiteSpace-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-NCName-whiteSpace-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>pbe-industry.define.of_a_g</string> 
+   </void> 
+   <void method="add"> 
+    <string>nthose_which.creating_adve</string> 
+   </void> 
+   <void method="add"> 
+    <string>_for.the.the.a-the.beta-tr</string> 
+   </void> 
+   <void method="add"> 
+    <string>_file.wireless.foster.chai</string> 
+   </void> 
+   <void method="add"> 
+    <string>_to_create-the_s-also_soft</string> 
+   </void> 
+   <void method="add"> 
+    <string>nversions-body-digital-als</string> 
+   </void> 
+   <void method="add"> 
+    <string>msystems.discover-gain_law</string> 
+   </void> 
+   <void method="add"> 
+    <string>tand_two-as.and_and.led.di</string> 
+   </void> 
+   <void method="add"> 
+    <string>vcross-over_contribute_dev</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

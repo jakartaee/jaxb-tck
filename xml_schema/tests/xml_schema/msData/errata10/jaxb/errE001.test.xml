@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="errE001">
+    <TestGroupDocumentation>
+        <Title><![CDATA[errE001]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Primer Errata : E2-27 Error: test that nonPositiveIntegers support a '+' on zero
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/2004/03/xmlschema-errata">
+            http://www.w3.org/2004/03/xmlschema-errata
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)errE001.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../errE001.xsd"/>
+        <ExternalData Type="iodata" SourceName="errE001.sig"/>
+    </CodeSet>
+    <TestCase ID="errE001">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="errE001.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../errE001.xml"/>
+            <ExternalData Type="iodata" SourceName="erre001-errE001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

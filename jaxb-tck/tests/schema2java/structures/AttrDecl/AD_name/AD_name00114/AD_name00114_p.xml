@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<td:root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:td="AttrDecl/name"
+    xsi:schemaLocation="AttrDecl/name AD_name00114.xsd"
+
+            aaaa="00"
+            bbbB="01"
+            ccCc="02"
+            ddDD="03"
+            eEee="04"
+            fFfF="05"
+            pPPp="06"
+            gGGG="07"
+            Hhhh="08"
+            IiiI="09"
+            JjJj="10"
+            KkKK="11"
+            LLll="12"
+            MMmM="13"
+            NNNn="14"
+            OOOO="15"
+
+            bbb0="20"
+            cc0c="21"
+            dd00="22"
+            e0ee="23"
+            f0f0="24"
+            p00p="25"
+            g000="26"
+
+            bbb_="40"
+            cc_c="41"
+            dd__="42"
+            e_ee="43"
+            f_f_="44"
+            p__p="45"
+            g___="46"
+
+            H111="60"
+            I11I="61"
+            J1J1="62"
+            K1KK="63"
+            LL11="64"
+            MM1M="65"
+            NNN1="66"
+
+            H---="80"
+            I--I="81"
+            J-J-="82"
+            K-KK="83"
+            LL--="84"
+            MM-M="85"
+            NNN-="86"
+/>
+

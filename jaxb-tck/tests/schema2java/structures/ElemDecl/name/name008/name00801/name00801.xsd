@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="ElemDecl/name"
+    targetNamespace="ElemDecl/name">
+
+    <xsd:element name="root">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- element names have punctuation characters -->
+                <xsd:element ref="a--a"/>
+                <xsd:element ref="b&#x002E;&#x002E;b"/>
+                <xsd:element ref="c__c"/>
+                <xsd:element ref="d&#x00B7;&#x00B7;d"/>
+                <xsd:element ref="e&#x0387;&#x0387;e"/>
+                <xsd:element ref="f&#x06DD;&#x06DD;f"/>
+                <xsd:element ref="g&#x06DE;&#x06DE;g"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="a--a" type="xsd:int"/>
+    <xsd:element name="b&#x002E;&#x002E;b" type="xsd:int"/>
+    <xsd:element name="c__c" type="xsd:int"/>
+    <xsd:element name="d&#x00B7;&#x00B7;d" type="xsd:int"/>
+    <xsd:element name="e&#x0387;&#x0387;e" type="xsd:int"/>
+    <xsd:element name="f&#x06DD;&#x06DD;f" type="xsd:int"/>
+    <xsd:element name="g&#x06DE;&#x06DE;g" type="xsd:int"/>
+
+</xsd:schema>

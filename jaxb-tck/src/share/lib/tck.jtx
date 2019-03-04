@@ -1,0 +1,105 @@
+#
+# Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Eclipse Public License v. 2.0, which is available at
+# http://www.eclipse.org/legal/epl-2.0.
+#
+# This Source Code may also be made available under the following Secondary
+# Licenses when the conditions for such availability set forth in the
+# Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+# version 2 with the GNU Classpath Exception, which is available at
+# https://www.gnu.org/software/classpath/license.html.
+#
+# SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+#
+
+schema2java/nisttest/string/enumeration/NISTSchema-string-enumeration-3.html                                  6280804   test_bug
+
+#API exclude list
+# #CTTests suffix is added by emitter, to filter out the tests they should be included into exclude list without the suffix
+api/javax_xml/bind/Binder/Binder_.html#Binder_[updateXML003]                                                  6484841   ri_bug
+api/javax_xml/bind/JAXBContext/JAXBContext.html#JAXBContext[newInstance008a]                                  6733227   ri_spec_bug
+
+#Schema to Java exclude list (Customized Mapping)
+schema_bind/bind_factoryMethod/factoryMethod00101m1.html#factoryMethod00101m1                                 6732214    ri_bug
+schema_bind/bind_factoryMethod/factoryMethod00101m1.html#factoryMethod00101m1_p                               6732214    ri_bug
+schema_bind/bind_factoryMethod/factoryMethod00101m1.html#factoryMethod00101m1_n                               6732214    ri_bug 
+
+#Section copied from JCK 6.0 exclude list
+
+schema2java/structures/SType/ST_facets/ST_facets00601/ST_facets00601_.html                6558757  test_bug
+schema2java/structures/SType/ST_facets/ST_facets00603/ST_facets00603_.html                                6240673  test_bug
+schema2java/structures/SType/ST_facets/ST_facets00604/ST_facets00604_.html                                6240673  test_bug
+schema2java/structures/SType/ST_facets/ST_facets00608/ST_facets00608_.html                                6240673  test_bug
+schema2java/nisttest/NCName/enumeration/enumeration1.html                                                 6240673  test_bug
+schema2java/nisttest/NCName/enumeration/enumeration2.html                  6240673  test_bug
+schema2java/nisttest/NCName/enumeration/enumeration3.html                  6240673  test_bug
+schema2java/nisttest/NCName/enumeration/enumeration4.html                  6240673  test_bug
+schema2java/nisttest/NCName/enumeration/enumeration5.html                  6240673  test_bug
+schema2java/nisttest/NCName/length/length1.html                                 6240673  test_bug
+schema2java/nisttest/NCName/length/length2.html                                 6240673  test_bug
+schema2java/nisttest/NCName/length/length3.html                                 6240673  test_bug
+schema2java/nisttest/NCName/length/length4.html                                 6240673  test_bug
+schema2java/nisttest/NCName/length/length5.html                                 6240673  test_bug
+schema2java/nisttest/NCName/maxLength/maxLength1.html                        6240673  test_bug
+schema2java/nisttest/NCName/maxLength/maxLength2.html                        6240673  test_bug
+schema2java/nisttest/NCName/maxLength/maxLength3.html                        6240673  test_bug
+schema2java/nisttest/NCName/maxLength/maxLength4.html                        6240673  test_bug
+schema2java/nisttest/NCName/maxLength/maxLength5.html                        6240673  test_bug
+schema2java/nisttest/NCName/minLength/minLength1.html                        6240673  test_bug
+schema2java/nisttest/NCName/minLength/minLength2.html                        6240673  test_bug
+schema2java/nisttest/NCName/pattern/pattern1.html                              6240673  test_bug
+schema2java/nisttest/NCName/pattern/pattern2.html                              6240673  test_bug
+schema2java/nisttest/NCName/whiteSpace/whiteSpace1.html                     6240673  test_bug
+schema2java/nisttest/string/enumeration/enumeration4_Bind_.html      6240673  test_bug
+schema2java/nisttest/boolean/pattern/pattern2.html                             6240673  test_bug
+schema2java/nisttest/boolean/pattern/pattern4.html                             6240673  test_bug
+
+xml_schema/sunData/SType/ST_facets/ST_facets00401m/jaxb/st_facets00401m2.html#st_facets00401m2        7308633 test_bug
+xml_schema/sunData/SType/ST_facets/ST_facets00501m/jaxb/st_facets00501m2.html#st_facets00501m2        7308633 test_bug
+xml_schema/sunData/AttrDecl/AD_name/AD_name00104m/jaxb/ad_name00104m2.html#ad_name00104m2        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/byte_fractionDigits004_806.html#byte_fractionDigits004_806        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/byte_fractionDigits007_809.html#byte_fractionDigits007_809        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/int_fractionDigits004_734.html#int_fractionDigits004_734        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/int_fractionDigits007_737.html#int_fractionDigits007_737        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/integer_fractionDigits004_567.html#integer_fractionDigits004_567        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/integer_fractionDigits007_570.html#integer_fractionDigits007_570        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/long_fractionDigits004_667.html#long_fractionDigits004_667        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/long_fractionDigits007_670.html#long_fractionDigits007_670        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/negativeInteger_fractionDigits004_631.html#negativeInteger_fractionDigits004_631        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/negativeInteger_fractionDigits007_634.html#negativeInteger_fractionDigits007_634        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/nonNegativeInteger_fractionDigits004_838.html#nonNegativeInteger_fractionDigits004_838        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/nonNegativeInteger_fractionDigits007_841.html#nonNegativeInteger_fractionDigits007_841        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/nonPositiveInteger_fractionDigits004_599.html#nonPositiveInteger_fractionDigits004_599        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/nonPositiveInteger_fractionDigits007_602.html#nonPositiveInteger_fractionDigits007_602        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/positiveInteger_fractionDigits004_1014.html#positiveInteger_fractionDigits004_1014        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/positiveInteger_fractionDigits007_1017.html#positiveInteger_fractionDigits007_1017        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/short_fractionDigits004_770.html#short_fractionDigits004_770        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/short_fractionDigits007_773.html#short_fractionDigits007_773        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/unsignedByte_fractionDigits004_982.html#unsignedByte_fractionDigits004_982        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/unsignedByte_fractionDigits007_985.html#unsignedByte_fractionDigits007_985        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/unsignedInt_fractionDigits004_910.html#unsignedInt_fractionDigits004_910        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/unsignedInt_fractionDigits007_913.html#unsignedInt_fractionDigits007_913        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/unsignedLong_fractionDigits004_874.html#unsignedLong_fractionDigits004_874        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/unsignedLong_fractionDigits007_877.html#unsignedLong_fractionDigits007_877        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/unsignedShort_fractionDigits004_946.html#unsignedShort_fractionDigits004_946        7308633 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/unsignedShort_fractionDigits007_949.html#unsignedShort_fractionDigits007_949        7308633 test_bug
+xml_schema/msData/datatypes/Facets/anyURI/jaxb/anyURI_b006_1356.html#anyURI_b006_1356        7308633 test_bug
+xml_schema/msData/errata10/jaxb/errF001.html#errF001        7308633 test_bug
+xml_schema/msData/simpleType/jaxb/stZ072.html#stZ072.v        7308633 test_bug
+xml_schema/sunData/SType/ST_facets/ST_facets00401m/jaxb/st_facets00401m2.html#Positive        7308633 test_bug
+xml_schema/sunData/SType/ST_facets/ST_facets00501m/jaxb/st_facets00501m2.html#Positive        7308633 test_bug
+xml_schema/msData/annotations/jaxb/annotB025.html#annotB025        7308633 test_bug
+xml_schema/msData/schema/jaxb/schB4.html#schB4        7308633 test_bug
+xml_schema/msData/schema/jaxb/schE5.html#schE5        7308633 test_bug
+
+schema2java/structures/AttrDecl/AD_name/AD_name00115/AD_name00115.html#AD_name00115        7308669 test_bug
+schema2java/structures/AttrDecl/AD_name/AD_name00115/AD_name00115.html#AD_name00115_p        7308669 test_bug
+schema2java/structures/AttrDecl/AD_name/AD_name00115        7308669 test_bug
+xml_schema/sunData/AttrDecl/AD_name/AD_name00115/jaxb/AD_name00115.xsd.html#AD_name00115_p.xml        7308669 test_bug
+xml_schema/sunData/AttrDecl/AD_name/AD_name00115/jaxb/ad_name00115.html#AD_name00115_p        7308669 test_bug
+xml_schema/sunData/AttrDecl/AD_name/AD_name00115/jaxb/ad_name00115.html#ad_name00115        7308669 test_bug
+xml_schema/sunData/ElemDecl/name/name008/name00805/jaxb/name00805.html#name00805        7308669 test_bug
+xml_schema/sunData/ElemDecl/name/name008/name00805/jaxb/name00805.html#name00805_p        7308669 test_bug
+xml_schema/sunData/ElemDecl/name/name008/name00805/jaxb/name00805.xsd.html#name00805_p.xml         7308669 test_bug

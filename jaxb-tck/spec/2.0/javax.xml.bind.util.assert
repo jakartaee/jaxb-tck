@@ -1,0 +1,40 @@
+<javax.xml.bind.util|ValidationEventCollector e0b1d97e> {@link javax.xml.bind.ValidationEventHandler ValidationEventHandler} implementation that collects all events. 
+<javax.xml.bind.util|ValidationEventCollector bdcdb1ea> To use this class, create a new instance and pass it to the setEventHandler method of the Validator, Unmarshaller, Marshaller class. 
+<javax.xml.bind.util|ValidationEventCollector 221ee3e6> After the call to validate or unmarshal completes, call the getEvents method to retrieve all the reported errors and warnings. 
+<javax.xml.bind.util|ValidationEventCollector.getEvents() 14c72002> Return an array of ValidationEvent objects containing a copy of each of the collected errors and warnings. 
+<javax.xml.bind.util|ValidationEventCollector.getEvents() b75961f> @return:a copy of all the collected errors and warnings or an empty array if there weren't any. 
+<javax.xml.bind.util|ValidationEventCollector.reset() 3fa46ef7> Clear all collected errors and warnings. 
+<javax.xml.bind.util|ValidationEventCollector.hasEvents() 6d366369> Returns true if this event collector contains at least one ValidationEvent. 
+<javax.xml.bind.util|ValidationEventCollector.hasEvents() 2528180d> @return:true if this event collector contains at least one ValidationEvent, false otherwise. 
+<javax.xml.bind.util|JAXBSource 7dc59868> JAXP {@link javax.xml.transform.Source} implementation that marshals a JAXB-generated object. 
+<javax.xml.bind.util|JAXBSource b8036867> This utility class is useful to combine JAXB with other Java/XML technologies. 
+<javax.xml.bind.util|JAXBSource 52714016> The following example shows how to use JAXB to marshal a document for transformation by XSLT. 
+<javax.xml.bind.util|JAXBSource 2be016a9> MyObject o = // get JAXB content tree // jaxbContext is a JAXBContext object from which 'o' is created. 
+<javax.xml.bind.util|JAXBSource 7cae1b2b> JAXBSource source = new JAXBSource( jaxbContext, o ); // set up XSLT transformation TransformerFactory tf = TransformerFactory.newInstance(); Transformer t = tf.newTransformer(new StreamSource("test.xsl")); // run transformation t.transform(source,new StreamResult(System.out)); The fact that JAXBSource derives from SAXSource is an implementation detail. 
+<javax.xml.bind.util|JAXBSource ebb1f751> Thus in general applications are strongly discouraged from accessing methods defined on SAXSource. 
+<javax.xml.bind.util|JAXBSource 3507ab52> In particular, the setXMLReader and setInputSource methods shall never be called. 
+<javax.xml.bind.util|JAXBSource 3744b2f5> The XMLReader object obtained by the getXMLReader method shall be used only for parsing the InputSource object returned by the getInputSource method. 
+<javax.xml.bind.util|JAXBSource acdc6636> Similarly the InputSource object obtained by the getInputSource method shall be used only for being parsed by the XMLReader object returned by the getXMLReader. 
+<javax.xml.bind.util|JAXBSource.JAXBSource(javax.xml.bind.JAXBContext,java.lang.Object) b3659d88> Creates a new {@link javax.xml.transform.Source} for the given content object. 
+<javax.xml.bind.util|JAXBSource.JAXBSource(javax.xml.bind.JAXBContext,java.lang.Object) dbe24e58> @throws:JAXBException if an error is encountered while creating the JAXBSource or if either of the parameters are null. 
+<javax.xml.bind.util|JAXBSource.JAXBSource(javax.xml.bind.Marshaller,java.lang.Object) b3659d88> Creates a new {@link javax.xml.transform.Source} for the given content object. 
+<javax.xml.bind.util|JAXBSource.JAXBSource(javax.xml.bind.Marshaller,java.lang.Object) dbe24e58> @throws:JAXBException if an error is encountered while creating the JAXBSource or if either of the parameters are null. 
+<javax.xml.bind.util|JAXBResult 8dd151b7> JAXP {@link javax.xml.transform.Result} implementation that unmarshals a JAXB object. 
+<javax.xml.bind.util|JAXBResult b8036867> This utility class is useful to combine JAXB with other Java/XML technologies. 
+<javax.xml.bind.util|JAXBResult 6c209604> The following example shows how to use JAXB to unmarshal a document resulting from an XSLT transformation. 
+<javax.xml.bind.util|JAXBResult 5609a905> JAXBResult result = new JAXBResult( JAXBContext.newInstance("org.acme.foo") ); // set up XSLT transformation TransformerFactory tf = TransformerFactory.newInstance(); Transformer t = tf.newTransformer(new StreamSource("test.xsl")); // run transformation t.transform(new StreamSource("document.xml"),result); // obtain the unmarshalled content tree Object o = result.getResult(); The fact that JAXBResult derives from SAXResult is an implementation detail. 
+<javax.xml.bind.util|JAXBResult 8a8c83bc> Thus in general applications are strongly discouraged from accessing methods defined on SAXResult. 
+<javax.xml.bind.util|JAXBResult 81fd942> In particular it shall never attempt to call the setHandler, setLexicalHandler, and setSystemId methods. 
+<javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.JAXBContext) fbd9636a> Creates a new instance that uses the specified JAXBContext to unmarshal. 
+<javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.JAXBContext) 8dd0a60d> @exception:JAXBException if an error is encountered while creating the JAXBResult or if the context parameter is null. 
+<javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.Unmarshaller) bee99176> Creates a new instance that uses the specified Unmarshaller to unmarshal an object. 
+<javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.Unmarshaller) 79ff6d9d> This JAXBResult object will use the specified Unmarshaller instance. 
+<javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.Unmarshaller) 65af76c4> It is the caller's responsibility not to use the same Unmarshaller for other purposes while it is being used by this object. 
+<javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.Unmarshaller) 40c778d6> The primary purpose of this method is to allow the client to configure Unmarshaller. 
+<javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.Unmarshaller) 85ac899e> Unless you know what you are doing, it's easier and safer to pass a JAXBContext. 
+<javax.xml.bind.util|JAXBResult.JAXBResult(javax.xml.bind.Unmarshaller) 5d408fdf> @throws:JAXBException if an error is encountered while creating the JAXBResult or the Unmarshaller parameter is null. 
+<javax.xml.bind.util|JAXBResult.getResult() 96758d5f> Gets the unmarshalled object created by the transformation. 
+<javax.xml.bind.util|JAXBResult.getResult() 8ef59b7b> @return:Always return a non-null object. 
+<javax.xml.bind.util|JAXBResult.getResult() 3bb27d4e> @exception:IllegalStateException if this method is called before an object is unmarshalled. 
+<javax.xml.bind.util|JAXBResult.getResult() ba604d6d> @exception:JAXBException if there is any unmarshalling error. 
+<javax.xml.bind.util|JAXBResult.getResult() 59eb7f66> Note that the implementation is allowed to throw SAXException during the parsing when it finds an error. 

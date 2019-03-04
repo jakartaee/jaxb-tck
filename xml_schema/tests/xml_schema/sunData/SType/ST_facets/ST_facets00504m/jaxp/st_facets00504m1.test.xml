@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="st_facets00504m1">
+   <TestGroupDocumentation>
+      <Title><![CDATA[Enumeration values end with the digit characters 0x0030, 0x0034, 0x0039, 0x0660, 0x0664, 0x0669, 0x06f0, 0x06f4, 0x06f9, 0x0966, 0x096a, 0x096f, 0x09e6, 0x09ea, 0x09ef, 0x0a66, 0x0a6a, 0x0a6f, 0x0ae6, 0x0aea, 0x0aef, 0x0b66, 0x0b6a, 0x0b6f, 0x0be7, 0x0beb, 0x0bef, 0x0c66, 0x0c6a, 0x0c6f (valid schema)]]></Title>
+      <Description><![CDATA[
+        <p>
+                    Declare a simple type based on NCName and restricted with 30 enumeration values 
+                             that end with the digit characters 0x0030, 0x0034, 0x0039, 0x0660, 0x0664, 0x0669, 0x06f0, 0x06f4, 0x06f9, 0x0966, 0x096a, 0x096f, 0x09e6, 0x09ea, 0x09ef, 0x0a66, 0x0a6a, 0x0a6f, 0x0ae6, 0x0aea, 0x0aef, 0x0b66, 0x0b6a, 0x0b6f, 0x0be7, 0x0beb, 0x0bef, 0x0c66, 0x0c6a, 0x0c6f. The document uses each of the values.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#Simple_Type_Definitions">
+            http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#Simple_Type_Definitions
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)st_facets00504m1.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../ST_facets00504m1.xsd"/>
+   </CodeSet>
+   <TestCase ID="st_facets00504m1">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="Positive">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../ST_facets00504m1_p.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)st_facets00504m1.test.xml	1.1 07/03/27 -->

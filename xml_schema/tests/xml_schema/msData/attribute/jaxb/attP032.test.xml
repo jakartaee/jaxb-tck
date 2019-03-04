@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="attP032">
+    <TestGroupDocumentation>
+        <Title><![CDATA[attP032]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Syntax Checking for Attribute Declaration (form) : Test that attributes from imported schema (global, attribute Group, complexTyped and simpleTyped) are recognized
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Declarations">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#cAttribute_Declarations
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)attP032.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../attP032.xsd"/>
+        <ExternalData Type="iodata" SourceName="../attP032.imp"/>
+        <ExternalData Type="iodata" SourceName="../attP032.red"/>
+        <ExternalData Type="iodata" SourceName="../attP032.inc"/>
+        <ExternalData Type="iodata" SourceName="attP032.sig"/>
+    </CodeSet>
+    <TestCase ID="attP032">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="attP032.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../attP032.xml"/>
+            <ExternalData Type="iodata" SourceName="attp032-attP032.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

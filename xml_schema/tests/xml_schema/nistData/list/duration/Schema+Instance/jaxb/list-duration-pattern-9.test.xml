@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-duration-pattern-9">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-duration-pattern-9]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/duration is restricted by facet pattern with value P\d\d03Y0\dM\d9DT\d6H\d9M\d3S P\d\d33Y\d3M\d9DT\d2H\d8M\d8S P19\d\dY0\dM\d8DT1\dH\d1M4\dS P\d\d66Y1\dM1\dDT\d8H2\dM4\dS P\d\d20Y0\dM\d8DT\d4H4\dM0\dS P\d\d44Y1\dM\d2DT0\dH1\dM\d6S.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#duration">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#duration
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-duration-pattern-9.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-list-duration-pattern-5.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-duration-pattern-9.sig"/>
+    </CodeSet>
+    <TestCase ID="list-duration-pattern-9">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

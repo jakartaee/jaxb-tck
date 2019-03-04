@@ -1,0 +1,726 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!-- ======================================================================
+  Jan 28, 2005 6:39:18 PM                                                        
+  
+  sigtest    
+  SigTest generation script for JAXB TCK 2.0
+  
+  SCCS: @(#)build.ant.xml	1.46 07/06/05
+  ====================================================================== -->
+<project name="sigtestgen" default="default">
+  <description>
+    SigTest generation project for JAXB TCK 2.0
+
+
+    Following properties can be defined using -D option:
+
+    build.dir - working dir 
+    dest.dir - dir where sig files will be placed (defaul ${build.dir}/sigstore 
+    testdir.url - *directory* in workspace to process 
+    xml_schema.ws - path to xml_schema workspace
+        (default is ../../xml_schema relative build.ant.xml location)
+
+    Sample use: gensig.sh generate.signatures
+    -Dtestdir.url=tests/xml_schema/structures/CType/annotation
+
+  </description>
+  
+  <dirname file="${ant.file}" property="tck.build.ws.dir" />
+  <ant antfile="${tck.build.ws.dir}/convert-properties.ant.xml" target="default"/>
+  <property file="build.properties" />
+  <property name="build.properties.file.loc" location="build.properties" />
+  <property name="skip-convert-properties" value="true"/>
+
+
+  <property name="build.domain" value="${tck.build.domain}"/>
+	
+  <condition property="defs.mk" value="${Defs}">
+    <isset property="Defs" />
+  </condition>
+
+  <condition property="defs.mk" value="Defs.${build.domain}.mk">
+    <isset property="build.domain" />
+  </condition>
+
+  <fail unless="defs.mk">
+    Cant't evaluate name for Defs.[domain].mk. You should define
+    property "defs.mk" explicitly
+  </fail>
+
+  <property name="defs.file" location="${defs.mk}" />
+  <loadproperties srcfile="${defs.file}">
+    <filterchain>
+      <replacestring from="(" to="{" />
+      <replacestring from=")" to="}" />
+      <striplinecomments>
+        <comment value="#" />
+        <comment value="--" />
+        <comment value="= " />
+        <comment value="rem " />
+        <comment value="//" />
+      </striplinecomments>
+    </filterchain>
+  </loadproperties>
+
+  <property name="xml_schema.ws" location="${basedir}/../../xml_schema" />
+  <property name="testdir.url" value="tests/xml_schema" />
+  <!--property name="jct.tools.dir" value="${INTERNAL_JCTTOOLS}" /-->
+  <property name="javatest.jar.dir" value="${JAVATEST_JAR_LOC}" />
+  <!--
+  <property name="sigtest.ws" location="${SIGTEST_WORKSPACE}" />
+  <property name="jaxb.sigtest.ws" location="${JAXB_SIGTEST_WS}" />
+  -->
+  <property name="build.dir" value="${basedir}/sigbuild" />
+  <property name="build.location" location="${build.dir}" />
+  <property name="dest.dir" value="${build.dir}/sigstore" />
+  <property name="build.precompile.dir" value="${build.dir}/precompile"/>
+  <property name="tck.ws" location="{basedir}/../.." />
+  <property name="tck.share.src"
+    value="${tck.ws}/src/share/jttck/classes" />
+  <property name="sigtest.main.class"
+    value="com.sun.tdk.signaturetest.Setup" />
+  <!--property name="classinfo.dir" location="${CLASSINFO_HOME}" /-->
+  <property name="jaxb.home" location="${JAXB_HOME}" />
+  <property name="btools.dir" location="${BTOOLS_WS_MODEL}" />
+  <path id="repository.path"
+    path="${xml_schema.ws}${path.separator}${tck.ws}" />
+  <property name="xsl.dir" location="${basedir}" />
+  <property name="keywords.file" location="${basedir}/keywords.xml" />
+  <property name="exlude-file" value="${build.dir}/excludelist.jtx" />
+  <property name="xalan.dir"
+    location="/set/java-sqe/tools/xalan/xalan-2_7_0" />
+
+  <!-- ================================= 
+    dependencies              
+    ================================= -->
+
+  <dependset id="exclude-file-dependency">
+    <srcfileset dir="${tck.ws}/src/share/lib">
+      <include name="*jtx" />
+    </srcfileset>
+    <targetfilelist dir="${build.dir}" files="excludelist.jtx" />
+  </dependset>
+
+  <available property="exclude-file-exists" file="${exlude-file}"
+    type="file" />
+
+  <condition property="dtd-extracted">
+    <available file="${build.dir}/dtd/testgenspec.dtd" />
+  </condition>
+
+<!--  <uptodate targetfile="${build.dir}/lib/sigtest.jar"
+    property="sigtest-jar">
+    <srcfiles dir="${build.dir}/src/share/classes" includes="**/*.java" />
+  </uptodate>
+  <condition property="sigtest-built">
+    <available file="${build.dir}/lib/sigtest.jar" />
+  </condition>
+-->
+
+  <path id="libs.path">
+    <pathelement path="${build.dir}/classes" />
+    <fileset dir="${jaxb.home}" includes="lib/*.jar" />
+    <fileset dir="${jct.tools.dir}" includes="lib/*.jar" />
+    <!--fileset dir="${btools.dir}" includes="lib/*.jar" /-->
+    <fileset dir="${sigtest.dir}" includes="lib/*.jar" />
+  </path>
+
+<!--
+  <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask"
+    classpathref="libs.path" loaderref="libs.loader">
+  </taskdef>
+
+-->
+	
+    <macrodef name="generate.bunch.build">
+    	<attribute name="file"/>
+    	<attribute name="filesetid"/>
+    	<attribute name="failonany" default="false"/>
+    	<attribute name="threadcount" default="1"/>
+		<sequential>
+	    	<pathconvert property="@{filesetid}.bunch.build.files" refid="@{filesetid}" pathsep="&#13;">
+	    		<mapper type="glob" from="*" to='    &lt;forkant file="*" /&gt;'></mapper>
+    		</pathconvert>
+			<echo file="@{file}"><![CDATA[
+<project name="@{file}" default="bunch">
+ <target name="bunch">
+  <parallel threadsPerProcessor="@{threadcount}" failonany="@{failonany}">
+]]></echo>
+	    	<echo file="@{file}" message="${@{filesetid}.bunch.build.files}" append="true"/>
+			<echo file="@{file}" append="true"><![CDATA[
+   </parallel>
+  </target>
+</project>
+]]>
+		</echo>
+		</sequential>
+    </macrodef>
+	
+  <!-- ================================= 
+    target: default              
+    ================================= -->
+  <target name="default" description="--> empty target"></target>
+
+
+
+	<!--
+		filter jaxp dirs	
+	-->	
+  <defaultexcludes add="**/jaxp/**"/>
+  <!-- ================================= 
+    target: prepare              
+    ================================= -->
+	
+  <target name="prepare">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${build.dir}/classes" />
+    <mkdir dir="${build.dir}/lib" />
+    <mkdir dir="${build.dir}/extractor" />
+    <mkdir dir="${build.precompile.dir}" />
+    <copy file="${basedir}/commontest.xml"
+      tofile="${build.dir}/commontest.xml" />
+    <copy file="${basedir}/bunch.ant.xml"
+      tofile="${build.dir}/bunch.ant.xml" />
+  	<copy file="${basedir}/default.exclude"
+  		tofile="${build.dir}/default.exclude" />
+    <copy file="${build.properties.file.loc}"
+      tofile="${build.dir}/build.properties" />
+     
+  </target>
+
+  <target name="extract-names">
+    <echo file="${build.dir}/suiteconvert.tmp">${testdir.url}</echo>
+    <loadfile property="testsnamespace.tmp"
+      srcfile="${build.dir}/suiteconvert.tmp">
+      <filterchain>
+        <replaceregex pattern="tests/([^/]+).*" replace="\1" />
+      </filterchain>
+    </loadfile>
+    <loadfile property="packname.tmp"
+      srcfile="${build.dir}/suiteconvert.tmp">
+      <filterchain>
+        <replaceregex pattern="tests/${testsnamespace.tmp}/([^/]+).*"
+          replace="\1" />
+      </filterchain>
+    </loadfile>
+    <loadfile property="suitename.tmp"
+      srcfile="${build.dir}/suiteconvert.tmp">
+      <filterchain>
+        <replaceregex
+          pattern="tests/${testsnamespace.tmp}/${packname.tmp}/([^/]+).*"
+          replace="\1" />
+      </filterchain>
+    </loadfile>
+    <condition property="testsnamespace"
+      value="${testsnamespace.tmp}">
+      <not>
+        <equals arg1="${testdir.url}" arg2="${testsnamespace.tmp}" />
+      </not>
+    </condition>
+    <condition property="packname" value="${packname.tmp}">
+      <not>
+        <equals arg1="${testdir.url}" arg2="${packname.tmp}" />
+      </not>
+    </condition>
+    <condition property="suitename" value="${suitename.tmp}">
+      <not>
+        <equals arg1="${testdir.url}" arg2="${suitename.tmp}" />
+      </not>
+    </condition>
+    <echo message="Namespace: ${testsnamespace}" />
+    <echo message="Pack name: ${packname}" />
+    <echo message="Suite name: ${suitename}" />
+  </target>
+
+  <target name="clean"
+    description="--> removes temporary build results.">
+    <delete dir="${build.dir}/classes" />
+    <delete dir="${build.dir}/extractor" />
+    <delete dir="${build.dir}/dtd" />
+    <delete file="${build.dir}/commontest.xml" />
+    <delete dir="${build.precompile.dir}" />
+    <delete dir="${dest.dir}" />
+  </target>
+
+
+  <target name="build.sigtest" depends="prepare"
+    description="--> builds sigtest 1.3 " unless="sigtest-built">
+    <tstamp />
+    <copy todir="${build.dir}">
+      <fileset dir="${sigtest.ws}">
+        <exclude name="**/HtmlClassDescription.java" />
+        <exclude name="**/HtmlClassDescrLoader.java" />
+        <exclude name="**/JavaDocFindClass.java" />
+        <include name="src/share/classes/**/signaturetest/**/*.java" />
+      </fileset>
+    </copy>
+    <copy todir="${build.dir}">
+      <fileset dir="${jaxb.sigtest.ws}">
+        <include name="src/share/classes/**" />
+      </fileset>
+    </copy>
+    <javac destdir="${build.dir}/classes" debug="true"
+      debuglevel="lines,vars,source">
+      <src path="${build.dir}/src/share/classes" />
+      <exclude name="**/HtmlClassDescription.java" />
+      <exclude name="**/HtmlClassDescrLoader.java" />
+      <exclude name="**/JavaDocFindClass.java" />
+      <include name="**/signaturetest/**/*.java" />
+      <classpath>
+        <fileset dir="${jct.tools.dir}" includes="lib/*.jar" />
+      </classpath>
+    </javac>
+    <jar destfile="${build.dir}/lib/sigtest.jar"
+      basedir="${build.dir}/classes">
+      <manifest>
+        <attribute name="Main-Class" value="${sigtest.main.class}" />
+        <section name="Signature test">
+          <attribute name="Manifest-version" value="1.0" />
+          <attribute name="Implementaiton-Vendor"
+            value="Sun Microsystems Inc." />
+          <attribute name="built" value="${TODAY} ${TSTAMP}" />
+        </section>
+      </manifest>
+    </jar>
+  </target>
+
+
+  <!-- ================================= 
+    target: build.tck.src              
+    ================================= -->
+  <target name="build.tck.src" depends="prepare"
+    description="--> builds TCK auxilary classes (src/share/jttck)">
+    <javac destdir="${build.dir}/classes">
+      <src path="${tck.ws}/src/share/classes" />
+      <src path="${tck.ws}/src/share/jttck/classes" />
+      <include name="**/*" />
+      <exclude name="com/sun/tgxml/**/*" />
+      <classpath refid="libs.path">
+<!--        <pathelement path="${build.dir}/classes" />
+        <fileset dir="${jct.tools.dir}" includes="lib/*.jar" />
+        <fileset dir="${btools.dir}" includes="lib/*.jar" />
+        <fileset dir="${jaxb.home}" includes="lib/*.jar" />
+        <fileset dir=${sigtest.dir}" includes="lib/*.jar" /> -->
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="define_jbxml_specific_tasks"
+    depends="build.tck.src, extract.javatest.jar">
+    <available classpathref="libs.path"
+      classname="com.sun.ant.tools.JBGenerateTask"
+      property="jbxml-compiled" />
+    <fail unless="jbxml-compiled"
+      message="Can't find class: com.sun.ant.tools.JBGenerateTask." />
+    <typedef name="jbxml-generate"
+      classname="com.sun.ant.tools.JBGenerateTask"
+      loaderref="libs.loader">
+    </typedef>
+
+  </target>
+
+  <target name="extract.javatest.jar" depends="prepare">
+    <unjar src="${javatest.jar.dir}/javatest.jar"
+      dest="${build.dir}/classes" />
+  </target>
+
+  <target name="create-jtx" unless="exclude-file-exists">
+    <concat destfile="${exlude-file}">
+      <fileset dir="${tck.ws}/src/share/lib">
+        <include name="*jtx" />
+      </fileset>
+      <filterchain>
+        <replaceregex pattern=".*/([^\s\[\.\#]*).*"
+          replace="\1\.test.ant.xml" />
+        <replaceregex pattern="(.*)(_\.)(.*)" replace="\1_CTTests.\3" />
+      </filterchain>
+    </concat>
+    <loadfile property="exclude-list" srcfile="${exlude-file}" />
+  </target>
+  <!-- - - - - - - - - - - - - - - - - - 
+    target: define.repository                      
+    - - - - - - - - - - - - - - - - - -->
+  <target name="define.repository">
+    <available file="${testdir.url}" property="testdir.exists"
+      type="dir">
+      <filepath>
+        <path refid="repository.path" />
+      </filepath>
+    </available>
+
+    <whichresource resource="${testdir.url}"
+      property="testdir.location">
+      <classpath>
+        <path refid="repository.path" />
+      </classpath>
+    </whichresource>
+    <fail unless="testdir.exists"
+      message="The dir containing tests sources is absent ${testdir.url}" />
+
+    <condition property="in.repository" value="${xml_schema.ws}">
+      <contains string="${testdir.location}"
+        substring="${xml_schema.ws}" />
+    </condition>
+
+    <property name="in.repository" value="${tck.ws}" />
+  </target>
+
+
+  <!-- ================================= 
+    target: extracttests              
+    ================================= -->
+  <target name="extracttests" depends="prepare, define.repository"
+    description="--> extract tests UTD from jmpp, pl, xml">
+
+    <ant antfile="extractRepos.xml" inheritall="false">
+      <property name="work.dir" value="${build.dir}/extractor" />
+      <property name="classes.dir" location="${build.dir}/classes" />
+      <property name="in.repository" value="${in.repository}" />
+      <property name="in.destination" value="${build.precompile.dir}" />
+      <property name="in.dirs" value="${testdir.url}" />
+      <property name="btools.dir" location="${btools.dir}" />
+      <property name="JCT_TOOLS" value="${jct.tools.dir}/lib" />
+      <property name="in.dirs" value="${testdir.url}" />
+    </ant>
+  </target>
+
+  <target name="extract.dtds" unless="dtd-extracted">
+    <unjar dest="${build.dir}/dtd">
+      <patternset>
+        <include name="**/*.dtd" />
+      </patternset>
+      <!--fileset dir="${btools.dir}">
+        <include name="**/*.jar" />
+      </fileset-->
+    </unjar>
+    <move todir="${build.dir}/dtd" flatten="true">
+      <fileset dir="${build.dir}/dtd" includes="**/*.dtd" />
+    </move>
+    <delete includeemptydirs="true">
+      <fileset dir="${build.dir}/dtd">
+        <include name="**/" />
+        <exclude name="*.dtd" />
+      </fileset>
+    </delete>
+  </target>
+
+  <target name="walk.suites" depends="extract.dtds, extract-names">
+    <!--depends="extracttests"-->
+    <condition property="walk.includes"
+      value="tests/${testsnamespace}/${packname}/${suitename}">
+      <isset property="suitename" />
+    </condition>
+    <condition property="walk.includes"
+      value="tests/${testsnamespace}/${packname}/**">
+      <isset property="packname" />
+    </condition>
+    <condition property="walk.includes"
+      value="tests/${testsnamespace}/**">
+      <isset property="testsnamespace" />
+    </condition>
+    <property name="walk.includes" value="**" />
+    <echo message="Walk includes: ${walk.includes}" />
+    <subant genericantfile="${ant.file}" target="apply.styles"
+      inheritall="true">
+      <dirset dir="${build.precompile.dir}"
+        includes="${walk.includes}">
+        <depth min="2" max="3" />
+      </dirset>
+    </subant>
+  </target>
+
+  <target name="apply.styles">
+    <basename file="${basedir}" property="suite-name" />
+    <echo>Apply styles in ${basedir}</echo>
+    <pathconvert property="apply.include_dirs.tmp" targetos="unix">
+      <path path="${build.precompile.dir}/${testdir.url}" />
+      <map from="${basedir}/" to="" />
+    </pathconvert>
+    <condition property="apply.include_dirs" value="**">
+      <and>
+        <contains string="${basedir}"
+          substring="${build.precompile.dir}/${testdir.url}" />
+      </and>
+    </condition>
+
+    <property name="apply.include_dirs"
+      value="${apply.include_dirs.tmp}" />
+
+    <subant genericantfile="${ant.file}"
+      target="check-if-testxml-exists" inheritall="true">
+      <!--			<propertyset>
+        <propertyref name="xsl.dir" />
+        <propertyref name="build.dir" />
+        <propertyref name="jct.tools.dir" />
+        <propertyref name="keywords.file" />
+        </propertyset>
+      -->
+      <property name="suite-name" value="${suite-name}" />
+      <dirset dir="${basedir}" includes="${apply.include_dirs}/**"
+        excludes="**/build/**" excludesfile="${build.dir}/default.exclude"/>
+    </subant>
+  </target>
+
+  <target name="check-if-testxml-exists">
+    <fileset id="test-xml-files-set" dir="." includes="*.test.xml" />
+    <pathconvert targetos="unix" property="testxml-files.property"
+      refid="test-xml-files-set">
+    </pathconvert>
+    <condition property="testxml-files-exists">
+      <not>
+        <equals arg1="${testxml-files.property}" arg2="" />
+      </not>
+    </condition>
+    <antcall target="generate.script"></antcall>
+  </target>
+  <target name="generate.script" if="testxml-files-exists">
+    <copy verbose="true" file="${build.dir}/dtd/testgenspec.dtd"
+      todir="${basedir}" flatten="true" />
+    <style style="${xsl.dir}/create-common-script.xsl" extension=".tmp"
+      destdir="${basedir}" basedir="${basedir}" includes="*.test.xml">
+      <size when="more" value="1" />
+      <param name="path-separator" expression="${file.separator}" />
+      <param name="test-suite" expression="${suite-name}" />
+      <param name="importFile" expression="${build.dir}/commontest.xml" />
+      <param name="propertyFile" expression="${build.dir}/build.properties" />
+      <param name="keywords-file" expression="${keywords.file}" />
+      <param name="build-dir" expression="${build.dir}" />
+      <param name="jct-dir" expression="${jct.tools.dir}" />
+    </style>
+    <style style="${xsl.dir}/format-script.xsl" extension=".ant.xml"
+      destdir="${basedir}" includes="*.tmp" />
+    <!--
+      <delete>
+      <fileset dir="." includes="*.tmp" />
+      </delete>
+    -->
+    <replaceregexp byline="true"
+      match="(javasoft.sqe.tests.*\.)([0-9])(.*)" replace="\1_\2\3">
+      <fileset dir="." includes="*.ant.xml" />
+    </replaceregexp>
+<!--
+    <delete file="testgenspec.dtd" />
+-->  
+  </target>
+
+  <target name="copy.support.files" depends="define.repository">
+    <copy todir="${build.precompile.dir}">
+      <fileset dir="${in.repository}">
+        <exclude name="**/*.doc.xml" />
+        <exclude name="**/*.test.xml" />
+        <exclude name="**/*.jmpp" />
+        <exclude name="**/*.jb.xml" />
+        <exclude name="**/*.sig" />
+        <include name="${testdir.url}/**/*.*" />
+      </fileset>
+    </copy>
+    <antcall target="fix_prj_jaxb"></antcall>
+  </target>
+
+  <target name="fix_prj_jaxb">
+    <move todir="${build.precompile.dir}/${testdir.url}">
+      <fileset dir="${build.precompile.dir}/${testdir.url}">
+        <include name="**/prj.jaxb/**/*" />
+      </fileset>
+      <mapper type="regexp" from="(.*)(prj.jaxb)/(.*)" to="\1\3">
+      </mapper>
+    </move>
+    <delete dir="${build.precompile.dir}/${testdir.url}"
+      includeemptydirs="true" includes="**/prj.jaxb" />
+  </target>
+
+  <target name="perform.generation" depends="create-jtx">
+    <subant target="buildtests" genericantfile="${ant.file}"
+      inheritall="true" failonerror="false">
+      <dirset dir="${build.precompile.dir}"
+        includes="${testdir.url}/**">
+        <depth min="2" />
+        <exclude name="**/build/**" />
+        <exclude name="**/classes/**" />
+        <exclude name="**/jaxp/**" />
+      </dirset>
+    </subant>
+  </target>
+
+  <target name="generate.jbxml"
+    depends="define_jbxml_specific_tasks, create-jtx">
+    <subant target="build-jbxml" genericantfile="${ant.file}"
+      inheritall="true" failonerror="false">
+      <dirset dir="${build.precompile.dir}"
+        includes="${testdir.url}/**">
+        <depth min="2" />
+        <exclude name="**/build/**" />
+        <exclude name="**/classes/**" />
+      </dirset>
+    </subant>
+  </target>
+
+  <target name="split-bunch-file">
+  	<basename file="${bunch.file}" property="split.file"/>
+  	<echo>Split file: ${split.file} from ${bunch.file}</echo>
+	<style basedir="${build.dir}" destdir="${build.dir}" includes="${split.file}" 
+		extension=".txt" style="${tck.build.ws.dir}/split-bunch-build.xsl">
+		<param name="filePrefix" expression="bunch"/>
+		<param name="importFile" expression="${tck.build.ws.dir}/bunch.ant.xml"/>
+		<param name="dirName" expression="${build.dir}"/>
+	</style>
+  </target>
+	
+  <target name="generate-all" >
+  	<delete>
+  		<fileset dir="${build.dir}" includes="*.part.xml"></fileset>
+  	</delete>
+	<fileset id="build.files" dir="${build.precompile.dir}/${testdir.url}/" >
+		<include name="**/*.ant.xml"/>
+	</fileset>
+	<tempfile property="bunch.file" prefix="bunch" suffix=".xml" destDir="${build.dir}"/>
+  	<generate.bunch.build file="${bunch.file}" filesetid="build.files"/>
+	<antcall target="split-bunch-file" />
+  	<apply executable="${java.home}/bin/java">
+  		<fileset dir="${build.dir}">
+  			<include name="*.part.xml"/>
+  		</fileset>
+  		<arg line="-Xms256m" />
+  		<arg line="-Xmx2048m" />
+		<arg line="-Xss128k" />
+  		<arg line="-XX:PermSize=512M"/>
+  		<arg line="-XX:MaxPermSize=512M"/>
+  		<arg line="-XX:+UseParallelGC"/>
+  		<arg line="-server"/>
+  		<arg line="-cp ${java.class.path}:${sun.boot.class.path}"/>
+  		<arg value="org.apache.tools.ant.launch.Launcher" />
+  		<arg line="-buildfile "/>
+  		<srcfile/>
+  	</apply>
+<!--
+  	<subant target="bunch" inheritall="true">
+  		<fileset dir="${build.dir}" includes="*.part.xml"></fileset>
+  	</subant>
+
+-->  </target>
+
+  <target name="buildtests">
+    <subant target="default" inheritall="true" failonerror="false">
+      <fileset dir="${basedir}" includes="*.ant.xml"
+        excludesfile="${exlude-file}" />
+    	<property name="skip.jbxml.generation" value="true" />
+    </subant>
+  </target>
+
+  <target name="build-jbxml">
+    <subant target="generate.jbxml" inheritrefs="true" inheritall="true"
+      failonerror="false">
+      <fileset dir="${basedir}" includes="*.ant.xml"
+        excludesfile="${exlude-file}" />
+    	<property name="skip.sig.generation" value="true" />
+    </subant>
+  </target>
+
+  <target name="copy.signatures">
+    <copy todir="${dest.dir}">
+      <fileset dir="${build.precompile.dir}"
+        includes="${testdir.url}/**/*.sig" />
+    </copy>
+  </target>
+
+  <target name="copy.jbxml">
+    <copy todir="${dest.dir}">
+      <fileset dir="${build.precompile.dir}"
+        includes="${testdir.url}/**/*.jb.xml" />
+    </copy>
+  </target>
+
+<!--  
+  <target name="generate.signatures"
+    depends="prepare, build.tck.src, extracttests, copy.support.files, walk.suites, perform.generation, copy.signatures"
+    description=" SigTest generation target for JAXB TCK 2.0">
+  </target>
+
+  <target name="jbxml"
+    depends="prepare, build.tck.src, define_jbxml_specific_tasks, extracttests, copy.support.files, walk.suites, generate.jbxml, copy.jbxml"
+    description=" JBXML generation target for JAXB TCK 2.0">
+  </target> 
+-->
+	
+<!-- ================================= 
+          target: generate-all              
+         ================================= -->
+    <target name="generate.all" depends="prepare, build.tck.src, extracttests, copy.support.files, apply-style,generate-all, copy.signatures, copy.jbxml" 
+    	description="--> Generates jb.xml and sig files for specifed testdir.url">
+    </target>
+	
+  <!-- TCK build auxilary tasks-->
+
+  <!-- - - - - - - - - - - - - - - - - - 
+    target: tckbuild.copy.signatures                      
+    - - - - - - - - - - - - - - - - - -->
+  <target name="tckbuild.copy.signatures">
+    <property name="temp.test.storage" value="tempTestStorage" />
+    <property name="tck.build.dir" location="jaxb_tck20" />
+
+    <copy todir="${tck.build.dir}/tests" overwrite="no">
+      <fileset dir="${temp.test.storage}/tests" includes="**/*.sig">
+        <present targetdir="${tck.build.dir}/tests">
+          <mapper type="glob" from="*.sig" to="*.html" />
+        </present>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="tckbuild.copy.jbxml">
+    <property name="temp.test.storage" value="tempTestStorage" />
+    <property name="tck.build.dir" location="jaxb_tck20" />
+
+    <copy todir="${tck.build.dir}/tests" overwrite="false">
+      <fileset dir="${temp.test.storage}/tests"
+        includes="**/*.jb.xml">
+        <present targetdir="${tck.build.dir}/tests">
+          <mapper type="regexp" from="(.*)jaxb?+/([^-]*)-(.*)(\.jb\.xml)"
+            to="\1/\3" />
+        </present>
+      </fileset>
+    </copy>
+    <copy todir="${tck.build.dir}/tests" overwrite="false">
+      <fileset dir="${temp.test.storage}/tests"
+        includes="**/*.jb.xml">
+        <present targetdir="${tck.build.dir}/tests">
+          <mapper type="regexp" from="(.*)/([^-]*)-(.*)(\.jb\.xml)"
+            to="\1/\3" />
+        </present>
+      </fileset>
+    </copy>
+  </target>
+	
+	<target name="apply-style" depends="extract.dtds">
+    	<dirset id="precompiled.subdirs" dir="${build.precompile.dir}/${testdir.url}">
+    		<type type="dir"/>
+    		<exclude name="**/build/**"/>
+    	</dirset>
+	<tempfile property="tostyle.file" prefix="tostyle" suffix=".xml" destDir="${build.dir}"/>
+
+	<generate.bunch.build  file="${tostyle.file}" filesetid="precompiled.subdirs" />
+	<ant antfile="apply-style.ant.xml" target="bunch">
+		<property name="tostyle.file" value="${tostyle.file}" />
+	</ant>
+	</target>
+</project>
+
+

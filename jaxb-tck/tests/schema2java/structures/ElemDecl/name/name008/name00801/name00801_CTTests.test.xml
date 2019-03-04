@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="name00801_">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Element names contain several punctuation characters. (content tree test)]]></Title>
+        <Description><![CDATA[Declare an element with a sequence of elements of type int. Name the elements
+        using 7 punctuation characters: 
+        hyphen ('-', \u002D, HYPHEN-MINUS), period ('.', \u002E, FULL STOP),
+        underscore ('_', \u005F, LOW LINE),
+        dot ('.', \u00B7, MIDDLE DOT), \u0387, GREEK ANO TELEIA,
+        \u06DD, ARABIC END OF AYAH and \u06DE, ARABIC START OF RUB EL HIZB.
+        The document name00801_p.xml sets the elements to 0, 1, 2, ..., 6 respectively.
+        ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)name00801_CTTests.test.xml	1.4 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="name00801.xsd"/>
+        <ExternalData Type="iodata" SourceName="name00801_.sig"/>
+    </CodeSet>
+    <TestCase ID="Get001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the get method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals name00801_p.xml and expects the returned object
+                to contain elements to be set to 0, 1, 2, ..., 6 respectively.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="name00801_p.xml"/>
+            <ExternalData Type="iodata" SourceName="name00801_-name00801_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        Root root = (Root)unmarshal("name00801_p.xml");
+        String failure = "";
+
+        if (root.getAA() != 0) {
+            failure += "; root.getAA() returns " + root.getAA();
+        }
+        if (root.getBB() != 1) {
+            failure += "; root.getBB() returns " + root.getBB();
+        }
+        if (root.getCC() != 2) {
+            failure += "; root.getCC() returns " + root.getCC();
+        }
+        if (root.getDD() != 3) {
+            failure += "; root.getDD() returns " + root.getDD();
+        }
+        if (root.getEE() != 4) {
+            failure += "; root.getEE() returns " + root.getEE();
+        }
+        if (root.getFF() != 5) {
+            failure += "; root.getFF() returns " + root.getFF();
+        }
+        if (root.getGG() != 6) {
+            failure += "; root.getGG() returns " + root.getGG();
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Set001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the set method.]]></Title>
+            <Description><![CDATA[
+                The test unmarshals name00801_p.xml, set its elements to 
+                values 11, 22, ..., 77 and expects the returned object
+                to contain elements to be set to 11, 22, ..., 77 respectively.
+            ]]></Description>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="name00801_p.xml"/>
+            <ExternalData Type="iodata" SourceName="name00801_-name00801_p.jbx"/>
+        </CodeSet>
+        <TestCode><![CDATA[
+        Root root = (Root)unmarshal("name00801_p.xml");
+        String failure = "";
+
+        root.setAA(11);
+        root.setBB(22);
+        root.setCC(33);
+        root.setDD(44);
+        root.setEE(55);
+        root.setFF(66);
+        root.setGG(77);
+
+        if (root.getAA() != 11) {
+            failure += "; root.getAA() returns " + root.getAA();
+        }
+        if (root.getBB() != 22) {
+            failure += "; root.getBB() returns " + root.getBB();
+        }
+        if (root.getCC() != 33) {
+            failure += "; root.getCC() returns " + root.getCC();
+        }
+        if (root.getDD() != 44) {
+            failure += "; root.getDD() returns " + root.getDD();
+        }
+        if (root.getEE() != 55) {
+            failure += "; root.getEE() returns " + root.getEE();
+        }
+        if (root.getFF() != 66) {
+            failure += "; root.getFF() returns " + root.getFF();
+        }
+        if (root.getGG() != 77) {
+            failure += "; root.getGG() returns " + root.getGG();
+        }
+
+        if (failure.length() == 0) {
+            return Status.passed("OK");
+        }
+
+        return Status.failed(failure.substring(2));
+        ]]></TestCode>
+    </TestCase>
+</TestGroup>

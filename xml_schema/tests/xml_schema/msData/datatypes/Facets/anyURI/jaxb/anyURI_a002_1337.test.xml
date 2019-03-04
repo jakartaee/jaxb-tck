@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="anyURI_a002_1337">
+   <TestGroupDocumentation>
+      <Title><![CDATA[anyURI_a002_1337]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : test that dbcs charanters are allowed as anyURI in, any, anyAttribute, notation, appinfo, documentation, schema, include, redefine, import
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)anyURI_a002_1337.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>jaxb.test</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../anyURI_a002.xsd"/>
+   </CodeSet>
+   <TestCase ID="anyURI_a002_1337">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="anyURI_a002_1337.v">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../anyURI_a002.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)anyURI_a002_1337.test.xml	1.1 07/03/27 -->

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="errE003">
+    <TestGroupDocumentation>
+        <Title><![CDATA[errE003]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Primer Errata : E2-25 Error: test support for the new language pattern ([a-zA-Z]{1,8})-([a-zA-Z0-9]{1,8})*
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/2004/03/xmlschema-errata">
+            http://www.w3.org/2004/03/xmlschema-errata
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)errE003.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../errE003.xsd"/>
+        <ExternalData Type="iodata" SourceName="errE003.sig"/>
+    </CodeSet>
+    <TestCase ID="errE003">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="errE003.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../errE003.xml"/>
+            <ExternalData Type="iodata" SourceName="erre003-errE003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

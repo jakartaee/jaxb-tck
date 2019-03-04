@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="Name002">
+    <TestGroupDocumentation>
+        <Title>XmlElement</Title>
+        <Description>
+
+Test of @XmlRooElement that can be used to associate a global element with the schema
+type to which a class is mapped.
+
+      </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)Name002.test.xml	1.2 08/04/04</AttrElem>
+        <AttrElem Name="testType">J2XTest</AttrElem>
+        <Keyword>positive</Keyword>
+        <Keyword>java_to_schema</Keyword>
+        <Keyword>runtime</Keyword>
+        <Keyword>jaxb</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.j2x</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="Name002.java"/>
+    </CodeSet>
+    <TestCase ID="testCase0001">
+        <TestCaseDocumentation>
+            <Description>
+          Positive test. Assertion from JAXB 2.0 Specification - @XmlRootElement {name}:
+          Mapping:  Class to Element Declaration
+          if @XmlRootElement.name() is not ?##default?, then the XML name is equal to  
+          @XmlRootElement.name()
+         </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">positive</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="Name002.p.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+    <TestCase ID="testCase0002">
+        <TestCaseDocumentation>
+            <Description>
+          Negative test. Assertion from JAXB 2.0 Specification - @XmlType {name}:
+          Mapping:  Class to Element Declaration
+          if @XmlRootElement.name() is not ?##default?, then the XML name is equal to  
+          @XmlRootElement.name()
+        </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">negative</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="Name002.n.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

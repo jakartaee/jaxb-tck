@@ -1,0 +1,151 @@
+<html>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+  <body>
+The <b><em>Validator</em></b> package provides the interfaces that allow a <b><em>Processor</em></b> component that
+a tool uses to semantically validate an IR.
+<p>
+<b><em>Validators</em></b> are a specific type of <b><em>Processor</em></b>. Other processors (that implement the
+<b><em>ValidatingProcessor</em></b> contract) can contain a <b><em>Validators</em></b>.  <b><em>Parsers</em></b>
+and <b><em>Emitters</em></b> are types of <b><em>ValidatingProcessors</em></b>.  
+<p>
+<b><em>ValidatingProcessors</em></b> take an IR and validates it at some point.  For a parser - 
+that point is generally after parsing into an IR but before the IR is returned to the caller.  For an emitter -
+that point is generally before anything has been emitted.
+<p>
+Most of the time, a <b><em>Validator</em></b> will be owned by a <b><em>ValidatingProcessor</em></b>,
+however when a Build-system is defined within a single VM (as opposed to a chain of tools), the Java driver
+for that system may need to insert a validator between the invocation of the tools within that system.
+<p>
+<strong>Validator charter</strong>
+<p>
+  A validator takes an IR tree and throws an exception (<b><em>ValidatorException</em></b>) when the IR does 
+not conform to a certain sub-format.  A sub-format is a set of semantic rules that an IR must conform to for a 
+given TCK build.  An implementation of a <b><em>Validator</em></b> enforces a specific sub-format.  A build-system
+is responsible for configuring any given tool in the build-process with an appropriate validator.  This allows a
+specific TCK build to accept specific sub-forms of a UTD.
+<p>
+
+<em>example:
+<p>
+    JCK build imposes rules requiring various forms of documentation (i.e. 
+JCK requires TestedClass and TestedPackage).</em>
+
+<p>
+
+<strong>  Build-System (general)</strong>
+<code><pre>
+|-------------------------------------------------|
+|                                                 |
+|      +----------+           +----------+        |
+|      |  Tool 1  |           | Tool 2   |        |
+|      +----------+           +----------+        |
+|   parse /   \ emit        parse /   \ emit      |
+|        /     \                 /     \          |
+|       /       \               /       \         |
+|    XML         ------XML------          XML     |
+|                                                 |
+|-------------------------------------------------|
+</pre></code>
+<strong>general features:</strong>
+<p>
+<OL>
+
+<LI> can think of each tool as a completely independent entity.</li>
+<LI> can think of XML as intermediary representation of a test.</li>
+<LI> we desire a tool to "fail-fast" when the XML is not of the correct 
+sub-format.   </li>
+<LI> tool can potentially modify an IR.  Validator can be inserted anywhere 
+along the i/o chain to validate the modified IR.  </li>
+</OL>
+<p>
+
+<em>example:  Tool 1 may have an external interface with Tool 2 by adding 
+AttrElems to an IR. A validator may be used to validate the form of an 
+AttrElem</em>.
+
+<p>
+
+Also consider a build-system that chains to other tools in a single VM 
+(without external intermediary XML files):
+<p>
+
+<strong>  Build-System (single VM)</strong>
+  <p>
+<code><pre>
+|-------------------------------------------------|
+|                                                 |
+|      +----------+           +----------+        |
+|      |  Tool 1  |---------->| Tool 2   |        |
+|      +----------+    IR     +----------+        |
+|   parse /                           \ emit      |
+|        /                             \          |
+|       /                               \         |
+|    XML                                  XML     |
+|                                                 |
+|-------------------------------------------------|
+</pre></code>
+
+In this case, it may be desirable to validate the IR between tools, but it 
+is very important to validate the sub-format during Tool1's initial parse.
+<p>
+<strong>  Build-System (using translator on the front)</strong>
+
+<p>
+Now consider that the first tool is a translation tool:
+
+
+ <code><pre>
+|-------------------------------------------------|
+|                                                 |
+|      +----------+           +----------+        |
+|      |  Tool 1  |---------->| Tool 2   |        |
+|      +----------+    IR(s)  +----------+        |
+|   parse /                           \ emit      |
+|        /                             \          |
+|       /                               \         |
+|    .jmpp                                XML     |
+|    .pl                                          |
+|-------------------------------------------------|
+</pre></code>
+
+
+
+For a translation tool (jmppTrans, TestGenTrans), The sub-format of a test 
+is embedded within the original file format.
+<p>
+
+<em> example:  
+   A jmpp file may contain information to produce  2 VM tests.  The build 
+system may be trying to build a JCK.  The build-system should fail 
+somewhere because the jmpp file does not contain information in the 
+correct JCK sub-format. </em>
+<p>
+   
+   To consistently "fail-fast", the tranlsation tool should validate the 
+jck sub-format before passing the IR on to the next tool.  The validation 
+can happen before the IR is passed on (as above) or before an XML file is 
+emitted. A build system could configure the translator with the 
+appropriate validator for the particular TCK build.
+
+<p>
+@since 11/30/2001
+
+  </body>
+</html>

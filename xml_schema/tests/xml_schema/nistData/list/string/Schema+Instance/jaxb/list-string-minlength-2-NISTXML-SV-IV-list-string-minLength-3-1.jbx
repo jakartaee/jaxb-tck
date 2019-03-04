@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-string-minLength-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-string-minLength-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>564_The_For_Street_Virtually_Systems_Can_,_WA_16879</string> 
+   </void> 
+   <void method="add"> 
+    <string>353_Computer_Security_Street_Launching_World_Files_,_VA_16879</string> 
+   </void> 
+   <void method="add"> 
+    <string>836_Collaborate_Unambiguous_Street_Software_Which_Of_,_MT_16879</string> 
+   </void> 
+   <void method="add"> 
+    <string>7_Also_These_Street_And_Are_Working_,_WA_16879</string> 
+   </void> 
+   <void method="add"> 
+    <string>4646_Over_Xml_Street_Xml_Areas_Related_,_MT_16879</string> 
+   </void> 
+   <void method="add"> 
+    <string>2369_And_In_Street_Neutral_Provided_The_,_WA_16879</string> 
+   </void> 
+   <void method="add"> 
+    <string>12_We_Of_Street_Them_Its_Java_,_PA_16879</string> 
+   </void> 
+   <void method="add"> 
+    <string>3_Work_The_Street_On_Support_And_,_NM_16879</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

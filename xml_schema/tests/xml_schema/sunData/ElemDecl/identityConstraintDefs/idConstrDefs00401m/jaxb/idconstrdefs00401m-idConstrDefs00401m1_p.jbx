@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00401m.idconstrdefs00401m.Root"> 
+  <void property="person"> 
+   <void method="add"> 
+    <object id="Root$Person0" class="javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00401m.idconstrdefs00401m.Root$Person"> 
+     <void property="parent"> 
+      <object idref="Root$Person0"/> 
+     </void> 
+     <void property="ssn"> 
+      <string>p007</string> 
+     </void> 
+     <void property="value"> 
+      <string>John Smith</string> 
+     </void> 
+    </object> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

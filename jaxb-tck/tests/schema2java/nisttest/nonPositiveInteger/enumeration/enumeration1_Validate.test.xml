@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="enumeration1_Validate">
+    <TestGroupDocumentation>
+        <Title><![CDATA[enumeration1 Validate Tree Content tests ]]></Title>
+        <Description><![CDATA[
+      The tests for checking the on-demand validator of trees got by unmarshalling
+      of a enumeration-1.xsd based XML document and created dynamically via ObjectFactory. 
+      The schema defines a nonPositiveInteger restricted SimpleType with enumeration values:
+      -17416230241, -8643589967190224987, -676843, -497359738618, -45554400334776878, -8782453402663260577,
+      -1874884102, -941995830152, -72, -117573, -1437611345877, -51399307227677, -821329, -716997651572763294,
+      -39713096218389, -8095, -905538, -69233349799300.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)enumeration1_Validate.test.xml	1.6 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>java.math.BigInteger</Import>
+        <SupportCode> 
+    
+    final BigInteger[] validValues = {new BigInteger("-17416230241"), new BigInteger("-8643589967190224987"), new BigInteger("-676843"),
+                                      new BigInteger("-497359738618"), new BigInteger("-45554400334776878"), new BigInteger("-8782453402663260577"),
+                                      new BigInteger("-1874884102"), new BigInteger("-941995830152"), new BigInteger("-72"),
+                                      new BigInteger("-117573"), new BigInteger("-1437611345877"), new BigInteger("-51399307227677"),
+                                      new BigInteger("-821329"), new BigInteger("-716997651572763294"), new BigInteger("-39713096218389"),
+                                      new BigInteger("-8095"), new BigInteger("-905538"), new BigInteger("-69233349799300")};
+    final BigInteger[] invalidValues = {new BigInteger("0"), new BigInteger("-1"), new BigInteger("-71"), 
+                                        new BigInteger("-10000"), new BigInteger("51399307227677"), new BigInteger("-51399307227678")};
+    
+    JAXBElement&lt;BigInteger&gt; elemObj;
+
+    Status testInvalid() {
+        for (int i = 0; i &lt; invalidValues.length; ++i){
+            
+                elemObj.setValue(invalidValues[i]);
+                Status status = validate(elemObj);
+                if (status.isPassed()) {
+                    return Status.failed("" + invalidValues[i] + " is unexpectedly valid");
+                }
+            
+        }
+        return Status.passed("OK");
+    }
+
+    Status testValid() {
+        for (int i = 0; i &lt; validValues.length; ++i){
+            elemObj.setValue(validValues[i]);
+            Status status = validate(elemObj);
+            if (!status.isPassed()){
+                return Status.failed("" + validValues[i] + " is unexpectedly invalid");
+            }
+        }
+        return Status.passed("OKAY");
+    }
+
+      </SupportCode>
+        <ExternalSupportClass SourceName="enumeration-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="enumeration1_Validate.sig"/>
+    </CodeSet>
+    <TestCase ID="Validate001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger enumeration-1.xsd, validate unmarshalled then legally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls enumeration-1-1.xml document which specifies
+valid value -905538 for the nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-enumeration-1
+element, sets all values specified in enumeration-1.xsd and expects validation to pass.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration1_validate-enumeration-1-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String xmlDocName = "enumeration-1-1.xml";
+        elemObj = (JAXBElement<BigInteger>)unmarshal(xmlDocName);
+        return testValid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger enumeration-1.xsd, validate unmarshalled then illegally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls enumeration-1-1.xml document which specifies
+valid value -905538 for the nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-enumeration-1
+element, sets the values: 0, -1, -71, -10000, 51399307227677, -51399307227678 and expects validation to fail.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration1_validate-enumeration-1-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String xmlDocName = "enumeration-1-1.xml";
+        elemObj = (JAXBElement<BigInteger>)unmarshal(xmlDocName);
+        return testInvalid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate003">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger enumeration-1.xsd validate dynamically created then legally changed content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-enumeration-1 type,
+sets all values specified in enumeration-1.xsd and expects the validation to pass.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        
+            elemObj = (JAXBElement<BigInteger>)(new ObjectFactory()).createNISTSchemaNonPositiveIntegerEnumeration1(new BigInteger("-72"));
+        
+        return testValid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate004">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger enumeration-1.xsd validate dynamically created then illegally changed content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-enumeration-1 type,
+sets the values: 0, -1, -71, -10000, 51399307227677, -51399307227678 and expects validation to fail.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        
+            elemObj = (JAXBElement<BigInteger>)(new ObjectFactory()).createNISTSchemaNonPositiveIntegerEnumeration1(new BigInteger("-72"));
+        
+        return testInvalid();
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

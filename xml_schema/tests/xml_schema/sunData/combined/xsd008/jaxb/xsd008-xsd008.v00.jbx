@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Root"> 
+  <void property="generic"> 
+   <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Generic"> 
+    <void property="facet"> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName0" class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>yesNo</string> 
+       </object> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.YesNo</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.YesNo"> 
+        <void property="value"> 
+         <string>true</string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName0"/> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.YesNo</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.YesNo"> 
+        <void property="value"> 
+         <string>  false  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName1" class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>long</string> 
+       </object> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.LongType</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.LongType"> 
+        <void property="value"> 
+         <string>  52  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName1"/> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.LongType</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.LongType"> 
+        <void property="value"> 
+         <string>  -55555  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object id="QName2" class="javax.xml.namespace.QName"> 
+        <string>foo</string> 
+        <string>int</string> 
+       </object> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.Int</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Int"> 
+        <void property="value"> 
+         <string>  52  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName2"/> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.Int</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Int"> 
+        <void property="value"> 
+         <string>  -55555  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+    </void> 
+   </object> 
+  </void> 
+  <void property="restricted"> 
+   <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Root$Restricted"> 
+    <void property="long"> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName1"/> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.LongType</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.LongType"> 
+        <void property="value"> 
+         <string>  52  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName1"/> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.LongType</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.LongType"> 
+        <void property="value"> 
+         <string>  -55555  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName2"/> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.Int</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Int"> 
+        <void property="value"> 
+         <string>  52  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+     <void method="add"> 
+      <object class="javax.xml.bind.JAXBElement"> 
+       <object idref="QName2"/> 
+       <class>javasoft.sqe.tests.combined.xsd008.xsd008.Int</class> 
+       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Int"> 
+        <void property="value"> 
+         <string>  -55555  </string> 
+        </void> 
+       </object> 
+      </object> 
+     </void> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

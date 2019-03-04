@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-Name-length-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-Name-length-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>bretrieve:stimulus_between_defining.compute</string> 
+   </void> 
+   <void method="add"> 
+    <string>gcommunity-of_in_permitting_will-repository</string> 
+   </void> 
+   <void method="add"> 
+    <string>:creation_information.and.needs:of.to:the-f</string> 
+   </void> 
+   <void method="add"> 
+    <string>tthat.commerce.industry.of.and:used_provide</string> 
+   </void> 
+   <void method="add"> 
+    <string>bregistry_process:access_original-process:w</string> 
+   </void> 
+   <void method="add"> 
+    <string>mrobust_be.understand.as_academia_system_an</string> 
+   </void> 
+   <void method="add"> 
+    <string>uof:be:utilities-today.maintains_available.</string> 
+   </void> 
+   <void method="add"> 
+    <string>gsupport-with:discover.object_a:software.al</string> 
+   </void> 
+   <void method="add"> 
+    <string>pthe-and-the-choices-is-an_manipulation-rec</string> 
+   </void> 
+   <void method="add"> 
+    <string>lchains_community_all.e-and.the_it-our:know</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

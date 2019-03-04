@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addB196h">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addB196h]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : zero width unicode characeter test with fixed value(8)
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addB196h.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../fixed2.xsd"/>
+        <ExternalData Type="iodata" SourceName="addB196h.sig"/>
+    </CodeSet>
+    <TestCase ID="addB196h">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="addB196h.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../fixed1d.xml"/>
+            <ExternalData Type="iodata" SourceName="addb196h-fixed1d.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

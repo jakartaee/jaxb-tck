@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="schA1">
+    <TestGroupDocumentation>
+        <Title><![CDATA[schA1]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : Schema Collection: (A,a.xsd), SchemaLocation: (B,b.xsd), NoNSSchemaLocation: c.xsd
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)schA1.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../schA1_a.xsd"/>
+        <ExternalData Type="iodata" SourceName="../schA1_b.xsd"/>
+        <ExternalData Type="iodata" SourceName="../schA1_c.xsd"/>
+        <ExternalData Type="iodata" SourceName="schA1.sig"/>
+    </CodeSet>
+    <TestCase ID="schA1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="schA1.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../schA1.xml"/>
+            <ExternalData Type="iodata" SourceName="scha1-schA1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

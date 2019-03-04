@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="W3CDomHandler">
+  <TestGroupDocumentation>
+    <Title>Provides W3CDomHandler implementation tests</Title>
+    <TestedPackage>javax.xml.bind.annotation</TestedPackage>
+    <TestedClass>W3CDomHandler</TestedClass>
+    <Author>Igor Tseytin</Author>
+  </TestGroupDocumentation>
+  <TestGroupAttributes>
+    <AttrElem Name="tdFile">index</AttrElem>
+    <AttrElem Name="scInfo">@(#)W3CDomHandler.test.xml	1.3 07/03/21</AttrElem>
+    <AttrElem Name="testType">MultiTest</AttrElem>
+    <Keyword>runtime</Keyword>
+  </TestGroupAttributes>
+  <CodeSet>
+    <Import>javax.xml.bind.ValidationEventHandler</Import>
+    <Import>javax.xml.bind.util.ValidationEventCollector</Import>
+    <Import>javax.xml.bind.annotation.W3CDomHandler</Import>
+    <Import>javax.xml.parsers.*</Import>
+    <Import>javax.xml.transform.*</Import>
+    <Import>org.w3c.dom.Document</Import>
+    <BaseClass>MultiTest</BaseClass>
+    <SupportCode>
+<![CDATA[
+    void assertT( boolean val, String msg ){
+        if( !val )
+            throw new RuntimeException(msg);
+    }
+]]>
+    </SupportCode>
+  </CodeSet>
+
+  <TestCase ID="Ctor001">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>the test creates instance of W3CDomHandler object. no exceptions expected</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    W3CDomHandler instance = new W3CDomHandler();
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="Ctor002">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>the test creates instance of W3CDomHandler object. no exceptions expected</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    try {
+        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        W3CDomHandler instance = new W3CDomHandler( builder );
+        assertT( instance.getBuilder() == builder, "W3CDomHandler.getBuilder() returns unexpected builder." );
+    } catch(ParserConfigurationException x){
+        x.printStackTrace( ref );
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="Ctor003">
+    <TestCaseDocumentation>
+      <TestCaseSpec><InlineAssertion>the test creates instance of W3CDomHandler object. no exceptions expected</InlineAssertion></TestCaseSpec>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    W3CDomHandler instance = new W3CDomHandler();
+    try {
+        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        instance.setBuilder( builder );
+        assertT( instance.getBuilder() == builder, "W3CDomHandler.getBuilder() returns unexpected builder." );
+    } catch(ParserConfigurationException x){
+        x.printStackTrace( ref );
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+</TestGroup>
+<!-- Ident: @(#)W3CDomHandler.test.xml	1.3 07/03/21 -->

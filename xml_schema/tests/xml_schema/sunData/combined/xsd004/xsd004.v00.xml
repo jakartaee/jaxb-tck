@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!--
+Ident: @(#)xsd004.v00.xml	1.4 03/10/10
+
+-->
+
+<foo:root
+	xmlns:foo="foo"
+	xmlns:bar="bar"
+	xmlns:zot="zot">
+	
+	<foo:skipAny>
+		<foo:root>
+			<foo:child />
+			<bar:nocheck>
+				<zot:nocheck />
+			</bar:nocheck>
+			mixed is also allowed?
+		</foo:root>
+	</foo:skipAny>
+	
+	<foo:laxAny>
+		<foo:undeclared>
+			<bar:a />
+			<undefined />
+		</foo:undeclared>
+	</foo:laxAny>
+	
+	<foo:strictAny>
+		<bar:c />
+		<zot:b />
+		<zot:c />
+	</foo:strictAny>
+	
+	<foo:skipOther>
+		<undeclared xmlns="bob" />
+		<anyThing xmlns="nowhere" />
+		<asLongAsInOtherNS xmlns="other1"/>
+		<zot:a>
+			<zot:a />
+		</zot:a>
+	</foo:skipOther>
+	
+	<foo:laxLocal>
+		<undeclaredOnly />
+		<butLaxlyValidated />
+	</foo:laxLocal>
+	
+	<foo:strictTarget>
+		<foo:root />
+		<foo:root />
+		<foo:root />
+	</foo:strictTarget>
+	
+	<foo:skipBar>
+		<bar:everything />
+		<bar:in />
+		<bar:bar />
+		<bar:a>
+			<bar:ignore />
+		</bar:a>
+	</foo:skipBar>
+</foo:root>

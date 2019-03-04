@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="enumeration2_Validate">
+    <TestGroupDocumentation>
+        <Title><![CDATA[enumeration2 Validate Tree Content tests]]></Title>
+        <Description><![CDATA[
+      The tests for validating the content of changed trees got by unmarshalling
+      of the enumeration-2.xsd based XML documents or created dynamically 
+      via ObjectFactory.
+      The schema defines a float restricted SimpleType with enumeration values
+      65556.05328541E-18, 16777215.999999999999E31, 5964894.839E-9, 16777215.999999999999E-81.
+      Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)enumeration-2_Validate.test.xml	1.5 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <SupportCode> 
+    final float[] validValues = {5964894.839E-9F, 65556.05328541E-18F, 0.0F};
+    
+    final float[] invalidValues = {1.0F, Float.MAX_VALUE 
+                                  , Float.NEGATIVE_INFINITY, Float.NaN};
+    
+    JAXBElement&lt;Float&gt; elemObj;
+
+    Status testInvalid() {
+        for (int i = 0; i &lt; invalidValues.length; ++i){
+            
+                elemObj.setValue(invalidValues[i]);
+                Status status = validate(elemObj);
+                if (status.isPassed()) {
+                    return Status.failed("" + invalidValues[i] + " is unexpectedly valid");
+                }
+            
+        }
+        return Status.passed("OK");
+    }
+
+    Status testValid() {
+        for (int i = 0; i &lt; validValues.length; ++i){
+            elemObj.setValue(validValues[i]);
+            Status status = validate(elemObj);
+            if (!status.isPassed()){
+                return Status.failed("" + validValues[i] + " is unexpectedly invalid");
+            }
+        }
+        return Status.passed("OKAY");
+    }
+      </SupportCode>
+        <ExternalSupportClass SourceName="enumeration-2.xsd"/>
+        <ExternalData Type="iodata" SourceName="enumeration2_Validate.sig"/>
+    </CodeSet>
+    <TestCase ID="Unmarshalled001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML float enumeration-2.xsd, validate unmarshalled then legally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls enumeration-2-4.xml document, sets 
+valid values 5964894.839E-9, 65556.05328541E-18, 0.0 
+for the float restricted SimpleType NISTSchema-float-enumeration-2 element and 
+expects validation to pass. 
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-2-4.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration2_validate-enumeration-2-4.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        elemObj = (JAXBElement<Float>)unmarshal("enumeration-2-4.xml");
+        return testValid();
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Unmarshalled002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML float enumeration-2.xsd, validate unmarshalled then illegally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls enumeration-2-4.xml document, sets the invalid values 
+1.0, Float.MAX_VALUE, Float.NEGATIVE_INFINITY, Float.NaN for the float 
+restricted SimpleType NISTSchema-float-enumeration-2 element and expects 
+validation to fail. 
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="enumeration-2-4.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration2_validate-enumeration-2-4.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        elemObj = (JAXBElement<Float>)unmarshal("enumeration-2-4.xml");
+        return testInvalid();
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Created001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML float enumeration-2.xsd, validate created content tree with valid content]]></Title>
+            <Description><![CDATA[
+The test creates the float restricted SimpleType NISTSchema-float-enumeration-2 element with
+a valid value, sets its value to 5964894.839E-9, 65556.05328541E-18, 0.0 
+and expects validation to pass. 
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.bind.JAXBException</Import>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        
+            elemObj = (JAXBElement<Float>)(new ObjectFactory()).createNISTSchemaFloatEnumeration2(validValues[0]);
+        
+        return testValid();
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Created002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML float enumeration-2.xsd, validate created content tree with invalid content]]></Title>
+            <Description><![CDATA[
+The test creates the float restricted SimpleType NISTSchema-float-enumeration-2 element with
+a valid value, sets its value to 1.0, Float.MAX_VALUE, Float.NEGATIVE_INFINITY, Float.NaN
+then expects validation to fail. 
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <Import>javax.xml.bind.JAXBException</Import>
+            <ExternalData Type="iodata" SourceName="enumeration-2-4.xml"/>
+            <ExternalData Type="iodata" SourceName="enumeration2_validate-enumeration-2-4.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        
+            elemObj = (JAXBElement<Float>)(new ObjectFactory()).createNISTSchemaFloatEnumeration2(validValues[0]);
+        
+        return testInvalid();
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-QName-length-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-QName-length-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>rmust_from.focusing.only_file_leadership_our.s</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>stechnologies_neutral_facilitates.methods-such</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>kto-less-issues_is-development.these.implement</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>lbusiness.available.in.filter_well-a.full.part</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>fto_specifications-as_standardization_shift_th</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>hcommerce.the-use.automatic_retrieval-to_of.is</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>ktools.technologies.use.areas.conformance-proc</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>yby-the_the-world.its-of-variety.as_program_de</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-token-pattern-2-NS</string> 
+   <string>NISTSchema-SV-IV-list-token-pattern-2</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>5223_Ebxml_If_Performance_Street_Of_Of_,_MA_13797-1926</string> 
+   </void> 
+   <void method="add"> 
+    <string>85_Xml_Such_Discovery_Schema_And_Street_Conformance_Reputation_Information_,_ID_13549-1185</string> 
+   </void> 
+   <void method="add"> 
+    <string>754_And_Is_Software_Technical_Street_Needs_Repository_,_MN_11867</string> 
+   </void> 
+   <void method="add"> 
+    <string>2_Build_And_Exchange_With_Street_Information_,_SC_13558-1548</string> 
+   </void> 
+   <void method="add"> 
+    <string>228_And_Partnerships_Street_Repository_,_ND_10722-1701</string> 
+   </void> 
+   <void method="add"> 
+    <string>247_As_Files_Achieved_Street_The_For_Chairing_,_WA_14892</string> 
+   </void> 
+   <void method="add"> 
+    <string>652_Correctness_Street_Discovery_Internet_,_WI_15901-1354</string> 
+   </void> 
+   <void method="add"> 
+    <string>4_Electronic_Are_The_To_As_Street_The_Signatures_,_NC_12361</string> 
+   </void> 
+   <void method="add"> 
+    <string>76_Environments_And_Include_Street_Discovery_,_WY_13151-1383</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

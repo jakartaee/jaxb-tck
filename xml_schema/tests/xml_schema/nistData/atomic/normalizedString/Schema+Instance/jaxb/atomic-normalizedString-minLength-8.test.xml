@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-normalizedString-minLength-8">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-normalizedString-minLength-8]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/normalizedString is restricted by facet minLength with value 452.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#normalizedString">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#normalizedString
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-minLength">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-minLength
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-normalizedString-minLength-8.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-atomic-normalizedString-minLength-5.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-normalizedString-minLength-8.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-normalizedString-minLength-8">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

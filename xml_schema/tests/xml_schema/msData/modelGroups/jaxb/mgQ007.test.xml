@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="mgQ007">
+    <TestGroupDocumentation>
+        <Title><![CDATA[mgQ007]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :model groups (ALL) : 2 particles with idendical element declarations (same type), one under 'sequence', one under 'sequence' inside 'sequence'
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Model_Groups
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)mgQ007.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../mgQ007.xsd"/>
+        <ExternalData Type="iodata" SourceName="mgQ007.sig"/>
+    </CodeSet>
+    <TestCase ID="mgQ007">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="mgQ007.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../mgQ007.xml"/>
+            <ExternalData Type="iodata" SourceName="mgq007-mgQ007.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

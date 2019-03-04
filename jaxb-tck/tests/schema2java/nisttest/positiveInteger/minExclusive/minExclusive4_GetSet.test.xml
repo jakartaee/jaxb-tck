@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="minExclusive4_GetSet">
+    <TestGroupDocumentation>
+        <Title><![CDATA[minExclusive4 GetSet Tree Content tests  ]]></Title>
+        <Description><![CDATA[
+      The tests for checking the content of trees got by unmarshalling
+      of the minExclusive-4.xsd based XML documents and created dynamically via ObjectFactory. 
+      The schema defines a positiveInteger restricted SimpleType with minExclusive value 62580895148002368965.
+      Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)minExclusive4_GetSet.test.xml	1.6 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <Import>java.math.BigInteger</Import>
+        <ExternalSupportClass SourceName="minExclusive-4.xsd"/>
+        <ExternalData Type="iodata" SourceName="minExclusive4_GetSet.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML positiveInteger minExclusive-4.xsd, unmarshalled content tree GetSet test]]></Title>
+            <Description><![CDATA[
+The test unmarshalls minExclusive-4-1.xml,...,minExclusive-4-5.xml documents which specify
+the values 62580895148002368966, 74984526692058221357, 87951400965550755220, 87577648367799239314, 99999999999999999999 for 
+the positiveInteger restricted SimpleType NISTSchema-positiveInteger-minExclusive-4
+element and expects that elemObj.getValue() returns specified in xml value, then invokes 
+elemObj.setValue(byte), elemObj.getValue() should return set value.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="minExclusive-4-1.xml"/>
+            <ExternalData Type="iodata" SourceName="minExclusive-4-2.xml"/>
+            <ExternalData Type="iodata" SourceName="minExclusive-4-3.xml"/>
+            <ExternalData Type="iodata" SourceName="minExclusive-4-4.xml"/>
+            <ExternalData Type="iodata" SourceName="minExclusive-4-5.xml"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        String[] xmlDocNames = {
+            "minExclusive-4-1.xml", "minExclusive-4-2.xml", "minExclusive-4-3.xml",
+            "minExclusive-4-4.xml", "minExclusive-4-5.xml"
+        };
+        BigInteger[] expectedValues = {new BigInteger("62580895148002368966"), new BigInteger("74984526692058221357"), 
+                                       new BigInteger("87951400965550755220"), new BigInteger("87577648367799239314"), 
+                                       new BigInteger("99999999999999999999")};
+        BigInteger[] anExpectedValues = {new BigInteger("62580895148002368967"), new BigInteger("625808951480023689650000"), 
+                                         new BigInteger("62580895148002368966"), new BigInteger("87577648367799239314"), 
+                                         new BigInteger("99999999999999999999")};
+        
+        for (int i = 0; i < xmlDocNames.length; ++i){
+            JAXBElement<BigInteger> elemObj = (JAXBElement<BigInteger>)unmarshal(xmlDocNames[i]);
+            if (!elemObj.getValue().equals(expectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.getValue() != " + expectedValues[i]);
+            }
+            elemObj.setValue(anExpectedValues[i]);
+            if (!elemObj.getValue().equals(anExpectedValues[i])){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.setValue(" + anExpectedValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anExpectedValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML positiveInteger minExclusive-4.xsd GetSet test for dynamically created content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of positiveInteger restricted SimpleType NISTSchema-positiveInteger-minExclusive-4 type
+with the values: 62580895148002368966, 74984526692058221357, 87951400965550755220, 87577648367799239314, 99999999999999999999 and 
+expects that elemObj.getValue() returns specified 
+values, then invokes elemObj.setValue(byte) with various values, elemObj.getValue() should return
+set values.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        BigInteger[] setValues = {new BigInteger("62580895148002368966"), new BigInteger("74984526692058221357"), 
+                                  new BigInteger("87951400965550755220"), new BigInteger("87577648367799239314"), 
+                                  new BigInteger("99999999999999999999")};
+        BigInteger[] anSetValues = {new BigInteger("62580895148002368967"), new BigInteger("625808951480023689650000"), 
+                                    new BigInteger("62580895148002368966"), new BigInteger("87577648367799239314"), 
+                                    new BigInteger("99999999999999999999")};
+
+        JAXBElement<BigInteger> elemObj = null;
+        for (int i = 0; i < setValues.length; ++i){
+            
+                elemObj = (JAXBElement<BigInteger>)(new ObjectFactory()).createNISTSchemaPositiveIntegerMinExclusive4(setValues[i]);
+            
+            if (!elemObj.getValue().equals(setValues[i])){
+                return Status.failed("dynamically created JAXBElement<BigInteger>, elemObj.getValue() != " + setValues[i]);
+            }
+            elemObj.setValue(anSetValues[i]);
+            if (!elemObj.getValue().equals(anSetValues[i])){
+                return Status.failed("dynamically created JAXBElement<BigInteger>, elemObj.setValue(" + anSetValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anSetValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="srcNS">
+    <TestGroupDocumentation>
+        <Title>XmlType</Title>
+        <Description>
+
+Test of XmlType annotation. Table 8-10 Mapping: Enum type to Simple Type Definition,
+{target namespace}
+Assertion: otherwise @XmlType.namespace()
+
+      </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)srcNS.test.xml	1.4 08/04/04</AttrElem>
+        <AttrElem Name="testType">J2XTest</AttrElem>
+        <Keyword>runtime</Keyword>
+        <Keyword>positive</Keyword>
+        <Keyword>java_to_schema</Keyword>
+        <Keyword>jaxb</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.j2x</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="srcNS.java"/>
+        <ExternalSupportClass SourceName="srcNS/package-info.java"/>
+    </CodeSet>
+    <TestCase ID="testCase0001">
+        <TestCaseDocumentation>
+            <Description>
+          Positive test. The tested assertion applies to structure of xml schema only. Xml
+file checks only roughly correctness of generated xml schema.
+        </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">positive</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="posNS1.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

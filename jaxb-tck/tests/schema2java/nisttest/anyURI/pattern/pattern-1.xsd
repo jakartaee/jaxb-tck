@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-anyURI-pattern-1-NS"
+        targetNamespace="NISTSchema-anyURI-pattern-1-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: pattern-1.xsd
+      This schema specifies a datatype, NISTSchema-anyURI-pattern-1,
+      which is derived by restriction of built-in type anyURI
+      by facet pattern with a value of: ftp://ftp.[a-z]{12}.com
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-anyURI-pattern-1" type="nist:NISTSchema-anyURI-pattern-1-Type"/>
+
+  <simpleType name="NISTSchema-anyURI-pattern-1-Type">
+    <restriction base="anyURI">
+      <pattern value="ftp://ftp.[a-z]{12}.com"/>
+    </restriction>
+  </simpleType>
+
+</schema>

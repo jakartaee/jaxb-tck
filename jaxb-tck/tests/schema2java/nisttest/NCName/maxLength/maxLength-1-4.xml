@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (see http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/).
+      File: maxLength-1-4.xml
+      XML instance number 4 in a series of 
+      5 conforming to NIST test schema
+      maxLength-1.xsd.
+-->
+
+<NISTSchema-NCName-maxLength-1
+    xmlns="NISTSchema-NCName-maxLength-1-NS"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="NISTSchema-NCName-maxLength-1-NS maxLength-1.xsd">_</NISTSchema-NCName-maxLength-1>

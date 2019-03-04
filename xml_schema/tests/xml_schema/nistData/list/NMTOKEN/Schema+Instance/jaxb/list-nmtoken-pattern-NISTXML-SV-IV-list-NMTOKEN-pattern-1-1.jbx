@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-pattern-1-NS</string> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-pattern-1</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>can:of.key.and_and_are_have_distributed-</string> 
+   </void> 
+   <void method="add"> 
+    <string>would-XML.typical.NIS</string> 
+   </void> 
+   <void method="add"> 
+    <string>throughout:process_the-set.XML-i-is.technologies_l</string> 
+   </void> 
+   <void method="add"> 
+    <string>in-XML-are:business:that-a:requestin</string> 
+   </void> 
+   <void method="add"> 
+    <string>for:vertical:XML:can-used-retrieve:</string> 
+   </void> 
+   <void method="add"> 
+    <string>is_built:this:the:an.information.testing.l</string> 
+   </void> 
+   <void method="add"> 
+    <string>i.to.obvious:are:of_implementations.personal:than.to.a</string> 
+   </void> 
+   <void method="add"> 
+    <string>discovery-and_both:having:library:its-and.discov</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

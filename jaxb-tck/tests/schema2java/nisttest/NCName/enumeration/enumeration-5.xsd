@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-NCName-enumeration-5-NS"
+        targetNamespace="NISTSchema-NCName-enumeration-5-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-5.xsd
+      This schema specifies a datatype, NISTSchema-NCName-enumeration-5,
+      which is derived by restriction of built-in type NCName
+      by facet enumeration with values of:
+          _not_industry-the_templates_recommendation_in-c
+          kthe.of.such-this-meet.and-and-exerc
+          _templates.related-each.wireless-in_inform
+          sand.of_reference-the.be_repository_popular-provide-o
+          xsoftware.and_as.technologies.for-must.are_software.of-its_t
+          _result-by_business_those.wa
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-NCName-enumeration-5" type="nist:NISTSchema-NCName-enumeration-5-Type"/>
+
+  <simpleType name="NISTSchema-NCName-enumeration-5-Type">
+    <restriction base="NCName">
+          <enumeration value="_not_industry-the_templates_recommendation_in-c"/>
+          <enumeration value="kthe.of.such-this-meet.and-and-exerc"/>
+          <enumeration value="_templates.related-each.wireless-in_inform"/>
+          <enumeration value="sand.of_reference-the.be_repository_popular-provide-o"/>
+          <enumeration value="xsoftware.and_as.technologies.for-must.are_software.of-its_t"/>
+          <enumeration value="_result-by_business_those.wa"/>
+    </restriction>
+  </simpleType>
+
+</schema>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-ID-pattern-4">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-ID-pattern-4]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/ID is restricted by facet pattern with value [\i-[:]][\c-[:]]{59} [\i-[:]][\c-[:]]{51} [\i-[:]][\c-[:]]{49} [\i-[:]][\c-[:]]{43} [\i-[:]][\c-[:]]{28} [\i-[:]][\c-[:]]{11} [\i-[:]][\c-[:]]{28} [\i-[:]][\c-[:]]{15}.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#ID">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#ID
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-ID-pattern-4.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-ID-pattern-5.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-ID-pattern-4.sig"/>
+    </CodeSet>
+    <TestCase ID="list-ID-pattern-4">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-list-ID-pattern-5-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-list-ID-pattern-5-1.xml"/>
+            <ExternalData Type="iodata" SourceName="list-id-pattern-4-NISTXML-SV-IV-list-ID-pattern-5-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

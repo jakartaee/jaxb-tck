@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="minExclusive1_Validate">
+    <TestGroupDocumentation>
+        <Title><![CDATA[minExclusive1 Validate Tree Content tests ]]></Title>
+        <Description><![CDATA[
+      The tests for checking the on-demand validator of trees got by unmarshalling
+      of a minExclusive-1.xsd based XML document and created dynamically via ObjectFactory. 
+      The schema defines a byte restricted SimpleType with minExclusive value -128.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)minExclusive1_Validate.test.xml	1.6 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <SupportCode> 
+    
+    final byte[] validValues = {(byte)-127, (byte)-10, (byte)0, (byte)120, (byte)127};
+    final byte[] invalidValues = {(byte)-128};
+    
+    JAXBElement&lt;Byte&gt; elemObj;
+
+    Status testInvalid() {
+        for (int i = 0; i &lt; invalidValues.length; ++i){
+            
+                elemObj.setValue(invalidValues[i]);
+                Status status = validate(elemObj);
+                if (status.isPassed()) {
+                    return Status.failed("" + invalidValues[i] + " is unexpectedly valid");
+                }
+            
+        }
+        return Status.passed("OK");
+    }
+
+    Status testValid() {
+        for (int i = 0; i &lt; validValues.length; ++i){
+            elemObj.setValue(validValues[i]);
+            Status status = validate(elemObj);
+            if (!status.isPassed()){
+                return Status.failed("" + validValues[i] + " is unexpectedly invalid");
+            }
+        }
+        return Status.passed("OKAY");
+    }
+
+      </SupportCode>
+        <ExternalSupportClass SourceName="minExclusive-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="minExclusive1_Validate.sig"/>
+    </CodeSet>
+    <TestCase ID="Validate001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML byte minExclusive-1.xsd, validate unmarshalled then legally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls minExclusive-1-1.xml document which specifies
+valid value -127 for the byte restricted SimpleType NISTSchema-byte-minExclusive-1
+element, sets the values: -127, -10, 0, 120, 127 and expects validation to pass.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="minExclusive-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="minexclusive1_validate-minExclusive-1-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String xmlDocName = "minExclusive-1-1.xml";
+        elemObj = (JAXBElement<Byte>)unmarshal(xmlDocName);
+        return testValid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML byte minExclusive-1.xsd, validate unmarshalled then illegally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls minExclusive-1-1.xml document which specifies
+valid value -127 for the byte restricted SimpleType NISTSchema-byte-minExclusive-1
+element, sets the values: -128 and expects validation to fail.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="minExclusive-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="minexclusive1_validate-minExclusive-1-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String xmlDocName = "minExclusive-1-1.xml";
+        elemObj = (JAXBElement<Byte>)unmarshal(xmlDocName);
+        return testInvalid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate003">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML byte minExclusive-1.xsd validate dynamically created then legally changed content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of byte restricted SimpleType NISTSchema-byte-minExclusive-1 type,
+sets the values: -127, -10, 0, 120, 127 and expects the validation to pass.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        
+            elemObj = (JAXBElement<Byte>)(new ObjectFactory()).createNISTSchemaByteMinExclusive1((byte)0);
+        
+        return testValid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate004">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML byte minExclusive-1.xsd validate dynamically created then illegally changed content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of byte restricted SimpleType NISTSchema-byte-minExclusive-1 type,
+sets the values: -128 and expects validation to fail.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        
+            elemObj = (JAXBElement<Byte>)(new ObjectFactory()).createNISTSchemaByteMinExclusive1((byte)0);
+        
+        return testInvalid();
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

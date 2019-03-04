@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-long-length-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-long-length-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <long>965173834275423274</long> 
+   </void> 
+   <void method="add"> 
+    <long>942458455464414245</long> 
+   </void> 
+   <void method="add"> 
+    <long>955616343656877272</long> 
+   </void> 
+   <void method="add"> 
+    <long>924153745247567235</long> 
+   </void> 
+   <void method="add"> 
+    <long>976427375818367234</long> 
+   </void> 
+   <void method="add"> 
+    <long>966456476712524353</long> 
+   </void> 
+   <void method="add"> 
+    <long>965443276347243152</long> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

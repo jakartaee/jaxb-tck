@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="name00102m_Bind">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Name customization of complex type's interface. (valid schema with bindinfo)]]></Title>
+        <Description><![CDATA[Define a complex type and an element of this type. Bind the type
+        to interface ComplexTypeTest.]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)name00102m_Bind.test.xml	1.4 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <Keyword>bindinfo</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <ExternalSupportClass SourceName="name00102m_Bind.bind.xsd"/>
+        <ExternalData Type="iodata" SourceName="name00102m_Bind.sig"/>
+    </CodeSet>
+    <TestCase ID="name00102m_Bind">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="name00102m1_Bind_p">
+        <TestCaseDocumentation>
+            <Title><![CDATA[General check of the {name} property. (valid document)]]></Title>
+            <Author>Evgueni Rouban</Author>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="name00102m1_p.xml"/>
+            <ExternalData Type="iodata" SourceName="name00102m_bind-name00102m1_p.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

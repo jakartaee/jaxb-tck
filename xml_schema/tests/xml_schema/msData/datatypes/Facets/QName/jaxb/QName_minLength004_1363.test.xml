@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="QName_minLength004_1363">
+    <TestGroupDocumentation>
+        <Title><![CDATA[QName_minLength004_1363]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minLength and value=4 and facet=maxLength and value=6) and document value=foofo
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)QName_minLength004_1363.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../QName_minLength004.xsd"/>
+        <ExternalData Type="iodata" SourceName="QName_minLength004_1363.sig"/>
+    </CodeSet>
+    <TestCase ID="QName_minLength004_1363">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="QName_minLength004_1363.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../QName_minLength004.xml"/>
+            <ExternalData Type="iodata" SourceName="qname_minlength004_1363-QName_minLength004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-double-minLength-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-double-minLength-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <double>2.448868567745128E163</double> 
+   </void> 
+   <void method="add"> 
+    <double>7.276797933144828E166</double> 
+   </void> 
+   <void method="add"> 
+    <double>1.4947229744543594E189</double> 
+   </void> 
+   <void method="add"> 
+    <double>3.3537822462239486E258</double> 
+   </void> 
+   <void method="add"> 
+    <double>1.5847732134571724E162</double> 
+   </void> 
+   <void method="add"> 
+    <double>5.294584643835172E258</double> 
+   </void> 
+   <void method="add"> 
+    <double>6.746526654348537E199</double> 
+   </void> 
+   <void method="add"> 
+    <double>4.438868383885869E253</double> 
+   </void> 
+   <void method="add"> 
+    <double>9.954972917275968E216</double> 
+   </void> 
+   <void method="add"> 
+    <double>8.498576271556189E142</double> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.simpletype.test107331_j.Root"> 
+  <void property="item"> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object id="QName0" class="javax.xml.namespace.QName"> 
+      <string></string> 
+      <string>item</string> 
+     </object> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
+      <null/> 
+      <string>item</string> 
+      <string>abc</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <int>123</int> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <float>4.56</float> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <string>this is a string</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <boolean>false</boolean> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="java.math.BigDecimal"> 
+      <string>45</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
+      <string>P1347Y</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+      <string>1999-05-31T13:20:00-05:00</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+      <string>13:20:00-05:00</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+      <string>1999-05-31</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+      <string>1999</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createXMLGregorianCalendar"> 
+      <string>--02-13</string> 
+     </object> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <array class="byte" length="3"> 
+      <void index="0"> 
+       <byte>105</byte> 
+      </void> 
+      <void index="1"> 
+       <byte>-73</byte> 
+      </void> 
+      <void index="2"> 
+       <byte>29</byte> 
+      </void> 
+     </array> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <string>http://tempuri</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <null/> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.bind.JAXBElement"> 
+     <object idref="QName0"/> 
+     <class>java.lang.Object</class> 
+     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
+      <null/> 
+      <string>item</string> 
+      <string>123</string> 
+     </object> 
+    </object> 
+   </void> 
+  </void> 
+ </object> 
+</java> 

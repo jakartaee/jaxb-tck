@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-minLength-3-NS</string> 
+   <string>NISTSchema-SV-IV-list-NMTOKEN-minLength-3</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>are.access-highly-standardization-comp</string> 
+   </void> 
+   <void method="add"> 
+    <string>issues-web_over.Provide.establish:engi</string> 
+   </void> 
+   <void method="add"> 
+    <string>Only-among_organizations_necessary:and</string> 
+   </void> 
+   <void method="add"> 
+    <string>or:versions-Java.related:EC-is.investi</string> 
+   </void> 
+   <void method="add"> 
+    <string>of_opportunity_for:reach-with:diagnost</string> 
+   </void> 
+   <void method="add"> 
+    <string>bottlenecks-variety.Nations_recommendi</string> 
+   </void> 
+   <void method="add"> 
+    <string>Within-filter_Despite-engineering_Unit</string> 
+   </void> 
+   <void method="add"> 
+    <string>reach-is:the:entire-process_following-</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

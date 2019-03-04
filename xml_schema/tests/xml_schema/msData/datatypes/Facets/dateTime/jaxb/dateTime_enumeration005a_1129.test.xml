@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="dateTime_enumeration005a_1129">
+    <TestGroupDocumentation>
+        <Title><![CDATA[dateTime_enumeration005a_1129]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : XSD: XsdDateTime comparison of identical representations of the time zones(a)
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)dateTime_enumeration005a_1129.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../dateTime_enumeration005.xsd"/>
+        <ExternalData Type="iodata" SourceName="dateTime_enumeration005a_1129.sig"/>
+    </CodeSet>
+    <TestCase ID="dateTime_enumeration005a_1129">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="dateTime_enumeration005a_1129.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../dateTime_enumeration005a.xml"/>
+            <ExternalData Type="iodata" SourceName="datetime_enumeration005a_1129-dateTime_enumeration005a.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

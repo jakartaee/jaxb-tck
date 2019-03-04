@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-hexBinary-pattern-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-hexBinary-pattern-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>6F636162776B656966617667696770766D776E627063706C7961676476</string> 
+   </void> 
+   <void method="add"> 
+    <string>657270777870706B6570616967736C79796B79777679646C71657679636761</string> 
+   </void> 
+   <void method="add"> 
+    <string>726D61616A71707667686277637665686B76766864726F6373</string> 
+   </void> 
+   <void method="add"> 
+    <string>6D716363716C767271696F70696D73676C66726A70</string> 
+   </void> 
+   <void method="add"> 
+    <string>6D756E72766F6D756E</string> 
+   </void> 
+   <void method="add"> 
+    <string>787875686A7568666C6C666D6E7179656C6C707877706E7178636B6567647666</string> 
+   </void> 
+   <void method="add"> 
+    <string>77716D67776D6F79696C79766D7878706463786678727775726A65</string> 
+   </void> 
+   <void method="add"> 
+    <string>796E6E636C7870727475</string> 
+   </void> 
+   <void method="add"> 
+    <string>766876736C68776E6878686569686465</string> 
+   </void> 
+   <void method="add"> 
+    <string>777467726576</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

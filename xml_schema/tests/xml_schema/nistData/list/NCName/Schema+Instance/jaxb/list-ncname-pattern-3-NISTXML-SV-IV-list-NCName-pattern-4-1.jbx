@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-NCName-pattern-4-NS</string> 
+   <string>NISTSchema-SV-IV-list-NCName-pattern-4</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>_to-reference_pervasive_asked.retrieve-for_fo</string> 
+   </void> 
+   <void method="add"> 
+    <string>_suite-the.concepts-software_issues-is.and_that-tar</string> 
+   </void> 
+   <void method="add"> 
+    <string>pall_be_launching_manufacturers_understand-to.in</string> 
+   </void> 
+   <void method="add"> 
+    <string>aprototype.investigations-formed-allow-be-without.known.are-a</string> 
+   </void> 
+   <void method="add"> 
+    <string>_as_any.fil</string> 
+   </void> 
+   <void method="add"> 
+    <string>p</string> 
+   </void> 
+   <void method="add"> 
+    <string>_law-a-files-to_av</string> 
+   </void> 
+   <void method="add"> 
+    <string>iand_in_and_shift_the.such-of_and-between_and.</string> 
+   </void> 
+   <void method="add"> 
+    <string>_partners-and_files.to_user_for.technologies-a.auto</string> 
+   </void> 
+   <void method="add"> 
+    <string>_facilitates-libraries_partnerships-t</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

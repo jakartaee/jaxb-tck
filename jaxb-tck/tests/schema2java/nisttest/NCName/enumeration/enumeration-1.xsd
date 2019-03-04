@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-NCName-enumeration-1-NS"
+        targetNamespace="NISTSchema-NCName-enumeration-1-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-1.xsd
+      This schema specifies a datatype, NISTSchema-NCName-enumeration-1,
+      which is derived by restriction of built-in type NCName
+      by facet enumeration with values of:
+          qbandwidth-and.software-use.too
+          _effort-disseminate_and-devices.com
+          _this_the-recent-over-template
+          _must.enforcement_allow-as.discus
+          _to_address_without.of.the-set.networks.
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-NCName-enumeration-1" type="nist:NISTSchema-NCName-enumeration-1-Type"/>
+
+  <simpleType name="NISTSchema-NCName-enumeration-1-Type">
+    <restriction base="NCName">
+          <enumeration value="qbandwidth-and.software-use.too"/>
+          <enumeration value="_effort-disseminate_and-devices.com"/>
+          <enumeration value="_this_the-recent-over-template"/>
+          <enumeration value="_must.enforcement_allow-as.discus"/>
+          <enumeration value="_to_address_without.of.the-set.networks."/>
+    </restriction>
+  </simpleType>
+
+</schema>

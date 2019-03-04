@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="nonPositiveInteger_enumeration004_1565">
+    <TestGroupDocumentation>
+        <Title><![CDATA[nonPositiveInteger_enumeration004_1565]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=enumeration and value=-456 -789 0 and document value=-456
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)nonPositiveInteger_enumeration004_1565.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../nonPositiveInteger_enumeration004.xsd"/>
+        <ExternalData Type="iodata" SourceName="nonPositiveInteger_enumeration004_1565.sig"/>
+    </CodeSet>
+    <TestCase ID="nonPositiveInteger_enumeration004_1565">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="nonPositiveInteger_enumeration004_1565.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../nonPositiveInteger_enumeration004.xml"/>
+            <ExternalData Type="iodata" SourceName="nonpositiveinteger_enumeration004_1565-nonPositiveInteger_enumeration004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!-- ======================================================================
+     Mar 15, 2007 8:52:33 PM                                                        
+
+     SigTest    
+     Signature test specific build parts.
+                   
+     vs153345  
+     SCCS: @(#)sigtest.ant.xml	1.2 07/03/20                                                              
+     ====================================================================== -->
+<project name="SigTest" default="default">
+	<description>
+            Signature test specific build parts.
+    </description>
+
+
+	<!--
+		Init default properties.
+	-->
+	<dirname file="${ant.file}" property="tck.build.ws.dir" />
+	<ant antfile="${tck.build.ws.dir}/convert-properties.ant.xml" />
+	<property file="build.properties" />
+	
+
+	<!--
+		Init project properties.
+	-->
+	<property name="sigtest.redist.dir" location="${sigtest.dir}/redistributables"/>
+	<property name="sigtest.lib.dir" location="${sigtest.dir}/lib"/>
+	<property name="sigtest.src.jar" location="${sigtest.redist.dir}/${sigtest.src.jar.name}"/>
+	<property name="sigtest.jar" location="${sigtest.lib.dir}/${sigtest.jar.name}"/>
+	
+	<target name="default"></target>
+	
+	<!-- ================================= 
+          target: dist-src              
+         ================================= -->
+	<target name="dist-src">
+		<unjar src="${sigtest.src.jar}" dest="${dist.src}">
+		    <patternset>
+		        <exclude name="META-INF/*"/>
+		    </patternset>
+		</unjar>
+	</target>
+
+	<target name="dist-classes">
+		<unjar src="${sigtest.jar}" dest="${dist.classes}">
+		    <patternset>
+		        <exclude name="META-INF/*"/>
+		    </patternset>
+		</unjar>
+	</target>
+	
+	<target name="dist-jar">
+		<copy file="${sigtest.jar}" todir="${dist.lib}"></copy>
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="dist">
+		<antcall target="dist-src" />
+		<antcall target="dist-classes"/>
+	</target>
+
+</project>

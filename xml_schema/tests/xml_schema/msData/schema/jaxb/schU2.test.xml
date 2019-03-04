@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="schU2">
+    <TestGroupDocumentation>
+        <Title><![CDATA[schU2]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : Circulcar redefines handeling (2)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)schU2.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../schU2_a.xsd"/>
+        <ExternalData Type="iodata" SourceName="../schU2_b.xsd"/>
+        <ExternalData Type="iodata" SourceName="../schU2_c.xsd"/>
+        <ExternalData Type="iodata" SourceName="schU2.sig"/>
+    </CodeSet>
+    <TestCase ID="schU2">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

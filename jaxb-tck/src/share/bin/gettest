@@ -1,0 +1,379 @@
+#!/usr/bin/perl
+#
+# Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Eclipse Public License v. 2.0, which is available at
+# http://www.eclipse.org/legal/epl-2.0.
+#
+# This Source Code may also be made available under the following Secondary
+# Licenses when the conditions for such availability set forth in the
+# Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+# version 2 with the GNU Classpath Exception, which is available at
+# https://www.gnu.org/software/classpath/license.html.
+#
+# SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+#
+
+################################################################################
+#
+# Global variables
+#
+################################################################################
+
+$tckDir = "";
+$test = "";
+$outDir = ".";
+$testDir = "";
+$testId = "";
+$testDescription = "";
+$testKeywords = "";
+$testPackage = "";
+$testExecuteClass = "";
+$testExecuteArgs = "";
+@testFiles = ();
+@libraryFiles = ();
+@testSourcesToCompile = ();
+
+
+################################################################################
+#
+# Main
+#
+################################################################################
+
+
+initArgs();
+getTestDir();
+getTestId();
+getTestDescription();
+
+$testKeywords = getParameter("keywords");
+if ($testKeywords eq "") {
+    die "No keywords."
+}
+
+$testPackage = getParameter("package");
+if ($testPackage eq "") {
+    die "No package."
+}
+
+if ($testKeywords !~ /schema/ or $testKeywords !~ /negative/) {
+    $testExecuteClass = getParameter("executeClass");
+    if ($testExecuteClass eq "") {
+        die "No execute class."
+    }
+
+    $testExecuteArgs = getParameter("executeArgs");
+    if ($testExecuteArgs eq "") {
+        die "No execute args."
+    }
+    $testExecuteArgs =~ s/\$testURL/file:\/\/`pwd`\/run.sh/g;
+    $testExecuteArgs =~ s/\$package/$testPackage/g;
+
+    if ($testKeywords =~ /schema/ and $testKeywords =~ /positive/) {
+        unless ($testExecuteArgs =~ /-FileName +(.*)\.sig/) {
+            die "No sig file."
+        }
+        push(@testFiles, $1 . ".sig");
+    }
+}
+    
+getTestFiles();
+getLibraryFiles();
+getSourcesToCompile();
+
+copyFiles($testDir, \@testFiles, $outDir);
+copyFiles($tckDir, \@libraryFiles, $outDir);
+
+createRunSh();
+chmod(0755, "$outDir/run.sh");
+
+################################################################################
+#
+# Functions 
+#
+################################################################################
+
+sub getParameter {
+    $_ = $testDescription;
+    if (not /<td><b>$_[0]<\/b><\/td>/i) {
+        return "";
+    }
+    $_ = $';
+    if (not /<td>/i) {
+        return "";
+    }
+    $_ = $';
+    if (not /<\/td>/i) {
+        return "";
+    }
+    return $`;
+}
+
+sub initArgs {
+    $n = @ARGV;
+    if ($n == 0) {
+        usage();
+        exit(1);
+    }
+    for ($i = 0; $i < $n; $i++) {
+        if ($ARGV[$i] eq "-tckDir") {
+            $tckDir = $ARGV[++$i];
+            if ($tckDir !~ /\/$/) {
+                $tckDir = $tckDir . '/';
+            }
+        } elsif ($ARGV[$i] eq "-test") {
+            $test = $ARGV[++$i];
+        } elsif ($ARGV[$i] eq "-d") {
+            $outDir = $ARGV[++$i];
+        } else {
+            print "Unkown option: $ARGV[$i]\n";
+            usage();
+            exit(1);
+        }
+    }
+    if ($tckDir eq "") {
+        print "ERROR: TCK directory not specified.\n";
+        exit(1);
+    }
+    if ($test eq "") {
+        print "ERROR: : Test not specified.\n";
+        exit(1);
+    }
+}
+
+sub getTestDir {
+    $_ = $tckDir . "tests/" .  $test;
+    /\/[^\/]+$/;
+    $testDir =$`;
+}
+
+sub getTestId {
+   $_ = $tckDir . "tests/" .  $test;
+   if (/#/) {
+      $testId = $';
+   } else {
+      print "ERROR: Illegal test: $test\n";
+      exit(1);
+   }
+}
+
+sub getTestDescription {
+   my $fileName;
+   my $flagTDT = 0;
+   $_ = $tckDir . "tests/" .  $test;
+   if (/#/) {
+      $fileName = $`;
+   } else {
+      print "ERROR: Illegal test: $test\n";
+      exit(1);
+   }
+    open(IN, $fileName) || die "ERROR: Can't open $fileName for reading: $!\n";
+    while (<IN>) {
+        last if /<a NAME="$testId">/i;
+    }
+    
+    while (<IN>) {
+        $testDescription = $testDescription . $_;
+	if (/class="TestDescription"/i) {
+	    $flagTDT = 1;
+	}
+        last if (/<\/table>/) and ($flagTDT);
+    }
+    close(IN);
+    if ($testDescription eq "") {
+      print "ERROR: Test description not found.\n";
+      exit(1);
+    }
+}
+
+sub getTestFiles {
+    $_ = $testDescription;
+    if (not /<ul>/i) {
+      print "ERROR: Section 'Files' not found.\n";
+      exit(1);
+    }
+    $_ = $';
+    if (not /<\/ul>/i) {
+      print "ERROR: End of Section 'Files' not found.\n";
+      exit(1);
+    }
+    $_ = $`;
+    while (1) {
+        last if not /href="/i;
+        $_ = $';
+        last if not /">/;
+        push(@testFiles, $`);
+        $_ = $';
+    }
+}
+
+sub copyFiles {
+    my $ar = $_[1], $msg = "";
+    foreach $_ (@$ar) {
+        $msg = `rm -rf $_[2]/$_ 2>&1`;
+        if ($msg ne "") {
+           die $msg;
+        }
+        $dirName = `/usr/bin/dirname $_[2]/$_`;
+        $msg = `mkdir -p $dirName`;
+        if ($msg ne "") {
+           die $msg;
+        }
+        $msg = `cp $_[0]/$_ $dirName`;
+        if ($msg ne "") {
+           die $msg;
+        }
+    }
+}
+
+sub getLibraryFiles {
+    push(@libraryFiles, "src/share/classes/com/sun/javatest/Status.java");
+    push(@libraryFiles, "src/share/classes/com/sun/javatest/Test.java");
+    if ($testKeywords =~ /schema/ and $testKeywords =~ /positive/) {
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ArchiveClassDescrLoader.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ArchiveFinder.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/BasedClassDescription.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/BinaryClassDescription.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ClassCollection.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ClassDescrLoader.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ClassDescription.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ClassEnumerator.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/DescriptionFormat.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/DirectoryEntry.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ErrorFormatter.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/FullItemDescription.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/HtmlClassDescrLoader.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/HtmlClassDescription.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ItemDescription.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/JavaDocFindClass.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/Merge.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/NestedClassTable.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/PathEntry.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ReflClassDescrLoader.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ReflClassDescription.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/Result.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/SigTest.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/SignatureClassLoader.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/SignatureTest.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/SortedErrorFormatter.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/Test.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/Setup.java");
+        push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ZipFileEntry.java");
+    } elsif ($testKeywords =~ /document/) {
+        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/ErrorCollector.java");
+        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/JAXBTest.java");
+        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/JAXBTestBase.java");
+        push(@libraryFiles, "src/share/classes/com/sun/javatest/lib/MultiTest.java");
+        push(@libraryFiles, "src/share/classes/com/sun/javatest/lib/TestCases.java");
+        if ($testKeywords =~ /runtime/) {
+            push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/CTTest.java");
+        }
+    }
+}
+
+sub getSourcesToCompile {
+    my $n = 0;
+
+    $_ = getParameter("source");
+    while (1) {
+        last if not /href="/i;
+        $_ = $';
+        last if not /"/;
+        push(@testSourcesToCompile, $`);
+    }
+
+    $n = @testSourcesToCompile;
+    if ($n == 0) {
+      print "ERROR: No sources to compile.\n";
+      exit(1);
+    }
+}
+
+sub createXsdCommand {
+    my $cmd = "CLASSPATH=classes:\$CLASSPATH \$JAXB_HOME/bin/xjc.sh -d classes -p $testPackage \$file";
+    if ($testKeywords !~ /schema/ or $testKeywords !~ /negative/) {
+        $cmd = $cmd . " && \$JAVA_HOME/bin/javac -d classes -classpath classes:\$CLASSPATH `find classes -name '*.java' -print`";
+    }
+    return $cmd;
+}
+
+sub createExecuteCommand {
+    if ($testKeywords =~ /schema/ and $testKeywords =~ /negative/) {
+        return "";
+    } else {
+        return "echo Started executing a test...\n\$JAVA_HOME/bin/java -cp classes:\$CLASSPATH $testExecuteClass $testExecuteArgs";
+    }
+}
+
+
+sub createRunSh {
+    my $xsdCmd = createXsdCommand(), $execCmd = createExecuteCommand();
+    open(RUN_SH, ">$outDir/run.sh");
+    print RUN_SH <<RUN_SH_END;
+#!/bin/sh
+
+mkdir -p classes
+    
+JAVA_HOME=$ENV{"JAVA_HOME"}
+JAXB_HOME=$ENV{"JAXB_HOME"}
+
+JAXB_JAR_FILES=`find \$JAXB_HOME/lib -name '*.jar' -print`
+JAXB_CLASSPATH=`echo \$JAXB_JAR_FILES | sed -e 's/ /:/g'`
+CLASSPATH=\$JAXB_CLASSPATH:\$CLASSPATH
+
+echo Compiling library files...
+\$JAVA_HOME/bin/javac -d classes -classpath classes:\$CLASSPATH @libraryFiles
+exitCode=\$?
+if [ "\$exitCode" != "0" ] ;
+then
+   exit \$exitCode
+fi
+echo Finished compiling library files...
+echo
+    
+echo Compiling test sources...
+for file in @testSourcesToCompile
+do
+    case \$file in
+        *.java)  \$JAVA_HOME/bin/javac -d classes -classpath classes:\$CLASSPATH \$file; \
+                 exitCode=\$?; \
+                 if [ "\$exitCode" != "0" ] ; \
+                 then \
+                    exit \$exitCode ; \
+                 fi ;;
+        *.xsd) $xsdCmd \
+                 exitCode=\$?; \
+                 if [ "\$exitCode" != "0" ] ; \
+                 then \
+                    exit \$exitCode ; \
+                 fi ;;
+    esac
+done
+echo Finished test sources...
+echo
+
+
+$execCmd
+
+exit \$?
+
+RUN_SH_END
+    close(RUN_SH);
+}
+
+sub usage {
+    print <<Usage_Done;
+	gettest - Isolate a test from TCK.
+
+	Usage: gettest -tckDir TCK_DIR -testURL TEST_URL [ -d OUT_DIR ]
+
+	Options:
+		-tckDir TCK_DIR		Specify a directory where JAXB TCK 1.0 is installed
+		-test TEST		Specify a test
+                -d OUT_DIR		Specify a directory where the script should put an isolated test.
+					If omitted, the current working directory will be used.
+Usage_Done
+}
+################################################################################

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedLong_totalDigits002_1752">
+    <TestGroupDocumentation>
+        <Title><![CDATA[unsignedLong_totalDigits002_1752]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=totalDigits and value=3 and document value=123
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)unsignedLong_totalDigits002_1752.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../unsignedLong_totalDigits002.xsd"/>
+        <ExternalData Type="iodata" SourceName="unsignedLong_totalDigits002_1752.sig"/>
+    </CodeSet>
+    <TestCase ID="unsignedLong_totalDigits002_1752">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="unsignedLong_totalDigits002_1752.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../unsignedLong_totalDigits002.xml"/>
+            <ExternalData Type="iodata" SourceName="unsignedlong_totaldigits002_1752-unsignedLong_totalDigits002.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

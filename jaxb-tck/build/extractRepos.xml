@@ -1,0 +1,138 @@
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<project name="Tests2UTD project" default="all">
+
+    <property name="work.dir" value="extractor_work"/>
+    <property name="classes.dir" value="${work.dir}/classes"/>  
+
+    <!-- Cleans build directory -->
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    </target>
+
+
+    <target name="load-props">
+        <property name="base.dir" location="${basedir}"/>
+        <echo message="Working in ${base.dir}"/>
+        <!--property file="${in.propfile}"/--> 
+
+        <!-- Fake definitions, just for IDEA don't mark them red. -->
+        <property name="in.builddir" value=""/>
+        <property name="in.repository" value=""/>
+        <property name="in.destination" value=""/>
+        <property name="in.dirs" value=""/>
+        <property name="in.propfile" value=""/>
+        <property name="TCK_BTOOLS" value=""/>
+        <property name="JCT_TOOLS" value=""/>
+        <property name="JAXPLIBS_DIR" value=""/>
+        <property name="JAVA_HOME" value=""/>
+        
+        <!-- Set absolute paths -->
+        <property name="build.dir" location="${in.builddir}"/>
+        <property name="repos.dir" location="${in.repository}"/>
+        <property name="dest.dir" location="${in.destination}"/>
+
+        <echo message="Repository: ${repos.dir}"/>
+        <echo message="Destination: ${dest.dir}"/>
+        <echo message="Dirs: ${in.dirs}"/>
+    </target>
+
+
+    <target name="init-btools-dep">
+        <condition property="default.btools">
+            <equals arg1="${TCK_BTOOLS}" arg2=""/>
+        </condition>
+    </target> 
+
+    
+    <!-- By default, the build is run from the btools release/bin/metrics dir. -->
+    <target name="init-btools" depends="init-btools-dep" if="default.btools">
+        <property name="btools.dir" location="${build.dir}/../.."/>
+    </target> 
+
+
+    <!-- Creates build directory and compiles build related classes -->
+    <target name="init" depends="load-props, init-btools">
+
+        <!-- Extract to clean directory -->
+        <mkdir dir="${dest.dir}"/>
+
+        <!-- Won't be overriden if the default was set -->
+        <property name="btools.dir" location="${TCK_BTOOLS}"/>
+        <echo message="TCK_BTOOLS: ${btools.dir}"/>
+
+        <property name="lib.btools" value="${btools.dir}/lib/tckbtools.jar"/>
+        <property name="pl.btools.dir" value="${btools.dir}/bin/testgen"/>
+
+        <property name="jdk.tools.jar" value="${JAVA_HOME}/lib/tools.jar"/>
+
+        <mkdir dir="${classes.dir}"/>
+        <!--javac srcdir="src" destdir="${classes.dir}">
+            <classpath>
+                <pathelement path="${lib.btools}"/>
+		<fileset dir="${JCT_TOOLS}" includes="*.jar"/>
+		<pathelement path="/set/jck-users/vas/jaxb/jaxb-tck20/build/jaxb_tck/classes"/>
+            </classpath>
+        </javac-->
+
+        <taskdef name="prop-regexp" classname="com.sun.ant.tools.PropRegexp"
+            classpath="${classes.dir}"/>
+        <prop-regexp property="pl.include" value="${in.dirs}" suffix="*.pl"/>
+        <prop-regexp property="xml.include" value="${in.dirs}" suffix="*.test.xml"/>
+        <property name="pl.include" value=""/>
+        <property name="xml.include" value=""/>
+    </target>
+
+    
+    <!-- Just copy -->
+    <target name="xml2xml" depends="init">
+        <copy todir="${dest.dir}">
+            <fileset dir="${repos.dir}" includes="${xml.include}"/>
+        </copy>
+    </target>
+
+   
+    <!-- Generates .test.xml tests from .pl sources -->
+    <!--target name="pl2xml" depends="init">
+        <copy todir="${dest.dir}">
+            <fileset dir="${repos.dir}" includes="${pl.include}"/>
+        </copy>
+        <apply executable="perl" failonerror="true">
+            <env key="TG_BASE" value="${pl.btools.dir}/testgen.pl"/>
+            <env key="TESTGEN" value="${pl.btools.dir}/pl2xml.pl"/>
+            <env key="SERIALGEN" value="${pl.btools.dir}/serTempl.pl"/>
+            <env key="TCK_SOURCE_DIR" value="${repos.dir}/tests"/>
+            <fileset dir="${dest.dir}" includes="**/*.pl"/>
+        </apply>
+    </target-->
+
+    <target name="libs" depends="init" if="in.libxmllist">
+        <copy file="${in.libxmllist}" tofile="${dest.dir}/libs.lst"/>  
+        <taskdef name="copy-libs" classname="com.sun.ant.tools.CopyLibs">
+            <classpath>
+                <!--pathelement path="${lib.btools}"/-->
+                <pathelement path="${classes.dir}"/>
+            </classpath>
+        </taskdef>
+        <copy-libs libxmllist="${in.libxmllist}" repository="${repos.dir}"
+            destination="${dest.dir}"/>
+    </target>
+
+    <target name="all" depends="xml2xml, libs"/> <!-- pl2xml removed -->
+</project>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2005, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<xsd:schema xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:test="globalBindings/typesafeEnumBase" xmlns:xsd="http://www.w3.org/2001/XMLSchema" jaxb:version="2.0" targetNamespace="globalBindings/typesafeEnumBase">
+    <xsd:annotation>
+        <xsd:appinfo>
+            <jaxb:globalBindings typesafeEnumBase="xsd:int"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:annotation>
+    	<xsd:documentation>
+Test checks that defining "typesafeEnumBase" override default "xsd:string" value. 
+Thus, defining it to "xsd:int" (empty value isn't allowed) should disable 
+generation of typesafe enumeration for default xsd:string".
+    	</xsd:documentation>
+    </xsd:annotation>
+
+	<xsd:element name="root" type="test:enumType" />
+	
+	<xsd:simpleType name="enumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="enum1"/>
+			<xsd:enumeration value="enum2"/>
+			<xsd:enumeration value="enum3"/>
+			<xsd:enumeration value="enum4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

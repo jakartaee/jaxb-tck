@@ -1,0 +1,292 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="CtorGet">
+   <TestGroupDocumentation>
+      <Title>JAXBSource tests</Title>
+      <Description>Test descriptions and specifications for JAXBSource tests.</Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)CtorGet.test.xml	1.8 07/06/06</AttrElem>
+      <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+      <AttrElem Name="schemaName">enumeration-1-source.xsd</AttrElem>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Import>javax.xml.bind.util.JAXBSource</Import>
+      <Import>javax.xml.bind.JAXBContext</Import>
+      <Import>javax.xml.bind.JAXBException</Import>
+      <Import>javax.xml.bind.JAXBElement</Import>
+      <Import>javax.xml.bind.Unmarshaller</Import>
+      <Import>javax.xml.bind.Marshaller</Import>
+      <ExternalSupportClass SourceName="ObjectFactory.java"/>
+      <ExternalData SourceName="enumeration-1-source.xsd" Type="iodata"/>
+   </CodeSet>
+
+   <TestCase ID="CtorGet001">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that JAXBSource(JAXBContext, Object) with valid arguments throws no
+exceptions.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="enumeration-1-source.xml" Type="iodata"/>
+      </CodeSet>
+      <TestCode SourceLang="java"><![CDATA[
+         JAXBContext jc = null;
+         Object obj = null;
+
+         obj = unmarshal("enumeration-1-source.xml");
+         try {
+             jc = getJAXBContext();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create JAXBContext");
+         }
+         try {
+             new JAXBSource(jc, obj);
+         } catch (JAXBException je){
+             return Status.failed("new JAXBSource(context, obj) with valid arguments throws JAXBException");
+         }
+         return Status.passed("OKAY");
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet002">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that JAXBSource(Marshaller, Object) with valid arguments throws no
+exceptions.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="enumeration-1-source.xml" Type="iodata"/>
+      </CodeSet>
+      <TestCode SourceLang="java"><![CDATA[
+         JAXBContext jc = null;
+         Marshaller m = null;
+         Object obj = null;
+
+         obj = unmarshal("enumeration-1-source.xml");
+         try {
+             jc = getJAXBContext();
+              m = jc.createMarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or marshaler object");
+         }
+         try {
+             new JAXBSource(m, obj);
+         } catch (JAXBException je){
+             return Status.failed("new JAXBSource(marshaler, obj) with valid arguments throws JAXBException");
+         }
+         return Status.passed("OKAY");
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet003">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that JAXBSource(JAXBContext, Object) with valid arguments throws no
+exceptions. Transformed object is equal to the original.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="enumeration-1-source.xml" Type="iodata"/>
+      </CodeSet>
+      <TestCode SourceLang="java"><![CDATA[
+         JAXBContext jc = null;
+         Unmarshaller um = null;
+         JAXBSource src = null;
+         Object obj = null;
+         Object objRes = null;
+
+         obj = unmarshal("enumeration-1-source.xml");
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or unmarshaler object");
+         }
+         try {
+             src = new JAXBSource(jc, obj);
+         } catch (JAXBException je){
+             return Status.failed("new JAXBSource(context, obj) with valid arguments throws JAXBException");
+         }
+         try {
+             objRes = um.unmarshal(src);
+         } catch (JAXBException je){
+             return Status.failed("JAXBException: unable to unmarshal from valid JAXBSource");
+         }
+         if (!((JAXBElement<Long>)obj).getValue().equals(((JAXBElement<Long>)objRes).getValue())){
+             return Status.failed("transformation result object is not equivalent to the original");
+         }
+         return Status.passed("OKAY");
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet004">
+      <TestCaseDocumentation>
+         <Title>Constructor test</Title>
+         <Description>
+The test checks that JAXBSource(Marshaller, Object) with valid arguments throws no
+exceptions. Transformed object is equal to the original.
+         </Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="enumeration-1-source.xml" Type="iodata"/>
+      </CodeSet>
+      <TestCode SourceLang="java"><![CDATA[
+         JAXBContext jc = null;
+         Unmarshaller um = null;
+         Marshaller m = null;
+         JAXBSource src = null;
+         Object obj = null;
+         Object objRes = null;
+
+         obj = unmarshal("enumeration-1-source.xml");
+         try {
+             jc = getJAXBContext();
+             um = jc.createUnmarshaller();
+              m = jc.createMarshaller();
+         } catch (JAXBException je){
+             return Status.failed("Unable to create valid context or marshaler or unmarshaller object");
+         }
+         try {
+             src = new JAXBSource(m, obj);
+         } catch (JAXBException je){
+             return Status.failed("new JAXBSource(marshaler, obj) with valid arguments throws JAXBException");
+         }
+         try {
+             objRes = um.unmarshal(src);
+         } catch (JAXBException je){
+             return Status.failed("JAXBException: unable to unmarshal from valid JAXBSource");
+         }
+         if (!((JAXBElement<Long>)obj).getValue().equals(((JAXBElement<Long>)objRes).getValue())){
+             return Status.failed("transformation result object is not equivalent to the original");
+         }
+         return Status.passed("OKAY");
+
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet005">
+      <TestCaseDocumentation>
+         <Description>The test passes wrong parameters to constructor</Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="enumeration-1-source.xml" Type="iodata"/>
+      </CodeSet>
+      <TestCode SourceLang="java"><![CDATA[
+        try {
+            new JAXBSource((JAXBContext)null, unmarshal("enumeration-1-source.xml"));
+        } catch (JAXBException je){
+            return Status.passed("OKAY");
+        }
+        return Status.failed("expected JAXBException was not thrown");
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet006">
+      <TestCaseDocumentation>
+         <Description>The test passes wrong parameters to constructor</Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+        try {
+            JAXBContext jc = getJAXBContext();
+            try {
+                new JAXBSource(jc, null);
+            } catch (JAXBException je){
+                return Status.passed("OKAY");
+            }
+        } catch (JAXBException je){
+            return Status.failed("Unable to create JAXBContext");
+        }
+        return Status.failed("expected JAXBException was not thrown");
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet007">
+      <TestCaseDocumentation>
+         <Description>The test passes wrong parameters to constructor</Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+        try {
+            new JAXBSource((JAXBContext)null, null);
+        } catch (JAXBException je){
+            return Status.passed("OKAY");
+        }
+        return Status.failed("expected JAXBException was not thrown");
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet005a">
+      <TestCaseDocumentation>
+         <Description>The test passes wrong parameters to constructor</Description>
+      </TestCaseDocumentation>
+      <CodeSet>
+         <ExternalData SourceName="enumeration-1-source.xml" Type="iodata"/>
+      </CodeSet>
+      <TestCode SourceLang="java"><![CDATA[
+        try {
+            new JAXBSource((Marshaller)null, unmarshal("enumeration-1-source.xml"));
+        } catch (JAXBException je){
+            return Status.passed("OKAY");
+        }
+        return Status.failed("expected JAXBException was not thrown");
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet006a">
+      <TestCaseDocumentation>
+         <Description>The test passes wrong parameters to constructor</Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+        try {
+            Marshaller mrsh = getJAXBContext().createMarshaller();
+            try {
+                new JAXBSource(mrsh, null);
+            } catch (JAXBException je){
+                return Status.passed("OKAY");
+            }
+        } catch (JAXBException je){
+            return Status.failed("Unable to create valid context or marshaler object");
+        }
+        return Status.failed("expected JAXBException was not thrown");
+      ]]></TestCode>
+   </TestCase>
+
+   <TestCase ID="CtorGet007a">
+      <TestCaseDocumentation>
+         <Description>The test passes wrong parameters to constructor</Description>
+      </TestCaseDocumentation>
+      <TestCode SourceLang="java"><![CDATA[
+        try {
+            new JAXBSource((Marshaller)null, null);
+        } catch (JAXBException je){
+            return Status.passed("OKAY");
+        }
+        return Status.failed("expected JAXBException was not thrown");
+      ]]></TestCode>
+   </TestCase>
+
+</TestGroup>
+<!-- Ident: @(#)CtorGet.test.xml	1.8 07/06/06 -->

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-QName-enumeration-2">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-QName-enumeration-2]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/QName is restricted by facet enumeration.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#QName">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#QName
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-enumeration">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-enumeration
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-QName-enumeration-2.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-atomic-QName-enumeration-3.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-QName-enumeration-2.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-QName-enumeration-2">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-atomic-QName-enumeration-3-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-atomic-QName-enumeration-3-1.xml"/>
+            <ExternalData Type="iodata" SourceName="atomic-qname-enumeration-2-NISTXML-SV-IV-atomic-QName-enumeration-3-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

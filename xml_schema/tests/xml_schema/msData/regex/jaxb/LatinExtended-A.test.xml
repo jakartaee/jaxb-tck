@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="LatinExtended-A">
+    <TestGroupDocumentation>
+        <Title><![CDATA[LatinExtended-A]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : LatinExtended-A
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)LatinExtended-A.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../LatinExtended-A.xsd"/>
+        <ExternalData Type="iodata" SourceName="LatinExtended-A.sig"/>
+    </CodeSet>
+    <TestCase ID="LatinExtended-A">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="LatinExtended-A.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../LatinExtended-A.xml"/>
+            <ExternalData Type="iodata" SourceName="latinextended-a-LatinExtended-A.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

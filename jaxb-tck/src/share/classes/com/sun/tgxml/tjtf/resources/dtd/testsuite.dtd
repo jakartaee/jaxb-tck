@@ -1,0 +1,124 @@
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!-- =====================================================================  -->
+<!-- =====================================================================  -->
+<!-- ===  TestSuite DTD   1.0 (beta)  07/25/01                         ===  -->
+<!-- ===                                                               ===  -->
+<!-- === Permission to use, copy, modify, and distribute this software ===  -->
+<!-- === and its documentation for NON-COMMERCIAL purposes and without ===  --> 
+<!-- === fee is hereby granted provided that this copyright notice     ===  --> 
+<!-- === appears in all copies. Please refer to the file               ===  --> 
+<!-- === "copyright.html" for further important copyright and          ===  -->
+<!-- === licensing information.                                        ===  -->
+<!-- ===                                                               ===  -->
+<!-- === SUN MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE          ===  -->
+<!-- === SUITABILITY OF  THE SOFTWARE, EITHER EXPRESS OR IMPLIED,      ===  -->
+<!-- === INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF        ===  -->
+<!-- === MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR         ===  -->
+<!-- === NON-INFRINGEMENT. SUN SHALL NOT BE LIABLE FOR ANY DAMAGES     ===  -->
+<!-- === SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR       ===  -->
+<!-- === DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.                ===  -->
+<!-- ===                                                               ===  -->
+<!-- ===  Author:  Leonid Arbouzov                                     ===  -->
+<!-- ===  Author:  Kevin T. Looney                                     ===  -->
+<!-- ===                                                               ===  -->
+<!-- =====================================================================  -->
+<!-- =====================================================================  -->
+
+
+
+<!-- ===============================================================    -->
+<!-- ===============================================================    -->
+<!-- ===  Root Nodes                                            ====    -->
+<!-- ===============================================================    -->
+<!-- ===============================================================    -->
+
+<!-- ===============================================================    -->
+<!-- =  TestSuite Element                                          =    -->
+<!-- ===============================================================    -->
+    <!ELEMENT TestSuite ( Title,
+                          Description,
+                          Contents?, 
+                          Comments?, 
+                          AttrElem*) >
+
+
+
+<!-- ===============================================================    -->
+<!-- =  Title Element                                              =    -->
+<!-- ===============================================================    -->
+ <!ELEMENT Title (#PCDATA) >
+
+
+<!-- ===============================================================    -->
+<!-- =  Description Element                                        =    -->
+<!-- ===============================================================    -->
+ <!ELEMENT Description (#PCDATA) >
+
+
+
+
+<!-- ===============================================================    -->
+<!-- =  Contents Element                                           =    -->
+<!-- ===============================================================    -->
+    <!ELEMENT Contents EMPTY >
+
+
+    <!--__________________________________________________________-->
+    <!--   Library Attributes                                     -->
+    <!--                                                          -->
+    <!--   Format (Enum, list-format, required default-table)     -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST Contents
+         Format       (table | list)           #IMPLIED
+        >
+
+
+<!-- ===============================================================    -->
+<!-- =  Comments Element                                           =    -->
+<!-- ===============================================================    -->
+ <!ELEMENT Comments (#PCDATA) >
+
+
+<!-- ===============================================================    -->
+<!-- =  Extension Element                                           =    -->
+<!-- ===============================================================    -->
+
+    <!ELEMENT AttrElem ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The parser is responsible for recieving a              -->
+    <!--   map of all possible Description Names, and all         -->
+    <!--   possible values for each name.                         -->
+    <!--__________________________________________________________-->
+
+
+
+    <!--__________________________________________________________-->
+    <!--   AttrElem Attributes                                    -->
+    <!--                                                          -->
+    <!--   Name (String, name, required)                          -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST AttrElem
+         Name       CDATA           #REQUIRED
+        >
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="ad_name00104m3">
+    <TestGroupDocumentation>
+        <Title><![CDATA[Attributes have names that begin with the basic characters 0x0276, 0x027a, 0x027f, 0x0281, 0x0294, 0x02a8, 0x02bb, 0x02be, 0x02c1, 0x0386, 0x0388, 0x0389, 0x038a, 0x038c, 0x038e, 0x038e, 0x038f, 0x0391, 0x0399, 0x03a1, 0x03a3, 0x03a9, 0x03af, 0x03b1, 0x03bf, 0x03ce (valid schema)]]></Title>
+        <Description><![CDATA[
+        <p>
+                    Declare 26 local integer attributes with the names that begin with the following 
+                             basic characters: 0x0276, 0x027a, 0x027f, 0x0281, 0x0294, 0x02a8, 0x02bb, 0x02be, 0x02c1, 0x0386, 0x0388, 0x0389, 0x038a, 0x038c, 0x038e, 0x038e, 0x038f, 0x0391, 0x0399, 0x03a1, 0x03a3, 0x03a9, 0x03af, 0x03b1, 0x03bf, 0x03ce respectively. The document set their values to 0, 1 or 2.
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#cAttribute_Declarations">
+            http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#cAttribute_Declarations
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)ad_name00104m3.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../AD_name00104m3.xsd"/>
+        <ExternalData Type="iodata" SourceName="ad_name00104m3.sig"/>
+    </CodeSet>
+    <TestCase ID="ad_name00104m3">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="Positive">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../AD_name00104m3_p.xml"/>
+            <ExternalData Type="iodata" SourceName="ad_name00104m3-AD_name00104m3_p.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="isDefault060_1">
+    <TestGroupDocumentation>
+        <Title><![CDATA[isDefault060_1]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : test empty element typed as xsd:int with default value set in schema.
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)isDefault060_1.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../test95960_1.xsd"/>
+        <ExternalData Type="iodata" SourceName="isDefault060_1.sig"/>
+    </CodeSet>
+    <TestCase ID="isDefault060_1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="isDefault060_1.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../test95960_1.xml"/>
+            <ExternalData Type="iodata" SourceName="isdefault060_1-test95960_1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

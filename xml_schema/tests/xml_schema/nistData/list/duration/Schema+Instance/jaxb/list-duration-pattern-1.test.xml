@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="list-duration-pattern-1">
+    <TestGroupDocumentation>
+        <Title><![CDATA[list-duration-pattern-1]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type list/duration is restricted by facet pattern with value P19\d\dY\d7M\d5DT1\dH\d1M\d8S P20\d\dY0\dM0\dDT\d9H\d9M\d7S P19\d\dY0\dM0\dDT\d0H5\dM0\dS P18\d\dY\d1M\d8DT\d9H1\dM\d5S P19\d\dY0\dM2\dDT\d6H2\dM\d5S P\d\d75Y1\dM0\dDT1\dH\d8M\d5S P17\d\dY\d5M0\dDT\d4H2\dM\d5S P19\d\dY1\dM1\dDT\d8H\d4M3\dS P\d\d93Y0\dM1\dDT1\dH\d9M\d1S P18\d\dY0\dM0\dDT\d4H\d3M\d1S.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#list-datatypes
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#duration">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#duration
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-pattern
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)list-duration-pattern-1.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-IV-list-duration-pattern-2.xsd"/>
+        <ExternalData Type="iodata" SourceName="list-duration-pattern-1.sig"/>
+    </CodeSet>
+    <TestCase ID="list-duration-pattern-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NISTXML-SV-IV-list-duration-pattern-2-1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NISTXML-SV-IV-list-duration-pattern-2-1.xml"/>
+            <ExternalData Type="iodata" SourceName="list-duration-pattern-1-NISTXML-SV-IV-list-duration-pattern-2-1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

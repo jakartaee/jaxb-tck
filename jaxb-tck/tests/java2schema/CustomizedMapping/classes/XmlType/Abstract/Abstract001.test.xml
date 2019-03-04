@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="Abstract001">
+    <TestGroupDocumentation>
+        <Title>XmlElement</Title>
+        <Description>
+
+Test of @XmlType annotations that is used to map a Java class to a schema type. 
+The schema type is computed from its annotation element values.
+
+      </Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)Abstract001.test.xml	1.2 08/04/04</AttrElem>
+        <AttrElem Name="testType">J2XTest</AttrElem>
+        <Keyword>runtime</Keyword>
+        <Keyword>positive</Keyword>
+        <Keyword>java_to_schema</Keyword>
+        <Keyword>jaxb</Keyword>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.j2x</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="package-info.java"/>
+        <ExternalSupportClass SourceName="Abstract001c.java"/>
+        <ExternalSupportClass SourceName="Abstract001d.java"/>
+    </CodeSet>
+    <TestCase ID="testCase0001">
+        <TestCaseDocumentation>
+            <Description>
+         Positive test. Assertion from JAXB 2.0 Specification - @XmlType {abstract}:
+         Mapping: Class to Complex Type Definition
+         {abstract} Component
+         True if the class modifier abstract is present.
+         </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">positive</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="Abstract001.p.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+    <TestCase ID="testCase0002">
+        <TestCaseDocumentation>
+            <Description>
+         Negative test. Assertion from JAXB 2.0 Specification - @XmlType {abstract}:
+         Mapping: Class to Complex Type Definition
+         {abstract} Component
+         True if the class modifier abstract is present.
+        </Description>
+        </TestCaseDocumentation>
+        <TestCaseAttributes>
+            <AttrElem Name="pos_neg">negative</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData SourceName="Abstract001.n.xml" Type="iodata"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

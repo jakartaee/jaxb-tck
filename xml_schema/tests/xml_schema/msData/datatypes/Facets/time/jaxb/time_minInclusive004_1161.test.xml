@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="time_minInclusive004_1161">
+    <TestGroupDocumentation>
+        <Title><![CDATA[time_minInclusive004_1161]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minInclusive and value=10:21:00-05:00 and facet=maxInclusive and value=13:20:00-04:00) and document value=13:20:00-03:00
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)time_minInclusive004_1161.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../time_minInclusive004.xsd"/>
+        <ExternalData Type="iodata" SourceName="time_minInclusive004_1161.sig"/>
+    </CodeSet>
+    <TestCase ID="time_minInclusive004_1161">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="time_minInclusive004_1161.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../time_minInclusive004.xml"/>
+            <ExternalData Type="iodata" SourceName="time_mininclusive004_1161-time_minInclusive004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

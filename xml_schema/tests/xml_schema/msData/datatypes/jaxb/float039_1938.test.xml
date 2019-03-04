@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="float039_1938">
+    <TestGroupDocumentation>
+        <Title><![CDATA[float039_1938]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : all valid float values
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)float039_1938.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../float039.xsd"/>
+        <ExternalData Type="iodata" SourceName="float039_1938.sig"/>
+    </CodeSet>
+    <TestCase ID="float039_1938">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="float039_1938.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../float039.xml"/>
+            <ExternalData Type="iodata" SourceName="float039_1938-float039.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

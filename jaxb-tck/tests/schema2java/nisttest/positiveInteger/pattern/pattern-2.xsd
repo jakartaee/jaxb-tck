@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-positiveInteger-pattern-2-NS"
+        targetNamespace="NISTSchema-positiveInteger-pattern-2-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: pattern-2.xsd
+      This schema specifies a datatype, NISTSchema-positiveInteger-pattern-2,
+      which is derived by restriction of built-in type positiveInteger
+      by facet pattern with a value of: \d{5}
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-positiveInteger-pattern-2" type="nist:NISTSchema-positiveInteger-pattern-2-Type"/>
+
+  <simpleType name="NISTSchema-positiveInteger-pattern-2-Type">
+    <restriction base="positiveInteger">
+      <pattern value="\d{5}"/>
+    </restriction>
+  </simpleType>
+
+</schema>

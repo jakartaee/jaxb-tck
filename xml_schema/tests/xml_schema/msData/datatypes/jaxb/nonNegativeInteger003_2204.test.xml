@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="nonNegativeInteger003_2204">
+    <TestGroupDocumentation>
+        <Title><![CDATA[nonNegativeInteger003_2204]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : value=0
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)nonNegativeInteger003_2204.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../nonNegativeInteger.xsd"/>
+        <ExternalData Type="iodata" SourceName="nonNegativeInteger003_2204.sig"/>
+    </CodeSet>
+    <TestCase ID="nonNegativeInteger003_2204">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="nonNegativeInteger003_2204.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../nonNegativeInteger003.xml"/>
+            <ExternalData Type="iodata" SourceName="nonnegativeinteger003_2204-nonNegativeInteger003.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

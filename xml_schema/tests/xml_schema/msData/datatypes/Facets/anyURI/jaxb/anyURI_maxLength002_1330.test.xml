@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="anyURI_maxLength002_1330">
+    <TestGroupDocumentation>
+        <Title><![CDATA[anyURI_maxLength002_1330]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxLength and value=5 and document value=foofo
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)anyURI_maxLength002_1330.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../anyURI_maxLength002.xsd"/>
+        <ExternalData Type="iodata" SourceName="anyURI_maxLength002_1330.sig"/>
+    </CodeSet>
+    <TestCase ID="anyURI_maxLength002_1330">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="anyURI_maxLength002_1330.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../anyURI_maxLength002.xml"/>
+            <ExternalData Type="iodata" SourceName="anyuri_maxlength002_1330-anyURI_maxLength002.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+
+    Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+<HTML>
+<HEAD>
+<TITLE>
+JAXBClassesInterview.jaxbClasses
+</title>
+<LINK REL="stylesheet" TYPE="text/css" HREF="../wizard.css" TITLE="Style">
+</head>
+<body>
+
+You should specify extra jar archives that are part of your JAXB implementation and are not built into the J2SE implementation.
+Specified directories, jar or zip archives will appear in the test executing Java classpath.
+<p>
+Classes implementing newer versions of endorsed standards should be placed in JAR files in
+&lt;java-home&gt;\lib\endorsed on Win32, &lt;java-home&gt;/lib/endorsed on Solaris or Linux.  The Java runtime 
+environment will use classes in such JAR files to override the corresponding classes provided in 
+the Java 2 Platform as shipped by Sun.
+<br> See http://java.sun.com/j2se/5.0/docs/guide/standards/ for details.
+<p>
+Use <b>"Add"</b> button to browse and add a path to direcotry, jar or zip archive to the
+list (java classpath).
+<p>
+Use <b>"Remove"</b> button to remove a path to direcotry, jar or zip archive from the 
+list (java classpath).
+<p>
+Since specified directories, jar or zip archives will appear in the classpath 
+list in the order in which they are specified in this list. You can control the order
+by moving entries up or down. Upper entries will appear in the classpath first.
+<p>
+For example, for Oracle's reference JAXB implementation, all the jars in the &lt;JAXB-RI&gt;/lib directory
+and those, which are built into the reference implementation J2SE, should be listed.
+
+</body>
+</HTML>

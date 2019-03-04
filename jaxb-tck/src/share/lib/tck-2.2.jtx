@@ -1,0 +1,83 @@
+#
+# Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Eclipse Public License v. 2.0, which is available at
+# http://www.eclipse.org/legal/epl-2.0.
+#
+# This Source Code may also be made available under the following Secondary
+# Licenses when the conditions for such availability set forth in the
+# Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+# version 2 with the GNU Classpath Exception, which is available at
+# https://www.gnu.org/software/classpath/license.html.
+#
+# SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+#
+
+#CR 6670410 JAXB TCK content compare tests (26 + 7) fail due to internal error of jbx comparator
+schema_bind/bind_class/name/name00101m_Bind.html#name00101m1_Bind_p 6670410 6670410 framework_bug
+schema_bind/bind_class/name/name00107m1.html#name00107m1_p 6670410 framework_bug
+schema_bind/bind_schemaBindings/map/map00101m1.html#map00101m1_p 6670410 framework_bug
+xml_schema/msData/additional/jaxb/addB012.html#addB012.v 6670410 framework_bug
+xml_schema/msData/additional/jaxb/addB067.html#addB067.v 6670410 framework_bug
+xml_schema/msData/additional/jaxb/isDefault072.html#isDefault072.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_enumeration002_1534.html#IDREF_enumeration002_1534.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_enumeration004_1536.html#IDREF_enumeration004_1536.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_length002_1523.html#IDREF_length002_1523.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_maxLength002_1530.html#IDREF_maxLength002_1530.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_maxLength003_1531.html#IDREF_maxLength003_1531.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_minLength001_1525.html#IDREF_minLength001_1525.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_minLength002_1526.html#IDREF_minLength002_1526.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_minLength004_1528.html#IDREF_minLength004_1528.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/IDREF/jaxb/IDREF_pattern001_1532.html#IDREF_pattern001_1532.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/QName/jaxb/QName_enumeration002_1369.html#QName_enumeration002_1369.v 6670410 framework_bug
+xml_schema/msData/datatypes/Facets/QName/jaxb/QName_enumeration004_1371.html#QName_enumeration004_1371.v 6670410 framework_bug
+xml_schema/msData/datatypes/jaxb/QName006_2089.html#QName006_2089.v 6670410 framework_bug
+xml_schema/msData/datatypes/jaxb/QName009_2092.html#QName009_2092.v 6670410 framework_bug
+xml_schema/msData/datatypes/jaxb/dtZ107447_1_2244.html#dtZ107447_1_2244.v 6670410 framework_bug
+xml_schema/msData/datatypes/jaxb/dtZ107447_2243.html#dtZ107447_2243.v 6670410 framework_bug
+xml_schema/nistData/atomic/QName/Schema+Instance/jaxb/atomic-QName-enumeration-1.html#NISTXML-SV-IV-atomic-QName-enumeration-2-1 6670410 framework_bug
+xml_schema/nistData/atomic/QName/Schema+Instance/jaxb/atomic-QName-enumeration-4.html#NISTXML-SV-IV-atomic-QName-enumeration-5-1 6670410 framework_bug
+xml_schema/nistData/atomic/QName/Schema+Instance/jaxb/atomic-QName-pattern-2.html#NISTXML-SV-IV-atomic-QName-pattern-3-1 6670410 framework_bug
+xml_schema/nistData/atomic/QName/Schema+Instance/jaxb/atomic-QName-pattern-3.html#NISTXML-SV-IV-atomic-QName-pattern-4-1 6670410 framework_bug
+xml_schema/sunData/CType/targetNS/targetNS00101m/jaxb/targetns00101m.html#targetNS00101m1_p 6670410 framework_bug
+xml_schema/msData/modelGroups/jaxb/mgI009.html#mgI009.v                                     6670410 framework_bug
+xml_schema/msData/modelGroups/jaxb/mgI014.html#mgI014.v                                     6670410 framework_bug  
+xml_schema/msData/particles/jaxb/particlesIg004.html#particlesIg004                         6670410 framework_bug
+xml_schema/sunData/ElemDecl/typeDef/typeDef00701m/jaxb/typedef00701m.html#typeDef00701m1_p  6670410 framework_bug
+xml_schema/sunData/ElemDecl/typeDef/typeDef00801m/jaxb/typedef00801m1.html#Positive         6670410 framework_bug
+xml_schema/sunData/MGroup/particles/particles00202m/jaxb/particles00202m1.html#Positive     6670410 framework_bug
+xml_schema/sunData/MGroup/particles/particles00204m/jaxb/particles00204m1.html#Positive     6670410 framework_bug
+#CR 6737630 Devtools connot compile 2+ schemas together with -p option if they are a chameleon
+xml_schema/msData/additional/jaxb/test93276.xsd.html#test93276.xml 6737630 ri_limitation
+xml_schema/msData/complexType/jaxb/ctE018_a.xsd.html#ctE018.xml 6737630 ri_limitation
+xml_schema/msData/complexType/jaxb/ctE019_a.xsd.html#ctE019.xml 6737630 ri_limitation
+xml_schema/msData/element/jaxb/test115044_3.xsd.html#test115044_a.xml 6737630 ri_limitation
+xml_schema/msData/identityConstraint/jaxb/idH021.xsd.html#idH021.xml 6737630 ri_limitation
+xml_schema/msData/schema/jaxb/schD10_a.xsd.html#schD10.xml 6737630 ri_limitation
+xml_schema/msData/simpleType/jaxb/test298668_a.xsd.html#test298668.xml 6737630 ri_limitation
+xml_schema/msData/particles/jaxb/particlesIc007.xsd.html#particlesIc007.xml 6737630 ri_limitation
+#CR 6760189 xjc uses -nv option by default if xjc runs with JDK 1.5.X
+#CR is closed tests must be deleted
+xml_schema/msData/element/jaxb/elemT009.html#elemT009 6760189 ri_bug
+xml_schema/msData/element/jaxb/elemT010.html#elemT010 6760189 ri_bug 
+#CR 6761244 Schema compiler fails when maxOccurs attribute value is set greater than the value 5,000. 
+xml_schema/msData/modelGroups/jaxb/mgG014.html#mgG014  6761244 ri_constraint
+xml_schema/msData/modelGroups/jaxb/mgG014.html#mgG014.v  6761244 ri_constraint
+xml_schema/msData/modelGroups/jaxb/mgG014.xsd.html#mgG014.xml  6761244 ri_constraint
+xml_schema/msData/modelGroups/jaxb/mgJ014.html#mgJ014  6761244 ri_constraint
+xml_schema/msData/modelGroups/jaxb/mgJ014.html#mgJ014.v  6761244 ri_constraint
+xml_schema/msData/modelGroups/jaxb/mgJ014.xsd.html#mgJ014.xml  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesIe003.html#particlesIe003  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesIe003.html#particlesIe003.v  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesIe003.xsd.html#particlesIe003.xml  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesR005.html#particlesR005  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesR005.html#particlesR005.v  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesR005.xsd.html#particlesR005.xml  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesZ033_d.html#particlesZ033_d  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesZ036_b1.html#particlesZ036_b1  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesZ036_b2.html#particlesZ036_b2  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesZ036_c.html#particlesZ036_c  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesZ036_c.html#particlesZ036_c.v  6761244 ri_constraint
+xml_schema/msData/particles/jaxb/particlesZ036_c.xsd.html#particlesZ036_c.xml  6761244 ri_constraint
+

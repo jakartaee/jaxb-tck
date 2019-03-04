@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="double_maxInclusive001_1087">
+    <TestGroupDocumentation>
+        <Title><![CDATA[double_maxInclusive001_1087]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxInclusive and value=1.1 and document value=1.1
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)double_maxInclusive001_1087.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../double_maxInclusive001.xsd"/>
+        <ExternalData Type="iodata" SourceName="double_maxInclusive001_1087.sig"/>
+    </CodeSet>
+    <TestCase ID="double_maxInclusive001_1087">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="double_maxInclusive001_1087.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../double_maxInclusive001.xml"/>
+            <ExternalData Type="iodata" SourceName="double_maxinclusive001_1087-double_maxInclusive001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

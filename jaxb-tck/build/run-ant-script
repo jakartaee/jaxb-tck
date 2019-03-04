@@ -1,0 +1,52 @@
+#
+# Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Eclipse Public License v. 2.0, which is available at
+# http://www.eclipse.org/legal/epl-2.0.
+#
+# This Source Code may also be made available under the following Secondary
+# Licenses when the conditions for such availability set forth in the
+# Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+# version 2 with the GNU Classpath Exception, which is available at
+# https://www.gnu.org/software/classpath/license.html.
+#
+# SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+#
+
+
+DIRNAME=`dirname "$0"`
+case `domainname` in
+    *russia* ) 	domain=sparc ;;
+    *ru* ) 	domain=sparc ;;
+    *SFBay*  ) 	domain=SFBay ;;
+    *   ) 	domain=unknown ;;
+esac
+domain=SFBay
+ANT_OPTS="-Xms1024m -Xmx2048m -XX:PermSize=512M -XX:MaxPermSize=512M -XX:+UseParallelGC -XX:+AggressiveHeap -server"
+ANT_HOME=`grep -h ANT_HOME $DIRNAME/Defs.$domain.mk | sed -e 's/.*=[ ]*//'`
+JAXB_20_RI_HOME=`grep -h JAXB_20_RI_HOME $DIRNAME/Defs.$domain.mk | sed -e 's/.*=[ ]*//'`
+export DIRNAME
+export ANT_OPTS
+export ANT_HOME
+export JAXB_20_RI_HOME
+
+echo ANT_HOME $ANT_HOME
+echo JAXB_20_RI_HOME $JAXB_20_RI_HOME
+echo Domain $domain
+antfile=$1
+shift
+ 
+#export CLASSPATH=$JAXB_HOME/lib/jaxb-api.jar:$JAXB_HOME/lib/jaxb-impl.jar:$JAXB_HOME/lib/jaxb-xjc.jar:sigbuild/classes
+CLASSPATH=$JAXB_20_RI_HOME/lib/jaxb-xjc.jar
+export CLASSPATH
+
+if [ $# -eq  0 ]; then
+    exec $ANT_HOME/bin/ant -buildfile "$DIRNAME"/$antfile -p
+    exit
+fi
+
+exec $ANT_HOME/bin/ant -Dtck.build.domain=$domain -buildfile "$DIRNAME"/$antfile "$@"
+
+
+

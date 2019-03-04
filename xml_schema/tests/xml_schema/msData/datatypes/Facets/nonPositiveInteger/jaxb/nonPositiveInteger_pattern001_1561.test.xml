@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="nonPositiveInteger_pattern001_1561">
+    <TestGroupDocumentation>
+        <Title><![CDATA[nonPositiveInteger_pattern001_1561]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=pattern and value=-\p{Nd}{1,3} and document value=-5
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)nonPositiveInteger_pattern001_1561.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../nonPositiveInteger_pattern001.xsd"/>
+        <ExternalData Type="iodata" SourceName="nonPositiveInteger_pattern001_1561.sig"/>
+    </CodeSet>
+    <TestCase ID="nonPositiveInteger_pattern001_1561">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="nonPositiveInteger_pattern001_1561.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../nonPositiveInteger_pattern001.xml"/>
+            <ExternalData Type="iodata" SourceName="nonpositiveinteger_pattern001_1561-nonPositiveInteger_pattern001.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,89 @@
+<?xml version='1.0'?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="XmlAccessorOrder001">
+   <TestGroupDocumentation>
+      <Title>XmlAccessorOrder</Title>
+      <Description><![CDATA[
+          JAXB specification assertion <i>JAXB:SPEC:J2S:00049</i><br>
+          <b>@XmlAccessorOrder</b> annotation allows control over the default ordering of properties<br> 
+          and fields that are mapped to XML elements.<br><br>
+          If the value of @XmlAccessorOrder.value() is XmlAccessOrder.(ALHPHABETICAL),<br>
+          then the default ordering of fields/prop erti es is lexicographic order as determined by<br>
+          java.lang.String.CompareTo((String anotherString).
+      ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)XmlAccessorOrder001.test.xml	1.8 08/04/04</AttrElem>
+       <AttrElem Name="testType">J2XTest</AttrElem>
+       <Keyword>positive</Keyword>
+       <Keyword>runtime</Keyword> 
+       <Keyword>java_to_schema</Keyword>
+       <Keyword>jaxb</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+          <Lib>jaxb.j2x</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="XmlAccessorOrder001/package-info.java"/>
+      <ExternalSupportClass SourceName="XmlAccessorOrder001.java"/>
+   </CodeSet>
+   <!-- test case -->
+   <TestCase ID="testCase0001">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion <i>JAXB:SPEC:J2S:00049</i><br>
+          <b>@XmlAccessorOrder</b> annotation allows control over the default ordering of properties<br> 
+          and fields that are mapped to XML elements.<br><br>
+          If the value of @XmlAccessorOrder.value() is XmlAccessOrder.(ALHPHABETICAL),<br>
+          then the default ordering of fields/properties is lexicographic order as determined by<br>
+          java.lang.String.CompareTo((String anotherString).<br>
+          Positive test: Xml elements are in alphabetical order.
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">positive</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="XmlAccessorOrder001.p.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <!-- test case -->
+   <TestCase ID="testCase0002">
+      <TestCaseDocumentation>
+        <Description><![CDATA[
+          JAXB specification assertion <i>JAXB:SPEC:J2S:00049</i><br>
+          <b>@XmlAccessorOrder</b> annotation allows control over the default ordering of properties<br> 
+          and fields that are mapped to XML elements.<br><br>
+          If the value of @XmlAccessorOrder.value() is XmlAccessOrder.(ALHPHABETICAL),<br>
+          then the default ordering of fields/properties is lexicographic order as determined by<br>
+          java.lang.String.CompareTo((String anotherString).<br>
+          Negative test: Xml elements are not in alphabetical order.
+        ]]></Description>
+      </TestCaseDocumentation>
+      <TestCaseAttributes>
+         <AttrElem Name="pos_neg">negative</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="XmlAccessorOrder001.n.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+

@@ -1,0 +1,53 @@
+#
+# Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Eclipse Public License v. 2.0, which is available at
+# http://www.eclipse.org/legal/epl-2.0.
+#
+# This Source Code may also be made available under the following Secondary
+# Licenses when the conditions for such availability set forth in the
+# Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+# version 2 with the GNU Classpath Exception, which is available at
+# https://www.gnu.org/software/classpath/license.html.
+#
+# SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+#
+
+#
+# TCK customizations for mlprint
+#
+# Hide the RE bringover output in its own file
+>>> performing bringover
+<<< bringover complete
+
+# this is a spurious error coming out of jtxcheck; fixed in JT 2.1.1.
+ignore Bug2String: Error while reading bug.
+
+# this is a warning coming out of JDK build L. Should be fixed in M.
+ignore Warning: JIT compiler "sunwjit" not found. Will use interpreter.
+
+# Embedded shell script
+ignore {if ($1 != "doc" && length($NF)>32) { print "Warning, filename too long: " $0; } }
+ignore {if ($1 != "doc" && length($NF)>32) { print "Error, filename too long: " $0; err = 1; } }
+
+# script that might generate error message
+ignore echo "Error: bad references to System calls"; \
+ignore echo "Error: bad references to System calls" ; \
+
+# jtxcheck echo messages
+ignore echo ERROR: jtxcheck found errors )
+
+# Warn if jtxcheck errors were found
+warn ERRORS FROM JTXCHECK IGNORED PRO-TEM
+
+# run-tck.sh links
+doc Report written to
+doc Results written to
+doc tail -f
+
+# make reference
+doc Current working directory
+
+# Add error for Out of memory 
+error **Out of memory, exiting**

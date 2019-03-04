@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup PUBLIC "testgenspec.dtd" "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="Binder_">
+  <TestGroupDocumentation>
+    <Title>Provides Binder implementation tests</Title>
+    <Description>
+      Compile a simple schema to create a java binding classes.
+      Test an available implementation of the
+      javax.xml.bind.Binder interface using this context.
+    </Description>
+    <TestedPackage>javax.xml.bind</TestedPackage>
+    <TestedClass>JAXBContext</TestedClass>
+  </TestGroupDocumentation>
+  <TestGroupAttributes>
+    <AttrElem Name="scInfo">%W% %E%</AttrElem>
+    <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    <AttrElem Name="schemaName">Binder.xsd</AttrElem>
+  </TestGroupAttributes>
+  <CodeSet>
+    <Import>java.io.IOException</Import>
+    <Import>java.net.URL</Import>
+    <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+    <Import>javax.xml.bind.Binder</Import>
+    <Import>javax.xml.bind.JAXBContext</Import>
+    <Import>javax.xml.bind.JAXBException</Import>
+    <Import>javax.xml.bind.JAXBElement</Import>
+    <Import>javax.xml.parsers.DocumentBuilder</Import>
+    <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
+    <Import>javax.xml.parsers.ParserConfigurationException</Import>
+    <Import>org.w3c.dom.Document</Import>
+    <Import>org.w3c.dom.Node</Import>
+    <Import>org.w3c.dom.NodeList</Import>
+    <Import>org.w3c.dom.Element</Import>
+    <Import>org.xml.sax.SAXException</Import>
+    <SupportCode>
+      <![CDATA[
+  public Binder<Node> getBinder() throws JAXBException{
+    JAXBContext jaxbContext = getJAXBContext();
+    return jaxbContext.createBinder();
+  }
+
+  public Document getDocument(String doc) throws ParserConfigurationException, SAXException, IOException{
+    URL documentURL = getDocumentURL(doc);
+    DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+    documentBuilderFactory.setNamespaceAware(true);
+    DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+    return documentBuilder.parse(documentURL.openStream());
+  }
+
+    Document createNewDocument() {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        documentBuilderFactory.setNamespaceAware(true);
+        try {
+            return documentBuilderFactory.newDocumentBuilder().newDocument();
+        } catch ( ParserConfigurationException x ){
+            x.printStackTrace(ref);
+            throw new RuntimeException(x);
+        }
+    }
+  ]]>
+    </SupportCode>
+      <ExternalSupportClass SourceName="Address.java"/>
+      <ExternalSupportClass SourceName="Items.java"/>
+      <ExternalSupportClass SourceName="PurchaseOrder.java"/>
+      <ExternalSupportClass SourceName="List.java"/>
+      <ExternalSupportClass SourceName="ObjectFactory.java"/>
+      <ExternalSupportClass SourceName="package-info.java"/>
+      <ExternalData SourceName="Binder.xsd" Type="iodata"/>
+  </CodeSet>
+
+  <TestCase ID="navigation001">
+    <TestCaseDocumentation>
+      <Title>Navigation from DOM node to JAXB object : getJAXBNode()</Title>
+      <Description>
+        The test unmarshals DOM tree into JAXB object.
+        Test checks that getJAXBNode(org.w3c.dom.Node)
+        navigates to correct element of complex JAXB object
+      </Description>
+      <Author>Alexey Vishentsev</Author>
+    </TestCaseDocumentation>
+    <CodeSet>
+        <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        Document doc;
+        try {
+           doc = getDocument("Binder.xml");
+        } catch (Exception e) {
+           e.printStackTrace(ref);
+           return Status.failed("Exception is thrown on parsing XML to DOM tree: "+e);
+        }
+        Object jaxbObject;
+        try {
+            jaxbObject = binder.unmarshal(doc.getDocumentElement());
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Error on unmarshal document");
+        }
+        PurchaseOrder po = null;
+        if (jaxbObject instanceof JAXBElement) {
+            JAXBElement jaxbElement = (JAXBElement) jaxbObject;
+            if(jaxbElement.getValue() instanceof PurchaseOrder){
+                po = (PurchaseOrder)jaxbElement.getValue();
+            }
+        }
+        if(po == null){
+            return Status.failed("Unrecognized unmarshal result");
+        }
+
+
+        Address shipTo = po.getShipTo();
+
+        Element poElem = doc.getDocumentElement();
+        Element shipToElem = null;
+        for(Node n = poElem.getFirstChild();n != null; n = n.getNextSibling()){
+            if(n.getNodeType() == Node.ELEMENT_NODE && "shipTo".equals(n.getLocalName())){
+                shipToElem = (Element) n;
+                break;
+            }
+        }
+        if(shipToElem == null){
+            return Status.failed("shipTo element not found in DOM tree");
+        }
+
+        if(binder.getJAXBNode(shipToElem) == shipTo){
+            return Status.passed("Ok");
+        }
+
+        return Status.failed("getJAXBNode failed");
+        ]]></TestCode>
+  </TestCase>
+  <TestCase ID="getJAXBNode002">
+    <TestCaseDocumentation>
+      <Description>Throws: IllegalArgumentException - If the node parameter is null</Description>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    try {
+        getBinder().getJAXBNode(null);
+        return Status.failed( "expected IllegalArgumentException wasn't thrown" );
+    } catch( IllegalArgumentException x ){
+        return Status.passed("OK");
+    } catch (JAXBException e) {
+        e.printStackTrace(ref);
+        return Status.failed(e.toString());
+    }
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="getJAXBNode003">
+    <TestCaseDocumentation>
+      <Description>returns null if the specified XML node is not known to this Binder, or if it is not associated with a JAXB object.</Description>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    try {
+        Document doc = getDocument("Binder.xml");
+        Binder<Node> binder = getBinder();
+        if( binder.getJAXBNode( doc ) != null )
+            return Status.failed( "binder.getJAXBNode( 'unknown Node' ) returns not null" );
+        return Status.passed("OK");
+    } catch( Exception e ) {
+        e.printStackTrace(ref);
+        return Status.failed(e.toString());
+    }
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="getJAXBNode004">
+    <TestCaseDocumentation>
+      <Description>returns null if the specified XML node is not known to this Binder, or if it is not associated with a JAXB object.</Description>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    try {
+        Document doc = getDocument("Binder.xml");
+        Binder<Node> binder = getBinder();
+        Object jaxbObject = binder.unmarshal(doc.getDocumentElement());
+        if( binder.getJAXBNode( doc.getDocumentElement().appendChild( doc.createElement( "newElement" ) ) ) != null )
+            return Status.failed( "binder.getJAXBNode( 'Node without corresponding JAXB object' ) returns not null" );
+        return Status.passed("OK");
+    } catch( Exception e ) {
+        e.printStackTrace(ref);
+        return Status.failed(e.toString());
+    }
+    ]]></TestCode>
+  </TestCase>
+
+  <TestCase ID="navigation002">
+    <TestCaseDocumentation>
+      <Title>Navigation from JAXB object to  DOM node: getXMLNode()</Title>
+      <Description>
+        The test unmarshals DOM tree into JAXB object.
+        Test checks that getXMLNode(java.lang.Object)
+        navigates to correct element of DOM tree.
+      </Description>
+      <Author>Alexey Vishentsev</Author>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        Document doc;
+        try {
+           doc = getDocument("Binder.xml");
+        } catch (Exception e) {
+           e.printStackTrace(ref);
+           return Status.failed("Exception is thrown on parsing XML to DOM tree: "+e);
+        }
+        Object jaxbObject;
+        try {
+            jaxbObject = binder.unmarshal(doc.getDocumentElement());
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Error on unmarshal document");
+        }
+        PurchaseOrder po = null;
+        if (jaxbObject instanceof JAXBElement) {
+            JAXBElement jaxbElement = (JAXBElement) jaxbObject;
+            if(jaxbElement.getValue() instanceof PurchaseOrder){
+                po = (PurchaseOrder)jaxbElement.getValue();
+            }
+        }
+        if(po == null){
+            return Status.failed("Unrecognized unmarshal result");
+        }
+
+        Address shipTo = po.getShipTo();
+
+        Element poElem = doc.getDocumentElement();
+        Element shipToElem = null;
+        for(Node n = poElem.getFirstChild();n != null; n = n.getNextSibling()){
+            if(n.getNodeType() == Node.ELEMENT_NODE && "shipTo".equals(n.getLocalName())){
+                shipToElem = (Element) n;
+                break;
+            }
+        }
+        if(shipToElem == null){
+            return Status.failed("shipTo element not found in DOM tree");
+        }
+
+        if(binder.getXMLNode(shipTo) == shipToElem){
+            return Status.passed("Ok");
+        }
+
+        return Status.failed("getXMLNode failed");
+        ]]></TestCode>
+  </TestCase>
+  <TestCase ID="getXMLNode002">
+    <TestCaseDocumentation>
+      <Description>Throws: IllegalArgumentException - If the jaxbObject parameter is null</Description>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    try {
+        getBinder().getXMLNode(null);
+        return Status.failed( "expected IllegalArgumentException wasn't thrown" );
+    } catch( IllegalArgumentException x ){
+        return Status.passed("OK");
+    } catch (JAXBException e) {
+        e.printStackTrace(ref);
+        return Status.failed(e.toString());
+    }
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="getXMLNode003">
+    <TestCaseDocumentation>
+      <Description>Returns: null if the specified JAXB object is not known to this Binder, or if it is not associated with an XML element.</Description>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    try {
+        if( getBinder().getXMLNode(new PurchaseOrder()) != null )
+            return Status.failed( "getXMLNode( 'unknown JAXB object' ) isn't null" );
+        return Status.passed("OK");
+    } catch (JAXBException e) {
+        e.printStackTrace(ref);
+        return Status.failed(e.toString());
+    }
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="getXMLNode004">
+    <TestCaseDocumentation>
+      <Description>Returns: null if the specified JAXB object is not known to this Binder, or if it is not associated with an XML element.</Description>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    try {
+        Document doc = getDocument("Binder.xml");
+        Binder<Node> binder = getBinder();
+        PurchaseOrder po =
+            (PurchaseOrder)((JAXBElement)binder.unmarshal(doc.getDocumentElement())).getValue();
+        if( binder.getXMLNode( po.getShipTo() ) == null )
+            return Status.failed( "binder.getXMLNode( 'JAXB object with corresponding Node' ) returns null" );
+        po.setShipTo( new Address() );
+        if( binder.getXMLNode( po.getShipTo() ) != null )
+            return Status.failed( "binder.getXMLNode( 'JAXB object without corresponding Node' ) returns not null" );
+        return Status.passed("OK");
+    } catch( Exception e ) {
+        e.printStackTrace(ref);
+        return Status.failed(e.toString());
+    }
+    ]]></TestCode>
+  </TestCase>
+
+  <TestCase ID="update001">
+    <TestCaseDocumentation>
+      <Title>Binder.updateXML</Title>
+      <Description>
+      The test creates bound XML and JAXB object infosets by
+      unmarshalling XML data. Then test updates JAXB object
+      and calls Binder.updateXML method. No exception should
+      be thrown. Test verifies that XML infoset is updated properly.
+      </Description>
+      <Author>Alexey Vishentsev</Author>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        Document doc;
+        try {
+           doc = getDocument("Binder.xml");
+        } catch (Exception e) {
+           e.printStackTrace(ref);
+           return Status.failed("Exception is thrown on parsing XML to DOM tree: "+e);
+        }
+        Object jaxbObject;
+        try {
+            jaxbObject = binder.unmarshal(doc.getDocumentElement());
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Error on unmarshal document");
+        }
+        PurchaseOrder po = null;
+        if (jaxbObject instanceof JAXBElement) {
+            JAXBElement jaxbElement = (JAXBElement) jaxbObject;
+            if(jaxbElement.getValue() instanceof PurchaseOrder){
+                po = (PurchaseOrder)jaxbElement.getValue();
+            }
+        }
+        if(po == null){
+            return Status.failed("Unrecognized unmarshal result");
+        }
+
+        po.getShipTo().setName("John Smith");
+        Element poElement = doc.getDocumentElement();
+        try {
+            poElement = (Element) binder.updateXML(jaxbObject,poElement);
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.updateXML(jaxbObject,node) has thrown JAXBException: "+e);
+        }
+
+        NodeList list = poElement.getElementsByTagNameNS("*","name");
+        if(list.getLength() != 1){
+            return Status.failed("Document structure changed");
+        }
+        Element nameElement = (Element) list.item(0);
+        StringBuffer text = new StringBuffer();
+        for(Node n = nameElement.getFirstChild(); n != null; n = n.getNextSibling()){
+            switch(n.getNodeType()){
+            case Node.TEXT_NODE:
+            case Node.CDATA_SECTION_NODE:
+                text.append(n.getNodeValue());
+                break;
+            }
+        }
+        if(!text.toString().contains("John Smith")){
+            return Status.failed("Binder.updateXML(jaxbObject,node) did not updated xml node");
+        }
+        return Status.passed("Ok");
+        ]]></TestCode>
+  </TestCase>
+  <TestCase ID="updateXML002">
+    <TestCaseDocumentation>
+      <Description>updateXML(Object) throws IllegalArgumentException - If the jaxbObject parameter is null</Description>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    try {
+        getBinder().updateXML(null);
+        return Status.failed( "expected IllegalArgumentException was not thrown" );
+    } catch( IllegalArgumentException x ){
+        // OK
+    } catch( JAXBException x ){
+        x.printStackTrace(ref);
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="updateXML003">
+    <TestCaseDocumentation>
+      <Description>updateXML(Object) throws JAXBException - If any unexpected problem occurs updating corresponding XML content.</Description>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    try {
+        Document doc = getDocument("Binder.xml");
+        Binder<Node> binder = getBinder();
+        PurchaseOrder po = (PurchaseOrder)((JAXBElement)binder.unmarshal(doc.getDocumentElement())).getValue();
+        try {
+            binder.updateXML( new Address() );
+            return Status.failed( "expected JAXBException was not thrown" );
+        } catch( JAXBException x ){
+            // OK
+        }
+    } catch( Exception x ){
+        x.printStackTrace(ref);
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="updateXML004">
+    <TestCaseDocumentation>
+      <Description>updateXML(Object, Node) throws IllegalArgumentException - If any of the input parameters are null</Description>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    try {
+        Document doc = getDocument("Binder.xml");
+        Binder<Node> binder = getBinder();
+        PurchaseOrder po = (PurchaseOrder)((JAXBElement)binder.unmarshal(doc.getDocumentElement())).getValue();
+        try {
+            binder.updateXML(null, doc.getDocumentElement());
+            return Status.failed( "expected IllegalArgumentException was not thrown. updateXML(null, Node)" );
+        } catch(IllegalArgumentException x) {}
+        try {
+            binder.updateXML(po, null);
+            return Status.failed( "expected IllegalArgumentException was not thrown. updateXML(Object, null)" );
+        } catch(IllegalArgumentException x) {}
+        try {
+            binder.updateXML(null, null);
+            return Status.failed( "expected IllegalArgumentException was not thrown. updateXML(null, null)" );
+        } catch(IllegalArgumentException x) {}
+    } catch( Exception x ){
+        x.printStackTrace(ref);
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="updateXML005">
+    <TestCaseDocumentation>
+      <Description>updateXML(Object, Node) Changes in JAXB object tree are updated in its associated XML parse tree.</Description>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    try {
+        Binder<Node> binder = getBinder();
+        List list = new List( 1, new List( 2, new List( 3 ) ) );
+        Document doc;
+        binder.marshal( list, doc = createNewDocument() );
+        binder.updateXML( list, binder.getXMLNode( list.next ) );
+    } catch( JAXBException x ){
+        x.printStackTrace(ref);
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="update002">
+    <TestCaseDocumentation>
+      <Title>Binder.updateJAXB</Title>
+      <Description>
+      The test creates bound XML and JAXB object infosets by
+      unmarshalling XML data. Then test updates XML data
+      and calls Binder.updateJAXB method. No exception should
+      be thrown. Test verifies that JAXB object is updated properly.
+      </Description>
+      <Author>Alexey Vishentsev</Author>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    Binder<Node> binder;
+        try {
+            binder = getBinder();
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Unable to create valid context or binder");
+        }
+        Document doc;
+        try {
+           doc = getDocument("Binder.xml");
+        } catch (Exception e) {
+           e.printStackTrace(ref);
+           return Status.failed("Exception is thrown on parsing XML to DOM tree: "+e);
+        }
+        Object jaxbObject;
+        try {
+            jaxbObject = binder.unmarshal(doc.getDocumentElement());
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Error on unmarshal document");
+        }
+
+        PurchaseOrder po = null;
+        if (jaxbObject instanceof JAXBElement) {
+            JAXBElement jaxbElement = (JAXBElement) jaxbObject;
+            if(jaxbElement.getValue() instanceof PurchaseOrder){
+                po = (PurchaseOrder)jaxbElement.getValue();
+            }
+        }
+        if(po == null){
+            return Status.failed("Unrecognized unmarshal result");
+        }
+
+        NodeList nodeList = doc.getDocumentElement().getElementsByTagNameNS("*","name");
+        Element nameElement = (Element) nodeList.item(0);
+        for(Node n = nameElement.getFirstChild();n != null; n = n.getNextSibling()){
+            if(n.getNodeType() == Node.TEXT_NODE){
+                n.setNodeValue("John Smith");
+            }
+        }
+
+        try {
+            jaxbObject = binder.updateJAXB(doc.getDocumentElement());
+        } catch (JAXBException e) {
+            e.printStackTrace(ref);
+            return Status.failed("Binder.updateJAXB(Node) has thrown JAXBException: "+e);
+        }
+
+        po = null;
+        if (jaxbObject instanceof JAXBElement) {
+            JAXBElement jaxbElement = (JAXBElement) jaxbObject;
+            if(jaxbElement.getValue() instanceof PurchaseOrder){
+                po = (PurchaseOrder)jaxbElement.getValue();
+            }
+        }
+        if(po == null){
+            return Status.failed("Unrecognized updateJAXB result");
+        }
+
+        if(!po.getShipTo().getName().contains("John Smith")){
+            return Status.failed("Binder.updateJAXB(Node) failed");
+        }
+        return Status.passed("Ok");
+        ]]></TestCode>
+  </TestCase>
+  <TestCase ID="updateJAXB002">
+    <TestCaseDocumentation>
+      <Description>updateJAXB() Throws: IllegalArgumentException - If node parameter is null</Description>
+    </TestCaseDocumentation>
+    <TestCode><![CDATA[
+    try {
+        getBinder().updateJAXB(null);
+        return Status.failed( "expected IllegalArgumentException was not thrown" );
+    } catch( IllegalArgumentException x ){
+        // OK
+    } catch( JAXBException x ){
+        x.printStackTrace(ref);
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+  <TestCase ID="updateJAXB003">
+    <TestCaseDocumentation>
+      <Description>updateJAXB() Throws: JAXBException - If any unexpected problem occurs updating corresponding JAXB mapped content.</Description>
+    </TestCaseDocumentation>
+    <CodeSet>
+      <ExternalData SourceName="Binder.xml" Type="iodata"/>
+    </CodeSet>
+    <TestCode><![CDATA[
+    try {
+        Document doc = getDocument("Binder.xml");
+        Binder<Node> binder = getBinder();
+        PurchaseOrder po = (PurchaseOrder)((JAXBElement)binder.unmarshal(doc.getDocumentElement())).getValue();
+        try {
+            binder.updateJAXB( doc.createElement("newElement") );
+            return Status.failed( "expected JAXBException was not thrown" );
+        } catch( JAXBException x ){
+            // OK
+        }
+    } catch( Exception x ){
+        x.printStackTrace(ref);
+        return Status.failed( x.toString() );
+    }
+    return Status.passed("Ok");
+    ]]></TestCode>
+  </TestCase>
+</TestGroup>
+<!-- Ident: %W% %E% -->

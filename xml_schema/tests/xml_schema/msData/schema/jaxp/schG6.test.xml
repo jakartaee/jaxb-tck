@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<TestGroup ID="schG6">
+   <TestGroupDocumentation>
+      <Title><![CDATA[schG6]]></Title>
+      <Description><![CDATA[
+        <p>
+                    TEST :schema collection and schema location : A import B and C, A's ns="A", B's ns="B", C's ns="B", (B and C have confilcting decl)
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas">
+            http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/#Schemas
+          </a>
+        </p>
+    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)schG6.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../schG6_a.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schG6_b.xsd"/>
+      <ExternalData Type="iodata" SourceName="../schG6_c.xsd"/>
+   </CodeSet>
+   <TestCase ID="schG6">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)schG6.test.xml	1.1 07/03/27 -->

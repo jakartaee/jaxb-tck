@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+
+    Copyright (c) 2003, 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+<HTML>
+<HEAD>
+<TITLE>
+CompileInterview.defaultOperationMode
+</title>
+<LINK REL="stylesheet" TYPE="text/css" HREF="../wizard.css" TITLE="Style">
+</head>
+<body>
+
+A JAXB compatible implementation must support a <b>default operating mode</b> in which all required XML 
+Schema to Java bindings described in the JAXB specification must be implemented. Errors must 
+be reported when alternative/extension non-required features are encountered.
+<p> 
+A JAXB compatible implementation may support <b>non-default operating modes</b>. 
+These modes must support all the XML Schema to Java bindings described in JAXB specification, 
+but may also generate alternative/extension bindings for XML Schema constructs not required 
+by this specification.
+<p>
+If you choose <b>"Yes"</b>, the schema compiler is supposed to run 
+in default operation mode, the tests for non-required features must
+be passed (as negative tests with expected error messages).
+<p>
+If you choose <b>"No"</b>, the schema compiler is supposed to run 
+in non-default operation mode, the tests for non-required features will
+not be run.
+<p>
+For more information on default operation mode requirements, 
+see the "Compatibility" section of JAXB specification.
+</body>
+</HTML>

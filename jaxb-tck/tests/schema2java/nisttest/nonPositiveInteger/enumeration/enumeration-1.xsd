@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:nist="NISTSchema-nonPositiveInteger-enumeration-1-NS"
+        targetNamespace="NISTSchema-nonPositiveInteger-enumeration-1-NS">
+
+  <annotation>
+    <documentation>
+      The National Institute of Standards and Technology.
+      Conformance test for W3C XML Schema Part 2: Datatypes.
+      (See http://www.w3.org/TR/2001/PR-xmlschema-2-20010330/)
+      Created Sep 24, 2001.
+
+      File: enumeration-1.xsd
+      This schema specifies a datatype, NISTSchema-nonPositiveInteger-enumeration-1,
+      which is derived by restriction of built-in type nonPositiveInteger
+      by facet enumeration with values of:
+          -17416230241
+          -8643589967190224987
+          -676843
+          -497359738618
+          -45554400334776878
+          -8782453402663260577
+          -1874884102
+          -941995830152
+          -72
+          -117573
+          -1437611345877
+          -51399307227677
+          -821329
+          -716997651572763294
+          -39713096218389
+          -8095
+          -905538
+          -69233349799300
+    </documentation>
+  </annotation>
+
+  <element name="NISTSchema-nonPositiveInteger-enumeration-1" type="nist:NISTSchema-nonPositiveInteger-enumeration-1-Type"/>
+
+  <simpleType name="NISTSchema-nonPositiveInteger-enumeration-1-Type">
+    <restriction base="nonPositiveInteger">
+          <enumeration value="-17416230241"/>
+          <enumeration value="-8643589967190224987"/>
+          <enumeration value="-676843"/>
+          <enumeration value="-497359738618"/>
+          <enumeration value="-45554400334776878"/>
+          <enumeration value="-8782453402663260577"/>
+          <enumeration value="-1874884102"/>
+          <enumeration value="-941995830152"/>
+          <enumeration value="-72"/>
+          <enumeration value="-117573"/>
+          <enumeration value="-1437611345877"/>
+          <enumeration value="-51399307227677"/>
+          <enumeration value="-821329"/>
+          <enumeration value="-716997651572763294"/>
+          <enumeration value="-39713096218389"/>
+          <enumeration value="-8095"/>
+          <enumeration value="-905538"/>
+          <enumeration value="-69233349799300"/>
+    </restriction>
+  </simpleType>
+
+</schema>

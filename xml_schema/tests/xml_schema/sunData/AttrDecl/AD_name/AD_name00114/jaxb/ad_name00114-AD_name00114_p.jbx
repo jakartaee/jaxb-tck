@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javasoft.sqe.tests.attrdecl.ad_name.ad_name00114.ad_name00114.Root"> 
+  <void property="EEe"> 
+   <int>43</int> 
+  </void> 
+  <void property="EEee"> 
+   <int>4</int> 
+  </void> 
+  <void property="FF"> 
+   <int>44</int> 
+  </void> 
+  <void property="FFfF"> 
+   <int>5</int> 
+  </void> 
+  <void property="GGGG"> 
+   <int>7</int> 
+  </void> 
+  <void property="II"> 
+   <int>81</int> 
+  </void> 
+  <void property="JJ"> 
+   <int>82</int> 
+  </void> 
+  <void property="KKK"> 
+   <int>83</int> 
+  </void> 
+  <void property="LL"> 
+   <int>84</int> 
+  </void> 
+  <void property="LL11"> 
+   <int>64</int> 
+  </void> 
+  <void property="LLll"> 
+   <int>12</int> 
+  </void> 
+  <void property="MM1M"> 
+   <int>65</int> 
+  </void> 
+  <void property="MMM"> 
+   <int>85</int> 
+  </void> 
+  <void property="MMmM"> 
+   <int>13</int> 
+  </void> 
+  <void property="NNN"> 
+   <int>86</int> 
+  </void> 
+  <void property="NNN1"> 
+   <int>66</int> 
+  </void> 
+  <void property="NNNn"> 
+   <int>14</int> 
+  </void> 
+  <void property="OOOO"> 
+   <int>15</int> 
+  </void> 
+  <void property="PP"> 
+   <int>45</int> 
+  </void> 
+  <void property="PPPp"> 
+   <int>6</int> 
+  </void> 
+  <void property="aaaa"> 
+   <int>0</int> 
+  </void> 
+  <void property="bbb"> 
+   <int>40</int> 
+  </void> 
+  <void property="bbb0"> 
+   <int>20</int> 
+  </void> 
+  <void property="bbbB"> 
+   <int>1</int> 
+  </void> 
+  <void property="cc0C"> 
+   <int>21</int> 
+  </void> 
+  <void property="ccC"> 
+   <int>41</int> 
+  </void> 
+  <void property="ccCc"> 
+   <int>2</int> 
+  </void> 
+  <void property="dd"> 
+   <int>42</int> 
+  </void> 
+  <void property="dd00"> 
+   <int>22</int> 
+  </void> 
+  <void property="ddDD"> 
+   <int>3</int> 
+  </void> 
+  <void property="e0Ee"> 
+   <int>23</int> 
+  </void> 
+  <void property="f0F0"> 
+   <int>24</int> 
+  </void> 
+  <void property="g"> 
+   <int>46</int> 
+  </void> 
+  <void property="g000"> 
+   <int>26</int> 
+  </void> 
+  <void property="h"> 
+   <int>80</int> 
+  </void> 
+  <void property="h111"> 
+   <int>60</int> 
+  </void> 
+  <void property="hhhh"> 
+   <int>8</int> 
+  </void> 
+  <void property="i11I"> 
+   <int>61</int> 
+  </void> 
+  <void property="iiiI"> 
+   <int>9</int> 
+  </void> 
+  <void property="j1J1"> 
+   <int>62</int> 
+  </void> 
+  <void property="jjJj"> 
+   <int>10</int> 
+  </void> 
+  <void property="k1KK"> 
+   <int>63</int> 
+  </void> 
+  <void property="kkKK"> 
+   <int>11</int> 
+  </void> 
+  <void property="p00P"> 
+   <int>25</int> 
+  </void> 
+ </object> 
+</java> 

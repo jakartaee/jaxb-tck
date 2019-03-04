@@ -1,0 +1,600 @@
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!-- =====================================================================  -->
+<!-- =====================================================================  -->
+<!-- ===  Test Gen Spec DTD   1.1 (final)  10/23/02                    ===  -->
+<!-- ===                                                               ===  -->
+<!-- === Permission to use, copy, modify, and distribute this software ===  -->
+<!-- === and its documentation for NON-COMMERCIAL purposes and without ===  --> 
+<!-- === fee is hereby granted provided that this copyright notice     ===  --> 
+<!-- === appears in all copies. Please refer to the file               ===  --> 
+<!-- === "copyright.html" for further important copyright and          ===  -->
+<!-- === licensing information.                                        ===  -->
+<!-- ===                                                               ===  -->
+<!-- === SUN MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE          ===  -->
+<!-- === SUITABILITY OF  THE SOFTWARE, EITHER EXPRESS OR IMPLIED,      ===  -->
+<!-- === INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF        ===  -->
+<!-- === MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR         ===  -->
+<!-- === NON-INFRINGEMENT. SUN SHALL NOT BE LIABLE FOR ANY DAMAGES     ===  -->
+<!-- === SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR       ===  -->
+<!-- === DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.                ===  -->
+<!-- ===                                                               ===  -->
+<!-- ===  Author:  Kevin T. Looney                                     ===  -->
+<!-- ===                                                               ===  -->
+<!-- =====================================================================  -->
+<!-- =====================================================================  -->
+
+<!-- ===============================================================    -->
+<!-- ===  Root Nodes                                            ====    -->
+<!-- ===============================================================    -->
+
+    <!ELEMENT TestGroup ( TestGroupDocumentation?,
+                          TestGroupAttributes?,
+                          CodeSet?, 
+                          Library*, 
+                          TestCase* ) >
+    <!--__________________________________________________________-->
+    <!--   TestGroup Attributes                                   -->
+    <!--                                                          -->
+    <!--   ID (String, id, required)                              -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST TestGroup
+         ID       CDATA           #REQUIRED
+         Deleted  (true | false)  #IMPLIED 
+        >
+
+
+    <!ELEMENT Library (   LibraryDocumentation?,
+                          LibraryAttributes?,
+                          CodeSet? ) >
+    <!--__________________________________________________________-->
+    <!--   Library Attributes                                     -->
+    <!--                                                          -->
+    <!--   ID (String, id, required)                              -->
+    <!--   The parser validates this name.                        -->
+    <!--   VarID (String, id, optional)                           -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--     VarID - Subformat                                    -->
+    <!--          xxxIDxxx:YY[.ZZ]   where                        -->
+    <!--                                                          -->
+    <!--    xxxIDxxx  is some Variant Name String                 -->
+    <!--    YY, ZZ    are some integer between 0-99 (inclusive)   -->
+    <!--                                                          -->
+    <!--    The library marked as Inline="true" will be treated   -->
+    <!--    as InlineLibrary (it will be added to the list of     -->
+    <!--    TestGroup inline libraries)                           -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST Library
+         ID       CDATA           #REQUIRED
+         VarID    CDATA           #IMPLIED
+         Inline   (true | false)  #IMPLIED 
+        >
+
+    <!--___Semantics______________________________________________-->
+    <!--   TestCode is optional, only if an ExecuteClass exists   -->
+    <!--   in the TestGroup's Attributes.  If no ExecuteClass is  -->
+    <!--   present, than this TestCode must be present.           -->
+    <!--__________________________________________________________-->
+    <!ELEMENT TestCase (  TestCaseDocumentation?,
+                          TestCaseAttributes?,
+                          CodeSet?,
+                          TestCode? ) >
+    <!--__________________________________________________________-->
+    <!--   TestCase Attributes                                    -->
+    <!--                                                          -->
+    <!--   ID (String, id, required)                              -->
+    <!--   The parser validates this name.                        -->
+    <!--   VarID (String, id, optional)                           -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--     VarID - Subformat                                    -->
+    <!--          xxxIDxxx:YY[.ZZ]   where                        -->
+    <!--                                                          -->
+    <!--    xxxIDxxx  is some Variant Name String                 -->
+    <!--    YY, ZZ    are some integer between 0-99 (inclusive)   -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST TestCase
+         ID       CDATA           #REQUIRED
+         VarID    CDATA           #IMPLIED
+         Deleted  (true | false)  #IMPLIED 
+        >
+
+
+
+<!-- ===============================================================    -->
+<!-- ===  Documentation                                         ====    -->
+<!-- ===============================================================    -->
+
+    <!ELEMENT TestGroupDocumentation ( Title, 
+                                       Description?,
+                                       ( AssertionRef* | InlineAssertion*),
+                                       TestedPackage?,
+                                       TestedClass?,
+                                       MemberSig?,
+                                       DocElem*, 
+                                       Author* ) >
+
+    <!ELEMENT LibraryDocumentation ( Title, 
+                                     Description?,
+                                     Author* ) >
+
+    <!ELEMENT TestCaseDocumentation ( Title?, 
+                                      Description?,
+                                      Author*, 
+                                      TestCaseSpec* ) >
+
+
+    <!--___Semantics______________________________________________-->
+    <!--                                                          -->
+    <!--   TestedPackage and TestedClass are required if          -->
+    <!--   the repository is a JDK API repository.  They are      -->
+    <!--   optional for other TestGroups.                         -->
+    <!--                                                          -->
+    <!--   JDK API's require all Asserions be AssertionRefs,      -->
+    <!--   Other APIS may allow AssertionRefs or                  -->
+    <!--   InlineAssertions.                                      -->
+    <!--                                                          -->
+    <!--   TestCaseSpecs are only allowed in TestCases.  JDK      -->
+    <!--   API's require TestSpecs,  but they are optional for    -->
+    <!--   other APIs.                                            -->
+    <!--__________________________________________________________-->
+
+
+
+<!-- ===============================================================    -->
+<!-- =  TestCaseSpec Element                                       =    -->
+<!-- ===============================================================    -->
+    <!ELEMENT TestCaseSpec ( ( AssertionRef* | InlineAssertion*),
+                             TestTechnique?,
+                             MemberSig?,
+                             Input*,
+                             Precondition*,
+                             ExpectedResultValue?, 
+                             ExpectedResultSideEffect*, 
+                             ExpectedResultException*, 
+                             SpecElem* ) >
+
+
+
+    <!ELEMENT Title ( #PCDATA ) >
+
+    <!ELEMENT AssertionRef ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The text is an ID to an (out-of-file) specification    -->
+    <!--   reference.  The parser is responsible for              -->
+    <!--   validating this ID.                                    -->
+    <!--__________________________________________________________-->
+
+
+    <!ELEMENT InlineAssertion ( #PCDATA ) >
+
+
+    <!ELEMENT Description ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The text is either plain text or valid html. The       -->
+    <!--   parser does not check this string.                     -->
+    <!--__________________________________________________________-->
+
+
+    <!ELEMENT TestedPackage ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The text is an fully-qualified package name. The       -->
+    <!--   parser is responsible for validating this name.        -->
+    <!--__________________________________________________________-->
+
+
+    <!ELEMENT TestedClass ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The text is an (unqualified) class name. The           -->
+    <!--   parser is responsible for validating this name.        -->
+    <!--__________________________________________________________-->
+
+
+    <!ELEMENT DocElem ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The parser is responsible for recieving a              -->
+    <!--   map of all possible Description Names, and all         -->
+    <!--   possible values for each name.                         -->
+    <!--__________________________________________________________-->
+
+
+    <!--__________________________________________________________-->
+    <!--   DocElem Attributes                                     -->
+    <!--                                                          -->
+    <!--   Name (String, name, required)                          -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST DocElem
+         Name       CDATA           #REQUIRED
+        >
+
+
+    <!ELEMENT Author ( #PCDATA ) >
+
+    <!ELEMENT TestTechnique  (Emtpy?) >
+    <!--__________________________________________________________-->
+    <!--   TestTechnique Attributes                               -->
+    <!--                                                          -->
+    <!--   Value (String, enum, required)                         -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST TestTechnique
+         Value       (EqClass | Boundary )   #REQUIRED
+        >
+
+
+    <!ELEMENT MemberSig ( #PCDATA ) >
+
+
+    <!ELEMENT Input (  #PCDATA ) >
+    <!--__________________________________________________________-->
+    <!--   Input Attributes                                       -->
+    <!--                                                          -->
+    <!--   Name (String, name, required)                          -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST Input
+         Name       CDATA           #REQUIRED
+        >
+
+
+    <!ELEMENT Precondition ( #PCDATA ) >
+
+    <!ELEMENT ExpectedResultValue ( #PCDATA ) >
+    <!ELEMENT ExpectedResultSideEffect ( #PCDATA ) >
+    <!ELEMENT ExpectedResultException ( #PCDATA ) >
+
+    <!ELEMENT SpecElem ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The parser is responsible for recieving a              -->
+    <!--   map of all possible Description Names, and all         -->
+    <!--   possible values for each name.                         -->
+    <!--__________________________________________________________-->
+
+    <!--__________________________________________________________-->
+    <!--   SpecElem Attributes                                    -->
+    <!--                                                          -->
+    <!--   Name (String, name, required)                          -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST SpecElem
+         Name       CDATA           #REQUIRED
+        >
+
+
+
+
+<!-- ===============================================================    -->
+<!-- ===  Attributes                                            ====    -->
+<!-- ===============================================================    -->
+
+    <!--___Semantics______________________________________________-->
+    <!--   ExecuteClass is optional, only if a TestCase in the    -->
+    <!--   TestGroup exist where the TestCase has no TestCode.    -->
+    <!--   If all TestCases have TestCode, ExecuteClass must not  -->
+    <!--   be present.                                            -->
+    <!--__________________________________________________________-->
+    <!ELEMENT TestGroupAttributes ( RequiredResource*, 
+                                    AttrElem*,
+                                    TargetSpec*,
+                                    Keyword*,
+                                    Context?,
+                                    ExecuteClass?, 
+                                    ExecuteNative?, 
+                                    ExecuteArgs?, 
+                                    Remote*,
+                                    RMICClasses?,
+                                    SelectIf*,
+                                    Timeout? ) >
+
+    <!ELEMENT LibraryAttributes ( RequiredResource*, 
+                                  AttrElem*,
+                                  TargetSpec* ) >
+
+    <!ELEMENT TestCaseAttributes ( RequiredResource*, 
+                                   AttrElem*,
+                                   TargetSpec*,
+                                   Timeout? ) >
+
+
+
+
+
+    <!ELEMENT RequiredResource ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The parser is responsible for recieving a              -->
+    <!--   map of all possible Description Names, and all         -->
+    <!--   possible values for each name.                         -->
+    <!--__________________________________________________________-->
+
+    <!--__________________________________________________________-->
+    <!--   RequiredResource Attributes                            -->
+    <!--                                                          -->
+    <!--   Name (String, name, required)                          -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST RequiredResource
+         Name       CDATA           #REQUIRED
+        >
+
+
+    <!ELEMENT AttrElem ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The parser is responsible for recieving a              -->
+    <!--   map of all possible Description Names, and all         -->
+    <!--   possible values for each name.                         -->
+    <!--__________________________________________________________-->
+
+
+
+    <!--__________________________________________________________-->
+    <!--   AttrElem Attributes                                    -->
+    <!--                                                          -->
+    <!--   Name (String, name, required)                          -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST AttrElem
+         Name       CDATA           #REQUIRED
+        >
+
+
+
+    <!ELEMENT TargetSpec ( TargetSpecElem* ) >
+    <!--__________________________________________________________-->
+    <!--   TargetSpec Attributes                                  -->
+    <!--                                                          -->
+    <!--   ID (String, the spec ID, required)                     -->
+    <!--   Version (String, version-expr, required)               -->
+    <!--   The parser validates the ID and Version.               -->
+    <!--                                                          -->
+    <!--   The version-expr is generally of the form:             -->
+    <!--        -x.x, x.x, or x.x- (where x is some integer)      -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST TargetSpec
+         ID       CDATA           #REQUIRED
+         Version  CDATA           #REQUIRED
+        >
+
+        
+    <!ELEMENT TargetSpecElem ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The parser is responsible for recieving a              -->
+    <!--   map of all possible Description Names, and all         -->
+    <!--   possible values for each name.                         -->
+    <!--__________________________________________________________-->
+
+
+
+    <!--__________________________________________________________-->
+    <!--   TargetSpecElem Attributes                              -->
+    <!--                                                          -->
+    <!--   Name (String, name, required)                          -->
+    <!--   The parser validates this name.                        -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST TargetSpecElem
+         Name     CDATA           #REQUIRED
+        >
+
+
+
+
+
+
+    <!ELEMENT Keyword ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The Keyword strings are repository specific keywords.  -->
+    <!--   The parser is responsible for recieving a map of all   -->
+    <!--   possible Keyword names, and validating the tag.        -->
+    <!--__________________________________________________________-->
+
+    <!ELEMENT Context ( #PCDATA ) >
+
+    <!ELEMENT ExecuteClass ( #PCDATA ) >
+    <!ELEMENT ExecuteArgs ( #PCDATA ) >
+    <!ELEMENT ExecuteNative ( #PCDATA ) >
+
+    <!ELEMENT Remote ( #PCDATA ) >
+
+    <!ELEMENT RMICClasses ( #PCDATA ) >
+
+    <!ELEMENT SelectIf ( #PCDATA ) >
+    <!ELEMENT Timeout ( #PCDATA ) >
+
+
+
+
+
+<!-- ===============================================================    -->
+<!-- ===  CodeSet                                               ====    -->
+<!-- ===============================================================    -->
+    <!ELEMENT CodeSet (   Dependency?,
+                          Import*, 
+                          ExecuteArgs?,
+                          Context?,
+                          BaseClass?, 
+                          Export*, 
+                          SupportCode?, 
+                          (ExternalSupportClass | InlineSupportClass)*, 
+                          (ExternalData | InlineData)* ) >
+
+
+    <!ELEMENT Import (#PCDATA) >
+    <!--___Semantics______________________________________________-->
+    <!--   The text within a dependency is an import string.      -->
+    <!--   The parser provides validation support for this        -->
+    <!--   string.                                                -->
+    <!--__________________________________________________________-->
+
+    <!ELEMENT Export (#PCDATA) >
+    <!--___Semantics______________________________________________-->
+    <!--   Supported for libraries only, but not for test         -->
+    <!--   cases or test groups.                                  -->
+    <!--   The text is an import string.                          -->
+    <!--   The parser provides validation support for this        -->
+    <!--   string.                                                -->
+    <!--__________________________________________________________-->
+
+
+    <!ELEMENT BaseClass ( #PCDATA ) >
+    <!--___Semantics______________________________________________-->
+    <!--   The text is an ID for a BaseClass.                     -->
+    <!--   The parser provides validation support for this ID.    -->
+    <!--__________________________________________________________-->
+
+
+
+    <!ELEMENT Dependency (Lib+) >
+
+    <!ELEMENT Lib (#PCDATA) >
+    <!--___Semantics______________________________________________-->
+    <!--   The text within a Lib is a library name.  The          -->
+    <!--   parser provides validation support for this name.      -->
+    <!--__________________________________________________________-->
+
+
+
+<!-- ===============================================================    -->
+<!-- ===  Data                                                  ====    -->
+<!-- ===============================================================    -->
+    <!ELEMENT ExternalData (Empty?) >
+
+    <!--__________________________________________________________-->
+    <!--   ExternalData Attributes                                -->
+    <!--                                                          -->
+    <!--   SourceName (String, filename, required)                -->
+    <!--       this is the file location where the data exists.   -->
+    <!--   Type (enum, data in classes dir - or source dir,       -->
+    <!--         optional).                                       -->
+    <!--         When Type is present, the data is moved to       -->
+    <!--         the approporiate location.                       -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST ExternalData
+         SourceName               CDATA            #REQUIRED
+         Type                 (resource | iodata)  #IMPLIED
+        >
+
+    <!ELEMENT InlineData ( #PCDATA ) >
+    <!--__________________________________________________________-->
+    <!--   InlineData Attributes                                  -->
+    <!--                                                          -->
+    <!--   TargetFilename (String, filename, optional)            -->
+    <!--   Type (enum, data in classes dir - or source dir,       -->
+    <!--                                     optional)            -->
+    <!--                                                          -->
+    <!--   TargetFilename and Type are optional. If one is        -->
+    <!--   specified, the other must be present (semantically     -->
+    <!--   verified). When Filename and Type are present, the     -->
+    <!--   data is exported to an external file.                  -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST InlineData
+         TargetName           CDATA                #IMPLIED
+         Type                 (resource | iodata)  #IMPLIED
+        >
+
+
+<!-- ===============================================================    -->
+<!-- ===  Code                                                  ====    -->
+<!-- ===============================================================    -->
+
+    <!--___Semantics______________________________________________-->
+    <!--   The SourceLang is one of the following keys:           -->
+    <!--   java, jcod, jasm, c, xml, jca, jcasm, cfg, scr,  ...   -->
+    <!--   The parser validates this key.                         -->
+    <!--__________________________________________________________-->
+
+
+
+<!-- ===============================================================    -->
+<!-- ===  SupportClass                                          ====    -->
+<!-- ===============================================================    -->
+    <!ELEMENT ExternalSupportClass (Empty?) >
+    <!--__________________________________________________________-->
+    <!--   ExternalSupportClass Attributes                        -->
+    <!--                                                          -->
+    <!--   ClassID (String, class identifier, optional)           -->
+    <!--   SourceName (String, location of source, required)      -->
+    <!--   SourceLang (String, langtype, optional (default java)) -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST ExternalSupportClass
+         ClassID            CDATA        #IMPLIED
+         SourceName         CDATA        #REQUIRED
+         SourceLang         CDATA        #IMPLIED
+        >
+
+    <!ELEMENT InlineSupportClass (  CodeSource ) >
+    <!--__________________________________________________________-->
+    <!--   InlineSupportClass Attributes                          -->
+    <!--                                                          -->
+    <!--   ClassID (String, class identifier, optional)           -->
+    <!--   TargetName (String, filename, optional)                -->
+    <!--       when TargetName is present, Class is exported.     -->
+    <!--   SourceLang (String, langtype, optional (default java)) -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST InlineSupportClass
+         ClassID                  CDATA        #IMPLIED
+         TargetName               CDATA        #IMPLIED
+         SourceLang               CDATA        #IMPLIED
+        >
+     
+
+    <!ELEMENT CodeSource (  #PCDATA  ) >
+
+    <!ELEMENT SupportCode (  #PCDATA  ) >
+    <!--__________________________________________________________-->
+    <!--   SupportCode Attributes                                 -->
+    <!--                                                          -->
+    <!--   SourceLang (String, langtype, optional (default java)  -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST SupportCode
+         SourceLang         CDATA        #IMPLIED
+        >
+
+    <!ELEMENT TestCode (  #PCDATA  ) >
+    <!--__________________________________________________________-->
+    <!--   TestCode Attributes                                    -->
+    <!--                                                          -->
+    <!--   SourceLang (String, langtype, optional (default java)  -->
+    <!--                                                          -->
+    <!--__________________________________________________________-->
+    <!ATTLIST TestCode
+         SourceLang         CDATA        #IMPLIED
+        >
+
+<!-- ===============================================================    -->
+<!-- ===  Empty - workaround, for JDK 5 and above               ====    -->
+<!-- ===============================================================    -->
+    <!ELEMENT Empty EMPTY >     
+

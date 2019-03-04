@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="unsignedLong_minExclusive004_1749">
+    <TestGroupDocumentation>
+        <Title><![CDATA[unsignedLong_minExclusive004_1749]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minExclusive and value=1 and facet=maxInclusive and value=7) and document value=5
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)unsignedLong_minExclusive004_1749.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../unsignedLong_minExclusive004.xsd"/>
+        <ExternalData Type="iodata" SourceName="unsignedLong_minExclusive004_1749.sig"/>
+    </CodeSet>
+    <TestCase ID="unsignedLong_minExclusive004_1749">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="unsignedLong_minExclusive004_1749.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../unsignedLong_minExclusive004.xml"/>
+            <ExternalData Type="iodata" SourceName="unsignedlong_minexclusive004_1749-unsignedLong_minExclusive004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

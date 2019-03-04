@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="pattern1_Validate">
+    <TestGroupDocumentation>
+        <Title><![CDATA[pattern1 Validate Tree Content tests ]]></Title>
+        <Description><![CDATA[
+      The tests for checking the on-demand validator of trees got by unmarshalling
+      of a pattern-1.xsd based XML document and created dynamically via ObjectFactory. 
+      The schema defines a nonPositiveInteger restricted SimpleType with pattern value "\-\d{1}".
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)pattern1_Validate.test.xml	1.6 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>java.math.BigInteger</Import>
+        <SupportCode> 
+    
+    final BigInteger[] invalidValues = {new BigInteger("-10"), new BigInteger("-100"), new BigInteger("-1000"), 
+                                  new BigInteger("0"), new BigInteger("9"), new BigInteger("10"), new BigInteger("1000")};
+    final BigInteger[] validValues = {new BigInteger("-1"), new BigInteger("-9")};
+    
+    JAXBElement&lt;BigInteger&gt; elemObj;
+
+    Status testInvalid() {
+        for (int i = 0; i &lt; invalidValues.length; ++i){
+            
+                elemObj.setValue(invalidValues[i]);
+                Status status = validate(elemObj);
+                if (status.isPassed()) {
+                    return Status.failed("" + invalidValues[i] + " is unexpectedly valid");
+                }
+            
+        }
+        return Status.passed("OK");
+    }
+
+    Status testValid() {
+        for (int i = 0; i &lt; validValues.length; ++i){
+            elemObj.setValue(validValues[i]);
+            Status status = validate(elemObj);
+            if (!status.isPassed()){
+                return Status.failed("" + validValues[i] + " is unexpectedly invalid");
+            }
+        }
+        return Status.passed("OKAY");
+    }
+
+      </SupportCode>
+        <ExternalSupportClass SourceName="pattern-1.xsd"/>
+        <ExternalData Type="iodata" SourceName="pattern1_Validate.sig"/>
+    </CodeSet>
+    <TestCase ID="Validate001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger pattern-1.xsd, validate unmarshalled then legally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls pattern-1-1.xml document which specifies
+valid value -8 for the nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-pattern-1
+element, sets the values: -1, -9 and expects validation to pass.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="pattern-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="pattern1_validate-pattern-1-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String xmlDocName = "pattern-1-1.xml";
+        elemObj = (JAXBElement<BigInteger>)unmarshal(xmlDocName);
+        return testValid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger pattern-1.xsd, validate unmarshalled then illegally changed content tree]]></Title>
+            <Description><![CDATA[
+The test unmarshalls pattern-1-1.xml document which specifies
+valid value -8 for the nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-pattern-1
+element, sets the values: -10, -100, -1000, 0, 9, 10, 1000 and expects validation to fail.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="pattern-1-1.xml"/>
+            <ExternalData Type="iodata" SourceName="pattern1_validate-pattern-1-1.jbx"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+
+        String xmlDocName = "pattern-1-1.xml";
+        elemObj = (JAXBElement<BigInteger>)unmarshal(xmlDocName);
+        return testInvalid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate003">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger pattern-1.xsd validate dynamically created then legally changed content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-pattern-1 type,
+sets the values: -1, -9 and expects the validation to pass.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        
+            elemObj = (JAXBElement<BigInteger>)(new ObjectFactory()).createNISTSchemaNonPositiveIntegerPattern1(new BigInteger("-5"));
+        
+        return testValid();
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="Validate004">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML nonPositiveInteger pattern-1.xsd validate dynamically created then illegally changed content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of nonPositiveInteger restricted SimpleType NISTSchema-nonPositiveInteger-pattern-1 type,
+sets the values: -10, -100, -1000, 0, 9, 10, 1000 and expects validation to fail.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        
+            elemObj = (JAXBElement<BigInteger>)(new ObjectFactory()).createNISTSchemaNonPositiveIntegerPattern1(new BigInteger("-5"));
+        
+        return testInvalid();
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

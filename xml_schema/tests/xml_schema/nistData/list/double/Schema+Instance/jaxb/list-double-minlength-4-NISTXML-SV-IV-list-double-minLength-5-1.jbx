@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-double-minLength-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-double-minLength-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <double>3.235877153348454E263</double> 
+   </void> 
+   <void method="add"> 
+    <double>2.1687537852659655E162</double> 
+   </void> 
+   <void method="add"> 
+    <double>2.8583126679877416E148</double> 
+   </void> 
+   <void method="add"> 
+    <double>8.448837566777822E287</double> 
+   </void> 
+   <void method="add"> 
+    <double>3.3946773568745533E287</double> 
+   </void> 
+   <void method="add"> 
+    <double>3.2882234364789596E146</double> 
+   </void> 
+   <void method="add"> 
+    <double>5.913537385884744E275</double> 
+   </void> 
+   <void method="add"> 
+    <double>6.643286983444624E225</double> 
+   </void> 
+   <void method="add"> 
+    <double>7.218162644732722E232</double> 
+   </void> 
+   <void method="add"> 
+    <double>9.494261286634486E137</double> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

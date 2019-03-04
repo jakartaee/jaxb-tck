@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<!--
+Ident: @(#)ST_facets00504m2.xsd
+   generated from: @(#)ST_facets00504m.jmpp	1.3 02/11/14
+
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="SType/ST_facets"
+    targetNamespace="SType/ST_facets">
+
+    <xsd:element name="root">
+        <xsd:complexType>
+            <xsd:sequence maxOccurs="unbounded">
+                <xsd:element name="value" type="S"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:simpleType name="S">
+        <xsd:restriction base="xsd:NCName">
+            <xsd:enumeration value="a00೦"/>
+            <xsd:enumeration value="a0-೪"/>
+            <xsd:enumeration value="a0A೯"/>
+            <xsd:enumeration value="a10൦"/>
+            <xsd:enumeration value="a1-൪"/>
+            <xsd:enumeration value="a1A൯"/>
+            <xsd:enumeration value="a20๐"/>
+            <xsd:enumeration value="a2-๔"/>
+            <xsd:enumeration value="a2A๙"/>
+            <xsd:enumeration value="a30໐"/>
+            <xsd:enumeration value="a3-໔"/>
+            <xsd:enumeration value="a3A໙"/>
+            <xsd:enumeration value="a40༠"/>
+            <xsd:enumeration value="a4-༤"/>
+            <xsd:enumeration value="a4A༩"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-ID-enumeration-2-NS</string> 
+   <string>NISTSchema-SV-IV-list-ID-enumeration-2</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <string>sof.under.complex_computing</string> 
+   </void> 
+   <void method="add"> 
+    <string>vlife.part</string> 
+   </void> 
+   <void method="add"> 
+    <string>rindustries.hardware_the-of.such.</string> 
+   </void> 
+   <void method="add"> 
+    <string>nwhich.groups-use.targeted-information.of_and-and-the-from_inve</string> 
+   </void> 
+   <void method="add"> 
+    <string>binteroperability-to_data_it.is_documents_as.prominent_</string> 
+   </void> 
+   <void method="add"> 
+    <string>wmeans</string> 
+   </void> 
+   <void method="add"> 
+    <string>_and-structure_is.used-would-software.to</string> 
+   </void> 
+   <void method="add"> 
+    <string>isupp</string> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

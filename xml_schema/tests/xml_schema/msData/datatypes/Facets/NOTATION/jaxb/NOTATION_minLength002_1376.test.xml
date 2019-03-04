@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="NOTATION_minLength002_1376">
+    <TestGroupDocumentation>
+        <Title><![CDATA[NOTATION_minLength002_1376]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=minLength and value=5 and document value=foofo
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)NOTATION_minLength002_1376.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NOTATION_minLength002.xsd"/>
+        <ExternalData Type="iodata" SourceName="NOTATION_minLength002_1376.sig"/>
+    </CodeSet>
+    <TestCase ID="NOTATION_minLength002_1376">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="NOTATION_minLength002_1376.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../NOTATION_minLength002.xml"/>
+            <ExternalData Type="iodata" SourceName="notation_minlength002_1376-NOTATION_minLength002.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

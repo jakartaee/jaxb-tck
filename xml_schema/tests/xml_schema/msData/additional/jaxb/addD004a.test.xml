@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="addD004a">
+    <TestGroupDocumentation>
+        <Title><![CDATA[addD004a]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Adhoc XSD: : SAMPLE: xsd 1.0 Sturcture spec : the ipo.xsd with a simplify version of ipo.xml with the xsi:type
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)addD004a.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../ipo.xsd"/>
+        <ExternalData Type="iodata" SourceName="../ipo_address.xsd"/>
+        <ExternalData Type="iodata" SourceName="addD004a.sig"/>
+    </CodeSet>
+    <TestCase ID="addD004a">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="addD004a.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../ipo.xml"/>
+            <ExternalData Type="iodata" SourceName="addd004a-ipo.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

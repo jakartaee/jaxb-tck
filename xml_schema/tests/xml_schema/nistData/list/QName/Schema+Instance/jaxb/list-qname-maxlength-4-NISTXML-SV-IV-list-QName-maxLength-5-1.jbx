@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<java version="1.6.0" class="java.beans.XMLDecoder">
+ <object class="javax.xml.bind.JAXBElement"> 
+  <object class="javax.xml.namespace.QName"> 
+   <string>NISTSchema-SV-IV-list-QName-maxLength-5-NS</string> 
+   <string>NISTSchema-SV-IV-list-QName-maxLength-5</string> 
+  </object> 
+  <class>java.util.List</class> 
+  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <object class="java.util.ArrayList"> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>la_and_relationships-to.known_joint_manipulate-int</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>_aspects.partnership_component-and.suite-is_these.</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>eprovide-computing_modeling-the_processes.the-tran</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>eparticipants_many.has-web_cross-reference.in.of-p</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>mchains-from.tools.of-to.type.commerce-stimulus_a.</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>kavailable_community_and-is.as_in_vocabularies.cre</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>fand_know-use.are_partners-which.the-environments.</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdNS</string> 
+     <string>ehoc.of_over-open_efforts-e.such.pervasive-followi</string> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="javax.xml.namespace.QName"> 
+     <string>http://www.nist.gov/xsdDefaultNS</string> 
+     <string>was_the.products_reference_technical-incorporated.</string> 
+    </object> 
+   </void> 
+  </object> 
+ </object> 
+</java> 

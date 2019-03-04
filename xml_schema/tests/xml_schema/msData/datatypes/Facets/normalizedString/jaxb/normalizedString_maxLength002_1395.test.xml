@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="normalizedString_maxLength002_1395">
+    <TestGroupDocumentation>
+        <Title><![CDATA[normalizedString_maxLength002_1395]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : facet=maxLength and value=5 and document value=foofo
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)normalizedString_maxLength002_1395.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../normalizedString_maxLength002.xsd"/>
+        <ExternalData Type="iodata" SourceName="normalizedString_maxLength002_1395.sig"/>
+    </CodeSet>
+    <TestCase ID="normalizedString_maxLength002_1395">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="normalizedString_maxLength002_1395.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../normalizedString_maxLength002.xml"/>
+            <ExternalData Type="iodata" SourceName="normalizedstring_maxlength002_1395-normalizedString_maxLength002.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

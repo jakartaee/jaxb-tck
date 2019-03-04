@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="p17">
+    <TestGroupDocumentation>
+        <Title><![CDATA[p17]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : two patterns in a simple type (1) "[abc]+" (2) "[123]+", should be same as [abc]+|[123]+, value="abcaabbccabc" [valid]
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)p17.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../p17.xsd"/>
+        <ExternalData Type="iodata" SourceName="p17.sig"/>
+    </CodeSet>
+    <TestCase ID="p17">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="p17.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../p17.xml"/>
+            <ExternalData Type="iodata" SourceName="p17-p17.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

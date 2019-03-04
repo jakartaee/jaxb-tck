@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup  SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="xsd001">
+   <TestGroupDocumentation>
+      <Title><![CDATA[xsd001]]></Title>
+      <Description><![CDATA[
+        <p>
+                    - use of elementFormDefault="unqualified"
+                                     - unusual minOccurs/maxOccurs (3 and 7 respectively)
+                                     - complexType with simpleContent, and restriction.
+                                     - simpleType within restriction.
+        </p>
+                    ]]></Description>
+   </TestGroupDocumentation>
+   <TestGroupAttributes>
+      <AttrElem Name="scInfo">@(#)xsd001.test.xml	1.1 07/03/27</AttrElem>
+      <AttrElem Name="testType">XMLSchemaTest</AttrElem>
+      <TargetSpec ID="XMLSchema" Version="1.0-"/>
+      <Keyword>runtime</Keyword>
+   </TestGroupAttributes>
+   <CodeSet>
+      <Dependency>
+         <Lib>xml_schema.TestRun</Lib>
+      </Dependency>
+      <ExternalSupportClass SourceName="../xsd001.xsd"/>
+   </CodeSet>
+   <TestCase ID="xsd001">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+   </TestCase>
+   <TestCase ID="xsd001.n00">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.n00.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.n01">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.n01.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.n02">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.n02.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.n03">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.n03.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.n04">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.n04.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.n05">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.n05.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.n06">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.n06.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.n07">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">0</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.n07.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.v00">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.v00.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.v01">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.v01.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.v02">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.v02.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+   <TestCase ID="xsd001.v03">
+      <TestCaseAttributes>
+         <AttrElem Name="validity">1</AttrElem>
+      </TestCaseAttributes>
+      <CodeSet>
+         <ExternalData SourceName="../xsd001.v03.xml" Type="iodata"/>
+      </CodeSet>
+   </TestCase>
+</TestGroup>
+<!-- Ident: @(#)xsd001.test.xml	1.1 07/03/27 -->

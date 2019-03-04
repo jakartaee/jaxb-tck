@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="reDE1">
+    <TestGroupDocumentation>
+        <Title><![CDATA[reDE1]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :branch : base='dateTime', pattern='\p{Nd}{4}-\d\d-\d\dT\d\d:\d\d:\d\d', value='2001-06-06T12:12:00', type='valid', RULE=''
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs">
+            http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#regexs
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)reDE1.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../reDE1.xsd"/>
+        <ExternalData Type="iodata" SourceName="reDE1.sig"/>
+    </CodeSet>
+    <TestCase ID="reDE1">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="reDE1.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../reDE1.xml"/>
+            <ExternalData Type="iodata" SourceName="rede1-reDE1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

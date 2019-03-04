@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="atomic-integer-maxExclusive-7">
+    <TestGroupDocumentation>
+        <Title><![CDATA[atomic-integer-maxExclusive-7]]></Title>
+        <Description><![CDATA[
+        <p>
+                    
+        Type atomic/integer is restricted by facet maxExclusive with value -587018553452636869.
+      
+        </p>
+                    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#integer">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#integer
+          </a>
+        </p>
+    
+        
+        <p>
+          <a href="http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxExclusive">
+            http://www.w3.org/XML/Group/2002/09/xmlschema-2/datatypes-with-errata.html#rf-maxExclusive
+          </a>
+        </p>
+    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)atomic-integer-maxExclusive-7.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NISTSchema-SV-II-atomic-integer-maxExclusive-3.xsd"/>
+        <ExternalData Type="iodata" SourceName="atomic-integer-maxExclusive-7.sig"/>
+    </CodeSet>
+    <TestCase ID="atomic-integer-maxExclusive-7">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

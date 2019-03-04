@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<TestGroup ID="maxExclusive5_GetSet">
+    <TestGroupDocumentation>
+        <Title><![CDATA[maxExclusive5 GetSet Tree Content tests  ]]></Title>
+        <Description><![CDATA[
+      The tests for checking the content of trees got by unmarshalling
+      of the maxExclusive-5.xsd based XML documents and created dynamically via ObjectFactory. 
+      The schema defines a int restricted SimpleType with maxExclusive value 2147483647.
+      Various XML documents specify various values in the element.
+      ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)maxExclusive5_GetSet.test.xml	1.6 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Import>javax.xml.bind.*</Import>
+        <ExternalSupportClass SourceName="maxExclusive-5.xsd"/>
+        <ExternalData Type="iodata" SourceName="maxExclusive5_GetSet.sig"/>
+    </CodeSet>
+    <TestCase ID="GetSet001">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML int maxExclusive-5.xsd, unmarshalled content tree GetSet test]]></Title>
+            <Description><![CDATA[
+The test unmarshalls maxExclusive-5-1.xml,...,maxExclusive-5-5.xml documents which specify
+the values -2147483648, 1933487881, -1364906274, -760064009, 2147483646 for the int restricted SimpleType NISTSchema-int-maxExclusive-5
+element and expects that elemObj.getValue() returns specified in xml value, then invokes 
+elemObj.setValue, elemObj.getValue() should return set value.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="maxExclusive-5-1.xml"/>
+            <ExternalData Type="iodata" SourceName="maxExclusive-5-2.xml"/>
+            <ExternalData Type="iodata" SourceName="maxExclusive-5-3.xml"/>
+            <ExternalData Type="iodata" SourceName="maxExclusive-5-4.xml"/>
+            <ExternalData Type="iodata" SourceName="maxExclusive-5-5.xml"/>
+        </CodeSet>
+        <TestCode SourceLang="java"><![CDATA[
+        String[] xmlDocNames = {
+            "maxExclusive-5-1.xml", "maxExclusive-5-2.xml", "maxExclusive-5-3.xml",
+            "maxExclusive-5-4.xml", "maxExclusive-5-5.xml"
+        };
+        int[] expectedValues = {-2147483648, 1933487881, -1364906274, -760064009, 2147483646};
+        int[] anExpectedValues = {2147483646, -2147483648, -1364906274, 760064009, 0};
+        
+        for (int i = 0; i < xmlDocNames.length; ++i){
+            JAXBElement<Integer> elemObj = (JAXBElement<Integer>)unmarshal(xmlDocNames[i]);
+            if (elemObj.getValue() != expectedValues[i]){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.getValue() != " + expectedValues[i]);
+            }
+            elemObj.setValue(anExpectedValues[i]);
+            if (elemObj.getValue() != anExpectedValues[i]){
+                return Status.failed("used XML document: " + xmlDocNames[i] + ", elemObj.setValue(" + anExpectedValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anExpectedValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+    <TestCase ID="GetSet002">
+        <TestCaseDocumentation>
+            <Title><![CDATA[NIST XML int maxExclusive-5.xsd GetSet test for dynamically created content tree ]]></Title>
+            <Description><![CDATA[
+The test creates an instance of int restricted SimpleType NISTSchema-int-maxExclusive-5 type
+with the values -2147483648, 1933487881, -1364906274, -760064009, 2147483646 and expects that elemObj.getValue() returns specified 
+values, then invokes elemObj.setValue with various values, elemObj.getValue() should return
+set values.
+         ]]></Description>
+        </TestCaseDocumentation>
+        <TestCode SourceLang="java"><![CDATA[
+
+        int[] setValues = {-2147483648, 1933487881, -1364906274, -760064009, 2147483646};
+        int[] anSetValues = {2147483646, -2147483648, -1364906274, 760064009, 0};
+
+        JAXBElement<Integer> elemObj = null;
+        for (int i = 0; i < setValues.length; ++i){
+            
+                elemObj = (JAXBElement<Integer>)(new ObjectFactory()).createNISTSchemaIntMaxExclusive5(setValues[i]);
+            
+            if (elemObj.getValue() != setValues[i]){
+                return Status.failed("dynamically created JAXBElement<Integer>, elemObj.getValue() != " + setValues[i]);
+            }
+            elemObj.setValue(anSetValues[i]);
+            if (elemObj.getValue() != anSetValues[i]){
+                return Status.failed("dynamically created JAXBElement<Integer>, elemObj.setValue(" + anSetValues[i] + 
+                    ") invoked, " + "elemObj.getValue() != " + anSetValues[i]);
+            }
+        }
+        return Status.passed("OKAY");
+
+      ]]></TestCode>
+    </TestCase>
+</TestGroup>

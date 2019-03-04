@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="dtZ107447_1_2244">
+    <TestGroupDocumentation>
+        <Title><![CDATA[dtZ107447_1_2244]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : XSD:whitespace handling for xs:token should be collapse(1)
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)dtZ107447_1_2244.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../test107447.xsd"/>
+        <ExternalData Type="iodata" SourceName="dtZ107447_1_2244.sig"/>
+    </CodeSet>
+    <TestCase ID="dtZ107447_1_2244">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="dtZ107447_1_2244.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../test107447_1.xml"/>
+            <ExternalData Type="iodata" SourceName="dtz107447_1_2244-test107447_1.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>

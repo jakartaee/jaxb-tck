@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="NMTOKENS_pattern002_1476">
+    <TestGroupDocumentation>
+        <Title><![CDATA[NMTOKENS_pattern002_1476]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : XSD: NMTOKENS, IDREFS, and ENTITIES now allow the pattern facet
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)NMTOKENS_pattern002_1476.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../NMTOKENS_pattern001.xsd"/>
+        <ExternalData Type="iodata" SourceName="NMTOKENS_pattern002_1476.sig"/>
+    </CodeSet>
+    <TestCase ID="NMTOKENS_pattern002_1476">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+</TestGroup>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
+<TestGroup ID="duration_minInclusive004_1117">
+    <TestGroupDocumentation>
+        <Title><![CDATA[duration_minInclusive004_1117]]></Title>
+        <Description><![CDATA[
+        <p>
+                    TEST :Facet Schemas for string : (facet=minInclusive and value=P1Y1MT1H and facet=maxInclusive and value=P2Y3MT2H) and document value=P1Y2MT2H
+        </p>
+                    ]]></Description>
+    </TestGroupDocumentation>
+    <TestGroupAttributes>
+        <AttrElem Name="scInfo">@(#)duration_minInclusive004_1117.test.xml	1.2 08/01/24</AttrElem>
+        <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
+        <TargetSpec Version="1.0-" ID="XMLSchema"/>
+    </TestGroupAttributes>
+    <CodeSet>
+        <Dependency>
+            <Lib>jaxb.test</Lib>
+        </Dependency>
+        <ExternalSupportClass SourceName="../duration_minInclusive004.xsd"/>
+        <ExternalData Type="iodata" SourceName="duration_minInclusive004_1117.sig"/>
+    </CodeSet>
+    <TestCase ID="duration_minInclusive004_1117">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+    </TestCase>
+    <TestCase ID="duration_minInclusive004_1117.v">
+        <TestCaseAttributes>
+            <AttrElem Name="validity">1</AttrElem>
+        </TestCaseAttributes>
+        <CodeSet>
+            <ExternalData Type="iodata" SourceName="../duration_minInclusive004.xml"/>
+            <ExternalData Type="iodata" SourceName="duration_mininclusive004_1117-duration_minInclusive004.jbx"/>
+        </CodeSet>
+    </TestCase>
+</TestGroup>
