@@ -26,4 +26,8 @@ Defs.mk
 
 1) JAVATEST_JAR_LOC (This should point to the directory containing javatest 5.0 jar)
 
+2) SIGTESTDEV_JAR_LOC (This should point to the directory containing the sigtestdev jar)
+
+3) ASM_JAR_LOCATION (This should point to the directory containing ASM jars)
+
 2) Paths for linux utilities
