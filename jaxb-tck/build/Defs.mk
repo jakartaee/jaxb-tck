@@ -363,7 +363,7 @@ SRCBUNDLE_RELEASE_DOCS =
 SRCBUNDLE_DEST = $(BUILDAREA)/tempBundle
 SRCBUNDLE_ZIP = $(SRCBUNDLE_DEST)/jaxb_tck-ro-src.zip
 
-CLASSDEP = $(GENERAL_JAVA) -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-5.0.4.jar:$(ASM_JAR_LOCATION)/asm-commons-5.0.4.jar:$(GENERAL_JAVAHOME)/lib/tools.jar org.apache.river.tool.ClassDep -in com -in javasoft
+CLASSDEP = $(GENERAL_JAVA) -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar:$(GENERAL_JAVAHOME)/lib/tools.jar org.apache.river.tool.ClassDep -in com -in javasoft
 
 JAXB_LIBS.sh = for i in `$(LS) -1 $(JAXB_20_RI_HOME)/lib/*.jar`; do JAXB_LIBS="$$JAXB_LIBS:$$i"; done; echo $$JAXB_LIBS;
 JAXB_LIBS = $(shell $(JAXB_LIBS.sh))

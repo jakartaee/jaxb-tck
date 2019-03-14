@@ -264,7 +264,7 @@ precompile-apache-river-jini.ok:
 	@echo precompile apache river jini classes
 	find $(TOPDIR)/src/share/classes/org/apache/river -name "*.java" > river_source_files.txt
 	find $(TOPDIR)/src/share/classes/net/jini -name "*.java" >> river_source_files.txt
-	CLASSPATH=$(GENERAL_JAVAHOME)/lib/tools.jar:$(ASM_JAR_LOCATION)/asm-5.0.4.jar:$(ASM_JAR_LOCATION)/asm-commons-5.0.4.jar \
+	CLASSPATH=$(GENERAL_JAVAHOME)/lib/tools.jar:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar \
 	$(TOOLS_JAVAC) -source 6 -d $(BUILDCLASSDIR) @river_source_files.txt
 	$(MKDIR) -p $(TCKDIR)/classes/org/apache/river/tool/resources
 	$(MKDIR) -p $(TCKDIR)/classes/org/apache/river/impl
