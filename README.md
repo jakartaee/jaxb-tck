@@ -16,9 +16,9 @@ Ant 1.10.x or higher
 jdk 8
 
 Commands to build:
-make -m serial REPOSITORIES=$TCK_ROOT/xml_schema clean
+make REPOSITORIES=$TCK_ROOT/xml_schema clean
 
-make -d -m serial REPOSITORIES=$TCK_ROOT/xml_schema nightly
+make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
 Entries to be modified to build:
 
