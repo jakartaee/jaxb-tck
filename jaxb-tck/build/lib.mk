@@ -50,7 +50,7 @@ ZIP.files += $(LIB_FILES:%=$(TCKDIR)/lib/%)
 
 jaxb.mtl: unzipped.ok
 	@ echo "Generating MTL..."
-	@JCKUTILS_CLASSPATH=$(UNZIPDIR)/$(TCKVERSION)/classes:$(JAXB_HOME)/lib/jaxb-api.jar \
+	@JCKUTILS_CLASSPATH=$(UNZIPDIR)/$(TCKVERSION)/classes:$(JAXB_HOME)/mod/jaxb-api.jar \
 	JCKUTILS_JAVA=$(PRECOMPILE_JAVA) \
 	../jcktestlist  -o $@ -testCases -dirWalk $(UNZIPDIR)/$(TCKVERSION)/tests \
 	|| echo "Warning: Generation of MTL failed."

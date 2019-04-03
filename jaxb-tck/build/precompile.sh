@@ -56,7 +56,7 @@ echo "	tail -f `cd $precompileDir; pwd`/report/$subdir/harness.trace"
 echo "in a separate shell"
 echo
 
-JAXB_JAR_FILES=`find $jaxbHome/lib -name '*.jar' -print`
+JAXB_JAR_FILES=`find $jaxbHome/mod -name '*.jar' -print`
 JAXB_CLASSPATH=`echo $JAXB_JAR_FILES | sed -e 's/.jar/.jar:/g' | sed -e 's/: /:/g' | sed -e 's/:$//g'`
 cd $tckDir
 

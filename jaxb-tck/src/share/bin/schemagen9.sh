@@ -51,6 +51,6 @@ fi
 SCHEMAGEN_REALIZATION=com.sun.jaxb_tck.lib.SchemaGen
 
 # Invoke schemagen tool provided by JAXB RI via java interface
-echo eval "\"$JAVA_HOME/bin/java\" $TCK_JAXB_OPTIONS -cp $CLASSPATH:$JXC_CLASSPATH:$JAXB_HOME/lib/jaxb-jxc.jar com.sun.jaxb_tck.lib.JaxbCommand $TCK_JAXB_OTHER_OPTIONS -jxc $SCHEMAGEN_REALIZATION - ${jxcArgs}"
-eval "\"$JAVA_HOME/bin/java\" $TCK_JAXB_OPTIONS -cp $CLASSPATH:$JXC_CLASSPATH:$JAXB_HOME/lib/jaxb-jxc.jar com.sun.jaxb_tck.lib.JaxbCommand $TCK_JAXB_OTHER_OPTIONS -jxc $SCHEMAGEN_REALIZATION - ${jxcArgs}"
+echo eval "\"$JAVA_HOME/bin/java\" $TCK_JAXB_OPTIONS -cp $CLASSPATH:$JXC_CLASSPATH:$JAXB_HOME/mod/jaxb-jxc.jar com.sun.jaxb_tck.lib.JaxbCommand $TCK_JAXB_OTHER_OPTIONS -jxc $SCHEMAGEN_REALIZATION - ${jxcArgs}"
+eval "\"$JAVA_HOME/bin/java\" $TCK_JAXB_OPTIONS -cp $CLASSPATH:$JXC_CLASSPATH:$JAXB_HOME/mod/jaxb-jxc.jar com.sun.jaxb_tck.lib.JaxbCommand $TCK_JAXB_OTHER_OPTIONS -jxc $SCHEMAGEN_REALIZATION - ${jxcArgs}"
 

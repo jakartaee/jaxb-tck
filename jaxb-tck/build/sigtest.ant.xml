@@ -53,13 +53,14 @@
 	<!-- ================================= 
           target: dist-src              
          ================================= -->
-	<target name="dist-src">
+	<!--target name="dist-src">
+		<echo message="SIGTESTDEV jar path: ${sigtest.dir}/${sigtest.jar.name}" />
 		<unjar src="${sigtest.src.jar}" dest="${dist.src}">
 		    <patternset>
 		        <exclude name="META-INF/*"/>
 		    </patternset>
 		</unjar>
-	</target>
+	</target-->
 
 	<target name="dist-classes">
 		<unjar src="${sigtest.jar}" dest="${dist.classes}">
@@ -77,7 +78,7 @@
           target: depends                      
          - - - - - - - - - - - - - - - - - -->
 	<target name="dist">
-		<antcall target="dist-src" />
+		<!--antcall target="dist-src" /-->
 		<antcall target="dist-classes"/>
 	</target>
 

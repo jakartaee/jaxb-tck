@@ -293,7 +293,7 @@ LEAFCLASSES = com.sun.javatest.lib.MultiTest com.sun.javatest.lib.MultiStatus
 
 
 TOOLS_JAR=$(PRECOMPILE_JAVAHOME)/lib/tools.jar
-JAXB_CLASSPATH.sh=(fl=`find $(JAXB_HOME)/lib -name '*.jar' -print` ; echo $$fl) | sed -e 's/ /:/g'
+JAXB_CLASSPATH.sh=(fl=`find $(JAXB_HOME)/mod -name '*.jar' -print` ; echo $$fl) | sed -e 's/ /:/g'
 JAXB_CLASSPATH=$(shell $(JAXB_CLASSPATH.sh)):$(TOOLS_JAR)
 
 
@@ -332,7 +332,7 @@ JMPP_FILES_IN_BUNDLE = 100
 XML_DIRS_IN_BUNDLE = 150
 PL_FILES_IN_BUNDLE = 100
 
-JAXB_ID.sh=$(PRECOMPILE_JAVAHOME)/bin/java -jar $(JAXB_HOME)/lib/jaxb-xjc.jar -version 2>&1 | $(SED) -e 's/^[^"]*"//g' | $(SED) -e 's/".*$$//g'
+JAXB_ID.sh=$(PRECOMPILE_JAVAHOME)/bin/java -jar $(JAXB_HOME)/mod/jaxb-xjc.jar -version 2>&1 | $(SED) -e 's/^[^"]*"//g' | $(SED) -e 's/".*$$//g'
 JAXB_ID=$(shell $(JAXB_ID.sh))
 
 # Integrated into JCK JAXB-TCK requires mk with shared variables
@@ -365,7 +365,7 @@ SRCBUNDLE_ZIP = $(SRCBUNDLE_DEST)/jaxb_tck-ro-src.zip
 
 CLASSDEP = $(GENERAL_JAVA) -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar:$(GENERAL_JAVAHOME)/lib/tools.jar org.apache.river.tool.ClassDep -in com -in javasoft
 
-JAXB_LIBS.sh = for i in `$(LS) -1 $(JAXB_20_RI_HOME)/lib/*.jar`; do JAXB_LIBS="$$JAXB_LIBS:$$i"; done; echo $$JAXB_LIBS;
+JAXB_LIBS.sh = for i in `$(LS) -1 $(JAXB_20_RI_HOME)/mod/*.jar`; do JAXB_LIBS="$$JAXB_LIBS:$$i"; done; echo $$JAXB_LIBS;
 JAXB_LIBS = $(shell $(JAXB_LIBS.sh))
 JAVAC_6 = $(JAVAHOME_6)/bin/javac -target 1.8 -Xbootclasspath/p:$(JAXB_LIBS)
 JAVA_6 = $(JAVAHOME_6)/bin/java -Xbootclasspath/p:$(JAXB_LIBS)

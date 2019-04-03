@@ -40,6 +40,6 @@ rem )
 
 rem Invoke schema compiler provided by JAXB RI via java interface
 echo %JAVA_HOME%\bin\java.exe %TCK_JAXB_OPTIONS% -cp %CLASSPATH% com.sun.jaxb_tck.lib.JaxbCommand %TCK_JAXB_OTHER_OPTIONS% -xjc %SCHEMACOMPILER_REALIZATION% - %*
-"%JAVA_HOME%\bin\java.exe" %TCK_JAXB_OPTIONS% -cp %CLASSPATH%;%JAXB_HOME%\lib\jaxb-xjc.jar com.sun.jaxb_tck.lib.JaxbCommand %TCK_JAXB_OTHER_OPTIONS% -xjc %SCHEMACOMPILER_REALIZATION% - %*
+"%JAVA_HOME%\bin\java.exe" %TCK_JAXB_OPTIONS% -cp %CLASSPATH%;%JAXB_HOME%\mod\jaxb-xjc.jar com.sun.jaxb_tck.lib.JaxbCommand %TCK_JAXB_OTHER_OPTIONS% -xjc %SCHEMACOMPILER_REALIZATION% - %*
 
 exit %ERRORLEVEL%

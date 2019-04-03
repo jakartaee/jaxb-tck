@@ -28,7 +28,7 @@ PWD = /usr/bin/pwd
 
 
 # Internal SQE Tools: used for JCKUTILS to build TCK
-INTERNAL_JCTTOOLS = /net/scanas411.us.oracle.com/export/java_re_archive/jdk-re/a/v06/jct-tools/3.2.2/fcs/binaries
+#INTERNAL_JCTTOOLS = /net/scanas411.us.oracle.com/export/java_re_archive/jdk-re/a/v06/jct-tools/3.2.2/fcs/binaries
 # INTERNAL_JCTTOOLS = /java/re/jct-tools/4.1.1/archive/fcs/binaries
 
 
@@ -89,7 +89,7 @@ PERL = /usr/bin/perl
 
 
 # JAXP libraries directory
-JAXPLIBS_DIR_SCA.sh = cd /scratch/ankkujai/jaxp14lib; $(PWD)
+JAXPLIBS_DIR_SCA.sh = cd /; $(PWD)
 JAXPLIBS_DIR = $(shell $(JAXPLIBS_DIR_SCA.sh))
 
 #Location of Robot chart tools used to create wizard flow chart

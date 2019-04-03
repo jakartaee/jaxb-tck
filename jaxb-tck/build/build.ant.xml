@@ -137,10 +137,11 @@
 
   <path id="libs.path">
     <pathelement path="${build.dir}/classes" />
-    <fileset dir="${jaxb.home}" includes="lib/*.jar" />
+    <fileset dir="${jaxb.home}" includes="mod/*.jar" />
     <fileset dir="${jct.tools.dir}" includes="lib/*.jar" />
     <!--fileset dir="${btools.dir}" includes="lib/*.jar" /-->
-    <fileset dir="${sigtest.dir}" includes="lib/*.jar" />
+    <!--pathelement path="${sigtest.dir}/${sigtest.jar.name}" /-->
+	<fileset dir="${sigtest.dir}" includes="lib/*.jar" />
   </path>
 
 <!--

@@ -109,8 +109,8 @@
 		<pathelement path="${build.dir}/classes" />
 		<pathelement path="${sigtest.jar}" />
 		<pathelement path="${compile.dir}" />
-		<fileset dir="${jaxb.home}" includes="lib/*.jar" />
 		<pathelement path="${java.home}/lib/rt.jar" />
+		<fileset dir="${jaxb.home}" includes="mod/*.jar" />
 		<pathelement path="${compile.dir}" />
 		<fileset dir="${jct-tools.dir}" includes="lib/*.jar" />
 	</path>

@@ -37,8 +37,8 @@ echo Domain $domain
 antfile=$1
 shift
  
-#export CLASSPATH=$JAXB_HOME/lib/jaxb-api.jar:$JAXB_HOME/lib/jaxb-impl.jar:$JAXB_HOME/lib/jaxb-xjc.jar:sigbuild/classes
-CLASSPATH=$JAXB_20_RI_HOME/lib/jaxb-xjc.jar
+#export CLASSPATH=$JAXB_HOME/mod/jaxb-api.jar:$JAXB_HOME/mod/jaxb-impl.jar:$JAXB_HOME/mod/jaxb-xjc.jar:sigbuild/classes
+CLASSPATH=$JAXB_20_RI_HOME/mod/jaxb-xjc.jar
 export CLASSPATH
 
 if [ $# -eq  0 ]; then

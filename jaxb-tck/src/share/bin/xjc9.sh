@@ -51,7 +51,7 @@ fi
 SCHEMACOMPILER_REALIZATION=com.sun.jaxb_tck.lib.SchemaCompiler
 
 # Invoke schema compiler provided by JAXB RI via java interface
-echo eval "\"$JAVA_HOME/bin/java\" $TCK_JAXB_OPTIONS -cp $CLASSPATH:$XJC_CLASSPATH:$JAXB_HOME/lib/jaxb-xjc.jar com.sun.jaxb_tck.lib.JaxbCommand $TCK_JAXB_OTHER_OPTIONS -xjc $SCHEMACOMPILER_REALIZATION - ${xjcArgs}"
-eval "\"$JAVA_HOME/bin/java\" $TCK_JAXB_OPTIONS -cp $CLASSPATH:$XJC_CLASSPATH:$JAXB_HOME/lib/jaxb-xjc.jar com.sun.jaxb_tck.lib.JaxbCommand $TCK_JAXB_OTHER_OPTIONS -xjc $SCHEMACOMPILER_REALIZATION - ${xjcArgs}"
+echo eval "\"$JAVA_HOME/bin/java\" $TCK_JAXB_OPTIONS -cp $CLASSPATH:$XJC_CLASSPATH:$JAXB_HOME/mod/jaxb-xjc.jar com.sun.jaxb_tck.lib.JaxbCommand $TCK_JAXB_OTHER_OPTIONS -xjc $SCHEMACOMPILER_REALIZATION - ${xjcArgs}"
+eval "\"$JAVA_HOME/bin/java\" $TCK_JAXB_OPTIONS -cp $CLASSPATH:$XJC_CLASSPATH:$JAXB_HOME/mod/jaxb-xjc.jar com.sun.jaxb_tck.lib.JaxbCommand $TCK_JAXB_OTHER_OPTIONS -xjc $SCHEMACOMPILER_REALIZATION - ${xjcArgs}"
 
 

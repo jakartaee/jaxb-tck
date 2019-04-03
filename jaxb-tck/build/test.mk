@@ -26,8 +26,8 @@ SIGTEST_UNPACKED_DIR = sigtest_unpacked
 unpack_sigtest_jar.ok: $(TCKDIR)/classes $(SHARED_ENV_MK)
 	JAVA_HOME=$(PRECOMPILE_JAVAHOME) $(ANT_HOME)/bin/ant -f ../sigtest.ant.xml dist-classes
 
-unpack_sigtest_src.ok: precompile-src.ok unpack_sigtest_jar.ok
-	JAVA_HOME=$(PRECOMPILE_JAVAHOME) $(ANT_HOME)/bin/ant -f ../sigtest.ant.xml dist-src
+#unpack_sigtest_src.ok: precompile-src.ok unpack_sigtest_jar.ok
+	#JAVA_HOME=$(PRECOMPILE_JAVAHOME) $(ANT_HOME)/bin/ant -f ../sigtest.ant.xml dist-src
 
 #UNPACK_SIGTEST = unpack_sigtest_jar.ok unpack_sigtest_src.ok
 UNPACK_SIGTEST = unpack_sigtest_jar.ok

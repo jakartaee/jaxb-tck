@@ -319,7 +319,7 @@ mkdir -p classes
 JAVA_HOME=$ENV{"JAVA_HOME"}
 JAXB_HOME=$ENV{"JAXB_HOME"}
 
-JAXB_JAR_FILES=`find \$JAXB_HOME/lib -name '*.jar' -print`
+JAXB_JAR_FILES=`find \$JAXB_HOME/mod -name '*.jar' -print`
 JAXB_CLASSPATH=`echo \$JAXB_JAR_FILES | sed -e 's/ /:/g'`
 CLASSPATH=\$JAXB_CLASSPATH:\$CLASSPATH
 

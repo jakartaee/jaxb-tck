@@ -70,7 +70,7 @@ else
 fi
 
 JTI_FILE=${TCKDIR}/lib/javasoft-$mode.jti
-JAXB_JAR_FILES=`find $JAXB_HOME/lib -name '*.jar' -print`
+JAXB_JAR_FILES=`find $JAXB_HOME/mod -name '*.jar' -print`
 JAXB_JAR_FILES=`echo $JAXB_JAR_FILES`
 
 echo "testsuite ${TCKDIR}" > "${BATCH_COM_FILE}"

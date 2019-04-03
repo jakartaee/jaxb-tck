@@ -38,7 +38,7 @@ rem if "%TCK_JAXB_OTHER_OPTIONS%" == "" (
 rem )
 
 rem Invoke schemagen tool provided by JAXB RI via java interface
-echo %JAVA_HOME%\bin\java.exe %TCK_JAXB_OPTIONS% -cp %CLASSPATH%;%JAXB_HOME%\lib\jaxb-jxc.jar com.sun.jaxb_tck.lib.JaxbCommand %TCK_JAXB_OTHER_OPTIONS% -jxc %SCHEMAGEN_REALIZATION% - %*
-"%JAVA_HOME%\bin\java.exe" %TCK_JAXB_OPTIONS% -cp %CLASSPATH%;%JAXB_HOME%\lib\jaxb-jxc.jar com.sun.jaxb_tck.lib.JaxbCommand %TCK_JAXB_OTHER_OPTIONS% -jxc %SCHEMAGEN_REALIZATION% - %*
+echo %JAVA_HOME%\bin\java.exe %TCK_JAXB_OPTIONS% -cp %CLASSPATH%;%JAXB_HOME%\mod\jaxb-jxc.jar com.sun.jaxb_tck.lib.JaxbCommand %TCK_JAXB_OTHER_OPTIONS% -jxc %SCHEMAGEN_REALIZATION% - %*
+"%JAVA_HOME%\bin\java.exe" %TCK_JAXB_OPTIONS% -cp %CLASSPATH%;%JAXB_HOME%\mod\jaxb-jxc.jar com.sun.jaxb_tck.lib.JaxbCommand %TCK_JAXB_OTHER_OPTIONS% -jxc %SCHEMAGEN_REALIZATION% - %*
 
 exit %ERRORLEVEL%

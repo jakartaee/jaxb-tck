@@ -29,7 +29,7 @@ LIB=/set/java/re/jct-tools/3.2.2/latest/binaries/lib
 JAXB_HOME=/java/re/jaxb/2.1.2/promoted/fcs/latest/binaries
 
 CLASSPATH = ${LIB}/jtlegacy.jar:${LIB}/javatest.jar
-#JAXB_CLASSPATH.sh = (fl=`find $(JAXB_HOME)/lib -name '*.jar' -print` ; echo $$fl) | sed -e 's/ /:/g'
+#JAXB_CLASSPATH.sh = (fl=`find $(JAXB_HOME)/mod -name '*.jar' -print` ; echo $$fl) | sed -e 's/ /:/g'
 #JAXB_CLASSPATH = ${JAXB_CLASSPATH.sh:sh}
 
 # target for DefaultMappingTests
@@ -39,7 +39,7 @@ DefaultMappingTest : ${TCKROOT}/tests/java2schema/DefaultMapping/DefaultMappingT
 ${TCKROOT}/tests/java2schema/DefaultMapping/DefaultMappingTest.test.xml : \
         	${TEMPBUILDDIR}/DefaultMappingTestsGenerator.jar ${TCKROOT}/tests/java2schema/DefaultMapping
 	${JAVA} -cp ${CLASSPATH}:${TEMPBUILDDIR}/DefaultMappingTestsGenerator.jar \
-		-Djava.endorsed.dirs=$(JAXB_HOME)/lib \
+		-Djava.endorsed.dirs=$(JAXB_HOME)/mod \
 		tests.java2schema.defaultmapping.DefaultMappingTestsGenerator ${TCKROOT}/tests/java2schema/DefaultMapping
     
 ${TCKROOT}/tests/java2schema/DefaultMapping :
