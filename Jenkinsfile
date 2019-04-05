@@ -34,7 +34,7 @@ spec:
     - "localhost.localdomain"
   containers:
   - name: jaxb-tck-ci
-    image: anajosep/cts-base:0.1
+    image: ee4jtck/jaxbtck-base:0.1
     command:
     - cat
     tty: true
