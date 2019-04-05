@@ -59,6 +59,12 @@ fi
 #  wget --progress=bar:force --no-cache $GF_VERSION_URL -O glassfish.version
 #  cat glassfish.version
 #fi
+which make
+make -version
+which ksh
+ksh -version
+which awk
+awk -version
 
 echo "jaxb-tck is coming soon" > filename.txt
 zip -r jaxb-tck-2.3_latest.zip filename.txt

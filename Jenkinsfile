@@ -75,18 +75,5 @@ spec:
         }
       }
     }
-  
-    stage('jaxb-tck-run') {
-      steps {
-        container('jaxb-tck-ci') {
-          sh """
-            env
-            bash -x ${WORKSPACE}/docker/run_jaxbtck.sh
-          """
-          archiveArtifacts artifacts: "jaxbtck-results.tar.gz"
-          junit testResults: 'results/junitreports/*.xml', allowEmptyResults: true
-        }
-      }
-    }
   }
 }
