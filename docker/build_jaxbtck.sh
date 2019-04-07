@@ -114,18 +114,21 @@ sed -i s#^JAVATEST_JAR_LOC*=*.*#JAVATEST_JAR_LOC=/home/jenkins/workspace/jaxb-tc
 sed -i s#^SIGTESTDEV_JAR_LOC*=*.*#SIGTESTDEV_JAR_LOC=/home/jenkins/workspace/jaxb-tck_master/jaxb-tck/lib#g $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i s#^ASM_JAR_LOCATION*=*.*#ASM_JAR_LOCATION=/home/jenkins/workspace/jaxb-tck_master#g $WORKSPACE/jaxb-tck/build/Defs.mk
 
+cd $TCK_ROOT/jaxb-tck/build
+
 make REPOSITORIES=$TCK_ROOT/xml_schema clean
 make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
-echo "jaxb-tck is coming soon" > filename.txt
-zip -r jaxb-tck-2.3_latest.zip filename.txt
+#echo "jaxb-tck is coming soon" > filename.txt
+#zip -r jaxb-tck-2.3_latest.zip filename.txt
 mkdir -p ${WORKSPACE}/bundles
-chmod 777 ${WORKSPACE}/*.zip
-for entry in `ls jaxb*.zip`; do
+cd $WORKSPACE/jaxb-tck-build
+chmod 777 *.zip
+for entry in `ls JAXB-TCK-2.3.jar`; do
   #date=`echo "$entry" | cut -d_ -f2`
   #strippedEntry=`echo "$entry" | cut -d_ -f1`
   #echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"
   #cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
   #chmod 777 ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
-  cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/
+  cp ${WORKSPACE}/jaxb-tck-build/$entry ${WORKSPACE}/bundles/
 done
