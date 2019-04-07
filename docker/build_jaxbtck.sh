@@ -116,8 +116,8 @@ sed -i s#^ASM_JAR_LOCATION*=*.*#ASM_JAR_LOCATION=/home/jenkins/workspace/jaxb-tc
 
 cd $TCK_ROOT/jaxb-tck/build
 
-make REPOSITORIES=$TCK_ROOT/xml_schema clean
-make REPOSITORIES=$TCK_ROOT/xml_schema nightly
+make -d REPOSITORIES=$TCK_ROOT/xml_schema clean
+make -d REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
 #echo "jaxb-tck is coming soon" > filename.txt
 #zip -r jaxb-tck-2.3_latest.zip filename.txt
