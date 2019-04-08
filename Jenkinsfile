@@ -70,8 +70,8 @@ spec:
             env
             bash -x ${WORKSPACE}/docker/build_jaxbtck.sh
           """
-          archiveArtifacts artifacts: 'bundles/*.zip'
-          stash includes: 'bundles/*.zip', name: 'jaxb-tck-bundles'
+          archiveArtifacts artifacts: 'bundles/*.jar'
+          stash includes: 'bundles/*.jar', name: 'jaxb-tck-bundles'
         }
       }
     }
