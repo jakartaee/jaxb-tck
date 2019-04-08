@@ -78,7 +78,7 @@ sed -i 's#^AWK\s*=\s*.*#AWK = /usr/bin/awk#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^BASENAME\s*=\s*.*#BASENAME = /usr/bin/basename#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^CHMOD\s*=\s*.*#CHMOD = /usr/bin/chmod#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^CAT\s*=\s*.*#CAT = /usr/bin/cat#g' $WORKSPACE/jaxb-tck/build/Defs.mk
-sed -i 's#^CP\s*=\s*.*#CP = /usr/bin/CP#g' $WORKSPACE/jaxb-tck/build/Defs.mk
+sed -i 's#^CP\s*=\s*.*#CP = /usr/bin/cp#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^DATE\s*=\s*.*#DATE = /usr/bin/date#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^DIRNAME\s*=\s*.*#DIRNAME = /usr/bin/dirname#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^EGREP\s*=\s*.*#EGREP = /usr/bin/egrep#g' $WORKSPACE/jaxb-tck/build/Defs.mk
