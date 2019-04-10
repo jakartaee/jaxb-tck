@@ -25,7 +25,7 @@ esac
 domain=SFBay
 ANT_OPTS="-Xms1024m -Xmx2048m -XX:PermSize=512M -XX:MaxPermSize=512M -XX:+UseParallelGC -XX:+AggressiveHeap -server"
 ANT_HOME=`grep -h ANT_HOME $DIRNAME/Defs.$domain.mk | sed -e 's/.*=[ ]*//'`
-JAXB_20_RI_HOME=`grep -h JAXB_20_RI_HOME $DIRNAME/Defs.$domain.mk | sed -e 's/.*=[ ]*//'`
+JAXB_20_RI_HOME=`grep -h JAXB_HOME $DIRNAME/Defs.$domain.mk | sed -e 's/.*=[ ]*//'`
 export DIRNAME
 export ANT_OPTS
 export ANT_HOME

@@ -37,7 +37,7 @@ PWD = /usr/bin/pwd
 JAXB_HOME=
 
 #used for ant tasks from the build
-JAXB_20_RI_HOME=
+#JAXB_20_RI_HOME=
 
 
 
