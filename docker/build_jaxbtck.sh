@@ -55,7 +55,7 @@ export TCK_ROOT=$WORKSPACE
 export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 #wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
 #getting jaxb-ri which is needed to build the JAXB TCK
-wget $WGET_PROPS http://central.maven.org/maven2/com/sun/xml/bind/jaxb-ri/2.3.2/jaxb-ri-2.3.2.zip -O jaxb-ri.zip
+wget $WGET_PROPS https://jenkins.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip -O jaxb-ri.zip
 unzip -o jaxb-ri.zip
 wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm-commons/7.0-SNAPSHOT/asm-commons-7.0-20181027.133601-5.jar -O asm-commons-7.0.jar
 wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar -O asm-7.0.jar
