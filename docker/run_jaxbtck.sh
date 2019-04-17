@@ -61,3 +61,10 @@ $JAVA_HOME/bin/java -jar javatest.jar -batch -testsuite $WORKSPACE/jaxb-tck-buil
 $JAVA_HOME/bin/java -jar javatest.jar -batch -testsuite $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-2.3 -open javasoft-multiJVM.jti -workdir $WORKSPACE/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-2.3/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-2.3/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=/opt/jdk1.8.0_191 JAXB_HOME=$WORKSPACE/glassfish5/glassfish JAXB_ENDORSED=$WORKSPACE/glassfish5/glassfish/modules/endorsed/jakarta.xml.bind-api.jar" -set jck.env.jaxb.testExecute.otherOpts "-Djava.endorsed.dirs=$WORKSPACE/glassfish5/glassfish/modules/endorsed/" -set jck.env.jaxb.classes.jaxbClasses "$WORKSPACE/glassfish5/glassfish/modules/endorsed/jakarta.xml.bind-api.jar $WORKSPACE/glassfish5/glassfish/modules/jaxb-osgi.jar $WORKSPACE/glassfish5/glassfish/modules/jersey-media-jaxb.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -set jck.priorStatus.needStatus Yes -set jck.priorStatus.status not_run -runtests
 
 $JAVA_HOME/bin/java -jar javatest.jar -workdir $WORKSPACE/batch-multiJVM/work -writereport $WORKSPACE/JAXB_REPORT/JAXB-TCK
+
+export HOST=`hostname -f`
+echo "1 JAXB-TCK ${HOST}" > ${WORKSPACE}/args.txt
+mkdir -p ${WORKSPACE}/results/junitreports/
+${JAVA_HOME}/bin/java -Djunit.embed.sysout=true -jar ${WORKSPACE}/docker/JTReportParser/JTReportParser.jar ${WORKSPACE}/args.txt $WORKSPACE/JAXB_REPORT ${WORKSPACE}/results/junitreports/
+rm -f ${WORKSPACE}/args.txt
+tar zcvf jaxbtck-results.tar.gz $WORKSPACE/JAXB_REPORT $WORKSPACE/batch-multiJVM/work ${WORKSPACE}/results/junitreports/
