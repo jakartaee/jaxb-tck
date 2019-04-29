@@ -39,8 +39,6 @@ public class DirsClassLoader extends ClassLoader {
     public static final String LOGGER_NAME = "jaxb_tck.lib.dirs_class_loader";
     final static Logger logger = Logger.getLogger(LOGGER_NAME);
     
-    private static Map<Thread, DirsClassLoader> threads = Collections.synchronizedMap(new HashMap<Thread, DirsClassLoader>()); 
-
     private File[] dirs;
 
 
@@ -57,22 +55,11 @@ public class DirsClassLoader extends ClassLoader {
     }
 
     public static synchronized DirsClassLoader newInstance(File[] dirs, ClassLoader parent) {
-    	DirsClassLoader loader = threads.get(Thread.currentThread());
-        if ((loader == null) || (loader.getParent() != parent)) {
-            loader = new DirsClassLoader(parent);
-            threads.put(Thread.currentThread(), loader);
-            logger.info(Thread.currentThread().toString());
-        }
-
+    	DirsClassLoader loader = new DirsClassLoader(parent);
+        logger.info(Thread.currentThread().toString());
         loader.dirs = dirs;
-
         return loader;
     }
-
-//    public static synchronized DirsClassLoader newInstance(File[] dirs) {
-//    	DirsClassLoader loader = threads.get(Thread.currentThread());
-//        return newInstance(dirs, (loader == null) ? null : loader.getParent());
-//    }
 
     protected synchronized Class loadClass(String name, boolean resolve)
             throws ClassNotFoundException {
