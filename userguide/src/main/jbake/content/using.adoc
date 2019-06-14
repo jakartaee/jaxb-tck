@@ -1,0 +1,188 @@
+type=page
+status=published
+title=Executing Tests
+next=debug.html
+prev=config.html
+~~~~~~
+include::attributes.conf[]
+Executing Tests
+===============
+
+[[GBFWO]]
+
+
+[[executing-tests]]
+5 Executing Tests
+-----------------
+
+The {TechnologyShortName} TCK uses the JavaTest harness to execute the
+tests in the test suite. For detailed instructions that explain how to
+run and use JavaTest, see the JavaTest User's Guide and Reference in
+the documentation bundle.
+
+This chapter includes the following topics:
+
+* link:#GBFUZ[Verifying Installation and Setup]
+* link:#GBFWM[Running a Subset of the Tests]
+* link:#GCLRR[Using the {TechnologyShortName} TCK to Test a Product]
+* link:#GCLRZ[Monitoring Test Results]
+* link:#GBFVK[Test Reports]
+
+
+[NOTE]
+=======================================================================
+
+The instructions in this chapter assume that you have installed and
+configured your test environment as described in
+link:install.html#GBFTP[Chapter 3, "Installation,"] and
+link:config.html#GBFVV[Chapter 4, "Setup and Configuration,"],
+respectively.
+
+=======================================================================
+
+include::using-rebuild.inc[]
+
+
+[[GBFUZ]][[verifying-installation-and-setup]]
+
+5.1 Verifying Installation and Setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After you install the {TechnologyShortName} TCK, you can set up and verify test configurations in
+incremental steps to simplify any necessary troubleshooting.
+
+Specifically, first set up the JavaTest harness and run a small test to ensure that you
+have the correct JavaTest harness configuration. This setup and test also ensures that
+the JavaTest harness and the {TechnologyShortName} TCK are running correctly.
+
+To Verify the JavaTest Harness Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To set up and verify a correct JavaTest installation, perform the following steps. These
+steps assume that both the Oracle {TechnologyShortName} {TechnologyVersion} reference
+implementation and the {TechnologyShortName} {TechnologyVersion} are installed on the host system that is
+running the JavaTest harness.
+
+1.  Start the JavaTest harness software. +
+    This process is described in Starting the JavaTest harness.
+
+2.  Run a simple test against the technology reference implementation. +
+    By running a test against the {TechnologyShortName} {TechnologyVersion} reference implementation, you ensure
+    that the JavaTest harness is running correctly and has been properly configured.
+
+3.  Select a small, simple test to run. +
+    Use the JavaTest harness configuration editor to select a small, simple test to run. +
+    For example, the signature test. To select the signature test, answer Yes to the
+    *Specify Tests to Run* question in the JavaTest harness GUI, and then select only
+    the .../api/signaturetest in the *Tests to Run* window. Alternatively, you
+    can drill down to the *signaturetest* in the Test Tree, right-click, and select
+    *Execute these tests*.
+
+4.  Specify the work directories. +
+    Use *File* and then *Open Work Directory* or *File* and then *New Work Directory* to
+    select the work directory you want to use.
+
+5.  (Optional) Start the JavaTest Agent on the target device under test in the manner
+    appropriate for your platform. +
+    The commands to start the JavaTest agent are device specific. For instructions,
+    see the JavaTest Agent User's Guide and the JavaTest online help.
+
+6.  Start the test run in the JavaTest harness.+
+    Select Run Tests and then Start to begin the test. If configuration information is
+    incomplete, you will be asked to enter the missing data. +
+    The JavaTest status bar grows while JavaTest tracks statistics relative to the tests
+    done. +
+    If you encounter any errors after clicking *Start*, then refer to Troubleshooting
+    section in the JavaTest User's Guide/Graphical User Interface (located at
+    `<TS_HOME>/doc/javatest/javatestGUI.pdf` in the JAXB distribution).
+
+7.  Check the results. +
+    Check the test results as displayed by the JavaTest harness to ensure that
+    everything is functioning correctly. See the JavaTest online help for information on
+    test results.
+
+[[GBFWM]][[running-a-subset-of-the-tests]]
+
+5.2 Running a Subset of the Tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run the subset of the {TechnologyShortName} TCK tests:
+
+1.  Select *Configure* and then *Edit Configuration* from the JavaTest main menu.
+2.  Select *Specify Tests to Run?* from the list of configuration questions on the left,
+and then select *Yes*.
+3.  Select the tests you want to run from the displayed list in the *Tests to Run* pane.
+4.  Select *File* and then *Save* or *File* and then *Save As* to save your settings, if
+desired.
+5.  Click *Done* to return to the JavaTest harness main window.
+6.  Select *Run Tests* and then *Start* to run the selected subset of tests.
+
+[[GCLRR]][[running-the-tck-against-the-ri]]
+
+5.3 Using the {TechnologyShortName} TCK to Test a Product
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The {TechnologyShortName} test suite consists of non-interactive tests, which do not require user
+interaction to run.
+
+1.  Start the JavaTest harness software.
+2.  Select the tests to be run. +
+    Use the JavaTest harness configuration editor to select the tests you wish to run.
+    To perform compatibility testing of the product, all {TechnologyShortName} TCK tests must be run. If
+    no tests are specified in the selection, then JavaTest will run all of the tests in the
+    test suite, starting from the top of the test tree. +
+    The default setting points to the tests in the `<TS_HOME>/tests` directory.
+3.  Specify the exclude list.
+    If you obtain an up-to-date copy of the Exclude List from the Java Partner
+    Engineering website, then you should specify the location of the downloaded
+    Exclude List file in your test environment. If you are not going to use a downloaded
+    Exclude List file, then you should specify the Exclude List file that is bundled with
+    the {TechnologyShortName} TCK, {jtxFileName}.
+4.  Specify the work directory. +
+    If you are running the test suite for the first time, you will be prompted to specify
+    the work directory you want to use. Otherwise use *File* and then *Open Work
+    Directory* or *File* and then *New Work Directory* to select the work directory you
+    want to use.
+5.  Start the test run in the JavaTest harness. +
+    Select *Run Tests* and then *Start* to begin the test run. If configuration information
+    is incomplete, then you are prompted to enter the missing data. Activating the test
+    run also starts the Server, which now waits for the JavaTest agent to request tests.
+    The JavaTest status bar progresses while JavaTest tracks statistics relative to the
+    files done, tests found, and tests done.
+6.  Check the results.
+    The test progress and results are displayed by the JavaTest harness.
+7.  Generate a test report.
+    Select *Report* and then *New Report*, and the specify the directory in which the
+    report should be generated.
+
+[[GCLRZ]][[monitoring test results]]
+
+5.4 Monitoring Test Results
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After the test run begins, you can track its progress using the test progress display
+fields, Progress Monitor dialog box, test tree, and information tabbed panes in the Test
+Manager window.
+
+[[GBFVK]][[test-reports]]
+
+5.5 Test Reports
+~~~~~~~~~~~~~~~~
+
+A set of report files is created for every test run. These report files
+can be found in the report directory you specify. After a test run is
+completed, the JavaTest harness writes HTML reports for the test run.
+You can view these files in the JavaTest ReportBrowser when running in
+GUI mode, or in the web browser of your choice outside the JavaTest
+interface.
+
+To see all of the HTML report files, enter the URL of the `report.html`
+file. This file is the root file that links to all of the other HTML
+reports.
+
+The JavaTest harness also creates a `summary.txt` file in the report
+directory that you can open in any text editor. The `summary.txt` file
+contains a list of all tests that were run, their test results, and
+their status messages.
+
+[[GBFWD]][[creating-test-reports]]

@@ -1,0 +1,164 @@
+type=page
+status=published
+title=Setup and Configuration
+next=using.html
+prev=install.html
+~~~~~~
+include::attributes.conf[]
+Setup and Configuration
+=======================
+
+[[GBFVV]]
+
+
+[[setup-and-configuration]]
+4 Setup and Configuration
+-------------------------
+
+This chapter describes how to set up the {TechnologyShortName} TCK and
+JavaTest harness software. Before proceeding with the instructions in
+this chapter, be sure to install all required software, as described in
+link:install.html#GBFTP[Chapter 3, "Installation."]
+
+After completing the instructions in this chapter, proceed to
+link:using.html#GBFWO[Chapter 5, "Executing Tests,"] for instructions on
+running the {TechnologyShortName} TCK.
+
+This chapter includes the following topics:
+
+* link:#GBFVU[Starting the JavaTest Harness]
+* link:#GCLHU[Configuring the JavaTest Harness]
+* link:#GBFUY[Executing the JavaTest Agent]
+
+include::config.inc[]
+
+[[GBFUY]][[executing-javatest-agent]]
+
+4.3 Executing the JavaTest Agent
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An agent is a separate program that can be used in conjunction with the JavaTest
+harness to run tests on a system or Java runtime other than the one that is running the
+JavaTest harness.
+
+The JavaTest harness provides several JavaTest agents for running the tests in
+different environments. The classes of the JavaTest Agents are supplied along with
+the JavaTest classes in the <TS_HOME>HOME>/javatest.jar file. See Using a
+JavaTest Agent section in the JavaTest User's Guide for additional information about
+JavaTest Agents that are provided.
+
+For your convenience, this guide provides basic guidelines that explain how to use the
+JavaTest agent application with the agent application GUI. This is the simplest agent
+to configure and it allows the user to run the TCK tests on a host that is able to
+execute the agent application GUI.
+
+[[GBFUYA]][[starting-javatest-agent]]
+
+4.3.1 Starting the JavaTest Agent
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The main class of the JavaTest agent application with the Agent GUI is
+`com.sun.javatest.agent.AgentFrame`. The JavaTest agent accepts a number of options
+supplied on the command line. The JavaTest agent user's guide describes all of these
+options. In the simplest case, only the `-activeHost <host-name>` option is supplied. This
+option specifies the name of the host where the JavaTest harness is running. Although
+the JavaTest host name could be set in the corresponding field of the JavaTest agent
+GUI, it is often more convenient to specify it on the command line.
+When the {TechnologyShortName} TCK tests are executed in SingleJVM mode with the JavaTest agent,
+then the JavaTest agent should be started on the Java SE implementation that is used
+to run the tested {TechnologyShortName} {TechnologyVersion} classes.
+
+While running the tests, the {TechnologyShortName} {TechnologyVersion} classes
+under test should be available because these classes are included in the Java SE runtime or the corresponding JAR files, and
+directories are specified in the CLASSPATH for this Java SE runtime execution.
+
+[NOTE]
+=======================================================================
+If schemas are compiled through an agent, then that agent can be run on
+any Java SE platform. However, if the tests are executed through an agent,
+then that agent must be run on the Oracle reference implementation Java SE
+{SEversion} or later.
+=======================================================================
+
+The {TechnologyShortName} TCK provides a security policy file, which is used to grant all permissions to
+the tests while they are being executed in the MultiJVM mode. This is done to avoid
+failures that are caused by security restrictions and to allow tests to check the full
+functionality of the tested implementation. The `<TS_HOME>/lib/tck.policy` is the policy
+file that is supplied with the JAXB TCK. To be consistent with runs in the MultiJVM
+mode, this policy file should be specified for the Java SE runtime that is executing the
+agent.
+
+The command to start the JavaTest agent application GUI on a system running the
+Java SE {SEversion} or later for Solaris with the Oracle
+{TechnologyShortName} {TechnologyVersion} Reference Implementation is
+as follows:
+
+`java -cp lib/javatest.jar:<TCKDIR>/classes:<JAXB_CLASSES>
+-Djavatest.security.allowPropertiesAccess=true
+-Djava.security.policy=<TCKDIR>/lib/tck.policy
+com.sun.javatest.agent.AgentFrame`
+
+The command to start the JavaTest agent application GUI on a system running the
+Java SE {SEversion} or later for Solaris with the Oracle
+{TechnologyShortName} {TechnologyVersion} Reference Implementation is
+as follows:
+
+`java -Djava.endorsed.dirs=<JAXB_HOME>/lib
+-cp lib/jvatest.jar:<TCKDIR>/classes
+-Djavatest.security.allowPropertiesAccess=true
+-Djava.security.policy=<TCKDIR>/lib/tck.policy
+com.sun.javatest.agent.AgentFrame`
+
+The preceding sample command implies that the environment
+variables $TCKDIR, $JAXB_HOME, and $JAXB_CLASSES are set to the directories
+where the JAXB TCK 2.3 and the JAXB 2.3 reference implementation are installed.
+The JAXB_CLASSES contains all the jar files that are required on the class path. The
+JAXB_HOME points to the directory under which the `bin/, /docs, /examples`
+and `/lib` directories reside.
+
+After the agent application GUI is displayed, the connection with the JavaTest harness
+is not established until you click *Start* in the agent GUI. Then an active agent contacts
+the JavaTest host, which should have the listening activated, or a passive agent is
+contacted by the JavaTest host on the specified port.
+
+
+[[GBFUYB]][[connecting-agent-and-javatest-harness]]
+
+4.3.2 Connecting the Agent and the JavaTest Harness
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When both JavaTest harness and the JavaTest agent are started, a connection
+between them must be established to allow requests for test execution to be passed
+from the JavaTest harness to the JavaTest agent. Also, for the test execution results
+to be returned from the JavaTest agent to the harness.
+
+To manage the agent connections, the JavaTest harness executes a special process,
+which is started by selecting *Monitor Agent Activity* option from the Tasks menu.
+
+When agent monitoring is started, the JavaTest harness creates the *Agent Monitor*
+panel and switches to this panel. You can use the tabs on the JavaTest window to
+switch between panels. You can also select the panel to view by using the *Windows*
+option on the main menu.
+
+To activate the Agent Monitor to listen for active agents, select the *Listening* check
+box in the top-left corner of the *Agent Monitor* panel in the JavaTest harness GUI. To
+establish a connection between the JavaTest harness, where the listening Agent
+Monitor is running and the agent running on a (usually) remote machine, click *Start* in
+the agent GUI. When a connection is established, the name of agent's host along with
+port numbers will appear in the *Agent Pool* that is listed in the *Agent Monitor* panel.
+
+In this state, the JavaTest harness is able to start running the tests in the agent
+SingleJVM mode. The test code will be loaded and executed in the Java SE runtime,
+which executes the agent.
+
+By default, the JavaTest harness and the JavaTest agent connect using IP port 1907.
+You can change the port number by modifying the value in the *Port* input fields in the
+agent GUI and the JavaTest Agent Monitor panel respectively.
+
+[[GBFUYC]][[exiting-the-process]]
+
+4.3.3 Exiting the Process
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After completing the test run, click *Stop* to stop the agent process in the agent GUI
+panel. Close the agent window to terminate the stopped agent process.

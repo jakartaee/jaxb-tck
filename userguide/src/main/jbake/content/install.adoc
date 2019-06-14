@@ -1,0 +1,94 @@
+type=page
+status=published
+title=Installation
+next=config.html
+prev=rules.html
+~~~~~~
+include::attributes.conf[]
+Installation
+============
+
+[[GBFTP]]
+
+
+[[installation]]
+3 Installation
+--------------
+
+This chapter explains how to install the {TechnologyFullName} TCK software.
+
+This topic contains the following topics:
+
+* link:#GBFUD[Obtaining the Reference Implementation]
+* link:#GBFTS[Installing the Software]
+
+
+
+[[GBFUD]][[obtaining-the-reference-implementation]]
+
+3.1 Obtaining the Reference Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The {TechnologyShortName} {TechnologyVersion}
+reference implementation can be also obtained from the link:https://javaee.github.io/jaxb-v2/[Project {TechnologyShortName}]
+website.
+
+[[GBFTS]][[installing-the-software]]
+
+3.2 Installing the Software
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before you can run the {TechnologyShortName} TCK tests, you must
+install and set up the following software components:
+
+* Java SE {SEversion}
+* Java EE 8.0 RI, which is {TechnologyRI}
+* {TechnologyShortName} TCK version {TechnologyVersion}
+* The {TechnologyShortName} {TechnologyVersion} Vendor Implementation (VI)
+
+Steps to install the {TechnologyShortName} software:
+
+.  Install the Java SE {SEversion} software, if it is not already installed. +
+Download and install the Java SE {SEversion} software from
+http://www.oracle.com/technetwork/java/javase/downloads/index.html.
+Refer to the installation instructions that accompany the software for
+additional information.
+.  Install the {TechnologyShortName} TCK {TechnologyVersion} software on the
+system where the Java SE software is installed.
+  a.  Copy or download the `{TCKPackageName}` to your
+      local system. 
+  b.  Extract the {TechnologyShortName} TCK {TechnologyVersion} product bundle
+      in the directory of your choice: +
+      +`java -jar PATH-TO-JAXB-TCK-JAR options [-o outputdir]`+ +
+      The following descriptions are provided for the installation command:
+      * `java`: Java SE {SEversion} or later platform reference implementation.
+      * `PATH-TO-JAXB-TCK-JAR`: The path of the {TechnologyShortName} TCK {TechnologyVersion}
+        JAR file to install.
+      * `options`: Unless a user specifies options, the default behavior installs
+        {TechnologyShortName} TCK {TechnologyVersion} in verbose mode
+        (writes the file names it is installing to standard out) into the
+        current directory. The installation utility accepts the
+        following options:
+        **  `-q`: Installs JAXB TCK 2.3 in quiet mode.
+        **  `-l`: Prints a list to standard output of the options that will be installed.
+        **  `-onError mode` : Sets the mode of sensitivity that the installer has to errors.
+              The `–onError` : Instructs what to do when it encounters an error
+              while installing {TechnologyShortName} TCK {TechnologyVersion}.
+              This option has three valid modes:
+              *** `ignore`: Instructs the installer to ignore any errors and continue
+              installation.
+              *** `report`: Instructs the installer to continue with the installation but
+              report any errors when the installation is completed.
+              *** `fail`: Instructs the installer to stop installation once an error is
+              encountered.
+      **  `–usage`: Prints a usage message to standard out and exits (not listed
+            as an option in the usage message).
+      **  `–help`: Prints a help message to standard out and exits (not listed as
+            an option in the help message).
+    * `[-o outputdir]`: Installs {TechnologyShortName} TCK {TechnologyVersion}
+      into the directory specified by `outputdir`.
+
+  c.  This action creates the `jaxb-tck23` directory. The topmost {TechnologyShortName}
+      TCK installation directory is referred to as the Test Suite Home, or `<TS_HOME>`.
+.  Set up the JavaTest harness software. +
+See link:config.html#GBFVV[Chapter 4, "Setup and Configuration"].
