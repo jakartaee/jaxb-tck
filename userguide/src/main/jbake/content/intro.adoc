@@ -17,7 +17,8 @@ Introduction
 
 This chapter provides an overview of the principles that apply
 generally to all Technology Compatibility Kits (TCKs) and describes the
-{TechnologyFullName} TCK {TechnologyVersion} (JSR {JSR}). It also includes a high level listing
+{TechnologyFullName} TCK ({TechnologyShortName} TCK
+{TechnologyVersion}) (JSR {JSR}). It also includes a high level listing
 of what is needed to get up and running with the {TechnologyShortName}
 TCK.
 
@@ -145,10 +146,15 @@ be found at {JSRURL}.
 * {TechnologyShortName} Version: The {TechnologyShortName} TCK
 {TechnologyVersion} is based on the {TechnologyShortName}
 Specification, Version {TechnologyVersion}.
-* JavaTest harness: The {TechnologyShortName} TCK
-{TechnologyVersion} requires the JavaTest harness, Version {JavaTestVersion}.
-* Reference Implementation: See the RI documentation page at
+* Reference Implementation: The {TechnologyShortName}
+{TechnologyVersion} Reference Implementation ({TechnologyRI}) is
+available from Java Licensee Engineering
+(https://javapartner.oracle.com). See the RI documentation page at
 {TechnologyRIURL} for more information.
+
+See the {TechnologyShortName} TCK Release Notes for more specific
+information about Java SE version requirements, supported platforms,
+restrictions, and so on.
 
 [[GBFSQ]][[tck-components]]
 
@@ -165,25 +171,21 @@ for additional information.
 * {TechnologyShortName} TCK signature tests; check that all public APIs
 are supported and/or defined as specified in the {TechnologyShortName}
 Version {TechnologyVersion} implementation under test.
+* If applicable, an exclude list, which provides a list of tests that your
+implementation is not required to pass.
+ifndef::no-api-tests[]
 * API tests for all of the {TechnologyShortName} API in all related packages:
 include::packages.inc[]
+endif::no-api-tests[]
+ifdef::end-to-end-tests[]
 * End-to-end tests that demonstrate compliance with the {TechnologyFullName}
 Specification.
-* The TCK interview component, which is used to configure a test run.
-* Various scripts and Java classes used to run the Reference Implementation
-schema compiler/generator, which can also be adapted to run your own schema
-compiler/generator implementation.
-* The test suite, which is a collection of tests and supplemental files that provide
-data for the automatic running of tests through the JavaTest harness.
-* An exclude list, which provides a list of tests that your implementation is not
-required to pass.
-* TCK documentation, including Release Notes, JavaTest User’s Guide, and JAXB
-TCK User’s Guide.
+endif::end-to-end-tests[]
 
 The {TechnologyShortName} TCK tests run on the following platforms:
 
-* Windows 10 x64
-* Oracle Linux 7.1 x64
+* Windows 10
+* Oracle Linux 7.1
 
 [[GBFSA]][[javatest-harness]]
 
@@ -214,26 +216,6 @@ test suite to run, how to run them, and where to put the results as
 described in link:config.html#GBFVV[Chapter 4, "Setup and
 Configuration."]
 
-Test Agents
-^^^^^^^^^^^
-A test agent is a small Java application that is used in conjunction with the JavaTest
-harness to run tests on a Java platform on which it is not possible or desirable to run
-the main JavaTest harness. The agent that is running on the test platform responds to
-requests from the JavaTest harness that is running elsewhere.
-If the JavaTest harness and the technology you are testing are being run on different
-systems, then you must install an agent on the system being tested.
-
-The {TechnologyShortName} TCK {TechnologyVersion} uses the JavaTest agent provided with the JavaTest harness
-version {JavaTestVersion}. The JavaTest agent uses a bidirectional serial connection supporting
-both TCP/IP and RS-232 protocols to communicate between the test system and the
-JavaTest harness. Other types of serial connections, such as infrared, parallel, USB,
-and firewire can be added through the JavaTest API and modeled on the existing
-serial system.
-
-The JavaTest harness includes an Agent Monitor window that you can use to control
-and monitor agents.
-
-
 [[GBFRA]][[tck-compatibility-test-suite]]
 
 1.2.4 TCK Compatibility Test Suite
@@ -255,76 +237,6 @@ located under the directories that have been selected. While scanning,
 the JavaTest harness selects the appropriate tests according to any
 matches with the filters you are using and queues them up for execution.
 
-{TechnologyShortName} TCK {TechnologyVersion} test suite comprises six tests
-categories:
-* Schema to Java mapping tests
-* Java to schema mapping tests
-* JAXB framework API tests
-* Content tree tests
-* XML-to-Java name convention tests
-* XML validation tests
-
-Schema Compiler Tests
-^^^^^^^^^^^^^^^^^^^^^
-The schema compiler tests verify the following:
-1. The schema compiler finds errors in invalid schema.
-2. The schema compiler successfully compiles valid schema and the signatures of
-generated Java classes are appropriate.
-3. The schema compiler appropriately compiles schema annotated with {TechnologyShortName}
-custom binding declarations:
-* Successfully compiles valid source schema with well-formed binding
-declarations.
-* Fails to compile valid source schema with non-well-formed binding
-declarations.
-
-JAXB Framework API Tests
-^^^^^^^^^^^^^^^^^^^^^^^^
-The JAXB framework API tests cover public classes and interfaces defined in the
-`javax.xml.bind` package and sub-packages.
-
-Content Tree Tests
-^^^^^^^^^^^^^^^^^^
-The content tree tests test the classes generated by the {TechnologyShortName}
-schema compiler, including:
-1. Unmarshalling valid documents: the documents must be unmarshalled and
-validated correctly.
-2. Marshalling documents: invokes marshalling for valid documents and checks that
-no errors are reported.
-3. Content tree evaluating: check data in content tree after unmarshalling.
-4. Content tree validating: modify data in content tree to make the tree invalid and, if
-the modification does not report an error, then enable {TechnologyShortName}
-{TechnologyVersion} validation on Marshaller, and verify that Marshaller reports the error.
-
-XML-to-Java Name Conversion Tests
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The XML-to-Java name conversion tests check that XML-to-Java name conversion
-rules are implemented correctly and support most of the Unicode characters that are
-allowed for XML names.
-
-Schema Generator Tests
-^^^^^^^^^^^^^^^^^^^^^^
-The schema generator tests verify that:
-1. The schema generator supports all the Java Types to XML mapping.
-2. The schema generator appropriately maps Java program elements to XML
-Schema constructs.
-3. The schema generator appropriately maps Java program elements that are
-customized using mapping annotations and program annotations that are based
-on JSR–175 program annotation facility:
-* Successfully generates valid target schema from correctly annotated Java
-program element.
-* Fails to process annotated Java program elements that have constraint
-violations as specified in the `Java Types to XML` section of the {TechnologyShortName}
-{TechnologyVersion} specification and `javax.xml.bind.annotation` javadocs.
-* The schema generator successfully produces a well-formed schema; all
-documents expected to be valid against generated schema are valid and all
-documents expected to be invalid against generated schema are invalid.
-
-XML Validation Tests
-^^^^^^^^^^^^^^^^^^^^
-XML Validation tests are designed to check schema validation when a mechanisms
-other than JAXP is used. Note that XML validation tests are mandatory when XML
-validation is not performed via JAXP.
-
 [[GBFSH]][[exclude-lists]]
 
 1.2.5 Exclude Lists
@@ -344,6 +256,8 @@ The Exclude List file, +{jtxFileName}+, is included in the
 [NOTE]
 =======================================================================
 
+From time to time, updates to the Exclude List are made available on the
+Java Licensee Engineering (https://javapartner.oracle.com) Web site.
 You should always make sure you are using an up-to-date copy of the
 Exclude List before running the {TechnologyShortName} TCK to verify your
 implementation.
@@ -384,8 +298,12 @@ link:rules.html#CJAJEAEI[Section 2.3.1, "TCK Test Appeals Steps."]
 1.2.6 TCK Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the JavaTest harness GUI to configure and run the {TechnologyShortName} TCK tests as described in
+You need to set several variables in your test environment, modify
+properties in the +{jteFileName}+ file, and then use the JavaTest
+harness to configure and run the {TechnologyShortName} tests, as described in
 link:config.html#GBFVV[Chapter 4, "Setup and Configuration."]
+
+include::intro.inc[]
 
 [[GBFQW]][[getting-started-with-the-tck]]
 
@@ -399,29 +317,21 @@ guide.
 
 1.  Make sure that the following software has been correctly installed
 on the system hosting the JavaTest harness:
-/// include::req-software.inc[]
-* Java SE {SEversion} on the system hosting the JavaTest harness.
-* {TechnologyShortName} software: The implementation of the {TechnologyShortName} {TechnologyVersion}
-specification under test on the appropriate host platform and the JavaTest
-harness can access it through the appropriate protocol (for example, TCP/IP).
-* Java EE 8.0 RI, which is {TechnologyRI}
+include::req-software.inc[]
+* Java SE {SEversion}
+* {TechnologyShortName} {TechnologyVersion} RI, which is {TechnologyRI}
+* {TechnologyShortName} TCK version {TechnologyVersion}, which includes:
+include::tck-packages.inc[]
 * The {TechnologyShortName} {TechnologyVersion} Vendor Implementation (VI) +
 See the documentation for each of these software applications for
-installation instructions.
-2. Install the {TechnologyShortName} TCK {TechnologyVersion} software on the
-system that is hosting the JavaTest harness. See link:install.html#GBFTP[Chapter 3,
+installation instructions. See link:install.html#GBFTP[Chapter 3,
 "Installation,"] for instructions on installing the {TechnologyShortName} TCK.
-The JavaTest harness version {JavaTestVersion} is packaged with the {TechnologyShortName} TCK
-and is installed as part of the {TechnologyShortName} TCK installation.
-3.  Start and configure the JavaTest harness. Start the JavaTest harness, specify a
-working directory, and complete the configuration interview. +
+2.  Set up the {TechnologyShortName} TCK software. +
 See link:config.html#GBFVV[Chapter 4, "Setup and Configuration,"] for
 details about the following steps.
   a.  Set up your shell environment.
-  b.  Modify the required properties.
+  b.  Modify the required properties in the +{jteFileName}+ file.
   c.  Configure the JavaTest harness.
-4.  Test the {TechnologyShortName} {TechnologyVersion} implementation. +
+3.  Test the {TechnologyShortName} {TechnologyVersion} implementation. +
 Test the {TechnologyShortName} implementation installation by running
 the test suite.  See link:using.html#GBFWO[Chapter 5, "Executing Tests."]
-5.  Generate a test report, if required. Select Report then New Report to generate
-the reports about your test runs. See link:using.html#GBFVK[Section 5.6, "Test Reports."]
