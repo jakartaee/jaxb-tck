@@ -17,21 +17,18 @@ Installation
 
 This chapter explains how to install the {TechnologyFullName} TCK software.
 
-This topic contains the following topics:
-
-* link:#GBFUD[Obtaining the Reference Implementation]
-* link:#GBFTS[Installing the Software]
-
-
+After installing the software according to the instructions in this
+chapter, proceed to link:config.html#GBFVV[Chapter 4, "Setup and
+Configuration,"] for instructions on configuring your test environment.
 
 [[GBFUD]][[obtaining-the-reference-implementation]]
 
 3.1 Obtaining the Reference Implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The {TechnologyShortName} {TechnologyVersion}
-reference implementation can be also obtained from the link:https://javaee.github.io/jaxb-v2/[Project {TechnologyShortName}]
-website.
+You can obtain the {TechnologyShortName} Reference Implementation (RI)
+({TechnologyRI}) software from Java Licensee Engineering
+(https://javapartner.oracle.com).
 
 [[GBFTS]][[installing-the-software]]
 
@@ -41,54 +38,41 @@ website.
 Before you can run the {TechnologyShortName} TCK tests, you must
 install and set up the following software components:
 
+include::req-software.inc[]
 * Java SE {SEversion}
-* Java EE 8.0 RI, which is {TechnologyRI}
-* {TechnologyShortName} TCK version {TechnologyVersion}
+* {TechnologyShortName} {TechnologyVersion} RI, which is {TechnologyRI}
+* {TechnologyShortName} TCK version {TechnologyVersion}, which includes:
+include::tck-packages.inc[]
 * The {TechnologyShortName} {TechnologyVersion} Vendor Implementation (VI)
 
-Steps to install the {TechnologyShortName} software:
+Follow these steps:
 
 .  Install the Java SE {SEversion} software, if it is not already installed. +
 Download and install the Java SE {SEversion} software from
 http://www.oracle.com/technetwork/java/javase/downloads/index.html.
 Refer to the installation instructions that accompany the software for
 additional information.
-.  Install the {TechnologyShortName} TCK {TechnologyVersion} software on the
-system where the Java SE software is installed.
-  a.  Copy or download the `{TCKPackageName}` to your
-      local system. 
-  b.  Extract the {TechnologyShortName} TCK {TechnologyVersion} product bundle
-      in the directory of your choice: +
-      +`java -jar PATH-TO-JAXB-TCK-JAR options [-o outputdir]`+ +
-      The following descriptions are provided for the installation command:
-      * `java`: Java SE {SEversion} or later platform reference implementation.
-      * `PATH-TO-JAXB-TCK-JAR`: The path of the {TechnologyShortName} TCK {TechnologyVersion}
-        JAR file to install.
-      * `options`: Unless a user specifies options, the default behavior installs
-        {TechnologyShortName} TCK {TechnologyVersion} in verbose mode
-        (writes the file names it is installing to standard out) into the
-        current directory. The installation utility accepts the
-        following options:
-        **  `-q`: Installs JAXB TCK 2.3 in quiet mode.
-        **  `-l`: Prints a list to standard output of the options that will be installed.
-        **  `-onError mode` : Sets the mode of sensitivity that the installer has to errors.
-              The `–onError` : Instructs what to do when it encounters an error
-              while installing {TechnologyShortName} TCK {TechnologyVersion}.
-              This option has three valid modes:
-              *** `ignore`: Instructs the installer to ignore any errors and continue
-              installation.
-              *** `report`: Instructs the installer to continue with the installation but
-              report any errors when the installation is completed.
-              *** `fail`: Instructs the installer to stop installation once an error is
-              encountered.
-      **  `–usage`: Prints a usage message to standard out and exits (not listed
-            as an option in the usage message).
-      **  `–help`: Prints a help message to standard out and exits (not listed as
-            an option in the help message).
-    * `[-o outputdir]`: Installs {TechnologyShortName} TCK {TechnologyVersion}
-      into the directory specified by `outputdir`.
-
-  c.  This action creates the `jaxb-tck23` directory. The topmost {TechnologyShortName}
-      TCK installation directory is referred to as the Test Suite Home, or `<TS_HOME>`.
-.  Set up the JavaTest harness software. +
-See link:config.html#GBFVV[Chapter 4, "Setup and Configuration"].
+.  Install the {TechnologyShortName} TCK {TechnologyVersion} software.
+  a.  Copy or download the {TechnologyShortName} TCK software to your
+      local system. +
+      You can obtain the {TechnologyShortName} TCK software from the
+      Java Licensee Engineering (https://javapartner.oracle.com) Web
+      site.  The {TechnologyShortName} TCK software is located in the
+      Web site's Download Center area.
+  b.  Use the `unzip` command to extract the bundle in the directory of
+      your choice: +
+      +unzip {TCKPackageName}+ +
+      This creates the TCK directory. The TCK is the test suite home,
+      `<TS_HOME>`.
+include::install-server.inc[]
+.  Install the {TechnologyShortName} {TechnologyVersion} Reference
+Implementation. +
+The Reference Implementation is used to validate your initial
+configuration and setup of the {TechnologyShortName} TCK
+{TechnologyVersion} tests, which are explained further in
+link:config.html#GBFVV[Chapter 4, "Setup and Configuration."] +
+The {TechnologyShortName} RI can be obtained from Java Licensee Engineering
+(https://javapartner.oracle.com).
+include::install-server-vi.inc[]
+.  Install the {TechnologyShortName} Vendor Implementation (VI) to be tested. +
+Follow the installation instructions for the particular VI under test.

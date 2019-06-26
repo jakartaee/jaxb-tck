@@ -1,11 +1,38 @@
-.  Install the Java EE 8 RI software (the servlet Web container used
-for running the {TechnologyShortName} TCK with the
-{TechnologyShortName} {TechnologyVersion} RI), if it is not already
-installed. +
-Download and install the Servlet Web container with the
-{TechnologyShortName} {TechnologyVersion} RI used for running the
-{TechnologyShortName} TCK {TechnologyVersion}, represented by the Java
-EE 8 RI.
-This software can be obtained from the Java Licensee Engineering Web
-site. Refer to any installation instructions that accompany the software
-for additional information.
+.  The zip file above contains the JAXB TCK installer jar file;
+use this installer to install the JAXB TCK.
+  a.  Extract the {TechnologyShortName} TCK {TechnologyVersion} product bundle
+      in the directory of your choice: +
+      +`java -jar PATH-TO-JAXB-TCK-JAR options [-o outputdir]`+ +
+      The following descriptions are provided for the installation command:
+      * `java`: Java SE {SEversion} or later platform reference implementation.
+      * `PATH-TO-JAXB-TCK-JAR`: The path of the {TechnologyShortName}
+	TCK {TechnologyVersion} JAR file to install.
+      * `options`: Unless a user specifies options, the default
+	behavior installs {TechnologyShortName} TCK {TechnologyVersion}
+	in verbose mode (writes the file names it is installing to
+	standard out) into the current directory. The installation
+	utility accepts the following options:
+        **  `-q`: Installs JAXB TCK 2.3 in quiet mode.
+	**  `-l`: Prints a list to standard output of the options that
+	    will be installed.
+	**  `-onError mode` : Sets the mode of sensitivity that the
+	      installer has to errors.  The `–onError` : Instructs
+	      what to do when it encounters an error while installing
+	      {TechnologyShortName} TCK {TechnologyVersion}.  This
+	      option has three valid modes:
+	      *** `ignore`: Instructs the installer to ignore any
+	          errors and continue installation.
+	      *** `report`: Instructs the installer to continue with
+	          the installation but report any errors when the
+	          installation is completed.
+	      *** `fail`: Instructs the installer to stop installation
+	          once an error is encountered.
+      **  `–usage`: Prints a usage message to standard out and exits (not listed
+            as an option in the usage message).
+      **  `–help`: Prints a help message to standard out and exits
+	    (not listed as an option in the help message).
+    * `[-o outputdir]`: Installs {TechnologyShortName} TCK {TechnologyVersion}
+      into the directory specified by `outputdir`.
+  b.  This action creates the `jaxb-tck23` directory. The topmost
+      {TechnologyShortName} TCK installation directory is referred to
+      as the Test Suite Home, or `<TS_HOME>`.

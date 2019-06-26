@@ -22,10 +22,10 @@ the documentation bundle.
 
 This chapter includes the following topics:
 
-* link:#GBFUZ[Verifying Installation and Setup]
+* link:#GBFUZ[Starting JavaTest]
 * link:#GBFWM[Running a Subset of the Tests]
-* link:#GCLRR[Using the {TechnologyShortName} TCK to Test a Product]
-* link:#GCLRZ[Monitoring Test Results]
+* link:#GCLRR[Running the TCK Against the RI]
+* link:#GCLRZ[Running the TCK Against a Vendor's Implementation]
 * link:#GBFVK[Test Reports]
 
 
@@ -40,129 +40,175 @@ respectively.
 
 =======================================================================
 
-include::using-rebuild.inc[]
+ifdef::rebuild[]
+As explained in link:rebuild.html#GCLIZ[Appendix B, "Packaging the
+Test Applications in Servlet-Compliant WAR
+Files With VI-Specific Information,"] the {TechnologyShortName} TCK
+introduces the concept of repackaging the TCK tests.
+endif::rebuild[]
 
 
-[[GBFUZ]][[verifying-installation-and-setup]]
+[[GBFUZ]][[starting-javatest]]
 
-5.1 Verifying Installation and Setup
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+5.1 Starting JavaTest
+~~~~~~~~~~~~~~~~~~~~~
 
-After you install the {TechnologyShortName} TCK, you can set up and verify test configurations in
-incremental steps to simplify any necessary troubleshooting.
+There are two general ways to run the {TechnologyShortName} TCK using
+the JavaTest harness software:
 
-Specifically, first set up the JavaTest harness and run a small test to ensure that you
-have the correct JavaTest harness configuration. This setup and test also ensures that
-the JavaTest harness and the {TechnologyShortName} TCK are running correctly.
+* Through the JavaTest GUI
+* From the command line in your shell environment
 
-To Verify the JavaTest Harness Configuration
+
+[NOTE]
+=======================================================================
+
+The `<TS_HOME>/tools/ant/bin/ant` command referenced in the following
+two procedures and elsewhere in this guide is the Ant
+build tool, which is included in the {TechnologyShortName} TCK bundle.
+The `build.xml` file in `<TS_HOME>/bin` contains the various Ant
+targets for the {TechnologyShortName} TCK test suite.
+
+=======================================================================
+
+
+[[GBFWH]][[to-start-javatest-in-gui-mode]]
+
+5.1.1 To Start JavaTest in GUI Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Execute the following commands:
+
+[source,oac_no_warn]
+----
+cd <TS_HOME>/bin
+ant gui
+----
+
+[[GBFVW]][[to-start-javatest-in-command-line-mode]]
+
+5.1.2 To Start JavaTest in Command-Line Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To set up and verify a correct JavaTest installation, perform the following steps. These
-steps assume that both the Oracle {TechnologyShortName} {TechnologyVersion} reference
-implementation and the {TechnologyShortName} {TechnologyVersion} are installed on the host system that is
-running the JavaTest harness.
-
-1.  Start the JavaTest harness software. +
-    This process is described in Starting the JavaTest harness.
-
-2.  Run a simple test against the technology reference implementation. +
-    By running a test against the {TechnologyShortName} {TechnologyVersion} reference implementation, you ensure
-    that the JavaTest harness is running correctly and has been properly configured.
-
-3.  Select a small, simple test to run. +
-    Use the JavaTest harness configuration editor to select a small, simple test to run. +
-    For example, the signature test. To select the signature test, answer Yes to the
-    *Specify Tests to Run* question in the JavaTest harness GUI, and then select only
-    the .../api/signaturetest in the *Tests to Run* window. Alternatively, you
-    can drill down to the *signaturetest* in the Test Tree, right-click, and select
-    *Execute these tests*.
-
-4.  Specify the work directories. +
-    Use *File* and then *Open Work Directory* or *File* and then *New Work Directory* to
-    select the work directory you want to use.
-
-5.  (Optional) Start the JavaTest Agent on the target device under test in the manner
-    appropriate for your platform. +
-    The commands to start the JavaTest agent are device specific. For instructions,
-    see the JavaTest Agent User's Guide and the JavaTest online help.
-
-6.  Start the test run in the JavaTest harness.+
-    Select Run Tests and then Start to begin the test. If configuration information is
-    incomplete, you will be asked to enter the missing data. +
-    The JavaTest status bar grows while JavaTest tracks statistics relative to the tests
-    done. +
-    If you encounter any errors after clicking *Start*, then refer to Troubleshooting
-    section in the JavaTest User's Guide/Graphical User Interface (located at
-    `<TS_HOME>/doc/javatest/javatestGUI.pdf` in the JAXB distribution).
-
-7.  Check the results. +
-    Check the test results as displayed by the JavaTest harness to ensure that
-    everything is functioning correctly. See the JavaTest online help for information on
-    test results.
+include::using-examples.inc[]
 
 [[GBFWM]][[running-a-subset-of-the-tests]]
 
 5.2 Running a Subset of the Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To run the subset of the {TechnologyShortName} TCK tests:
+Use the following modes to run a subset of the tests:
 
-1.  Select *Configure* and then *Edit Configuration* from the JavaTest main menu.
-2.  Select *Specify Tests to Run?* from the list of configuration questions on the left,
-and then select *Yes*.
-3.  Select the tests you want to run from the displayed list in the *Tests to Run* pane.
-4.  Select *File* and then *Save* or *File* and then *Save As* to save your settings, if
-desired.
-5.  Click *Done* to return to the JavaTest harness main window.
-6.  Select *Run Tests* and then *Start* to run the selected subset of tests.
+* link:#GBFVT[Section 5.2.1, "To Run a Subset of Tests in GUI Mode"]
+* link:#GBFWK[Section 5.2.2, "To Run a Subset of Tests in Command-Line Mode"]
+* link:#GBFVL[Section 5.2.3, "To Run a Subset of Tests in Batch Mode
+Based on Prior Result Status"]
+
+[[GBFVT]][[to-run-a-subset-of-tests-in-gui-mode]]
+
+5.2.1 To Run a Subset of Tests in GUI Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.  From the JavaTest main menu, click Configure, then click Change
+Configuration, and then click Tests to Run. +
+The tabbed Configuration Editor dialog box is displayed.
+2.  Click Specify from the option list on the left.
+3.  Select the tests you want to run from the displayed test tree, and
+then click Done. +
+You can select entire branches of the test tree, or use Ctrl+Click or
+Shift+Click to select multiple tests or ranges of tests, respectively,
+or select just a single test.
+4.  Click Save File.
+5.  Click Run Tests, and then click Start to run the tests you selected. +
+Alternatively, you can right-click the test you want from the test tree
+in the left section of the JavaTest main window, and choose Execute
+These Tests from the menu.
+6.  Click Report, and then click Create Report.
+7.  Specify the directory in which the JavaTest test harness will write
+the report, and then click OK. +
+A report is created, and you are asked whether you want to view it.
+8.  Click Yes to view the report.
+
+[[GBFWK]][[to-run-a-subset-of-tests-in-command-line-mode]]
+
+5.2.2 To Run a Subset of Tests in Command-Line Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.  Change to the directory containing the tests you want to run.
+2.  Start the test run by executing the following command: +
++
+[source]
+----
+ant runclient
+----
++
+The tests in the directory and its subdirectories are run.
+
+[[GBFVL]][[to-run-a-subset-of-tests-in-batch-mode-based-on-prior-result-status]]
+
+5.2.3 To Run a Subset of Tests in Batch Mode Based on Prior Result Status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can run certain tests in batch mode based on the test's prior run
+status by specifying the `priorStatus` system property when invoking
+`<TS_HOME>/tools/ant/bin/ant`.
+
+Invoke `ant` with the `priorStatus` property.
+
+The accepted values for the `priorStatus` property are any combination
+of the following:
+
+* `fail`
+* `pass`
+* `error`
+* `notRun`
+
+For example, you could run all the {TechnologyShortName} tests with a
+status of failed and error by invoking the following commands:
+
+[source,oac_no_warn]
+----
+ant -DpriorStatus="fail,error" runclient
+----
+
+Note that multiple `priorStatus` values must be separated by commas.
 
 [[GCLRR]][[running-the-tck-against-the-ri]]
 
-5.3 Using the {TechnologyShortName} TCK to Test a Product
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+5.3 Running the TCK Against the RI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The {TechnologyShortName} test suite consists of non-interactive tests, which do not require user
-interaction to run.
+This test scenario is ensures that the configuration and deployment of
+all the prebuilt {TechnologyShortName} TCK tests against the Reference
+Implementation are successful, and that the TCK is ready for
+compatibility testing against the Vendor and Reference Implementations.
 
-1.  Start the JavaTest harness software.
-2.  Select the tests to be run. +
-    Use the JavaTest harness configuration editor to select the tests you wish to run.
-    To perform compatibility testing of the product, all {TechnologyShortName} TCK tests must be run. If
-    no tests are specified in the selection, then JavaTest will run all of the tests in the
-    test suite, starting from the top of the test tree. +
-    The default setting points to the tests in the `<TS_HOME>/tests` directory.
-3.  Specify the exclude list.
-    If you obtain an up-to-date copy of the Exclude List from the Java Partner
-    Engineering website, then you should specify the location of the downloaded
-    Exclude List file in your test environment. If you are not going to use a downloaded
-    Exclude List file, then you should specify the Exclude List file that is bundled with
-    the {TechnologyShortName} TCK, {jtxFileName}.
-4.  Specify the work directory. +
-    If you are running the test suite for the first time, you will be prompted to specify
-    the work directory you want to use. Otherwise use *File* and then *Open Work
-    Directory* or *File* and then *New Work Directory* to select the work directory you
-    want to use.
-5.  Start the test run in the JavaTest harness. +
-    Select *Run Tests* and then *Start* to begin the test run. If configuration information
-    is incomplete, then you are prompted to enter the missing data. Activating the test
-    run also starts the Server, which now waits for the JavaTest agent to request tests.
-    The JavaTest status bar progresses while JavaTest tracks statistics relative to the
-    files done, tests found, and tests done.
-6.  Check the results.
-    The test progress and results are displayed by the JavaTest harness.
-7.  Generate a test report.
-    Select *Report* and then *New Report*, and the specify the directory in which the
-    report should be generated.
+1.  Verify that you have followed the configuration instructions in
+link:config.html#GBFVU[Section 4.1, "Configuring Your Environment to Run
+the TCK Against the Reference Implementation."]
+2.  If required, verify that you have completed the steps in
+link:config.html#GCLIW[Section 4.3.2, "Deploying the Prebuilt Archives."]
+3.  Run the tests, as described in link:#GBFUZ[Section 5.1, "Starting
+JavaTest,"] and, if desired, link:#GBFWM[Section 5.2, "Running a Subset
+of the Tests."]
 
-[[GCLRZ]][[monitoring test results]]
+[[GCLRZ]][[running-the-tck-against-a-vendors-implementation]]
 
-5.4 Monitoring Test Results
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+5.4 Running the TCK Against a Vendor's Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After the test run begins, you can track its progress using the test progress display
-fields, Progress Monitor dialog box, test tree, and information tabbed panes in the Test
-Manager window.
+This test scenario is one of the compatibility test phases that all
+Vendors must pass.
+
+1.  Verify that you have followed the configuration instructions in
+link:config.html#GCLHU[Section 4.2, "Configuring Your Environment to
+Repackage and Run the TCK Against the Vendor Implementation."]
+2.  If required, verify that you have completed the steps in
+link:config.html#GCLIL[Section 4.3.3, "Deploying the
+Test Applications Against the Vendor Implementation."]
+3.  Run the tests, as described in link:#GBFUZ[Section 5.1, "Starting
+JavaTest,"] and, if desired, link:#GBFWM[Section 5.2, "Running a Subset
+of the Tests."]
 
 [[GBFVK]][[test-reports]]
 
@@ -186,3 +232,92 @@ contains a list of all tests that were run, their test results, and
 their status messages.
 
 [[GBFWD]][[creating-test-reports]]
+
+5.5.1 Creating Test Reports
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use the following modes to create test reports:
+
+* link:#GBFVH[Section 5.5.1.1, "To Create a Test Report in GUI Mode"]
+* link:#GBFVC[Section 5.5.1.2, "To Create a Test Report in Command-Line Mode"]
+
+[[GBFVH]][[to-create-a-test-report-in-gui-mode]]
+
+5.5.1.1 To Create a Test Report in GUI Mode
++++++++++++++++++++++++++++++++++++++++++++
+
+1.  From the JavaTest main menu, click Report, then click Create Report. +
+You are prompted to specify a directory to use for your test reports.
+2.  Specify the directory you want to use for your reports, and then
+click OK. +
+Use the Filter list to specify whether you want to generate reports for
+the current configuration, all tests, or a custom set of tests. +
+You are asked whether you want to view report now.
+3.  Click Yes to display the new report in the JavaTest ReportBrowser.
+
+[[GBFVC]][[to-create-a-test-report-in-command-line-mode]]
+
+5.5.1.2 To Create a Test Report in Command-Line Mode
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1.  Specify where you want to create the test report.
+a.  To specify the report directory from the command line at runtime,
+use:
++
+[source]
+----
+ant -Dreport.dir="report_dir"
+----
++
+Reports are written for the last test run to the directory you specify.
+2.  To specify the default report directory, set the `report.dir`
+property in +{jteFileName}+. +
+For example:
++
+[source]
+----
+report.dir="/home/josephine/reports"
+----
++
+3.  To disable reporting, set the `report.dir` property to `"none"`,
+either on the command line or in +{jteFileName}+. +
+For example:
++
+[source]
+----
+ant -Dreport.dir="none"
+----
++
+
+[[GBFVB]][[viewing-an-existing-test-report]]
+
+5.5.2 Viewing an Existing Test Report
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use the following modes to view an existing test report:
+
+* link:#GBFVO[Section 5.5.2.1, "To View an Existing Report in GUI Mode"]
+* link:#GBFWB[Section 5.5.2.2, "To View an Existing Report in
+Command-Line Mode"]
+
+[[GBFVO]][[to-view-an-existing-report-in-gui-mode]]
+
+5.5.2.1 To View an Existing Report in GUI Mode
+++++++++++++++++++++++++++++++++++++++++++++++
+
+1.  From the JavaTest main menu, click Report, then click Open Report. +
+You are prompted to specify the directory containing the report you want
+to open.
+2.  Select the report directory you want to open, and then click Open. +
+The selected report set is opened in the JavaTest ReportBrowser.
+
+[[GBFWB]][[to-view-an-existing-report-in-command-line-mode]]
+
+5.5.2.2 To View an Existing Report in Command-Line Mode
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Use the Web browser of your choice to view the `report.html` file in the
+report directory you specified from the command line or in +{jteFileName}+.
+
+include::using.inc[]
+

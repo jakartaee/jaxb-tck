@@ -28,10 +28,6 @@ This chapter includes the following topics:
 * link:#GBFVP[Test Information]
 * link:#GBFVZ[Report Files]
 * link:#GBFYF[Configuration Failures]
-* link:#GBFYA[Test Manager Properties]
-* link:#GBFYB[Test Suite Errors]
-* link:#GBFYC[Debugging Agent Failures]
-* link:#GBFYD[How Tests Are Executed]
 
 [[GBFYP]][[overview]]
 
@@ -56,6 +52,42 @@ immediate test execution feedback to the display. Available JTR report
 files and log files can also help command-line users troubleshoot test
 run problems.
 
+For every test run, the JavaTest harness creates a set of report files
+in the reports directory, which you specified by setting the
+`report.dir` property in the +{jteFileName}+ file. The report files contain
+information about the test description, environment, messages,
+properties used by the test, status of the test, and test result. After
+a test run is completed, the JavaTest harness writes HTML reports for
+the test run. You can view these files in the JavaTest ReportBrowser
+when running in GUI mode, or in the Web browser of your choice outside
+the JavaTest interface. To see all of the HTML report files, enter the
+URL of the `report.html` file. This file is the root file that links to
+all of the other HTML reports.
+
+The JavaTest harness also creates a `summary.txt` file in the report
+directory that you can open in any text editor. The `summary.txt` file
+contains a list of all tests that were run, their test results, and
+their status messages.
+
+The work directory, which you specified by setting the `work.dir`
+property in the +{jteFileName}+ file, contains several files that were
+deposited there during test execution: `harness.trace`, `log.txt`,
+`lastRun.txt`, and `testsuite`. Most of these files provide information
+about the harness and environment in which the tests were executed.
+
+[NOTE]
+=======================================================================
+
+You can set `harness.log.traceflag=true` in +{jteFileName}+ to
+get more debugging information.
+
+=======================================================================
+
+If a large number of tests failed, you should read
+link:#GBFYF[Configuration Failures] to see if a
+configuration issue is the cause of the failures.
+
+
 [[GBFVF]][[test-tree]]
 
 6.2 Test Tree
@@ -71,11 +103,6 @@ indicate status as follows:
 * White: Test not run
 * Gray: Test filtered out (not run)
 
-When you click a folder icon in the test tree, the JavaTest harness displays its folder
-view in the Test Manager information area. The information in the folder view is
-changed by the view filter. See JavaTest User's Guide, Graphical User Interface, or
-JavaTest online help for a detailed description of the test tree.
-
 [[GBFWI]][[folder-information]]
 
 6.3 Folder Information
@@ -86,23 +113,6 @@ Click a folder in the test tree in the JavaTest GUI to display its tabs.
 Choose the Error and the Failed tabs to view the lists of all tests in
 and under a folder that were not successfully run. You can double-click
 a test in the lists to view its test information.
-
-During a test run, you can use the folder view to monitor the status of a folder and its
-tests. You can also use the folder view during troubleshooting to quickly locate and
-open individual tests that had errors or failed during the test run.
-
-The summary tab displays the number tests by their test results in a folder. In addition
-to summary information, the folder view contains five status tabs that group and list the
-tests by their results. Select the *Error* and the *Failed* panes to view the lists of all tests
-in and under a folder that were not successfully run. You can double-click a test in the
-lists to view its test information.
-
-The status display at the bottom of the pane displays messages about the selected
-tab. The messages may indicate that tests in the folder are loading or may provide
-detailed status information about a selected test.
-
-See JavaTest User's Guide, Graphical User Interface, or JavaTest online help for a
-detailed description of the folder view.
 
 [[GBFVP]][[test-information]]
 
@@ -126,14 +136,7 @@ recorded when the test was run.
 * Configuration contains a two-column table of the test environment
 name/value pairs derived from the configuration data actually used to
 run the test.
-* Test Description tab: Name-value pairs contained in the test description. The
-values specified in the test description fields are used by the JavaTest harness
-when the tests are run.
-* Files tab: A drop-down list of source files from the test description. You can
-display the contents of a file by clicking its name in the list. XML documents (*.xml
-files) used by the test are not initially in the list because they are not the sources of
-the test but its input data. To view an XML document, click the appropriate
-reference when you browse the HTML file with the test description.
+
 
 [NOTE]
 =======================================================================
@@ -167,204 +170,5 @@ run immediately and start viewing individual test output. However, in
 the case of full-scale launching problems where no tests are actually
 processed, report files are usually not created (though sometimes a
 small `harness.trace` file in the report directory is written).
-
-Here are few tips to verify the errors:
-
-1. Check your `.jti` file settings in the Configuration Editor. You may have launched
-the JavaTest harness with prior status set to `any` instead of `ignore`.
-2. Check if the `env.html` report file is generated, else, the JavaTest GUI provides the
-ability to view evaluated variables used by the tests. Select *Configure* and then
-*Show Test Environment* from the Test manager menu to view the contents of the
-test environment.
-3. Verify if the Configuration Editor has generated a configuration question log when
-you complete a configuration interview. You can use the configuration question log
-to review your answers to all the questions in the current configuration. Select
-*Configure* and *Show Question Log* from the *Test Manager* menu to view the
-current configuration interview.
-
-[[GBFYA]][[test-manager-properties]]
-
-6.7 Test Manager Properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can view the properties of a test manager by selecting *View* and then *Properties*
-from the *Test Manager* menu. The Test Manager Properties dialog box contains Test
-Suite, Work Directory, Configuration, and Plugin information.
-
-See JavaTest User's Guide , Graphical User Interface, or JavaTest online help for a
-detailed description of the Test Manager Properties dialog box.
-
-[[GBFYB]][[test-suite-errors]]
-
-6.8 Test Suite Errors
-~~~~~~~~~~~~~~~~~~~~~
-
-If the JavaTest harness detects test suite errors, then it displays an advisory dialog
-box. You can view detailed information about the test suite errors by selecting View
-and then *Test Suite Errors* from the Test Manager menu.
-
-See JavaTest User's Guide , Graphical User Interface, or JavaTest online help for a
-detailed description of the *Test Manager: Test Suite Errors* dialog box.
-
-[[GBFYC]][[debug-agent-failures]]
-
-6.9 Debugging Agent Failures
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When debugging agent failures, you should monitor the JavaTest agent during the test
-run to verify that the agent has been correctly configured and started. Verify if the test
-harness is configured correctly for the agent and the test system that the agent runs
-on. Also, check that the map files, if required, correctly translate host-specific values
-into values that the agent can use.
-
-As active agents initiate the connection with the JavaTest harness while passive
-agents wait for a request from the JavaTest harness, troubleshooting each type of
-agent requires a different approach. See JavaTest User's Guide, Graphical User
-Interface, or JavaTest online help for a detailed description of the differences between
-troubleshooting each type of agent.
-
-[[GBFYCA]][[monitoring-javatest-agents]]
-
-6.9.1 Monitoring JavaTest Agents
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you are facing problems using JavaTest agents to run the tests, then you can use
-the JavaTest Agent Monitor window to view the agents in a test system that are
-running tests. You can also use the tabbed panes in the application or applet agent
-GUI to monitor specific information about the agent and the tests that it runs.
-
-The agent GUI provides the following panes:
-* Statistics pane: that displays the current status of the tests that the agent is
-running.
-* History pane: that displays a list of tasks performed by the agent.
-* Selected Task pane: that displays details about a specific task or the test
-selected in the history tabbed pane.
-
-See JavaTest User's Guide, Graphical User Interface, or JavaTest online help for a
-detailed description of the JavaTest Agent Monitor window and the agent GUI.
-
-[[GBFYCB]][[using-trace-option]]
-
-6.9.2 Using the -trace Option
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can use the -trace option when you start the JavaTest agent. The -trace option
-causes the agent application to send detailed information about agent activity to the
-system output stream.
-
-See JavaTest User's Guide, Graphical User Interface, or JavaTest online help for a
-detailed description of the options that can be used when starting a JavaTest agent.
-
-[[GBFYD]][[how-tests-are-executed]]
-
-6.10 How Tests are Executed
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To better understand and debug the test failures, this section describes how the tests
-are selected for a test run and how they are then executed.
-
-Test Results
-^^^^^^^^^^^^
-Test Execution results are reported as one of the three states:
-
-* Pass: A test passes when the functionality being tested behaves as expected. All
-tests are expected to pass.
-* Fail: A test fails when the functionality being tested does not behave as expected.
-* Error: A test is considered to cause error when something (usually a configuration
-problem) keeps the test from being executed as expected. Errors often indicate a
-systemic problem - a single configuration problem can cause many tests to fail.
-For example, if the path to the Java runtime is configured incorrectly, then no tests
-can run and will result in an error.
-
-How Tests Are Selected For a Test Run
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Prior to the start of a test run, the JavaTest harness selects tests for the run based on
-the following factors:
-
-* Tests to be Run: The JavaTest harness finds tests listed in the Tests to be Run
-field of the JavaTest configuration. You can specify the sub-branches of the tree
-as a way of limiting the tests that are executed during a test run. The JavaTest
-harness browses through the tree starting with its sub-branches or tests you
-specify, and executes all tests that it finds.
-* Exclude List: Tests listed in the appropriate exclude list are deselected prior to
-the start of a test run. For details about exclude lists and their role in the
-certification process, see Procedure for Certification.
-* Keywords: A test can be selected based on keywords specified in the Keywords
-field in the test description. The possible keywords are the following: schema,
-document, runtime, positive, negative, bindinfo, jaxb_not_required,
-java_to_schema.
-* Prior Status: Use the combo box and check boxes to select tests in a test run
-based on their outcome on a prior test run. Prior status is evaluated on a test-bytest
-basis using information stored in result files (.jtr) written in the work directory.
-
-Test Execution
-^^^^^^^^^^^^^^
-
-Based on the test keywords and the `executeClass` parameter of the test description, all
-the tests are divided in four execution models:
-
-* Schema Tests: The keyword schema indicates this test execution model. The
-schema tests are the Schema Compiler Tests. These tests have a schema file
-(*.xsd) in the test description parameter source. The schema is compiled to the
-work directory, and the output directory option of the JAXB schema compiler is
-used. +
-The package specified in the test description parameter package is used to set the
-output package parameter to the schema compiler. If the test has the keyword
-negative, then the schema compiler must report an error compiling the test
-schema. Otherwise, the schema is positive and may have JAXB custom binding
-information if the keyword bindinfo is present. +
-The positive schema is expected to compile successfully. After the compilation
-passes, the signature test (the class specified in the test description parameter
-executeClass) runs with arguments specified in the test description parameter
-executeArgs.
-* Document Tests: The keyword document along with the class JAXBTest specified
-in the test description parameter executeClass indicate this test execution model.
-The document tests are the subset of the Content Tree Tests, with the exception
-of the content tree modification stage. +
-The last two stages are applicable only to valid XML documents. The first stage
-(schema compilation) is performed as for the schema tests. All stages except the
-first one are performed by executing appropriate test cases (unmarshal,
-compareContent, and marshal respectively) of the class specified in test description
-parameter executeClass, with arguments specified in the test description parameter
-executeArgs. +
-All parameter entries starting with '$' are resolved in the environment, but no
-errors occur if any of these values are not defined. If the exclude list identifies test
-cases to be excluded, then these cases are added to the test arguments using the
--exclude option. Note that all schemas used in the document tests are valid and
-the tests may not have the keyword negative. Invalid documents are indicated by
-option -invalid in the parameter executeClass.
-* JAXB Framework API Tests: The JAXB framework API tests have their own
-classes (other than the signature test or JAXBTest) specified in the test description
-parameter executeClass. The tests may or may not have schema file specified in
-parameter schema. +
-First, if the schema is specified, it is compiled as described for the schema tests.
-Then the test executes the class specified in test description parameter
-executeClass with arguments specified in the test description parameter
-executeArgs. +
-All parameter entries starting with '$' are resolved in the environment, but no
-errors occur if any of these values are not defined. If the exclude list identifies test
-cases to be excluded, then these cases are added to the test arguments using the
--exclude option.
-* Java -to-Schema Tests: The keyword /java_to_schema/ indicates this test
-execution model. The Java-to-Schema Tests are the same as described in
-Schema Compiler Tests. These tests have a Java files (*.java) in the test
-description parameter source. The generated schema is placed in the work
-directory, and the output directory option of the JAXB schema generator is used. If
-the test has the attribute negative, then the schema generator must report an error
-processing the test Java files. Otherwise, the Java code is correctly annotated and
-should be processed successfully. After the generation passes, the validation test
-(the class specified in the test description parameter /executeClass/) runs with
-arguments specified in the test description parameter /executeArgs/. The
-validation test checks that a valid XML document, taken from the test description
-parameter /executeArgs/ follows the just-generated schema, and fails to check
-invalid XML documents.
-* XML Validation Tests: XML Validation can be implemented through JAXP or
-some other mechanism. If the validation is implemented through JAXP, then
-validation checking tests can be skipped by deselecting them in the test interview.
-If you use some other tools for schema validation, then XML validation tests are
-mandatory.
-
-
 
 include::debug-tips.inc[]
