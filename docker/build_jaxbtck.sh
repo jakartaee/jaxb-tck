@@ -121,17 +121,23 @@ cd $TCK_ROOT/jaxb-tck/build
 make REPOSITORIES=$TCK_ROOT/xml_schema clean
 make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
-#echo "jaxb-tck is coming soon" > filename.txt
-#zip -r jaxb-tck-2.3_latest.zip filename.txt
+echo *************Building JAXB TCK Userguide************
+cd $WORKSPACE/userguides;mvn
+mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/userguide
+cp -r $WORKSPACE/userguide/target/staging/*.html $WORKSPACE/jaxb-tck-build/docs/userguide
+cp -r $WORKSPACE/userguide/target/generated_docs/*.pdf $WORKSPACE/jaxb-tck-build/docs/userguide
+echo *************Completed Building JAXB TCK Userguide************
+
 mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build
-zip jaxb-tck-2.3_latest.zip JAXB-TCK-2.3.jar
 chmod 777 *.jar
-for entry in `ls jaxb-tck-2.3_latest.zip`; do
+zip -r jaxb-tck-2.3_latest.zip JAXB-TCK-2.3.jar docs/
+#chmod 777 *.jar
+#for entry in `ls jaxb-tck-2.3_latest.zip`; do
   #date=`echo "$entry" | cut -d_ -f2`
   #strippedEntry=`echo "$entry" | cut -d_ -f1`
   #echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"
   #cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
   #chmod 777 ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
-  cp ${WORKSPACE}/jaxb-tck-build/$entry ${WORKSPACE}/bundles/
-done
+cp ${WORKSPACE}/jaxb-tck-build/jaxb-tck-2.3_latest.zip ${WORKSPACE}/bundles/
+#done
