@@ -138,7 +138,7 @@ else
 fi
 #chmod 777 *.jar
 #for entry in `ls jaxb-tck-2.3_latest.zip`; do
-for entry in `ls jaxb-tck-2.3_latest.zip`; do
+#for entry in `ls jaxb-tck-2.3_latest.zip`; do
   #date=`echo "$entry" | cut -d_ -f2`
   #strippedEntry=`echo "$entry" | cut -d_ -f1`
   #echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"
