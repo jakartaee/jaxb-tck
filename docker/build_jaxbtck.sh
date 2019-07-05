@@ -125,7 +125,11 @@ make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 #zip -r jaxb-tck-2.3_latest.zip filename.txt
 mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build
-zip jaxb-tck-2.3_latest.zip JAXB-TCK-2.3.jar
+if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
+	zip jaxb-tck-2.3_latest.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE_EFTL.md
+else
+	zip jaxb-tck-2.3_latest.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE.md
+fi
 chmod 777 *.jar
 for entry in `ls jaxb-tck-2.3_latest.zip`; do
   #date=`echo "$entry" | cut -d_ -f2`

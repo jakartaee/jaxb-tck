@@ -56,6 +56,8 @@ spec:
     string(name: 'GF_VERSION_URL', 
            defaultValue: '', 
            description: 'URL required for downloading GlassFish version details' )
+	choice(name: 'LICENSE', choices: 'PUBLIC\nECLIPSE',
+           description: 'License version to be used to build the TCK bundle(s) either Eclipse or Public(default)' )
   }
   environment {
     ANT_OPTS = "-Djavax.xml.accessExternalStylesheet=all -Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=file,http"
