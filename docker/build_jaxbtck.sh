@@ -122,7 +122,7 @@ make REPOSITORIES=$TCK_ROOT/xml_schema clean
 make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
 echo *************Building JAXB TCK Userguide************
-cd $WORKSPACE/userguides;mvn
+cd $WORKSPACE/userguide;mvn
 mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/userguide
 cp -r $WORKSPACE/userguide/target/staging/*.html $WORKSPACE/jaxb-tck-build/docs/userguide
 cp -r $WORKSPACE/userguide/target/generated_docs/*.pdf $WORKSPACE/jaxb-tck-build/docs/userguide
@@ -132,9 +132,9 @@ mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build
 chmod 777 *.jar
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
-	zip -r jaxb-tck-2.3_latest.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE_EFTL.md docs/
+	zip -r eclipse-jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE_EFTL.md docs/
 else
-	zip -r jaxb-tck-2.3_latest.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE.md docs/
+	zip -r jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE.md docs/
 fi
 #chmod 777 *.jar
 #for entry in `ls jaxb-tck-2.3_latest.zip`; do
