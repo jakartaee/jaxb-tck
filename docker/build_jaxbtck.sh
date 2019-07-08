@@ -133,8 +133,10 @@ cd $WORKSPACE/jaxb-tck-build
 chmod 777 *.jar
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
 	zip -r eclipse-jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE_EFTL.md docs/
+	cp ${WORKSPACE}/jaxb-tck-build/eclipse-jaxb-tck-2.3.0.zip ${WORKSPACE}/bundles/
 else
 	zip -r jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE.md docs/
+	cp ${WORKSPACE}/jaxb-tck-build/jaxb-tck-2.3.0.zip ${WORKSPACE}/bundles/
 fi
 #chmod 777 *.jar
 #for entry in `ls jaxb-tck-2.3_latest.zip`; do
@@ -144,5 +146,4 @@ fi
   #echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"
   #cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
   #chmod 777 ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
-cp ${WORKSPACE}/jaxb-tck-build/jaxb-tck-2.3_latest.zip ${WORKSPACE}/bundles/
 #done
