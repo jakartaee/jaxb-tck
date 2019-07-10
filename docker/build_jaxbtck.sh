@@ -125,17 +125,19 @@ echo *************Building JAXB TCK Userguide************
 cd $WORKSPACE/userguide;mvn
 mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/userguide
 cp -r $WORKSPACE/userguide/target/staging/*.html $WORKSPACE/jaxb-tck-build/docs/userguide
-cp -r $WORKSPACE/userguide/target/generated_docs/*.pdf $WORKSPACE/jaxb-tck-build/docs/userguide
+cp -r $WORKSPACE/userguide/target/generated-docs/*.pdf $WORKSPACE/jaxb-tck-build/docs/userguide
 echo *************Completed Building JAXB TCK Userguide************
 
 mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build
 chmod 777 *.jar
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
-	zip -r eclipse-jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE_EFTL.md docs/
+	cp $TCK_ROOT/LICENSE_EFTL.md .
+	zip -r eclipse-jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE_EFTL.md docs/
 	cp ${WORKSPACE}/jaxb-tck-build/eclipse-jaxb-tck-2.3.0.zip ${WORKSPACE}/bundles/
 else
-	zip -r jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar $TCK_ROOT/LICENSE.md docs/
+	cp $TCK_ROOT/LICENSE.md .
+	zip -r jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE.md docs/
 	cp ${WORKSPACE}/jaxb-tck-build/jaxb-tck-2.3.0.zip ${WORKSPACE}/bundles/
 fi
 #chmod 777 *.jar
