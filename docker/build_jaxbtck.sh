@@ -131,18 +131,19 @@ echo *************Completed Building JAXB TCK Userguide************
 mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build
 chmod 777 *.jar
+TCK_NAME=xml-binding
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
 	cp $TCK_ROOT/LICENSE_EFTL.md .
-	zip -r eclipse-jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE_EFTL.md docs/
-	cp ${WORKSPACE}/jaxb-tck-build/eclipse-jaxb-tck-2.3.0.zip ${WORKSPACE}/bundles/
+	zip -r eclipse-${TCK_NAME}-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE_EFTL.md docs/
+	cp ${WORKSPACE}/jaxb-tck-build/eclipse-${TCK_NAME}-tck-2.3.0.zip ${WORKSPACE}/bundles/
 else
 	cp $TCK_ROOT/LICENSE.md .
-	zip -r jaxb-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE.md docs/
-	cp ${WORKSPACE}/jaxb-tck-build/jaxb-tck-2.3.0.zip ${WORKSPACE}/bundles/
+	zip -r ${TCK_NAME}-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE.md docs/
+	cp ${WORKSPACE}/jaxb-tck-build/${TCK_NAME}-tck-2.3.0.zip ${WORKSPACE}/bundles/
 fi
 #chmod 777 *.jar
-#for entry in `ls jaxb-tck-2.3_latest.zip`; do
-#for entry in `ls jaxb-tck-2.3_latest.zip`; do
+#for entry in `ls ${TCK_NAME}-tck-2.3_latest.zip`; do
+#for entry in `ls ${TCK_NAME}-tck-2.3_latest.zip`; do
   #date=`echo "$entry" | cut -d_ -f2`
   #strippedEntry=`echo "$entry" | cut -d_ -f1`
   #echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"
