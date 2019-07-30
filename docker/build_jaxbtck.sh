@@ -141,12 +141,3 @@ else
 	zip -r ${TCK_NAME}-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE.md docs/
 	cp ${WORKSPACE}/jaxb-tck-build/${TCK_NAME}-tck-2.3.0.zip ${WORKSPACE}/bundles/
 fi
-#chmod 777 *.jar
-#for entry in `ls ${TCK_NAME}-tck-2.3_latest.zip`; do
-#for entry in `ls ${TCK_NAME}-tck-2.3_latest.zip`; do
-  #date=`echo "$entry" | cut -d_ -f2`
-  #strippedEntry=`echo "$entry" | cut -d_ -f1`
-  #echo "copying ${WORKSPACE}/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"
-  #cp ${WORKSPACE}/$entry ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
-  #chmod 777 ${WORKSPACE}/bundles/${strippedEntry}_latest.zip
-#done
