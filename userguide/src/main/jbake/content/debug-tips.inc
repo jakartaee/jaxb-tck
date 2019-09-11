@@ -46,7 +46,7 @@ Errors* dialog box.
 
 [[GBFYD]][[how-tests-are-executed]]
 
-6.10 How Tests are Executed
+6.9 How Tests are Executed
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To better understand and debug the test failures, this section
@@ -102,13 +102,13 @@ description, all the tests are divided in four execution models:
 * Schema Tests: The keyword schema indicates this test execution model. The
 schema tests are the Schema Compiler Tests. These tests have a schema file
 (*.xsd) in the test description parameter source. The schema is compiled to the
-work directory, and the output directory option of the JAXB schema compiler is
+work directory, and the output directory option of the XML Binding schema compiler is
 used. +
 The package specified in the test description parameter package is used
 to set the output package parameter to the schema compiler. If the test
 has the keyword negative, then the schema compiler must report an error
 compiling the test schema. Otherwise, the schema is positive and may
-have JAXB custom binding information if the keyword bindinfo is
+have XML Binding custom binding information if the keyword bindinfo is
 present. + The positive schema is expected to compile successfully.
 After the compilation passes, the signature test (the class specified
 in the test description parameter executeClass) runs with arguments
@@ -130,7 +130,7 @@ these cases are added to the test arguments using the -exclude option.
 Note that all schemas used in the document tests are valid and the
 tests may not have the keyword negative. Invalid documents are
 indicated by option -invalid in the parameter executeClass.
-* JAXB Framework API Tests: The JAXB framework API tests have their own
+* XML Binding Framework API Tests: The XML Binding framework API tests have their own
 classes (other than the signature test or JAXBTest) specified in the
 test description parameter executeClass. The tests may or may not have
 schema file specified in parameter schema. +
@@ -147,7 +147,7 @@ test execution model. The Java-to-Schema Tests are the same as
 described in Schema Compiler Tests. These tests have a Java files
 (*.java) in the test description parameter source. The generated schema
 is placed in the work directory, and the output directory option of the
-JAXB schema generator is used. If the test has the attribute negative,
+XML Binding schema generator is used. If the test has the attribute negative,
 then the schema generator must report an error processing the test Java
 files. Otherwise, the Java code is correctly annotated and should be
 processed successfully. After the generation passes, the validation

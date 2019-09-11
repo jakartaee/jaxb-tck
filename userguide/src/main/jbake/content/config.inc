@@ -1,7 +1,7 @@
-[[GBFVU]][[configuring-the-jaxb-tck]]
+[[GBFVU]][[configuring-the-xml-binding-tck]]
 
-4.1 Configuring the JAXB TCK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4.1 Configuring the XML Binding TCK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 [[GCLHUB]][[tck-configuration-concepts]]
 
@@ -31,8 +31,8 @@ provides a convenient way to automate your test runs, and also allows
 you to change work and report directories, which is often desirable
 when running tests repeatedly over progressive builds.
 
-Using the JAXB TCK Configuration Interfaces
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using the XML Binding TCK Configuration Interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can configure the {TechnologyShortName} TCK and the JavaTest
 harness from the JavaTest GUI, or by passing configuration parameters
@@ -162,7 +162,7 @@ Table 4-1 Configuration Editor Questions and Relevant Answers 
 |Welcome! |
 *Tag: jck.prolog*
 
-Welcome to the Configuration Editor for JAXB TCK testsuite!
+Welcome to the Configuration Editor for XML Binding TCK testsuite!
 
 |None
 
@@ -202,7 +202,7 @@ compiler either from the command line, or via the Java Compiler API,
 or via a custom class accessed by the core reflection API. |
 Answer `MultiJVM Mode` if the JavaTest harness can directly start your
 product, for example, from a command line in an MSDOS window or UNIX
-shell; this is the required mode for the JAXB TCK.
+shell; this is the required mode for the XML Binding TCK.
 
 Typically, applications that do not support such actions run in
 point-and-click environments or in browsers. For example, the JavaTest
@@ -310,8 +310,7 @@ the Java Compiler API interface.
 |This interview question appears only if you answered `Yes` to the Test Platform
 MultiJVM question of this interview.
 
-This is the command used on the reference system to invoke the Oracle
-reference Java.
+This is the command used on the reference system to invoke the `java` command.
 
 NOTE: Use the `java` command in JDK (not JRE).
 
@@ -367,13 +366,13 @@ system environment is not available to the test. If you check your
 operating system environment and determine that this is the case, then
 set the missing values here.
 
-|Need Extra JAXB Classes |
+|Need Extra XML Binding Classes |
 *Tag: jck.env.jaxb.classes.needJaxbClasses*
 
-Do you need to specify extra JAXB classes for the Java launcher to
+Do you need to specify extra XML Binding classes for the Java launcher to
 execute tests?
 
-|The JAXB classes must be available (that is, can be found and loaded)
+|The XML Binding classes must be available (that is, can be found and loaded)
 during test execution. This means that {TechnologyShortName} JAR
 archives or directories which contain the {TechnologyShortName} classes
 must be in the test executing Java class path.
@@ -404,7 +403,7 @@ Would you like to run your schema compiler in default operation mode?
 |A {TechnologyShortName} compatible implementation must
 support a default operating mode in which
 all the required XML Schema to Java
-bindings that are described in the JAXB
+bindings that are described in the XML Binding
 specification must be implemented. Errors
 must be reported when alternative or
 extension non-required features are
@@ -413,7 +412,7 @@ encountered.
 A {TechnologyShortName} compatible implementation may
 support non-default operating modes. These
 modes must support all the XML Schema to
-Java bindings that are described in JAXB
+Java bindings that are described in XML Binding
 specification, but may also generate
 alternative or extension bindings for XML
 Schema constructs, which are not required
@@ -454,12 +453,12 @@ want them to be run.
 
 |This is the command used to invoke your
 schema compiler. For example, for the
-Oracle JAXB implementation on Solaris we
+Eclipse XML Binding implementation on Solaris we
 provide a script `TCKDIR/solaris/bin/
 xjc.sh`, which compiles schemas into class
 files. The command is as follows:
 `/bin/ksh solaris/bin/xjc.sh`
-For the Oracle JAXB implementation on
+For the Eclipse XML Binding implementation on
 Windows, we provide a script TCKDIR
 `\win32\bin\xjc.bat`, which compiles
 schemas into class files.
@@ -509,9 +508,9 @@ out, PrintStream err);
 Schema compilation should be
 accomplished during invocation of compile
 method.
-The JAXB TCK includes the following class
-that is fully compatible with Oracle's
-reference implementation and that can be
+The XML Binding TCK includes the following class
+that is fully compatible with Eclipse's
+compatible implementation and that can be
 used for schema compilation:
 `com.sun.jaxb_tck.lib.SchemaCompiler.`
 The realization of the
@@ -552,13 +551,13 @@ Enter the command to run the schema generator.
 
 |This is the command used to invoke your
 schema generator. For example, for the
-Oracle JAXB implementation on Solaris we
+Eclipse XML Binding implementation on Solaris we
 provide a script `TCKDIR/
 solaris/bin/schemagen.sh`, which
 generates the schemas from the java files.
 The command is:
 `/bin/ksh solaris/bin/schemagen.sh`
-For the Oracle {TechnologyShortName} implementation on
+For the Eclipse {TechnologyShortName} implementation on
 Windows, we provide a script `TCKDIR
 \win32\bin\schemagen.bat`, which
 compiles the schemas into class files. The
@@ -605,9 +604,9 @@ err);
 Schema generations should be complete
 during the invocation of the generate
 method.
-The JAXB TCK includes the following class
-that is fully compatible with Oracle's
-reference implementation and that can be
+The XML Binding TCK includes the following class
+that is fully compatible with Eclipse's
+compatible implementation and that can be
 used for schema generation:
 `com.sun.jaxb_tck.lib.SchemaGen`. The
 realization of the method
