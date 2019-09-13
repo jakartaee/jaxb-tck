@@ -1,15 +1,15 @@
 
 [[GEQNJ]][[jaxb-technology-overview]]
 
-1.2.7 JAXB Technology Overview
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.2.7 XML Binding Technology Overview
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The {TechnologyShortName} TCK {TechnologyVersion} test suite comprises six test
 categories:
 
 * Schema to Java mapping tests
 * Java to schema mapping tests
-* JAXB framework API tests
+* XML Binding framework API tests
 * Content tree tests
 * XML-to-Java name convention tests
 * XML validation tests
@@ -18,21 +18,23 @@ Schema Compiler Tests
 +++++++++++++++++++++
 
 The schema compiler tests verify the following:
+
 1. The schema compiler finds errors in invalid schema.
 2. The schema compiler successfully compiles valid schema and the signatures of
-generated Java classes are appropriate.
-3. The schema compiler appropriately compiles schema annotated with {TechnologyShortName}
-custom binding declarations:
+   generated Java classes are appropriate.
+3. The schema compiler appropriately compiles schema annotated with
+   {TechnologyShortName} custom binding declarations:
++
 * Successfully compiles valid source schema with well-formed binding
-declarations.
+  declarations.
 * Fails to compile valid source schema with non-well-formed binding
-declarations.
+  declarations.
 
-JAXB Framework API Tests
-+++++++++++++++++++++++
+XML Binding Framework API Tests
++++++++++++++++++++++++++++++++
 
-The JAXB framework API tests cover public classes and interfaces defined in the
-`javax.xml.bind` package and sub-packages.
+The XML Binding framework API tests cover public classes and interfaces
+defined in the `javax.xml.bind` package and sub-packages.
 
 Content Tree Tests
 ++++++++++++++++++

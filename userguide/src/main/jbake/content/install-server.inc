@@ -1,18 +1,18 @@
-.  The zip file above contains the JAXB TCK installer jar file;
-use this installer to install the JAXB TCK.
+.  The zip file above contains the XML Binding TCK installer jar file;
+use this installer to install the XML Binding TCK.
   a.  Extract the {TechnologyShortName} TCK {TechnologyVersion} product bundle
       in the directory of your choice: +
-      +`java -jar PATH-TO-JAXB-TCK-JAR options [-o outputdir]`+ +
+      +`java -jar PATH-TO-XML-BINDING-TCK-JAR options [-o outputdir]`+ +
       The following descriptions are provided for the installation command:
       * `java`: Java SE {SEversion} or later platform reference implementation.
-      * `PATH-TO-JAXB-TCK-JAR`: The path of the {TechnologyShortName}
+      * `PATH-TO-XML-BINDING-TCK-JAR`: The path of the {TechnologyShortName}
 	TCK {TechnologyVersion} JAR file to install.
       * `options`: Unless a user specifies options, the default
 	behavior installs {TechnologyShortName} TCK {TechnologyVersion}
 	in verbose mode (writes the file names it is installing to
 	standard out) into the current directory. The installation
 	utility accepts the following options:
-        **  `-q`: Installs JAXB TCK 2.3 in quiet mode.
+        **  `-q`: Installs XML Binding TCK 2.3 in quiet mode.
 	**  `-l`: Prints a list to standard output of the options that
 	    will be installed.
 	**  `-onError mode` : Sets the mode of sensitivity that the

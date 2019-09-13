@@ -143,7 +143,7 @@ ASM_JAR_LOCATION =
 # General Utilities
 
 AWK = /bin/awk
-BASENAME = /bin/basename
+BASENAME = /usr/bin/basename
 CHMOD = /bin/chmod
 CAT = /bin/cat
 CP = /bin/cp
@@ -162,7 +162,7 @@ PS = /bin/ps
 PWD = /bin/pwd
 RM = /bin/rm -rf
 SED = /bin/sed
-SORT = /bin/sort
+SORT = /usr/bin/sort
 SPLIT = /usr/bin/split
 TAR = /bin/tar
 TEE = /usr/bin/tee
@@ -242,7 +242,7 @@ RELDIR = $(shell $(RELDIR.sh))
 #
 # Directory Macros
 #
-WSBASE.sh = /bin/basename $(ABSTOPDIR)
+WSBASE.sh = /usr/bin/basename $(ABSTOPDIR)
 WSBASE = $(shell $(WSBASE.sh))
 TOPDIR_PARENT.sh = dirname $(ABSTOPDIR)
 
