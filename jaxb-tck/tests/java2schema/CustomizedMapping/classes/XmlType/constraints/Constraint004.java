@@ -16,7 +16,7 @@
 
 package CustomizedMapping.classes.XmlType.constraint;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * JAXB specification assertion: JAXB:SPEC:J2S:0065

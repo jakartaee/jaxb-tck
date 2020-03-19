@@ -16,8 +16,8 @@
 
 package javasoft.sqe.tests.api.javax.xml.bind.JAXBContext;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 
 public class ContextFactory {
     public static JAXBContext createContext(String contextPath, ClassLoader classLoader)

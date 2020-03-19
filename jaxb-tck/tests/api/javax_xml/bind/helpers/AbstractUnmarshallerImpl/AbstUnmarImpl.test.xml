@@ -24,7 +24,7 @@
         <Description>
 Tests for AbstractUnmarshallerImpl class methods.
         </Description>
-        <TestedPackage>javax.xml.bind.helpers</TestedPackage>
+        <TestedPackage>jakarta.xml.bind.helpers</TestedPackage>
         <TestedClass>AbstractUnmarshallerImpl</TestedClass>
         <Author>Evgueni Astigueevitch</Author>
     </TestGroupDocumentation>
@@ -37,14 +37,14 @@ Tests for AbstractUnmarshallerImpl class methods.
        <Keyword>positive</Keyword>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.helpers.AbstractUnmarshallerImpl</Import>
+        <Import>jakarta.xml.bind.helpers.AbstractUnmarshallerImpl</Import>
         <Import>org.xml.sax.XMLReader</Import>
         <Import>org.xml.sax.SAXException</Import>
         <Import>org.xml.sax.InputSource</Import>
-        <Import>javax.xml.bind.JAXBException</Import>
-        <Import>javax.xml.bind.UnmarshallerHandler</Import>
-        <Import>javax.xml.bind.UnmarshalException</Import>
-        <Import>javax.xml.bind.helpers.DefaultValidationEventHandler</Import>
+        <Import>jakarta.xml.bind.JAXBException</Import>
+        <Import>jakarta.xml.bind.UnmarshallerHandler</Import>
+        <Import>jakarta.xml.bind.UnmarshalException</Import>
+        <Import>jakarta.xml.bind.helpers.DefaultValidationEventHandler</Import>
         <Import>org.w3c.dom.Node</Import>
         <Import>org.xml.sax.XMLReader</Import>
         <Import>java.io.File</Import>

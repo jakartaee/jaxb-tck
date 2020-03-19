@@ -22,7 +22,7 @@
     <TestGroupDocumentation>
         <Title><![CDATA[General tests of constructors and newInstance methods]]></Title>
         <Description><![CDATA[General tests of constructors and newInstance methods.]]></Description>
-        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedPackage>jakarta.xml.bind</TestedPackage>
         <TestedClass>JAXBContext</TestedClass>
         <Author><![CDATA[Evgueni Rouban]]></Author>
     </TestGroupDocumentation>
@@ -47,22 +47,22 @@
         <Import>java.util.HashMap</Import>
 
 		<Import>javax.xml.XMLConstants</Import>
-		<Import>javax.xml.bind.JAXBContext</Import>
-		<Import>javax.xml.bind.JAXBElement</Import>
-		<Import>javax.xml.bind.JAXBException</Import>
-		<Import>javax.xml.bind.Marshaller</Import>
-		<Import>javax.xml.bind.SchemaOutputResolver</Import>
-		<Import>javax.xml.bind.PropertyException</Import>
-		<Import>javax.xml.bind.Unmarshaller</Import>
+		<Import>jakarta.xml.bind.JAXBContext</Import>
+		<Import>jakarta.xml.bind.JAXBElement</Import>
+		<Import>jakarta.xml.bind.JAXBException</Import>
+		<Import>jakarta.xml.bind.Marshaller</Import>
+		<Import>jakarta.xml.bind.SchemaOutputResolver</Import>
+		<Import>jakarta.xml.bind.PropertyException</Import>
+		<Import>jakarta.xml.bind.Unmarshaller</Import>
 		<Import>javax.xml.datatype.DatatypeConfigurationException</Import>
 		<Import>javax.xml.datatype.DatatypeFactory</Import>
 		<Import>javax.xml.namespace.QName</Import>
 		<Import>javax.xml.transform.stream.StreamSource</Import>
 		<Import>javax.xml.transform.stream.StreamResult</Import>
 		<Import>javax.xml.transform.Result</Import>
-        <Import>javax.xml.bind.Validator</Import>
-        <Import>javax.xml.bind.Marshaller</Import>
-        <Import>javax.xml.bind.Unmarshaller</Import>
+        <Import>jakarta.xml.bind.Validator</Import>
+        <Import>jakarta.xml.bind.Marshaller</Import>
+        <Import>jakarta.xml.bind.Unmarshaller</Import>
         <BaseClass>MultiTest</BaseClass>
         <SupportCode><![CDATA[
     public static final String testPackage = "javasoft.sqe.tests.api.javax.xml.bind.JAXBContext";
@@ -115,7 +115,7 @@
         address.setCountry("USA");
         address.setZip(new BigDecimal(123456));
 
-        javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.Items.Item item = new javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.Items.Item();
+        javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.Items.Item item = new javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.Items.Item();
         item.setProductName("Lawnmower");
         item.setQuantity(1);
         item.setComment("Confirm this is electric");

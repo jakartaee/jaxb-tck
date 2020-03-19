@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchemaType009;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.util.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -37,7 +37,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 @XmlRootElement(name="root")
 @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
-@javax.xml.bind.annotation.XmlAccessorOrder(XmlAccessOrder.ALPHABETICAL)
+@jakarta.xml.bind.annotation.XmlAccessorOrder(XmlAccessOrder.ALPHABETICAL)
 class XmlSchemaType009 {
 
 	@XmlSchemaType(name = "dateTime")

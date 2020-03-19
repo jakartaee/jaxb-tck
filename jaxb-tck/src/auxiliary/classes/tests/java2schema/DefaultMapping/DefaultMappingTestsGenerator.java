@@ -22,7 +22,7 @@ import java.util.Arrays;
 import javasoft.sqe.jck.lib.*;
 import javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTestExt;
 import javax.xml.XMLConstants;
-import javax.xml.bind.*;
+import jakarta.xml.bind.*;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;

@@ -18,6 +18,6 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.proporder;
 
-import javax.xml.bind.annotation.XmlAccessorOrder;
-import javax.xml.bind.annotation.XmlAccessorType;
-import static javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER; 
+import jakarta.xml.bind.annotation.XmlAccessorOrder;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import static jakarta.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER;

@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorOrder003;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * JAXB specification assertion JAXB:SPEC:J2S:00050 
@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.*;
  * If the @XmlAccessorOrder.value() is XmlAccesOrder.(UNDEFINED), then 
  * the default ordering of fields/properties is unspecified.
  */
-@javax.xml.bind.annotation.XmlAccessorOrder (javax.xml.bind.annotation.XmlAccessOrder.UNDEFINED)
-@javax.xml.bind.annotation.XmlRootElement(name = "root")
+@jakarta.xml.bind.annotation.XmlAccessorOrder (jakarta.xml.bind.annotation.XmlAccessOrder.UNDEFINED)
+@jakarta.xml.bind.annotation.XmlRootElement(name = "root")
 class XmlAccessorOrder002 {
 
 	public Object fldB;

@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlRootElement.name.Name001;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /** 
  * Mapping:  Class to Element Declaration

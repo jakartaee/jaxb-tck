@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.namespace.NameSpace003;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 /**
  * Mapping: Class to Complex Type Definition
  * If @XmlType.namespace() is "##default" && @XmlType.name() is "" and

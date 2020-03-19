@@ -14,9 +14,9 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlSchema(
+@jakarta.xml.bind.annotation.XmlSchema(
      namespace = "http://www.example.com/NSpace3d",
-     xmlns = { @javax.xml.bind.annotation.XmlNs( prefix = "ns3d",
+     xmlns = { @jakarta.xml.bind.annotation.XmlNs( prefix = "ns3d",
                        namespaceURI="http://www.example.com/NSpace3d") }
           )
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.namespace.NameSpace003;

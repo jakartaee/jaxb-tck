@@ -18,12 +18,12 @@ package javasoft.sqe.tests.api.javax.xml.bind;
 
 import java.io.IOException;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.ValidationException;
-import javax.xml.bind.util.JAXBSource;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
+import jakarta.xml.bind.ValidationException;
+import jakarta.xml.bind.util.JAXBSource;
 import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;

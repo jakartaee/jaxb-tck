@@ -15,11 +15,11 @@
  */
 
 @XmlAccessorType(PUBLIC_MEMBER)
-@XmlAccessorOrder(javax.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
+@XmlAccessorOrder(jakarta.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.compositor.Compositor004;
 
-import javax.xml.bind.annotation.XmlAccessorOrder;
-import javax.xml.bind.annotation.XmlAccessorType;
-import static javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER; 
-import static javax.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL;
+import jakarta.xml.bind.annotation.XmlAccessorOrder;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import static jakarta.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER;
+import static jakarta.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL;

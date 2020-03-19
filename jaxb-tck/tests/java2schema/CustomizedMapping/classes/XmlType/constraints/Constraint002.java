@@ -17,7 +17,7 @@
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.constraints;
 
 import java.math.BigDecimal;
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * If a class contains a mapped property or field annotated with

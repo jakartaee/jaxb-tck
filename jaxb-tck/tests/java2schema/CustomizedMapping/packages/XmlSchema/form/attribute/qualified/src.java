@@ -23,9 +23,9 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchema.form
  * attributeFormDefault ::= if the value of @XmlSchema.attributeFormDefault() is @XmlNsForm.UNSET, then absent;
  * otherwise, the value of @XmlSchema.attributeFormDefault()
  */
-@javax.xml.bind.annotation.XmlRootElement (name="rootElem")
+@jakarta.xml.bind.annotation.XmlRootElement (name="rootElem")
 public class src {
-  @javax.xml.bind.annotation.XmlAttribute
+  @jakarta.xml.bind.annotation.XmlAttribute
   public int attr;
 }
 

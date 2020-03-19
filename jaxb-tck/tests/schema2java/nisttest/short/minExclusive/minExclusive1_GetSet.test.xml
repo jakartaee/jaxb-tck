@@ -33,7 +33,7 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.*</Import>
         <ExternalSupportClass SourceName="minExclusive-1.xsd"/>
         <ExternalData Type="iodata" SourceName="minExclusive1_GetSet.sig"/>
     </CodeSet>

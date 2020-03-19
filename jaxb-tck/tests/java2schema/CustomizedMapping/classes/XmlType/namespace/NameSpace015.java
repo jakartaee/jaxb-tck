@@ -16,7 +16,7 @@
 
 package CustomizedMapping.classes.XmlType.namespace;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * A class annotated with @XmlType must be mapped as specified:

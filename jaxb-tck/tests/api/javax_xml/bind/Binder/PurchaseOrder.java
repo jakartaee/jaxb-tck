@@ -19,9 +19,9 @@ package javasoft.sqe.tests.bind.binder;
 import javasoft.sqe.tests.bind.binder.Address;
 import javasoft.sqe.tests.bind.binder.Items;
 import javasoft.sqe.tests.bind.binder.PurchaseOrder;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlType;
 
 
 /**

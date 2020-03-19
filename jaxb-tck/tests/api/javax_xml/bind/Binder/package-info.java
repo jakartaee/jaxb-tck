@@ -14,5 +14,5 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "jck-jaxb-test/Binder")
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "jck-jaxb-test/Binder")
 package javasoft.sqe.tests.bind.binder;

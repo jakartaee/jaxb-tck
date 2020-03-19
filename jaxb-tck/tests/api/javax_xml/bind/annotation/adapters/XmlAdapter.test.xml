@@ -21,7 +21,7 @@
 <TestGroup ID="XmlAdapter">
   <TestGroupDocumentation>
     <Title>Provides XmlAdapter implementation tests</Title>
-    <TestedPackage>javax.xml.bind.annotation.adapters</TestedPackage>
+    <TestedPackage>jakarta.xml.bind.annotation.adapters</TestedPackage>
     <TestedClass>XmlAdapter</TestedClass>
     <Author>Igor Tseytin</Author>
   </TestGroupDocumentation>
@@ -36,9 +36,9 @@
     <Import>java.util.Map</Import>
     <Import>java.util.HashMap</Import>
     <Import>java.util.TreeMap</Import>
-    <Import>javax.xml.bind.*</Import>
-    <Import>javax.xml.bind.annotation.*</Import>
-    <Import>javax.xml.bind.annotation.adapters.*</Import>
+    <Import>jakarta.xml.bind.*</Import>
+    <Import>jakarta.xml.bind.annotation.*</Import>
+    <Import>jakarta.xml.bind.annotation.adapters.*</Import>
     <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
     <Import>javax.xml.transform.*</Import>
     <Import>javax.xml.transform.dom.DOMSource</Import>

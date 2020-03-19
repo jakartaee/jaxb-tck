@@ -21,37 +21,37 @@
 <TestGroup ID="javax.print">
     <TestGroupDocumentation>
             <Title><![CDATA[
-API Signature verification of the javax.xml.bind package and its subpackages
+API Signature verification of the jakarta.xml.bind package and its subpackages
             ]]></Title>
         <TestedPackage>signaturetest</TestedPackage>
         <TestedClass>signaturetest</TestedClass>
     </TestGroupDocumentation>
     <TestGroupAttributes>
-        <AttrElem Name="scInfo">@(#)javax.xml.bind.test.xml	1.5 08/11/17 17:22:21</AttrElem>
+        <AttrElem Name="scInfo">@(#)jakarta.xml.bind.test.xml	1.5 08/11/17 17:22:21</AttrElem>
         <AttrElem Name="testType">ExternalTest</AttrElem>
         <AttrElem Name="tdFile">SignatureTest</AttrElem>
         <Keyword>runtime</Keyword>
         <Keyword>cttest</Keyword>
         <Keyword>positive</Keyword>
         <ExecuteClass>javasoft.sqe.tests.api.signaturetest.SigTestWrapper</ExecuteClass>
-        <ExecuteArgs>-TestURL $testURL -Package javax.xml.bind</ExecuteArgs>
+        <ExecuteArgs>-TestURL $testURL -Package jakarta.xml.bind</ExecuteArgs>
     </TestGroupAttributes>
 
-    <TestCase ID="javax.xml.bind">
+    <TestCase ID="jakarta.xml.bind">
         <TestCaseDocumentation>
             <Title><![CDATA[
-API Signature verification of the javax.xml.bind package and its subpackages
+API Signature verification of the jakarta.xml.bind package and its subpackages
             ]]></Title>
         </TestCaseDocumentation>
         <CodeSet>
             <ExternalSupportClass SourceName="SigTestWrapper.java"/>
-            <ExternalData Type="iodata" SourceName="sig/5.0/javax.xml.bind.sig"/>
-            <ExternalData Type="iodata" SourceName="sig/6.0/javax.xml.bind.sig"/>
-            <ExternalData Type="iodata" SourceName="sig/7.0/javax.xml.bind.sig"/>
-            <ExternalData Type="iodata" SourceName="sig/8.0/javax.xml.bind.sig"/>
-            <ExternalData Type="iodata" SourceName="sig/9.0/javax.xml.bind.sig"/>
+            <ExternalData Type="iodata" SourceName="sig/5.0/jakarta.xml.bind.sig"/>
+            <ExternalData Type="iodata" SourceName="sig/6.0/jakarta.xml.bind.sig"/>
+            <ExternalData Type="iodata" SourceName="sig/7.0/jakarta.xml.bind.sig"/>
+            <ExternalData Type="iodata" SourceName="sig/8.0/jakarta.xml.bind.sig"/>
+            <ExternalData Type="iodata" SourceName="sig/9.0/jakarta.xml.bind.sig"/>
         </CodeSet>
     </TestCase>
 
 </TestGroup>
-<!-- @(#)javax.xml.bind.test.xml	1.5 08/11/17 17:22:21 -->
+<!-- @(#)jakarta.xml.bind.test.xml	1.5 08/11/17 17:22:21 -->

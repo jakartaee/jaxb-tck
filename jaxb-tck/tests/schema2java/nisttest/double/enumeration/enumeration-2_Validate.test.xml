@@ -47,8 +47,8 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
-        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>jakarta.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.TypeConstraintException</Import>
         <SupportCode> 
     final double[] validValues = {
           9.007199254740992E42,
@@ -151,7 +151,7 @@ and expects validation to pass.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
         </CodeSet>
         <TestCode SourceLang="java"><![CDATA[
         
@@ -170,7 +170,7 @@ then expects validation to fail.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
             <ExternalData Type="iodata" SourceName="enumeration-2-4.xml"/>
             <ExternalData Type="iodata" SourceName="enumeration2_validate-enumeration-2-4.jbx"/>
         </CodeSet>

@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorType.srcInherit4_2;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * JAXB specification assertion: JAXB:SPEC:J2S:2046
@@ -42,7 +42,7 @@ public class srcInherit4_2 extends javasoft.sqe.tests.java2schema.CustomizedMapp
   public void setPropPublic(int val) {
     this.fldPrivate = val;
   }
-  @javax.xml.bind.annotation.XmlTransient
+  @jakarta.xml.bind.annotation.XmlTransient
   public int fldPublicTransient;
 
 }

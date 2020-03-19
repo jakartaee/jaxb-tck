@@ -35,7 +35,7 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.*</Import>
         <SupportCode>
     static strictfp boolean equal(float a, float b) { return a == b; };
       </SupportCode>

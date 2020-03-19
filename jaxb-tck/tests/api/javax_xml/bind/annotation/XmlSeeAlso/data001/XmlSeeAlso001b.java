@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.api.javax.xml.bind.annotation.XmlSeeAlso.data001;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 @XmlType(namespace = "http://www.example.com/XmlSeeAlso", propOrder={"b001b", "field001b"}) 
 public class XmlSeeAlso001b  extends XmlSeeAlso001a {

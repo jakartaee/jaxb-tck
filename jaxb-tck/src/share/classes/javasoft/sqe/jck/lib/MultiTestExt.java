@@ -30,8 +30,8 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.StringTokenizer;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 
 /**
  * Extension of MultiTest class.

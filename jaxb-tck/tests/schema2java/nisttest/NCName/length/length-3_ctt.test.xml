@@ -33,7 +33,7 @@ Various XML documents specify various values in the element.
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.JAXBException</Import>
+        <Import>jakarta.xml.bind.JAXBException</Import>
         <ExternalSupportClass SourceName="length-3.xsd"/>
         <ExternalData Type="iodata" SourceName="length3.sig"/>
     </CodeSet>

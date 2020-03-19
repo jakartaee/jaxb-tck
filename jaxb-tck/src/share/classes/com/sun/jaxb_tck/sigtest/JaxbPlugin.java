@@ -72,7 +72,7 @@ class JaxbAccessibleFilter implements Filter {
             declaringClass = cl.getDeclaringClassName();
 
             if (declaringClass == null) {
-                // 6. classes derived from javax.xml.bind.annotation.XmlAdapter.
+                // 6. classes derived from jakarta.xml.bind.annotation.XmlAdapter.
                 return isJaxbAccessible(cl);
             }
 
@@ -87,14 +87,14 @@ class JaxbAccessibleFilter implements Filter {
     }
 
     /**
-     * Checks for Jaxb that class is not derived from javax.xml.bind.annotation.XmlAdapter.
+     * Checks for Jaxb that class is not derived from jakarta.xml.bind.annotation.XmlAdapter.
      */
     private boolean isJaxbAccessible(ClassDescription c) {
 
         ClassHierarchy h = c.getClassHierarchy();
 
         for (ClassDescription cl = c; cl != null && cl.getSuperClass() != null;) {
-            if (cl.getQualifiedName().startsWith("javax.xml.bind.annotation.adapters.XmlAdapter")) {
+            if (cl.getQualifiedName().startsWith("jakarta.xml.bind.annotation.adapters.XmlAdapter")) {
                 return false;
             }
 

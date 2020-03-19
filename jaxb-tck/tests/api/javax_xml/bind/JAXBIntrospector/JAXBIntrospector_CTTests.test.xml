@@ -20,10 +20,10 @@
 
 <TestGroup ID="JAXBIntrospector_">
 	<TestGroupDocumentation>
-        <Title>javax.xml.bind.JAXBIntrospector tests</Title>
-        <Description>Compile a simple schema to create a java binding classes. Test javax.xml.bind.JAXBIntrospector using this context.
+        <Title>jakarta.xml.bind.JAXBIntrospector tests</Title>
+        <Description>Compile a simple schema to create a java binding classes. Test jakarta.xml.bind.JAXBIntrospector using this context.
         </Description>
-        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedPackage>jakarta.xml.bind</TestedPackage>
         <TestedClass>JAXBIntrospector</TestedClass>
     </TestGroupDocumentation>
     <TestGroupAttributes>
@@ -32,10 +32,10 @@
       <AttrElem Name="schemaName">Introspector.xsd</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-    	<Import>javax.xml.bind.JAXBContext</Import>
-		<Import>javax.xml.bind.JAXBElement</Import>
-		<Import>javax.xml.bind.JAXBException</Import>
-		<Import>javax.xml.bind.JAXBIntrospector</Import>
+	<Import>jakarta.xml.bind.JAXBContext</Import>
+		<Import>jakarta.xml.bind.JAXBElement</Import>
+		<Import>jakarta.xml.bind.JAXBException</Import>
+		<Import>jakarta.xml.bind.JAXBIntrospector</Import>
 		<Import>javax.xml.namespace.QName</Import>
 		<ExternalSupportClass SourceName="Element.java"/>
         <ExternalSupportClass SourceName="ChildType.java"/>

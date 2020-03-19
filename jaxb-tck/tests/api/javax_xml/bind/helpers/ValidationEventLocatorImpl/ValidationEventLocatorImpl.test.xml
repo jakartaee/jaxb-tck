@@ -22,7 +22,7 @@
     <TestGroupDocumentation>
         <Title><![CDATA[General tests of constructors and methods]]></Title>
         <Description><![CDATA[General tests of constructors and methods.]]></Description>
-        <TestedPackage>javax.xml.bind.helpers</TestedPackage>
+        <TestedPackage>jakarta.xml.bind.helpers</TestedPackage>
         <TestedClass>ValidationEventLocatorImpl</TestedClass>
         <Author><![CDATA[Evgueni Rouban]]></Author>
     </TestGroupDocumentation>
@@ -38,8 +38,8 @@
     <CodeSet>
         <Import>java.net.URL</Import>
         <Import>java.net.MalformedURLException</Import>
-        <Import>javax.xml.bind.helpers.ValidationEventLocatorImpl</Import>
-        <Import>javax.xml.bind.ValidationEventLocator</Import>
+        <Import>jakarta.xml.bind.helpers.ValidationEventLocatorImpl</Import>
+        <Import>jakarta.xml.bind.ValidationEventLocator</Import>
         <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
         <Import>javax.xml.parsers.FactoryConfigurationError</Import>
         <Import>javax.xml.parsers.ParserConfigurationException</Import>

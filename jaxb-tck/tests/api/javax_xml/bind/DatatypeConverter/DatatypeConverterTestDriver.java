@@ -18,7 +18,7 @@ package javasoft.sqe.tests.api.javax.xml.bind.DatatypeConverter;
 
 import java.io.PrintWriter;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import javasoft.sqe.javatest.Status;
 

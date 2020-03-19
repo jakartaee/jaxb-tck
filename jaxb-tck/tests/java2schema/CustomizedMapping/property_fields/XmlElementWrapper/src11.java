@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.property_fields.XmlElementWrapper.src11;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 import java.math.*;
 import javax.xml.namespace.QName;

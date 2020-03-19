@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.property_fields.XmlElementWrapper.src10;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 @XmlRootElement (name="root", namespace="http://www.example.com/One")
 @XmlType (namespace="http://www.example.com/One")

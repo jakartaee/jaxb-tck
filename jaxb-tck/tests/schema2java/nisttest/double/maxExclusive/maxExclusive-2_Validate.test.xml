@@ -35,8 +35,8 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
-        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>jakarta.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.TypeConstraintException</Import>
         <SupportCode> 
     final double[] validValues = {0.0F, -1.0, -Double.MAX_VALUE, Double.MAX_VALUE
                                 , Double.NEGATIVE_INFINITY, Double.MIN_VALUE};
@@ -122,7 +122,7 @@ then expects validation to pass.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
         </CodeSet>
         <TestCode SourceLang="java"><![CDATA[
         
@@ -142,7 +142,7 @@ then expects validation to fail.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
         </CodeSet>
         <TestCode SourceLang="java"><![CDATA[
         

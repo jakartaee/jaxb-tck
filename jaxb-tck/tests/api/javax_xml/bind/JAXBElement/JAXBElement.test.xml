@@ -21,7 +21,7 @@
 <TestGroup ID="JAXBElement">
   <TestGroupDocumentation>
     <Title>Provides JAXBElement implementation tests</Title>
-    <TestedPackage>javax.xml.bind</TestedPackage>
+    <TestedPackage>jakarta.xml.bind</TestedPackage>
     <TestedClass>JAXBElement</TestedClass>
     <Author>Igor Tseytin</Author>
   </TestGroupDocumentation>
@@ -33,7 +33,7 @@
   </TestGroupAttributes>
   <CodeSet>
     <Import>javax.xml.namespace.QName</Import>
-    <Import>javax.xml.bind.JAXBElement</Import>
+    <Import>jakarta.xml.bind.JAXBElement</Import>
     <BaseClass>MultiTest</BaseClass>
     <SupportCode>
 <![CDATA[

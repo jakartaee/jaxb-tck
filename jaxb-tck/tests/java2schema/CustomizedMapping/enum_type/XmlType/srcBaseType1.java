@@ -16,17 +16,17 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.enum_type.XmlType.srcBaseType1;
 
-@javax.xml.bind.annotation.XmlRootElement (name="root")
+@jakarta.xml.bind.annotation.XmlRootElement (name="root")
 class src {
   public Coin fiver = Coin.NICKEL;
 
-  @javax.xml.bind.annotation.XmlType
-  @javax.xml.bind.annotation.XmlEnum(Integer.class)
+  @jakarta.xml.bind.annotation.XmlType
+  @jakarta.xml.bind.annotation.XmlEnum(Integer.class)
   enum Coin { 
-    @javax.xml.bind.annotation.XmlEnumValue("1") PENNY(1),
-    @javax.xml.bind.annotation.XmlEnumValue("5") NICKEL(5),
-    @javax.xml.bind.annotation.XmlEnumValue("10") DIME(10),
-    @javax.xml.bind.annotation.XmlEnumValue("25") QUARTER(25);
+    @jakarta.xml.bind.annotation.XmlEnumValue("1") PENNY(1),
+    @jakarta.xml.bind.annotation.XmlEnumValue("5") NICKEL(5),
+    @jakarta.xml.bind.annotation.XmlEnumValue("10") DIME(10),
+    @jakarta.xml.bind.annotation.XmlEnumValue("25") QUARTER(25);
     Coin(int value) {
     } 
   }

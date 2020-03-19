@@ -19,19 +19,19 @@ package javasoft.sqe.tests.bind.binder;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
-import javax.xml.bind.ValidationEventLocator;
+import jakarta.xml.bind.ValidationEvent;
+import jakarta.xml.bind.ValidationEventHandler;
+import jakarta.xml.bind.ValidationEventLocator;
 
 
 /**
- * MyValidationEventHandler is an implementation of <code>javax.xml.bind.ValidationEventHandler</code>
+ * MyValidationEventHandler is an implementation of <code>jakarta.xml.bind.ValidationEventHandler</code>
  * interface that stores validation events in an internal list and always return true.
  */
 public class MyValidationEventHandler implements ValidationEventHandler{
     
     /**
-     * Validation events handled by <code>handleEvent(javax.xml.bind.ValidationEvent)</code> method
+     * Validation events handled by <code>handleEvent(jakarta.xml.bind.ValidationEvent)</code> method
      * are stored in this list.
      */
     private LinkedList<ValidationEvent> _validationEvents = new LinkedList<ValidationEvent>(); 
@@ -49,7 +49,7 @@ public class MyValidationEventHandler implements ValidationEventHandler{
     /**
      * Implements handleEvent method of ValidationEventHandler interface.
      * This method stores event in internal list. Always returns <code>true</code>
-     * @see javax.xml.bind.ValidationEventHandler#handleEvent(javax.xml.bind.ValidationEvent)
+     * @see jakarta.xml.bind.ValidationEventHandler#handleEvent(jakarta.xml.bind.ValidationEvent)
      */
     public boolean handleEvent(ValidationEvent event) {
         _validationEvents.add(event);

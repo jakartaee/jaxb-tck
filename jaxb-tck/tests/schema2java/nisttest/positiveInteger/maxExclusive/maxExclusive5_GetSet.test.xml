@@ -33,7 +33,7 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.*</Import>
         <Import>java.math.BigInteger</Import>
         <ExternalSupportClass SourceName="maxExclusive-5.xsd"/>
         <ExternalData Type="iodata" SourceName="maxExclusive5_GetSet.sig"/>

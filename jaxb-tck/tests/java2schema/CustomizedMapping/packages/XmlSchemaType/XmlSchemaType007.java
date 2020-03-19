@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchemaType007;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.util.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;

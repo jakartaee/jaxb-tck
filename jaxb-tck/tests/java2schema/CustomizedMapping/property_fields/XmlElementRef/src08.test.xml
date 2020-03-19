@@ -48,7 +48,7 @@
           otherwise if @XmlElementRef.type() is
           @XmlElementRef.DEFAULT.class and the
           property type is single valued and is
-          javax.xml.bind.JAXBElement, then the
+          jakarta.xml.bind.JAXBElement, then the
           @XmlElementRef.namespace()
         </Description>
         </TestCaseDocumentation>

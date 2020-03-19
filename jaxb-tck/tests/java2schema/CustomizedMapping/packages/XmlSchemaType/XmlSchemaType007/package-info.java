@@ -14,15 +14,15 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlSchemaTypes (
+@jakarta.xml.bind.annotation.XmlSchemaTypes (
    { 	
-	   @javax.xml.bind.annotation.XmlSchemaType(name = "unsignedByte" 	, type=java.lang.Byte.class ),
-	   @javax.xml.bind.annotation.XmlSchemaType(name = "unsignedShort"  , type=java.lang.Short.class),
-	   @javax.xml.bind.annotation.XmlSchemaType(name = "unsignedInt"    , type=java.lang.Integer.class ),
-	   @javax.xml.bind.annotation.XmlSchemaType(name = "QName"          , type=java.lang.String.class  ),
-	   @javax.xml.bind.annotation.XmlSchemaType(name = "dateTime"       , type=javax.xml.datatype.XMLGregorianCalendar.class )
+	   @jakarta.xml.bind.annotation.XmlSchemaType(name = "unsignedByte" 	, type=java.lang.Byte.class ),
+	   @jakarta.xml.bind.annotation.XmlSchemaType(name = "unsignedShort"  , type=java.lang.Short.class),
+	   @jakarta.xml.bind.annotation.XmlSchemaType(name = "unsignedInt"    , type=java.lang.Integer.class ),
+	   @jakarta.xml.bind.annotation.XmlSchemaType(name = "QName"          , type=java.lang.String.class  ),
+	   @jakarta.xml.bind.annotation.XmlSchemaType(name = "dateTime"       , type=javax.xml.datatype.XMLGregorianCalendar.class )
    }
 )		
-@javax.xml.bind.annotation.XmlAccessorOrder(javax.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
-@javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER)
+@jakarta.xml.bind.annotation.XmlAccessorOrder(jakarta.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
+@jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER)
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchemaType007;

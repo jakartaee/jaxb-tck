@@ -25,7 +25,7 @@
         Test of XmlElementRef annotation. 
         Negative test. Assertion from API doc, XmlElementRef:
         If the collection item type (for collection property) or property type (for
-        single valued property) is not javax.xml.bind.JAXBElement,
+        single valued property) is not jakarta.xml.bind.JAXBElement,
         then the type referenced by the property or field must be annotated with
         @XmlRootElement.
         (Class is not marked with @XmlRootElement)

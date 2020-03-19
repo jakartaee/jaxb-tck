@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorType.srcInherit5;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * JAXB specification assertion: JAXB:SPEC:J2S:1047 Mapping: XmlAccessorType
@@ -51,7 +51,7 @@ class Child extends Parent {
 
 	int fldDefault;
 
-	@javax.xml.bind.annotation.XmlTransient
+	@jakarta.xml.bind.annotation.XmlTransient
 	public int fldPublicTransient;
 
 	int getPropDefault() {
@@ -68,7 +68,7 @@ class Child extends Parent {
 	public void setPropPublic(int val) {
 	}
 
-	@javax.xml.bind.annotation.XmlTransient
+	@jakarta.xml.bind.annotation.XmlTransient
 	public int getPropPublicTransient() {
 		return 0;
 	}

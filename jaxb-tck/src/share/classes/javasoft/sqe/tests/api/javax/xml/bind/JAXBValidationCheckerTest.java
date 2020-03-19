@@ -24,7 +24,7 @@ import javasoft.sqe.jck.lib.*;
 import javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTestExt.IFileResolver;
 import javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTestExt.SchemaParameterValue;
 import javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTestExt.XMLDocumentParameterValue;
-import javax.xml.bind.*;
+import jakarta.xml.bind.*;
 import javax.xml.validation.Schema;
 
 public class JAXBValidationCheckerTest extends MultiTestExt {
