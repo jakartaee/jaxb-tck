@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-boolean-pattern-2-NS</string> 
    <string>NISTSchema-boolean-pattern-2</string> 
   </object> 
   <class>java.lang.Boolean</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <boolean>true</boolean> 
  </object> 
 </java> 

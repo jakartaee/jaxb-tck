@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.schema.schd5_a.Root"> 
   <void property="any"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>e1</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtA</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtA"> 
       <void property="a1"> 
        <int>123</int> 
@@ -39,13 +39,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>e2</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtB</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtB"> 
       <void property="b1"> 
        <boolean>true</boolean> 
@@ -57,13 +57,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName1" class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>e3</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtC</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtC"> 
       <void property="c1"> 
        <int>123</int> 
@@ -75,10 +75,10 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtA</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtA"> 
       <void property="a1"> 
        <int>123</int> 
@@ -90,13 +90,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName2" class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>a-e2</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtB</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtB"> 
       <void property="b1"> 
        <boolean>true</boolean> 
@@ -108,13 +108,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>a-e3</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtC</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtC"> 
       <void property="c1"> 
        <int>123</int> 
@@ -126,13 +126,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>b-e1</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtA</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtA"> 
       <void property="a1"> 
        <int>123</int> 
@@ -144,10 +144,10 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName2"/> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtB</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtB"> 
       <void property="b1"> 
        <boolean>true</boolean> 
@@ -159,13 +159,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>b-e3</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtC</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtC"> 
       <void property="c1"> 
        <int>123</int> 
@@ -177,13 +177,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>c-e1</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtA</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtA"> 
       <void property="a1"> 
        <int>123</int> 
@@ -195,13 +195,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>c-e2</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtB</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtB"> 
       <void property="b1"> 
        <boolean>true</boolean> 
@@ -213,10 +213,10 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName1"/> 
      <class>javasoft.sqe.tests.schema.schd5_a.CtC</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd5_a.CtC"> 
       <void property="c1"> 
        <int>123</int> 

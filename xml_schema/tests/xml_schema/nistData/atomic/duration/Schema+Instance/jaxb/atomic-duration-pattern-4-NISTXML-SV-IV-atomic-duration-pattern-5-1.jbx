@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-atomic-duration-pattern-5-NS</string> 
    <string>NISTSchema-SV-IV-atomic-duration-pattern-5</string> 
   </object> 
   <class>javax.xml.datatype.Duration</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createDuration"> 
    <string>P1863Y4M14DT4H14M46S</string> 
   </object> 

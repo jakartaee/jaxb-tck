@@ -24,13 +24,13 @@
     <object class="javasoft.sqe.tests.wildcards.wildi004.Elt1"> 
      <void property="any"> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object class="javax.xml.namespace.QName"> 
          <string></string> 
          <string>elt2</string> 
         </object> 
         <class>java.lang.String</class> 
-        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
         <string>name</string> 
        </object> 
       </void> 

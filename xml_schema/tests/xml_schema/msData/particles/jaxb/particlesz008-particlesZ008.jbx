@@ -18,22 +18,22 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string>urn:my-namespace</string> 
    <string>root</string> 
   </object> 
   <class>javasoft.sqe.tests.particles.particlesz008.ContainMember2Type</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <object class="javasoft.sqe.tests.particles.particlesz008.ContainMember2Type"> 
    <void property="head2"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>urn:my-namespace</string> 
       <string>Member2</string> 
      </object> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <string>string</string> 
     </object> 
    </void> 

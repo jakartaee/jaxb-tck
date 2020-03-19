@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.complextype.ctz007_b.Customers"> 
   <void property="customer"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>urn:xmlns:25hoursaday-com:address</string> 
       <string>MyCustomer</string> 
      </object> 
      <class>javasoft.sqe.tests.complextype.ctz007_b.MyCustomerType</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.complextype.ctz007_b.MyCustomerType"> 
       <void property="address"> 
        <string>2001</string> 

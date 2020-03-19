@@ -23,7 +23,7 @@
    <object class="javasoft.sqe.tests.group.grouph002.Elem"> 
     <void property="x1AndX2OrY1"> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>x1</string> 
@@ -38,7 +38,7 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>x2</string> 

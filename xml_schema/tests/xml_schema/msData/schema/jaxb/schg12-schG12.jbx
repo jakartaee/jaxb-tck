@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.schema.schg12_a.Root"> 
   <void property="any"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>foo_a</string> 
      </object> 
      <class>java.lang.Object</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
       <string>ns-a</string> 
       <string>a:foo_a</string> 
@@ -36,13 +36,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-b</string> 
       <string>foo_b</string> 
      </object> 
      <class>java.lang.Object</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
       <string>ns-b</string> 
       <string>b:foo_b</string> 
@@ -51,13 +51,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-b</string> 
       <string>foo_c</string> 
      </object> 
      <class>java.lang.Object</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
       <string>ns-b</string> 
       <string>b:foo_c</string> 

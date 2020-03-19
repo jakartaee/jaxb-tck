@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.additional.test102850_1.Root"> 
   <void property="AAndB"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>a</string> 
@@ -36,7 +36,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.additional.test102850_1.Root</class> 
@@ -48,7 +48,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>b</string> 

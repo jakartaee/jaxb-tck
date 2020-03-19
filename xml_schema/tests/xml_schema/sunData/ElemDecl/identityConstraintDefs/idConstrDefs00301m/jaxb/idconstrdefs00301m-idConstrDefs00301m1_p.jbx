@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root"> 
   <void property="elementOrElementRefOrElementRefs"> 
    <void method="add"> 
-    <object id="JAXBElement0" class="javax.xml.bind.JAXBElement"> 
+    <object id="JAXBElement0" class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>Element</string> 
@@ -32,7 +32,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName1" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>ElementRef</string> 
@@ -43,7 +43,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName2" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>ElementRefs</string> 
@@ -58,7 +58,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object id="JAXBElement1" class="javax.xml.bind.JAXBElement"> 
+    <object id="JAXBElement1" class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
      <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 
@@ -66,7 +66,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName1"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 
@@ -74,7 +74,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName2"/> 
      <class>java.util.List</class> 
      <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00301m.idconstrdefs00301m.Root</class> 

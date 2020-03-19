@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.schema.schd10_a.Root"> 
   <void property="any"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>e1</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schd10_a.ACt</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <object class="javasoft.sqe.tests.schema.schd10_a.ACt"> 
       <void property="c21"> 
        <void method="add"> 

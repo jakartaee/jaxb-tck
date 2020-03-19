@@ -23,7 +23,7 @@
    <object class="javasoft.sqe.tests.group.groupn017.Elem"> 
     <void property="a"> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>a2</string> 

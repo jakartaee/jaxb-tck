@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.additional.membertype022.Root"> 
   <void property="content"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>e</string> 
@@ -32,7 +32,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
      <class>javasoft.sqe.tests.additional.membertype022.Root</class> 
@@ -40,7 +40,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
      <class>javasoft.sqe.tests.additional.membertype022.Root</class> 

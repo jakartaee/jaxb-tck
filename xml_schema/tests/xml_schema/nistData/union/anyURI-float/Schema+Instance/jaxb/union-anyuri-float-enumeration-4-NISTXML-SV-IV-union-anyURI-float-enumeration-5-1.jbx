@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-union-anyURI-float-enumeration-5-NS</string> 
    <string>NISTSchema-SV-IV-union-anyURI-float-enumeration-5</string> 
   </object> 
   <class>java.lang.String</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <string>telnet://andsuchrobu.tindicatio.andtheinfo.mationandof.net</string> 
  </object> 
 </java> 

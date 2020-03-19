@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-atomic-token-pattern-3-NS</string> 
    <string>NISTSchema-SV-IV-atomic-token-pattern-3</string> 
   </object> 
   <class>java.lang.String</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <string>3243 Organizations Are Developed In Street Suites The For , MA 13653</string> 
  </object> 
 </java> 

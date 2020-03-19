@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-list-normalizedString-maxLength-5-NS</string> 
    <string>NISTSchema-SV-IV-list-normalizedString-maxLength-5</string> 
   </object> 
   <class>java.util.List</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <object class="java.util.ArrayList"> 
    <void method="add"> 
     <string>58432_Of_As_Street_Who_Pervasive_Issues_,_RI_16200</string> 

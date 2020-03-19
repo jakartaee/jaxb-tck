@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string>baseTD</string> 
    <string>root</string> 
   </object> 
   <class>javasoft.sqe.tests.ctype.basetd.basetd00101m.basetd00101m1.Test</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <object class="javasoft.sqe.tests.ctype.basetd.basetd00101m.basetd00101m1.Test"> 
    <void property="value"> 
     <int>1</int> 

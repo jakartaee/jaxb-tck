@@ -23,13 +23,13 @@
    <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Generic"> 
     <void property="facet"> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object id="QName0" class="javax.xml.namespace.QName"> 
         <string>foo</string> 
         <string>yesNo</string> 
        </object> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.YesNo</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.YesNo"> 
         <void property="value"> 
          <string>true</string> 
@@ -38,10 +38,10 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName0"/> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.YesNo</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.YesNo"> 
         <void property="value"> 
          <string>  false  </string> 
@@ -50,13 +50,13 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object id="QName1" class="javax.xml.namespace.QName"> 
         <string>foo</string> 
         <string>long</string> 
        </object> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.LongType</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.LongType"> 
         <void property="value"> 
          <string>  52  </string> 
@@ -65,10 +65,10 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName1"/> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.LongType</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.LongType"> 
         <void property="value"> 
          <string>  -55555  </string> 
@@ -77,13 +77,13 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object id="QName2" class="javax.xml.namespace.QName"> 
         <string>foo</string> 
         <string>int</string> 
        </object> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.Int</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Int"> 
         <void property="value"> 
          <string>  52  </string> 
@@ -92,10 +92,10 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName2"/> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.Int</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Int"> 
         <void property="value"> 
          <string>  -55555  </string> 
@@ -110,10 +110,10 @@
    <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Root$Restricted"> 
     <void property="long"> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName1"/> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.LongType</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.LongType"> 
         <void property="value"> 
          <string>  52  </string> 
@@ -122,10 +122,10 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName1"/> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.LongType</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.LongType"> 
         <void property="value"> 
          <string>  -55555  </string> 
@@ -134,10 +134,10 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName2"/> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.Int</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Int"> 
         <void property="value"> 
          <string>  52  </string> 
@@ -146,10 +146,10 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName2"/> 
        <class>javasoft.sqe.tests.combined.xsd008.xsd008.Int</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.combined.xsd008.xsd008.Int"> 
         <void property="value"> 
          <string>  -55555  </string> 

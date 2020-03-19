@@ -23,13 +23,13 @@
    <void method="add"> 
     <object class="javasoft.sqe.tests.identityconstraint.idf026.T"> 
      <void property="r"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object id="QName0" class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>r</string> 
        </object> 
        <class>javasoft.sqe.tests.identityconstraint.idf026.Rtype</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.identityconstraint.idf026.Rtype"> 
         <void property="value"> 
          <string> 1 </string> 
@@ -42,13 +42,13 @@
    <void method="add"> 
     <object class="javasoft.sqe.tests.identityconstraint.idf026.T"> 
      <void property="r"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object id="QName1" class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>r2</string> 
        </object> 
        <class>javasoft.sqe.tests.identityconstraint.idf026.Rtype</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.identityconstraint.idf026.Rtype"> 
         <void property="value"> 
          <string> 2 </string> 
@@ -61,10 +61,10 @@
    <void method="add"> 
     <object class="javasoft.sqe.tests.identityconstraint.idf026.T"> 
      <void property="r"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName0"/> 
        <class>javasoft.sqe.tests.identityconstraint.idf026.Rtype</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.identityconstraint.idf026.Rtype"> 
         <void property="value"> 
          <string> 3 </string> 
@@ -77,10 +77,10 @@
    <void method="add"> 
     <object class="javasoft.sqe.tests.identityconstraint.idf026.T"> 
      <void property="r"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object idref="QName1"/> 
        <class>javasoft.sqe.tests.identityconstraint.idf026.Rtype</class> 
-       <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+       <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
        <object class="javasoft.sqe.tests.identityconstraint.idf026.Rtype"> 
         <void property="value"> 
          <string> 4 </string> 

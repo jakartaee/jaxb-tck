@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.combined.identity.identitytestsuite._002.test.Root"> 
   <void property="keyOrRef"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>key</string> 
@@ -35,7 +35,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>ref</string> 

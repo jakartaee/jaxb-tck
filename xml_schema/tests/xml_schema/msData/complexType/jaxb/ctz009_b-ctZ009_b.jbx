@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.complextype.ctz009_a.Root"> 
   <void property="fooOrSg"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>foo</string> 
@@ -36,7 +36,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.complextype.ctz009_a.Root</class> 
@@ -48,7 +48,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.complextype.ctz009_a.Root</class> 
@@ -60,7 +60,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.complextype.ctz009_a.Root</class> 
@@ -72,7 +72,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.complextype.ctz009_a.Root</class> 
@@ -84,7 +84,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.complextype.ctz009_a.Root</class> 

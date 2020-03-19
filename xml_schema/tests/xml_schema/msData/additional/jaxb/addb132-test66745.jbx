@@ -18,25 +18,25 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string>foo</string> 
    <string>foo</string> 
   </object> 
   <class>javasoft.sqe.tests.additional.test66745_a.Foo</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <object class="javasoft.sqe.tests.additional.test66745_a.Foo"> 
    <void property="any"> 
     <object class="javasoft.sqe.tests.additional.test66745_a.Bar"> 
      <void property="fooOrBar"> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object class="javax.xml.namespace.QName"> 
          <string>foo1</string> 
          <string>foo1</string> 
         </object> 
         <class>javasoft.sqe.tests.additional.test66745_a.Foo1</class> 
-        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
         <object class="javasoft.sqe.tests.additional.test66745_a.Foo1"> 
          <void property="any"> 
           <object class="javasoft.sqe.tests.additional.test66745_a.Bar"/> 

@@ -31,7 +31,7 @@
 </string> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object id="QName0" class="javax.xml.namespace.QName"> 
          <string>myNS.tempuri.org</string> 
          <string>row</string> 
@@ -49,7 +49,7 @@
        </object> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object id="QName1" class="javax.xml.namespace.QName"> 
          <string>myNS.tempuri.org</string> 
          <string>ref</string> 
@@ -84,7 +84,7 @@
 </string> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object idref="QName0"/> 
         <class>javasoft.sqe.tests.identityconstraint.idl077.Ttype$Row</class> 
         <class>javasoft.sqe.tests.identityconstraint.idl077.Ttype</class> 
@@ -99,7 +99,7 @@
        </object> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object idref="QName1"/> 
         <class>javasoft.sqe.tests.identityconstraint.idl077.Ttype$Ref</class> 
         <class>javasoft.sqe.tests.identityconstraint.idl077.Ttype</class> 
@@ -131,7 +131,7 @@
 </string> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object idref="QName0"/> 
         <class>javasoft.sqe.tests.identityconstraint.idl077.Ttype$Row</class> 
         <class>javasoft.sqe.tests.identityconstraint.idl077.Ttype</class> 
@@ -146,7 +146,7 @@
        </object> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object idref="QName1"/> 
         <class>javasoft.sqe.tests.identityconstraint.idl077.Ttype$Ref</class> 
         <class>javasoft.sqe.tests.identityconstraint.idl077.Ttype</class> 

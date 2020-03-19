@@ -28,7 +28,7 @@
 	</string> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>child_1</string> 
@@ -44,7 +44,7 @@
 	</string> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>child_2</string> 

@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.elemdecl.disallowedsubst.disallowedsubst00501m.disallowedsubst00501m1.Root"> 
   <void property="head"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object class="javax.xml.namespace.QName"> 
       <string>ElemDecl/disallowedSubst</string> 
       <string>Member1</string> 
      </object> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
      <string></string> 
     </object> 
    </void> 

@@ -18,17 +18,17 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement"> 
   <object class="javax.xml.namespace.QName"> 
    <string></string> 
    <string>doc</string> 
   </object> 
   <class>javasoft.sqe.tests.modelgroups.mgq002.Foo</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
   <object class="javasoft.sqe.tests.modelgroups.mgq002.Foo"> 
    <void property="content"> 
     <void method="add"> 
-     <object class="javax.xml.bind.JAXBElement"> 
+     <object class="jakarta.xml.bind.JAXBElement"> 
       <object id="QName0" class="javax.xml.namespace.QName"> 
        <string></string> 
        <string>e1</string> 
@@ -39,7 +39,7 @@
      </object> 
     </void> 
     <void method="add"> 
-     <object class="javax.xml.bind.JAXBElement"> 
+     <object class="jakarta.xml.bind.JAXBElement"> 
       <object idref="QName0"/> 
       <class>java.lang.String</class> 
       <class>javasoft.sqe.tests.modelgroups.mgq002.Foo</class> 

@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.combined._005.test.Root"> 
   <void property="item1OrItem2"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>item1</string> 
@@ -36,7 +36,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -48,7 +48,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -60,7 +60,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -72,7 +72,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -84,7 +84,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -96,7 +96,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -108,7 +108,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -120,7 +120,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName1" class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>item2</string> 
@@ -135,7 +135,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName1"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -147,7 +147,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName1"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 
@@ -159,7 +159,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName1"/> 
      <class>javasoft.sqe.tests.combined._005.test.B</class> 
      <class>javasoft.sqe.tests.combined._005.test.Root</class> 

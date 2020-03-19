@@ -23,7 +23,7 @@
    <object class="javasoft.sqe.tests.particles.particlesw016.R"> 
     <void property="e1AndE2AndE3"> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>e1</string> 
@@ -65,7 +65,7 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>e2</string> 
@@ -80,7 +80,7 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement"> 
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>e3</string> 

@@ -35,13 +35,13 @@
     <object class="javasoft.sqe.tests.combined.xsd012.xsd012.Root$Mixed"> 
      <void property="content"> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object id="QName0" class="javax.xml.namespace.QName"> 
          <string>foo</string> 
          <string>a</string> 
         </object> 
         <class>java.lang.Object</class> 
-        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
          <string>foo</string> 
          <string>a</string> 
@@ -53,13 +53,13 @@
        <string> mi </string> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object id="QName1" class="javax.xml.namespace.QName"> 
          <string>foo</string> 
          <string>b</string> 
         </object> 
         <class>java.lang.Object</class> 
-        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
          <string>foo</string> 
          <string>b</string> 
@@ -71,13 +71,13 @@
        <string> xed </string> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object class="javax.xml.namespace.QName"> 
          <string>foo</string> 
          <string>c</string> 
         </object> 
         <class>java.lang.Object</class> 
-        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
          <string>foo</string> 
          <string>c</string> 
@@ -96,10 +96,10 @@
     <object class="javasoft.sqe.tests.combined.xsd012.xsd012.Root$ElementOnly"> 
      <void property="AOrBOrC"> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object idref="QName0"/> 
         <class>java.lang.Object</class> 
-        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
          <string>foo</string> 
          <string>a</string> 
@@ -108,10 +108,10 @@
        </object> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object idref="QName1"/> 
         <class>java.lang.Object</class> 
-        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
          <string>foo</string> 
          <string>b</string> 
@@ -120,10 +120,10 @@
        </object> 
       </void> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement"> 
         <object idref="QName0"/> 
         <class>java.lang.Object</class> 
-        <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+        <class>jakarta.xml.bind.JAXBElement$GlobalScope</class> 
         <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
          <string>foo</string> 
          <string>a</string> 

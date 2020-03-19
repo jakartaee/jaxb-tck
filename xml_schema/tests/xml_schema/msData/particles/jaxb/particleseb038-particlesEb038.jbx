@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.particles.particleseb038.Doc"> 
   <void property="a"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string>http://xsdtesting</string> 
       <string>a1</string> 
@@ -36,7 +36,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object id="QName1" class="javax.xml.namespace.QName"> 
       <string>http://xsdtesting</string> 
       <string>a2</string> 
@@ -51,7 +51,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.particles.particleseb038.Doc</class> 
@@ -63,7 +63,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName1"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.particles.particleseb038.Doc</class> 
@@ -75,7 +75,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.particles.particleseb038.Doc</class> 
@@ -87,7 +87,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement"> 
      <object idref="QName1"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.particles.particleseb038.Doc</class> 
