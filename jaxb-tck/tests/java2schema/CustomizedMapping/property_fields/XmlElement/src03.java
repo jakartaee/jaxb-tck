@@ -17,9 +17,9 @@
 package javasoft.sqe.tests.java2schema.CustomizedMapping.property_fields.XmlElement.src03;
 
 import java.util.List;
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
-@javax.xml.bind.annotation.XmlRootElement (name="root")
+@jakarta.xml.bind.annotation.XmlRootElement (name="root")
 class src {
   @XmlElement (name="another_name")
   public int fld1;

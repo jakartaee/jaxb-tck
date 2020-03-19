@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorOrder001;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * JAXB specification assertion JAXB:SPEC:J2S:00049
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.*;
  * is XmlAccessOrder.(ALHPHABETICAL), then the default ordering of fields/prop erti es is 
  * lexicographic order as determined by java.lang.String.CompareTo((String anotherString).
  */
-@javax.xml.bind.annotation.XmlRootElement(name = "root")
+@jakarta.xml.bind.annotation.XmlRootElement(name = "root")
 class XmlAccessorOrder001 {
 	public Object fldB;
 

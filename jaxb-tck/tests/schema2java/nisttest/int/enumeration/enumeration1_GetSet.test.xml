@@ -34,7 +34,7 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.*</Import>
         <ExternalSupportClass SourceName="enumeration-1.xsd"/>
         <ExternalData Type="iodata" SourceName="enumeration1_GetSet.sig"/>
     </CodeSet>

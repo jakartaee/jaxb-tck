@@ -48,11 +48,11 @@
           if @XmlElementRef.type() is
           @XmlElementRef.DEFAULT.class and the
           property type is not
-          javax.xml.bind.JAXBElement, then the XML
+          jakarta.xml.bind.JAXBElement, then the XML
           name @XmlRootElement.name() on the type
           being referenced.
           Assertion from API doc, XmlElementRef, type:
-          Default: javax.xml.bind.annotation.XmlElementRef.DEFAULT.class
+          Default: jakarta.xml.bind.annotation.XmlElementRef.DEFAULT.class
         </Description>
         </TestCaseDocumentation>
         <TestCaseAttributes>

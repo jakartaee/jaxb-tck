@@ -17,7 +17,7 @@
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.constraints;
 
 import java.math.BigDecimal;
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * A class must have a public zero arg constructor or a factory method

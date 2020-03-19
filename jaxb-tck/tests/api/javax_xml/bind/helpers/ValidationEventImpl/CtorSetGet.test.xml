@@ -25,7 +25,7 @@
 Constructor, getLinkedException, getLocator, getMessage, getSeverity,
 setLinkedException, setLocator, setMessage, setSeverity tests.
         ]]></Description>
-        <TestedPackage>javax.xml.bind.helpers</TestedPackage>
+        <TestedPackage>jakarta.xml.bind.helpers</TestedPackage>
         <TestedClass>ValidationEventImpl</TestedClass>
         <Author><![CDATA[Oleg Oleinik]]></Author>
     </TestGroupDocumentation>
@@ -39,9 +39,9 @@ setLinkedException, setLocator, setMessage, setSeverity tests.
     </TestGroupAttributes>
     <CodeSet>
         <Import>java.util.Arrays</Import>
-        <Import>javax.xml.bind.helpers.ValidationEventImpl</Import>
-        <Import>javax.xml.bind.ValidationEventLocator</Import>
-        <Import>javax.xml.bind.ValidationEvent</Import>
+        <Import>jakarta.xml.bind.helpers.ValidationEventImpl</Import>
+        <Import>jakarta.xml.bind.ValidationEventLocator</Import>
+        <Import>jakarta.xml.bind.ValidationEvent</Import>
         <BaseClass>MultiTest</BaseClass>
         <SupportCode><![CDATA[
     int[] valid_severity = {ValidationEvent.ERROR, ValidationEvent.FATAL_ERROR, ValidationEvent.WARNING};

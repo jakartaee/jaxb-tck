@@ -16,7 +16,7 @@
 
 package CustomizedMapping.packages.XmlSchema.location;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  *

@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorType.srcDefault;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * JAXB specification assertion: JAXB:SPEC:J2S:00044
@@ -25,14 +25,14 @@ import javax.xml.bind.annotation.*;
  * PUBLIC_MEMBER - Every public getter/setter pair and every public field will be 
  * automatically bound to XML, unless annotated by XmlTransient.
  */
-@javax.xml.bind.annotation.XmlRootElement (name="root")
+@jakarta.xml.bind.annotation.XmlRootElement (name="root")
 @XmlType (propOrder={"fldPublic", "propPublic"})
 class src {
   public int fldPublic;
 
   int fldDefault;
 
-  @javax.xml.bind.annotation.XmlTransient
+  @jakarta.xml.bind.annotation.XmlTransient
   public int fldPublicTransient;
 
   int getPropDefault() {
@@ -47,7 +47,7 @@ class src {
   public void setPropPublic(int val) {
   }
 
-  @javax.xml.bind.annotation.XmlTransient
+  @jakarta.xml.bind.annotation.XmlTransient
   public int getPropPublicTransient() {
     return 0;
   }

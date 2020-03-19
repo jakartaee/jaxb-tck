@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorType.srcNone;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -31,7 +31,7 @@ import java.util.List;
  *                                   annotations.
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@javax.xml.bind.annotation.XmlRootElement(name = "root")
+@jakarta.xml.bind.annotation.XmlRootElement(name = "root")
 @XmlType(propOrder = { "id", "remarks", "val", "picture" })
 class src {
 
@@ -39,7 +39,7 @@ class src {
 
 	int fldDefault;
 
-	@javax.xml.bind.annotation.XmlTransient
+	@jakarta.xml.bind.annotation.XmlTransient
 	public int fldPublicTransient;
 
 	int getPropDefault() {
@@ -56,7 +56,7 @@ class src {
 	public void setPropPublic(int val) {
 	}
 
-	@javax.xml.bind.annotation.XmlTransient
+	@jakarta.xml.bind.annotation.XmlTransient
 	public int getPropPublicTransient() {
 		return 0;
 	}

@@ -22,7 +22,7 @@
     <TestGroupDocumentation>
         <Title><![CDATA[General tests of constructors and methods]]></Title>
         <Description><![CDATA[General tests of constructors and methods.]]></Description>
-        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedPackage>jakarta.xml.bind</TestedPackage>
         <TestedClass>JAXBException</TestedClass>
         <Author><![CDATA[Evgueni Rouban]]></Author>
     </TestGroupDocumentation>
@@ -36,7 +36,7 @@
     </TestGroupAttributes>
 
     <CodeSet>
-        <Import>javax.xml.bind.JAXBException</Import>
+        <Import>jakarta.xml.bind.JAXBException</Import>
         <Import>java.io.PrintStream</Import>
         <Import>java.io.ByteArrayOutputStream</Import>
         <SupportCode><![CDATA[

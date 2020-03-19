@@ -22,7 +22,7 @@
     <TestGroupDocumentation>
         <Title><![CDATA[General tests of constructors and methods]]></Title>
         <Description><![CDATA[General tests of constructors and methods.]]></Description>
-        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedPackage>jakarta.xml.bind</TestedPackage>
         <TestedClass>PropertyException</TestedClass>
         <Author><![CDATA[Evgueni Rouban]]></Author>
     </TestGroupDocumentation>
@@ -36,7 +36,7 @@
     </TestGroupAttributes>
 
     <CodeSet>
-        <Import>javax.xml.bind.PropertyException</Import>
+        <Import>jakarta.xml.bind.PropertyException</Import>
         <SupportCode><![CDATA[
     static final String msg = "test message";
     static final String err = "error code";

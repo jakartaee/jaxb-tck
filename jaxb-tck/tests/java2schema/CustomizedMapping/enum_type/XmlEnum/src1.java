@@ -16,9 +16,9 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.enum_type.XmlEnum.src1;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
-@javax.xml.bind.annotation.XmlRootElement (name="root")
+@jakarta.xml.bind.annotation.XmlRootElement (name="root")
 class src {
   public Coin coin;
     @XmlType

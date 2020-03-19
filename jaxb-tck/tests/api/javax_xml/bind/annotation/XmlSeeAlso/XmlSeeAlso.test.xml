@@ -22,7 +22,7 @@
     <TestGroupDocumentation>
         <Title><![CDATA[@XmlSeeAlso implementation tests]]></Title>
         <Description><![CDATA[@XmlSeeAlso implementation tests]]></Description>
-        <TestedPackage>javax.xml.bind.annotation</TestedPackage>
+        <TestedPackage>jakarta.xml.bind.annotation</TestedPackage>
         <TestedClass>XmlSeeAlso</TestedClass>
         <Author><![CDATA[Leonid Kuskov]]></Author>
     </TestGroupDocumentation>
@@ -38,9 +38,9 @@
         <Import>java.io.IOException</Import>
         <Import>java.net.URL</Import>
   
-        <Import>javax.xml.bind.Binder</Import>
-        <Import>javax.xml.bind.JAXBContext</Import>
-        <Import>javax.xml.bind.UnmarshalException</Import>
+        <Import>jakarta.xml.bind.Binder</Import>
+        <Import>jakarta.xml.bind.JAXBContext</Import>
+        <Import>jakarta.xml.bind.UnmarshalException</Import>
         <Import>javax.xml.parsers.DocumentBuilder</Import>
         <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
         <Import>javax.xml.parsers.ParserConfigurationException</Import>

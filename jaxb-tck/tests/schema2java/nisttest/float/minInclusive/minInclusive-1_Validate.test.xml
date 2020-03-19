@@ -35,8 +35,8 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
-        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>jakarta.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.TypeConstraintException</Import>
         <SupportCode> 
     final float[] validValues = {0.0F, 1020640E20F, 4710493E-6F, 11125265E-37F, Float.MAX_VALUE
                                 , Float.POSITIVE_INFINITY};
@@ -121,7 +121,7 @@ Float.POSITIVE_INFINITY, Float.NaN then expects validation to pass.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
         </CodeSet>
         <TestCode SourceLang="java"><![CDATA[
         
@@ -140,7 +140,7 @@ then expects validation to fail.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
             <ExternalData Type="iodata" SourceName="minInclusive-1-1.xml"/>
             <ExternalData Type="iodata" SourceName="mininclusive1_validate-minInclusive-1-1.jbx"/>
         </CodeSet>

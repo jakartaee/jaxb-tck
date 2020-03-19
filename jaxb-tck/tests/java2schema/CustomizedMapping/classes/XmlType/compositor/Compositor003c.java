@@ -17,8 +17,8 @@
 package CustomizedMapping.classes.XmlType.compositor;
 
 import java.math.BigDecimal;
-import javax.xml.bind.annotation.*;
-import static javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER;
+import jakarta.xml.bind.annotation.*;
+import static jakarta.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER;
 
 /**
  * Mapping: Class to Complex Type Definition
@@ -35,7 +35,7 @@ import static javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER;
  */
 @XmlType
 @XmlRootElement
-@XmlAccessorOrder(javax.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
+@XmlAccessorOrder(jakarta.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
 public class Compositor003c {
 
    @XmlElement(type=BigDecimal.class)

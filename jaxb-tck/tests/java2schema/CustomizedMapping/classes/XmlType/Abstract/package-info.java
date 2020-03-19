@@ -22,7 +22,7 @@
 @XmlAccessorType(FIELD)
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.Abstract;
 
-import javax.xml.bind.annotation.XmlSchema;          
-import javax.xml.bind.annotation.XmlNs;
-import javax.xml.bind.annotation.XmlAccessorType;
-import static javax.xml.bind.annotation.XmlAccessType.FIELD; 
+import jakarta.xml.bind.annotation.XmlSchema;
+import jakarta.xml.bind.annotation.XmlNs;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import static jakarta.xml.bind.annotation.XmlAccessType.FIELD;

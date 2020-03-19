@@ -24,7 +24,7 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorTyp
  * PROPERTY - Every getter/setter pair in a JAXB-bound class will be
  * automatically bound to XML, unless annotated by XmlTransient.
  */
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 @XmlAccessorType (XmlAccessType.PROPERTY)
 @XmlRootElement (name="root")
 @XmlType (propOrder={"propDefault", "propPrivate", "propProtected", "propPublic"})
@@ -52,7 +52,7 @@ class src {
 
   public int fldPublic;
 
-  @javax.xml.bind.annotation.XmlTransient
+  @jakarta.xml.bind.annotation.XmlTransient
   public int getPropPublicTransient() {
     return 0;
   }

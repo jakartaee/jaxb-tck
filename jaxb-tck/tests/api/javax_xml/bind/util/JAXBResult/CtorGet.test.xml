@@ -31,13 +31,13 @@
       <AttrElem Name="schemaName">enumeration-1-result.xsd</AttrElem>
    </TestGroupAttributes>
    <CodeSet>
-      <Import>javax.xml.bind.util.JAXBResult</Import>
-      <Import>javax.xml.bind.JAXBContext</Import>
-      <Import>javax.xml.bind.JAXBException</Import>
-      <Import>javax.xml.bind.JAXBElement</Import>
-      <Import>javax.xml.bind.Unmarshaller</Import>
-      <Import>javax.xml.bind.Marshaller</Import>
-      <Import>javax.xml.bind.Validator</Import>
+      <Import>jakarta.xml.bind.util.JAXBResult</Import>
+      <Import>jakarta.xml.bind.JAXBContext</Import>
+      <Import>jakarta.xml.bind.JAXBException</Import>
+      <Import>jakarta.xml.bind.JAXBElement</Import>
+      <Import>jakarta.xml.bind.Unmarshaller</Import>
+      <Import>jakarta.xml.bind.Marshaller</Import>
+      <Import>jakarta.xml.bind.Validator</Import>
       <ExternalSupportClass SourceName="ObjectFactory.java"/>
       <ExternalData SourceName="enumeration-1-result.xsd" Type="iodata"/>
    </CodeSet>

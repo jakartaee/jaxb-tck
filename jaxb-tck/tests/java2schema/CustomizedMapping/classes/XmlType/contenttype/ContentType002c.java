@@ -16,9 +16,9 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.contenttype;
 
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.JAXBElement;
-import static javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.JAXBElement;
+import static jakarta.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER;
 import java.util.*;
 import java.math.BigInteger;
 

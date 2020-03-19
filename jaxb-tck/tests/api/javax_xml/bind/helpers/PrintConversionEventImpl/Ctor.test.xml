@@ -24,7 +24,7 @@
         <Description><![CDATA[
 Constructor tests.
         ]]></Description>
-        <TestedPackage>javax.xml.bind.helpers</TestedPackage>
+        <TestedPackage>jakarta.xml.bind.helpers</TestedPackage>
         <TestedClass>PrintConversionEventImpl</TestedClass>
         <Author><![CDATA[Oleg Oleinik]]></Author>
     </TestGroupDocumentation>
@@ -37,9 +37,9 @@ Constructor tests.
        <Keyword>positive</Keyword>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.helpers.PrintConversionEventImpl</Import>
-        <Import>javax.xml.bind.ValidationEventLocator</Import>
-        <Import>javax.xml.bind.ValidationEvent</Import>
+        <Import>jakarta.xml.bind.helpers.PrintConversionEventImpl</Import>
+        <Import>jakarta.xml.bind.ValidationEventLocator</Import>
+        <Import>jakarta.xml.bind.ValidationEvent</Import>
         <BaseClass>MultiTest</BaseClass>
         <SupportCode><![CDATA[
     int[] valid_severity = {ValidationEvent.ERROR, ValidationEvent.FATAL_ERROR, ValidationEvent.WARNING};
