@@ -14,8 +14,8 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlSchema (
+@jakarta.xml.bind.annotation.XmlSchema (
   namespace="http://a.b.c",
-  elementFormDefault = javax.xml.bind.annotation.XmlNsForm.UNQUALIFIED
+  elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.UNQUALIFIED
 )
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchema.form.element.unqualified.src;

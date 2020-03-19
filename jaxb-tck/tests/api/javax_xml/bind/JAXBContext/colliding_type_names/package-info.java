@@ -17,13 +17,13 @@
      
 
 
-@javax.xml.bind.annotation.XmlSchema(
+@jakarta.xml.bind.annotation.XmlSchema(
     namespace = "jck-jaxb-test/JAXBContext/colliding_type_names",
     xmlns={
-            @javax.xml.bind.annotation.XmlNs(prefix = "jck", 
+            @jakarta.xml.bind.annotation.XmlNs(prefix = "jck", 
                        namespaceURI="jck-jaxb-test/JAXBContext/colliding_type_names"),
-            @javax.xml.bind.annotation.XmlNs(prefix="xd",
+            @jakarta.xml.bind.annotation.XmlNs(prefix="xd",
                        namespaceURI="http://www.w3.org/2001/XMLSchema")
           }
 )
-package javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.colliding_type_names;
+package javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.colliding_type_names;

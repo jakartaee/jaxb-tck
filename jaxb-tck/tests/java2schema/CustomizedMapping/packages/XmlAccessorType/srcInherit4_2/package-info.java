@@ -14,5 +14,5 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlAccessorType (javax.xml.bind.annotation.XmlAccessType.PROPERTY)
+@jakarta.xml.bind.annotation.XmlAccessorType (jakarta.xml.bind.annotation.XmlAccessType.PROPERTY)
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorType.srcInherit4_2;

@@ -32,10 +32,10 @@
       <AttrElem Name="schemaName">Unmarshaller-1.xsd</AttrElem>
    </TestGroupAttributes>
    <CodeSet>
-      <Import>javax.xml.bind.Unmarshaller</Import>
-      <Import>javax.xml.bind.JAXBContext</Import>
-      <Import>javax.xml.bind.JAXBException</Import>
-      <Import>javax.xml.bind.JAXBElement</Import>
+      <Import>jakarta.xml.bind.Unmarshaller</Import>
+      <Import>jakarta.xml.bind.JAXBContext</Import>
+      <Import>jakarta.xml.bind.JAXBException</Import>
+      <Import>jakarta.xml.bind.JAXBElement</Import>
       <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
       <Import>javax.xml.parsers.DocumentBuilder</Import>
       <Import>javax.xml.transform.sax.SAXSource</Import>

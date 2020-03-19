@@ -16,10 +16,10 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.property_fields.XmlElementWrapper.src03;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.util.List;
 
-@javax.xml.bind.annotation.XmlRootElement (name="root")
+@jakarta.xml.bind.annotation.XmlRootElement (name="root")
 class src {
   @XmlElementWrapper (name="cover")
   @XmlElement

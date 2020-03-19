@@ -23,7 +23,7 @@
     <TestGroupDocumentation>
         <Title>Providers Validator implementation tests. (content tree test)</Title>
         <Description>Compile a simple schema to create a java binding classes. Test an
-        available implementation of the javax.xml.bind.Validator interface using this 
+        available implementation of the jakarta.xml.bind.Validator interface using this 
         context.
         </Description>
     </TestGroupDocumentation>
@@ -32,11 +32,11 @@
       <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.JAXBContext</Import>
-        <Import>javax.xml.bind.JAXBException</Import>
-        <Import>javax.xml.bind.Validator</Import>
-        <Import>javax.xml.bind.helpers.DefaultValidationEventHandler</Import>
-        <Import>javax.xml.bind.ValidationEventHandler</Import>
+        <Import>jakarta.xml.bind.JAXBContext</Import>
+        <Import>jakarta.xml.bind.JAXBException</Import>
+        <Import>jakarta.xml.bind.Validator</Import>
+        <Import>jakarta.xml.bind.helpers.DefaultValidationEventHandler</Import>
+        <Import>jakarta.xml.bind.ValidationEventHandler</Import>
         <SupportCode><![CDATA[
     Validator getValidator() throws JAXBException {
         JAXBContext jc = getJAXBContext();
@@ -150,9 +150,9 @@
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.TypeConstraintException</Import>
-            <Import>javax.xml.bind.ValidationException</Import>
-            <Import>javax.xml.bind.ValidationEvent</Import>
+            <Import>jakarta.xml.bind.TypeConstraintException</Import>
+            <Import>jakarta.xml.bind.ValidationException</Import>
+            <Import>jakarta.xml.bind.ValidationEvent</Import>
         </CodeSet>
         <TestCode><![CDATA[
          try {
@@ -197,9 +197,9 @@
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.TypeConstraintException</Import>
-            <Import>javax.xml.bind.ValidationException</Import>
-            <Import>javax.xml.bind.ValidationEvent</Import>
+            <Import>jakarta.xml.bind.TypeConstraintException</Import>
+            <Import>jakarta.xml.bind.ValidationException</Import>
+            <Import>jakarta.xml.bind.ValidationEvent</Import>
             <ExternalData SourceName="Validator.xml" Type="iodata"/>
         </CodeSet>
         <TestCode><![CDATA[
@@ -245,8 +245,8 @@
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.ValidationException</Import>
-            <Import>javax.xml.bind.ValidationEvent</Import>
+            <Import>jakarta.xml.bind.ValidationException</Import>
+            <Import>jakarta.xml.bind.ValidationEvent</Import>
             <ExternalData SourceName="Validator.xml" Type="iodata"/>
         </CodeSet>
         <TestCode><![CDATA[
@@ -291,8 +291,8 @@
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.ValidationException</Import>
-            <Import>javax.xml.bind.ValidationEvent</Import>
+            <Import>jakarta.xml.bind.ValidationException</Import>
+            <Import>jakarta.xml.bind.ValidationEvent</Import>
             <ExternalData SourceName="Validator.xml" Type="iodata"/>
         </CodeSet>
         <TestCode><![CDATA[
@@ -325,8 +325,8 @@
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.ValidationException</Import>
-            <Import>javax.xml.bind.ValidationEvent</Import>
+            <Import>jakarta.xml.bind.ValidationException</Import>
+            <Import>jakarta.xml.bind.ValidationEvent</Import>
             <ExternalData SourceName="Validator.xml" Type="iodata"/>
         </CodeSet>
         <TestCode><![CDATA[

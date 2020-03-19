@@ -22,7 +22,7 @@
     <TestGroupDocumentation>
         <Title>Partial default Marshaller implementation tests. (content tree test)</Title>
         <Description>Compile a simple schema to create a java binding classes. Test the 
-        class javax.xml.bind.helpers.AbstractMarshallerImpl using this context.
+        class jakarta.xml.bind.helpers.AbstractMarshallerImpl using this context.
         </Description>
     </TestGroupDocumentation>
     <TestGroupAttributes>
@@ -31,13 +31,13 @@
       <AttrElem Name="schemaName">AbstractMarshallerImpl.xsd</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.helpers.AbstractMarshallerImpl</Import>
+        <Import>jakarta.xml.bind.helpers.AbstractMarshallerImpl</Import>
         <Import>javax.xml.transform.Result</Import>
-        <Import>javax.xml.bind.JAXBContext</Import>
-        <Import>javax.xml.bind.JAXBException</Import>
-        <Import>javax.xml.bind.Marshaller</Import>
-        <Import>javax.xml.bind.helpers.DefaultValidationEventHandler</Import>
-        <Import>javax.xml.bind.ValidationEventHandler</Import>
+        <Import>jakarta.xml.bind.JAXBContext</Import>
+        <Import>jakarta.xml.bind.JAXBException</Import>
+        <Import>jakarta.xml.bind.Marshaller</Import>
+        <Import>jakarta.xml.bind.helpers.DefaultValidationEventHandler</Import>
+        <Import>jakarta.xml.bind.ValidationEventHandler</Import>
         <Import>java.io.UnsupportedEncodingException</Import>
         <InlineSupportClass>
             <CodeSource><![CDATA[
@@ -128,7 +128,7 @@ class ParasiteMarshaller extends AbstractMarshallerImpl {
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.PropertyException</Import>
+            <Import>jakarta.xml.bind.PropertyException</Import>
         </CodeSet>
         <TestCode><![CDATA[
         try {
@@ -158,7 +158,7 @@ class ParasiteMarshaller extends AbstractMarshallerImpl {
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.PropertyException</Import>
+            <Import>jakarta.xml.bind.PropertyException</Import>
         </CodeSet>
         <TestCode><![CDATA[
         try {
@@ -359,7 +359,7 @@ class ParasiteMarshaller extends AbstractMarshallerImpl {
         </TestCaseDocumentation>
         <CodeSet>
             <Import>java.io.StringWriter</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         ErrorCollector eh = new ErrorCollector();

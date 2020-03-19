@@ -34,8 +34,8 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
-        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>jakarta.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.TypeConstraintException</Import>
         <SupportCode>
     final String[] validValues = {
       "eGZhbXBqYnNh",
@@ -172,7 +172,7 @@ and expects validation to pass.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
         </CodeSet>
         <TestCode SourceLang="java"><![CDATA[
         
@@ -195,7 +195,7 @@ then expects validation to fail.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
             <ExternalData Type="iodata" SourceName="minLength-2-4.xml"/>
             <ExternalData Type="iodata" SourceName="minlength2_validate-minLength-2-4.jbx"/>
         </CodeSet>

@@ -31,7 +31,7 @@
       <AttrElem Name="schemaName">UnmarshallerHandler.xsd</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.UnmarshallerHandler</Import>
+        <Import>jakarta.xml.bind.UnmarshallerHandler</Import>
         <ExternalSupportClass SourceName="ObjectFactory.java" />
         <ExternalData SourceName="UnmarshallerHandler.xsd" Type="iodata"/>
     </CodeSet>
@@ -51,11 +51,11 @@
         <CodeSet>
             <Import>org.xml.sax.helpers.AttributesImpl</Import>
             <Import>org.xml.sax.SAXException</Import>
-            <Import>javax.xml.bind.JAXBContext</Import>
-            <Import>javax.xml.bind.JAXBElement</Import>
-            <Import>javax.xml.bind.JAXBException</Import>
-            <Import>javax.xml.bind.Unmarshaller</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>jakarta.xml.bind.JAXBContext</Import>
+            <Import>jakarta.xml.bind.JAXBElement</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.Unmarshaller</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         ErrorCollector eh = new ErrorCollector();
@@ -128,10 +128,10 @@
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBContext</Import>
-            <Import>javax.xml.bind.JAXBException</Import>
-            <Import>javax.xml.bind.Unmarshaller</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>jakarta.xml.bind.JAXBContext</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.Unmarshaller</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         ErrorCollector eh = new ErrorCollector();
@@ -178,10 +178,10 @@
         <CodeSet>
             <Import>org.xml.sax.helpers.AttributesImpl</Import>
             <Import>org.xml.sax.SAXException</Import>
-            <Import>javax.xml.bind.JAXBContext</Import>
-            <Import>javax.xml.bind.JAXBException</Import>
-            <Import>javax.xml.bind.Unmarshaller</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>jakarta.xml.bind.JAXBContext</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.Unmarshaller</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         ErrorCollector eh = new ErrorCollector();

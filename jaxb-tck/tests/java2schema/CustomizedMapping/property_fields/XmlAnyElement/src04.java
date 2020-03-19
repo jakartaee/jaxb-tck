@@ -16,8 +16,8 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.property_fields.XmlAnyElement.src04;
 
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.*;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.*;
 import java.util.*;
 
 @XmlType(name="root", namespace="http://www.example.com/Namespace")

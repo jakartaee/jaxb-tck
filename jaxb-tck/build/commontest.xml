@@ -123,7 +123,7 @@
 	    <classpath refid="tasks.path"/>
 	</whichresource>
 	<echo>Using XJC task definition from ${xjc.task.source}</echo>
-	<whichresource class="javax.xml.bind.JAXBContext" property="jaxbcontext.source">
+	<whichresource class="jakarta.xml.bind.JAXBContext" property="jaxbcontext.source">
 	    <classpath refid="tasks.path"/>
 	</whichresource>
 	<echo>Using JAXBContext definition from ${jaxbcontext.source}</echo>

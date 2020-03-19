@@ -16,8 +16,8 @@
 
 package javasoft.sqe.tests.bind.unmarshaller_1;
 
-import javax.xml.bind.ValidationEventHandler;
-import javax.xml.bind.ValidationEvent;
+import jakarta.xml.bind.ValidationEventHandler;
+import jakarta.xml.bind.ValidationEvent;
 import java.util.Vector;
 
 public class MyValidationEventHandler implements ValidationEventHandler {

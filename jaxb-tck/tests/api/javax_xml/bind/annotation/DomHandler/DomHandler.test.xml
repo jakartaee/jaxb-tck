@@ -21,7 +21,7 @@
 <TestGroup ID="DomHandler">
   <TestGroupDocumentation>
     <Title>Provides DomHandler implementation tests</Title>
-    <TestedPackage>javax.xml.bind.annotation</TestedPackage>
+    <TestedPackage>jakarta.xml.bind.annotation</TestedPackage>
     <TestedClass>DomHandler</TestedClass>
     <Author>Igor Tseytin</Author>
   </TestGroupDocumentation>
@@ -32,10 +32,10 @@
     <Keyword>runtime</Keyword>
   </TestGroupAttributes>
   <CodeSet>
-    <Import>javax.xml.bind.ValidationEventHandler</Import>
-    <Import>javax.xml.bind.util.ValidationEventCollector</Import>
-    <Import>javax.xml.bind.annotation.W3CDomHandler</Import>
-    <Import>javax.xml.bind.annotation.DomHandler</Import>
+    <Import>jakarta.xml.bind.ValidationEventHandler</Import>
+    <Import>jakarta.xml.bind.util.ValidationEventCollector</Import>
+    <Import>jakarta.xml.bind.annotation.W3CDomHandler</Import>
+    <Import>jakarta.xml.bind.annotation.DomHandler</Import>
     <Import>javax.xml.parsers.*</Import>
     <Import>javax.xml.transform.*</Import>
     <Import>org.w3c.dom.Document</Import>

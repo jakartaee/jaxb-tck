@@ -17,7 +17,7 @@
 package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlType.namespace.NameSpace010;
 
 import java.math.BigDecimal;          
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * Mapping: Class to Simple Type Definition

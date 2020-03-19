@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.enum_type.XmlType.srcNameDefault;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 @XmlRootElement (name="root")
 @XmlType (propOrder={"theCard1", "theCard2"})

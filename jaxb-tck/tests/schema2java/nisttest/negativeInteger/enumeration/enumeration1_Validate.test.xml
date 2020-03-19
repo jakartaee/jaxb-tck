@@ -35,8 +35,8 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
-        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>jakarta.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.TypeConstraintException</Import>
         <Import>java.math.BigInteger</Import>
         <SupportCode> 
     

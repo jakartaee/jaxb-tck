@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlSchema (
+@jakarta.xml.bind.annotation.XmlSchema (
   location="CustomizedMapping.packages.XmlSchema.AnotherLocation"
 )
 package CustomizedMapping.packages.XmlSchema.location;

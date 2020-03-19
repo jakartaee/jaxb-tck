@@ -14,18 +14,18 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlAccessorOrder(javax.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
-@javax.xml.bind.annotation.XmlAccessorType (javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER)
-@javax.xml.bind.annotation.XmlSchemaTypes (
-		{ 	@javax.xml.bind.annotation.XmlSchemaType( name="anyURI", 
+@jakarta.xml.bind.annotation.XmlAccessorOrder(jakarta.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
+@jakarta.xml.bind.annotation.XmlAccessorType (jakarta.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER)
+@jakarta.xml.bind.annotation.XmlSchemaTypes (
+		{ 	@jakarta.xml.bind.annotation.XmlSchemaType( name="anyURI", 
 					type=java.lang.String.class ), 
-			@javax.xml.bind.annotation.XmlSchemaType( name="date", 
+			@jakarta.xml.bind.annotation.XmlSchemaType( name="date", 
 					type=javax.xml.datatype.XMLGregorianCalendar.class ) 
 		}
 )
-@javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters(
-		{	@javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter (
-					value=javax.xml.bind.annotation.adapters.CollapsedStringAdapter.class,
+@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapters(
+		{	@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter (
+					value=jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter.class,
 					type=javax.xml.namespace.QName.class
 					) }
 )

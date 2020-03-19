@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorType.srcInherit1;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * JAXB specification assertion: JAXB:SPEC:J2S:1044
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.*;
  * Otherwise, if a XmlAccessorType exists on one of its super classes, then it is inherited.
  * Otherwise, the XmlAccessorType  on a package is inherited.
  */
-@javax.xml.bind.annotation.XmlRootElement (name="root")
+@jakarta.xml.bind.annotation.XmlRootElement (name="root")
 @XmlType (propOrder={"fldPublic", "fldDefault", "fldProtected", "fldPrivate"})
 class src {
   public int fldPublic;
@@ -42,7 +42,7 @@ class src {
   public void setPropPublic(int val) {
     this.fldPrivate = val;
   }
-  @javax.xml.bind.annotation.XmlTransient
+  @jakarta.xml.bind.annotation.XmlTransient
   public int fldPublicTransient;
 
 }

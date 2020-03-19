@@ -24,9 +24,9 @@
     <Description>
       Compile a simple schema to create a java binding classes.
       Test an available implementation of the
-      javax.xml.bind.Binder interface using this context.
+      jakarta.xml.bind.Binder interface using this context.
     </Description>
-    <TestedPackage>javax.xml.bind</TestedPackage>
+    <TestedPackage>jakarta.xml.bind</TestedPackage>
     <TestedClass>JAXBContext</TestedClass>
   </TestGroupDocumentation>
   <TestGroupAttributes>
@@ -37,11 +37,11 @@
   <CodeSet>
     <Import>java.io.IOException</Import>
     <Import>java.net.URL</Import>
-    <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
-    <Import>javax.xml.bind.Binder</Import>
-    <Import>javax.xml.bind.JAXBContext</Import>
-    <Import>javax.xml.bind.JAXBException</Import>
-    <Import>javax.xml.bind.JAXBElement</Import>
+    <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
+    <Import>jakarta.xml.bind.Binder</Import>
+    <Import>jakarta.xml.bind.JAXBContext</Import>
+    <Import>jakarta.xml.bind.JAXBException</Import>
+    <Import>jakarta.xml.bind.JAXBElement</Import>
     <Import>javax.xml.parsers.DocumentBuilder</Import>
     <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
     <Import>javax.xml.parsers.ParserConfigurationException</Import>

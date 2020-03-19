@@ -16,7 +16,7 @@
 
 package CustomizedMapping.classes.XmlType.name;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * Mapping: Class to Simple Type Definition

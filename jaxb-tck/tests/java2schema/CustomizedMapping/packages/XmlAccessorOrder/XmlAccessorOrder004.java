@@ -16,8 +16,8 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorType004;
 
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.*;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.*;
 
 /**
  * JAXB specification assertion: JAXB:SPEC:J2S:00052 Mapping: XmlAccessorOrder

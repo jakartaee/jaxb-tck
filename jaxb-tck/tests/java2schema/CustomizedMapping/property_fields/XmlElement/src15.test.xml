@@ -45,7 +45,7 @@ Test of XmlElement annotations.
         <TestCaseDocumentation>
             <Description>
           Positive test. Assertion from API doc, XmlElement, type:
-          Default: javax.xml.bind.annotation.XmlElement.DEFAULT.class
+          Default: jakarta.xml.bind.annotation.XmlElement.DEFAULT.class
         </Description>
         </TestCaseDocumentation>
         <TestCaseAttributes>
@@ -59,7 +59,7 @@ Test of XmlElement annotations.
         <TestCaseDocumentation>
             <Description>
           Negative test. Assertion from API doc, XmlElement, type:
-          Default: javax.xml.bind.annotation.XmlElement.DEFAULT.class
+          Default: jakarta.xml.bind.annotation.XmlElement.DEFAULT.class
         </Description>
         </TestCaseDocumentation>
         <TestCaseAttributes>

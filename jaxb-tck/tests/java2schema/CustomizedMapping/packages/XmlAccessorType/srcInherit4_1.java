@@ -28,7 +28,7 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorTyp
  * Otherwise, the XmlAccessorType  on a package is inherited.
 */
 
-@javax.xml.bind.annotation.XmlAccessorType (javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER)
-@javax.xml.bind.annotation.XmlRootElement (name="rootParent")
+@jakarta.xml.bind.annotation.XmlAccessorType (jakarta.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER)
+@jakarta.xml.bind.annotation.XmlRootElement (name="rootParent")
 public class srcInherit4_1 {
 }

@@ -16,11 +16,11 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.enum_type.XmlType.srcNameNoname;
 
-@javax.xml.bind.annotation.XmlRootElement (name="root")
+@jakarta.xml.bind.annotation.XmlRootElement (name="root")
 class src {
   
-  @javax.xml.bind.annotation.XmlType
-  @javax.xml.bind.annotation.XmlEnum
+  @jakarta.xml.bind.annotation.XmlType
+  @jakarta.xml.bind.annotation.XmlEnum
   enum Card { THREE, SEVEN, ACE };
 
   public Card theCard = Card.ACE;

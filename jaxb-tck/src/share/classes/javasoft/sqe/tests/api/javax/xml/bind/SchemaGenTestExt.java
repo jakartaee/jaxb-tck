@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package javasoft.sqe.tests.api.javax.xml.bind;
+package javasoft.sqe.tests.api.jakarta.xml.bind;
 
 import java.io.*;
 import java.util.*;
@@ -22,8 +22,8 @@ import java.util.*;
 import javasoft.sqe.jck.lib.*;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.SchemaOutputResolver;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.SchemaOutputResolver;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;

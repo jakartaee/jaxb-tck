@@ -17,9 +17,9 @@
 package javasoft.sqe.tests.java2schema.CustomizedMapping.property_fields.XmlMimeType.src01;
 
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlMimeType;
-import javax.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlMimeType;
+import jakarta.xml.bind.annotation.XmlAttribute;
 import java.awt.Image;
 import javax.xml.transform.Source;
 

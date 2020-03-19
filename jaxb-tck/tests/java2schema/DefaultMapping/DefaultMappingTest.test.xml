@@ -37,7 +37,7 @@
     <Dependency>
         <Lib>jaxb.j2x</Lib>
     </Dependency>
-    <BaseClass>javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTestExt</BaseClass>
+    <BaseClass>javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTestExt</BaseClass>
   </CodeSet>
   <TestCase ID="BooleanTest">
     <TestCaseDocumentation>

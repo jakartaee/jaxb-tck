@@ -32,13 +32,13 @@
     </TestGroupAttributes>
     <CodeSet>
         <Import>java.net.URL</Import>
-        <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
-        <Import>javax.xml.bind.Binder</Import>
-        <Import>javax.xml.bind.JAXBContext</Import>
-        <Import>javax.xml.bind.JAXBException</Import>
-        <Import>javax.xml.bind.JAXBIntrospector</Import>
-        <Import>javax.xml.bind.Marshaller</Import>
-        <Import>javax.xml.bind.Unmarshaller</Import>
+        <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
+        <Import>jakarta.xml.bind.Binder</Import>
+        <Import>jakarta.xml.bind.JAXBContext</Import>
+        <Import>jakarta.xml.bind.JAXBException</Import>
+        <Import>jakarta.xml.bind.JAXBIntrospector</Import>
+        <Import>jakarta.xml.bind.Marshaller</Import>
+        <Import>jakarta.xml.bind.Unmarshaller</Import>
         <Import>javax.xml.parsers.DocumentBuilder</Import>
         <Import>javax.xml.parsers.DocumentBuilderFactory</Import>
         <Import>org.w3c.dom.Document</Import>
@@ -93,11 +93,11 @@
             <Author>Evgueni Rouban</Author>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBContext</Import>
-            <Import>javax.xml.bind.JAXBException</Import>
-            <Import>javax.xml.bind.Validator</Import>
-            <Import>javax.xml.bind.ValidationException</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>jakarta.xml.bind.JAXBContext</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.Validator</Import>
+            <Import>jakarta.xml.bind.ValidationException</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         boolean isValid;

@@ -159,7 +159,7 @@ public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
                                 //IR.setAttrElem( ntc, "OutputDir", outDir );
                                 // set other test group attributes
                                 ntg.getTGAttributes().setExecuteClass(
-                                        "javasoft.sqe.tests.api.javax.xml.bind.JAXBValidationCheckerTest");
+                                        "javasoft.sqe.tests.api.jakarta.xml.bind.JAXBValidationCheckerTest");
                                 // IMPORTANT: -TestURL parameter must precede other parameters
                                 ntg.getTGAttributes().setExecuteArgs( String.format( "-TestURL $testURL -xml %s -package $package", fileName ) );
                                 // selectIfs

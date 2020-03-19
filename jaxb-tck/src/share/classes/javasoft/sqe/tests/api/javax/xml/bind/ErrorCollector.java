@@ -14,16 +14,16 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package javasoft.sqe.tests.api.javax.xml.bind;
+package javasoft.sqe.tests.api.jakarta.xml.bind;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
-import javax.xml.bind.ValidationEventLocator;
-import javax.xml.bind.helpers.ValidationEventImpl;
-import javax.xml.bind.helpers.ValidationEventLocatorImpl;
+import jakarta.xml.bind.ValidationEvent;
+import jakarta.xml.bind.ValidationEventHandler;
+import jakarta.xml.bind.ValidationEventLocator;
+import jakarta.xml.bind.helpers.ValidationEventImpl;
+import jakarta.xml.bind.helpers.ValidationEventLocatorImpl;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;

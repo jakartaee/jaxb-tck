@@ -25,7 +25,7 @@
         	DatatypeConverter tests. Conversion tests are done while unmarshalling
         	xml data.
         </Description>
-        <TestedPackage>javax.xml.bind</TestedPackage>
+        <TestedPackage>jakarta.xml.bind</TestedPackage>
         <TestedClass>DatatypeConverter</TestedClass>
     </TestGroupDocumentation>
     <TestGroupAttributes>
@@ -43,11 +43,11 @@
 		<Import>java.util.Iterator</Import>
 		<Import>java.util.TimeZone</Import>		
 		<Import>javax.xml.XMLConstants</Import>
-		<Import>javax.xml.bind.DatatypeConverterInterface</Import>
-		<Import>javax.xml.bind.JAXBContext</Import>
-		<Import>javax.xml.bind.JAXBException</Import>
-		<Import>javax.xml.bind.Unmarshaller</Import>
-		<Import>javax.xml.bind.DatatypeConverter</Import>
+		<Import>jakarta.xml.bind.DatatypeConverterInterface</Import>
+		<Import>jakarta.xml.bind.JAXBContext</Import>
+		<Import>jakarta.xml.bind.JAXBException</Import>
+		<Import>jakarta.xml.bind.Unmarshaller</Import>
+		<Import>jakarta.xml.bind.DatatypeConverter</Import>
 		<Import>javax.xml.namespace.NamespaceContext</Import>
 		<Import>javax.xml.namespace.QName</Import>
 		<Import>java.io.StringReader</Import>

@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package javasoft.sqe.tests.api.javax.xml.bind;
+package javasoft.sqe.tests.api.jakarta.xml.bind;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,8 +23,8 @@ import java.io.FileWriter;
 
 import java.util.ArrayList;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.SchemaOutputResolver;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.SchemaOutputResolver;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamSource;

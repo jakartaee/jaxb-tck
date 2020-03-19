@@ -14,14 +14,14 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlSchema (
-		xmlns = { @javax.xml.bind.annotation.XmlNs(prefix = "exns",
+@jakarta.xml.bind.annotation.XmlSchema (
+		xmlns = { @jakarta.xml.bind.annotation.XmlNs(prefix = "exns",
 			      namespaceURI="http://www.example.org"), 
 			      
-			      @javax.xml.bind.annotation.XmlNs(prefix = "otherns",
+			      @jakarta.xml.bind.annotation.XmlNs(prefix = "otherns",
 			      namespaceURI="http://www.otherexample.org"),
 			      
-			      @javax.xml.bind.annotation.XmlNs(prefix="xs",
+			      @jakarta.xml.bind.annotation.XmlNs(prefix="xs",
                    namespaceURI="http://www.w3.org/2001/XMLSchema") }
 )
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchema.xmlns.src;

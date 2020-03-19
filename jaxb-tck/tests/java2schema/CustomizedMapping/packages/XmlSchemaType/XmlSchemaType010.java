@@ -16,9 +16,9 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchemaType010;
 
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import java.util.*;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -37,7 +37,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 @XmlRootElement(name="root")
 @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
-@javax.xml.bind.annotation.XmlAccessorOrder(XmlAccessOrder.ALPHABETICAL)
+@jakarta.xml.bind.annotation.XmlAccessorOrder(XmlAccessOrder.ALPHABETICAL)
 class XmlSchemaType010 {
 
 	@XmlSchemaType(name = "dateTime")
@@ -61,7 +61,7 @@ class XmlSchemaType010 {
 	public java.lang.Byte xsUnsignedByte;
 	
 	@XmlSchemaType(name = "QName")
-	@XmlJavaTypeAdapter (value=javax.xml.bind.annotation.adapters.CollapsedStringAdapter.class,
+	@XmlJavaTypeAdapter (value=jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter.class,
 	                     type=java.lang.String.class ) 
 	public java.lang.String xsQName;
 

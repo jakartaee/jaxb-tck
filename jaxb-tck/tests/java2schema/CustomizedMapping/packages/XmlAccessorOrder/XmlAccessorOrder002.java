@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorOrder002;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 /**
  * JAXB specification assertion JAXB:SPEC:J2S:00051 
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.*;
  * Properties and fields mapped to XML attributes are not impacted
  * by this annotation since XML attributes are unordered.
  */
-@javax.xml.bind.annotation.XmlRootElement(name = "root")
+@jakarta.xml.bind.annotation.XmlRootElement(name = "root")
 class XmlAccessorOrder002 {
 	public Object fldB;
 

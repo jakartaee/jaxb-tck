@@ -14,11 +14,11 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-@javax.xml.bind.annotation.XmlAccessorOrder(javax.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
-@javax.xml.bind.annotation.XmlAccessorType (javax.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER)
-@javax.xml.bind.annotation.XmlSchema (
+@jakarta.xml.bind.annotation.XmlAccessorOrder(jakarta.xml.bind.annotation.XmlAccessOrder.ALPHABETICAL)
+@jakarta.xml.bind.annotation.XmlAccessorType (jakarta.xml.bind.annotation.XmlAccessType.PUBLIC_MEMBER)
+@jakarta.xml.bind.annotation.XmlSchema (
   namespace="http://www.example.org",
-  elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED
+  elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED
 ) 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorType004;
 

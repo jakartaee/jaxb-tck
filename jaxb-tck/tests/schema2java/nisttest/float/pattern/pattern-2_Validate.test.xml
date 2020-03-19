@@ -34,8 +34,8 @@
         <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
     </TestGroupAttributes>
     <CodeSet>
-        <Import>javax.xml.bind.*</Import>
-        <Import>javax.xml.bind.TypeConstraintException</Import>
+        <Import>jakarta.xml.bind.*</Import>
+        <Import>jakarta.xml.bind.TypeConstraintException</Import>
         <SupportCode> 
     final float[] validValues = {6.3537E-12F, 1.2345E-13F};
     
@@ -119,7 +119,7 @@ and expects validation to pass.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
         </CodeSet>
         <TestCode SourceLang="java"><![CDATA[
         
@@ -139,7 +139,7 @@ then expects validation to fail.
          ]]></Description>
         </TestCaseDocumentation>
         <CodeSet>
-            <Import>javax.xml.bind.JAXBException</Import>
+            <Import>jakarta.xml.bind.JAXBException</Import>
             <ExternalData Type="iodata" SourceName="pattern-2-4.xml"/>
             <ExternalData Type="iodata" SourceName="pattern2_validate-pattern-2-4.jbx"/>
         </CodeSet>

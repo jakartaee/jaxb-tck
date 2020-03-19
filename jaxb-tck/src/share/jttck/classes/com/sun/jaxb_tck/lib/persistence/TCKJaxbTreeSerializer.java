@@ -33,7 +33,7 @@ import java.math.BigInteger;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import javax.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBElement;
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
@@ -70,7 +70,7 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
         String packageName = jaxbTree.getClass().getPackage().getName();
         
         if (packageName.startsWith("java.") || packageName.startsWith("javax.")) {
-            //"Internal" classes like javax.xml.bind.JAXBElement
+            //"Internal" classes like jakarta.xml.bind.JAXBElement
             addPersistenceDelegate(jaxbTree, cl);
         } else {
         	assignPersistenceDelegate(packageName, cl);

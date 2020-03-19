@@ -48,7 +48,7 @@
           must be mapped as specified in Table 8-18, "Mapping: Property/field to Element declaration with ref attribute,"
           {name} ::=
           if @XmlElementRef.type() is @XmlElementRef.DEFAULT.class and the parametric type or 
-          the property type (for single valued property) is a javax.xml.bind.JAXBElement, then
+          the property type (for single valued property) is a jakarta.xml.bind.JAXBElement, then
           the @XmlElementRef.name()
         ]]></Description>
       </TestCaseDocumentation>

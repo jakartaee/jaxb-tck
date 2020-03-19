@@ -16,7 +16,7 @@
 
 package javasoft.sqe.tests.java2schema.CustomizedMapping.enum_type.XmlType.srcNS;
 
-@javax.xml.bind.annotation.XmlRootElement (name="root")
+@jakarta.xml.bind.annotation.XmlRootElement (name="root")
 class src {
   public Card4 theCard4 = Card4.ACE;
 }
@@ -29,9 +29,9 @@ class src {
    * enum type is defined, is mapped as specified in
    * Table 8-3, "Mapping: Package to XML target
    * namespace," on page 228;
-     @javax.xml.bind.annotation.XmlRootElement (name="rootE3", namespace="nsE3")
-     @javax.xml.bind.annotation.XmlType (namespace="##default", name="CardName3")
-     @javax.xml.bind.annotation.XmlEnum
+     @jakarta.xml.bind.annotation.XmlRootElement (name="rootE3", namespace="nsE3")
+     @jakarta.xml.bind.annotation.XmlType (namespace="##default", name="CardName3")
+     @jakarta.xml.bind.annotation.XmlEnum
      enum Card3 { THREE, SEVEN, ACE };
    */
 
@@ -41,7 +41,7 @@ class src {
    *
    * otherwise @XmlType.namespace()
    */
-  @javax.xml.bind.annotation.XmlRootElement (name="rootE4", namespace="nsE4")
-  @javax.xml.bind.annotation.XmlType (namespace="http://the.namespace1", name="CardName4")
-  @javax.xml.bind.annotation.XmlEnum
+  @jakarta.xml.bind.annotation.XmlRootElement (name="rootE4", namespace="nsE4")
+  @jakarta.xml.bind.annotation.XmlType (namespace="http://the.namespace1", name="CardName4")
+  @jakarta.xml.bind.annotation.XmlEnum
   enum Card4 { THREE, SEVEN, ACE };
