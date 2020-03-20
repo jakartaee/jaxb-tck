@@ -65,21 +65,21 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.attribute.attp032.AttRef
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="attRef", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="attRef", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public AttRef()
 fld protected java.lang.String att
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 fld protected java.lang.String impAtt
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://importedXSD")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://importedXSD")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 fld protected java.lang.String incAtt
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 fld protected java.lang.String redAtt
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 meth public java.lang.String getAtt()
 meth public java.lang.String getImpAtt()
 meth public java.lang.String getIncAtt()
@@ -91,9 +91,9 @@ meth public void setRedAtt(java.lang.String)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.attribute.attp032.Doc
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="doc", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["elem"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="doc", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["elem"])
 cons public Doc()
 fld protected javasoft.sqe.tests.attribute.attp032.AttRef elem
 meth public javasoft.sqe.tests.attribute.attp032.AttRef getElem()
@@ -101,49 +101,49 @@ meth public void setElem(javasoft.sqe.tests.attribute.attp032.AttRef)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.attribute.attp032.OriginalRed
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.attribute.attp032.Red])
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.attribute.attp032.Red])
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public OriginalRed()
 fld protected java.lang.String redCTAtt
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 meth public java.lang.String getRedCTAtt()
 meth public void setRedCTAtt(java.lang.String)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.attribute.attp032.Red
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="red", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="red", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public Red()
 fld protected java.lang.String xx
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://xsdtesting")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 meth public java.lang.String getXx()
 meth public void setXx(java.lang.String)
 supr javasoft.sqe.tests.attribute.attp032.OriginalRed
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlRootElement
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.String name()
 meth public abstract !hasdefault java.lang.String namespace()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlSeeAlso
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlSeeAlso
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract java.lang.Class[] value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

@@ -65,12 +65,12 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.combined.xsd021.xsd021.Root
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["skipAnyOrLaxAnyOrStrictAny"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["skipAnyOrLaxAnyOrStrictAny"])
 cons public Root()
 fld protected java.util.List<java.lang.Object> skipAnyOrLaxAnyOrStrictAny
- anno 0 javax.xml.bind.annotation.XmlElements(javax.xml.bind.annotation.XmlElement[] value=[anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictAny, java.lang.String defaultValue="\u0000", java.lang.String name="strictAny", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipOther, java.lang.String defaultValue="\u0000", java.lang.String name="skipOther", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxAny, java.lang.String defaultValue="\u0000", java.lang.String name="laxAny", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictTarget, java.lang.String defaultValue="\u0000", java.lang.String name="strictTarget", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictLocal, java.lang.String defaultValue="\u0000", java.lang.String name="strictLocal", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipAny, java.lang.String defaultValue="\u0000", java.lang.String name="skipAny", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxLocal, java.lang.String defaultValue="\u0000", java.lang.String name="laxLocal", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipBar, java.lang.String defaultValue="\u0000", java.lang.String name="skipBar", java.lang.String namespace="##default")])
+ anno 0 jakarta.xml.bind.annotation.XmlElements(jakarta.xml.bind.annotation.XmlElement[] value=[anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictAny, java.lang.String defaultValue="\u0000", java.lang.String name="strictAny", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipOther, java.lang.String defaultValue="\u0000", java.lang.String name="skipOther", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxAny, java.lang.String defaultValue="\u0000", java.lang.String name="laxAny", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictTarget, java.lang.String defaultValue="\u0000", java.lang.String name="strictTarget", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictLocal, java.lang.String defaultValue="\u0000", java.lang.String name="strictLocal", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipAny, java.lang.String defaultValue="\u0000", java.lang.String name="skipAny", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxLocal, java.lang.String defaultValue="\u0000", java.lang.String name="laxLocal", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipBar, java.lang.String defaultValue="\u0000", java.lang.String name="skipBar", java.lang.String namespace="##default")])
 innr public static LaxAny
 innr public static LaxLocal
 innr public static SkipAny
@@ -83,84 +83,84 @@ meth public java.util.List<java.lang.Object> getSkipAnyOrLaxAnyOrStrictAny()
 supr java.lang.Object
 
 CLSS public static javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxAny
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public LaxAny()
 meth public java.util.Map<javax.xml.namespace.QName,java.lang.String> getOtherAttributes()
 supr java.lang.Object
 hfds otherAttributes
 
 CLSS public static javasoft.sqe.tests.combined.xsd021.xsd021.Root$LaxLocal
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public LaxLocal()
 meth public java.util.Map<javax.xml.namespace.QName,java.lang.String> getOtherAttributes()
 supr java.lang.Object
 hfds otherAttributes
 
 CLSS public static javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipAny
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public SkipAny()
 meth public java.util.Map<javax.xml.namespace.QName,java.lang.String> getOtherAttributes()
 supr java.lang.Object
 hfds otherAttributes
 
 CLSS public static javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipBar
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public SkipBar()
 meth public java.util.Map<javax.xml.namespace.QName,java.lang.String> getOtherAttributes()
 supr java.lang.Object
 hfds otherAttributes
 
 CLSS public static javasoft.sqe.tests.combined.xsd021.xsd021.Root$SkipOther
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public SkipOther()
 meth public java.util.Map<javax.xml.namespace.QName,java.lang.String> getOtherAttributes()
 supr java.lang.Object
 hfds otherAttributes
 
 CLSS public static javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictAny
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public StrictAny()
 meth public java.util.Map<javax.xml.namespace.QName,java.lang.String> getOtherAttributes()
 supr java.lang.Object
 hfds otherAttributes
 
 CLSS public static javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictLocal
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public StrictLocal()
 meth public java.util.Map<javax.xml.namespace.QName,java.lang.String> getOtherAttributes()
 supr java.lang.Object
 hfds otherAttributes
 
 CLSS public static javasoft.sqe.tests.combined.xsd021.xsd021.Root$StrictTarget
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public StrictTarget()
 meth public java.util.Map<javax.xml.namespace.QName,java.lang.String> getOtherAttributes()
 supr java.lang.Object
 hfds otherAttributes
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlRootElement
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.String name()
 meth public abstract !hasdefault java.lang.String namespace()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

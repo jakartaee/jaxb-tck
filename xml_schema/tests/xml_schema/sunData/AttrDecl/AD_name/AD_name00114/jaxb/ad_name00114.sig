@@ -65,98 +65,98 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.attrdecl.ad_name.ad_name00114.ad_name00114.Root
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public Root()
 fld protected java.lang.Integer aaaa
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer bbb
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="bbb_", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="bbb_", java.lang.String namespace="##default")
 fld protected java.lang.Integer bbb0
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer bbbB
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer cc0C
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="cc0c", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="cc0c", java.lang.String namespace="##default")
 fld protected java.lang.Integer ccC
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="cc_c", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="cc_c", java.lang.String namespace="##default")
 fld protected java.lang.Integer ccCc
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer dd
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="dd__", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="dd__", java.lang.String namespace="##default")
 fld protected java.lang.Integer dd00
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer ddDD
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer e0Ee
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="e0ee", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="e0ee", java.lang.String namespace="##default")
 fld protected java.lang.Integer eEe
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="e_ee", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="e_ee", java.lang.String namespace="##default")
 fld protected java.lang.Integer eEee
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer f0F0
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="f0f0", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="f0f0", java.lang.String namespace="##default")
 fld protected java.lang.Integer fFfF
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer ff
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="f_f_", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="f_f_", java.lang.String namespace="##default")
 fld protected java.lang.Integer g
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="g___", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="g___", java.lang.String namespace="##default")
 fld protected java.lang.Integer g000
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.Integer gggg
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="gGGG", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="gGGG", java.lang.String namespace="##default")
 fld protected java.lang.Integer h
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="H---", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="H---", java.lang.String namespace="##default")
 fld protected java.lang.Integer h111
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="H111", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="H111", java.lang.String namespace="##default")
 fld protected java.lang.Integer hhhh
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="Hhhh", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="Hhhh", java.lang.String namespace="##default")
 fld protected java.lang.Integer i11I
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="I11I", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="I11I", java.lang.String namespace="##default")
 fld protected java.lang.Integer ii
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="I--I", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="I--I", java.lang.String namespace="##default")
 fld protected java.lang.Integer iiiI
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="IiiI", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="IiiI", java.lang.String namespace="##default")
 fld protected java.lang.Integer j1J1
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="J1J1", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="J1J1", java.lang.String namespace="##default")
 fld protected java.lang.Integer jj
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="J-J-", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="J-J-", java.lang.String namespace="##default")
 fld protected java.lang.Integer jjJj
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="JjJj", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="JjJj", java.lang.String namespace="##default")
 fld protected java.lang.Integer k1KK
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="K1KK", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="K1KK", java.lang.String namespace="##default")
 fld protected java.lang.Integer kkKK
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="KkKK", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="KkKK", java.lang.String namespace="##default")
 fld protected java.lang.Integer kkk
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="K-KK", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="K-KK", java.lang.String namespace="##default")
 fld protected java.lang.Integer lLll
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="LLll", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="LLll", java.lang.String namespace="##default")
 fld protected java.lang.Integer ll
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="LL--", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="LL--", java.lang.String namespace="##default")
 fld protected java.lang.Integer ll11
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="LL11", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="LL11", java.lang.String namespace="##default")
 fld protected java.lang.Integer mMmM
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="MMmM", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="MMmM", java.lang.String namespace="##default")
 fld protected java.lang.Integer mm1M
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="MM1M", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="MM1M", java.lang.String namespace="##default")
 fld protected java.lang.Integer mmm
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="MM-M", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="MM-M", java.lang.String namespace="##default")
 fld protected java.lang.Integer nnNn
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="NNNn", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="NNNn", java.lang.String namespace="##default")
 fld protected java.lang.Integer nnn
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="NNN-", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="NNN-", java.lang.String namespace="##default")
 fld protected java.lang.Integer nnn1
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="NNN1", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="NNN1", java.lang.String namespace="##default")
 fld protected java.lang.Integer oooo
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="OOOO", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="OOOO", java.lang.String namespace="##default")
 fld protected java.lang.Integer p00P
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="p00p", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="p00p", java.lang.String namespace="##default")
 fld protected java.lang.Integer pp
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="p__p", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="p__p", java.lang.String namespace="##default")
 fld protected java.lang.Integer ppPp
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="pPPp", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="pPPp", java.lang.String namespace="##default")
 meth public java.lang.Integer getAaaa()
 meth public java.lang.Integer getBbb()
 meth public java.lang.Integer getBbb0()
@@ -247,21 +247,21 @@ meth public void setPP(java.lang.Integer)
 meth public void setPPPp(java.lang.Integer)
 supr java.lang.Object
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlRootElement
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.String name()
 meth public abstract !hasdefault java.lang.String namespace()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

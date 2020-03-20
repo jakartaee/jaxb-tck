@@ -804,7 +804,7 @@ tech</td>
       </td>
       <td style="vertical-align: top;">@XmlJavaTypeAdapter.value()
 is set to a generated class that extends<br>
-javax.xml.bind.annotation.adapter.XmlAdapter.<br>
+jakarta.xml.bind.annotation.adapter.XmlAdapter.<br>
 There is no need to standardize the name of the
 generated
 class since<br>
@@ -3297,7 +3297,7 @@ Builtin<br>
 Types," on page 77. The interface is fully specified by the
 Javadoc
 specified<br>
-in javax.xml.bind.DatatypeConverterInterface.<br>
+in jakarta.xml.bind.DatatypeConverterInterface.<br>
       </td>
       <td style="vertical-align: top; text-align: center;">false</td>
       <td style="vertical-align: top; text-align: center;"><br>
@@ -3325,14 +3325,14 @@ DatatypeConverter
 class defines a static parse and print method<br>
 corresponding to each parse and print method respectively in the<br>
 DatatypeConverterInterface interface. The property<br>
-javax.xml.bind.DatatypeConverter can be used to select the name<br>
+jakarta.xml.bind.DatatypeConverter can be used to select the name<br>
 of a class that provides an implementation of the parse and print
 methods. The<br>
 name specified in the property must be a fully qualified class name and
 must<br>
 implement the interface DatatypeConverterInterface. The class is<br>
 fully specified by the Javadoc specified in<br>
-javax.xml.bind.DatatypeConverter.<br>
+jakarta.xml.bind.DatatypeConverter.<br>
       </td>
       <td style="vertical-align: top; text-align: center;">false</td>
       <td style="vertical-align: top; text-align: center;"><br>
@@ -3686,7 +3686,7 @@ the simple type
 definition is mapped to a schema-derived type, an<br>
 @XmlJavaTypeAdapter is generated on that class. Annotation element<br>
 @XmlJavaTypeAdapter.value() is set to a generated class that extends<br>
-javax.xml.bind.annotation.adapter.XmlAdapter. The generated
+jakarta.xml.bind.annotation.adapter.XmlAdapter. The generated
 class'
 marshal method must call the &lt;javaType&gt;<br>
 customization's print method. The

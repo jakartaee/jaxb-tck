@@ -65,35 +65,35 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.additional.test78000a.Doc
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="doc", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["rootContainer"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="doc", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["rootContainer"])
 cons public Doc()
 fld protected java.util.List<javasoft.sqe.tests.additional.test78000a.RootContainerType> rootContainer
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="RootContainer", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="RootContainer", java.lang.String namespace="##default")
 meth public java.util.List<javasoft.sqe.tests.additional.test78000a.RootContainerType> getRootContainer()
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.test78000a.LaxContainerType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="LaxContainerType", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="LaxContainerType", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
 cons public LaxContainerType()
 fld protected java.lang.Object any
- anno 0 javax.xml.bind.annotation.XmlAnyElement(boolean lax=true, java.lang.Class<? extends javax.xml.bind.annotation.DomHandler> value=class javax.xml.bind.annotation.W3CDomHandler)
+ anno 0 jakarta.xml.bind.annotation.XmlAnyElement(boolean lax=true, java.lang.Class<? extends jakarta.xml.bind.annotation.DomHandler> value=class jakarta.xml.bind.annotation.W3CDomHandler)
 meth public java.lang.Object getAny()
 meth public void setAny(java.lang.Object)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.test78000a.RootContainerType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="RootContainerType", java.lang.String namespace="##default", java.lang.String[] propOrder=["strictContainer", "laxContainer", "skipContainer"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="RootContainerType", java.lang.String namespace="##default", java.lang.String[] propOrder=["strictContainer", "laxContainer", "skipContainer"])
 cons public RootContainerType()
 fld protected javasoft.sqe.tests.additional.test78000a.LaxContainerType laxContainer
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="LaxContainer", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="LaxContainer", java.lang.String namespace="##default")
 fld protected javasoft.sqe.tests.additional.test78000a.SkipContainerType skipContainer
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="SkipContainer", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="SkipContainer", java.lang.String namespace="##default")
 fld protected javasoft.sqe.tests.additional.test78000a.StrictContainerType strictContainer
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="StrictContainer", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="StrictContainer", java.lang.String namespace="##default")
 meth public javasoft.sqe.tests.additional.test78000a.LaxContainerType getLaxContainer()
 meth public javasoft.sqe.tests.additional.test78000a.SkipContainerType getSkipContainer()
 meth public javasoft.sqe.tests.additional.test78000a.StrictContainerType getStrictContainer()
@@ -103,50 +103,50 @@ meth public void setStrictContainer(javasoft.sqe.tests.additional.test78000a.Str
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.test78000a.SkipContainerType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="SkipContainerType", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="SkipContainerType", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
 cons public SkipContainerType()
 fld protected org.w3c.dom.Element any
- anno 0 javax.xml.bind.annotation.XmlAnyElement(boolean lax=false, java.lang.Class<? extends javax.xml.bind.annotation.DomHandler> value=class javax.xml.bind.annotation.W3CDomHandler)
+ anno 0 jakarta.xml.bind.annotation.XmlAnyElement(boolean lax=false, java.lang.Class<? extends jakarta.xml.bind.annotation.DomHandler> value=class jakarta.xml.bind.annotation.W3CDomHandler)
 meth public org.w3c.dom.Element getAny()
 meth public void setAny(org.w3c.dom.Element)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.test78000a.StrictContainerType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="StrictContainerType", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="StrictContainerType", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
 cons public StrictContainerType()
 fld protected java.lang.Object any
- anno 0 javax.xml.bind.annotation.XmlAnyElement(boolean lax=true, java.lang.Class<? extends javax.xml.bind.annotation.DomHandler> value=class javax.xml.bind.annotation.W3CDomHandler)
+ anno 0 jakarta.xml.bind.annotation.XmlAnyElement(boolean lax=true, java.lang.Class<? extends jakarta.xml.bind.annotation.DomHandler> value=class jakarta.xml.bind.annotation.W3CDomHandler)
 meth public java.lang.Object getAny()
 meth public void setAny(java.lang.Object)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.test78000a.TestType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="testType", java.lang.String namespace="b", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="testType", java.lang.String namespace="b", java.lang.String[] propOrder=[""])
 cons public TestType()
 fld protected java.lang.String b1
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="##default", java.lang.String namespace="##default")
 meth public java.lang.String getB1()
 meth public void setB1(java.lang.String)
 supr java.lang.Object
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlRootElement
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.String name()
 meth public abstract !hasdefault java.lang.String namespace()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

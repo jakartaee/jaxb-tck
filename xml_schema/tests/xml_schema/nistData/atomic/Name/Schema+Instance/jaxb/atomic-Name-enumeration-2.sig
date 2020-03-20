@@ -81,22 +81,22 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-Name-enumeration-3-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-Name-enumeration-3-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-Name-enumeration-3-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-Name-enumeration-3-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type AND_DAT
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_and-dat")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_and-dat")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type GPROVIDE_BACK_THE_ARE_AND_SHIFT_AND_CREATION_IS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="gprovide-back.the-are:and_shift.and-creation:is-")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="gprovide-back.the-are:and_shift.and-creation:is-")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type IBUSINESS_PROCESSES_LANGUAGE_CHAIN
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="ibusiness_processes-language-chain")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="ibusiness_processes-language-chain")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type MEDIUM_SIZED_TESTING_TO_USERS_AND_REGISTRIES_SU
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value=":medium-sized-testing-to:users:and-registries_su")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value=":medium-sized-testing-to:users:and-registries_su")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type SPECIFICATIO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value=":specificatio")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value=":specificatio")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type TO_THE_HAS_TO_LAUNCHI
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_to_the:has_to:launchi")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_to_the:has_to:launchi")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type UPROCESSORS_FOR_PUBLISHING_METHODS_FOR_AN_WITH_INCLUDED_IMPLEME
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="uprocessors:for.publishing:methods.for:an-with:included:impleme")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="uprocessors:for.publishing:methods.for:an-with:included:impleme")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type valueOf(java.lang.String)
@@ -104,13 +104,13 @@ meth public static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_
 supr java.lang.Enum<javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_3.NISTSchemaSVIVAtomicNameEnumeration3Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

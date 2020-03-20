@@ -81,24 +81,24 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-NCName-enumeration-2-Type", java.lang.String namespace="NISTSchema-NCName-enumeration-2-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-NCName-enumeration-2-Type", java.lang.String namespace="NISTSchema-NCName-enumeration-2-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type AND_ACT_A_IN_IN_PERSONAL_SOFTWARE_TOOL_HARDWARE_O
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_and.act-a.in_in_personal.software-tool-hardware.o")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_and.act-a.in_in_personal.software-tool-hardware.o")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type FOR_RECOGNITION_WILL_TO_DEFINING_METHODS_FOR_HAVING
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_for.recognition-will_to-defining_methods-for-having")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_for.recognition-will_to-defining_methods-for-having")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type ITOOLS_AND_INCORPORATE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="itools_and_incorporate")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="itools_and_incorporate")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type JTOO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="jtoo")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="jtoo")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type NTARGETED_CHOICES_SYSTEM_CO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="ntargeted-choices.system.co")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="ntargeted-choices.system.co")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type SINCORPORAT
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="sincorporat")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="sincorporat")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type VKNOWN_G
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="vknown_g")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="vknown_g")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type XFOSTER_A_IS_INFORMATION_ENSURE_RE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="xfoster-a.is.information_ensure.re")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="xfoster-a.is.information_ensure.re")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type valueOf(java.lang.String)
@@ -106,13 +106,13 @@ meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchem
 supr java.lang.Enum<javasoft.sqe.tests.ncname.enumeration.enumeration_2.NISTSchemaNCNameEnumeration2Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

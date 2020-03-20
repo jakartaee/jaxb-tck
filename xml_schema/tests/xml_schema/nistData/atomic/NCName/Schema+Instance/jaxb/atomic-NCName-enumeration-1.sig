@@ -81,24 +81,24 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NCName-enumeration-2-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NCName-enumeration-2-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NCName-enumeration-2-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NCName-enumeration-2-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type BRESOURCE_AND_C
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="bresource.and-c")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="bresource.and-c")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type EWHO_VOCABULARIES_IT_ADOPTION_M
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="ewho-vocabularies-it-adoption_m")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="ewho-vocabularies-it-adoption_m")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type FBOTH_TH
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="fboth-th")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="fboth-th")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type HSYSTEMS_I
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="hsystems-i")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="hsystems-i")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type INDUSTRY_THE_IN_SPECIFICATIONS_THE_D
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_industry-the-in_specifications.the_d")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_industry-the-in_specifications.the_d")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type INVESTIGATION_OF_HELP_ITS_BE_SUPPORT_VENDORS_AND_MANY_COMMERCE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_investigation.of-help_its-be_support.vendors_and_many-commerce")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_investigation.of-help_its-be_support.vendors_and_many-commerce")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type OSOFTWARE_WIDESPREAD_MUST_RE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="osoftware-widespread_must_re")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="osoftware-widespread_must_re")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type VTO_SIGNIFICANT_GOVERNMENT_DISSEMINATE_INDUSTRY_A_OVER
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="vto.significant_government_disseminate.industry.a_over")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="vto.significant_government_disseminate.industry.a_over")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type valueOf(java.lang.String)
@@ -106,13 +106,13 @@ meth public static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_s
 supr java.lang.Enum<javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_2.NISTSchemaSVIVAtomicNCNameEnumeration2Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

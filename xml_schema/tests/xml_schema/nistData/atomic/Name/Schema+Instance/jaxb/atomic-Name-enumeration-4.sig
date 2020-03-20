@@ -81,20 +81,20 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-Name-enumeration-5-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-Name-enumeration-5-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-Name-enumeration-5-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-Name-enumeration-5-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type DAND_APPLICA
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="dand_applica")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="dand_applica")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type FI
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value=":fi")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value=":fi")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type PAPPLICATION_THE_OBJECT_OBJECT_COMPUTING_CAN
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="papplication_the-object.object_computing_can")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="papplication_the-object.object_computing_can")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type RAND_TO_AND_THE_C
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="rand_to.and-the.c")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="rand_to.and-the.c")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type THESE_KNOWN_QUALITY_APPLICATION_AVAILABLE_THE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_these-known.quality.application_available.the.")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_these-known.quality.application_available.the.")
 fld public final static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type TO_ENVIRONMENTS_DEFINE_IT_ISSUES_T
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value=":to.environments-define.it.issues.t")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value=":to.environments-define.it.issues.t")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type valueOf(java.lang.String)
@@ -102,13 +102,13 @@ meth public static javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_
 supr java.lang.Enum<javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_5.NISTSchemaSVIVAtomicNameEnumeration5Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT
