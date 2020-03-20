@@ -57,6 +57,10 @@ export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 #getting jaxb-ri which is needed to build the JAXB TCK
 wget $WGET_PROPS https://jenkins.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip -O jaxb-ri.zip
 unzip -o jaxb-ri.zip
+
+# Temporary overwrite of API package
+wgeht $WGET_PROPS https://search.maven.org/remotecontent?filepath=jakarta/xml/bind/jakarta.xml.bind-api/3.0.0-RC1/jakarta.xml.bind-api-3.0.0-RC1.jar jaxb-ri/mod/jakarta.xml.bind-api.jar
+
 wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm-commons/7.0-SNAPSHOT/asm-commons-7.0-20181027.133601-5.jar -O asm-commons-7.0.jar
 wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar -O asm-7.0.jar
 #unzip -o latest-glassfish.zip
@@ -69,7 +73,7 @@ wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/sna
 which make
 make -version
 which ksh
-ksh -version
+#ksh -version
 which awk
 #awk -version
 
