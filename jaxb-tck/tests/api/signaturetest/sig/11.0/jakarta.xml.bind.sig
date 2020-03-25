@@ -139,7 +139,7 @@ meth public <%0 extends java.lang.Object> jakarta.xml.bind.Binder<{%%0}> createB
 meth public abstract jakarta.xml.bind.Marshaller createMarshaller() throws jakarta.xml.bind.JAXBException
 meth public abstract jakarta.xml.bind.Unmarshaller createUnmarshaller() throws jakarta.xml.bind.JAXBException
 meth public abstract jakarta.xml.bind.Validator createValidator() throws jakarta.xml.bind.JAXBException
- anno 0 java.lang.Deprecated()
+ anno 0 java.lang.Deprecated(boolean forRemoval=false, java.lang.String since="")
 meth public jakarta.xml.bind.Binder<org.w3c.dom.Node> createBinder()
 meth public jakarta.xml.bind.JAXBIntrospector createJAXBIntrospector()
 meth public static jakarta.xml.bind.JAXBContext newInstance(java.lang.Class<?>[],java.util.Map<java.lang.String,?>) throws jakarta.xml.bind.JAXBException
@@ -910,6 +910,7 @@ CLSS public java.lang.Object
 cons public <init>()
 meth protected java.lang.Object clone() throws java.lang.CloneNotSupportedException
 meth protected void finalize() throws java.lang.Throwable
+ anno 0 java.lang.Deprecated(boolean forRemoval=false, java.lang.String since="9")
 meth public boolean equals(java.lang.Object)
 meth public final java.lang.Class<?> getClass()
 meth public final void notify()
@@ -950,7 +951,7 @@ meth public void printStackTrace(java.io.PrintStream)
 meth public void printStackTrace(java.io.PrintWriter)
 meth public void setStackTrace(java.lang.StackTraceElement[])
 supr java.lang.Object
-hfds CAUSE_CAPTION,EMPTY_THROWABLE_ARRAY,NULL_CAUSE_MESSAGE,SELF_SUPPRESSION_MESSAGE,SUPPRESSED_CAPTION,SUPPRESSED_SENTINEL,UNASSIGNED_STACK,backtrace,cause,detailMessage,serialVersionUID,stackTrace,suppressedExceptions
+hfds CAUSE_CAPTION,EMPTY_THROWABLE_ARRAY,NULL_CAUSE_MESSAGE,SELF_SUPPRESSION_MESSAGE,SUPPRESSED_CAPTION,SUPPRESSED_SENTINEL,UNASSIGNED_STACK,backtrace,cause,depth,detailMessage,serialVersionUID,stackTrace,suppressedExceptions
 hcls PrintStreamOrWriter,SentinelHolder,WrappedPrintStream,WrappedPrintWriter
 
 CLSS public abstract interface java.lang.annotation.Annotation
@@ -1024,6 +1025,7 @@ meth public abstract void setSystemId(java.lang.String)
 CLSS public abstract interface javax.xml.transform.Source
 meth public abstract java.lang.String getSystemId()
 meth public abstract void setSystemId(java.lang.String)
+meth public boolean isEmpty()
 
 CLSS public javax.xml.transform.sax.SAXResult
 cons public <init>()
@@ -1045,6 +1047,7 @@ cons public <init>(org.xml.sax.InputSource)
 cons public <init>(org.xml.sax.XMLReader,org.xml.sax.InputSource)
 fld public final static java.lang.String FEATURE = "http://javax.xml.transform.sax.SAXSource/feature"
 intf javax.xml.transform.Source
+meth public boolean isEmpty()
 meth public java.lang.String getSystemId()
 meth public org.xml.sax.InputSource getInputSource()
 meth public org.xml.sax.XMLReader getXMLReader()
