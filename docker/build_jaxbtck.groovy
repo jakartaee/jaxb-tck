@@ -53,13 +53,6 @@ spec:
     
   containers:
   - name: jaxb-tck-build
-    resources:
-      limits:
-        memory: "2Gi"
-        cpu: "2"
-      requests:
-        memory: "2Gi"
-        cpu: "2"
     image:  jakartaee/jaxbtck-base:0.1
     volumeMounts:
     - name: tools
