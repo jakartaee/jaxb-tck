@@ -32,6 +32,7 @@ spec:
     
   containers:
   - name: jaxb-tck-build
+    image:  jakartaee/jaxbtck-base:0.1
     resources:
       limits:
         memory: "1Gi"
@@ -39,14 +40,12 @@ spec:
       requests:
         memory: "1Gi"
         cpu: "1"
-    image:  jakartaee/jaxbtck-base:0.1
     volumeMounts:
     - mountPath: "/home/jenkins"
       name: workspace-volume
       readOnly: false
     - name: m2-repo
       mountPath: /home/jenkins/.m2/repository
-    workingDir: /home/jenkins
     tty: true
     command:
     - cat
