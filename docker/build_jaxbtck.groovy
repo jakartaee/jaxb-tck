@@ -18,61 +18,35 @@ pipeline {
 
     agent {
         kubernetes {
-            label 'el-master-agent-pod'
+            label 'jaxb-tck-build-pod'
             yaml """
 apiVersion: v1
 kind: Pod
 spec:
+
   volumes:
-  - name: tools
-    persistentVolumeClaim:
-      claimName: tools-claim-jiro-eclipselink
-  - name: volume-known-hosts
-    configMap:
-      name: known-hosts      
-  - name: settings-xml
-    secret:
-      secretName: m2-secret-dir
-      items:
-      - key: settings.xml
-        path: settings.xml
-  - name: toolchains-xml
-    configMap:
-      name: m2-dir
-      items:
-      - key: toolchains.xml
-        path: toolchains.xml
-  - name: settings-security-xml
-    secret:
-      secretName: m2-secret-dir
-      items:
-      - key: settings-security.xml
-        path: settings-security.xml
+  - name: workspace-volume
+    emptyDir: {}
   - name: m2-repo
     emptyDir: {}
     
   containers:
   - name: jaxb-tck-build
+    resources:
+      limits:
+        memory: "1Gi"
+        cpu: "1"
+      requests:
+        memory: "1Gi"
+        cpu: "1"
     image:  jakartaee/jaxbtck-base:0.1
     volumeMounts:
-    - name: tools
-      mountPath: /opt/tools
-    - name: volume-known-hosts
-      mountPath: /home/jenkins/.ssh      
-    - name: settings-xml
-      mountPath: /home/jenkins/.m2/settings.xml
-      subPath: settings.xml
-      readOnly: true
-    - name: toolchains-xml
-      mountPath: /home/jenkins/.m2/toolchains.xml
-      subPath: toolchains.xml
-      readOnly: true
-    - name: settings-security-xml
-      mountPath: /home/jenkins/.m2/settings-security.xml
-      subPath: settings-security.xml
-      readOnly: true
+    - mountPath: "/home/jenkins"
+      name: workspace-volume
+      readOnly: false
     - name: m2-repo
       mountPath: /home/jenkins/.m2/repository
+    workingDir: /home/jenkins
     tty: true
     command:
     - cat
