@@ -27,7 +27,6 @@ export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
 
 cd $WORKSPACE
 export BASEDIR=`pwd`
-TCK_DIR=${TCK_ROOT/*\//}
 
 if [ -z "$GF_HOME" ]; then
   export GF_HOME=$BASEDIR
@@ -120,9 +119,6 @@ sed -i 's#^ANT_HOME\s*=\s*.*#ANT_HOME = /usr/share/ant#g' $WORKSPACE/jaxb-tck/bu
 sed -i 's#^JAVATEST_JAR_LOC\s*=\s*.*#JAVATEST_JAR_LOC = /home/jenkins/workspace/agent/jaxb-tck_master/jaxb-tck/lib#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^SIGTESTDEV_JAR_LOC\s*=\s*.*#SIGTESTDEV_JAR_LOC = /home/jenkins/workspace/agent/jaxb-tck_master/jaxb-tck/lib#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^ASM_JAR_LOCATION\s*=\s*.*#ASM_JAR_LOCATION = /home/jenkins/workspace/agent/jaxb-tck_master#g' $WORKSPACE/jaxb-tck/build/Defs.mk
-
-exit 1
-
 
 cd $TCK_ROOT/jaxb-tck/build
 
