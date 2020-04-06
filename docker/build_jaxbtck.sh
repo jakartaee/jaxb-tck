@@ -55,8 +55,14 @@ export TCK_ROOT=$WORKSPACE
 export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 #wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
 #getting jaxb-ri which is needed to build the JAXB TCK
-wget $WGET_PROPS https://jenkins.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip -O jaxb-ri.zip
+#wget $WGET_PROPS https://jenkins.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip -O jaxb-ri.zip
+wget $WGET_PROPS https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-pr-build/1/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip -O jaxb-ri.zip
 unzip -o jaxb-ri.zip
+
+ls -l jaxb-ri/mod
+# Temporary overwrite of API package
+#wget $WGET_PROPS https://search.maven.org/remotecontent?filepath=jakarta/xml/bind/jakarta.xml.bind-api/3.0.0-RC1/jakarta.xml.bind-api-3.0.0-RC1.jar -O jaxb-ri/mod/jakarta.xml.bind-api.jar
+
 wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm-commons/7.0-SNAPSHOT/asm-commons-7.0-20181027.133601-5.jar -O asm-commons-7.0.jar
 wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar -O asm-7.0.jar
 #unzip -o latest-glassfish.zip
@@ -69,7 +75,7 @@ wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/sna
 which make
 make -version
 which ksh
-ksh -version
+#ksh -version
 which awk
 #awk -version
 
@@ -106,15 +112,22 @@ sed -i 's#^UNZIP\s*=\s*.*#UNZIP=/usr/bin/unzip#g' $WORKSPACE/jaxb-tck/build/Defs
 
 sed -i 's#^GENERAL_JAVAHOME\s*=\s*.*#GENERAL_JAVAHOME=/opt/jdk1.8.0_191#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^PWD\s*=\s*.*#PWD=/usr/bin/pwd#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
-sed -i 's#^JAXB_HOME\s*=\s*.*#JAXB_HOME = /home/jenkins/workspace/jaxb-tck_master/jaxb-ri#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
-sed -i 's#^JAXB_20_RI_HOME\s*=\s*.*#JAXB_20_RI_HOME = /home/jenkins/workspace/jaxb-tck_master/jaxb-ri#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
+sed -i 's#^JAXB_HOME\s*=\s*.*#JAXB_HOME = '"${WORKSPACE}"'/jaxb-ri#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
+sed -i 's#^JAXB_20_RI_HOME\s*=\s*.*#JAXB_20_RI_HOME = '"${WORKSPACE}"'/jaxb-ri#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^JAVAHOME_6\s*=\s*.*#JAVAHOME_6 = /opt/jdk1.8.0_191#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
-sed -i 's#^SIGTEST_DIST\s*=\s*.*#SIGTEST_DIST = /home/jenkins/workspace/jaxb-tck_master/jaxb-tck#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
+sed -i 's#^SIGTEST_DIST\s*=\s*.*#SIGTEST_DIST = '"${WORKSPACE}"'/jaxb-tck#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^ANT_HOME\s*=\s*.*#ANT_HOME = /usr/share/ant#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 
-sed -i 's#^JAVATEST_JAR_LOC\s*=\s*.*#JAVATEST_JAR_LOC = /home/jenkins/workspace/jaxb-tck_master/jaxb-tck/lib#g' $WORKSPACE/jaxb-tck/build/Defs.mk
-sed -i 's#^SIGTESTDEV_JAR_LOC\s*=\s*.*#SIGTESTDEV_JAR_LOC = /home/jenkins/workspace/jaxb-tck_master/jaxb-tck/lib#g' $WORKSPACE/jaxb-tck/build/Defs.mk
-sed -i 's#^ASM_JAR_LOCATION\s*=\s*.*#ASM_JAR_LOCATION = /home/jenkins/workspace/jaxb-tck_master#g' $WORKSPACE/jaxb-tck/build/Defs.mk
+sed -i 's#^JAVATEST_JAR_LOC\s*=\s*.*#JAVATEST_JAR_LOC = '"${WORKSPACE}"'/jaxb-tck/lib#g' $WORKSPACE/jaxb-tck/build/Defs.mk
+sed -i 's#^SIGTESTDEV_JAR_LOC\s*=\s*.*#SIGTESTDEV_JAR_LOC = '"${WORKSPACE}"'/jaxb-tck/lib#g' $WORKSPACE/jaxb-tck/build/Defs.mk
+sed -i 's#^ASM_JAR_LOCATION\s*=\s*.*#ASM_JAR_LOCATION = '"${WORKSPACE}"'#g' $WORKSPACE/jaxb-tck/build/Defs.mk
+
+echo '-[ Defs.mk ]----------------------------------------------------------'
+cat $WORKSPACE/jaxb-tck/build/Defs.mk
+echo '----------------------------------------------------------------------'
+echo '-[ Defs.SFBay.mk ]----------------------------------------------------'
+cat $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
+echo '----------------------------------------------------------------------'
 
 cd $TCK_ROOT/jaxb-tck/build
 
