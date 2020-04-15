@@ -23,7 +23,7 @@
    <object class="javasoft.sqe.tests.particles.particlesb009.Elem"> 
     <void property="e1OrE2OrE3"> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement">
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>e1</string> 

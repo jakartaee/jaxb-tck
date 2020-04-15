@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.errata10.erra001.Root"> 
   <void property="testByteOrTestUnsignedByteOrTestInteger"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testByte</string> 
@@ -32,7 +32,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testUnsignedByte</string> 
@@ -43,7 +43,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testInteger</string> 
@@ -56,7 +56,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testPositiveInteger</string> 
@@ -69,7 +69,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testNegativeInteger</string> 
@@ -82,7 +82,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testNonNegativeInteger</string> 
@@ -95,7 +95,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testNonPositiveInteger</string> 
@@ -108,7 +108,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testInt</string> 
@@ -119,7 +119,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testUnsignedInt</string> 
@@ -130,7 +130,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testLong</string> 
@@ -141,7 +141,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testUnsignedLong</string> 
@@ -154,7 +154,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testShort</string> 
@@ -165,7 +165,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testUnsignedShort</string> 
@@ -176,7 +176,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>testDecimal</string> 

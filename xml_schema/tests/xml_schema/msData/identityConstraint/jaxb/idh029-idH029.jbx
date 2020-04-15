@@ -51,13 +51,13 @@
   </void> 
   <void property="uid"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>uid</string> 
      </object> 
      <class>javasoft.sqe.tests.identityconstraint.idh029.UidType</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.identityconstraint.idh029.UidType"> 
       <void property="val"> 
        <string>1</string> 
@@ -66,13 +66,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName1" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>uid2</string> 
      </object> 
      <class>javasoft.sqe.tests.identityconstraint.idh029.UidType</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.identityconstraint.idh029.UidType"> 
       <void property="val"> 
        <string>11</string> 
@@ -81,10 +81,10 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.identityconstraint.idh029.UidType</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.identityconstraint.idh029.UidType"> 
       <void property="val"> 
        <string>111</string> 
@@ -93,10 +93,10 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName1"/> 
      <class>javasoft.sqe.tests.identityconstraint.idh029.UidType</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.identityconstraint.idh029.UidType"> 
       <void property="val"> 
        <string>1.0</string> 

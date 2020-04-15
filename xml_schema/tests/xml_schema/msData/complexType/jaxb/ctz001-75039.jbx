@@ -21,24 +21,24 @@
  <object class="javasoft.sqe.tests.complextype._75039.BagOfHeads"> 
   <void property="substHead"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>complex1</string> 
      </object> 
      <class>javasoft.sqe.tests.complextype._75039.COMPLEX1</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.complextype._75039.COMPLEX1"/> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>complex2</string> 
      </object> 
      <class>javasoft.sqe.tests.complextype._75039.COMPLEX2</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.complextype._75039.COMPLEX2"/> 
     </object> 
    </void> 

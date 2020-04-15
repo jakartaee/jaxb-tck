@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.schema.schq3_a.Root"> 
   <void property="any"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>e1</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schq3_a.BCt</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.schema.schq3_a.BCt"> 
       <void property="b1"> 
        <void method="add"> 
@@ -42,13 +42,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>b-e1</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.schq3_a.BCt</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.schema.schq3_a.BCt"> 
       <void property="b2"> 
        <void method="add"> 

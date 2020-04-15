@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.elemdecl._abstract.abstract00101m.abstract00101m.Root"> 
   <void property="head"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string>ElemDecl/abstract</string> 
       <string>Member1</string> 
      </object> 
      <class>javasoft.sqe.tests.elemdecl._abstract.abstract00101m.abstract00101m.HeadType</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.elemdecl._abstract.abstract00101m.abstract00101m.HeadType"> 
       <void property="ear"> 
        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
@@ -47,10 +47,10 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>javasoft.sqe.tests.elemdecl._abstract.abstract00101m.abstract00101m.HeadType</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.elemdecl._abstract.abstract00101m.abstract00101m.HeadType"> 
       <void property="ear"> 
        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 

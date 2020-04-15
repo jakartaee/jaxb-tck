@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>http://schemas.microsoft.com/2003/10/Serialization/</string> 
    <string>Array</string> 
   </object> 
   <class>javasoft.sqe.tests.additional.isdefault072.Array</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.additional.isdefault072.Array"> 
    <void property="item"> 
     <void method="add"> 

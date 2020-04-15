@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00201m.idconstrdefs00201m.Root"> 
   <void property="accountAndNameAndManager"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>Account</string> 
@@ -32,7 +32,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName1" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>Name</string> 
@@ -43,7 +43,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName2" class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>Manager</string> 
@@ -54,7 +54,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
      <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00201m.idconstrdefs00201m.Root</class> 
@@ -62,7 +62,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName1"/> 
      <class>java.lang.String</class> 
      <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00201m.idconstrdefs00201m.Root</class> 
@@ -70,7 +70,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName2"/> 
      <class>java.lang.String</class> 
      <class>javasoft.sqe.tests.elemdecl.identityconstraintdefs.idconstrdefs00201m.idconstrdefs00201m.Root</class> 

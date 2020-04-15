@@ -28,13 +28,13 @@
   </void> 
   <void property="superSuperElement"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>ElemDecl/substGroupAffilation</string> 
       <string>SuperElement</string> 
      </object> 
      <class>java.lang.Object</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
       <string>ElemDecl/substGroupAffilation</string> 
       <string>SuperElement</string> 
@@ -43,13 +43,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>ElemDecl/substGroupAffilation</string> 
       <string>SuperSuperElement</string> 
      </object> 
      <class>java.lang.Object</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
       <string>ElemDecl/substGroupAffilation</string> 
       <string>SuperSuperElement</string> 
@@ -58,13 +58,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string>ElemDecl/substGroupAffilation</string> 
       <string>Element</string> 
      </object> 
      <class>java.lang.Object</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
       <string>ElemDecl/substGroupAffilation</string> 
       <string>Element</string> 
@@ -73,10 +73,10 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
       <string>ElemDecl/substGroupAffilation</string> 
       <string>Element</string> 

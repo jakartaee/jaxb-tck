@@ -25,7 +25,7 @@
      <object class="javasoft.sqe.tests.particles.particlesl012.Mixed"> 
       <void property="content"> 
        <void method="add"> 
-        <object class="javax.xml.bind.JAXBElement"> 
+        <object class="jakarta.xml.bind.JAXBElement">
          <object class="javax.xml.namespace.QName"> 
           <string></string> 
           <string>foo</string> 

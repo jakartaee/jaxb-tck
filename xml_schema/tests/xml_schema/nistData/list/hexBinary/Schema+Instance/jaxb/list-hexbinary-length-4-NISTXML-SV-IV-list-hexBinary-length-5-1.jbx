@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-list-hexBinary-length-5-NS</string> 
    <string>NISTSchema-SV-IV-list-hexBinary-length-5</string> 
   </object> 
   <class>java.util.List</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="java.util.ArrayList"> 
    <void method="add"> 
     <string>6F7073736161656D6A766C7464726978676F6E66646E68</string> 

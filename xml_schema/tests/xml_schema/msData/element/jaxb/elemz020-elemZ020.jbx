@@ -18,28 +18,28 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>foo</string> 
    <string>root</string> 
   </object> 
   <class>javasoft.sqe.tests.element.elemz020.B</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.element.elemz020.B"> 
    <void property="e1OrFoo"> 
     <void method="add"> 
-     <object class="javax.xml.bind.JAXBElement"> 
+     <object class="jakarta.xml.bind.JAXBElement">
       <object id="QName0" class="javax.xml.namespace.QName"> 
        <string>foo</string> 
        <string>foo</string> 
       </object> 
       <class>java.lang.Boolean</class> 
-      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
       <boolean>true</boolean> 
      </object> 
     </void> 
     <void method="add"> 
-     <object class="javax.xml.bind.JAXBElement"> 
+     <object class="jakarta.xml.bind.JAXBElement">
       <object id="QName1" class="javax.xml.namespace.QName"> 
        <string></string> 
        <string>foo</string> 
@@ -50,15 +50,15 @@
      </object> 
     </void> 
     <void method="add"> 
-     <object class="javax.xml.bind.JAXBElement"> 
+     <object class="jakarta.xml.bind.JAXBElement">
       <object idref="QName0"/> 
       <class>java.lang.Boolean</class> 
-      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
       <boolean>true</boolean> 
      </object> 
     </void> 
     <void method="add"> 
-     <object class="javax.xml.bind.JAXBElement"> 
+     <object class="jakarta.xml.bind.JAXBElement">
       <object idref="QName1"/> 
       <class>java.lang.Integer</class> 
       <class>javasoft.sqe.tests.element.elemz020.B</class> 

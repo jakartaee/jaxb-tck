@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>urn:products</string> 
    <string>products</string> 
   </object> 
   <class>javasoft.sqe.tests.datatypes.id_test64335.ProductList</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.datatypes.id_test64335.ProductList"> 
    <void property="bookOrDvdOrClothing"> 
     <void method="add"> 

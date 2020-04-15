@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.elemdecl.substgroupexclusions.substgrpexcl00301m.substgrpexcl00301m1.Root"> 
   <void property="head"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>ElemDecl/substGroupExclusions</string> 
       <string>Head</string> 
      </object> 
      <class>javasoft.sqe.tests.elemdecl.substgroupexclusions.substgrpexcl00301m.substgrpexcl00301m1.HeadType</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.elemdecl.substgroupexclusions.substgrpexcl00301m.substgrpexcl00301m1.HeadType"> 
       <void property="ear"> 
        <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 

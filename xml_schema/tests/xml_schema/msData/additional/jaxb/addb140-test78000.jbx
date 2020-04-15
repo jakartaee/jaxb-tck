@@ -25,13 +25,13 @@
      <void property="laxContainer"> 
       <object class="javasoft.sqe.tests.additional.test78000a.LaxContainerType"> 
        <void property="any"> 
-        <object class="javax.xml.bind.JAXBElement"> 
+        <object class="jakarta.xml.bind.JAXBElement">
          <object id="QName0" class="javax.xml.namespace.QName"> 
           <string>b</string> 
           <string>test</string> 
          </object> 
          <class>javasoft.sqe.tests.additional.test78000a.TestType</class> 
-         <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+         <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
          <object class="javasoft.sqe.tests.additional.test78000a.TestType"> 
           <void property="b1"> 
            <string>a</string> 
@@ -55,10 +55,10 @@
      <void property="strictContainer"> 
       <object class="javasoft.sqe.tests.additional.test78000a.StrictContainerType"> 
        <void property="any"> 
-        <object class="javax.xml.bind.JAXBElement"> 
+        <object class="jakarta.xml.bind.JAXBElement">
          <object idref="QName0"/> 
          <class>javasoft.sqe.tests.additional.test78000a.TestType</class> 
-         <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+         <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
          <object class="javasoft.sqe.tests.additional.test78000a.TestType"> 
           <void property="b1"> 
            <string>a</string> 
@@ -97,10 +97,10 @@
      <void property="strictContainer"> 
       <object class="javasoft.sqe.tests.additional.test78000a.StrictContainerType"> 
        <void property="any"> 
-        <object class="javax.xml.bind.JAXBElement"> 
+        <object class="jakarta.xml.bind.JAXBElement">
          <object idref="QName0"/> 
          <class>javasoft.sqe.tests.additional.test78000a.TestType</class> 
-         <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+         <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
          <object class="javasoft.sqe.tests.additional.test78000a.TestType"> 
           <void property="b1"> 
            <string>a</string> 
@@ -117,10 +117,10 @@
      <void property="laxContainer"> 
       <object class="javasoft.sqe.tests.additional.test78000a.LaxContainerType"> 
        <void property="any"> 
-        <object class="javax.xml.bind.JAXBElement"> 
+        <object class="jakarta.xml.bind.JAXBElement">
          <object idref="QName0"/> 
          <class>javasoft.sqe.tests.additional.test78000a.TestType</class> 
-         <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+         <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
          <object class="javasoft.sqe.tests.additional.test78000a.TestType"> 
           <void property="b1"> 
            <string>a</string> 
@@ -144,10 +144,10 @@
      <void property="strictContainer"> 
       <object class="javasoft.sqe.tests.additional.test78000a.StrictContainerType"> 
        <void property="any"> 
-        <object class="javax.xml.bind.JAXBElement"> 
+        <object class="jakarta.xml.bind.JAXBElement">
          <object idref="QName0"/> 
          <class>javasoft.sqe.tests.additional.test78000a.TestType</class> 
-         <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+         <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
          <object class="javasoft.sqe.tests.additional.test78000a.TestType"> 
           <void property="b1"> 
            <string>a</string> 
