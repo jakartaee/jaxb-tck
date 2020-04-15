@@ -14,7 +14,6 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
-
 if [ -z "$ANT_HOME" ]; then
   export ANT_HOME=/usr/share/ant/
 fi
@@ -24,6 +23,20 @@ if [ -z "$JAVA_HOME" ]; then
 fi
 
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+
+if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
+  export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/78/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
+fi
+if [ -z "${JAF_BUNDLE_URL}" ];then
+  export JAF_BUNDLE_URL='http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar'
+fi
+if [ -z "${GF_BUNDLE_URL}" ]; then
+  export GF_BUNDLE_URL='http://download.eclipse.org/glassfish/glassfish-5.1.0.zip'
+fi
+
+echo "JAXB_RI_BUNDLE_URL=${JAXB_RI_BUNDLE_URL}"
+echo "JAF_BUNDLE_URL=${JAF_BUNDLE_URL}"
+echo "GF_BUNDLE_URL=${GF_BUNDLE_URL}"
 
 cd $WORKSPACE
 export BASEDIR=`pwd`
@@ -41,30 +54,22 @@ mkdir -p ${HOME}/.m2
 
 cd $WORKSPACE
 WGET_PROPS="--progress=bar:force --no-cache"
-if [ -z "$JAF_BUNDLE_URL" ];then
-  export JAF_BUNDLE_URL=http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar
-fi
+
 #wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
 
 cd $BASEDIR
-if [ -z "$GF_BUNDLE_URL" ]; then
-  echo "Using default url for GF bundle: $DEFAULT_GF_BUNDLE_URL"
-  export GF_BUNDLE_URL=$DEFAULT_GF_BUNDLE_URL
-fi
 export TCK_ROOT=$WORKSPACE
 export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 #wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
 #getting jaxb-ri which is needed to build the JAXB TCK
-#wget $WGET_PROPS https://jenkins.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip -O jaxb-ri.zip
-wget $WGET_PROPS https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-pr-build/1/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip -O jaxb-ri.zip
-unzip -o jaxb-ri.zip
+wget ${WGET_PROPS} ${JAXB_RI_BUNDLE_URL} -O jaxb-ri.zip && unzip -o jaxb-ri.zip
 
 ls -l jaxb-ri/mod
 # Temporary overwrite of API package
 #wget $WGET_PROPS https://search.maven.org/remotecontent?filepath=jakarta/xml/bind/jakarta.xml.bind-api/3.0.0-RC1/jakarta.xml.bind-api-3.0.0-RC1.jar -O jaxb-ri/mod/jakarta.xml.bind-api.jar
 
-wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm-commons/7.0-SNAPSHOT/asm-commons-7.0-20181027.133601-5.jar -O asm-commons-7.0.jar
-wget $WGET_PROPS https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar -O asm-7.0.jar
+wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm-commons/7.0-SNAPSHOT/asm-commons-7.0-20181027.133601-5.jar' -O asm-commons-7.0.jar
+wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar' -O asm-7.0.jar
 #unzip -o latest-glassfish.zip
 #ls -l $GF_HOME/glassfish5/glassfish/
 
