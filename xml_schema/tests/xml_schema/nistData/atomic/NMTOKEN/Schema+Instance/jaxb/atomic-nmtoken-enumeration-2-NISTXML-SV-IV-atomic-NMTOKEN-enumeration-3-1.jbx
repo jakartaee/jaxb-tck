@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-3-NS</string> 
    <string>NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-3</string> 
   </object> 
   <class>javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_3.NISTSchemaSVIVAtomicNMTOKENEnumeration3Type</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_3.NISTSchemaSVIVAtomicNMTOKENEnumeration3Type" method="valueOf"> 
    <string>METHODS_PROFILES_ENSURE_MANIPULATE_B</string> 
   </object> 

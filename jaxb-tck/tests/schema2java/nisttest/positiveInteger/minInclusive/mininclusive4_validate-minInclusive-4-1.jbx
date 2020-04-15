@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-positiveInteger-minInclusive-4-NS</string> 
    <string>NISTSchema-positiveInteger-minInclusive-4</string> 
   </object> 
   <class>java.math.BigInteger</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="java.math.BigInteger"> 
    <string>35874103269231083502</string> 
   </object> 

@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>ElemDecl/typeDef</string> 
    <string>root</string> 
   </object> 
   <class>javasoft.sqe.tests.elemdecl.typedef.typedef01501m.typedef01501m1.Text</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.elemdecl.typedef.typedef01501m.typedef01501m1.Text"> 
    <void property="ID"> 
     <string>a1</string> 
@@ -40,7 +40,7 @@ XML Namespace facility
 </string> 
     </void> 
     <void method="add"> 
-     <object class="javax.xml.bind.JAXBElement"> 
+     <object class="jakarta.xml.bind.JAXBElement">
       <object class="javax.xml.namespace.QName"> 
        <string></string> 
        <string>dot</string> 

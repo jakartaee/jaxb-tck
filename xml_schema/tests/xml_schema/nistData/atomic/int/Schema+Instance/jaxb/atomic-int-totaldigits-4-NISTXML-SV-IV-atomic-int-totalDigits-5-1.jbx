@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-atomic-int-totalDigits-5-NS</string> 
    <string>NISTSchema-SV-IV-atomic-int-totalDigits-5</string> 
   </object> 
   <class>java.lang.Integer</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <int>4</int> 
  </object> 
 </java> 

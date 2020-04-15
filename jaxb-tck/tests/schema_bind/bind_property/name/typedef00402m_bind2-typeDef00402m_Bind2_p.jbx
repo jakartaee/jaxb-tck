@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>ElemDecl/typeDef</string> 
    <string>root</string> 
   </object> 
   <class>javasoft.sqe.tests.name.typedef00402m_bind2.ComplexType</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.name.typedef00402m_bind2.ComplexType"> 
    <void property="global"> 
     <boolean>true</boolean> 

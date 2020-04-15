@@ -20,13 +20,13 @@
 <java version="1.6.0" class="java.beans.XMLDecoder">
  <object class="javasoft.sqe.tests.element.test115044_2.Root"> 
   <void property="e"> 
-   <object class="javax.xml.bind.JAXBElement"> 
+   <object class="jakarta.xml.bind.JAXBElement">
     <object class="javax.xml.namespace.QName"> 
      <string>foo</string> 
      <string>e</string> 
     </object> 
     <class>java.lang.Object</class> 
-    <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+    <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
      <string>foo</string> 
      <string>f:e</string> 

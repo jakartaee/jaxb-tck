@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-atomic-language-enumeration-1-NS</string> 
    <string>NISTSchema-SV-IV-atomic-language-enumeration-1</string> 
   </object> 
   <class>javasoft.sqe.tests.atomic.language.schema_instance.nistschema_sv_iv_atomic_language_enumeration_1.NISTSchemaSVIVAtomicLanguageEnumeration1Type</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.atomic.language.schema_instance.nistschema_sv_iv_atomic_language_enumeration_1.NISTSchemaSVIVAtomicLanguageEnumeration1Type" method="valueOf"> 
    <string>AS</string> 
   </object> 

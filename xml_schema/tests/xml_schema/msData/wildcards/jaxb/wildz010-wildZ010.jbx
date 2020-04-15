@@ -20,13 +20,13 @@
 <java version="1.6.0" class="java.beans.XMLDecoder">
  <object class="javasoft.sqe.tests.wildcards.wildz010_a.Doc"> 
   <void property="any"> 
-   <object class="javax.xml.bind.JAXBElement"> 
+   <object class="jakarta.xml.bind.JAXBElement">
     <object class="javax.xml.namespace.QName"> 
      <string>blah</string> 
      <string>a</string> 
     </object> 
     <class>java.lang.String</class> 
-    <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+    <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
     <string></string> 
    </object> 
   </void> 

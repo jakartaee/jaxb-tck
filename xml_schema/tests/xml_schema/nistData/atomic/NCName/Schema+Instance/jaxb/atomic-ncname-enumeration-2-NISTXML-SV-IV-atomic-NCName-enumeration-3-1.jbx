@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-atomic-NCName-enumeration-3-NS</string> 
    <string>NISTSchema-SV-IV-atomic-NCName-enumeration-3</string> 
   </object> 
   <class>javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_3.NISTSchemaSVIVAtomicNCNameEnumeration3Type</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_3.NISTSchemaSVIVAtomicNCNameEnumeration3Type" method="valueOf"> 
    <string>COF_ISSUES_INCLUDES_USED_20_THE_E_WE_TO_MANUAL_TO</string> 
   </object> 

@@ -24,7 +24,7 @@
     <object class="javasoft.sqe.tests.combined.identity.identitytestsuite._004.test.Scope"> 
      <void property="keyOrRef"> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement">
         <object id="QName0" class="javax.xml.namespace.QName"> 
          <string>foo</string> 
          <string>key</string> 
@@ -41,7 +41,7 @@
     <object class="javasoft.sqe.tests.combined.identity.identitytestsuite._004.test.Scope"> 
      <void property="keyOrRef"> 
       <void method="add"> 
-       <object class="javax.xml.bind.JAXBElement"> 
+       <object class="jakarta.xml.bind.JAXBElement">
         <object idref="QName0"/> 
         <class>java.lang.String</class> 
         <class>javasoft.sqe.tests.combined.identity.identitytestsuite._004.test.Scope</class> 

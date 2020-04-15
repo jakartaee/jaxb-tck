@@ -22,13 +22,13 @@
   <void property="elem"> 
    <object class="javasoft.sqe.tests.particles.particlesob056.R"> 
     <void property="any"> 
-     <object class="javax.xml.bind.JAXBElement"> 
+     <object class="jakarta.xml.bind.JAXBElement">
       <object class="javax.xml.namespace.QName"> 
        <string>http://xsdtesting</string> 
        <string>foo</string> 
       </object> 
       <class>java.lang.Object</class> 
-      <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+      <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
       <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
        <string>http://xsdtesting</string> 
        <string>a:foo</string> 

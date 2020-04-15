@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.schema.scht10_a.Root"> 
   <void property="any"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>b-e1</string> 
      </object> 
      <class>javasoft.sqe.tests.schema.scht10_a.BCt</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.schema.scht10_a.BCt"> 
       <void property="att1"> 
        <string>123</string> 
@@ -36,13 +36,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>ns-a</string> 
       <string>e2</string> 
      </object> 
      <class>java.lang.Integer</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <int>12</int> 
     </object> 
    </void> 

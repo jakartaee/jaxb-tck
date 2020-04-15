@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-list-string-pattern-3-NS</string> 
    <string>NISTSchema-SV-IV-list-string-pattern-3</string> 
   </object> 
   <class>java.util.List</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="java.util.ArrayList"> 
    <void method="add"> 
     <string>46_Of_Both_Street_To_The_,_NC_11654-1789</string> 

@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>urn:uuid:48D2A016-64FF-4e20-B7F0-FE15842C4D1B/</string> 
    <string>series</string> 
   </object> 
   <class>java.lang.Object</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
    <string>urn:uuid:48D2A016-64FF-4e20-B7F0-FE15842C4D1B/</string> 
    <string>sd:series</string> 

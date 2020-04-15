@@ -21,125 +21,125 @@
  <object class="javasoft.sqe.tests.particles.particlesz040.Doc"> 
   <void property="AAndAnyAndB"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>a</string> 
      </object> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string>a</string> 
       <string>a1</string> 
      </object> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>b</string> 
@@ -150,74 +150,74 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.String</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <string></string> 
     </object> 
    </void> 

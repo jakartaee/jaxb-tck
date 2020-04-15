@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.particles.particlesec020.Doc"> 
   <void property="g"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object id="QName0" class="javax.xml.namespace.QName"> 
       <string>http://xsdtesting</string> 
       <string>b</string> 
@@ -36,7 +36,7 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object idref="QName0"/> 
      <class>java.lang.Object</class> 
      <class>javasoft.sqe.tests.particles.particlesec020.Doc</class> 

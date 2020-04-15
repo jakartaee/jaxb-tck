@@ -20,13 +20,13 @@
 <java version="1.6.0" class="java.beans.XMLDecoder">
  <object class="javasoft.sqe.tests.particles.particlesdc003.Doc"> 
   <void property="elem1"> 
-   <object class="javax.xml.bind.JAXBElement"> 
+   <object class="jakarta.xml.bind.JAXBElement">
     <object class="javax.xml.namespace.QName"> 
      <string>http://xsdtesting</string> 
      <string>elem3</string> 
     </object> 
     <class>java.lang.Object</class> 
-    <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+    <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
     <object class="com.sun.jaxb_tck.lib.persistence.ObjectsWrapper" method="createElementNS"> 
      <string>http://xsdtesting</string> 
      <string>x:elem3</string> 

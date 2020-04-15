@@ -21,7 +21,7 @@
  <object class="javasoft.sqe.tests.collectiontype.collectiontype00101m2.Root"> 
   <void property="dateOrTime"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string></string> 
       <string>date</string> 

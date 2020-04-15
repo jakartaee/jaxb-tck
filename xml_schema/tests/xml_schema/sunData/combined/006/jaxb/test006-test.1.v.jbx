@@ -21,13 +21,13 @@
  <object class="javasoft.sqe.tests.combined._006.test.Root"> 
   <void property="EB"> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>eB</string> 
      </object> 
      <class>javasoft.sqe.tests.combined._006.test.B</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.combined._006.test.B"> 
       <void property="foo"> 
        <object class="javasoft.sqe.tests.combined._006.test.Empty"/> 
@@ -36,13 +36,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>eDr</string> 
      </object> 
      <class>javasoft.sqe.tests.combined._006.test.Dr</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.combined._006.test.Dr"> 
       <void property="foo"> 
        <object class="javasoft.sqe.tests.combined._006.test.Empty"/> 
@@ -51,13 +51,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>eDe</string> 
      </object> 
      <class>javasoft.sqe.tests.combined._006.test.De</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.combined._006.test.De"> 
       <void property="foo"> 
        <object class="javasoft.sqe.tests.combined._006.test.Empty"/> 
@@ -66,13 +66,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>eDrr</string> 
      </object> 
      <class>javasoft.sqe.tests.combined._006.test.Drr</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.combined._006.test.Drr"> 
       <void property="foo"> 
        <object class="javasoft.sqe.tests.combined._006.test.Empty"/> 
@@ -81,13 +81,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>eDre</string> 
      </object> 
      <class>javasoft.sqe.tests.combined._006.test.Dre</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.combined._006.test.Dre"> 
       <void property="foo"> 
        <object class="javasoft.sqe.tests.combined._006.test.Empty"/> 
@@ -96,13 +96,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>eDer</string> 
      </object> 
      <class>javasoft.sqe.tests.combined._006.test.Der</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.combined._006.test.Der"> 
       <void property="foo"> 
        <object class="javasoft.sqe.tests.combined._006.test.Empty"/> 
@@ -111,13 +111,13 @@
     </object> 
    </void> 
    <void method="add"> 
-    <object class="javax.xml.bind.JAXBElement"> 
+    <object class="jakarta.xml.bind.JAXBElement">
      <object class="javax.xml.namespace.QName"> 
       <string>foo</string> 
       <string>eDee</string> 
      </object> 
      <class>javasoft.sqe.tests.combined._006.test.Dee</class> 
-     <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+     <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
      <object class="javasoft.sqe.tests.combined._006.test.Dee"> 
       <void property="foo"> 
        <object class="javasoft.sqe.tests.combined._006.test.Empty"/> 

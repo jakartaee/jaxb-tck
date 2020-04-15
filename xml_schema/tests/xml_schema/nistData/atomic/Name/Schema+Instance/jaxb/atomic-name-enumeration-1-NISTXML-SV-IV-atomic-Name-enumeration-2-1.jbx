@@ -18,13 +18,13 @@
 -->
 
 <java version="1.6.0" class="java.beans.XMLDecoder">
- <object class="javax.xml.bind.JAXBElement"> 
+ <object class="jakarta.xml.bind.JAXBElement">
   <object class="javax.xml.namespace.QName"> 
    <string>NISTSchema-SV-IV-atomic-Name-enumeration-2-NS</string> 
    <string>NISTSchema-SV-IV-atomic-Name-enumeration-2</string> 
   </object> 
   <class>javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_2.NISTSchemaSVIVAtomicNameEnumeration2Type</class> 
-  <class>javax.xml.bind.JAXBElement$GlobalScope</class> 
+  <class>jakarta.xml.bind.JAXBElement$GlobalScope</class>
   <object class="javasoft.sqe.tests.atomic.name.schema_instance.nistschema_sv_iv_atomic_name_enumeration_2.NISTSchemaSVIVAtomicNameEnumeration2Type" method="valueOf"> 
    <string>RA_THE_PARTNERS_THAT_PERVASIVE_BY_CHALLENGES_DISCOVER</string> 
   </object> 

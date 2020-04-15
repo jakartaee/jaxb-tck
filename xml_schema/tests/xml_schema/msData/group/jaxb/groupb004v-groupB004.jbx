@@ -23,7 +23,7 @@
    <object class="javasoft.sqe.tests.group.groupb004.ComplexType"> 
     <void property="r1AndR2AndR2"> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement">
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>r2</string> 
@@ -38,7 +38,7 @@
       </object> 
      </void> 
      <void method="add"> 
-      <object class="javax.xml.bind.JAXBElement"> 
+      <object class="jakarta.xml.bind.JAXBElement">
        <object class="javax.xml.namespace.QName"> 
         <string></string> 
         <string>r3</string> 
