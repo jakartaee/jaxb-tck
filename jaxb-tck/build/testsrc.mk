@@ -77,7 +77,7 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
         		-Dtck.build.propfile=../tck.properties \
         		-Dtestgen.emitter.TestGroup.XMLSchemaTest.e-lists=jaxb_test_bug.jtx \
         		-Dtestgen.emitter.TestGroup.J2XTest=com.sun.tgxml.tools.testgen.processors.emitter.J2XRuntimeEmitter \
-        		-Dtestgen.emitter.TestGroup.J2XTest.executeClass=javasoft.sqe.tests.api.javax.xml.bind.J2XRuntimeTest \
+        		-Dtestgen.emitter.TestGroup.J2XTest.executeClass=javasoft.sqe.tests.api.jakarta.xml.bind.J2XRuntimeTest \
         		$$validator \
         		com.sun.tgxml.tools.testgen.BundleTestGenFilter \
             			-plugin $(TESTFILTER_PLUGIN) \
@@ -141,7 +141,7 @@ copy-bundles.ok: $(TCKDIR)/classes
 	-Dtck.build.propfile=../tck.properties \
 	-Dtestgen.emitter.TestGroup.XMLSchemaTest.e-lists=jaxb_test_bug.jtx \
 	-Dtestgen.emitter.TestGroup.J2XTest=com.sun.tgxml.tools.testgen.processors.emitter.J2XRuntimeEmitter \
-	-Dtestgen.emitter.TestGroup.J2XTest.executeClass=javasoft.sqe.tests.api.javax.xml.bind.J2XRuntimeTest \
+	-Dtestgen.emitter.TestGroup.J2XTest.executeClass=javasoft.sqe.tests.api.jakarta.xml.bind.J2XRuntimeTest \
 	$$validator \
 	com.sun.tgxml.tools.testgen.BundleTestGenFilter \
 	    -plugin $(TESTFILTER_PLUGIN) \

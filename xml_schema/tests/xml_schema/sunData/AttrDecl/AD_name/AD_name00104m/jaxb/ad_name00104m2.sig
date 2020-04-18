@@ -65,70 +65,70 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.attrdecl.ad_name.ad_name00104m.ad_name00104m2.Root
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public Root()
 fld protected java.math.BigInteger ŋ00
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u014a00", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u014a00", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ť01
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u016401", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u016401", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ž02
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ƀ10
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ƥ22
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ƨ30
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01a730", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01a730", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ƨ31
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ƫ40
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ƴ41
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ƽ42
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǀ50
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǁ51
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǃ52
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǎ60
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01cd60", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01cd60", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǟ61
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01de61", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01de61", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǯ62
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǵ70
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01f470", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01f470", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǵ71
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01f471", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01f471", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǵ72
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ǻ80
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01fa80", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01fa80", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ȉ81
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u020881", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u020881", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ȗ82
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ɐ90
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ɗ11
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u018a11", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u018a11", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ɢ91
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ɣ12
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u019412", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u019412", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ɩ20
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u019620", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u019620", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ɲ21
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u019d21", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u019d21", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ɴ92
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger ʃ32
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01a932", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="\u01a932", java.lang.String namespace="##default")
 meth public java.math.BigInteger getŊ00()
 meth public java.math.BigInteger getŤ01()
 meth public java.math.BigInteger getŽ02()
@@ -191,21 +191,21 @@ meth public void setɢ91(java.math.BigInteger)
 meth public void setɴ92(java.math.BigInteger)
 supr java.lang.Object
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlRootElement
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.String name()
 meth public abstract !hasdefault java.lang.String namespace()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

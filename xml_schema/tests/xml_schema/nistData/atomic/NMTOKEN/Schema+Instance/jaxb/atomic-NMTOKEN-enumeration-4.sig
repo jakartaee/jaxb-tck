@@ -81,22 +81,22 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-5-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-5-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-5-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-5-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type CROSS_OVER_RELATED_AMBIGUITIES_THE_EX
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="cross-over.related.ambiguities-The.Ex")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="cross-over.related.ambiguities-The.Ex")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type DEFINE_A_SCHEMAS_OASIS_WORKING_CONFERENCE_PROFI
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="define.a:Schemas-OASIS:working.Conference_profi")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="define.a:Schemas-OASIS:working.Conference_profi")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type HAVE_AUTOMATIC
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="have_automatic")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="have_automatic")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type OBJECT_RAPID_OF_PARTNERS_INCLUDING_DOCUME
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="object_rapid.of:partners:including.docume")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="object_rapid.of:partners:including.docume")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type ONLY_D
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="only:d")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="only:d")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type PROMINENT_RETRIEVE_RIGOROUS_A_OF_FOR_DEFINE_AND_PARTICIPANTS_JA
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="prominent_retrieve_rigorous.a:of-for.define-and:participants:Ja")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="prominent_retrieve_rigorous.a:of-for.define-and:participants:Ja")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type VIA_DISCUSSIONS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="via.discussions")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="via.discussions")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type valueOf(java.lang.String)
@@ -104,13 +104,13 @@ meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_
 supr java.lang.Enum<javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_5.NISTSchemaSVIVAtomicNMTOKENEnumeration5Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

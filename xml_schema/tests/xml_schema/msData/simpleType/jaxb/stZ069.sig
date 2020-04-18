@@ -65,35 +65,35 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.simpletype.test109339_3.Array
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.simpletype.test109339_3.ArrayOfColorAAA])
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="Array", java.lang.String namespace="##default", java.lang.String[] propOrder=["item"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.simpletype.test109339_3.ArrayOfColorAAA])
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="Array", java.lang.String namespace="##default", java.lang.String[] propOrder=["item"])
 cons public Array()
 fld protected java.util.List<java.lang.Object> item
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Item", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Item", java.lang.String namespace="##default")
 meth public java.util.List<java.lang.Object> getItem()
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.simpletype.test109339_3.ArrayOfColorAAA
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="ArrayOfColorAAA", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="ArrayOfColorAAA", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public ArrayOfColorAAA()
 supr javasoft.sqe.tests.simpletype.test109339_3.Array
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlSeeAlso
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlSeeAlso
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract java.lang.Class[] value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

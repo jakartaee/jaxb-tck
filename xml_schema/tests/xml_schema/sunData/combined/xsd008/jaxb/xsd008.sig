@@ -65,14 +65,14 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.combined.xsd008.xsd008.Facet
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.combined.xsd008.xsd008.YesNo, class javasoft.sqe.tests.combined.xsd008.xsd008.LongType])
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="facet", java.lang.String namespace="##default", java.lang.String[] propOrder=["annotation"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.combined.xsd008.xsd008.YesNo, class javasoft.sqe.tests.combined.xsd008.xsd008.LongType])
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="facet", java.lang.String namespace="##default", java.lang.String[] propOrder=["annotation"])
 cons public Facet()
 fld protected java.lang.Object annotation
 fld protected java.lang.String value
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="##default", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="anySimpleType", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 meth public java.lang.Object getAnnotation()
 meth public java.lang.String getValue()
 meth public void setAnnotation(java.lang.Object)
@@ -80,32 +80,32 @@ meth public void setValue(java.lang.String)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.combined.xsd008.xsd008.Generic
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="generic", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["facet"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="generic", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["facet"])
 cons public Generic()
-fld protected java.util.List<javax.xml.bind.JAXBElement<? extends javasoft.sqe.tests.combined.xsd008.xsd008.Facet>> facet
- anno 0 javax.xml.bind.annotation.XmlElementRef(java.lang.Class type=class javax.xml.bind.JAXBElement, java.lang.String name="facet", java.lang.String namespace="foo")
-meth public java.util.List<javax.xml.bind.JAXBElement<? extends javasoft.sqe.tests.combined.xsd008.xsd008.Facet>> getFacet()
+fld protected java.util.List<jakarta.xml.bind.JAXBElement<? extends javasoft.sqe.tests.combined.xsd008.xsd008.Facet>> facet
+ anno 0 jakarta.xml.bind.annotation.XmlElementRef(java.lang.Class type=class jakarta.xml.bind.JAXBElement, java.lang.String name="facet", java.lang.String namespace="foo")
+meth public java.util.List<jakarta.xml.bind.JAXBElement<? extends javasoft.sqe.tests.combined.xsd008.xsd008.Facet>> getFacet()
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.combined.xsd008.xsd008.Int
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public Int()
 supr javasoft.sqe.tests.combined.xsd008.xsd008.LongType
 
 CLSS public javasoft.sqe.tests.combined.xsd008.xsd008.LongType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.combined.xsd008.xsd008.Int])
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="longType", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.combined.xsd008.xsd008.Int])
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="longType", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public LongType()
 supr javasoft.sqe.tests.combined.xsd008.xsd008.Facet
 
 CLSS public javasoft.sqe.tests.combined.xsd008.xsd008.Root
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["generic", "restricted"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["generic", "restricted"])
 cons public Root()
 fld protected javasoft.sqe.tests.combined.xsd008.xsd008.Generic generic
 fld protected javasoft.sqe.tests.combined.xsd008.xsd008.Root$Restricted restricted
@@ -117,41 +117,41 @@ meth public void setRestricted(javasoft.sqe.tests.combined.xsd008.xsd008.Root$Re
 supr java.lang.Object
 
 CLSS public static javasoft.sqe.tests.combined.xsd008.xsd008.Root$Restricted
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["_long"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["_long"])
 cons public Restricted()
-fld protected java.util.List<javax.xml.bind.JAXBElement<? extends javasoft.sqe.tests.combined.xsd008.xsd008.LongType>> _long
- anno 0 javax.xml.bind.annotation.XmlElementRef(java.lang.Class type=class javax.xml.bind.JAXBElement, java.lang.String name="long", java.lang.String namespace="foo")
-meth public java.util.List<javax.xml.bind.JAXBElement<? extends javasoft.sqe.tests.combined.xsd008.xsd008.LongType>> getLong()
+fld protected java.util.List<jakarta.xml.bind.JAXBElement<? extends javasoft.sqe.tests.combined.xsd008.xsd008.LongType>> _long
+ anno 0 jakarta.xml.bind.annotation.XmlElementRef(java.lang.Class type=class jakarta.xml.bind.JAXBElement, java.lang.String name="long", java.lang.String namespace="foo")
+meth public java.util.List<jakarta.xml.bind.JAXBElement<? extends javasoft.sqe.tests.combined.xsd008.xsd008.LongType>> getLong()
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.combined.xsd008.xsd008.YesNo
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public YesNo()
 supr javasoft.sqe.tests.combined.xsd008.xsd008.Facet
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlRootElement
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.String name()
 meth public abstract !hasdefault java.lang.String namespace()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlSeeAlso
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlSeeAlso
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract java.lang.Class[] value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

@@ -23,4 +23,4 @@
                        namespaceURI="http://www.w3.org/2001/XMLSchema")
           }
 )
-package javasoft.sqe.tests.api.javax.xml.bind.DatatypeConverter;
+package javasoft.sqe.tests.api.jakarta.xml.bind.DatatypeConverter;

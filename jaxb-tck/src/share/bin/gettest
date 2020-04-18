@@ -262,13 +262,13 @@ sub getLibraryFiles {
         push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/Setup.java");
         push(@libraryFiles, "src/share/classes/com/sun/tdk/signaturetest/ZipFileEntry.java");
     } elsif ($testKeywords =~ /document/) {
-        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/ErrorCollector.java");
-        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/JAXBTest.java");
-        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/JAXBTestBase.java");
+        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/ErrorCollector.java");
+        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/JAXBTest.java");
+        push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/JAXBTestBase.java");
         push(@libraryFiles, "src/share/classes/com/sun/javatest/lib/MultiTest.java");
         push(@libraryFiles, "src/share/classes/com/sun/javatest/lib/TestCases.java");
         if ($testKeywords =~ /runtime/) {
-            push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/CTTest.java");
+            push(@libraryFiles, "src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/CTTest.java");
         }
     }
 }

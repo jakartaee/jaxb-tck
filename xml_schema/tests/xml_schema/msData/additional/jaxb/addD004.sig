@@ -87,16 +87,16 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.additional.ipo_s1.Address
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.additional.ipo_s1.UKAddress, class javasoft.sqe.tests.additional.ipo_s1.USAddress])
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="Address", java.lang.String namespace="##default", java.lang.String[] propOrder=["name", "street", "city"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.additional.ipo_s1.UKAddress, class javasoft.sqe.tests.additional.ipo_s1.USAddress])
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="Address", java.lang.String namespace="##default", java.lang.String[] propOrder=["name", "street", "city"])
 cons public Address()
 fld protected java.lang.String city
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.String name
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.String street
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
 meth public java.lang.String getCity()
 meth public java.lang.String getName()
 meth public java.lang.String getStreet()
@@ -106,8 +106,8 @@ meth public void setStreet(java.lang.String)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.ipo_s1.Items
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="Items", java.lang.String namespace="##default", java.lang.String[] propOrder=["item"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="Items", java.lang.String namespace="##default", java.lang.String[] propOrder=["item"])
 cons public Items()
 fld protected java.util.List<javasoft.sqe.tests.additional.ipo_s1.Items$Item> item
 innr public static Item
@@ -115,20 +115,20 @@ meth public java.util.List<javasoft.sqe.tests.additional.ipo_s1.Items$Item> getI
 supr java.lang.Object
 
 CLSS public static javasoft.sqe.tests.additional.ipo_s1.Items$Item
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["productName", "quantity", "usPrice", "comment", "shipDate"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["productName", "quantity", "usPrice", "comment", "shipDate"])
 cons public Item()
 fld protected int quantity
 fld protected java.lang.String comment
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="http://www.example.com/IPO")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="http://www.example.com/IPO")
 fld protected java.lang.String partNum
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.lang.String productName
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigDecimal usPrice
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="USPrice", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="USPrice", java.lang.String namespace="##default")
 fld protected javax.xml.datatype.XMLGregorianCalendar shipDate
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="date", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="date", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 meth public int getQuantity()
 meth public java.lang.String getComment()
 meth public java.lang.String getPartNum()
@@ -144,18 +144,18 @@ meth public void setUSPrice(java.math.BigDecimal)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.ipo_s1.PurchaseOrderType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="PurchaseOrderType", java.lang.String namespace="##default", java.lang.String[] propOrder=["shipTo", "billTo", "comment", "items"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="PurchaseOrderType", java.lang.String namespace="##default", java.lang.String[] propOrder=["shipTo", "billTo", "comment", "items"])
 cons public PurchaseOrderType()
 fld protected java.lang.String comment
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="http://www.example.com/IPO")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="http://www.example.com/IPO")
 fld protected javasoft.sqe.tests.additional.ipo_s1.Address billTo
 fld protected javasoft.sqe.tests.additional.ipo_s1.Address shipTo
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected javasoft.sqe.tests.additional.ipo_s1.Items items
 fld protected javax.xml.datatype.XMLGregorianCalendar orderDate
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="date", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="date", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 meth public java.lang.String getComment()
 meth public javasoft.sqe.tests.additional.ipo_s1.Address getBillTo()
 meth public javasoft.sqe.tests.additional.ipo_s1.Address getShipTo()
@@ -169,14 +169,14 @@ meth public void setShipTo(javasoft.sqe.tests.additional.ipo_s1.Address)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.ipo_s1.UKAddress
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="UKAddress", java.lang.String namespace="##default", java.lang.String[] propOrder=["postcode"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="UKAddress", java.lang.String namespace="##default", java.lang.String[] propOrder=["postcode"])
 cons public UKAddress()
 fld protected java.lang.String postcode
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger exportCode
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://www.example.com/IPO")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="positiveInteger", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://www.example.com/IPO")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="positiveInteger", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 meth public java.lang.String getPostcode()
 meth public java.math.BigInteger getExportCode()
 meth public void setExportCode(java.math.BigInteger)
@@ -184,14 +184,14 @@ meth public void setPostcode(java.lang.String)
 supr javasoft.sqe.tests.additional.ipo_s1.Address
 
 CLSS public javasoft.sqe.tests.additional.ipo_s1.USAddress
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="USAddress", java.lang.String namespace="##default", java.lang.String[] propOrder=["state", "zip"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="USAddress", java.lang.String namespace="##default", java.lang.String[] propOrder=["state", "zip"])
 cons public USAddress()
 fld protected java.math.BigInteger zip
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="positiveInteger", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="positiveInteger", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 fld protected javasoft.sqe.tests.additional.ipo_s1.USState state
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
 meth public java.math.BigInteger getZip()
 meth public javasoft.sqe.tests.additional.ipo_s1.USState getState()
 meth public void setState(javasoft.sqe.tests.additional.ipo_s1.USState)
@@ -199,8 +199,8 @@ meth public void setZip(java.math.BigInteger)
 supr javasoft.sqe.tests.additional.ipo_s1.Address
 
 CLSS public final !enum javasoft.sqe.tests.additional.ipo_s1.USState
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="USState", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="USState", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.additional.ipo_s1.USState AK
 fld public final static javasoft.sqe.tests.additional.ipo_s1.USState AL
 fld public final static javasoft.sqe.tests.additional.ipo_s1.USState AR
@@ -210,26 +210,26 @@ meth public static javasoft.sqe.tests.additional.ipo_s1.USState valueOf(java.lan
 meth public static javasoft.sqe.tests.additional.ipo_s1.USState[] values()
 supr java.lang.Enum<javasoft.sqe.tests.additional.ipo_s1.USState>
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlSeeAlso
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlSeeAlso
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract java.lang.Class[] value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

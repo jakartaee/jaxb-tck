@@ -96,14 +96,14 @@
         </TestCaseDocumentation>
         <TestCaseAttributes/>
         <CodeSet>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
             <ExternalData SourceName="XmlSeeAlso001.xsd"   Type="iodata"/>
             <ExternalData SourceName="XmlSeeAlso001c.xml" Type="iodata"/>
         </CodeSet>
         <TestCode><![CDATA[
         ErrorCollector eh = new ErrorCollector();
         try {
-          JAXBContext jc = JAXBContext.newInstance( javasoft.sqe.tests.api.javax.xml.bind.annotation.XmlSeeAlso.data001.XmlSeeAlso001a.class );
+          JAXBContext jc = JAXBContext.newInstance( javasoft.sqe.tests.api.jakarta.xml.bind.annotation.XmlSeeAlso.data001.XmlSeeAlso001a.class );
           if (jc == null)
             return Status.failed("JAXBContext is null for XmlSeeAlso001a.class");
 

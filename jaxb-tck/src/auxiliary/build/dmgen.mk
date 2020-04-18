@@ -59,7 +59,7 @@ DMTSOURCES = \
     ${TCKROOT}/src/share/classes/javasoft/sqe/jck/lib/MultiTestExt.java \
     ${TCKROOT}/src/share/classes/javasoft/sqe/jck/lib/Pair.java \
     ${TCKROOT}/src/share/classes/javasoft/sqe/jck/lib/StringValue.java \
-    ${TCKROOT}/src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/SchemaGenTestExt.java \
+    ${TCKROOT}/src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/SchemaGenTestExt.java \
     
 ${TEMPBUILDDIR}/classes/tests/java2schema/defaultmapping/DefaultMappingTestsGenerator.class : ${DMTSOURCES} ${TEMPBUILDDIR}/classes/.
 	${RM} ${TEMPBUILDDIR}/classes/.

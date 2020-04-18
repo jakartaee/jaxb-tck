@@ -87,78 +87,78 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.Root
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["value"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="root", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["value"])
 cons public Root()
 fld protected java.util.List<javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S> value
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="##default", java.lang.String namespace="##default")
 meth public java.util.List<javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S> getValue()
 supr java.lang.Object
 
 CLSS public final !enum javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="S", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="S", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_00_Β
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a00\u03d0")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a00\u03d0")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_0_AΠ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a0A\u03d6")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a0A\u03d6")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_0_ϓ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a0-\u03d3")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a0-\u03d3")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_10_Ϣ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a10\u03e2")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a10\u03e2")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_1_AΡ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a1A\u03f1")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a1A\u03f1")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_1_Ϩ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a1-\u03e9")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a1-\u03e9")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_20_Ё
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a20\u0401")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a20\u0401")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_2_AЌ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a2A\u040c")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a2A\u040c")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_2_І
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a2-\u0406")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a2-\u0406")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_30_Ў
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a30\u040e")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a30\u040e")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_3_AЯ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a3A\u044f")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a3A\u044f")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_3_Ю
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a3-\u042e")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a3-\u042e")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_40_Ё
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a40\u0451")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a40\u0451")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_4_AЌ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a4A\u045c")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a4A\u045c")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_4_І
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a4-\u0456")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a4-\u0456")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_50_Ў
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a50\u045e")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a50\u045e")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_5_AҀ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a5A\u0481")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a5A\u0481")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_5_Ѯ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a5-\u046f")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a5-\u046f")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_60_Ґ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a60\u0490")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a60\u0490")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_6_AҾ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a6A\u04bf")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a6A\u04bf")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_6_Ҧ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a6-\u04a7")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a6-\u04a7")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_70_Ӂ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a70\u04c1")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a70\u04c1")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_7_AӃ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a7A\u04c4")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a7A\u04c4")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_7_Ӂ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a7-\u04c2")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a7-\u04c2")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_80_Ӈ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a80\u04c7")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a80\u04c7")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_8_AӇ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a8A\u04c8")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a8A\u04c8")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_8_Ӈ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a8-\u04c7")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a8-\u04c7")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_90_Ӌ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a90\u04cb")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a90\u04cb")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_9_AӋ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a9A\u04cc")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a9A\u04cc")
 fld public final static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S A_9_Ӌ
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="a9-\u04cb")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="a9-\u04cb")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S valueOf(java.lang.String)
@@ -166,27 +166,27 @@ meth public static javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets0
 supr java.lang.Enum<javasoft.sqe.tests.stype.st_facets.st_facets00501m.st_facets00501m4.S>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlRootElement
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.String name()
 meth public abstract !hasdefault java.lang.String namespace()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

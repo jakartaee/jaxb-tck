@@ -81,26 +81,26 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NCName-enumeration-5-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NCName-enumeration-5-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NCName-enumeration-5-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NCName-enumeration-5-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type AND_TO_WE_FRAMEWORKS_PERVASIVE_THE_REGI
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_and.to-we_frameworks-pervasive_the-regi")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_and.to-we_frameworks-pervasive_the-regi")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type ANEUTRAL_HETEROGENEOUS_REPRODUCED_WILL
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="aneutral_heterogeneous.reproduced-will_")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="aneutral_heterogeneous.reproduced-will_")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type DIVISIONS_YEARS_FOR_PARTNERSHIP_FED
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_divisions.years_for_partnership-fed-")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_divisions.years_for_partnership-fed-")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type DOF_SET_WIRELESS_BUILDIN
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="dof_set.wireless-buildin")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="dof_set.wireless-buildin")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type KOBJECT_TRANSACT_CONSTITUENT_OF_FILE_IS_WITHOUT_ABOUT_ARE_A_BE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="kobject-transact-constituent_of_file.is_without_about_are_a.be")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="kobject-transact-constituent_of_file.is_without_about_are_a.be")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type OCONTRIBU
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="ocontribu")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="ocontribu")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type TTHROUGH_OF_AV
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="tthrough-of_av")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="tthrough-of_av")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type UAND_MANIPULATION_GOOD_INFORMATION_AMBIGUITIES
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="uand-manipulation.good.information.ambiguities-")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="uand-manipulation.good.information.ambiguities-")
 fld public final static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type UIN_AND_ENSURE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="uin-and-ensure.")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="uin-and-ensure.")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type valueOf(java.lang.String)
@@ -108,13 +108,13 @@ meth public static javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_s
 supr java.lang.Enum<javasoft.sqe.tests.atomic.ncname.schema_instance.nistschema_sv_iv_atomic_ncname_enumeration_5.NISTSchemaSVIVAtomicNCNameEnumeration5Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

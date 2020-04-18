@@ -55,7 +55,7 @@
             <Import>jakarta.xml.bind.JAXBElement</Import>
             <Import>jakarta.xml.bind.JAXBException</Import>
             <Import>jakarta.xml.bind.Unmarshaller</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         ErrorCollector eh = new ErrorCollector();
@@ -131,7 +131,7 @@
             <Import>jakarta.xml.bind.JAXBContext</Import>
             <Import>jakarta.xml.bind.JAXBException</Import>
             <Import>jakarta.xml.bind.Unmarshaller</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         ErrorCollector eh = new ErrorCollector();
@@ -181,7 +181,7 @@
             <Import>jakarta.xml.bind.JAXBContext</Import>
             <Import>jakarta.xml.bind.JAXBException</Import>
             <Import>jakarta.xml.bind.Unmarshaller</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         ErrorCollector eh = new ErrorCollector();

@@ -36,11 +36,11 @@ CLSS public javasoft.sqe.tests.javatype00101m1.Adapter1
 cons public Adapter1()
 meth public java.lang.Long unmarshal(java.lang.String)
 meth public java.lang.String marshal(java.lang.Long)
-supr javax.xml.bind.annotation.adapters.XmlAdapter<java.lang.String,java.lang.Long>
+supr jakarta.xml.bind.annotation.adapters.XmlAdapter<java.lang.String,java.lang.Long>
 
-CLSS public abstract javax.xml.bind.annotation.adapters.XmlAdapter<%0 extends java.lang.Object, %1 extends java.lang.Object>
+CLSS public abstract jakarta.xml.bind.annotation.adapters.XmlAdapter<%0 extends java.lang.Object, %1 extends java.lang.Object>
 cons protected XmlAdapter()
-meth public abstract {javax.xml.bind.annotation.adapters.XmlAdapter%0} marshal({javax.xml.bind.annotation.adapters.XmlAdapter%1}) throws java.lang.Exception
-meth public abstract {javax.xml.bind.annotation.adapters.XmlAdapter%1} unmarshal({javax.xml.bind.annotation.adapters.XmlAdapter%0}) throws java.lang.Exception
+meth public abstract {jakarta.xml.bind.annotation.adapters.XmlAdapter%0} marshal({jakarta.xml.bind.annotation.adapters.XmlAdapter%1}) throws java.lang.Exception
+meth public abstract {jakarta.xml.bind.annotation.adapters.XmlAdapter%1} unmarshal({jakarta.xml.bind.annotation.adapters.XmlAdapter%0}) throws java.lang.Exception
 supr java.lang.Object
 
