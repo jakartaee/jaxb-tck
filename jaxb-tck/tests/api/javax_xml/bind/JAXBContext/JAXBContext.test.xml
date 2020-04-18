@@ -65,7 +65,7 @@
         <Import>jakarta.xml.bind.Unmarshaller</Import>
         <BaseClass>MultiTest</BaseClass>
         <SupportCode><![CDATA[
-    public static final String testPackage = "javasoft.sqe.tests.api.javax.xml.bind.JAXBContext";
+    public static final String testPackage = "javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext";
 
     /**
      * class loader that logs loading
@@ -96,7 +96,7 @@
         }
     }
 
-    javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType
+    javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType
         createPurchaseOrder_packageWithJAXBIndex(){
 
         DatatypeFactory datatypeFactory;
@@ -106,8 +106,8 @@
             throw new Error("Invalid datatype factory configuration",e);
         }
 
-        javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.Address address =
-            new javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.Address();
+        javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.Address address =
+            new javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.Address();
         address.setName("Alice Smith");
         address.setStreet("123 Maple Street");
         address.setCity("Mill Valley");
@@ -115,19 +115,19 @@
         address.setCountry("USA");
         address.setZip(new BigDecimal(123456));
 
-        javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.Items.Item item = new javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.Items.Item();
+        javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.Items.Item item = new javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.Items.Item();
         item.setProductName("Lawnmower");
         item.setQuantity(1);
         item.setComment("Confirm this is electric");
         item.setPartNum("872-AA");
         item.setUSPrice(148.95f);
 
-        javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.Items items =
-            new javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.Items();
+        javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.Items items =
+            new javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.Items();
         items.getItem().add(item);
 
-        javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType po =
-            new javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType();
+        javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType po =
+            new javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType();
 
         po.setComment("Hurry, my lawn is going wild");
         po.setOrderDate(datatypeFactory.newXMLGregorianCalendar(new GregorianCalendar()));
@@ -286,13 +286,13 @@
             result += "; jaxb.properties was not loaded by the context class loader";
         }
 
-        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.ContextFactory);") == -1 ) {
-            result += "; context factory javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.ContextFactory"
+        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.ContextFactory);") == -1 ) {
+            result += "; context factory javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.ContextFactory"
                     + " was not loaded by the context class loader";
         }
 
-        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.CustomJAXBContext);") == -1 ) {
-            result += "; custom JAXBContext javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.CustomJAXBContext"
+        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.CustomJAXBContext);") == -1 ) {
+            result += "; custom JAXBContext javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.CustomJAXBContext"
                     + " was not loaded by the context class loader";
         }
 
@@ -383,13 +383,13 @@
             result += "; jaxb.properties was not loaded by the custom class loader";
         }
 
-        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.ContextFactory);") == -1 ) {
-            result += "; context factory javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.ContextFactory"
+        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.ContextFactory);") == -1 ) {
+            result += "; context factory javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.ContextFactory"
                     + " was not loaded by the custom class loader";
         }
 
-        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.CustomJAXBContext);") == -1 ) {
-            result += "; custom JAXBContext javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.CustomJAXBContext"
+        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.CustomJAXBContext);") == -1 ) {
+            result += "; custom JAXBContext javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.CustomJAXBContext"
                     + " was not loaded by the custom class loader";
         }
 
@@ -491,7 +491,7 @@
     	JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(
-                    javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class
+                    javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class
                 );
         } catch (JAXBException e) {
             e.printStackTrace(ref);
@@ -514,7 +514,7 @@
         try {
             try {
                 JAXBContext jaxbContext = JAXBContext.newInstance(
-                        javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class, null );
+                        javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class, null );
                 return Status.failed( "Expected IllegalArgumentException wasn't thrown" );
             } catch( IllegalArgumentException x ){ /* expected */ }
         } catch (JAXBException e) {
@@ -539,7 +539,7 @@
         try {
             Map<String, ?> props = new HashMap<String, Object>();
             jaxbContext = JAXBContext.newInstance(
-                    new Class[] {javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class},
+                    new Class[] {javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class},
                     props );
         } catch (JAXBException e) {
             e.printStackTrace(ref);
@@ -564,13 +564,13 @@
             Map<String, ?> props = new HashMap<String, Object>();
             try {
                 JAXBContext.newInstance(
-                        new Class[] {javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class, null},
+                        new Class[] {javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class, null},
                         props );
                 return Status.failed( "Expected IllegalArgumentException wasn't thrown ({class, null}, map)" );
             } catch( IllegalArgumentException x ){ /* expected */ }
             try {
                 JAXBContext.newInstance(
-                        new Class[] {javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class},
+                        new Class[] {javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index.PurchaseOrderType.class},
                         null );
             } catch( IllegalArgumentException x ){ 
                 /* unexpected */
@@ -608,7 +608,7 @@
     	JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(
-                    javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.colliding_type_names.PurchaseOrderType.class
+                    javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.colliding_type_names.PurchaseOrderType.class
                 );
         } catch (JAXBException e) {
             ref.println("JAXBException is thrown - ok");
@@ -704,7 +704,7 @@
     	JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(
-                    "javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_with_jaxb_index"
+                    "javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_with_jaxb_index"
                     );
         } catch (JAXBException e) {
             e.printStackTrace(ref);
@@ -727,7 +727,7 @@
     	JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(
-                    "javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_without_jaxb_index"
+                    "javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_without_jaxb_index"
                     );
         } catch (JAXBException e) {
             ref.println("JAXBException is thrown - ok");
@@ -782,7 +782,7 @@
         JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(
-                    javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.package_without_jaxb_index.PurchaseOrderType.class
+                    javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.package_without_jaxb_index.PurchaseOrderType.class
                 );
         } catch (JAXBException e) {
             e.printStackTrace(ref);

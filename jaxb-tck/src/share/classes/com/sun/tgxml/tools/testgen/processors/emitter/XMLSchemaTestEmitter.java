@@ -141,7 +141,7 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
      * table
      */
     public final static String PARAMETER_DOCUMENT_EXECUTE_CLASS = 
-	"javasoft.sqe.tests.api.javax.xml.bind.JAXBTest";
+	"javasoft.sqe.tests.api.jakarta.xml.bind.JAXBTest";
 
     /*
      * default value of the executeArgs parameter in document test description
@@ -1491,7 +1491,7 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
 
     /* default value of the CTTest class imports */
     public final static String TEST_IMPORTS = 
-	"javasoft.sqe.tests.api.javax.xml.bind.CTTest";
+	"javasoft.sqe.tests.api.jakarta.xml.bind.CTTest";
 
     /**
      * the property is used to define imports for a base class

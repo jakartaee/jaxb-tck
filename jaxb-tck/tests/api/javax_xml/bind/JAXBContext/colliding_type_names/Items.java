@@ -16,7 +16,7 @@
  */
      
 
-package javasoft.sqe.tests.api.javax.xml.bind.JAXBContext.colliding_type_names;
+package javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.colliding_type_names;
 
 import java.util.ArrayList;
 import java.util.List;

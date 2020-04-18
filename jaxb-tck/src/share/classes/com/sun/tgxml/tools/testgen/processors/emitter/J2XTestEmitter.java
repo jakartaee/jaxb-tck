@@ -47,7 +47,7 @@ public class J2XTestEmitter extends ExternalEmitter {
     /** "Negative" value of ATTR_POS_NEG attribute */
     public static final String VALUE_NEG = "negative";
     /** Default value of executeClass property */
-    public final static String PARAMETER_EXECUTE_CLASS = "javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTest";
+    public final static String PARAMETER_EXECUTE_CLASS = "javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTest";
     /** Name of property from tck.properties to define executeClass */
     public final static String PROPERTY_PARAMETER_EXECUTE_CLASS = "testgen.emitter.TestGroup.J2XTest.executeClass";
     /** Test Group keyword value */

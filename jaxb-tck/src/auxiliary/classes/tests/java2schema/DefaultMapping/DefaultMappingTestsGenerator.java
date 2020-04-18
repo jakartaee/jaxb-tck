@@ -20,7 +20,7 @@ import java.io.*;
 import java.lang.reflect.*;
 import java.util.Arrays;
 import javasoft.sqe.jck.lib.*;
-import javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTestExt;
+import javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTestExt;
 import javax.xml.XMLConstants;
 import jakarta.xml.bind.*;
 import javax.xml.parsers.DocumentBuilderFactory;

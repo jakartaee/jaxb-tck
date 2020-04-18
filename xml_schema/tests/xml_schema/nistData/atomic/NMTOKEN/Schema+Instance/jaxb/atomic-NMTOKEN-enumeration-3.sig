@@ -81,20 +81,20 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-4-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-4-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-4-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-4-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type MUST_INVESTIGATORS_SIGNATURES_TOOLS_SOFTWARE_TO_THAT_AS_RO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="must_Investigators_signatures:tools_software-to.that-as:ro")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="must_Investigators_signatures:tools_software-to.that-as:ro")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type OBJEC
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="Objec")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="Objec")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type RELATED_IMPLEMENTATION_SECURITY_CAPABILITIES_THAT
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="related_implementation-security.capabilities:that")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="related_implementation-security.capabilities:that")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type THAT_PROFILES_DEFI
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="that_profiles:defi")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="that_profiles:defi")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type THE_OF_FILES_FOR_RECOMMENDATION_APPROPRIATE_DISCO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="The-of_files.for.Recommendation-appropriate-disco")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="The-of_files.for.Recommendation-appropriate-disco")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type TRANS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="trans")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="trans")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type valueOf(java.lang.String)
@@ -102,13 +102,13 @@ meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_
 supr java.lang.Enum<javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_4.NISTSchemaSVIVAtomicNMTOKENEnumeration4Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

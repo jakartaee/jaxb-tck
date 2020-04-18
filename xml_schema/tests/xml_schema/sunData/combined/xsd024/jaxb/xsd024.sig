@@ -87,12 +87,12 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.combined.xsd024.xsd024.ComplexType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="complexType", java.lang.String namespace="##default", java.lang.String[] propOrder=["root"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="complexType", java.lang.String namespace="##default", java.lang.String[] propOrder=["root"])
 cons public ComplexType()
 fld protected javasoft.sqe.tests.combined.xsd024.xsd024.ComplexType root
 fld protected javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType att
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://foo.com")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="http://foo.com")
 meth public javasoft.sqe.tests.combined.xsd024.xsd024.ComplexType getRoot()
 meth public javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType getAtt()
 meth public void setAtt(javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType)
@@ -100,12 +100,12 @@ meth public void setRoot(javasoft.sqe.tests.combined.xsd024.xsd024.ComplexType)
 supr java.lang.Object
 
 CLSS public final !enum javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="simpleType", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="simpleType", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType NO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="no")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="no")
 fld public final static javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType YES
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="yes")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="yes")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType valueOf(java.lang.String)
@@ -113,20 +113,20 @@ meth public static javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType[] values
 supr java.lang.Enum<javasoft.sqe.tests.combined.xsd024.xsd024.SimpleType>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

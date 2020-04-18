@@ -81,20 +81,20 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-NCName-enumeration-5-Type", java.lang.String namespace="NISTSchema-NCName-enumeration-5-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-NCName-enumeration-5-Type", java.lang.String namespace="NISTSchema-NCName-enumeration-5-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type KTHE_OF_SUCH_THIS_MEET_AND_AND_EXERC
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="kthe.of.such-this-meet.and-and-exerc")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="kthe.of.such-this-meet.and-and-exerc")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type NOT_INDUSTRY_THE_TEMPLATES_RECOMMENDATION_IN_C
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_not_industry-the_templates_recommendation_in-c")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_not_industry-the_templates_recommendation_in-c")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type RESULT_BY_BUSINESS_THOSE_WA
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_result-by_business_those.wa")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_result-by_business_those.wa")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type SAND_OF_REFERENCE_THE_BE_REPOSITORY_POPULAR_PROVIDE_O
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="sand.of_reference-the.be_repository_popular-provide-o")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="sand.of_reference-the.be_repository_popular-provide-o")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type TEMPLATES_RELATED_EACH_WIRELESS_IN_INFORM
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_templates.related-each.wireless-in_inform")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_templates.related-each.wireless-in_inform")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type XSOFTWARE_AND_AS_TECHNOLOGIES_FOR_MUST_ARE_SOFTWARE_OF_ITS_T
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="xsoftware.and_as.technologies.for-must.are_software.of-its_t")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="xsoftware.and_as.technologies.for-must.are_software.of-its_t")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type valueOf(java.lang.String)
@@ -102,13 +102,13 @@ meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchem
 supr java.lang.Enum<javasoft.sqe.tests.ncname.enumeration.enumeration_5.NISTSchemaNCNameEnumeration5Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

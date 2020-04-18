@@ -34,7 +34,7 @@ API Signature verification of the jakarta.xml.bind package and its subpackages
         <Keyword>cttest</Keyword>
         <Keyword>positive</Keyword>
         <ExecuteClass>javasoft.sqe.tests.api.signaturetest.SigTestWrapper</ExecuteClass>
-        <ExecuteArgs>-TestURL $testURL -Package jakarta.xml.bind</ExecuteArgs>
+        <ExecuteArgs>-Package jakarta.xml.bind</ExecuteArgs>
     </TestGroupAttributes>
 
     <TestCase ID="jakarta.xml.bind">
@@ -45,9 +45,6 @@ API Signature verification of the jakarta.xml.bind package and its subpackages
         </TestCaseDocumentation>
         <CodeSet>
             <ExternalSupportClass SourceName="SigTestWrapper.java"/>
-            <ExternalData Type="iodata" SourceName="sig/5.0/jakarta.xml.bind.sig"/>
-            <ExternalData Type="iodata" SourceName="sig/6.0/jakarta.xml.bind.sig"/>
-            <ExternalData Type="iodata" SourceName="sig/7.0/jakarta.xml.bind.sig"/>
             <ExternalData Type="iodata" SourceName="sig/8.0/jakarta.xml.bind.sig"/>
             <ExternalData Type="iodata" SourceName="sig/9.0/jakarta.xml.bind.sig"/>
         </CodeSet>
