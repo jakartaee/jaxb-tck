@@ -65,23 +65,23 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.additional.addb122.Att1
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="att1", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="att1", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public Att1()
 fld protected java.math.BigInteger att
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 meth public java.math.BigInteger getAtt()
 meth public void setAtt(java.math.BigInteger)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.addb122.Att2
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="att2", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="att2", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 cons public Att2()
 fld protected java.lang.Boolean att2
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.math.BigInteger att1
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 meth public java.lang.Boolean isAtt2()
 meth public java.math.BigInteger getAtt1()
 meth public void setAtt1(java.math.BigInteger)
@@ -89,8 +89,8 @@ meth public void setAtt2(java.lang.Boolean)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.addb122.Ct1
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="ct1", java.lang.String namespace="##default", java.lang.String[] propOrder=["e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="ct1", java.lang.String namespace="##default", java.lang.String[] propOrder=["e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8"])
 cons public Ct1()
 fld protected java.lang.String e1
 fld protected java.util.List<javasoft.sqe.tests.additional.addb122.Att1> e7
@@ -113,11 +113,11 @@ meth public void setE2(javasoft.sqe.tests.additional.addb122.Att1)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.addb122.M3
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="m3", java.lang.String namespace="##default", java.lang.String[] propOrder=["e31"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="m3", java.lang.String namespace="##default", java.lang.String[] propOrder=["e31"])
 cons public M3()
 fld protected java.math.BigInteger att
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.util.List<java.lang.Object> e31
 meth public java.math.BigInteger getAtt()
 meth public java.util.List<java.lang.Object> getE31()
@@ -125,48 +125,48 @@ meth public void setAtt(java.math.BigInteger)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.addb122.M4
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="m4", java.lang.String namespace="##default", java.lang.String[] propOrder=["e41AndE3"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="m4", java.lang.String namespace="##default", java.lang.String[] propOrder=["e41AndE3"])
 cons public M4()
 fld protected java.math.BigInteger att
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.util.List<java.lang.Object> e41AndE3
- anno 0 javax.xml.bind.annotation.XmlElements(javax.xml.bind.annotation.XmlElement[] value=[anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.M3, java.lang.String defaultValue="\u0000", java.lang.String name="e3", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.Att2, java.lang.String defaultValue="\u0000", java.lang.String name="e41", java.lang.String namespace="##default")])
+ anno 0 jakarta.xml.bind.annotation.XmlElements(jakarta.xml.bind.annotation.XmlElement[] value=[anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.M3, java.lang.String defaultValue="\u0000", java.lang.String name="e3", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.Att2, java.lang.String defaultValue="\u0000", java.lang.String name="e41", java.lang.String namespace="##default")])
 meth public java.math.BigInteger getAtt()
 meth public java.util.List<java.lang.Object> getE41AndE3()
 meth public void setAtt(java.math.BigInteger)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.addb122.M5
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="m5", java.lang.String namespace="##default", java.lang.String[] propOrder=["e3OrE4OrE5"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="m5", java.lang.String namespace="##default", java.lang.String[] propOrder=["e3OrE4OrE5"])
 cons public M5()
 fld protected java.math.BigInteger att
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="##default", java.lang.String namespace="##default")
 fld protected java.util.List<java.lang.Object> e3OrE4OrE5
- anno 0 javax.xml.bind.annotation.XmlElements(javax.xml.bind.annotation.XmlElement[] value=[anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.M3, java.lang.String defaultValue="\u0000", java.lang.String name="e3", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.M5, java.lang.String defaultValue="\u0000", java.lang.String name="e5", java.lang.String namespace="##default"), anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.M4, java.lang.String defaultValue="\u0000", java.lang.String name="e4", java.lang.String namespace="##default")])
+ anno 0 jakarta.xml.bind.annotation.XmlElements(jakarta.xml.bind.annotation.XmlElement[] value=[anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.M3, java.lang.String defaultValue="\u0000", java.lang.String name="e3", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.M5, java.lang.String defaultValue="\u0000", java.lang.String name="e5", java.lang.String namespace="##default"), anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javasoft.sqe.tests.additional.addb122.M4, java.lang.String defaultValue="\u0000", java.lang.String name="e4", java.lang.String namespace="##default")])
 meth public java.math.BigInteger getAtt()
 meth public java.util.List<java.lang.Object> getE3OrE4OrE5()
 meth public void setAtt(java.math.BigInteger)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.addb122.M6
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="m6", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="m6", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
 cons public M6()
 fld protected java.util.List<org.w3c.dom.Element> any
- anno 0 javax.xml.bind.annotation.XmlAnyElement(boolean lax=false, java.lang.Class<? extends javax.xml.bind.annotation.DomHandler> value=class javax.xml.bind.annotation.W3CDomHandler)
+ anno 0 jakarta.xml.bind.annotation.XmlAnyElement(boolean lax=false, java.lang.Class<? extends jakarta.xml.bind.annotation.DomHandler> value=class jakarta.xml.bind.annotation.W3CDomHandler)
 meth public java.util.List<org.w3c.dom.Element> getAny()
 supr java.lang.Object
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

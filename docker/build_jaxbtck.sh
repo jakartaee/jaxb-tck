@@ -25,7 +25,7 @@ fi
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
 
 if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
-  export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/78/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
+  export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
 fi
 if [ -z "${JAF_BUNDLE_URL}" ];then
   export JAF_BUNDLE_URL='http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar'
@@ -65,8 +65,6 @@ export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 wget ${WGET_PROPS} ${JAXB_RI_BUNDLE_URL} -O jaxb-ri.zip && unzip -o jaxb-ri.zip
 
 ls -l jaxb-ri/mod
-# Temporary overwrite of API package
-#wget $WGET_PROPS https://search.maven.org/remotecontent?filepath=jakarta/xml/bind/jakarta.xml.bind-api/3.0.0-RC1/jakarta.xml.bind-api-3.0.0-RC1.jar -O jaxb-ri/mod/jakarta.xml.bind-api.jar
 
 wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm-commons/7.0-SNAPSHOT/asm-commons-7.0-20181027.133601-5.jar' -O asm-commons-7.0.jar
 wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar' -O asm-7.0.jar

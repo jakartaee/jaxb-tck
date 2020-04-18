@@ -37,7 +37,7 @@
     <Dependency>
         <Lib>jaxb.j2x</Lib>
     </Dependency>
-    <BaseClass>javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTestExt</BaseClass>
+    <BaseClass>javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTestExt</BaseClass>
   </CodeSet>
   <TestCase ID="BooleanTest">
     <TestCaseDocumentation>
@@ -257,15 +257,15 @@
   </TestCase>
   <TestCase ID="DataHandlerTest">
     <TestCaseDocumentation>
-      <Title>tests mapping 'null' to 'javax.activation.DataHandler'</Title>
+      <Title>tests mapping 'null' to 'jakarta.activation.DataHandler'</Title>
       <TestCaseSpec>
-        <InlineAssertion>tests mapping 'null' to 'javax.activation.DataHandler'</InlineAssertion>
+        <InlineAssertion>tests mapping 'null' to 'jakarta.activation.DataHandler'</InlineAssertion>
       </TestCaseSpec>
     </TestCaseDocumentation>
     <CodeSet>
       <ExternalSupportClass SourceLang="java" SourceName="DataHandlerTest.java"/>
     </CodeSet>
-    <TestCode SourceLang="java">checkElementType( "dataHandlerTest", "javax.activation.DataHandler", "http://www.w3.org/2001/XMLSchema", "base64Binary" ); return Status.passed("OK");</TestCode>
+    <TestCode SourceLang="java">checkElementType( "dataHandlerTest", "jakarta.activation.DataHandler", "http://www.w3.org/2001/XMLSchema", "base64Binary" ); return Status.passed("OK");</TestCode>
   </TestCase>
   <TestCase ID="SourceTest">
     <TestCaseDocumentation>

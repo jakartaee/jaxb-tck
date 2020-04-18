@@ -15,7 +15,7 @@
  */
 
 
-package javasoft.sqe.tests.api.javax.xml.bind;
+package javasoft.sqe.tests.api.jakarta.xml.bind;
 
 import java.io.IOException;
 import java.io.PrintWriter;

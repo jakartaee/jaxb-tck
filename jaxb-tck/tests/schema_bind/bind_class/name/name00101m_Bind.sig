@@ -38,27 +38,27 @@ CLSS public javasoft.sqe.tests.name.name00101m_bind.TestRoot
 cons public TestRoot()
 cons public TestRoot(java.lang.Boolean)
 fld protected final static javax.xml.namespace.QName NAME
-supr javax.xml.bind.JAXBElement<java.lang.Boolean>
+supr jakarta.xml.bind.JAXBElement<java.lang.Boolean>
 
-CLSS public javax.xml.bind.JAXBElement<%0 extends java.lang.Object>
-cons public JAXBElement(javax.xml.namespace.QName,java.lang.Class<{javax.xml.bind.JAXBElement%0}>,java.lang.Class,{javax.xml.bind.JAXBElement%0})
-cons public JAXBElement(javax.xml.namespace.QName,java.lang.Class<{javax.xml.bind.JAXBElement%0}>,{javax.xml.bind.JAXBElement%0})
+CLSS public jakarta.xml.bind.JAXBElement<%0 extends java.lang.Object>
+cons public JAXBElement(javax.xml.namespace.QName,java.lang.Class<{jakarta.xml.bind.JAXBElement%0}>,java.lang.Class,{jakarta.xml.bind.JAXBElement%0})
+cons public JAXBElement(javax.xml.namespace.QName,java.lang.Class<{jakarta.xml.bind.JAXBElement%0}>,{jakarta.xml.bind.JAXBElement%0})
 fld protected boolean nil
 fld protected final java.lang.Class scope
-fld protected final java.lang.Class<{javax.xml.bind.JAXBElement%0}> declaredType
+fld protected final java.lang.Class<{jakarta.xml.bind.JAXBElement%0}> declaredType
 fld protected final javax.xml.namespace.QName name
-fld protected {javax.xml.bind.JAXBElement%0} value
+fld protected {jakarta.xml.bind.JAXBElement%0} value
 innr public final static GlobalScope
 intf java.io.Serializable
 meth public boolean isGlobalScope()
 meth public boolean isNil()
 meth public boolean isTypeSubstituted()
 meth public java.lang.Class getScope()
-meth public java.lang.Class<{javax.xml.bind.JAXBElement%0}> getDeclaredType()
+meth public java.lang.Class<{jakarta.xml.bind.JAXBElement%0}> getDeclaredType()
 meth public javax.xml.namespace.QName getName()
 meth public void setNil(boolean)
-meth public void setValue({javax.xml.bind.JAXBElement%0})
-meth public {javax.xml.bind.JAXBElement%0} getValue()
+meth public void setValue({jakarta.xml.bind.JAXBElement%0})
+meth public {jakarta.xml.bind.JAXBElement%0} getValue()
 supr java.lang.Object
 hfds serialVersionUID
 

@@ -81,8 +81,8 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.simpletype.test298668_a.TPredefinedLNClassEnum
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="tPredefinedLNClassEnum", java.lang.String namespace="a", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="tPredefinedLNClassEnum", java.lang.String namespace="a", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.simpletype.test298668_a.TPredefinedLNClassEnum LLNO
 fld public final static javasoft.sqe.tests.simpletype.test298668_a.TPredefinedLNClassEnum LPHD
 fld public final static javasoft.sqe.tests.simpletype.test298668_a.TPredefinedLNClassEnum PTRC
@@ -93,13 +93,13 @@ meth public static javasoft.sqe.tests.simpletype.test298668_a.TPredefinedLNClass
 meth public static javasoft.sqe.tests.simpletype.test298668_a.TPredefinedLNClassEnum[] values()
 supr java.lang.Enum<javasoft.sqe.tests.simpletype.test298668_a.TPredefinedLNClassEnum>
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

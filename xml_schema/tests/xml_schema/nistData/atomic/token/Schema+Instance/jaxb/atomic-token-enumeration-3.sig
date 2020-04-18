@@ -81,24 +81,24 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-token-enumeration-4-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-token-enumeration-4-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-token-enumeration-4-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-token-enumeration-4-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type AS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="as")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="as")
 fld public final static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type IS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="is")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="is")
 fld public final static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type PICO_CELLULAR
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="pico-cellular")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="pico-cellular")
 fld public final static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type SYNTAX
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="syntax")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="syntax")
 fld public final static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type TECHNIQUES
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="techniques")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="techniques")
 fld public final static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type TO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="to")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="to")
 fld public final static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type VISIBLY
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="visibly")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="visibly")
 fld public final static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type WAS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="was")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="was")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type valueOf(java.lang.String)
@@ -106,13 +106,13 @@ meth public static javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv
 supr java.lang.Enum<javasoft.sqe.tests.atomic.token.schema_instance.nistschema_sv_iv_atomic_token_enumeration_4.NISTSchemaSVIVAtomicTokenEnumeration4Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

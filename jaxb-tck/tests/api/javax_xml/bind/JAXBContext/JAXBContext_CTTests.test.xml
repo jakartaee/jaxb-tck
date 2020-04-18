@@ -32,7 +32,7 @@
     </TestGroupAttributes>
     <CodeSet>
         <Import>java.net.URL</Import>
-        <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+        <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         <Import>jakarta.xml.bind.Binder</Import>
         <Import>jakarta.xml.bind.JAXBContext</Import>
         <Import>jakarta.xml.bind.JAXBException</Import>
@@ -97,7 +97,7 @@
             <Import>jakarta.xml.bind.JAXBException</Import>
             <Import>jakarta.xml.bind.Validator</Import>
             <Import>jakarta.xml.bind.ValidationException</Import>
-            <Import>javasoft.sqe.tests.api.javax.xml.bind.ErrorCollector</Import>
+            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
         </CodeSet>
         <TestCode><![CDATA[
         boolean isValid;

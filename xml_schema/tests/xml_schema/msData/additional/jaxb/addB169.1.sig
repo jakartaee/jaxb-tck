@@ -87,17 +87,17 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.additional.test93490_16.MapInfoType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="MapInfoType", java.lang.String namespace="##default", java.lang.String[] propOrder=["schema"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="MapInfoType", java.lang.String namespace="##default", java.lang.String[] propOrder=["schema"])
 cons public MapInfoType()
 fld protected java.lang.String hideInactiveListBorder
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="HideInactiveListBorder", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="HideInactiveListBorder", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
 fld protected java.lang.String selectionNamespaces
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="SelectionNamespaces", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="SelectionNamespaces", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
 fld protected java.util.List<javasoft.sqe.tests.additional.test93490_16.SchemaType> schema
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Schema", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Schema", java.lang.String namespace="##default")
 fld protected javasoft.sqe.tests.additional.test93490_16.TruefalseType hideSingleMappedCellBorder
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="HideSingleMappedCellBorder", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="HideSingleMappedCellBorder", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
 meth public java.lang.String getHideInactiveListBorder()
 meth public java.lang.String getSelectionNamespaces()
 meth public java.util.List<javasoft.sqe.tests.additional.test93490_16.SchemaType> getSchema()
@@ -108,17 +108,17 @@ meth public void setSelectionNamespaces(java.lang.String)
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.additional.test93490_16.SchemaType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="SchemaType", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="SchemaType", java.lang.String namespace="##default", java.lang.String[] propOrder=["any"])
 cons public SchemaType()
 fld protected java.lang.String id
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="ID", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="ID", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
 fld protected java.lang.String namespace
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="Namespace", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=true, java.lang.String name="Namespace", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
 fld protected java.lang.String schemaRef
- anno 0 javax.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="SchemaRef", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
+ anno 0 jakarta.xml.bind.annotation.XmlAttribute(boolean required=false, java.lang.String name="SchemaRef", java.lang.String namespace="http://schemas.microsoft.com/office/excel/2003/xml")
 fld protected java.util.List<org.w3c.dom.Element> any
- anno 0 javax.xml.bind.annotation.XmlAnyElement(boolean lax=false, java.lang.Class<? extends javax.xml.bind.annotation.DomHandler> value=class javax.xml.bind.annotation.W3CDomHandler)
+ anno 0 jakarta.xml.bind.annotation.XmlAnyElement(boolean lax=false, java.lang.Class<? extends jakarta.xml.bind.annotation.DomHandler> value=class jakarta.xml.bind.annotation.W3CDomHandler)
 meth public java.lang.String getID()
 meth public java.lang.String getNamespace()
 meth public java.lang.String getSchemaRef()
@@ -129,12 +129,12 @@ meth public void setSchemaRef(java.lang.String)
 supr java.lang.Object
 
 CLSS public final !enum javasoft.sqe.tests.additional.test93490_16.TruefalseType
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="truefalseType", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="truefalseType", java.lang.String namespace="##default", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.additional.test93490_16.TruefalseType FALSE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="false")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="false")
 fld public final static javasoft.sqe.tests.additional.test93490_16.TruefalseType TRUE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="true")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="true")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.additional.test93490_16.TruefalseType fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.additional.test93490_16.TruefalseType valueOf(java.lang.String)
@@ -142,20 +142,20 @@ meth public static javasoft.sqe.tests.additional.test93490_16.TruefalseType[] va
 supr java.lang.Enum<javasoft.sqe.tests.additional.test93490_16.TruefalseType>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

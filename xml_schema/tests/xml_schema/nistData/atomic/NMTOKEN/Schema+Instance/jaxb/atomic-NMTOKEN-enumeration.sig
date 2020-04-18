@@ -81,18 +81,18 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-1-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-1-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-1-Type", java.lang.String namespace="NISTSchema-SV-IV-atomic-NMTOKEN-enumeration-1-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type COLLABORATE_TOOLS_WE_WITH_EACH_THE_RELATIONSHIPS_NETWOR
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="collaborate-tools-we_with.each.the_relationships_networ")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="collaborate-tools-we_with.each.the_relationships_networ")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type COMPUTING_NSRL_CAN_A_TO_OF_MUST_PERV
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="computing-NSRL.can:a.to-of:must-perv")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="computing-NSRL.can:a.to-of:must-perv")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type INTERNET_WILL_THAT_TO_MAD
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="Internet_will:_that:to_mad")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="Internet_will:_that:to_mad")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type LAUNCHING_CORRECTNESS_REVISIONS_AND_SP
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="launching.correctness_revisions_and.sp")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="launching.correctness_revisions_and.sp")
 fld public final static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type THAT_COST_BUSINESS_FOR_ARE_INDUSTRIES_PROCESSES_PICO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="that.cost_Business-for_are:industries:processes_pico-")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="that.cost_Business-for_are:industries:processes_pico-")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type valueOf(java.lang.String)
@@ -100,13 +100,13 @@ meth public static javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_
 supr java.lang.Enum<javasoft.sqe.tests.atomic.nmtoken.schema_instance.nistschema_sv_iv_atomic_nmtoken_enumeration_1.NISTSchemaSVIVAtomicNMTOKENEnumeration1Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

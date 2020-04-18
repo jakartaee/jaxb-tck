@@ -1,0 +1,4 @@
+tests/api/signaturetest/SigTestWrapper.java
+tests/api/signaturetest/jakarta.xml.bind.test.xml
+tests/api/signaturetest/sig/11.0/jakarta.xml.bind.sig
+tests/api/signaturetest/sig/8.0/jakarta.xml.bind.sig

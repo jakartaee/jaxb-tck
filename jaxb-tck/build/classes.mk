@@ -27,15 +27,15 @@ TCK_SPECIFIC_FILES = \
 	src/share/classes/javasoft/sqe/jck/lib/StringValue.java \
 	src/share/classes/javasoft/sqe/jck/lib/URIValue.java \
 	src/share/classes/javasoft/sqe/jck/lib/SchemaLoader.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/JAXBTestBase.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/Logger2WriterHandler.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/JAXBTest.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/CTTest.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/SchemaGenTest.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/SchemaGenTestExt.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/ErrorCollector.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/J2XRuntimeTest.java \
-	src/share/classes/javasoft/sqe/tests/api/javax/xml/bind/JAXBValidationCheckerTest.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/JAXBTestBase.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/Logger2WriterHandler.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/JAXBTest.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/CTTest.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/SchemaGenTest.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/SchemaGenTestExt.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/ErrorCollector.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/J2XRuntimeTest.java \
+	src/share/classes/javasoft/sqe/tests/api/jakarta/xml/bind/JAXBValidationCheckerTest.java \
 	src/share/classes/com/sun/jaxb_tck/sigtest/JaxbPlugin.java \
 	src/share/classes/com/sun/jaxb_tck/sigtest/JAXBTest.java
 

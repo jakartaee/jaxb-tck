@@ -81,32 +81,32 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-NCName-enumeration-4-Type", java.lang.String namespace="NISTSchema-NCName-enumeration-4-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-NCName-enumeration-4-Type", java.lang.String namespace="NISTSchema-NCName-enumeration-4-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type ADEFINE_COMPUTING_TES
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="adefine-computing.tes")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="adefine-computing.tes")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type BY_IS_CALLED_IT_DOCUMENTS_WAY_ON
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_by.is-called_it-documents-way_on")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_by.is-called_it-documents-way_on")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type ENVIRONMENT_OF_STANDARDIZATIO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_environment.of_standardizatio")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_environment.of_standardizatio")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type FTHE_REACH_DOCUMENTS_NEWCOME
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="fthe-reach_documents_newcome")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="fthe-reach_documents_newcome")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type INDUSTRIES_INTELLIGENT_IN_THA
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_industries-intelligent_in-tha")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_industries-intelligent_in-tha")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type NWITH_DONATE_BUILDING_AS_BETWEEN_DI
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="nwith_donate_building.as-between_di")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="nwith_donate_building.as-between_di")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type ON_INCLUDE_G_A_COMPUTING_ARE_H
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_on-include-g_a_computing.are.h")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_on-include-g_a_computing.are.h")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type PFILTER_THE_TE
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="pfilter-the.te")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="pfilter-the.te")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type PPARTNERSHIPS_SOME_AND_WEB_BUS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="ppartnerships.some.and.web.bus")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="ppartnerships.some.and.web.bus")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type RFILE_WITH_EFFECTIVELY_PR
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="rfile-with.effectively_pr")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="rfile-with.effectively_pr")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type SOFTWARE_ENABLE_OF_CREATION_A_WIRELESS_OF_REPOSITO
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_software_enable-of.creation.a_wireless.of-reposito")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_software_enable-of.creation.a_wireless.of-reposito")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type UI
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="ui")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="ui")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type valueOf(java.lang.String)
@@ -114,13 +114,13 @@ meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchem
 supr java.lang.Enum<javasoft.sqe.tests.ncname.enumeration.enumeration_4.NISTSchemaNCNameEnumeration4Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

@@ -81,12 +81,12 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.typesafeenummembername.typesafeenummembername00101m1.EnumType
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="enumType", java.lang.String namespace="globalBindings/typesafeEnumMemberName", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="enumType", java.lang.String namespace="globalBindings/typesafeEnumMemberName", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.typesafeenummembername.typesafeenummembername00101m1.EnumType VALUE_1
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="enum1")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="enum1")
 fld public final static javasoft.sqe.tests.typesafeenummembername.typesafeenummembername00101m1.EnumType VALUE_2
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="enum.1")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="enum.1")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.typesafeenummembername.typesafeenummembername00101m1.EnumType fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.typesafeenummembername.typesafeenummembername00101m1.EnumType valueOf(java.lang.String)
@@ -94,13 +94,13 @@ meth public static javasoft.sqe.tests.typesafeenummembername.typesafeenummembern
 supr java.lang.Enum<javasoft.sqe.tests.typesafeenummembername.typesafeenummembername00101m1.EnumType>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

@@ -81,28 +81,28 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public final !enum javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type
- anno 0 javax.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-NCName-enumeration-3-Type", java.lang.String namespace="NISTSchema-NCName-enumeration-3-NS", java.lang.String[] propOrder=[""])
+ anno 0 jakarta.xml.bind.annotation.XmlEnum(java.lang.Class<?> value=class java.lang.String)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="NISTSchema-NCName-enumeration-3-Type", java.lang.String namespace="NISTSchema-NCName-enumeration-3-NS", java.lang.String[] propOrder=[""])
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type DEVICES_DISCOVERY
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_devices-discovery-")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_devices-discovery-")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type DVIRTUALLY_STRUCTURED_BY_IS_OF_TO_ACCES
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="dvirtually.structured.by.is-of_to.acces")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="dvirtually.structured.by.is-of_to.acces")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type FAS_ENVIR
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="fas.envir")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="fas.envir")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type HELP_IN_SUCH_SIMPLICITY_DIRECTIONS_EF
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_help_in-such-simplicity-directions_ef")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_help_in-such-simplicity-directions_ef")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type LEADER
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_leader")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_leader")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type NNETWORKING_FOR_DATABASE_CAN_MARKET_WITH_HAS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="nnetworking_for-database.can_market-with-has.")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="nnetworking_for-database.can_market-with-has.")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type OF_INTERNATIONAL_WI
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_of-international_wi")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_of-international_wi")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type QAND_THE_TRANS
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="qand_the.trans")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="qand_the.trans")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type SIGNIFICANT_THE_HAS_VIA_WILL_INVOLVED_SENSE_WORK
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="_significant_the_has_via.will_involved.sense_work")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="_significant_the_has_via.will_involved.sense_work")
 fld public final static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type VWELL_AND
- anno 0 javax.xml.bind.annotation.XmlEnumValue(java.lang.String value="vwell.and")
+ anno 0 jakarta.xml.bind.annotation.XmlEnumValue(java.lang.String value="vwell.and")
 meth public java.lang.String value()
 meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type fromValue(java.lang.String)
 meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type valueOf(java.lang.String)
@@ -110,13 +110,13 @@ meth public static javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchem
 supr java.lang.Enum<javasoft.sqe.tests.ncname.enumeration.enumeration_3.NISTSchemaNCNameEnumeration3Type>
 hfds value
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlEnum
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.Class<?> value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT

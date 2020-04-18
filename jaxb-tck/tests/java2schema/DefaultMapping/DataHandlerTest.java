@@ -15,5 +15,5 @@
  */
 
 public class DataHandlerTest {
-    public javax.activation.DataHandler    f0;
+    public jakarta.activation.DataHandler    f0;
 }

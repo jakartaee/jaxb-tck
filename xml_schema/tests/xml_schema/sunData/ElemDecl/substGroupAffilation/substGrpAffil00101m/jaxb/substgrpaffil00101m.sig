@@ -65,67 +65,67 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.BookStore
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlRootElement(java.lang.String name="BookStore", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["publication"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlRootElement(java.lang.String name="BookStore", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="", java.lang.String namespace="##default", java.lang.String[] propOrder=["publication"])
 cons public BookStore()
-fld protected java.util.List<javax.xml.bind.JAXBElement<? extends javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.PublicationType>> publication
- anno 0 javax.xml.bind.annotation.XmlElementRef(java.lang.Class type=class javax.xml.bind.JAXBElement, java.lang.String name="Publication", java.lang.String namespace="ElemDecl/substGroupAffilation")
-meth public java.util.List<javax.xml.bind.JAXBElement<? extends javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.PublicationType>> getPublication()
+fld protected java.util.List<jakarta.xml.bind.JAXBElement<? extends javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.PublicationType>> publication
+ anno 0 jakarta.xml.bind.annotation.XmlElementRef(java.lang.Class type=class jakarta.xml.bind.JAXBElement, java.lang.String name="Publication", java.lang.String namespace="ElemDecl/substGroupAffilation")
+meth public java.util.List<jakarta.xml.bind.JAXBElement<? extends javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.PublicationType>> getPublication()
 supr java.lang.Object
 
 CLSS public javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.BookType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="BookType", java.lang.String namespace="##default", java.lang.String[] propOrder=["author"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="BookType", java.lang.String namespace="##default", java.lang.String[] propOrder=["author"])
 cons public BookType()
 fld protected java.util.List<java.lang.String> author
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Author", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=false, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Author", java.lang.String namespace="##default")
 meth public java.util.List<java.lang.String> getAuthor()
 supr javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.PublicationType
 
 CLSS public javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.MagazineType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="MagazineType", java.lang.String namespace="##default", java.lang.String[] propOrder=["date"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="MagazineType", java.lang.String namespace="##default", java.lang.String[] propOrder=["date"])
 cons public MagazineType()
 fld protected javax.xml.datatype.XMLGregorianCalendar date
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Date", java.lang.String namespace="##default")
- anno 0 javax.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class javax.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="gYear", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Date", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlSchemaType(java.lang.Class type=class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT, java.lang.String name="gYear", java.lang.String namespace="http://www.w3.org/2001/XMLSchema")
 meth public javax.xml.datatype.XMLGregorianCalendar getDate()
 meth public void setDate(javax.xml.datatype.XMLGregorianCalendar)
 supr javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.PublicationType
 
 CLSS public javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.PublicationType
- anno 0 javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType value=FIELD)
- anno 0 javax.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.BookType, class javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.MagazineType])
- anno 0 javax.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class javax.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="PublicationType", java.lang.String namespace="##default", java.lang.String[] propOrder=["title"])
+ anno 0 jakarta.xml.bind.annotation.XmlAccessorType(jakarta.xml.bind.annotation.XmlAccessType value=FIELD)
+ anno 0 jakarta.xml.bind.annotation.XmlSeeAlso(java.lang.Class[] value=[class javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.BookType, class javasoft.sqe.tests.elemdecl.substgroupaffilation.substgrpaffil00101m.substgrpaffil00101m.MagazineType])
+ anno 0 jakarta.xml.bind.annotation.XmlType(java.lang.Class factoryClass=class jakarta.xml.bind.annotation.XmlType$DEFAULT, java.lang.String factoryMethod="", java.lang.String name="PublicationType", java.lang.String namespace="##default", java.lang.String[] propOrder=["title"])
 cons public PublicationType()
 fld protected java.lang.String title
- anno 0 javax.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class javax.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Title", java.lang.String namespace="##default")
+ anno 0 jakarta.xml.bind.annotation.XmlElement(boolean nillable=false, boolean required=true, java.lang.Class type=class jakarta.xml.bind.annotation.XmlElement$DEFAULT, java.lang.String defaultValue="\u0000", java.lang.String name="Title", java.lang.String namespace="##default")
 meth public java.lang.String getTitle()
 meth public void setTitle(java.lang.String)
 supr java.lang.Object
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlAccessorType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault javax.xml.bind.annotation.XmlAccessType value()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlRootElement
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract !hasdefault java.lang.String name()
 meth public abstract !hasdefault java.lang.String namespace()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlSeeAlso
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlSeeAlso
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
 meth public abstract java.lang.Class[] value()
 
-CLSS public abstract interface !annotation javax.xml.bind.annotation.XmlType
+CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT
