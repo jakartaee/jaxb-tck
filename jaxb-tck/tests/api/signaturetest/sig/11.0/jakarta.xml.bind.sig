@@ -1,7 +1,7 @@
 #Signature file v4.3
 #Version 
 
-# Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
 
 CLSS public abstract jakarta.xml.bind.Binder<%0 extends java.lang.Object>
