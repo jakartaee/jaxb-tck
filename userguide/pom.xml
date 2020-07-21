@@ -28,7 +28,7 @@
     <artifactId>tck_jaxb</artifactId>
     <packaging>pom</packaging>
     <version>3.0.0-SNAPSHOT</version>
-    <name>Eclipse Foundation Technology Compatibility Kit User's Guide for Java Architecture for XML Binding (JAXB) 3.0 for Jakarta EE, Release 3.0</name>
+    <name>Eclipse Foundation Technology Compatibility Kit User's Guide for Jakarta XML Binding (JAXB) 3.0 for Jakarta EE, Release 3.0</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
