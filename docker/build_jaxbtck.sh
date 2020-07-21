@@ -150,10 +150,10 @@ chmod 777 *.jar
 TCK_NAME=xml-binding
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
 	cp $TCK_ROOT/LICENSE_EFTL.md .
-	zip -r eclipse-${TCK_NAME}-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE_EFTL.md docs/
-	cp ${WORKSPACE}/jaxb-tck-build/eclipse-${TCK_NAME}-tck-2.3.0.zip ${WORKSPACE}/bundles/
+	zip -r jakarta-${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0.jar LICENSE_EFTL.md docs/
+	cp ${WORKSPACE}/jaxb-tck-build/jakarta-${TCK_NAME}-tck-3.0.0.zip ${WORKSPACE}/bundles/
 else
 	cp $TCK_ROOT/LICENSE.md .
-	zip -r ${TCK_NAME}-tck-2.3.0.zip JAXB-TCK-2.3.jar LICENSE.md docs/
-	cp ${WORKSPACE}/jaxb-tck-build/${TCK_NAME}-tck-2.3.0.zip ${WORKSPACE}/bundles/
+	zip -r ${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0.jar LICENSE.md docs/
+	cp ${WORKSPACE}/jaxb-tck-build/${TCK_NAME}-tck-3.0.0.zip ${WORKSPACE}/bundles/
 fi
