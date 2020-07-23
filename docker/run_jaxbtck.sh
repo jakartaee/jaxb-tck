@@ -32,6 +32,8 @@ if [ -z "$GF_HOME" ]; then
   export GF_HOME=$BASEDIR
 fi
 
+TOP_GLASSFISH_DIR="glassfish6"
+
 echo "ANT_HOME=$ANT_HOME"
 echo "export JAVA_HOME=$JAVA_HOME"
 echo "export MAVEN_HOME=$MAVEN_HOME"
@@ -50,16 +52,19 @@ export TCK_ROOT=$WORKSPACE
 export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 
 wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
+
+wget https://repo1.maven.org/maven2/org/checkerframework/checker/3.5.0/checker-3.5.0.jar -O ${WORKSPACE}/checker.jar
+
 unzip -o latest-glassfish.zip
-chmod -R 777 glassfish5
+chmod -R 777 ${TOP_GLASSFISH_DIR}
 
 mkdir -p JAXB_REPORT/JAXB-TCK
 
 cd jaxb-tck-build/unzip/JAXB-TCK-3.0/lib
 
-$JAVA_HOME/bin/java -jar javatest.jar -batch -testsuite $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0 -open javasoft-multiJVM.jti -workdir -create $WORKSPACE/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=/opt/jdk1.8.0_191 JAXB_HOME=$WORKSPACE/jaxb-ri JAXB_ENDORSED=$WORKSPACE/jaxb-ri/mod/jakarta.xml.bind-api.jar" -set jck.env.jaxb.testExecute.otherOpts "-Djava.endorsed.dirs=$WORKSPACE/glassfish5/glassfish/modules/endorsed/" -set jck.env.jaxb.classes.jaxbClasses "$JAVA_HOME/lib/tools.jar $WORKSPACE/jaxb-ri/mod/jakarta.xml.bind-api.jar $WORKSPACE/jaxb-ri/mod/jaxb-impl.jar $WORKSPACE/jaxb-ri/mod/jaxb-jxc.jar $WORKSPACE/jaxb-ri/mod/jakarta.activation.jar $WORKSPACE/glassfish5/glassfish/modules/jersey-media-jaxb.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -runtests
+$JAVA_HOME/bin/java -jar javatest.jar -batch -testsuite $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0 -open javasoft-multiJVM.jti -workdir -create $WORKSPACE/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=/opt/jdk1.8.0_191 JAXB_HOME=$WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish JAXB_ENDORSED=$WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar" -set jck.env.jaxb.classes.jaxbClasses "$WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar $WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jaxb-osgi.jar $WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jersey-media-jaxb.jar $WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.activation.jar ${WORKSPACE}/checker.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -runtests
 
-$JAVA_HOME/bin/java -jar javatest.jar -batch -testsuite $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0 -open javasoft-multiJVM.jti -workdir $WORKSPACE/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=/opt/jdk1.8.0_191 JAXB_HOME=$WORKSPACE/jaxb-ri JAXB_ENDORSED=$WORKSPACE/jaxb-ri/mod/jakarta.xml.bind-api.jar" -set jck.env.jaxb.testExecute.otherOpts "-Djava.endorsed.dirs=$WORKSPACE/glassfish5/glassfish/modules/endorsed/" -set jck.env.jaxb.classes.jaxbClasses "$JAVA_HOME/lib/tools.jar $WORKSPACE/jaxb-ri/mod/jakarta.xml.bind-api.jar $WORKSPACE/jaxb-ri/mod/jaxb-impl.jar $WORKSPACE/jaxb-ri/mod/jaxb-jxc.jar $WORKSPACE/jaxb-ri/mod/jakarta.activation.jar $WORKSPACE/glassfish5/glassfish/modules/jersey-media-jaxb.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -set jck.priorStatus.needStatus Yes -set jck.priorStatus.status not_run -runtests
+$JAVA_HOME/bin/java -jar javatest.jar -batch -testsuite $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0 -open javasoft-multiJVM.jti -workdir $WORKSPACE/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh $WORKSPACE/jaxb-tck-build/unzip/JAXB-TCK-3.0/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=/opt/jdk1.8.0_191 JAXB_HOME=$WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish JAXB_ENDORSED=$WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar" -set jck.env.jaxb.classes.jaxbClasses "$WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar $WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jaxb-osgi.jar $WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jersey-media-jaxb.jar $WORKSPACE/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.activation.jar ${WORKSPACE}/checker.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -set jck.priorStatus.needStatus Yes -set jck.priorStatus.status not_run -runtests
 
 $JAVA_HOME/bin/java -jar javatest.jar -workdir $WORKSPACE/batch-multiJVM/work -writereport $WORKSPACE/JAXB_REPORT/JAXB-TCK
 

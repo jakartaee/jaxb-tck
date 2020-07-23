@@ -25,13 +25,13 @@ fi
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
 
 if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
-  export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
+  export JAXB_RI_BUNDLE_URL='https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-ri/3.0.0-M4/jaxb-ri-3.0.0-M4.zip'
 fi
 if [ -z "${JAF_BUNDLE_URL}" ];then
-  export JAF_BUNDLE_URL='http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar'
+  export JAF_BUNDLE_URL='https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.0-RC3/jakarta.activation-api-2.0.0-RC3.jar'
 fi
 if [ -z "${GF_BUNDLE_URL}" ]; then
-  export GF_BUNDLE_URL='http://download.eclipse.org/glassfish/glassfish-5.1.0.zip'
+  export GF_BUNDLE_URL='https://download.eclipse.org/ee4j/glassfish/glassfish-6.0.0-SNAPSHOT-nightly.zip'
 fi
 
 echo "JAXB_RI_BUNDLE_URL=${JAXB_RI_BUNDLE_URL}"
@@ -60,7 +60,7 @@ WGET_PROPS="--progress=bar:force --no-cache"
 cd $BASEDIR
 export TCK_ROOT=$WORKSPACE
 export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
-#wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
+wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
 #getting jaxb-ri which is needed to build the JAXB TCK
 wget ${WGET_PROPS} ${JAXB_RI_BUNDLE_URL} -O jaxb-ri.zip && unzip -o jaxb-ri.zip
 
@@ -68,13 +68,13 @@ ls -l jaxb-ri/mod
 
 wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm-commons/7.0-SNAPSHOT/asm-commons-7.0-20181027.133601-5.jar' -O asm-commons-7.0.jar
 wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar' -O asm-7.0.jar
-#unzip -o latest-glassfish.zip
-#ls -l $GF_HOME/glassfish5/glassfish/
+unzip -o latest-glassfish.zip
+ls -l $GF_HOME/glassfish6/glassfish/
 
-#if [ ! -z "$GF_VERSION_URL" ]; then
-#  wget --progress=bar:force --no-cache $GF_VERSION_URL -O glassfish.version
-#  cat glassfish.version
-#fi
+if [ ! -z "$GF_VERSION_URL" ]; then
+  wget --progress=bar:force --no-cache $GF_VERSION_URL -O glassfish.version
+  cat glassfish.version
+fi
 which make
 make -version
 which ksh

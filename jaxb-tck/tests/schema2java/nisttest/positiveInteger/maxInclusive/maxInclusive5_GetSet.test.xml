@@ -43,7 +43,7 @@
             <Title><![CDATA[NIST XML positiveInteger maxInclusive-5.xsd, unmarshalled content tree GetSet test]]></Title>
             <Description><![CDATA[
 The test unmarshalls maxInclusive-5-1.xml,...,maxInclusive-5-5.xml documents which specify
-the values 1, 4263493963527775766, 48603596549045890995, 34741232020698731121, 99999999999999999999 for 
+the values 1, 4263493963527775766, 48603596549045890995, 34741232018698731121, 99999999999999999999 for 
 the positiveInteger restricted SimpleType NISTSchema-positiveInteger-maxInclusive-5
 element and expects that elemObj.getValue() returns specified in xml value, then invokes 
 elemObj.setValue(byte), elemObj.getValue() should return set value.
@@ -62,10 +62,10 @@ elemObj.setValue(byte), elemObj.getValue() should return set value.
             "maxInclusive-5-4.xml", "maxInclusive-5-5.xml"
         };
         BigInteger[] expectedValues = {new BigInteger("1"), new BigInteger("4263493963527775766"), 
-                                       new BigInteger("48603596549045890995"), new BigInteger("34741232020698731121"), 
+                                       new BigInteger("48603596549045890995"), new BigInteger("34741232018698731121"), 
                                        new BigInteger("99999999999999999999")};
         BigInteger[] anExpectedValues = {new BigInteger("99999999999999999999"), new BigInteger("1"), 
-                                         new BigInteger("1223345457654687"), new BigInteger("34741232020698731121"), 
+                                         new BigInteger("1223345457654687"), new BigInteger("34741232018698731121"), 
                                          new BigInteger("99999999999999999998")};
         
         for (int i = 0; i < xmlDocNames.length; ++i){
@@ -88,7 +88,7 @@ elemObj.setValue(byte), elemObj.getValue() should return set value.
             <Title><![CDATA[NIST XML positiveInteger maxInclusive-5.xsd GetSet test for dynamically created content tree ]]></Title>
             <Description><![CDATA[
 The test creates an instance of positiveInteger restricted SimpleType NISTSchema-positiveInteger-maxInclusive-5 type
-with the values: 1, 4263493963527775766, 48603596549045890995, 34741232020698731121, 99999999999999999999 and 
+with the values: 1, 4263493963527775766, 48603596549045890995, 34741232018698731121, 99999999999999999999 and 
 expects that elemObj.getValue() returns specified 
 values, then invokes elemObj.setValue(byte) with various values, elemObj.getValue() should return
 set values.
@@ -97,10 +97,10 @@ set values.
         <TestCode SourceLang="java"><![CDATA[
 
         BigInteger[] setValues = {new BigInteger("1"), new BigInteger("4263493963527775766"), 
-                                       new BigInteger("48603596549045890995"), new BigInteger("34741232020698731121"), 
+                                       new BigInteger("48603596549045890995"), new BigInteger("34741232018698731121"), 
                                        new BigInteger("99999999999999999999")};
         BigInteger[] anSetValues = {new BigInteger("99999999999999999999"), new BigInteger("1"), 
-                                         new BigInteger("1223345457654687"), new BigInteger("34741232020698731121"), 
+                                         new BigInteger("1223345457654687"), new BigInteger("34741232018698731121"), 
                                          new BigInteger("99999999999999999998")};
 
         JAXBElement<BigInteger> elemObj = null;
