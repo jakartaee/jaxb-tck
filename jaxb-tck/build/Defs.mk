@@ -1,5 +1,5 @@
 #
-# Copyright (c) 1998, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1998, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -20,7 +20,7 @@
 #----------------------------------------------------------------------
 #
 # JAXB Version under test
-TEST_JAXB_VERSION = 2.3
+TEST_JAXB_VERSION = 3.0
 TEST_JAXB_MILESTONE = fcs
 TEST_JAXB_BUILD = b01
 
@@ -39,7 +39,7 @@ TCKMM = $(shell $(TCKMM.sh))
 
 
 # TCK Version and release designation
-TCK.MM_STAND_ALONE = 2.3
+TCK.MM_STAND_ALONE = 3.0
 TCK.MM.sh = \
     if [ -z "$(JCK.MM)" ]; then \
         echo $(TCK.MM_STAND_ALONE) ; \

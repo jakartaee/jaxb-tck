@@ -1,5 +1,5 @@
 #
-# Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1999, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -25,7 +25,7 @@ TEST_SUITE_SCRIPT.sh=echo "testsuite=com.sun.jaxb_tck.lib.JaxbTckTestSuite"
 test_run_testsuite_jtt.ok: $(ZIP.files)
 	@ $(RM) $(TCKDIR)/testsuite.jtt
 	echo "name=JAXB TCK testsuite" > $(TCKDIR)/testsuite.jtt
-	echo "id=JAXB-TCK-2.3" >> $(TCKDIR)/testsuite.jtt
+	echo "id=JAXB-TCK-3.0" >> $(TCKDIR)/testsuite.jtt
 	echo "classpath=./classes/" >> $(TCKDIR)/testsuite.jtt
 	echo "$(shell $(TEST_SUITE_SCRIPT.sh))" >> $(TCKDIR)/testsuite.jtt
 	echo "$(shell $(TEST_EXECUTE_SCRIPT.sh))" >> $(TCKDIR)/testsuite.jtt
