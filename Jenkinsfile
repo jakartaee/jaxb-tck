@@ -47,8 +47,11 @@ spec:
     }
   }
   parameters {
+    string(name: 'JAXB_RI_BUNDLE_URL',
+           defaultValue: 'https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-ri/3.0.0-M4/jaxb-ri-3.0.0-M4.zip',
+           description: 'URL required for downloading JAXB implementation jar' )
     string(name: 'JAF_BUNDLE_URL',
-           defaultValue: 'http://central.maven.org/maven2/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar',
+           defaultValue: 'https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.0-RC3/jakarta.activation-api-2.0.0-RC3.jar',
            description: 'URL required for downloading JAF implementation jar' )
     string(name: 'GF_BUNDLE_URL', 
            defaultValue: '', 
