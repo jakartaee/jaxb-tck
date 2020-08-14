@@ -18,8 +18,8 @@ schema2java/nisttest/string/enumeration/NISTSchema-string-enumeration-3.html    
 
 #API exclude list
 # #CTTests suffix is added by emitter, to filter out the tests they should be included into exclude list without the suffix
-api/javax_xml/bind/Binder/Binder_.html#Binder_[updateXML003]                                                  6484841   ri_bug
-api/javax_xml/bind/JAXBContext/JAXBContext.html#JAXBContext[newInstance008a]                                  6733227   ri_spec_bug
+api/jakarta_xml/bind/Binder/Binder_.html#Binder_[updateXML003]                                                  6484841   ri_bug
+api/jakarta_xml/bind/JAXBContext/JAXBContext.html#JAXBContext[newInstance008a]                                  6733227   ri_spec_bug
 
 #Schema to Java exclude list (Customized Mapping)
 schema_bind/bind_factoryMethod/factoryMethod00101m1.html#factoryMethod00101m1                                 6732214    ri_bug

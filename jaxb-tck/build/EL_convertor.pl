@@ -21,7 +21,7 @@ while(<>) {
     if($entry =~ /([^\[]+)\[?([^\]]*)\]?/) {
       $url = $1;
       $tcs = $2;
-      if( ($url =~ m|^api/javax_xml/bind/JAXBContext/java2schema/CustomizedMapping|) || ($url =~ m|^xml_schema|) || ($url =~ m|^java2schema/CustomizedMapping|) ) {
+      if( ($url =~ m|^api/jakarta_xml/bind/JAXBContext/java2schema/CustomizedMapping|) || ($url =~ m|^xml_schema|) || ($url =~ m|^java2schema/CustomizedMapping|) ) {
          # the xml_schema and xmlCore tests use other test emitter
          ($url, $tcs) = split(/#/, $url);  # and have no MultiTest testcases
          $url =~ s|\.html||;

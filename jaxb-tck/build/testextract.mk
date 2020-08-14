@@ -87,7 +87,7 @@ SELECT_TESTSUITEFILES = \
 
 # second level subdirectories of tests/
 DIRS = \
-api/javax_xml \
+api/jakarta_xml \
 api/signaturetest \
 schema2java/nisttest/float \
 schema2java/nisttest/double \
