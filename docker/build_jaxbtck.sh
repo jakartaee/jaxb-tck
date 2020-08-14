@@ -139,9 +139,10 @@ make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
 echo *************Building JAXB TCK Userguide************
 cd $WORKSPACE/userguide;mvn
-mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/userguide
-cp -r $WORKSPACE/userguide/target/staging/*.html $WORKSPACE/jaxb-tck-build/docs/userguide
-cp -r $WORKSPACE/userguide/target/generated-docs/*.pdf $WORKSPACE/jaxb-tck-build/docs/userguide
+mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/html-userguide
+mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/pdf-userguide
+cp -r $WORKSPACE/userguide/target/staging/{*.html,css,img} $WORKSPACE/jaxb-tck-build/docs/html-userguide
+cp -r $WORKSPACE/userguide/target/generated-docs/*.pdf $WORKSPACE/jaxb-tck-build/docs/pdf-userguide
 echo *************Completed Building JAXB TCK Userguide************
 
 mkdir -p ${WORKSPACE}/bundles
