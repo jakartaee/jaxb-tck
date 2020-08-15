@@ -1,9 +1,9 @@
 VERSION 1
 tests/api/signaturetest/SigTestWrapper.java
 tests/api/signaturetest/jakarta.xml.bind.test.xml
-tests/api/signaturetest/sig/5.0/javax.xml.bind.sig
-tests/api/signaturetest/sig/6.0/javax.xml.bind.sig
-tests/api/signaturetest/sig/7.0/javax.xml.bind.sig
+tests/api/signaturetest/sig/5.0/jakarta.xml.bind.sig
+tests/api/signaturetest/sig/6.0/jakarta.xml.bind.sig
+tests/api/signaturetest/sig/7.0/jakarta.xml.bind.sig
 tests/api/signaturetest/sig/8.0/jakarta.xml.bind.sig
 tests/api/signaturetest/sig/11.0/jakarta.xml.bind.sig
 tests/api/jakarta_xml/bind/UnmarshalException/UnmarshalException.tdoc.xml
