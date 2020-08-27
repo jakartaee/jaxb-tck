@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -21,7 +21,7 @@ while(<>) {
     if($entry =~ /([^\[]+)\[?([^\]]*)\]?/) {
       $url = $1;
       $tcs = $2;
-      if( ($url =~ m|^api/javax_xml/bind/JAXBContext/java2schema/CustomizedMapping|) || ($url =~ m|^xml_schema|) || ($url =~ m|^java2schema/CustomizedMapping|) ) {
+      if( ($url =~ m|^api/jakarta_xml/bind/JAXBContext/java2schema/CustomizedMapping|) || ($url =~ m|^xml_schema|) || ($url =~ m|^java2schema/CustomizedMapping|) ) {
          # the xml_schema and xmlCore tests use other test emitter
          ($url, $tcs) = split(/#/, $url);  # and have no MultiTest testcases
          $url =~ s|\.html||;

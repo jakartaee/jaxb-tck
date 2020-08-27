@@ -110,7 +110,7 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
             			-copyrightLink "COPYRIGHT-jaxbtck.html"; \
 		done \
 	fi
-	JAVA2SCHEMA_RT="$(TCKDIR)/tests/api/javax_xml/bind/JAXBContext"; \
+	JAVA2SCHEMA_RT="$(TCKDIR)/tests/api/jakarta_xml/bind/JAXBContext"; \
 	if [ -d $(J2XRT_DEST_DIR)/tests/java2schema ]; then \
 	  if [ ! -d $$JAVA2SCHEMA_RT ]; then $(MKDIR) -p $$JAVA2SCHEMA_RT; fi; \
 	  $(MV) $(J2XRT_DEST_DIR)/tests/java2schema $$JAVA2SCHEMA_RT; \
