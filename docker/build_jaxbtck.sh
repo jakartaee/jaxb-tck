@@ -151,9 +151,13 @@ TCK_NAME=xml-binding
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
 	cp $TCK_ROOT/LICENSE_EFTL.md .
 	zip -r jakarta-${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0.jar LICENSE_EFTL.md docs/
+  cd unzip
+  zip -ur ../jakarta-${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0/
 	cp ${WORKSPACE}/jaxb-tck-build/jakarta-${TCK_NAME}-tck-3.0.0.zip ${WORKSPACE}/bundles/
 else
 	cp $TCK_ROOT/LICENSE.md .
 	zip -r ${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0.jar LICENSE.md docs/
+  cd unzip
+  zip -ur ../${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0/
 	cp ${WORKSPACE}/jaxb-tck-build/${TCK_NAME}-tck-3.0.0.zip ${WORKSPACE}/bundles/
 fi
