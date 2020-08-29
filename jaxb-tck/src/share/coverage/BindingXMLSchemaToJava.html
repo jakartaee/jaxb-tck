@@ -3208,7 +3208,7 @@ Declaration Schema
 Component&#8221;&nbsp;as follows:</small><br>
       <small><br>
 The element factory method returns an instance of
-javax.xml.bind.JAXBElement&lt;T&gt;, where T is the Java value
+jakarta.xml.bind.JAXBElement&lt;T&gt;, where T is the Java value
 class representing the {type definition} of the element declaration.
 The factory method sets the element name of the returned instance to
 the element declaration&#8217;s fully qualified name. </small></td>
@@ -3610,7 +3610,7 @@ derived in </small><small>terms of the properties of the
 Component&#8221; as follows:<br>
       <br>
 Each generated Element class must extend the Java value class
-javax.xml.bind.JAXBElement&lt;T&gt;. <br>
+jakarta.xml.bind.JAXBElement&lt;T&gt;. <br>
 The schema-derived Java class name to use for generic parameter T
 specified as follows:<br>
       <span style="font-weight: bold;">If</span> the
@@ -3645,7 +3645,7 @@ properties of the &#8220;Element Declaration Schema
 Component&#8221; as follows:<br>
       <br>
 Each generated Element class must extend the Java value class
-javax.xml.bind.JAXBElement&lt;T&gt;. <br>
+jakarta.xml.bind.JAXBElement&lt;T&gt;. <br>
 The schema-derived Java class name to use for generic parameter T
 specified as follows:<br>
       <span style="font-weight: bold;">If</span> the
@@ -3681,7 +3681,7 @@ properties of the &#8220;Element Declaration Schema
 Component&#8221; as follows:<br>
       <br>
 Each generated Element class must extend the Java value class
-javax.xml.bind.JAXBElement&lt;T&gt;. <br>
+jakarta.xml.bind.JAXBElement&lt;T&gt;. <br>
 The schema-derived Java class name to use for generic parameter T
 specified as follows:<br>
       <span style="font-weight: bold;">If</span> the
@@ -3719,7 +3719,7 @@ properties of the &#8220;Element Declaration Schema
 Component&#8221; as follows:<br>
       <br>
 Each generated Element class must extend the Java value class
-javax.xml.bind.JAXBElement&lt;T&gt;. <br>
+jakarta.xml.bind.JAXBElement&lt;T&gt;. <br>
 The schema-derived Java class name to use for generic parameter T
 specified as follows:<br>
       <span style="font-weight: bold;">If</span> the
@@ -3758,7 +3758,7 @@ properties of the &#8220;Element Declaration Schema
 Component&#8221; as follows:<br>
       <br>
 Each generated Element class must extend the Java value class
-javax.xml.bind.JAXBElement&lt;T&gt;. <br>
+jakarta.xml.bind.JAXBElement&lt;T&gt;. <br>
 The schema-derived Java class name to use for generic parameter T
 specified as follows:<br>
       <span style="font-weight: bold;">If</span> the
@@ -4911,7 +4911,7 @@ value</small></td>
           </tr>
           <tr>
             <td><small>Value</small></td>
-            <td><small>javax.xml.bind.JAXBElement.class</small> </td>
+            <td><small>jakarta.xml.bind.JAXBElement.class</small> </td>
           </tr>
         </tbody>
       </table>
@@ -6220,10 +6220,10 @@ Wildcard content is represented as one of the following:<br>
       <br>
       <span style="font-weight: bold; font-style: italic;">JAXB
 element </span><br>
-Either an instance of javax.xml.bind.JAXBElement&lt;T&gt; or a
+Either an instance of jakarta.xml.bind.JAXBElement&lt;T&gt; or a
 JAXB class annotated with @XmlRootElement. Corresponds to a recognized
 global element tag name registered with the instance
-javax.xml.bind.JAXBContext, meaning the schema(s) describing the
+jakarta.xml.bind.JAXBContext, meaning the schema(s) describing the
 element content is registered with the JAXBContext instance, see
 Section 4.2, &#8220;JAXBContext,&#8221; .</small></td>
       <td style="vertical-align: top; text-align: center;"><small>true</small></td>
@@ -6245,7 +6245,7 @@ wildcard is mapped to a simple content-property with:<br>
 Wildcard content is represented as one of the&nbsp;</small><small>following:<br>
       <br>
       <span style="font-weight: bold; font-style: italic;">instance
-of javax.xml.bind.JAXBElement.<br>
+of jakarta.xml.bind.JAXBElement.<br>
       </span>Corresponds to an unknown element name but a
 recognized type definition specified by @xsi:type on the element.
 JAXBElement declaredType is set to java.lang.Object since the unknown
@@ -6388,7 +6388,7 @@ element value</small></td>
           </tr>
           <tr>
             <td><small>value</small></td>
-            <td><small>javax.xml.bind.annotation.
+            <td><small>jakarta.xml.bind.annotation.
 W3CDomHandler.class</small> </td>
           </tr>
         </tbody>
@@ -7255,7 +7255,7 @@ Distinguish between&nbsp;generated and user&nbsp;&nbsp;
 added code</small></td>
       <td style="vertical-align: top;"><small>A
 schema compiler must have an option to generate the Common
-Annotation,@javax.annotation.Generated annotation, specified in [CA],
+Annotation,@jakarta.annotation.Generated annotation, specified in [CA],
 on every generated class, method and field. </small></td>
       <td style="vertical-align: top; text-align: center;"><small>false</small></td>
       <td style="vertical-align: top; text-align: center;"><small>&nbsp;</small></td>
