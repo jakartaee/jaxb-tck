@@ -96,7 +96,7 @@ public class DefaultMappingTestsGenerator {
         new Class2Elem( javax.xml.datatype.Duration.class,  new ElementID( xs, "duration" ) ),
         new Class2Elem( java.lang.Object.class,     new ElementID( xs, "anyType" ) ),
         new Class2Elem( java.awt.Image.class,       new ElementID( xs, "base64Binary" ) ),
-        new Class2Elem( javax.activation.DataHandler.class, new ElementID( xs, "base64Binary" ) ),
+        new Class2Elem( jakarta.activation.DataHandler.class, new ElementID( xs, "base64Binary" ) ),
         new Class2Elem( javax.xml.transform.Source.class,   new ElementID( xs, "base64Binary" ) ),
         new Class2Elem( java.util.UUID.class,       new ElementID( xs, "string" ) )
     };
@@ -163,10 +163,10 @@ public class DefaultMappingTestsGenerator {
 //            javax.script.Bindings.class,
             java.util.concurrent.ConcurrentMap.class,
 //            java.util.concurrent.ConcurrentNavigableMap.class,
-//            javax.xml.ws.handler.LogicalMessageContext.class,
-//            javax.xml.ws.handler.MessageContext.class,
+//            jakarta.xml.ws.handler.LogicalMessageContext.class,
+//            jakarta.xml.ws.handler.MessageContext.class,
 //            java.util.NavigableMap.class,
-//            javax.xml.ws.handler.soap.SOAPMessageContext.class,
+//            jakarta.xml.ws.handler.soap.SOAPMessageContext.class,
             java.util.SortedMap.class,
             // classes
             java.util.AbstractMap.class,

@@ -63,7 +63,7 @@ public class JaxbTckScript extends Script {
     
     public static final String KWD_EMPTY_OUT = "empty_output";
 
-    // also used by javasoft.sqe.tests.api.javax.xml.bind.SchemaGenTest::getSchemaSources(String schemaNames
+    // also used by javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTest::getSchemaSources(String schemaNames
     public static final String SCHEMA_SEPARATOR = ";";
 
     private static final int INVOCATION_LIMIT = 50;
