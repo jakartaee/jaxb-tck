@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2005, 2020 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -21,8 +21,8 @@ import javax.xml.bind.annotation.*;
 /**
  * Mapping: Class to Complex Type Definition
  * if the class contains a mapped property or field
- * annotated with @XmlValue, ‚Ç£@XmlValue‚Ç¥, then the schema 
- * type to which mapped property or field‚ÇÖs type is mapped.
+ * annotated with @XmlValue, ï¿½Ç£@XmlValueï¿½Ç¥, then the schema 
+ * type to which mapped property or fieldï¿½ï¿½ï¿½s type is mapped.
  */
 @XmlType(propOrder={ "d001","f001", "l001"}) 
 public class BaseType002d {
