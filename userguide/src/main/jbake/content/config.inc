@@ -13,161 +13,141 @@ former maps from a schema to Java, and the latter maps from Java to
 schema.  For the purposes of brevity in these instructions, the term
 compiler refers to both the schema compiler and the schema generator.
 
-GUI Versus Batch Mode
-^^^^^^^^^^^^^^^^^^^^^
+Configuring Your Environment to Run the TCK Against the Compatible Implementation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once you have configured your {TechnologyShortName} TCK environment
-using the JavaTest GUI, you can run the tests through the GUI or in
-batch mode using scripts. However, you cannot edit your
-{TechnologyShortName} TCK configuration files (`*.jti`) outside the
-JavaTest GUI.  Even though the `*.jti` configuration files are straight
-ASCII text, they have embedded checksum strings to ensure validity and
-consistency with the requirements of the {TechnologyShortName} TCK
-suite.
+1.  Set the following environment variables in your shell environment:
+  a.  `JAVA_HOME` to the directory in which Java SE 8 is installed
+  b.  `TS_HOME` to the directory in which the {TechnologyShortName} TCK software
+  is installed
+  c.  `JAXB_HOME` to the directory in which the {TechnologyShortName} software
+  is installed
+  d.  `PATH` to include the following directories: `$JAVA_HOME/bin`,
+  `$JAXWS_HOME/bin`, and `$ANT_HOME/bin`
+2.  Edit `$TS_HOME/testsuite.jtt` and modify `finder` settings to contain proper
+   {TechnologyShortName} TCK software installation directory path prefix
+3.  Choose {TechnologyShortName} TCK software configuration file template to use:
+  a.  `$TS_HOME/lib/javasoft-multiJVM.jti` to run tests in multi JVM mode
+  (this is the default configuration template)
+  b.  or `$TS_HOME/lib/javasoft-singleJVM.jti` to run tests in single JVM mode
+4.  Copy choosen file as `$TS_HOME/lib/ts.jti`
+5. Edit `$TS_HOME/lib/ts.jti` file and set environment variables
+   and configuration properties.
+  a.  Set `TESTSUITE` environment variable to contain {TechnologyShortName}
+      TCK software installation directory.
+  b.  Set `WORKDIR` environment variable to contain {TechnologyShortName}
+      TCK software working directory. This directory will contain raw testing
+      data and results.
+  c.  Set `jck.env.jaxb.classes.jaxbClasses` property to contain The Checker
+      Framework library and all {TechnologyShortName} libraries:
+        * /workspace/checker.jar
+        * /workspace/mod/jakarta.activation.jar
+        * /workspace/mod/jakarta.xml.bind-api.jar
+        * /workspace/mod/jaxb-core.jar
+        * /workspace/mod/jaxb-impl.jar
+        * /workspace/mod/jaxb-jxc.jar
+  d.  Set `jck.env.jaxb.testExecute.cmdAsFile` property to contain Java SE 8
+      installation Directory.
+  e.  Set `jck.env.jaxb.testExecute.otherEnvVars` property to contain
+        * JAVA_HOME variable with Java SE 8 installation directory,
+        * JAXB_HOME variable with {TechnologyShortName} installation directory,
+        * JAXB_ENDORSED variable with {TechnologyShortName} API jar file.
+  f.  Set `jck.env.jaxb.schemagen.run.jxcCmd` property to contain proper schema
+      generator script for your platform.
+  g.  Set `jck.env.jaxb.xsd_compiler.testCompile.xjcCmd` property to contain
+      proper schema compiler script for your platform.
+  h.  Set `jck.env.jaxb.xsd_compiler.skipValidationOptional` property to contain
+      value `Yes`. XML validation is implemented from JAXP
+      in {TechnologyShortName} {TechnologyVersion} Compatible Implementation.
+See link:#GCLHUC1[Section, "Configuration Properties"] for details.
 
-Batch mode is particularly useful after you have worked out the basics
-of your test configurations through the JavaTest GUI. Batch mode
-provides a convenient way to automate your test runs, and also allows
-you to change work and report directories, which is often desirable
-when running tests repeatedly over progressive builds.
-
-Using the XML Binding TCK Configuration Interfaces
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can configure the {TechnologyShortName} TCK and the JavaTest
-harness from the JavaTest GUI, or by passing configuration parameters
-directly on the command line in a command shell.
-
-*{TechnologyShortName} TCK Configuration With the JavaTest GUI*
-
-1.  Start the JavaTest harness GUI.
-    See link:config.html#GBFVU[Section, "Starting the JavaTest Harness"].
-
-2.  Complete the JavaTest harness *Quick Start Wizard* or use the
-    *Test Manager* menu to perform the following tasks:
-
-    * Select *File* and then *Open Test Suite* to open a test suite.
-
-    * Select *File* and then *New Work Dir* to create a new work
-      directory, or *File* and then *Open Work Dir* to open an existing
-      work directory.
-
-    * Select *Configure* then *New Configuration* to create a new
-      configuration, *Configure* then *Load Configuration* to load an
-      existing configuration, or *Configure* and then *Change Values*
-      to modify the current configuration for your test environment. +
-      The JavaTest harness opens the configuration editor window. See
-      the JavaTest Harness User's Guide: Graphical User Interface
-      included with this release or the JavaTest harness online help
-      for detailed instructions on using the configuration editor
-      window.
-
-    * Click *Start Running Tests* on the *Test Manager* tool bar , or
-      select *Run Tests* and then *Start* from the *Test Manager* menu. +
-      See the JavaTest Harness User's Guide: Graphical User Interface
-      included with this release or the JavaTest harness online help
-      for detailed instructions about running the tests.
-
-TCK Configuration From the JavaTest Command Line
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To run the tests non-interactively, for example as part of a product
-build process, use the JavaTest harness command-line interface. To run
-tests from the command line, you must use a configuration file. The
-JavaTest harness command-line interface provides a number of commands
-that you can use to specify individual configuration values used to run
-tests. Values that are set in the command line will override but not
-change the values in the configuration file. Permanent changes to the
-configuration are made by using the Configuration Editor to change the
-values in the configuration file.
-
-
-See the JavaTest Harness User's Guide: Command Line Interface included
-with this release or the JavaTest harness online help for detailed
-instructions about using the command line to run tests and to modify
-the configuration.
-
-*Setting Configuration Values on the Command Line*
-
-If you intend to set one or more configuration values on the command
-line for a test run, then see the JavaTest Harness User's Guide:
-Command-Line Interface, or the JavaTest harness online help for a
-detailed description.
-
-You must use one of the following sources to identify the configuration
-question-tag names used in the command line:
-
-* *Question Log file*: (`questionLognnnn.html`) generated by the
-Configuration Editor in `workdirectory/jtData`
-
-* *Config.html report*: generated from the JavaTest harness GUI
-
-* *Question Tags*: displayed in the Configuration Editor
-
-See the JavaTest Harness User's Guide: Graphical User Interface or the
-JavaTest harness online help for a detailed description of displaying
-the Question Tags in the Configuration Editor and generating reports
-containing the `config.html` file.
-
-[[GCLHUC]][[jaxb-specific-configuration-settings]]
+An example of `$TS_HOME/lib/ts.jti` file:
+--
+[source,oac_no_warn]
+----
+TESTSUITE=/workspace/JAXB-TCK-3.0
+WORKDIR=/workspace/JAXB-TCK-3.0/batch-multiJVM/work
+jck.concurrency.concurrency=1
+jck.env.description=multi jvm
+jck.env.envName=multi_jvm
+jck.env.jaxb.classes.jaxbClasses=/data/tck/tmp/checker.jar
+  /data/tck/tmp/jaxb-ri/mod/jakarta.activation.jar
+  /data/tck/tmp/jaxb-ri/mod/jakarta.xml.bind-api.jar
+  /data/tck/tmp/jaxb-ri/mod/jaxb-core.jar
+  /data/tck/tmp/jaxb-ri/mod/jaxb-impl.jar
+  /data/tck/tmp/jaxb-ri/mod/jaxb-jxc.jar
+jck.env.jaxb.schemagen.run.jxcCmd=/bin/sh
+  /workspace/JAXB-TCK-3.0/linux/bin/schemagen.sh
+jck.env.jaxb.schemagen.skipJ2XOptional=Yes
+jck.env.jaxb.testExecute.cmdAsFile=/opt/jdk1.8.0_192.jdk/bin/java
+jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=/opt/jdk1.8.0_192.jdk
+  JAXB_HOME\=/workspace/jaxb-ri
+  JAXB_ENDORSED=/workspace/jaxb-ri/mod/jakarta.xml.bind-api.jar
+jck.env.jaxb.testExecute.otherOpts=
+jck.env.jaxb.xsd_compiler.defaultOperationMode=Yes
+jck.env.jaxb.xsd_compiler.skipValidationOptional=Yes
+jck.env.jaxb.xsd_compiler.testCompile.xjcCmd=/bin/sh
+  /workspace/JAXB-TCK-3.0/linux/bin/xjc.sh
+jck.env.testPlatform.local=Yes
+jck.env.testPlatform.multiJVM=Yes
+jck.excludeList.latestAutoCheck=No
+jck.excludeList.latestAutoCheckInterval=7
+jck.excludeList.latestAutoCheckMode=everyXDays
+jck.excludeList.needExcludeList=No
+jck.keywords.keywords.mode=expr
+jck.keywords.needKeywords=No
+jck.priorStatus.needStatus=No
+jck.priorStatus.status=
+jck.tests.needTests=No
+jck.tests.tests=
+jck.tests.treeOrFile=tree
+jck.timeout.timeout=1
+----
+--
 
 4.1.2 {TechnologyShortName}-Specific Configuration Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-A number of questions in the JavaTest harness configuration interview
+A number of properties in the JavaTest harness configuration file
 are generic and apply to most Java product TCK suites. This section
 describes configuration settings that are specific to the
 {TechnologyShortName} TCK.
 
 The {TechnologyShortName} TCK {TechnologyVersion} includes a special
-configuration interview used by the JavaTest harness to collect
+configuration properties used by the JavaTest harness to collect
 information from you about your test environment and to create the
-configuration used to run tests.  The TCK configuration interview (TCK
-interview) consists of the following sections:
+configuration used to run tests. The TCK configuration properties consists
+of the following types:
 
-* *Test Environment*: the first section of the interview collects
+* *Test Environment*: the first type of the properties collects
 information about the test environment used to run the
 {TechnologyShortName} TCK {TechnologyVersion} (such as the type of
 environment and the type of agent used).
-* *Schema Compiler Questions*: the second section of the interview collects
+* *Schema Compiler Questions*: the second type of the properties collects
 information about how to compile the source schema on your platform.
   ** XML Validation Tests: optional tests that must be run if schema
      validation is performed using a mechanism other than JAXP.
-* *Schema Generator Questions*: the third section of the interview collects
+* *Schema Generator Questions*: the type section of the properties collects
 information about how to generate XML schema from Java sources on your
 platform.
-* *How Tests are Run*: the last section of the interview collects
+* *How Tests are Run*: the last section of the properties collects
 information on how the tests are run (such as Keywords and the Exclude
 List).
 
-The Configuration Editor Questions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration Properties
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-The table describes the Configuration Editor questions, lists the question tags
-and text, and gives examples of relevant answers to correctly configure the
-JavaTest harness to run the test suite.
-
-[NOTE]
-=======================================================================
-To view the question tags in the Configuration Editor, select *View* and then
-*Question Tag* in the editor menu.
-=======================================================================
+The table describes the configuration properties and gives examples of relevant
+values to correctly configure the JavaTest harness to run the test suite.
 
 [[GCLHUC1]][[GCLHUC2]][[GCLHUC3]]
 
-Table 4-1 Configuration Editor Questions and Relevant Answers 
+Table 4-1 Configuration Properties and Relevant Values
 
-[width="100%",cols="10%,45%,45%",options="header",]
+[width="100%",cols="15%,45%,40%",options="header",]
 |=======================================================================
-|Item Name |Question Tag and Text |Comments and Proposed Answers
-|Welcome! |
-*Tag: jck.prolog*
-
-Welcome to the Configuration Editor for XML Binding TCK testsuite!
-
-|None
-
+|Property Name |Identifier and Description |Comments and Proposed Values
 |Configuration Name |
-*Tag: jck.env.envName*
+*Identifier: jck.env.envName*
 
 Provide a short identifier that names the configuration you are creating. |
 This is a short string that identifies this particular configuration.
@@ -180,7 +160,7 @@ underscore, and must not contain a white space or punctuation
 characters.
 
 |Description |
-*Tag: jck.env.description*
+*Identifier: jck.env.description*
 
 Provide a short description that identifies the configuration you are creating. |
 JavaTest uses this short description to
@@ -194,7 +174,7 @@ of the tester.
 Example: `John Smith x86 Java Architecture for XML Binding 2.3`
 
 |Execution Mode |
-*Tag: jck.env.testPlatform.multiJVM*
+*Identifier: jck.env.testPlatform.multiJVM*
 
 Specify whether you want to run the tests in SingleJVM or MultiJVM
 mode. Depending on the selected mode, you can configure to run the
@@ -217,7 +197,7 @@ Virtual Machine in which the tests will run (the questions in the
 the Java launcher.
 
 |Execute Locally |
-*Tag: jck.env.testPlatform.local*
+*Identifier: jck.env.testPlatform.local*
 
 Will you run the TCK tests on the system that hosts the JavaTest harness?
 
@@ -227,17 +207,17 @@ directly from the system. For example, you will be able to browse the
 local file system to point to the required files.
 
 |Agent Type |
-*Tag: jck.env.jaxb.agent.agentType*
+*Identifier: jck.env.jaxb.agent.agentType*
 
 The JavaTest Agent can be run in two modes: active and passive.
 Which mode do you wish to use?
 
 |Select the agent type you wish to use. If you want to use the passive
-agent, then two additional questions will appear asking you to specify
+agent, then additional properties must be provided to specify
 the passive agent host and default agent port.
 
 |Passive Host |
-*Tag: jck.env.jaxb.agent.agentPassiveHost*
+*Identifier: jck.env.jaxb.agent.agentPassiveHost*
 
 What is the of the host on which you run the tests?
 
@@ -248,7 +228,7 @@ you can only change the machine you specify here by running this
 interview again and changing the name of the passive host.
 
 |Default Agent Port |
-*Tag: jck.env.jaxb.agent.useAgentPortDefault*
+*Identifier: jck.env.jaxb.agent.useAgentPortDefault*
 
 Do you wish to use the default port for the JavaTest harness to contact
 the JavaTest Agent?
@@ -262,34 +242,34 @@ If you answer `No`, then you will need to specify the default port
 number in the next interview question.
 
 |Passive Port |
-*Tag: jck.env.jaxb.agent.agentPassivePort*
+*Identifier: jck.env.jaxb.agent.agentPassivePort*
 
 Which port does the JavaTest harness use to contact the JavaTest Agent?
 
 |Specify the port you want to use to communicate with the JavaTest agent.
 
 |Test Platform File Separator |
-*Tag: jck.env.jaxb.agent.fileSeparator*
+*Identifier: jck.env.jaxb.agent.fileSeparator*
 
 Which file separator character is used on the test platform?
 
 |Specify the appropriate file separator for your operating system.
 
-For example, for Windows, use the back slash (\) character. For Solaris
-OS or Linux operation system, use the forward slash (/) character.
+For example, for Windows, use the back slash `\` character. For Solaris
+OS or Linux operation system, use the forward slash `/` character.
 
 |Test Platform Path Separator |
-*Tag: jck.env.jaxb.agent.pathSeparator*
+*Identifier: jck.env.jaxb.agent.pathSeparator*
 
 Which path separator character is used on the test platform?.
 
 |Specify the appropriate path separator for your operating system.
 
-For example, on Windows systems, specify the ; character, on Unix
-systems specify the : character. Other platforms may differ.
+For example, on Windows systems, specify the `;` character, on Unix
+systems specify the `:` character. Other platforms may differ.
 
 |Agent Map File |
-*Tag: jck.env.jaxb.agent.mapArgs*
+*Identifier: jck.env.jaxb.agent.mapArgs*
 
 |Because JavaTest and the JavaTest agent run on different systems,
 values such as path names and variable names may differ on each system.
@@ -302,30 +282,30 @@ enabled here. For more information about map files, refer to the
 JavaTest User's Guide or to the JavaTest online help.
 
 |Java Launcher |
-*Tag: jck.env.jaxb.testExecute.cmdAsFile*
+*Identifier: jck.env.jaxb.testExecute.cmdAsFile*
 
 Enter the full path name of the Java launcher that runs the tests through
 the Java Compiler API interface.
 
-|This interview question appears only if you answered `Yes` to the Test Platform
-MultiJVM question of this interview.
+|This property is required only if `jck.env.testPlatform.multiJVM` property
+value has been set to `Yes`.
 
 This is the command used on the reference system to invoke the `java` command.
 
 NOTE: Use the `java` command in JDK (not JRE).
 
-* On Solaris or Linux platforms, type:`$JAVA_HOME/bin/java`
+On Solaris or Linux platforms, use expanded value of: `$JAVA_HOME/bin/java`
 
-  For example: `/usr/java/bin/java`
+  * For example: `/usr/java/bin/java`
 
-* On Win32 systems, type: `%JAVA_HOME%\bin\java.exe`
+On Win32 systems, use expanded value of: `%JAVA_HOME%\bin\java.exe`
 
-  For example: “C:\Java\jdk–9\bin\java.exe”
+  * For example: `C:\Java\jdk–9\bin\java.exe`
 
-  Ensure that you supply the full file name, including the file extension.
+Ensure that you supply the full file name, including the file extension.
 
 |Other Options |
-*Tag: jck.env.jaxb.testExecute.otherOpts*
+*Identifier: jck.env.jaxb.testExecute.otherOpts*
 
 Specify any additional commandline options that must be set.
 
@@ -335,11 +315,8 @@ using `name=value` pairs. For example you may want to specify:
 `-Xmx256m -Xms128m` to change the default maximum and initial Java heap
 size.
 
-NOTE: If you use Java Launcher from JCK 8 to run the tests, specify the
-`-Djava.endorsed.dirs=<JAXB_HOME>/lib` option.
-
 |Other Environment Variables |
-*Tag: jck.env.jaxb.testExecute.otherEnvVars*
+*Identifier: jck.env.jaxb.testExecute.otherEnvVars*
 
 Except for CLASSPATH, if there are any other environment variables
 that must be set for the reference Java launcher, enter them here.
@@ -348,15 +325,7 @@ that must be set for the reference Java launcher, enter them here.
 in the environment created to run the tests on your system. Specify the
 variables using the `name=value` pairs.
 
-For example, on Solaris systems: `special_path=/home/env/config`
-
-NOTE: You must specify both variables: JAVA_HOME and JAXB_HOME.
-For example, on Solaris: JAVA_HOME=/jdk-8/solarissparcv9 JAXB_HOME=/jaxb-2.3
-on Windows: JAVA_HOME=d:\jdk-8\windows-i586 JAXB_HOME=d:\jaxb-2.3
-
-Where the path to the directory of J2SE on Solaris should be specified
-in JAVA_HOME, JAXB_HOME points to the directory under which the bin/,
-docs/, examples/, and lib/ directories reside.
+You must specify at least `JAVA_HOME` and `JAXB_HOME`.
 
 The JavaTest cannot inherit environment variables from your operating
 system environment. If you find that your tests run correctly outside
@@ -367,36 +336,37 @@ operating system environment and determine that this is the case, then
 set the missing values here.
 
 |Need Extra XML Binding Classes |
-*Tag: jck.env.jaxb.classes.needJaxbClasses*
+*Identifier: jck.env.jaxb.classes.needJaxbClasses*
 
 Do you need to specify extra XML Binding classes for the Java launcher to
 execute tests?
 
 |The XML Binding classes must be available (that is, can be found and loaded)
 during test execution. This means that {TechnologyShortName} JAR
-archives or directories which contain the {TechnologyShortName} classes
-must be in the test executing Java class path.
+archives which contain the {TechnologyShortName} classes
+must be on the class path of the the Java VM executing the test.
 
 Answer `No` if the {TechnologyShortName} JAR archives are in the Java
 default class path, for example, all jar files are stored in the
 jdk_install_dir/jre/lib/ext directory.
 
-Answer `Yes` if some directories or archives are located not in the
-Java default class path.
+Answer `Yes` if some directories or archives are not located on the
+Java VM default class path.
 
-If you answer `Yes`, then you will be asked to specify necessary class
-paths or {TechnologyShortName} archives.
+If you answer `Yes`, then must specify necessary {TechnologyShortName} archives.
 
-|Schema Compiler Questions |
-*Tag: jck.env.jaxb.xsd_compiler.intro*
+|Extra XML Binding Classes |
+*Identifier: jck.env.jaxb.classes.jaxbClasses*
 
-The following questions collect information about how to compile the
-source schema on your platform.
+Extra XML Binding classes to be put on class path of the the Java VM executing
+the test. |
 
-|None.
+Specify all necessary {TechnologyShortName} archives required for tests
+execution. Archive files must be specified with full path and separated
+by space.
 
 |Schema Compiler Operation Mode |
-*Tag: jck.env.jaxb.xsd_compiler.defaultOperationMode*
+*Identifier: jck.env.jaxb.xsd_compiler.defaultOperationMode*
 
 Would you like to run your schema compiler in default operation mode?
 
@@ -433,7 +403,7 @@ requirements, see the Compatibility section
 of the {TechnologyShortName} specification.
 
 |Optional XML Validation Tests |
-*Tag: jck.env.jaxb.xsd_compiler.skipValidationOptional*
+*Identifier: jck.env.jaxb.xsd_compiler.skipValidationOptional*
 
 Is Schema Validation implemented via mechanism different from JAXP?
 
@@ -446,7 +416,7 @@ use some other tools for schema validation,
 then XML validation tests are mandatory.
 
 |Schema Compiler Run Command |
-*Tag: jck.env.jaxb.xsd_compiler.testCompile. xjcCmd*
+*Identifier: jck.env.jaxb.xsd_compiler.testCompile. xjcCmd*
 
 The remaining questions ask which tests you want to run and how you
 want them to be run.
@@ -474,7 +444,7 @@ store generated files.
 
 
 |Schema Compiler Class |
-*Tag: jaxb.xsd_compiler.run.compilerWrapperClass*
+*Identifier: jaxb.xsd_compiler.run.compilerWrapperClass*
 
 You must provide a custom class to invoke your compiler. This class
 should implement the com.sun.jaxb_tck.lib.SchemaCompilerTool interface.
@@ -523,7 +493,7 @@ a class, then create it and specify it here.
 
 
 |Schema Generator Questions |
-*Tag: jck.env.jaxb.schemagen.intro*
+*Identifier: jck.env.jaxb.schemagen.intro*
 
 The following questions collect information about how to generate xml schema
 from java sources on your platform.
@@ -532,7 +502,7 @@ from java sources on your platform.
 
 
 |Schema Generator Presence |
-*Tag: jck.env.jaxb.schemagen.skipJ2XOptional*
+*Identifier: jck.env.jaxb.schemagen.skipJ2XOptional*
 
 Does your implementation provide schema generator which is able to
 generate schemas from Java sources?
@@ -545,7 +515,7 @@ sources. If they are provided, then all
 specification requirements should be met.
 
 |Schema Generator Run Command |
-*Tag: jck.env.jaxb.schemagen.run.jxcCmd*
+*Identifier: jck.env.jaxb.schemagen.run.jxcCmd*
 
 Enter the command to run the schema generator.
 
@@ -571,7 +541,7 @@ generated files.
 
 
 |Schema Generator Class |
-*Tag: jck.env.jaxb.schemagen.run.schemagenWrapperClass*
+*Identifier: jck.env.jaxb.schemagen.run.schemagenWrapperClass*
 
 You must provide a custom class to invoke your schema generator. This
 class should implement the com.sun.jaxb_tck.lib.SchemaGenTool interface.
@@ -619,7 +589,7 @@ a class, then create it and specify it here.
 
 
 |Schema Compiler Questions |
-*Tag: jck.env.jaxb.xsd_compiler.intro*
+*Identifier: jck.env.jaxb.xsd_compiler.intro*
 
 The following questions collect information about how to compile the
 source schema on your platform.
@@ -628,7 +598,7 @@ source schema on your platform.
 
 
 |Standard Values |
-*Tag: jck.parameters*
+*Identifier: jck.parameters*
 
 The remaining questions ask which tests you want to run and how you
 want them to be run.
@@ -637,7 +607,7 @@ want them to be run.
 
 
 |Specify an Exclude List? |
-*Tag: jck.excludeList.needExcludeList*
+*Identifier: jck.excludeList.needExcludeList*
 
 Do you wish to specify an exclude list?
 
@@ -651,7 +621,7 @@ are not filtered out by other run filters.
 
 
 |Which Exclude List? |
-*Tag: jck.excludeList.excludeListType*
+*Identifier: jck.excludeList.excludeListType*
 
 Which exclude list do you wish to
 use?
@@ -666,7 +636,7 @@ the Specify option to specify the exclude list
 you wish to use.
 
 |Specify Exclude List Files |
-*Tag: jck.excludeList.customFiles*
+*Identifier: jck.excludeList.customFiles*
 
 Specify the files that make up the
 exclude list you wish to use.
@@ -678,7 +648,7 @@ extension ``.jtx`.
 
 
 |Specify Keywords? |
-*Tag: jck.keywords.needKeywords*
+*Identifier: jck.keywords.needKeywords*
 
 Do you wish to specify a keyword
 expression to select/reject tests
@@ -698,7 +668,7 @@ filtered out by other run filters.
 
 
 |Specify Status? |
-*Tag: jck.priorStatus.needStatus*
+*Identifier: jck.priorStatus.needStatus*
 
 Do you wish to select tests to run
 based on their result in a previous
@@ -715,7 +685,7 @@ filtered out by other run filters.
 
 
 |Concurrency |
-*Tag:
+*Identifier:
 jck.concurrency.concurrency*
 
 The JavaTest harness can run tests
@@ -734,7 +704,7 @@ For the first test run, keep this value set to
 
 
 |Time Factor |
-*Tag: jck.timeout.timeout*
+*Identifier: jck.timeout.timeout*
 
 Specify a time factor that is applied
 to each test's default timeout. For
@@ -759,7 +729,7 @@ speed.
 
 
 |Completed! |
-*Tag: jck.end*
+*Identifier: jck.end*
 
 Congratulations! This completes the
 configuration. Click Done to save
@@ -780,4 +750,3 @@ Tests->Start.
 
 4.3 Unused Section
 ~~~~~~~~~~~~~~~~~~
-

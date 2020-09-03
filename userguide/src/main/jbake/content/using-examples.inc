@@ -3,13 +3,14 @@ NOTE TO WRITERS:
 These CLI examples can be customized as necessary.
 ///////////////////////////////////////////////////////////////////////
 
-1.  Change to any subdirectory under `<TS_HOME>/src/com/sun/ts/tests`.
+1.  Change to `$TS_HOME/lib` directory.
 2.  Start JavaTest using the following command:
 +
 --
 [source,oac_no_warn]
 ----
-ant runclient
+${JAVA_HOME}/bin/java -jar javatest.jar -batch -testsuite ${TS_HOME} \
+  -open ts.jti -workdir -create <path_prefix>/work -runtests
 ----
 --
 
