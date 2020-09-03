@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2017, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2017, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -28,13 +28,7 @@ then
 	exit 1
 fi
 
-if [ -z "$JAXB_ENDORSED" ]
-then
-    echo " JAXB_ENDORSED must be set before running this script"
-	exit 1
-fi
-
 # Invoke the schema generator
-echo $JAVA_HOME/bin/java -Djava.endorsed.dirs=$JAXB_ENDORSED -cp $CLASSPATH com.sun.jaxb_tck.lib.JaxbCommand -jxc $SCHEMAGEN_REALIZATION - $@
-$JAVA_HOME/bin/java -Djava.endorsed.dirs=$JAXB_ENDORSED -cp $CLASSPATH com.sun.jaxb_tck.lib.JaxbCommand -jxc $SCHEMAGEN_REALIZATION - $@
+echo $JAVA_HOME/bin/java -cp $CLASSPATH com.sun.jaxb_tck.lib.JaxbCommand -jxc $SCHEMAGEN_REALIZATION - $@
+$JAVA_HOME/bin/java -cp $CLASSPATH com.sun.jaxb_tck.lib.JaxbCommand -jxc $SCHEMAGEN_REALIZATION - $@
 
