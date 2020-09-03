@@ -41,13 +41,11 @@ public class SigTestWrapper implements Test {
     private static String FILE_SEPARATOR =
         System.getProperty("file.separator");
 
-    private static String ROOT_DIR = "../../../tempTestStorage/JAXB-TCK/tests/api/signaturetest";
-
     /**
      * Implementation of method com.sun.javatest.Test.run()
      */
     public Status run(String [] args, PrintWriter err, PrintWriter out) {
-        String fileName = ROOT_DIR + FILE_SEPARATOR + "sig" + FILE_SEPARATOR, testedPackage, sigTestArgs[];
+        String fileName = "sig" + FILE_SEPARATOR, testedPackage, sigTestArgs[];
 
         switch (getJavaVersion()) {
 

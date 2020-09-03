@@ -1,6 +1,6 @@
 @echo off
 REM
-REM  Copyright (c) 2007, 2018 Oracle and/or its affiliates. All rights reserved.
+REM  Copyright (c) 2007, 2020 Oracle and/or its affiliates. All rights reserved.
 REM
 REM  This program and the accompanying materials are made available under the
 REM  terms of the Eclipse Public License v. 2.0, which is available at
@@ -21,11 +21,7 @@ if "%JAXB_HOME%" == "" (
    echo JAXB_HOME must be set before running this script
 )
 
-if "%JAXB_ENDORSED%" == "" (
-   echo JAXB_ENDORSED must be set before running this script
-)
-
-echo %JAVA_HOME%\bin\java -Djava.endorsed.dirs=%JAXB_ENDORSED% -cp %CLASSPATH% com.sun.jaxb_tck.lib.JaxbCommand -xjc %SCHEMACOMPILER_REALIZATION%  - %* 
-%JAVA_HOME%\bin\java -Djava.endorsed.dirs=%JAXB_ENDORSED% -cp %CLASSPATH% com.sun.jaxb_tck.lib.JaxbCommand -xjc %SCHEMACOMPILER_REALIZATION%  - %* 
+echo %JAVA_HOME%\bin\java -cp %CLASSPATH% com.sun.jaxb_tck.lib.JaxbCommand -xjc %SCHEMACOMPILER_REALIZATION%  - %* 
+%JAVA_HOME%\bin\java -cp %CLASSPATH% com.sun.jaxb_tck.lib.JaxbCommand -xjc %SCHEMACOMPILER_REALIZATION%  - %* 
 
 exit %ERRORLEVEL%
