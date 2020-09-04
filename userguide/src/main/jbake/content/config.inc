@@ -418,36 +418,39 @@ then XML validation tests are mandatory.
 |Schema Compiler Run Command |
 *Identifier: jck.env.jaxb.xsd_compiler.testCompile. xjcCmd*
 
-The remaining questions ask which tests you want to run and how you
-want them to be run.
+Enter the command to run the a schema compiler.
 
 |This is the command used to invoke your
 schema compiler. For example, for the
-Eclipse XML Binding implementation on Solaris we
-provide a script `TCKDIR/solaris/bin/
-xjc.sh`, which compiles schemas into class
-files. The command is as follows:
-`/bin/ksh solaris/bin/xjc.sh`
-For the Eclipse XML Binding implementation on
-Windows, we provide a script TCKDIR
-`\win32\bin\xjc.bat`, which compiles
-schemas into class files.
+Eclipse XML Binding implementation on Linux we
+provide a script `$TS_HOME/linux/bin/xjc.sh`,
+which compiles schemas into class files.
 The command is as follows:
-`win32\bin\xjc.bat`
+
+`/bin/sh /workspace/JAXB-TCK-3.0/linux/bin/xjc.sh`
+
+For the Eclipse XML Binding implementation on
+Windows, we provide a script `%TS_HOME%\win32\bin\xjc.bat`,
+which compiles schemas into class files.
+The command is as follows:
+
+`c:\workspace\JAXB-TCK-3.0\win32\bin\xjc.bat`
+
 The xjc script supports the following
 mandatory command-line options:
 `xjc -p <pkg> -d <dir> <schema files>`
 where:
-• `-p <pkg>` specifies the target package
-• `-d <dir>` specifies the directory to
-store generated files.
 
+  • `-p <pkg>` specifies the target package
+  • `-d <dir>` specifies the directory to
+
+store generated files.
 
 |Schema Compiler Class |
 *Identifier: jaxb.xsd_compiler.run.compilerWrapperClass*
 
 You must provide a custom class to invoke your compiler. This class
-should implement the com.sun.jaxb_tck.lib.SchemaCompilerTool interface.
+should implement the `com.sun.jaxb_tck.lib.SchemaCompilerTool` interface.
 
 |When you run schema compilation through
 the JavaTest agent, your schema compiler
@@ -456,6 +459,7 @@ implementation must provide a custom class
 to invoke your schema compilation tool. This
 class should implement the
 `SchemaCompilerTool` interface:
+
 `package com.sun.jaxb_tck.lib;
 public interface SchemaCompilerTool {
 /**
@@ -475,6 +479,7 @@ int compile(String[] xsdFiles, String
 packageName, File outDir, PrintStream
 out, PrintStream err);
 }`
+
 Schema compilation should be
 accomplished during invocation of compile
 method.
@@ -490,16 +495,6 @@ PrintStream out, PrintStream err)`
 compiles a schema into `java` sources.
 If your implementation doesn't provide such
 a class, then create it and specify it here.
-
-
-|Schema Generator Questions |
-*Identifier: jck.env.jaxb.schemagen.intro*
-
-The following questions collect information about how to generate xml schema
-from java sources on your platform.
-
-|None.
-
 
 |Schema Generator Presence |
 *Identifier: jck.env.jaxb.schemagen.skipJ2XOptional*
@@ -521,24 +516,25 @@ Enter the command to run the schema generator.
 
 |This is the command used to invoke your
 schema generator. For example, for the
-Eclipse XML Binding implementation on Solaris we
-provide a script `TCKDIR/
-solaris/bin/schemagen.sh`, which
+Eclipse XML Binding implementation on Linux we
+provide a script `$TS_HOME/linux/bin/schemagen.sh`, which
 generates the schemas from the java files.
-The command is:
-`/bin/ksh solaris/bin/schemagen.sh`
+The command is as follows:
+
+`/bin/sh /workspace/JAXB-TCK-3.0/linux/bin/schemagen.sh`
+
 For the Eclipse {TechnologyShortName} implementation on
-Windows, we provide a script `TCKDIR
-\win32\bin\schemagen.bat`, which
-compiles the schemas into class files. The
-command is:
-`win32\bin\schemagen.bat`
+Windows, we provide a script `%TS_HOME%\win32\bin\schemagen.bat`,
+which compiles the schemas into class files.
+The command is as follows:
+
+`c:\workspace\JAXB-TCK-3.0\win32\bin\schemagen.bat`
+
 The schemagen script supports the following
 mandatory command-line options:
-`schemagen -d <dir> <java files>`, where,
+`schemagen -d <dir> <java files>`, where
 `-d <dir>` specifies the directory to store the
 generated files.
-
 
 |Schema Generator Class |
 *Identifier: jck.env.jaxb.schemagen.run.schemagenWrapperClass*
@@ -571,6 +567,7 @@ int generate(String[] javaFiles, File
 outDir, PrintStream out, PrintStream
 err);
 }`
+
 Schema generations should be complete
 during the invocation of the generate
 method.
@@ -587,25 +584,6 @@ err)` generates the XML schemas from the
 If your implementation doesn't provide such
 a class, then create it and specify it here.
 
-
-|Schema Compiler Questions |
-*Identifier: jck.env.jaxb.xsd_compiler.intro*
-
-The following questions collect information about how to compile the
-source schema on your platform.
-
-|None.
-
-
-|Standard Values |
-*Identifier: jck.parameters*
-
-The remaining questions ask which tests you want to run and how you
-want them to be run.
-
-|None.
-
-
 |Specify an Exclude List? |
 *Identifier: jck.excludeList.needExcludeList*
 
@@ -618,7 +596,6 @@ list to use.
 
 Answer `No` if you want to run all tests that
 are not filtered out by other run filters.
-
 
 |Which Exclude List? |
 *Identifier: jck.excludeList.excludeListType*
@@ -646,7 +623,6 @@ which you select an exclude list file. Exclude
 list files conventionally use the
 extension ``.jtx`.
 
-
 |Specify Keywords? |
 *Identifier: jck.keywords.needKeywords*
 
@@ -666,7 +642,6 @@ specify the keyword to use.
 Answer `No` to run all tests that are not
 filtered out by other run filters.
 
-
 |Specify Status? |
 *Identifier: jck.priorStatus.needStatus*
 
@@ -682,7 +657,6 @@ statuses.
 
 Answer No to run all tests that are not
 filtered out by other run filters.
-
 
 |Concurrency |
 *Identifier:
@@ -701,8 +675,6 @@ The default range of values that the
 JavaTest harness uses is from 1 to 50.
 For the first test run, keep this value set to
 1.
-
-
 |Time Factor |
 *Identifier: jck.timeout.timeout*
 
@@ -715,38 +687,8 @@ time for each test (the default is 1):
 Use the floating point format specific to your
 locale.
 
-NOTE: Setting a
-proper time
-factor value
-requires
-consideration
-of such
-technical
-factors as the
-network
-connector
-speed.
+NOTE: Setting a proper time factor value requires
+consideration of such technical factors as the
+network connector speed.
 
-
-|Completed! |
-*Identifier: jck.end*
-
-Congratulations! This completes the
-configuration. Click Done to save
-your answers and close the editor.
-To run the test suite, choose Run
-Tests->Start.
-
-|None.
 |=======================================================================
-
-
-[[GCLHU]][[unused-section-1]]
-
-4.2 Unused Section
-~~~~~~~~~~~~~~~~~~
-
-[[GHGDG]][[unused-section-2]]
-
-4.3 Unused Section
-~~~~~~~~~~~~~~~~~~
