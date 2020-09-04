@@ -9,8 +9,9 @@ These CLI examples can be customized as necessary.
 --
 [source,oac_no_warn]
 ----
-${JAVA_HOME}/bin/java -jar javatest.jar -batch -testsuite ${TS_HOME} \
-  -open ts.jti -workdir -create <path_prefix>/work -runtests
+${JAVA_HOME}/bin/java -jar ${TS_HOME}/lib/javatest.jar \
+  -batch -testsuite ${TS_HOME} -open ${TS_HOME}/lib/ts.jti \
+  -workdir -create ${TS_HOME}/work -runtests
 ----
 --
 
