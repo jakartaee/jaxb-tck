@@ -7,10 +7,10 @@ These CLI examples can be customized as necessary.
 2.  Start JavaTest using the following command:
 +
 --
-[source,oac_no_warn]
+[source,subs="attributes"]
 ----
 ${JAVA_HOME}/bin/java -jar ${TS_HOME}/lib/javatest.jar \
-  -batch -testsuite ${TS_HOME} -open ${TS_HOME}/lib/ts.jti \
+  -batch -testsuite ${TS_HOME} -open {jteFileName} \
   -workdir -create ${TS_HOME}/work -runtests
 ----
 --

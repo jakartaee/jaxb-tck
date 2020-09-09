@@ -30,9 +30,8 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
   a.  `$TS_HOME/lib/javasoft-multiJVM.jti` to run tests in multi JVM mode
   (this is the default configuration template)
   b.  or `$TS_HOME/lib/javasoft-singleJVM.jti` to run tests in single JVM mode
-4.  Copy choosen file as `$TS_HOME/lib/ts.jti`
-5. Edit `$TS_HOME/lib/ts.jti` file and set environment variables
-   and configuration properties.
+4. Edit chosen file, for example `${TS_HOME}/lib/javasoft-multiJVM.jti`, and
+   set environment variables and configuration properties.
   a.  Set `TESTSUITE` environment variable to contain {TechnologyShortName}
       TCK software installation directory.
   b.  Set `WORKDIR` environment variable to contain {TechnologyShortName}
@@ -61,7 +60,7 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
       in {TechnologyShortName} {TechnologyVersion} Compatible Implementation.
 See link:#GCLHUC1[Section, "Configuration Properties"] for details.
 
-An example of `$TS_HOME/lib/ts.jti` file:
+An example of modified `${TS_HOME}/lib/javasoft-multiJVM.jti` file:
 --
 [source,oac_no_warn]
 ----
@@ -170,7 +169,7 @@ test run reports, and could include the
 version number of the product and the name
 of the tester.
 
-Example: `John Smith x86 Java Architecture for XML Binding 2.3`
+Example: `John Smith x86 Java Architecture for XML Binding 3.0`
 
 Execution Mode
 ^^^^^^^^^^^^^^
@@ -525,7 +524,7 @@ Schema Generator Presence
 _Does your implementation provide schema generator which is able to
 generate schemas from Java sources?_
 
-Java Architecture for XML Binding 2.3
+Java Architecture for XML Binding 3.0
 specification does not require any
 implementation, which provides a possibility
 to generate the schemas from the java

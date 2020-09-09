@@ -34,7 +34,7 @@ XML Binding Framework API Tests
 +++++++++++++++++++++++++++++++
 
 The XML Binding framework API tests cover public classes and interfaces
-defined in the `javax.xml.bind` package and sub-packages.
+defined in the `jakarta.xml.bind` package and sub-packages.
 
 Content Tree Tests
 ++++++++++++++++++
@@ -75,7 +75,7 @@ on JSR–175 program annotation facility:
 program element.
 * Fails to process annotated Java program elements that have constraint
 violations as specified in the `Java Types to XML` section of the {TechnologyShortName}
-{TechnologyVersion} specification and `javax.xml.bind.annotation` javadocs.
+{TechnologyVersion} specification and `jakarta.xml.bind.annotation` javadocs.
 * The schema generator successfully produces a well-formed schema; all
 documents expected to be valid against generated schema are valid and all
 documents expected to be invalid against generated schema are invalid.
