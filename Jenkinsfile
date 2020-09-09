@@ -61,6 +61,9 @@ spec:
            description: 'URL required for downloading GlassFish version details' )
 	choice(name: 'LICENSE', choices: 'EPL\nEFTL',
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
+  choice(name: 'RUNTIME', choices: 'Glassfish\nStandalone',
+           description: 'Run JAXB Tests with Standalone/Glassfish' )
+
   }
   environment {
     ANT_OPTS = "-Djavax.xml.accessExternalStylesheet=all -Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=file,http"

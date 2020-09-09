@@ -31,9 +31,6 @@ import java.io.PrintWriter;
  */
 public class SigTestWrapper implements Test {
 
-    private final static int JAVA_5_0 = 50;
-    private final static int JAVA_6_0 = 60;
-    private final static int JAVA_7_0 = 70;
     private final static int JAVA_8_0 = 80;
     private final static int JAVA_9_0 = 90;
     private final static int UNSUPPORTED_JAVA = -1;
@@ -47,17 +44,9 @@ public class SigTestWrapper implements Test {
     public Status run(String [] args, PrintWriter err, PrintWriter out) {
         String fileName = "sig" + FILE_SEPARATOR, testedPackage, sigTestArgs[];
 
+        
         switch (getJavaVersion()) {
 
-        case JAVA_5_0:
-            fileName += "5.0";
-            break;
-        case JAVA_6_0:
-            fileName += "6.0";
-            break;
-        case JAVA_7_0:
-            fileName += "7.0";
-            break;
         case JAVA_8_0:
             fileName += "8.0";
             break;
@@ -76,11 +65,12 @@ public class SigTestWrapper implements Test {
         }
         fileName += testedPackage + ".sig";
 
+        
         sigTestArgs = new String[args.length + 2];
         System.arraycopy(args, 0, sigTestArgs, 0, args.length);
         sigTestArgs[args.length] = "-FileName";
         sigTestArgs[args.length + 1] = fileName;
-
+        
         out.println("debug info:");
         out.println("  java.version: " + System.getProperty("java.version"));
         out.println("  sigtest args: ");
@@ -94,13 +84,7 @@ public class SigTestWrapper implements Test {
     private int getJavaVersion() {
         String javaVersion = System.getProperty("java.version");
 
-        if (javaVersion.startsWith("1.5") || javaVersion.startsWith("5.0")) {
-            return JAVA_5_0;
-        } else if (javaVersion.startsWith("1.6.0") || javaVersion.startsWith("6.0")) {
-            return JAVA_6_0;
-        } else if (javaVersion.startsWith("1.7.0") || javaVersion.startsWith("7.0")) {
-            return JAVA_7_0;
-        } else if (javaVersion.startsWith("1.8.0") || javaVersion.startsWith("8.0")) {
+        if (javaVersion.startsWith("1.8.0") || javaVersion.startsWith("8.0")) {
             return JAVA_8_0;
         } else if (javaVersion.startsWith("1.9") || javaVersion.startsWith("9")) {
             return JAVA_9_0;
@@ -131,4 +115,3 @@ public class SigTestWrapper implements Test {
         status.exit();
     }
 }
-
