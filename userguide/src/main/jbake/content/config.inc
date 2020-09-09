@@ -50,7 +50,6 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
   e.  Set `jck.env.jaxb.testExecute.otherEnvVars` property to contain
         * JAVA_HOME variable with Java SE 8 installation directory,
         * JAXB_HOME variable with {TechnologyShortName} installation directory,
-        * JAXB_ENDORSED variable with {TechnologyShortName} API jar file.
   f.  Set `jck.env.jaxb.schemagen.run.jxcCmd` property to contain proper schema
       generator script for your platform.
   g.  Set `jck.env.jaxb.xsd_compiler.testCompile.xjcCmd` property to contain
@@ -81,7 +80,6 @@ jck.env.jaxb.schemagen.skipJ2XOptional=Yes
 jck.env.jaxb.testExecute.cmdAsFile=/opt/jdk1.8.0_192.jdk/bin/java
 jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=/opt/jdk1.8.0_192.jdk
   JAXB_HOME\=/workspace/jaxb-ri
-  JAXB_ENDORSED=/workspace/jaxb-ri/mod/jakarta.xml.bind-api.jar
 jck.env.jaxb.testExecute.otherOpts=
 jck.env.jaxb.xsd_compiler.defaultOperationMode=Yes
 jck.env.jaxb.xsd_compiler.skipValidationOptional=Yes
