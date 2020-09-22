@@ -22,8 +22,7 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
   is installed
   c.  `JAXB_HOME` to the directory in which the {TechnologyShortName} software
   is installed
-  d.  `PATH` to include the following directories: `$JAVA_HOME/bin`,
-  `$JAXWS_HOME/bin`, and `$ANT_HOME/bin`
+  d.  `PATH` to include the following directories: `$JAVA_HOME/bin` and `$ANT_HOME/bin`
 2.  Edit `$TS_HOME/testsuite.jtt` and modify `finder` settings to contain proper
    {TechnologyShortName} TCK software installation directory path prefix
 3.  Choose {TechnologyShortName} TCK software configuration file template to use:
@@ -58,6 +57,12 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
       value `Yes`. XML validation is implemented from JAXP
       in {TechnologyShortName} {TechnologyVersion} Compatible Implementation.
 See link:#GCLHUC1[Section, "Configuration Properties"] for details.
+
+Note: Jakarta XML Binding TCK searches Compatible Implementation via Java SPI
+(Java Service Provider Interface). Implementation must contain
+`META-INF/services/jakarta.xml.bind.JAXBContext` and
+`META-INF/services/jakarta.xml.bind.JAXBContextFactory` with reference/content to
+implementation classes.
 
 An example of modified `${TS_HOME}/lib/javasoft-multiJVM.jti` file:
 --
