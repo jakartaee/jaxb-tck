@@ -52,18 +52,16 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
   f.  Set `jck.env.jaxb.schemagen.run.jxcCmd` property to contain proper schema
       generator script for your platform.
   g.  Set `jck.env.jaxb.xsd_compiler.testCompile.xjcCmd` property to contain
-      proper schema compiler script for your platform.
+      proper schema compiler script for your platform. This property can also
+      affect which CI is used in tests. For example EclipseLink MOXy also
+      generates with model classes `jaxb.properties` file with following content
+      `jakarta.xml.bind.JAXBContextFactory=org.eclipse.persistence.jaxb.JAXBContextFactory`.
   h.  Set `jck.env.jaxb.xsd_compiler.skipValidationOptional` property to contain
-      value `Yes`. XML validation is implemented from JAXP
+      value `Yes`. XML validation is implemented from JAXB
       in {TechnologyShortName} {TechnologyVersion} Compatible Implementation.
 See link:#GCLHUC1[Section, "Configuration Properties"] for details.
 
-Note: Jakarta XML Binding TCK searches Compatible Implementation via Java SPI
-(Java Service Provider Interface). Implementation must contain
-`META-INF/services/jakarta.xml.bind.JAXBContext` and
-`META-INF/services/jakarta.xml.bind.JAXBContextFactory` with reference/content to
-implementation classes.
-More info about loading in {JAXBContextJavaDocURL}[Discovery of JAXB implementation].
+Note: More info about JAXBContext loading in {JAXBContextJavaDocURL}[Discovery of JAXB implementation].
 
 An example of modified `${TS_HOME}/lib/javasoft-multiJVM.jti` file:
 --
