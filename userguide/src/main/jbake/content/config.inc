@@ -63,6 +63,7 @@ Note: Jakarta XML Binding TCK searches Compatible Implementation via Java SPI
 `META-INF/services/jakarta.xml.bind.JAXBContext` and
 `META-INF/services/jakarta.xml.bind.JAXBContextFactory` with reference/content to
 implementation classes.
+More info about loading in {JAXBContextJavaDocURL}[Discovery of JAXB implementation].
 
 An example of modified `${TS_HOME}/lib/javasoft-multiJVM.jti` file:
 --
