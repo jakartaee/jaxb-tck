@@ -57,7 +57,7 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
       generates with model classes `jaxb.properties` file with following content
       `jakarta.xml.bind.JAXBContextFactory=org.eclipse.persistence.jaxb.JAXBContextFactory`.
   h.  Set `jck.env.jaxb.xsd_compiler.skipValidationOptional` property to contain
-      value `Yes`. XML validation is implemented from JAXB
+      value `Yes`. XML validation is implemented from JAXP
       in {TechnologyShortName} {TechnologyVersion} Compatible Implementation.
 See link:#GCLHUC1[Section, "Configuration Properties"] for details.
 
