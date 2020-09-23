@@ -22,8 +22,7 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
   is installed
   c.  `JAXB_HOME` to the directory in which the {TechnologyShortName} software
   is installed
-  d.  `PATH` to include the following directories: `$JAVA_HOME/bin`,
-  `$JAXWS_HOME/bin`, and `$ANT_HOME/bin`
+  d.  `PATH` to include the following directories: `$JAVA_HOME/bin` and `$ANT_HOME/bin`
 2.  Edit `$TS_HOME/testsuite.jtt` and modify `finder` settings to contain proper
    {TechnologyShortName} TCK software installation directory path prefix
 3.  Choose {TechnologyShortName} TCK software configuration file template to use:
@@ -53,11 +52,16 @@ Configuring Your Environment to Run the TCK Against the Compatible Implementatio
   f.  Set `jck.env.jaxb.schemagen.run.jxcCmd` property to contain proper schema
       generator script for your platform.
   g.  Set `jck.env.jaxb.xsd_compiler.testCompile.xjcCmd` property to contain
-      proper schema compiler script for your platform.
+      proper schema compiler script for your platform. This property can also
+      affect which CI is used in tests. For example EclipseLink MOXy also
+      generates with model classes `jaxb.properties` file with following content
+      `jakarta.xml.bind.JAXBContextFactory=org.eclipse.persistence.jaxb.JAXBContextFactory`.
   h.  Set `jck.env.jaxb.xsd_compiler.skipValidationOptional` property to contain
       value `Yes`. XML validation is implemented from JAXP
       in {TechnologyShortName} {TechnologyVersion} Compatible Implementation.
 See link:#GCLHUC1[Section, "Configuration Properties"] for details.
+
+Note: More info about JAXBContext loading in {JAXBContextJavaDocURL}[Discovery of JAXB implementation].
 
 An example of modified `${TS_HOME}/lib/javasoft-multiJVM.jti` file:
 --
