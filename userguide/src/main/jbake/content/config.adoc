@@ -34,7 +34,734 @@ After completing the instructions in this chapter, proceed to
 link:using.html#GBFWO[Chapter 5, "Executing Tests,"] for instructions on
 running the {TechnologyShortName} TCK.
 
-include::config.inc[]
+[[GBFVU]][[configuring-the-xml-binding-tck]]
+
+4.1 Configuring the XML Binding TCK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[[GCLHUB]][[tck-configuration-concepts]]
+
+4.1.1 TCK Configuration Concepts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+{TechnologyShortName} {TechnologyVersion} comprises of a schema
+compiler and a schema generator. Both are types of compilers; the
+former maps from a schema to Java, and the latter maps from Java to
+schema.  For the purposes of brevity in these instructions, the term
+compiler refers to both the schema compiler and the schema generator.
+
+Configuring Your Environment to Run the TCK Against the Compatible Implementation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.  Set the following environment variables in your shell environment:
+  a.  `JAVA_HOME` to the directory in which Java SE 8 is installed
+  b.  `TS_HOME` to the directory in which the {TechnologyShortName} TCK software
+  is installed
+  c.  +{TechnologyHomeEnv}+ to the directory in which the {TechnologyShortName} software
+  is installed
+  d.  `PATH` to include the following directories: `$JAVA_HOME/bin` and `$ANT_HOME/bin`
+2.  Edit `$TS_HOME/testsuite.jtt` and modify `finder` settings to contain proper
+   {TechnologyShortName} TCK software installation directory path prefix
+3.  Choose {TechnologyShortName} TCK software configuration file template to use:
+  a.  `$TS_HOME/lib/javasoft-multiJVM.jti` to run tests in multi JVM mode
+  (this is the default configuration template)
+  b.  or `$TS_HOME/lib/javasoft-singleJVM.jti` to run tests in single JVM mode
+4. Edit chosen file, for example `${TS_HOME}/lib/javasoft-multiJVM.jti`, and
+   set environment variables and configuration properties.
+  a.  Set `TESTSUITE` environment variable to contain {TechnologyShortName}
+      TCK software installation directory.
+  b.  Set `WORKDIR` environment variable to contain {TechnologyShortName}
+      TCK software working directory. This directory will contain raw testing
+      data and results.
+  c.  Set `jck.env.jaxb.classes.jaxbClasses` property to contain The Checker
+      Framework library and all {TechnologyShortName} libraries:
+        * checker.jar
+        * +{TechnologyHomeEnv}+/mod/jakarta.activation.jar
+        * +{TechnologyHomeEnv}+/mod/jakarta.xml.bind-api.jar
+        * +{TechnologyHomeEnv}+/mod/jaxb-core.jar
+        * +{TechnologyHomeEnv}+/mod/jaxb-impl.jar
+        * +{TechnologyHomeEnv}+/mod/jaxb-jxc.jar
+  d.  Set `jck.env.jaxb.testExecute.cmdAsFile` property to contain Java SE 8
+      installation Directory.
+  e.  Set `jck.env.jaxb.testExecute.otherEnvVars` property to contain
+        * `JAVA_HOME` variable with Java SE 8 installation directory,
+        * +{TechnologyHomeEnv}+ variable with {TechnologyShortName} installation directory,
+  f.  Set `jck.env.jaxb.schemagen.run.jxcCmd` property to contain proper schema
+      generator script for your platform.
+  g.  Set `jck.env.jaxb.xsd_compiler.testCompile.xjcCmd` property to contain
+      proper schema compiler script for your platform. This property can also
+      affect which CI is used in tests. For example EclipseLink MOXy also
+      generates with model classes `jaxb.properties` file with following content
+      `jakarta.xml.bind.JAXBContextFactory=org.eclipse.persistence.jaxb.JAXBContextFactory`.
+  h.  Set `jck.env.jaxb.xsd_compiler.skipValidationOptional` property to contain
+      value `Yes`. XML validation is implemented from JAXP
+      in {TechnologyShortName} {TechnologyVersion} Compatible Implementation.
+See link:#GCLHUC1[Section, "Configuration Properties"] for details.
+
+Note: More info about JAXBContext loading in {JAXBContextJavaDocURL}[Discovery of JAXB implementation].
+
+An example of modified `${TS_HOME}/lib/javasoft-multiJVM.jti` file:
+--
+[source,oac_no_warn]
+----
+TESTSUITE=/workspace/JAXB-TCK-3.0
+WORKDIR=/workspace/JAXB-TCK-3.0/batch-multiJVM/work
+jck.concurrency.concurrency=1
+jck.env.description=multi jvm
+jck.env.envName=multi_jvm
+jck.env.jaxb.classes.jaxbClasses=/data/tck/tmp/checker.jar
+  /data/tck/tmp/jaxb-ri/mod/jakarta.activation.jar
+  /data/tck/tmp/jaxb-ri/mod/jakarta.xml.bind-api.jar
+  /data/tck/tmp/jaxb-ri/mod/jaxb-core.jar
+  /data/tck/tmp/jaxb-ri/mod/jaxb-impl.jar
+  /data/tck/tmp/jaxb-ri/mod/jaxb-jxc.jar
+jck.env.jaxb.schemagen.run.jxcCmd=/bin/sh
+  /workspace/JAXB-TCK-3.0/linux/bin/schemagen.sh
+jck.env.jaxb.schemagen.skipJ2XOptional=Yes
+jck.env.jaxb.testExecute.cmdAsFile=/opt/jdk1.8.0_192.jdk/bin/java
+jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=/opt/jdk1.8.0_192.jdk
+  JAXB_HOME\=/workspace/jaxb-ri
+jck.env.jaxb.testExecute.otherOpts=
+jck.env.jaxb.xsd_compiler.defaultOperationMode=Yes
+jck.env.jaxb.xsd_compiler.skipValidationOptional=Yes
+jck.env.jaxb.xsd_compiler.testCompile.xjcCmd=/bin/sh
+  /workspace/JAXB-TCK-3.0/linux/bin/xjc.sh
+jck.env.testPlatform.local=Yes
+jck.env.testPlatform.multiJVM=Yes
+jck.excludeList.latestAutoCheck=No
+jck.excludeList.latestAutoCheckInterval=7
+jck.excludeList.latestAutoCheckMode=everyXDays
+jck.excludeList.needExcludeList=No
+jck.keywords.keywords.mode=expr
+jck.keywords.needKeywords=No
+jck.priorStatus.needStatus=No
+jck.priorStatus.status=
+jck.tests.needTests=No
+jck.tests.tests=
+jck.tests.treeOrFile=tree
+jck.timeout.timeout=1
+----
+--
+
+4.1.2 {TechnologyShortName}-Specific Configuration Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A number of properties in the JavaTest harness configuration file
+are generic and apply to most Java product TCK suites. This section
+describes configuration settings that are specific to the
+{TechnologyShortName} TCK.
+
+The {TechnologyShortName} TCK {TechnologyVersion} includes a special
+configuration properties used by the JavaTest harness to collect
+information from you about your test environment and to create the
+configuration used to run tests. The TCK configuration properties consists
+of the following types:
+
+* *Test Environment*: the first type of the properties collects
+information about the test environment used to run the
+{TechnologyShortName} TCK {TechnologyVersion} (such as the type of
+environment and the type of agent used).
+* *Schema Compiler Questions*: the second type of the properties collects
+information about how to compile the source schema on your platform.
+  ** XML Validation Tests: optional tests that must be run if schema
+     validation is performed using a mechanism other than JAXP.
+* *Schema Generator Questions*: the type section of the properties collects
+information about how to generate XML schema from Java sources on your
+platform.
+* *How Tests are Run*: the last section of the properties collects
+information on how the tests are run (such as Keywords and the Exclude
+List).
+
+[[GCLHUC1]][[GCLHUC2]][[GCLHUC3]]
+
+4.1.3 Configuration Properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Following list describes the configuration properties and gives examples of relevant
+values to correctly configure the JavaTest harness to run the test suite.
+
+Configuration Name
+^^^^^^^^^^^^^^^^^^
+*Property: jck.env.envName*
+
+_Provide a short identifier that names the configuration you are creating._
+
+This is a short string that identifies this particular configuration.
+Select a name that describes the configuration.
+
+Example: `jaxb_win32`
+
+The name must begin with a letter, followed by letters, digits, or an
+underscore, and must not contain a white space or punctuation
+characters.
+
+Description
+^^^^^^^^^^^
+*Property: jck.env.description*
+
+_Provide a short description that identifies the configuration you are creating._
+
+JavaTest uses this short description to
+provide more detail about the configuration,
+for example, in reports. This information
+might be useful to an auditor looking at the
+test run reports, and could include the
+version number of the product and the name
+of the tester.
+
+Example: `John Smith x86 Eclipse Implementation of JAXB 3.0.0`
+
+Execution Mode
+^^^^^^^^^^^^^^
+*Property: jck.env.testPlatform.multiJVM*
+
+_Specify whether you want to run the tests in SingleJVM or MultiJVM
+mode. Depending on the selected mode, you can configure to run the
+compiler either from the command line, or via the Java Compiler API,
+or via a custom class accessed by the core reflection API._
+
+Answer `MultiJVM Mode` if the JavaTest harness can directly start your
+product, for example, from a command line in an MSDOS window or UNIX
+shell; this is the required mode for the XML Binding TCK.
+
+Typically, applications that do not support such actions run in
+point-and-click environments or in browsers. For example, the JavaTest
+harness cannot start a new instance of a Java virtual machine inside a
+browser.
+
+If you answer MultiJVM Mode , then you need to answer additional
+interview questions to specify whether you plan to run the tests
+locally. In addition, you need to specify the details about the Java
+Virtual Machine in which the tests will run (the questions in the
+*Runtime Other JVM* section of this interview) and the details about
+the Java launcher.
+
+Execute Locally
+^^^^^^^^^^^^^^^
+*Property: jck.env.testPlatform.local*
+
+_Will you run the TCK tests on the system that hosts the JavaTest harness?_
+
+If you plan to run the tests on the system on which you are running
+this interview, then the editor gathers configuration information
+directly from the system. For example, you will be able to browse the
+local file system to point to the required files.
+
+Agent Type
+^^^^^^^^^^
+*Property: jck.env.jaxb.agent.agentType*
+
+_The JavaTest Agent can be run in two modes: active and passive.
+Which mode do you wish to use?_
+
+Select the agent type you wish to use. If you want to use the passive
+agent, then additional properties must be provided to specify
+the passive agent host and default agent port.
+
+Passive Host
+^^^^^^^^^^^^
+*Property: jck.env.jaxb.agent.agentPassiveHost*
+
+_What is the of the host on which you run the tests?_
+
+This is the name of the system on which the passive agent runs and
+executes tests. The name of the system must be accessible from the
+system on which JavaTest runs.  Since the JavaTest agent is passive,
+you can only change the machine you specify here by running this
+interview again and changing the name of the passive host.
+
+Default Agent Port
+^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.agent.useAgentPortDefault*
+
+_Do you wish to use the default port for the JavaTest harness to contact
+the JavaTest Agent?_
+
+By default, the JavaTest harness communicates with a passive agent
+using port 1908. You must change only the default if you are running
+more than one passive agent on a system; this might be the case if you
+have set up batch runs.
+
+If you answer `No`, then you will need to specify the default port
+number in the next interview question.
+
+Passive Port
+^^^^^^^^^^^^
+*Property: jck.env.jaxb.agent.agentPassivePort*
+
+_Which port does the JavaTest harness use to contact the JavaTest Agent?_
+
+Specify the port you want to use to communicate with the JavaTest agent.
+
+Test Platform File Separator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.agent.fileSeparator*
+
+_Which file separator character is used on the test platform?_
+
+Specify the appropriate file separator for your operating system.
+
+For example, for Windows, use the back slash `\` character. For Solaris
+OS or Linux operation system, use the forward slash `/` character.
+
+Test Platform Path Separator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.agent.pathSeparator*
+
+_Which path separator character is used on the test platform?._
+
+Specify the appropriate path separator for your operating system.
+
+For example, on Windows systems, specify the `;` character, on Unix
+systems specify the `:` character. Other platforms may differ.
+
+Agent Map File
+^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.agent.mapArgs*
+
+Because JavaTest and the JavaTest agent run on different systems,
+values such as path names and variable names may differ on each system.
+For example, if a file is accessed over a network, it might be mounted
+as `H:\tests\lib` on the JavaTest system and as `F:\tests\lib` on the
+system running the JavaTest agent.  The map file is used to associate
+values used on the JavaTest agent with those used by JavaTest. The map
+file is specified on the JavaTest agent, but the use of the map must be
+enabled here. For more information about map files, refer to the
+JavaTest User's Guide or to the JavaTest online help.
+
+Java Launcher
+^^^^^^^^^^^^^
+*Property: jck.env.jaxb.testExecute.cmdAsFile*
+
+_Enter the full path name of the Java launcher that runs the tests through
+the Java Compiler API interface._
+
+This property is required only if `jck.env.testPlatform.multiJVM` property
+value has been set to `Yes`.
+
+This is the command used on the reference system to invoke the `java` command.
+
+NOTE: Use the `java` command in JDK (not JRE).
+
+* On Solaris or Linux platforms, use expanded value of: `$JAVA_HOME/bin/java`
+
+  ** For example: `/usr/java/bin/java`
+
+* On Win32 systems, use expanded value of: `%JAVA_HOME%\bin\java.exe`
+
+  ** For example: `C:\Java\jdk–9\bin\java.exe`
+
+Ensure that you supply the full file name, including the file extension.
+
+Other Options
+^^^^^^^^^^^^^
+*Property: jck.env.jaxb.testExecute.otherOpts*
+
+_Specify any additional commandline options that must be set._
+
+Specify any command-line options that JavaTest should set for your
+compiler when it runs the tests on your system. Specify the options
+using `name=value` pairs. For example you may want to specify:
+`-Xmx256m -Xms128m` to change the default maximum and initial Java heap
+size.
+
+Other Environment Variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.testExecute.otherEnvVars*
+
+_Except for CLASSPATH, if there are any other environment variables
+that must be set for the reference Java launcher, enter them here._
+
+Specify any environment variables that the JavaTest harness should use
+in the environment created to run the tests on your system. Specify the
+variables using the `name=value` pairs.
+
+You must specify at least `JAVA_HOME` and `JAXB_HOME`.
+
+The JavaTest cannot inherit environment variables from your operating
+system environment. If you find that your tests run correctly outside
+of the JavaTest harness, but do not run correctly using the JavaTest
+harness, then the reason might be that a value set in your operating
+system environment is not available to the test. If you check your
+operating system environment and determine that this is the case, then
+set the missing values here.
+
+Need Extra XML Binding Classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.classes.needJaxbClasses*
+
+_Do you need to specify extra XML Binding classes for the Java launcher to
+execute tests?_
+
+The XML Binding classes must be available (that is, can be found and loaded)
+during test execution. This means that {TechnologyShortName} JAR
+archives which contain the {TechnologyShortName} classes
+must be on the class path of the the Java VM executing the test.
+
+Answer `No` if the {TechnologyShortName} JAR archives are in the Java
+default class path, for example, all jar files are stored in the
+jdk_install_dir/jre/lib/ext directory.
+
+Answer `Yes` if some directories or archives are not located on the
+Java VM default class path.
+
+If you answer `Yes`, then must specify necessary {TechnologyShortName} archives.
+
+Extra XML Binding Classes
+^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.classes.jaxbClasses*
+
+_Extra XML Binding classes to be put on class path of the the Java VM executing
+the test._
+
+Specify all necessary {TechnologyShortName} archives required for tests
+execution. Archive files must be specified with full path and separated
+by space.
+
+Schema Compiler Operation Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.xsd_compiler.defaultOperationMode*
+
+_Would you like to run your schema compiler in default operation mode?_
+
+A {TechnologyShortName} compatible implementation must
+support a default operating mode in which
+all the required XML Schema to Java
+bindings that are described in the XML Binding
+specification must be implemented. Errors
+must be reported when alternative or
+extension non-required features are
+encountered.
+
+A {TechnologyShortName} compatible implementation may
+support non-default operating modes. These
+modes must support all the XML Schema to
+Java bindings that are described in XML Binding
+specification, but may also generate
+alternative or extension bindings for XML
+Schema constructs, which are not required
+by this specification.
+
+If you select `Yes`, then the schema compiler
+is supposed to run in default operation
+mode and the tests for non-required
+features must be passed (as negative tests
+with expected error messages).
+
+If you select `No`, then the schema compiler
+is supposed to run in non-default operation
+mode and the tests for non-required
+features will not be run. For more
+information on default operation mode
+requirements, see the Compatibility section
+of the {TechnologyShortName} specification.
+
+Optional XML Validation Tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.xsd_compiler.skipValidationOptional*
+
+_Is Schema Validation implemented via mechanism different from JAXP?_
+
+XML validation can be implemented from
+JAXP or from some other mechanism. If the
+validation is implemented from JAXP, then
+validation checking tests can be skipped by
+deselecting them in the test interview. If you
+use some other tools for schema validation,
+then XML validation tests are mandatory.
+
+Schema Compiler Run Command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.xsd_compiler.testCompile. xjcCmd*
+
+_Enter the command to run the a schema compiler._
+
+This is the command used to invoke your
+schema compiler. For example, for the
+Eclipse XML Binding implementation on Linux we
+provide a script `$TS_HOME/linux/bin/xjc.sh`,
+which compiles schemas into class files.
+The command is as follows:
+
+`/bin/sh /workspace/JAXB-TCK-3.0/linux/bin/xjc.sh`
+
+For the Eclipse XML Binding implementation on
+Windows, we provide a script `%TS_HOME%\win32\bin\xjc.bat`,
+which compiles schemas into class files.
+The command is as follows:
+
+`c:\workspace\JAXB-TCK-3.0\win32\bin\xjc.bat`
+
+The xjc script supports the following
+mandatory command-line options:
+`xjc -p <pkg> -d <dir> <schema files>`
+where:
+
+* `-p <pkg>` specifies the target package
+* `-d <dir>` specifies the directory to store generated files.
+
+Schema Compiler Class
+^^^^^^^^^^^^^^^^^^^^^
+*Property: jaxb.xsd_compiler.run.compilerWrapperClass*
+
+_You must provide a custom class to invoke your compiler. This class
+should implement the `com.sun.jaxb_tck.lib.SchemaCompilerTool` interface._
+
+When you run schema compilation through
+the JavaTest agent, your schema compiler
+will be executed in the agent's JVM. Your
+implementation must provide a custom class
+to invoke your schema compilation tool. This
+class should implement the
+`SchemaCompilerTool` interface:
+
+--
+[source,oac_no_warn]
+----
+package com.sun.jaxb_tck.lib;
+
+public interface SchemaCompilerTool {
+
+  /**
+  * @param xsdFiles – array of strings containing schema files
+  * @param packageName – the target package
+  * @param outDir – output directory where java file(s) will be generated
+  * @param out - output stream for logging
+  * @param err - error stream for logging
+  * @return 0 if java file(s) generated successfully
+  */
+  int compile(
+    String[] xsdFiles,
+    String packageName,
+    File outDir,
+    PrintStream out,
+    PrintStream err
+  );
+}
+----
+--
+
+Schema compilation should be
+accomplished during invocation of compile
+method.
+The XML Binding TCK includes the following class
+that is fully compatible with Eclipse's
+compatible implementation and that can be
+used for schema compilation:
+`com.sun.jaxb_tck.lib.SchemaCompiler.`
+The realization of the
+method `compile(String[] xsdFiles,
+String packageName, File outDir,
+PrintStream out, PrintStream err)`
+compiles a schema into `java` sources.
+If your implementation doesn't provide such
+a class, then create it and specify it here.
+
+Schema Generator Presence
+^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.schemagen.skipJ2XOptional*
+
+_Does your implementation provide schema generator which is able to
+generate schemas from Java sources?_
+
+Java Architecture for XML Binding 3.0
+specification does not require any
+implementation, which provides a possibility
+to generate the schemas from the java
+sources. If they are provided, then all
+specification requirements should be met.
+
+Schema Generator Run Command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.schemagen.run.jxcCmd*
+
+_Enter the command to run the schema generator._
+
+This is the command used to invoke your
+schema generator. For example, for the
+Eclipse XML Binding implementation on Linux we
+provide a script `$TS_HOME/linux/bin/schemagen.sh`, which
+generates the schemas from the java files.
+The command is as follows:
+
+`/bin/sh /workspace/JAXB-TCK-3.0/linux/bin/schemagen.sh`
+
+For the Eclipse {TechnologyShortName} implementation on
+Windows, we provide a script `%TS_HOME%\win32\bin\schemagen.bat`,
+which compiles the schemas into class files.
+The command is as follows:
+
+`c:\workspace\JAXB-TCK-3.0\win32\bin\schemagen.bat`
+
+The schemagen script supports the following
+mandatory command-line options:
+`schemagen -d <dir> <java files>`, where
+`-d <dir>` specifies the directory to store the
+generated files.
+
+Schema Generator Class
+^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.env.jaxb.schemagen.run.schemagenWrapperClass*
+
+_You must provide a custom class to invoke your schema generator. This
+class should implement the com.sun.jaxb_tck.lib.SchemaGenTool interface._
+
+When you run schema generation through
+JavaTest agent, your schema generator will
+be executed in the agent's JVM. Your
+implementation must provide a custom class
+to invoke your schema generation tool. This
+class should implement the SchemaGenTool
+interface:
+
+--
+[source,oac_no_warn]
+----
+package com.sun.jaxb_tck.lib;
+
+public interface SchemaGenTool {
+  /**
+  * @param javaFiles - array of strings containing java files
+  * @param outDir - output directory where schema file(s) will be generated
+  * @param out – output stream for logging
+  * @param err – error stream for logging
+  * @return 0 if schema file(s) generated successfully
+  */
+  int generate(
+    String[] javaFiles,
+    File outDir,
+    PrintStream out,
+    PrintStream err
+  );
+}
+----
+--
+
+Schema generations should be complete
+during the invocation of the generate
+method.
+The XML Binding TCK includes the following class
+that is fully compatible with Eclipse's
+compatible implementation and that can be
+used for schema generation:
+`com.sun.jaxb_tck.lib.SchemaGen`. The
+realization of the method
+`generate(String[] javaFiles, File
+outDir, PrintStream out, PrintStream
+err)` generates the XML schemas from the
+`java` files.
+If your implementation doesn't provide such
+a class, then create it and specify it here.
+
+Specify an Exclude List?
+^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.excludeList.needExcludeList*
+
+_Do you wish to specify an exclude list?_
+
+Answer `Yes` if you want to specify an
+exclude list for the test run. If you select
+Yes, then select the location of the exclude
+list to use.
+
+Answer `No` if you want to run all tests that
+are not filtered out by other run filters.
+
+Which Exclude List?
+^^^^^^^^^^^^^^^^^^^
+*Property: jck.excludeList.excludeListType*
+
+_Which exclude list do you wish to use?_
+
+This question appears only if you answered
+Yes to the previous configuration interview
+question.
+
+Select either the Initial option to use the
+exclude list provided with the test suite or
+the Specify option to specify the exclude list
+you wish to use.
+
+Specify Exclude List Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Property: jck.excludeList.customFiles*
+
+_Specify the files that make up the exclude list you wish to use._
+
+Click *Add* to activate a file chooser with
+which you select an exclude list file. Exclude
+list files conventionally use the
+extension `.jtx`.
+
+Specify Keywords?
+^^^^^^^^^^^^^^^^^
+*Property: jck.keywords.needKeywords*
+
+_Do you wish to specify a keyword
+expression to select/reject tests
+based on keywords contained in
+each test description?_
+
+Keywords are tokens associated with
+specific tests.
+
+Answer `Yes` to run tests based on the
+keyword and the other run filter settings. If
+you select Yes, then you are asked to
+specify the keyword to use.
+
+Answer `No` to run all tests that are not
+filtered out by other run filters.
+
+Specify Status?
+^^^^^^^^^^^^^^^
+*Property: jck.priorStatus.needStatus*
+
+_Do you wish to select tests to run
+based on their result in a previous
+run?_
+
+Answer Yes to run tests based on the
+status from the previous test run and the
+other run filter settings. If you select Yes,
+then you are asked for the status or
+statuses.
+
+Answer No to run all tests that are not
+filtered out by other run filters.
+
+Concurrency
+^^^^^^^^^^^
+*Property: jck.concurrency.concurrency*
+
+_The JavaTest harness can run tests
+concurrently. Specify the maximum
+number of tests that should be run
+concurrently._
+
+The JavaTest harness can run tests
+concurrently. If you are running the tests on
+a multiprocessor computer, then the
+concurrency can accelerate your test runs.
+The default range of values that the
+JavaTest harness uses is from 1 to 50.
+For the first test run, keep this value set to 1.
+
+Time Factor
+^^^^^^^^^^^
+*Property: jck.timeout.timeout*
+
+_Specify a time factor that is applied
+to each test's default timeout. For
+example, specifying 2 doubles the
+time for each test (the default is 1)._
+
+The default 1.0 corresponds to 10 minutes.
+Use the floating point format specific to your
+locale.
+
+NOTE: Setting a proper time factor value requires
+consideration of such technical factors as the
+network connector speed.
+
 
 [[GBFUY]][[using-the-javatest-harness-software]]
 

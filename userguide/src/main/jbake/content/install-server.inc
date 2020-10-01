@@ -4,7 +4,7 @@ use this installer to install the XML Binding TCK.
       in the directory of your choice: +
       +`java -jar `<xml_binding_tck_jar>` options [-o outputdir]`+ +
       The following descriptions are provided for the installation command:
-    * `java`: Java SE {SEversion} or later platform reference implementation.
+    * `java`: Java SE {SEversion} or later platform implementation.
     * `<xml_binding_tck_jar>`: The path of the {TechnologyShortName}
       TCK {TechnologyVersion} JAR file to install.
     * `options`: Unless a user specifies options, the default
