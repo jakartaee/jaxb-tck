@@ -86,8 +86,7 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
             			-outDir $(J2XRT_DEST_DIR) \
             			-el $(TESTEXTRACTDIR)/xml-bundles/`echo $$f | awk -F '-' {'print $$1'}`/$(EXCLUDE_LIST) \
             			-basedir $(TEMPTESTSTORAGE) \
-            			-dirList `$(PWD)`/xml-bundles/`echo $$f` \
-            			-copyrightLink "COPYRIGHT-jaxbtck.html"; \
+            			-dirList `$(PWD)`/xml-bundles/`echo $$f`; \
         		# compile j2x tests generating xml schemas from java sources \
         		validator=""; \
         		CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
@@ -106,8 +105,7 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
             			-outDir $(TCKDIR) \
             			-el $(TESTEXTRACTDIR)/xml-bundles/`echo $$f | awk -F '-' {'print $$1'}`/$(EXCLUDE_LIST) \
             			-basedir $(TEMPTESTSTORAGE) \
-            			-dirList `$(PWD)`/xml-bundles/`echo $$f` \
-            			-copyrightLink "COPYRIGHT-jaxbtck.html"; \
+            			-dirList `$(PWD)`/xml-bundles/`echo $$f`; \
 		done \
 	fi
 	JAVA2SCHEMA_RT="$(TCKDIR)/tests/api/jakarta_xml/bind/JAXBContext"; \
@@ -150,8 +148,7 @@ copy-bundles.ok: $(TCKDIR)/classes
 	    -outDir $(J2XRT_DEST_DIR) \
 	    -el $(TESTEXTRACTDIR)/$(@:%-xml-bundle.ok=%)/$(EXCLUDE_LIST) \
 	    -basedir $(TEMPTESTSTORAGE) \
-	    -dirList `$(PWD)`/$(@:%.ok=%.lst) \
-	    -copyrightLink "COPYRIGHT-jaxbtck.html"
+	    -dirList `$(PWD)`/$(@:%.ok=%.lst)
 	# compile j2x tests generating xml schemas from java sources
 	validator=""; \
 	CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
@@ -170,8 +167,7 @@ copy-bundles.ok: $(TCKDIR)/classes
 	    -outDir $(TCKDIR) \
 	    -el $(TESTEXTRACTDIR)/$(@:%-xml-bundle.ok=%)/$(EXCLUDE_LIST) \
 	    -basedir $(TEMPTESTSTORAGE) \
-	    -dirList `$(PWD)`/$(@:%.ok=%.lst) \
-	    -copyrightLink "COPYRIGHT-jaxbtck.html"
+	    -dirList `$(PWD)`/$(@:%.ok=%.lst)
 	echo ":-) created test sources for bundle: $@, at `date`" > $@
 
 CLEANFILES += $(TESTEXTRACTDIR)

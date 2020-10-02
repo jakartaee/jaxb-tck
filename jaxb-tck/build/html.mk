@@ -30,7 +30,6 @@ html.ok: testsources.ok $(TEMPTESTSTORAGE)/tests/testsuite.doc.xml precompile-jc
 		-log \
 		-xmldir $(TEMPTESTSTORAGE)/tests \
 		-jckdir $(TCKDIR)/tests \
-		-copyrightLink "../COPYRIGHT-jaxbtck.html"
 	echo "Directory level html files generated at " `date` > $@
 
 ZIP.files += html.ok
