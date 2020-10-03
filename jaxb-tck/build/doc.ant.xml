@@ -43,7 +43,7 @@
 	<selector id="docs.tck.root">
 		<or>
 			<filename name="COPYRIGHT-tck.html" />
-			<filename name="ReleaseNotes-TCK-JAXB.html" />
+			<filename name="ReleaseNotes-TCK-XMLB.html" />
 			<filename name="ReleaseNotes-TCK-JAXB.txt" />
 			<filename name="index.html" />
 			<filename name="document.css" />
