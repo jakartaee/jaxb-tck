@@ -87,7 +87,6 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
             			-el $(TESTEXTRACTDIR)/xml-bundles/`echo $$f | awk -F '-' {'print $$1'}`/$(EXCLUDE_LIST) \
             			-basedir $(TEMPTESTSTORAGE) \
             			-dirList `$(PWD)`/xml-bundles/`echo $$f`; \
-        		# compile j2x tests generating xml schemas from java sources \
         		validator=""; \
         		CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
         		$(JAVA_6)  \
@@ -149,7 +148,6 @@ copy-bundles.ok: $(TCKDIR)/classes
 	    -el $(TESTEXTRACTDIR)/$(@:%-xml-bundle.ok=%)/$(EXCLUDE_LIST) \
 	    -basedir $(TEMPTESTSTORAGE) \
 	    -dirList `$(PWD)`/$(@:%.ok=%.lst)
-	# compile j2x tests generating xml schemas from java sources
 	validator=""; \
 	CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
 	$(JAVA_6)  \

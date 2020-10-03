@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1999, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -39,7 +39,7 @@ install() {
     cp -r $src $dst
   else    
     case $src in
-      *.doc.xml ) /bin/sed -e 's|<a href="[./]*/spec/.*">\(.*\)</a>|\1|g' \
+      *.doc.xml ) sed -e 's|<a href="[./]*/spec/.*">\(.*\)</a>|\1|g' \
       		    -e 's|<a HREF="[./]*/spec/.*">\(.*\)</a>|\1|g' \
        		    -e 's|- <a name=.* href="[./]*/spec/.*">\[spec\]</a>||' \
        				$src > $dst	;;
