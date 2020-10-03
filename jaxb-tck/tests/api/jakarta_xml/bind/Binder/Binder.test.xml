@@ -88,11 +88,11 @@
 
   <TestCase ID="navigation001">
     <TestCaseDocumentation>
-      <Title>Navigation from DOM node to JAXB object : getJAXBNode()</Title>
+      <Title>Navigation from DOM node to Jakarta XML Binding object : getJAXBNode()</Title>
       <Description>
-        The test unmarshals DOM tree into JAXB object.
+        The test unmarshals DOM tree into Jakarta XML Binding object.
         Test checks that getJAXBNode(org.w3c.dom.Node)
-        navigates to correct element of complex JAXB object
+        navigates to correct element of complex Jakarta XML Binding object
       </Description>
       <Author>Alexey Vishentsev</Author>
     </TestCaseDocumentation>
@@ -172,7 +172,7 @@
   </TestCase>
   <TestCase ID="getJAXBNode003">
     <TestCaseDocumentation>
-      <Description>returns null if the specified XML node is not known to this Binder, or if it is not associated with a JAXB object.</Description>
+      <Description>returns null if the specified XML node is not known to this Binder, or if it is not associated with a Jakarta XML Binding object.</Description>
     </TestCaseDocumentation>
     <CodeSet>
       <ExternalData SourceName="Binder.xml" Type="iodata"/>
@@ -192,7 +192,7 @@
   </TestCase>
   <TestCase ID="getJAXBNode004">
     <TestCaseDocumentation>
-      <Description>returns null if the specified XML node is not known to this Binder, or if it is not associated with a JAXB object.</Description>
+      <Description>returns null if the specified XML node is not known to this Binder, or if it is not associated with a Jakarta XML Binding object.</Description>
     </TestCaseDocumentation>
     <CodeSet>
       <ExternalData SourceName="Binder.xml" Type="iodata"/>
@@ -203,7 +203,7 @@
         Binder<Node> binder = getBinder();
         Object jaxbObject = binder.unmarshal(doc.getDocumentElement());
         if( binder.getJAXBNode( doc.getDocumentElement().appendChild( doc.createElement( "newElement" ) ) ) != null )
-            return Status.failed( "binder.getJAXBNode( 'Node without corresponding JAXB object' ) returns not null" );
+            return Status.failed( "binder.getJAXBNode( 'Node without corresponding Jakarta XML Binding object' ) returns not null" );
         return Status.passed("OK");
     } catch( Exception e ) {
         e.printStackTrace(ref);
@@ -214,9 +214,9 @@
 
   <TestCase ID="navigation002">
     <TestCaseDocumentation>
-      <Title>Navigation from JAXB object to  DOM node: getXMLNode()</Title>
+      <Title>Navigation from Jakarta XML Binding object to  DOM node: getXMLNode()</Title>
       <Description>
-        The test unmarshals DOM tree into JAXB object.
+        The test unmarshals DOM tree into Jakarta XML Binding object.
         Test checks that getXMLNode(java.lang.Object)
         navigates to correct element of DOM tree.
       </Description>
@@ -297,12 +297,12 @@
   </TestCase>
   <TestCase ID="getXMLNode003">
     <TestCaseDocumentation>
-      <Description>Returns: null if the specified JAXB object is not known to this Binder, or if it is not associated with an XML element.</Description>
+      <Description>Returns: null if the specified Jakarta XML Binding object is not known to this Binder, or if it is not associated with an XML element.</Description>
     </TestCaseDocumentation>
     <TestCode><![CDATA[
     try {
         if( getBinder().getXMLNode(new PurchaseOrder()) != null )
-            return Status.failed( "getXMLNode( 'unknown JAXB object' ) isn't null" );
+            return Status.failed( "getXMLNode( 'unknown Jakarta XML Binding object' ) isn't null" );
         return Status.passed("OK");
     } catch (JAXBException e) {
         e.printStackTrace(ref);
@@ -312,7 +312,7 @@
   </TestCase>
   <TestCase ID="getXMLNode004">
     <TestCaseDocumentation>
-      <Description>Returns: null if the specified JAXB object is not known to this Binder, or if it is not associated with an XML element.</Description>
+      <Description>Returns: null if the specified Jakarta XML Binding object is not known to this Binder, or if it is not associated with an XML element.</Description>
     </TestCaseDocumentation>
     <CodeSet>
       <ExternalData SourceName="Binder.xml" Type="iodata"/>
@@ -324,10 +324,10 @@
         PurchaseOrder po =
             (PurchaseOrder)((JAXBElement)binder.unmarshal(doc.getDocumentElement())).getValue();
         if( binder.getXMLNode( po.getShipTo() ) == null )
-            return Status.failed( "binder.getXMLNode( 'JAXB object with corresponding Node' ) returns null" );
+            return Status.failed( "binder.getXMLNode( 'Jakarta XML Binding object with corresponding Node' ) returns null" );
         po.setShipTo( new Address() );
         if( binder.getXMLNode( po.getShipTo() ) != null )
-            return Status.failed( "binder.getXMLNode( 'JAXB object without corresponding Node' ) returns not null" );
+            return Status.failed( "binder.getXMLNode( 'Jakarta XML Binding object without corresponding Node' ) returns not null" );
         return Status.passed("OK");
     } catch( Exception e ) {
         e.printStackTrace(ref);
@@ -340,8 +340,8 @@
     <TestCaseDocumentation>
       <Title>Binder.updateXML</Title>
       <Description>
-      The test creates bound XML and JAXB object infosets by
-      unmarshalling XML data. Then test updates JAXB object
+      The test creates bound XML and Jakarta XML Binding object infosets by
+      unmarshalling XML data. Then test updates Jakarta XML Binding object
       and calls Binder.updateXML method. No exception should
       be thrown. Test verifies that XML infoset is updated properly.
       </Description>
@@ -487,7 +487,7 @@
   </TestCase>
   <TestCase ID="updateXML005">
     <TestCaseDocumentation>
-      <Description>updateXML(Object, Node) Changes in JAXB object tree are updated in its associated XML parse tree.</Description>
+      <Description>updateXML(Object, Node) Changes in Jakarta XML Binding object tree are updated in its associated XML parse tree.</Description>
     </TestCaseDocumentation>
     <TestCode><![CDATA[
     try {
@@ -507,10 +507,10 @@
     <TestCaseDocumentation>
       <Title>Binder.updateJAXB</Title>
       <Description>
-      The test creates bound XML and JAXB object infosets by
+      The test creates bound XML and Jakarta XML Binding object infosets by
       unmarshalling XML data. Then test updates XML data
       and calls Binder.updateJAXB method. No exception should
-      be thrown. Test verifies that JAXB object is updated properly.
+      be thrown. Test verifies that Jakarta XML Binding object is updated properly.
       </Description>
       <Author>Alexey Vishentsev</Author>
     </TestCaseDocumentation>
@@ -602,7 +602,7 @@
   </TestCase>
   <TestCase ID="updateJAXB003">
     <TestCaseDocumentation>
-      <Description>updateJAXB() Throws: JAXBException - If any unexpected problem occurs updating corresponding JAXB mapped content.</Description>
+      <Description>updateJAXB() Throws: JAXBException - If any unexpected problem occurs updating corresponding Jakarta XML Binding mapped content.</Description>
     </TestCaseDocumentation>
     <CodeSet>
       <ExternalData SourceName="Binder.xml" Type="iodata"/>

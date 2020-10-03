@@ -19,7 +19,7 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorTyp
 import jakarta.xml.bind.annotation.*;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:1045 Mapping: XmlAccessorType
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:1045 Mapping: XmlAccessorType
  * annotation allows control over default serialization of fields and
  * properties.
  * @XmlAccessorType(AccessType.FIELD)

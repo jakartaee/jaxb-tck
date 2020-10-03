@@ -20,7 +20,7 @@ import jakarta.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
- * JAXB specification assertion JAXB:SPEC:J2S:0053
+ * Jakarta XML Binding specification assertion JAXB:SPEC:J2S:0053
  * 
  * @XmlAccessorOrder annotation  annotation allows a customized mapping 
  * to a XML Schema built in type.

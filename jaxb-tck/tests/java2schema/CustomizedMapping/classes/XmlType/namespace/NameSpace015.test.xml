@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -22,7 +22,7 @@
    <TestGroupDocumentation>
       <Title>XmlElement</Title>
       <Description><![CDATA[
-      JAXB specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
+      Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
       <b>@XmlType</b> is used to map a Java class to a schema type.<br>
       A class annotated with @XmlType must be mapped as specified:<br>
       Mapping: Class to Complex Type Definition<br>
@@ -48,7 +48,7 @@
    <TestCase ID="testCase0001">
       <TestCaseDocumentation>
         <Description><![CDATA[
-      JAXB specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
+      Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
       <b>@XmlType</b> is used to map a Java class to a schema type.<br>
       A class annotated with @XmlType must be mapped as specified:<br>
       Mapping: Class to Complex Type Definition<br>
@@ -70,7 +70,7 @@
    <TestCase ID="testCase0002">
       <TestCaseDocumentation>
         <Description><![CDATA[
-      JAXB specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
+      Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:0072.1</i><br>
       <b>@XmlType</b> is used to map a Java class to a schema type.<br>
       A class annotated with @XmlType must be mapped as specified:<br>
       Mapping: Class to Complex Type Definition<br>

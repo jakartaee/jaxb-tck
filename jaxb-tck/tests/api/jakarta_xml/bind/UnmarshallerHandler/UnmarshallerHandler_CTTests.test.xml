@@ -22,7 +22,7 @@
     <TestGroupDocumentation>
         <Title>getResult tests. (content tree test)</Title>
         <Description>Compile a simple schema to create a java binding classes. Test 
-        UnmarshallerHandler's method getResult() using this JAXB context's unmarshaller.
+        UnmarshallerHandler's method getResult() using this JAXBContext's unmarshaller.
         </Description>
     </TestGroupDocumentation>
     <TestGroupAttributes>

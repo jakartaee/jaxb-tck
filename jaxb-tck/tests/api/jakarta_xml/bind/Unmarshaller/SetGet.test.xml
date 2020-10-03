@@ -43,7 +43,7 @@
       <ExternalData SourceName="Unmarshaller-1.xsd" Type="iodata" />
    </CodeSet>
 
-<!-- setValidating is deprecated since JAXB 2.0. Test case deleted -->
+<!-- setValidating is deprecated since Jakarta XML Binding. Test case deleted -->
    <TestCase ID="SetGet001" Deleted="true">
       <TestCaseDocumentation>
          <Title>setValidating(boolean) test</Title>
@@ -78,7 +78,7 @@ returns false.
       ]]></TestCode>
    </TestCase>
 
-<!-- setValidating is deprecated since JAXB 2.0. Test case deleted -->
+<!-- setValidating is deprecated since Jakarta XML Binding. Test case deleted -->
    <TestCase ID="SetGet002" Deleted="true">
       <TestCaseDocumentation>
          <Title>setValidating(boolean) test</Title>
@@ -138,7 +138,7 @@ events.
    </TestCase>
 
 
-<!-- setValidating is deprecated since JAXB 2.0. Test case deleted -->
+<!-- setValidating is deprecated since Jakarta XML Binding. Test case deleted -->
    <TestCase ID="SetGet003" Deleted="true">
       <TestCaseDocumentation>
          <Title>setValidating(boolean) test</Title>
@@ -174,7 +174,7 @@ the Unmarshaller should validate during unmarshal operations - isValidating() re
    </TestCase>
 
 
-<!-- setValidating is deprecated since JAXB 2.0. Test case deleted -->
+<!-- setValidating is deprecated since Jakarta XML Binding. Test case deleted -->
    <TestCase ID="SetGet004" Deleted="true">
       <TestCaseDocumentation>
          <Title>setValidating(boolean) test</Title>

@@ -300,7 +300,7 @@
     <TestCase ID="unmarshal004">
         <TestCaseDocumentation>
             <Description>
-                This method throws UnmarshalException when the Binder's JAXBContext does not have a mapping for the XML element name or the type, specifiable via @xsi:type, of xmlNode  to a JAXB mapped class.
+                This method throws UnmarshalException when the Binder's JAXBContext does not have a mapping for the XML element name or the type, specifiable via @xsi:type, of xmlNode  to a Jakarta XML Binding mapped class.
             </Description>
         </TestCaseDocumentation>
         <TestCaseAttributes>
@@ -380,7 +380,7 @@
     <TestCase ID="unmarshal007">
         <TestCaseDocumentation>
             <Description>
-                Unmarshal XML root element by provided declaredType to a JAXB object tree.
+                Unmarshal XML root element by provided declaredType to a Jakarta XML Binding object tree.
             </Description>
         </TestCaseDocumentation>
         <TestCaseAttributes>

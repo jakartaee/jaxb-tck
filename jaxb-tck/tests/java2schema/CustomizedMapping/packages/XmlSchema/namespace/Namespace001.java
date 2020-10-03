@@ -19,7 +19,7 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchema.name
 import jakarta.xml.bind.annotation.*;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:00040
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00040
  * Mapping: Package to XML target namespace
  * targetNamespace ::= if @XmlSchema.namespace() is "", then absent;
  *                     otherwise  @XmlSchema.namespace()

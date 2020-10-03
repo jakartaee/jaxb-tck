@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -44,7 +44,7 @@
     <TestCaseDocumentation>
       <Description>
         <![CDATA[
-        JAXB specification assertion: <i>JAXB:SPEC:J2S:00052</i><br>
+        Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:00052</i><br>
         <b>@XmlAccessorOrder</b> annotation allows control over the default ordering of<br> 
         properties and fields that are mapped to XML elements.<br>
         @XmlAccessorOrder  annotation can be used only with the following other annotations:<br>
@@ -70,7 +70,7 @@
     <TestCaseDocumentation>
       <Description>
         <![CDATA[
-        JAXB specification assertion: <i>JAXB:SPEC:J2S:00052</i><br>
+        Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:00052</i><br>
         <b>@XmlAccessorOrder</b> annotation allows control over the default ordering of<br> 
         properties and fields that are mapped to XML elements.<br>
         @XmlAccessorOrder  annotation can be used only with the following other annotations:<br>

@@ -17,7 +17,7 @@
 package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchema.form.attribute.unset.src;
 /**
  *
- * JAXB specification assertion: JAXB:SPEC:J2S:00042
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00042
  * Mapping: Package to XML target namespace
  * attributeFormDefault ::= if the value of @XmlSchema.attributeFormDefault() is @XmlNsForm.UNSET, then absent;
  * otherwise, the value of @XmlSchema.attributeFormDefault()

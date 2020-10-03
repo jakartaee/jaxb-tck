@@ -263,7 +263,7 @@
                 <Precondition>set current context class loader to the custom class loader</Precondition>
                 <ExpectedResultSideEffect>the custom class loader is called to load the
                 jaxb.properties resource, the custom context factory class and the custom
-                JAXB context class</ExpectedResultSideEffect>
+                JAXBContext class</ExpectedResultSideEffect>
             </TestCaseSpec>
 
         </TestCaseDocumentation>
@@ -319,7 +319,7 @@
                 <Precondition>contextPath contains the package of the test,
                 class loader is the test class loader</Precondition>
                 <ExpectedResultSideEffect>no exceptions, the returned class is
-                an instance of the custom JAXB context class</ExpectedResultSideEffect>
+                an instance of the custom JAXBContext class</ExpectedResultSideEffect>
             </TestCaseSpec>
 
             <TestCaseSpec>
@@ -366,7 +366,7 @@
                 class loader is the custom class loader</Precondition>
                 <ExpectedResultSideEffect>no exceptions, the custom class loader is called to load the
                 jaxb.properties resource, the custom context factory class and the custom
-                JAXB context class</ExpectedResultSideEffect>
+                JAXBContext class</ExpectedResultSideEffect>
             </TestCaseSpec>
 
         </TestCaseDocumentation>

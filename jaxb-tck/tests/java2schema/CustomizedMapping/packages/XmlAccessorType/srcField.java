@@ -19,10 +19,10 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorTyp
 import jakarta.xml.bind.annotation.*;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:00045
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00045
  * Mapping: XmlAccessorType annotation allows control over default serialization of fields and properties.
  * @XmlAccessorType(AccessType.FIELD)
- * FIELD - Every non static, non transient field in a JAXB-bound class will be
+ * FIELD - Every non static, non transient field in a Jakarta XML Binding-bound class will be
  * automatically bound to XML, unless annotated by XmlTransient.
 */
 @XmlAccessorType (XmlAccessType.FIELD)

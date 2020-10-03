@@ -18,7 +18,7 @@
 
 -->
 
-<!-- Validator is deprecated since JAXB 2.0 . Test group deleted-->
+<!-- Validator is deprecated since Jakarta XML Binding . Test group deleted-->
 <TestGroup ID="Validator_" Deleted="true">
     <TestGroupDocumentation>
         <Title>Providers Validator implementation tests. (content tree test)</Title>

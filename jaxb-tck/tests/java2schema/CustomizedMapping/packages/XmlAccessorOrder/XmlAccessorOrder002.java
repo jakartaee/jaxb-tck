@@ -19,7 +19,7 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlAccessorOrd
 import jakarta.xml.bind.annotation.*;
 
 /**
- * JAXB specification assertion JAXB:SPEC:J2S:00051 
+ * Jakarta XML Binding specification assertion JAXB:SPEC:J2S:00051 
  * @XmlAccessorOrder annotation allows control over the default ordering of 
  * properties and fields that are mapped to XML elements. 
  * Properties and fields mapped to XML attributes are not impacted

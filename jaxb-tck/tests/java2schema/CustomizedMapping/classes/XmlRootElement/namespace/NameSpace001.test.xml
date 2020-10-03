@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -45,7 +45,7 @@ type to which a class is mapped.
     <TestCase ID="testCase0001">
         <TestCaseDocumentation>
             <Description>
-          Positive test. Assertion from JAXB 2.0 Specification - @XmlRootElement {target namespace}:
+          Positive test. Assertion from Jakarta XML Binding Specification - @XmlRootElement {target namespace}:
           Mapping:  Class to Element Declaration
           if @XmlRootElement.namespace() is not ?##default?, then the XML {target namespace} is equal to  
           @XmlRootElement.namespace()
@@ -61,7 +61,7 @@ type to which a class is mapped.
     <TestCase ID="testCase0002">
         <TestCaseDocumentation>
             <Description>
-         Negative test. Assertion from JAXB 2.0 Specification - @XmlRootElement {target namespace}:
+         Negative test. Assertion from Jakarta XML Binding Specification - @XmlRootElement {target namespace}:
          Mapping:  Class to Element Declaration
          if @XmlRootElement.namespace() is not ?##default?, then the XML {target namespace} is equal to  
          @XmlRootElement.namespace()

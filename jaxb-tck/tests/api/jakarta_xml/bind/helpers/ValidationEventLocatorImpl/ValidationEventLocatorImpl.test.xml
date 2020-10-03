@@ -236,7 +236,7 @@ Node is available.
         <TestCaseDocumentation>
             <TestCaseSpec>
                 <InlineAssertion><![CDATA[
-Constructs an object that points to a JAXB content object.
+Constructs an object that points to a Jakarta XML Binding content object.
 Object parameter is available.
                  ]]></InlineAssertion>
                 <MemberSig>public ValidationEventLocatorImpl(java.lang.Object _object)</MemberSig>
@@ -409,7 +409,7 @@ Returns the node if available.
         <TestCaseDocumentation>
             <TestCaseSpec>
                 <InlineAssertion><![CDATA[
-Sets the JAXB content object.
+Sets the Jakarta XML Binding content object.
                  ]]></InlineAssertion>
                 <MemberSig>public void setObject(java.lang.Object _object)</MemberSig>
                 <ExpectedResultSideEffect>Object is what set</ExpectedResultSideEffect>
@@ -417,10 +417,10 @@ Sets the JAXB content object.
 
             <TestCaseSpec>
                 <InlineAssertion><![CDATA[
-Returns the JAXB content object if available.
+Returns the Jakarta XML Binding content object if available.
                  ]]></InlineAssertion>
                 <MemberSig>public java.lang.Object getObject()</MemberSig>
-                <Precondition>the JAXB content object is set</Precondition>
+                <Precondition>the Jakarta XML Binding content object is set</Precondition>
                 <ExpectedResultValue>what set</ExpectedResultValue>
             </TestCaseSpec>
 

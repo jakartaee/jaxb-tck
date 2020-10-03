@@ -19,7 +19,7 @@ package CustomizedMapping.classes.XmlType.constraint;
 import jakarta.xml.bind.annotation.*;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:0063
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:0063
  * @XmlType is used to map a Java class to a schema type.
  * The schema type is computed from its annotation element values.
  * If a class annotated  with the @XmlType annotation, then the following mapping 

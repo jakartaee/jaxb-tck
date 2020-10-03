@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -29,7 +29,7 @@
         \u06DD, ARABIC END OF AYAH and \u06DE, ARABIC START OF RUB EL HIZB. Name the 
         second attribute with the same name except the characters described.
 
-        JAXB maps the names to the same Java identifier so the binding compiler 
+        Jakarta XML Binding maps the names to the same Java identifier so the binding compiler 
         is expected to fail.
         </Description>
     </TestGroupDocumentation>

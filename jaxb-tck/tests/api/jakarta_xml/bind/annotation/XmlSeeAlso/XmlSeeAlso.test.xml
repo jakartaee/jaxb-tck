@@ -91,7 +91,7 @@
     <TestCase ID="TestCase001">
         <TestCaseDocumentation>
             <TestCaseSpec>
-                <InlineAssertion><![CDATA[@XmlSeeAlso anotation instructs JAXB to also bind other classes when binding this class.]]></InlineAssertion>
+                <InlineAssertion><![CDATA[@XmlSeeAlso anotation instructs Jakarta XML Binding to also bind other classes when binding this class.]]></InlineAssertion>
             </TestCaseSpec>
         </TestCaseDocumentation>
         <TestCaseAttributes/>

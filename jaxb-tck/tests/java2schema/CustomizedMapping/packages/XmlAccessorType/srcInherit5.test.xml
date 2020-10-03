@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -45,7 +45,7 @@
     <TestCaseDocumentation>
       <Description>
         <![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:1047</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:1047</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br>
           <b>XmlAccessorType(AccessType.NONE)</b><br><br>
           The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
@@ -54,7 +54,7 @@
           Otherwise, if a XmlAccessorType exists on one of its super classes, then it is inherited.<br>
           Otherwise, the XmlAccessorType  on a package is inherited. <br>
           Note: Positive test. Xml consists of all required fileds and properties<br>
-          that are specifically annotated with some of the JAXB annotations without extra fields or properties.
+          that are specifically annotated with some of the Jakarta XML Binding annotations without extra fields or properties.
         ]]>
       </Description>
     </TestCaseDocumentation>
@@ -70,7 +70,7 @@
     <TestCaseDocumentation>
       <Description>
         <![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:1047</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:1047</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br>
           <b>XmlAccessorType(AccessType.NONE)</b><br><br>
           The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
@@ -79,7 +79,7 @@
           Otherwise, if a XmlAccessorType exists on one of its super classes, then it is inherited.<br>
           Otherwise, the XmlAccessorType  on a package is inherited. <br>
           Note: Negative test. Required field that are specifically annotated with <br>
-          some of the JAXB annotations is absent in xml file.
+          some of the Jakarta XML Binding annotations is absent in xml file.
         ]]>
       </Description>
     </TestCaseDocumentation>
@@ -95,8 +95,8 @@
     <TestCaseDocumentation>
       <Description>
         <![CDATA[
-          JAXB specification assertion: JAXB:SPEC:J2S:00047
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:1047</i><br>
+          Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00047
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:1047</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br>
           <b>XmlAccessorType(AccessType.NONE)</b><br><br>
           The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
@@ -105,7 +105,7 @@
           Otherwise, if a XmlAccessorType exists on one of its super classes, then it is inherited.<br>
           Otherwise, the XmlAccessorType  on a package is inherited. <br>
           Note: Negative test. Xml consists of public fileds and properties 
-          that are not specifically annotated with some of the JAXB annotations
+          that are not specifically annotated with some of the Jakarta XML Binding annotations
         ]]>
       </Description>
     </TestCaseDocumentation>

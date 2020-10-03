@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -27,7 +27,7 @@
   <TestGroupAttributes>
     <AttrElem Name="scInfo">@(#)Location001.test.xml	1.7 08/04/04</AttrElem>
     <AttrElem Name="testType">J2XTest</AttrElem>
-    <TargetSpec ID="JAXB" Version="2.1-"/>
+    <TargetSpec ID="Jakarta XML Binding" Version="2.1-"/>
     <Keyword>positive</Keyword>
     <Keyword>runtime</Keyword> 
     <Keyword>java_to_schema</Keyword>
@@ -42,7 +42,7 @@
   <TestCase ID="Location001n">
     <TestCaseDocumentation>
       <Description><![CDATA[
-      JAXB specification assertion: JAXB:SPEC:J2S:00391
+      Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00391
       Mapping: Package to XML target namespace
       If location() is not "", a package will not produce any schema document.]]></Description>
       <Author>Leonid Kuskov</Author>
