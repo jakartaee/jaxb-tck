@@ -16,12 +16,6 @@
 
 
 DIRNAME=`dirname "$0"`
-case `domainname` in
-    *russia* ) 	domain=sparc ;;
-    *ru* ) 	domain=sparc ;;
-    *SFBay*  ) 	domain=SFBay ;;
-    *   ) 	domain=unknown ;;
-esac
 domain=SFBay
 ANT_OPTS="-Xms1024m -Xmx2048m -XX:PermSize=512M -XX:MaxPermSize=512M -XX:+UseParallelGC -XX:+AggressiveHeap -server"
 ANT_HOME=`grep -h ANT_HOME $DIRNAME/Defs.$domain.mk | sed -e 's/.*=[ ]*//'`
@@ -47,6 +41,3 @@ if [ $# -eq  0 ]; then
 fi
 
 exec $ANT_HOME/bin/ant -Dtck.build.domain=$domain -buildfile "$DIRNAME"/$antfile "$@"
-
-
-

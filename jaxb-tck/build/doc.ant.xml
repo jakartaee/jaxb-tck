@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -43,7 +43,7 @@
 	<selector id="docs.tck.root">
 		<or>
 			<filename name="COPYRIGHT-tck.html" />
-			<filename name="ReleaseNotes-TCK-JAXB.html" />
+			<filename name="ReleaseNotes-TCK-XMLB.html" />
 			<filename name="ReleaseNotes-TCK-JAXB.txt" />
 			<filename name="index.html" />
 			<filename name="document.css" />
@@ -77,7 +77,7 @@
 	<!-- ================================= 
           target: copy-docs - commented as the documentation sopurce is moved to a different repo. 
          ================================= -->
-	<target name="build-docs"></target>
+	<target name="build-docs" depends="dist_root_docs"></target>
 	<!--target name="build-docs" depends="dist_root_docs, dist_html_docs, dist_javatest_doc, dist_pdf_doc, dist_dcommon_doc" description=" Buidls and copy documetation for product">
 	</target-->
 
