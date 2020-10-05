@@ -19,7 +19,7 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.classes.XmlTransient002
 import jakarta.xml.bind.annotation.*;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:01221 
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:01221 
  * Mapping: <b>@XmlTransient</b> is used to prevent the mapping of a class.
  * The class must not be mapped.
  * Any reference to this class from the other XML bound classes will treated as

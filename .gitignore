@@ -1,1 +1,3 @@
 target/
+jaxb-tck/build/JAXB-TCK/
+jaxb-tck-build

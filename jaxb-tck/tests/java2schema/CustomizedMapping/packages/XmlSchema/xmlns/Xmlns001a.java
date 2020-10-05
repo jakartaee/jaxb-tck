@@ -20,7 +20,7 @@ import jakarta.xml.bind.annotation.*;
 
 /**
  *
- * JAXB specification assertion: JAXB:SPEC:J2S:00043
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00043
  * Mapping: Package to XML target namespace
  * Namespace prefixes ::= if @XmlSchema.xmlns() is {} then implementation defined;
  * otherwise @XmlSchema.xmlns() 

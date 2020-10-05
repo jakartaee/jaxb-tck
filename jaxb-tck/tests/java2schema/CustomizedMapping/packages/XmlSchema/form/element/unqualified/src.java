@@ -18,7 +18,7 @@ package javasoft.sqe.tests.java2schema.CustomizedMapping.packages.XmlSchema.form
 
 /**
  *
- * JAXB specification assertion: JAXB:SPEC:J2S:00041
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00041
  * Mapping: Package to XML target namespace
  * elementFormDefault ::= if the value of @XmlSchema.elementFormDefault() is @XmlNsForm.UNSET, then absent;
  *                        otherwise the value of @XmlSchema.elementFormDefault()

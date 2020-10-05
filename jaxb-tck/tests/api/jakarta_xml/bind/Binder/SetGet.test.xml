@@ -194,8 +194,8 @@
 	</TestCase>
 	<TestCase ID="SetGet005">
 		<TestCaseDocumentation>
-			<Title>getProperty(String name) - standard JAXB defined unmarshal/marshal properties</Title>
-			<Description>The test calls getProperty for standard JAXB defined unmarshal/marshal properties.
+			<Title>getProperty(String name) - standard Jakarta XML Binding defined unmarshal/marshal properties</Title>
+			<Description>The test calls getProperty for standard Jakarta XML Binding defined unmarshal/marshal properties.
 				No exception should be thrown.
 			</Description>
 			<Author>Alexey Vishentsev</Author>
@@ -287,9 +287,9 @@
 	</TestCase>
 	<TestCase ID="SetGet008">
 		<TestCaseDocumentation>
-			<Title>setProperty(String name,Object value) - standard JAXB-defined properties</Title>
+			<Title>setProperty(String name,Object value) - standard Jakarta XML Binding-defined properties</Title>
 			<Description>
-				The test calls setProperty for standard JAXB defined unmarshal/marshal properties.
+				The test calls setProperty for standard Jakarta XML Binding defined unmarshal/marshal properties.
 				No exception should be thrown.
 			</Description>
 			<Author>Alexey Vishentsev</Author>

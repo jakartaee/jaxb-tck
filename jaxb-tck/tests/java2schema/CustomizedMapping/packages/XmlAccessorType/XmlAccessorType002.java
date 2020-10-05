@@ -22,7 +22,7 @@ import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.*;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:00048 Mapping: XmlAccessorType
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00048 Mapping: XmlAccessorType
  * annotation allows control over default serialization of fields and
  * properties.
  * 

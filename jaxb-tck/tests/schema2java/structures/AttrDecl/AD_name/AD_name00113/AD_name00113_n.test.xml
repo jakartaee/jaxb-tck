@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -23,7 +23,7 @@
         <Title>Attribute names contain digits followed by a non-digit characters. (invalid schema)</Title>
         <Description>Declare an element with two attributes of type int. Name them as follows:
         "aa111a2Aa" and "aa111A2Aa". 
-        JAXB maps the names to the same Java identifier so the binding compiler 
+        Jakarta XML Binding maps the names to the same Java identifier so the binding compiler 
         is expected to fail.
         </Description>
     </TestGroupDocumentation>

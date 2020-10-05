@@ -22,7 +22,7 @@ import java.util.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:00056
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00056
  * 
  * @XmlSchemaType annotation annotation allows a customized mapping to a XML
  *                Schema built in type.

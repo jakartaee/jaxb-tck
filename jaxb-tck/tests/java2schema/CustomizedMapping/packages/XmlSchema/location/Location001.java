@@ -20,7 +20,7 @@ import jakarta.xml.bind.annotation.*;
 
 /**
  *
- * JAXB specification assertion: JAXB:SPEC:J2S:00391
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00391
  * Mapping: Package to XML target namespace
  * If location() is not "", a package will not produce
  * any schema document.

@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -24,14 +24,14 @@
         <Description>Declare a simple type based on NCName and restricted with 2 enumeration
         values "aa111a2Aa" and "aa111A2Aa". 
 
-        JAXB maps the values to the same Java identifier so the binding compiler 
+        Jakarta XML Binding maps the values to the same Java identifier so the binding compiler 
         is expected to fail.
         </Description>
     </TestGroupDocumentation>
     <TestGroupAttributes>
       <AttrElem Name="scInfo">@(#)ST_facets00603_n.test.xml	1.3 07/04/12</AttrElem>
       <AttrElem Name="testType">JAXBXMLSchemaTest</AttrElem>
-      <TargetSpec ID="JAXB" Version="-1.0"/>
+      <TargetSpec ID="Jakarta XML Binding" Version="-1.0"/>
     </TestGroupAttributes>
     <CodeSet>
         <ExternalSupportClass SourceName="ST_facets00603_n.xsd"/>

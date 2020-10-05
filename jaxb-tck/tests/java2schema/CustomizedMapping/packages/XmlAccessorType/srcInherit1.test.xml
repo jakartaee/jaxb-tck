@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -43,7 +43,7 @@
    <TestCase ID="testCase0001">
       <TestCaseDocumentation>
         <Description><![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:1044</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:1044</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br>
           <b>XmlAccessorType(AccessType.PUBLIC_MEMBER)</b> By Default<br><br>
           The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
@@ -65,7 +65,7 @@
    <TestCase ID="testCase0002">
       <TestCaseDocumentation>
         <Description><![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:1044</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:1044</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br>
           <b>XmlAccessorType(AccessType.PUBLIC_MEMBER)</b> By Default<br><br>
           The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
@@ -87,7 +87,7 @@
    <TestCase ID="testCase0003">
       <TestCaseDocumentation>
         <Description><![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:1044</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:1044</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br>
           <b>XmlAccessorType(AccessType.PUBLIC_MEMBER)</b> By Default<br><br>
           The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>
@@ -109,7 +109,7 @@
    <TestCase ID="testCase0004">
       <TestCaseDocumentation>
         <Description><![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:1044</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:1044</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br>
           <b>XmlAccessorType(AccessType.PUBLIC_MEMBER)</b> By Default<br><br>
           The annotation  XmlAccessorType  on a package applies to all classes in the package.<br>

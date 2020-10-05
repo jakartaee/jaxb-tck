@@ -20,7 +20,7 @@ import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.*;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:00052 Mapping: XmlAccessorOrder
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00052 Mapping: XmlAccessorOrder
  * @XmlAccessorOrder annotation allows control over the default ordering of 
  * properties and fields that are mapped to XML elements.
  * @XmlAccessorOrder  annotation can be used only with the following other annotations:

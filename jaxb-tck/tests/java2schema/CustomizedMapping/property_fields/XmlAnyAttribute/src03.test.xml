@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -23,7 +23,7 @@
         <Title>XmlAnyAttribute</Title>
         <Description>
         Test of XmlAnyAttribute annotation. 
-        Negative test. JAXB 2.0 spec, 8.9.8.2:
+        Negative test. Jakarta XML Binding spec, 8.9.8.2:
         There must be only one property or field in a class that is annotated with @XmlAnyAttribute.
       </Description>
     </TestGroupDocumentation>

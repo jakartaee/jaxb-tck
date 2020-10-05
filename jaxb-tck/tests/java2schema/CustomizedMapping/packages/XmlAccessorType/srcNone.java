@@ -21,13 +21,13 @@ import java.math.BigInteger;
 import java.util.List;
 
 /**
- * JAXB specification assertion: JAXB:SPEC:J2S:00047 Mapping: XmlAccessorType
+ * Jakarta XML Binding specification assertion: JAXB:SPEC:J2S:00047 Mapping: XmlAccessorType
  * annotation allows control over default serialization of fields and
  * properties.
  * 
  * @XmlAccessorType(AccessType.NONE) NONE - None of the fields or properties is
  *                                   bound to XML unless they are specifically
- *                                   annotated with some of the JAXB
+ *                                   annotated with some of the Jakarta XML Binding
  *                                   annotations.
  */
 @XmlAccessorType(XmlAccessType.NONE)

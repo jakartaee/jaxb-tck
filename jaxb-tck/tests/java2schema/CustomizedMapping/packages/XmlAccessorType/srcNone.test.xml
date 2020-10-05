@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -42,13 +42,13 @@
     <TestCaseDocumentation>
       <Description>
         <![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
           <b>XmlAccessorType(AccessType.NONE)<b><br>
           NONE - None of the fields or properties is bound to XML unless<br> 
-          they are specifically annotated with some of the JAXB annotations.<br>
+          they are specifically annotated with some of the Jakarta XML Binding annotations.<br>
           Note: Positive test. Xml consists of all required fileds and properties<br> 
-          that are specifically annotated with some of the JAXB annotations without extra fields or properties.
+          that are specifically annotated with some of the Jakarta XML Binding annotations without extra fields or properties.
         ]]>
       </Description>
     </TestCaseDocumentation>
@@ -64,12 +64,12 @@
     <TestCaseDocumentation>
       <Description>
         <![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
           <b>XmlAccessorType(AccessType.NONE)<b><br>
           NONE - None of the fields or properties is bound to XML unless<br> 
-          they are specifically annotated with some of the JAXB annotations.<br>
-          Note: Negative test. Required field that are specifically annotated with some of the JAXB annotations is absent in xml file.
+          they are specifically annotated with some of the Jakarta XML Binding annotations.<br>
+          Note: Negative test. Required field that are specifically annotated with some of the Jakarta XML Binding annotations is absent in xml file.
         ]]>
       </Description>
     </TestCaseDocumentation>
@@ -85,12 +85,12 @@
     <TestCaseDocumentation>
       <Description>
         <![CDATA[
-          JAXB specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
+          Jakarta XML Binding specification assertion: <i>JAXB:SPEC:J2S:00047</i><br>
           Mapping: <b>@XmlAccessorType</b> annotation allows control over default serialization of fields and properties.<br><br>
           <b>XmlAccessorType(AccessType.NONE)<b><br>
           NONE - None of the fields or properties is bound to XML unless<br> 
-          they are specifically annotated with some of the JAXB annotations.<br>
-          Note: Negative test. Xml consists of public fileds and properties that are not specifically annotated with some of the JAXB annotations
+          they are specifically annotated with some of the Jakarta XML Binding annotations.<br>
+          Note: Negative test. Xml consists of public fileds and properties that are not specifically annotated with some of the Jakarta XML Binding annotations
         ]]>
       </Description>
     </TestCaseDocumentation>

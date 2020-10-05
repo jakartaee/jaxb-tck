@@ -2,7 +2,7 @@
 <!DOCTYPE TestSuite SYSTEM "testsuite.dtd">
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -19,10 +19,10 @@
 -->
 
 <TestSuite>
-    <Title><![CDATA[JAXB schema-to-java compiler tests]]></Title>
+    <Title><![CDATA[Jakarta XML Binding schema-to-java compiler tests]]></Title>
     <Description><![CDATA[
-<h1>JAXB schema-to-java compiler tests</h1>
-This part contains tests with JAXB binding customizations
+<h1>Jakarta XML Binding schema-to-java compiler tests</h1>
+This part contains tests with Jakarta XML Binding binding customizations
         ]]></Description>
     <Contents Format="list"/>
     <AttrElem Name="scInfo">@(#)index.doc.xml	1.1 05/10/26</AttrElem>

@@ -30,7 +30,7 @@
 
  <xsd:annotation>
   <xsd:documentation>
-   Test verifies generation of JAXB mapped class for simple type if
+   Test verifies generation of Jakarta XML Binding mapped class for simple type if
    mapSimpleTypeDef customization is true. (See specification CODE
    EXAMPLE 6-10 )
   </xsd:documentation>

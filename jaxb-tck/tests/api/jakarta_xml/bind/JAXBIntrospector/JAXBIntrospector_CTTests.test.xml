@@ -65,7 +65,7 @@
             context = getJAXBContext();
         } catch (JAXBException e) {
             e.printStackTrace(ref);
-            return Status.failed("Cannot create an instance of JAXB context: "+e);
+            return Status.failed("Cannot create an instance of JAXBContext: "+e);
         }
         JAXBIntrospector introspector = context.createJAXBIntrospector();
         if(introspector == null){
@@ -100,7 +100,7 @@
             context = JAXBContext.newInstance(Element.class);
         } catch (JAXBException e) {
             e.printStackTrace(ref);
-            return Status.failed("Cannot create an instance of JAXB context: "+e);
+            return Status.failed("Cannot create an instance of JAXBContext: "+e);
         }
         JAXBIntrospector introspector = context.createJAXBIntrospector();
         if(introspector == null){
@@ -134,7 +134,7 @@
             context = JAXBContext.newInstance(Element.class);
         } catch (JAXBException e) {
             e.printStackTrace(ref);
-            return Status.failed("Cannot create an instance of JAXB context: "+e);
+            return Status.failed("Cannot create an instance of JAXBContext: "+e);
         }
         JAXBIntrospector introspector = context.createJAXBIntrospector();
         if(introspector == null){
@@ -168,7 +168,7 @@
             context = JAXBContext.newInstance(Element.class);
         } catch (JAXBException e) {
             e.printStackTrace(ref);
-            return Status.failed("Cannot create an instance of JAXB context: "+e);
+            return Status.failed("Cannot create an instance of JAXBContext: "+e);
         }
         JAXBIntrospector introspector = context.createJAXBIntrospector();
         if(introspector == null){
@@ -203,7 +203,7 @@
             context = JAXBContext.newInstance(Element.class);
         } catch (JAXBException e) {
             e.printStackTrace(ref);
-            return Status.failed("Cannot create an instance of JAXB context: "+e);
+            return Status.failed("Cannot create an instance of JAXBContext: "+e);
         }
         JAXBIntrospector introspector = context.createJAXBIntrospector();
         if(introspector == null){
