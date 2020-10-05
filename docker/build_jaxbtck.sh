@@ -147,18 +147,15 @@ echo *************Completed Building JAXB TCK Userguide************
 
 mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build
-chmod 777 *.jar
-TCK_NAME=xml-binding
+cd $TCK_ROOT
+export ANT_OPTS="-DTCK_ROOT=$WORKSPACE -DJAVA_HOME=$JAVA_HOME -DJARPATH=$WORKSPACE"
+export PATH="$ANT_HOME/bin:$JAVA_HOME/bin:$PATH"
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
-	cp $TCK_ROOT/LICENSE_EFTL.md .
-	zip -r jakarta-${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0.jar LICENSE_EFTL.md docs/
-  cd unzip
-  zip -ur ../jakarta-${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0/
-	cp ${WORKSPACE}/jaxb-tck-build/jakarta-${TCK_NAME}-tck-3.0.0.zip ${WORKSPACE}/bundles/
+	ant clean dist_eftl
 else
-	cp $TCK_ROOT/LICENSE.md .
-	zip -r ${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0.jar LICENSE.md docs/
-  cd unzip
-  zip -ur ../${TCK_NAME}-tck-3.0.0.zip JAXB-TCK-3.0/
-	cp ${WORKSPACE}/jaxb-tck-build/${TCK_NAME}-tck-3.0.0.zip ${WORKSPACE}/bundles/
+	ant clean dist
 fi
+
+chmod 777 ${WORKSPACE}/dist/*.zip
+cp ${WORKSPACE}/dist/* ${WORKSPACE}/bundles/
+chmod -R 777 ${WORKSPACE}/bundles/

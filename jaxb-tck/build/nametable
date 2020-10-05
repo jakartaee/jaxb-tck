@@ -2596,7 +2596,7 @@ src/share/doc/dcommon/gifs/rightnav.gif
 src/share/doc/dcommon/gifs/index.gif
 src/share/doc/tck/document.css
 src/share/doc/tck/THIRDPARTYLICENSEREADME-tck.txt
-src/share/doc/tck/JAXB-TCK_Users_Guide.pdf
+src/share/doc/tck/XMLB-TCK_Users_Guide.pdf
 src/share/doc/tck/html/css/commonrtl.css
 src/share/doc/tck/html/css/commonltr.css
 src/share/doc/tck/html/css/reset-html5.css
@@ -2619,7 +2619,7 @@ src/share/doc/sgml/intro.sgm
 src/share/doc/sgml/rulesSchemaCompilers.sgm
 src/share/doc/sgml/fr-other-trademarks.sgm
 src/share/doc/sgml/using.sgm
-src/share/doc/sgml/JAXB-TCK_Users_Guide.pdf
+src/share/doc/sgml/XMLB-TCK_Users_Guide.pdf
 src/share/doc/sgml/install.sgm
 src/share/doc/sgml/sun-trademarks.sgm
 src/share/doc/sgml/TCKentities.ent
@@ -2637,7 +2637,7 @@ src/share/doc/sgml/TCKdefinitions.sgm
 src/share/doc/sgml/fr-sun-trademarks.sgm
 src/share/doc/sgml/rulesSchemaGenerators.sgm
 src/share/doc/sgml/legal.sgm
-src/share/doc/sgml/JAXB-TCK_Users_Guide.book
+src/share/doc/sgml/XMLB-TCK_Users_Guide.book
 src/share/doc/sgml/tckdocs.sgm
 src/share/doc/sgml/figures/introduction.tiff
 src/share/doc/sgml/figures/introduction.gif

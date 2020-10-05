@@ -41,6 +41,6 @@ CLEANFILES += html.ok
 $(TEMPTESTSTORAGE)/tests/%.doc.xml: install $(ABSTOPDIR)/tests/%.doc.xml
 	./install $(ABSTOPDIR) $(TEMPTESTSTORAGE) $(@:$(TEMPTESTSTORAGE)/%=%)
 # install testsuite.doc.xml
-# for integrated JAXB-TCK the file should be taken from integrating TCK
+# for integrated XMLB-TCK the file should be taken from integrating TCK
 $(TEMPTESTSTORAGE)/tests/testsuite.doc.xml: install $(SHARED_ABSTOPDIR)/tests/testsuite.doc.xml
 	./install $(SHARED_ABSTOPDIR) $(TEMPTESTSTORAGE) $(@:$(TEMPTESTSTORAGE)/%=%)

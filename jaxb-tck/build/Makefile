@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2002, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2002, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -22,7 +22,7 @@ include Defs.mk
 
 SAMPLE_PRODUCTS= sampleJAXB
 
-FULL_PRODUCTS = JAXB-TCK
+FULL_PRODUCTS = XMLB-TCK
 
 # The normal set of products for all
 STD_PRODUCTS = $(FULL_PRODUCTS)
