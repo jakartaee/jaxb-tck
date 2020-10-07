@@ -34,7 +34,7 @@
       <TargetSpec ID="Jakarta XML Binding" Version="-1.0"/>
     </TestGroupAttributes>
     <CodeSet>
-        <ExternalSupportClass SourceName="ST_facets00602.xsd"/>
+        <ExternalSupportClass SourceName="ST_facets00602_n.xsd"/>
     </CodeSet>
 
     <TestCase ID="ST_facets00602_n">

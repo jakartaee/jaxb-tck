@@ -108,7 +108,7 @@
 
 	<target name="dist_pdf_doc">
 		<copy todir="${dist.tck.docs}">
-			<fileset dir="${repo.docs.dir}/tck" includes="JAXB-TCK_Users_Guide.pdf" />
+			<fileset dir="${repo.docs.dir}/tck" includes="XMLB-TCK_Users_Guide.pdf" />
 		</copy>
 	</target>
 

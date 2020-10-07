@@ -1,5 +1,5 @@
 #
-# Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1999, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -134,10 +134,10 @@ build-docs:
 ## The TCK Manual 
 #
 #MANSRCDIR = $(TOPDIR)/src/share/doc/manual
-#MANUAL_PDF = $(TCKDIR)/doc/tck/JAXB-TCK_Users_Guide.pdf
+#MANUAL_PDF = $(TCKDIR)/doc/tck/XMLB-TCK_Users_Guide.pdf
 #
 #MANUAL_FM_FILES = \
-#	JAXB-TCK_Users_Guide.book \
+#	XMLB-TCK_Users_Guide.book \
 #	a-faq.fm \
 #	chapter2.fm \
 #	copyright.fm \
@@ -179,8 +179,8 @@ build-docs:
 #$(MANUAL_PDF): $(MANUAL_FM_FILES:%=$(MAN_TMP)/%) $(PRINT_PDF:%=$(MAN_TMP)/%) $(BUILDDIR)/manual.fmbatch
 #	(   echo "Open $(PRINT_PDF)"; \
 #	    for i in $(MANUAL_FM_FILES); do echo "Open $$i"; done ; \
-#	    echo "Update JAXB-TCK_Users_Guide.book"; \
-#	    echo "Print JAXB-TCK_Users_Guide.book $(PRINT_PDF)") | \
+#	    echo "Update XMLB-TCK_Users_Guide.book"; \
+#	    echo "Print XMLB-TCK_Users_Guide.book $(PRINT_PDF)") | \
 #	( cd $(MAN_TMP); DISPLAY=$${DISPLAY:=`hostname`:0.0} $(FMBATCH) -v )
 #	$(TEST) -d $(@D) || $(MKDIR) -p $(@D)
 #	$(MV) $(MAN_TMP)/$(@F) $@

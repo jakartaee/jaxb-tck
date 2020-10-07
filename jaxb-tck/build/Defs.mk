@@ -335,14 +335,14 @@ PL_FILES_IN_BUNDLE = 100
 JAXB_ID.sh=$(PRECOMPILE_JAVAHOME)/bin/java -jar $(JAXB_HOME)/mod/jaxb-xjc.jar -version 2>&1 | $(SED) -e 's/^[^"]*"//g' | $(SED) -e 's/".*$$//g'
 JAXB_ID=$(shell $(JAXB_ID.sh))
 
-# Integrated into JCK JAXB-TCK requires mk with shared variables
+# Integrated into JCK XMLB-TCK requires mk with shared variables
 SHARED_MK.sh = \
     if [ ! -z "$(SHARED_VARS)" ]; then \
         echo " -f $(SHARED_VARS) "; \
     fi
 SHARED_MK = $(shell $(SHARED_MK.sh))
 
-# ABSTOPDIR of JCK for integrated JAXB-TCK or ABSTOPDIR of standalone JAXB-TCK
+# ABSTOPDIR of JCK for integrated XMLB-TCK or ABSTOPDIR of standalone XMLB-TCK
 SHARED_ABSTOPDIR = $(ABSTOPDIR)
 
 # various documentation files:
@@ -358,7 +358,7 @@ SRCBUNDLE_TEMPDIR = $(BUILDAREA)/tempBundle/jaxb
 SRCBUNDLE_RMFILES = build.txt COPYRIGHT-javatest.html README-javatest.html ReleaseNotes-javatest.html testsuite.jtt
 SRCBUNDLE_RMFILES += lib linux solaris win32
 SRCBUNDLE_RMFILES += tests/testsuite.jtd doc/javatest
-# release documents that must be include into JAXB-TCK source bundle
+# release documents that must be include into XMLB-TCK source bundle
 SRCBUNDLE_RELEASE_DOCS =
 SRCBUNDLE_DEST = $(BUILDAREA)/tempBundle
 SRCBUNDLE_ZIP = $(SRCBUNDLE_DEST)/jaxb_tck-ro-src.zip

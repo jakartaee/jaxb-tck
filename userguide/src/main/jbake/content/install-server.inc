@@ -33,6 +33,6 @@ use this installer to install the XML Binding TCK.
 	       (not listed as an option in the help message).
     * `[-o outputdir]`: Installs {TechnologyShortName} TCK {TechnologyVersion}
       into the directory specified by `outputdir`.
-  b.  This action creates the `JAXB-TCK-3.0` directory. The topmost
+  b.  This action creates the `XMLB-TCK-3.0` directory. The topmost
       {TechnologyShortName} TCK installation directory is referred to
       as the Test Suite Home, or `TS_HOME`.

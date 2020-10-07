@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright (c) 2020 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<project name="xmlb-tck" default="dist" basedir=".">
+
+  <description>
+      Bundles for XMLB-TCK.
+  </description>
+
+  <!-- set global properties for this build -->
+  <property name="BASEDIR" value="${basedir}"/>
+  <property name="deliverable.name" value="xml-binding-tck"/>
+  <property name="eclipse.deliverable.name" value="jakarta-xml-binding-tck"/>
+  <property name="deliverable.version" value="3.0.0"/>
+  <property name="bundle.name"
+            value="${deliverable.name}-${deliverable.version}.zip"/>
+  <property name="bundle.folder"
+            value="${deliverable.name}"/>
+  <property name="eclipse.bundle.name"
+            value="${eclipse.deliverable.name}-${deliverable.version}.zip"/>
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist" location="dist"/>
+
+  
+  <target name="copyLicense" depends="mvn"
+          description="copy the file">
+    <mkdir dir="${dist}"/>
+    <mkdir dir="${dist}/${bundle.folder}"/>
+      <copy file="LICENSE.md" todir="${dist}/${bundle.folder}"/>
+  </target>
+
+  <target name="dist" depends="clean"
+          description="generate the distribution">
+    <antcall target="copyLicense"/>
+    <zip destfile="${dist}/${bundle.name}">
+      <zipfileset dir="${dist}/${bundle.folder}" prefix="${bundle.folder}"/>
+      <zipfileset dir="jaxb-tck-build" includes="XMLB-TCK-3.0/**/*" prefix="${bundle.folder}"/>
+      <zipfileset dir="dist" includes="docs/**/*" prefix="${bundle.folder}"/>
+    </zip>
+  </target>
+
+  <target name="copyLicenseEFTL" depends="mvn"
+          description="copy the file">
+    <mkdir dir="${dist}"/>
+    <mkdir dir="${dist}/${bundle.folder}"/>
+      <copy file="LICENSE_EFTL.md" todir="${dist}/${bundle.folder}"/>
+  </target>
+  
+  <target name="dist_eftl" depends="clean"
+          description="generate the distribution">
+    <mkdir dir="${dist}"/>
+    <antcall target="copyLicenseEFTL"/>
+    <zip destfile="${dist}/${eclipse.bundle.name}">
+      <zipfileset dir="${dist}/${bundle.folder}" prefix="${bundle.folder}"/>
+      <zipfileset dir="jaxb-tck-build" includes="XMLB-TCK-3.0/**/*" prefix="${bundle.folder}"/>
+      <zipfileset dir="dist" includes="docs/**/*" prefix="${bundle.folder}"/>
+    </zip>
+  </target>
+
+  <target name="mvn">
+        <exec dir="${BASEDIR}/userguide" executable="mvn"/>
+        <copy toDir="${dist}/docs/">
+            <fileset dir="${BASEDIR}/userguide/target"
+                     includes="staging/*.html,staging/css/*,staging/img/*,
+                     generated-docs/*.pdf"/>
+        </copy>
+        <move todir="${dist}/docs/pdf-usersguide">
+            <fileset dir="${dist}/docs/generated-docs"/>
+        </move>
+        <move todir="${dist}/docs/html-usersguide">
+            <fileset dir="${dist}/docs/staging"/>
+        </move>
+   </target>
+
+
+  <target name="clean" description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${dist}"/>
+  </target>
+
+</project>
