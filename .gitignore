@@ -1,3 +1,6 @@
+dist/
 target/
-jaxb-tck/build/JAXB-TCK/
+jaxb-tck/build/XMLB-TCK/
+jaxb-tck/build/build.properties
+jaxb-tck/build/make.properties
 jaxb-tck-build
