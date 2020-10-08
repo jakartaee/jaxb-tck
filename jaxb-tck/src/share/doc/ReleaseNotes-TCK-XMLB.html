@@ -172,8 +172,8 @@ jck.env.devtools.refExecute.otherOpts </pre>
             </div>
 
             <div class="sect4"><!-- infolevel="all" infotype="General" --><a name="GUID-29180886-94F8-498F-8CC1-60F63C9B068F" id="GUID-29180886-94F8-498F-8CC1-60F63C9B068F"></a><h4 id="JAXRN-GUID-29180886-94F8-498F-8CC1-60F63C9B068F" class="sect4">Sample Scripts for Running the Reference Schema Compiler</h4>
-                <div><div class="section"><p>The <span>Jakarta XML Binding TCK</span> provides two sample scripts, which work for the <span>Jakarta XML Binding</span> Reference Implementation (RI) and can be used to develop scripts for other <span>Jakarta XML Binding</span> implementations:</p>
-                        <ul style="list-style-type: disc;"><li><p><code class="codeph">solaris/bin/xjc.sh</code> (<code class="codeph">linux/bin/xjc.sh</code>, <code class="codeph">macos/bin/xjc.sh</code>): The <code class="codeph">ksh</code> script that is used to run TCK tests with the <span>Jakarta XML Binding</span> RI on Solaris or Linux platforms. The script accepts the following options:</p>
+                <div><div class="section"><p>The <span>Jakarta XML Binding TCK</span> provides two sample scripts, which work for the <span>Jakarta XML Binding</span> Compatible Implementation (CI) and can be used to develop scripts for other <span>Jakarta XML Binding</span> implementations:</p>
+                        <ul style="list-style-type: disc;"><li><p><code class="codeph">solaris/bin/xjc.sh</code> (<code class="codeph">linux/bin/xjc.sh</code>, <code class="codeph">macos/bin/xjc.sh</code>): The <code class="codeph">ksh</code> script that is used to run TCK tests with the <span>Jakarta XML Binding</span> CI on Solaris or Linux platforms. The script accepts the following options:</p>
                                 <ul style="list-style-type: disc;"><li><p><code class="codeph">-d &lt;DIR_NAME&gt;</code>: The path to the output directory</p>
                                     </li>
                                     <li><p><code class="codeph">-p &lt;PACKAGE_NAME&gt;</code>: The package name to which generated Java classes should belong</p>
@@ -184,7 +184,7 @@ jck.env.devtools.refExecute.otherOpts </pre>
                                 <p>The script also requires the following environment variables to be set:</p>
                                 <ul style="list-style-type: disc;"><li><p><code class="codeph">JAVA_HOME</code>: The path to the reference Java</p>
                                     </li>
-                                    <li><p><code class="codeph">Jakarta XML Binding_HOME</code>: The path to the <span>Jakarta XML Binding</span> RI</p>
+                                    <li><p><code class="codeph">JAXB_HOME</code>: The path to the <span>Jakarta XML Binding</span> CI</p>
                                     </li>
                                     <li><p><code class="codeph">CLASSPATH</code>: The classpath required for TCK tests</p>
                                     </li>
@@ -224,7 +224,7 @@ jck.env.devtools.refExecute.otherOpts </pre>
             </div>
 
             <div class="sect4"><!-- infolevel="all" infotype="General" --><a name="GUID-1399CAF9-88CF-4235-98F7-FCD64CB52450" id="GUID-1399CAF9-88CF-4235-98F7-FCD64CB52450"></a><h4 id="JAXRN-GUID-1399CAF9-88CF-4235-98F7-FCD64CB52450" class="sect4">Sample Class for Running the Reference Schema Compiler</h4>
-                <div><div class="section"><p>The <span>Jakarta XML Binding TCK</span> provides sample wrapper class, <code class="codeph">src/share/classes/com/sun/jaxb_tck/lib/Xjc.java</code>, which works for the <span>Jakarta XML Binding</span> RI and can be used to develop wrapper classes for other <span>Jakarta XML Binding</span> implementations. </p>
+                <div><div class="section"><p>The <span>Jakarta XML Binding TCK</span> provides sample wrapper class, <code class="codeph">src/share/classes/com/sun/jaxb_tck/lib/Xjc.java</code>, which works for the <span>Jakarta XML Binding</span> CI and can be used to develop wrapper classes for other <span>Jakarta XML Binding</span> implementations. </p>
                         <p>The class provides the following method:</p>
                         <pre class="oac_no_warn" dir="ltr">public int compile(String[] args, PrintStream out, PrintStream err)</pre>
                         <p>This method supports the following <code class="codeph">args</code>:</p>
@@ -282,11 +282,11 @@ jck.env.devtools.refExecute.otherOpts </pre>
             </div>
 
             <div class="sect4"><!-- infolevel="all" infotype="General" --><a name="GUID-0306C809-D32C-45B9-B53C-0B3DBF9D88C8" id="GUID-0306C809-D32C-45B9-B53C-0B3DBF9D88C8"></a><h4 id="JAXRN-GUID-0306C809-D32C-45B9-B53C-0B3DBF9D88C8" class="sect4">Sample Scripts for Running the Reference Schema Generator</h4>
-                <div><div class="section"><p>The TCK provides two sample scripts, which work with the <span>Jakarta XML Binding</span> RI and can be used to develop scripts for other <span>Jakarta XML Binding</span> implementations:</p>
-                        <ul style="list-style-type: disc;"><li><p><code class="codeph">solaris/bin/schemagen.sh</code> (<code class="codeph">linux/bin/schemagen.sh</code>, <code class="codeph">macos/bin/schemagen.sh</code>): The <code class="codeph">ksh</code> script that is used to run the TCK tests with the <span>Jakarta XML Binding</span> RI on Solaris or Linux platforms. This script also requires the following environment variables to be set:</p>
+                <div><div class="section"><p>The TCK provides two sample scripts, which work with the <span>Jakarta XML Binding</span> CI and can be used to develop scripts for other <span>Jakarta XML Binding</span> implementations:</p>
+                        <ul style="list-style-type: disc;"><li><p><code class="codeph">solaris/bin/schemagen.sh</code> (<code class="codeph">linux/bin/schemagen.sh</code>, <code class="codeph">macos/bin/schemagen.sh</code>): The <code class="codeph">ksh</code> script that is used to run the TCK tests with the <span>Jakarta XML Binding</span> CI on Solaris or Linux platforms. This script also requires the following environment variables to be set:</p>
                                 <ul style="list-style-type: disc;"><li><p><code class="codeph">JAVA_HOME</code>: The path to reference Java</p>
                                     </li>
-                                    <li><p><code class="codeph">Jakarta XML Binding_HOME</code>: The path to <span>Jakarta XML Binding</span> RI</p>
+                                    <li><p><code class="codeph">JAXB_HOME</code>: The path to <span>Jakarta XML Binding</span> CI</p>
                                     </li>
                                     <li><p><code class="codeph">CLASSPATH</code>: The classpath required for TCK tests</p>
                                     </li>
@@ -326,7 +326,7 @@ jck.env.devtools.refExecute.otherOpts </pre>
             </div>
 
             <div class="sect4"><!-- infolevel="all" infotype="General" --><a name="GUID-54C2E64E-D70A-4E6C-9C4B-9A986381EB96" id="GUID-54C2E64E-D70A-4E6C-9C4B-9A986381EB96"></a><h4 id="JAXRN-GUID-54C2E64E-D70A-4E6C-9C4B-9A986381EB96" class="sect4">Sample Class for Running the Reference Schema Generator</h4>
-                <div><div class="section"><p>The TCK provides sample wrapper class, <code class="codeph">src/share/classes/com/sun/jaxb_tck/lib/SchemaGen.java</code>, which works for the <span>Jakarta XML Binding</span> RI and can be used to develop wrapper classes for other <span>Jakarta XML Binding</span> implementations. The class provides the following method:</p>
+                <div><div class="section"><p>The TCK provides sample wrapper class, <code class="codeph">src/share/classes/com/sun/jaxb_tck/lib/SchemaGen.java</code>, which works for the <span>Jakarta XML Binding</span> CI and can be used to develop wrapper classes for other <span>Jakarta XML Binding</span> implementations. The class provides the following method:</p>
                         <pre class="oac_no_warn" dir="ltr">public int generate(String[] args, PrintStream out, PrintStream err)</pre>
                         <p>The method supports the following <code class="codeph">args</code> parameters:</p>
                         <ul style="list-style-type: disc;"><li><p><code class="codeph">-d &lt;DIR_NAME&gt;</code>: Path to the output directory</p>
@@ -343,7 +343,7 @@ jck.env.devtools.refExecute.otherOpts </pre>
         </div>
         <hr />
         <div class="notices"><p><span>Release Notes</span>
-                <span>Release Notes Jakarta XML Binding Technology Compatibility Kit, Version 3.0</span>,
+                <span>Jakarta XML Binding Technology Compatibility Kit</span>,
                 <span>Release 3.0</span></p>
         </div>
 
