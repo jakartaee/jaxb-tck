@@ -63,7 +63,6 @@ additional information.
       +unzip {TCKPackageName}+ +
       This creates the TCK directory. The TCK is the test suite home,
       `<TS_HOME>`.
-include::install-server.inc[]
 .  Install a {TechnologyShortName} {TechnologyVersion} Compatible
 Implementation. +
 A Compatible Implementation is used to validate your initial

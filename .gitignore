@@ -4,3 +4,4 @@ jaxb-tck/build/XMLB-TCK/
 jaxb-tck/build/build.properties
 jaxb-tck/build/make.properties
 jaxb-tck-build
+userguide/src/main/jbake/content/toc.adoc
