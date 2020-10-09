@@ -1,7 +1,6 @@
 type=page
 status=published
 title=Appendix A: Frequently Asked Questions
-next=rebuild.html
 prev=debug.html
 ~~~~~~
 include::attributes.conf[]

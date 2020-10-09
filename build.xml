@@ -51,7 +51,7 @@
     <antcall target="copyLicense"/>
     <zip destfile="${dist}/${bundle.name}">
       <zipfileset dir="${dist}/${bundle.folder}" prefix="${bundle.folder}"/>
-      <zipfileset dir="jaxb-tck-build" includes="XMLB-TCK-3.0/**/*" prefix="${bundle.folder}"/>
+      <zipfileset dir="jaxb-tck-build/XMLB-TCK-3.0" excludes="?" prefix="${bundle.folder}"/>
       <zipfileset dir="dist" includes="docs/**/*" prefix="${bundle.folder}"/>
     </zip>
   </target>
@@ -69,7 +69,7 @@
     <antcall target="copyLicenseEFTL"/>
     <zip destfile="${dist}/${eclipse.bundle.name}">
       <zipfileset dir="${dist}/${bundle.folder}" prefix="${bundle.folder}"/>
-      <zipfileset dir="jaxb-tck-build" includes="XMLB-TCK-3.0/**/*" prefix="${bundle.folder}"/>
+      <zipfileset dir="jaxb-tck-build/XMLB-TCK-3.0" excludes="?" prefix="${bundle.folder}"/>
       <zipfileset dir="dist" includes="docs/**/*" prefix="${bundle.folder}"/>
     </zip>
   </target>

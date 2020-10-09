@@ -22,25 +22,22 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
     </parent>
     <groupId>org.glassfish</groupId>
     <artifactId>tck_jaxb</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.0-SNAPSHOT</version>
-    <name>Eclipse Foundation Technology Compatibility Kit User's Guide for Jakarta XML Binding (JAXB) 3.0 for Jakarta EE, Release 3.0</name>
+    <version>3.0.0</version>
+    <name>Eclipse Foundation Technology Compatibility Kit User's Guide for Jakarta XML Binding for Jakarta EE, Release 3.0</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <site.output.dir>${project.build.directory}/staging</site.output.dir>
         <maven.site.skip>true</maven.site.skip>
         <asciidoctor.maven.plugin.version>1.5.7.1</asciidoctor.maven.plugin.version>
-        <!-- XXX - jbake needs an older version than this -->
-        <asciidoctorj.version>1.6.2</asciidoctorj.version>
-        <asciidoctorj.pdf.version>1.5.0-alpha.16</asciidoctorj.pdf.version>
-        <jruby.version>9.2.6.0</jruby.version>
+        <asciidoctorj.pdf.version>1.5.3</asciidoctorj.pdf.version>
         <!-- status: DRAFT, BETA, etc., or blank for final -->
-        <status>DRAFT</status>
+        <status></status>
         <doc.pdf>XMLB-TCK-Users-Guide.pdf</doc.pdf>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
@@ -56,8 +53,23 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/jbake/content</directory>
+                            <includes>
+                                <include>toc.adoc</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.4.1</version>
+                <version>3.0.0-M3</version>
                 <executions>
                     <execution>
                         <id>enforce-versions</id>
@@ -120,6 +132,7 @@
                     </execution>
                 </executions>
                 <dependencies>
+                    <!-- XXX - jbake needs an older versions -->
                     <dependency>
                         <groupId>org.asciidoctor</groupId>
                         <artifactId>asciidoctorj</artifactId>
@@ -137,16 +150,6 @@
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <version>${asciidoctor.maven.plugin.version}</version>
                 <dependencies>
-                    <dependency>
-                        <groupId>org.jruby</groupId>
-                        <artifactId>jruby-complete</artifactId>
-                        <version>${jruby.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctorj</artifactId>
-                        <version>${asciidoctorj.version}</version>
-                    </dependency>
                     <dependency>
                         <groupId>org.asciidoctor</groupId>
                         <artifactId>asciidoctorj-pdf</artifactId>
@@ -191,7 +194,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-publish-plugin</artifactId>
-                <version>1.1</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <id>deploy-site</id>
@@ -207,21 +210,21 @@
                     </execution>
                 </executions>
             </plugin>
-	</plugins>
+        </plugins>
 
-	<pluginManagement>
-	    <plugins>
+        <pluginManagement>
+            <plugins>
                 <plugin>
                     <groupId>org.glassfish.doc</groupId>
                     <artifactId>glassfish-doc-maven-plugin</artifactId>
                     <version>1.3</version>
                 </plugin>
-		<plugin>
-		    <groupId>org.apache.maven.plugins</groupId>
-		    <artifactId>maven-assembly-plugin</artifactId>
-		    <version>2.4</version>
-		</plugin>
-	    </plugins>
-	</pluginManagement>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.3.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>

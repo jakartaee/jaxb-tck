@@ -49,8 +49,7 @@ former maps from a schema to Java, and the latter maps from Java to
 schema.  For the purposes of brevity in these instructions, the term
 compiler refers to both the schema compiler and the schema generator.
 
-Configuring Your Environment to Run the TCK Against the Compatible Implementation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Configuring Your Environment to Run the TCK Against the Compatible Implementation
 
 1.  Set the following environment variables in your shell environment:
   a.  `JAVA_HOME` to the directory in which Java SE 8 is installed
@@ -178,8 +177,8 @@ List).
 Following list describes the configuration properties and gives examples of relevant
 values to correctly configure the JavaTest harness to run the test suite.
 
-Configuration Name
-^^^^^^^^^^^^^^^^^^
+==== Configuration Name
+
 *Property: jck.env.envName*
 
 _Provide a short identifier that names the configuration you are creating._
@@ -193,8 +192,8 @@ The name must begin with a letter, followed by letters, digits, or an
 underscore, and must not contain a white space or punctuation
 characters.
 
-Description
-^^^^^^^^^^^
+==== Description
+
 *Property: jck.env.description*
 
 _Provide a short description that identifies the configuration you are creating._
@@ -209,8 +208,8 @@ of the tester.
 
 Example: `John Smith x86 Eclipse Implementation of JAXB 3.0.0`
 
-Execution Mode
-^^^^^^^^^^^^^^
+==== Execution Mode
+
 *Property: jck.env.testPlatform.multiJVM*
 
 _Specify whether you want to run the tests in SingleJVM or MultiJVM
@@ -234,8 +233,8 @@ Virtual Machine in which the tests will run (the questions in the
 *Runtime Other JVM* section of this interview) and the details about
 the Java launcher.
 
-Execute Locally
-^^^^^^^^^^^^^^^
+==== Execute Locally
+
 *Property: jck.env.testPlatform.local*
 
 _Will you run the TCK tests on the system that hosts the JavaTest harness?_
@@ -245,8 +244,8 @@ this interview, then the editor gathers configuration information
 directly from the system. For example, you will be able to browse the
 local file system to point to the required files.
 
-Agent Type
-^^^^^^^^^^
+==== Agent Type
+
 *Property: jck.env.jaxb.agent.agentType*
 
 _The JavaTest Agent can be run in two modes: active and passive.
@@ -256,8 +255,8 @@ Select the agent type you wish to use. If you want to use the passive
 agent, then additional properties must be provided to specify
 the passive agent host and default agent port.
 
-Passive Host
-^^^^^^^^^^^^
+==== Passive Host
+
 *Property: jck.env.jaxb.agent.agentPassiveHost*
 
 _What is the of the host on which you run the tests?_
@@ -268,8 +267,8 @@ system on which JavaTest runs.  Since the JavaTest agent is passive,
 you can only change the machine you specify here by running this
 interview again and changing the name of the passive host.
 
-Default Agent Port
-^^^^^^^^^^^^^^^^^^
+==== Default Agent Port
+
 *Property: jck.env.jaxb.agent.useAgentPortDefault*
 
 _Do you wish to use the default port for the JavaTest harness to contact
@@ -283,16 +282,16 @@ have set up batch runs.
 If you answer `No`, then you will need to specify the default port
 number in the next interview question.
 
-Passive Port
-^^^^^^^^^^^^
+==== Passive Port
+
 *Property: jck.env.jaxb.agent.agentPassivePort*
 
 _Which port does the JavaTest harness use to contact the JavaTest Agent?_
 
 Specify the port you want to use to communicate with the JavaTest agent.
 
-Test Platform File Separator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Test Platform File Separator
+
 *Property: jck.env.jaxb.agent.fileSeparator*
 
 _Which file separator character is used on the test platform?_
@@ -302,8 +301,8 @@ Specify the appropriate file separator for your operating system.
 For example, for Windows, use the back slash `\` character. For Solaris
 OS or Linux operation system, use the forward slash `/` character.
 
-Test Platform Path Separator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Test Platform Path Separator
+
 *Property: jck.env.jaxb.agent.pathSeparator*
 
 _Which path separator character is used on the test platform?._
@@ -313,8 +312,8 @@ Specify the appropriate path separator for your operating system.
 For example, on Windows systems, specify the `;` character, on Unix
 systems specify the `:` character. Other platforms may differ.
 
-Agent Map File
-^^^^^^^^^^^^^^
+==== Agent Map File
+
 *Property: jck.env.jaxb.agent.mapArgs*
 
 Because JavaTest and the JavaTest agent run on different systems,
@@ -327,8 +326,8 @@ file is specified on the JavaTest agent, but the use of the map must be
 enabled here. For more information about map files, refer to the
 JavaTest User's Guide or to the JavaTest online help.
 
-Java Launcher
-^^^^^^^^^^^^^
+==== Java Launcher
+
 *Property: jck.env.jaxb.testExecute.cmdAsFile*
 
 _Enter the full path name of the Java launcher that runs the tests through
@@ -351,8 +350,8 @@ NOTE: Use the `java` command in JDK (not JRE).
 
 Ensure that you supply the full file name, including the file extension.
 
-Other Options
-^^^^^^^^^^^^^
+==== Other Options
+
 *Property: jck.env.jaxb.testExecute.otherOpts*
 
 _Specify any additional commandline options that must be set._
@@ -363,8 +362,8 @@ using `name=value` pairs. For example you may want to specify:
 `-Xmx256m -Xms128m` to change the default maximum and initial Java heap
 size.
 
-Other Environment Variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Other Environment Variables
+
 *Property: jck.env.jaxb.testExecute.otherEnvVars*
 
 _Except for CLASSPATH, if there are any other environment variables
@@ -384,8 +383,8 @@ system environment is not available to the test. If you check your
 operating system environment and determine that this is the case, then
 set the missing values here.
 
-Need Extra XML Binding Classes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Need Extra XML Binding Classes
+
 *Property: jck.env.jaxb.classes.needJaxbClasses*
 
 _Do you need to specify extra XML Binding classes for the Java launcher to
@@ -405,8 +404,8 @@ Java VM default class path.
 
 If you answer `Yes`, then must specify necessary {TechnologyShortName} archives.
 
-Extra XML Binding Classes
-^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Extra XML Binding Classes
+
 *Property: jck.env.jaxb.classes.jaxbClasses*
 
 _Extra XML Binding classes to be put on class path of the the Java VM executing
@@ -416,8 +415,8 @@ Specify all necessary {TechnologyShortName} archives required for tests
 execution. Archive files must be specified with full path and separated
 by space.
 
-Schema Compiler Operation Mode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Schema Compiler Operation Mode
+
 *Property: jck.env.jaxb.xsd_compiler.defaultOperationMode*
 
 _Would you like to run your schema compiler in default operation mode?_
@@ -454,8 +453,8 @@ information on default operation mode
 requirements, see the Compatibility section
 of the {TechnologyShortName} specification.
 
-Optional XML Validation Tests
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Optional XML Validation Tests
+
 *Property: jck.env.jaxb.xsd_compiler.skipValidationOptional*
 
 _Is Schema Validation implemented via mechanism different from JAXP?_
@@ -468,8 +467,8 @@ deselecting them in the test interview. If you
 use some other tools for schema validation,
 then XML validation tests are mandatory.
 
-Schema Compiler Run Command
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Schema Compiler Run Command
+
 *Property: jck.env.jaxb.xsd_compiler.testCompile. xjcCmd*
 
 _Enter the command to run the a schema compiler._
@@ -498,8 +497,8 @@ where:
 * `-p <pkg>` specifies the target package
 * `-d <dir>` specifies the directory to store generated files.
 
-Schema Compiler Class
-^^^^^^^^^^^^^^^^^^^^^
+==== Schema Compiler Class
+
 *Property: jaxb.xsd_compiler.run.compilerWrapperClass*
 
 _You must provide a custom class to invoke your compiler. This class
@@ -555,8 +554,8 @@ compiles a schema into `java` sources.
 If your implementation doesn't provide such
 a class, then create it and specify it here.
 
-Schema Generator Presence
-^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Schema Generator Presence
+
 *Property: jck.env.jaxb.schemagen.skipJ2XOptional*
 
 _Does your implementation provide schema generator which is able to
@@ -569,8 +568,8 @@ to generate the schemas from the java
 sources. If they are provided, then all
 specification requirements should be met.
 
-Schema Generator Run Command
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Schema Generator Run Command
+
 *Property: jck.env.jaxb.schemagen.run.jxcCmd*
 
 _Enter the command to run the schema generator._
@@ -597,8 +596,8 @@ mandatory command-line options:
 `-d <dir>` specifies the directory to store the
 generated files.
 
-Schema Generator Class
-^^^^^^^^^^^^^^^^^^^^^^
+==== Schema Generator Class
+
 *Property: jck.env.jaxb.schemagen.run.schemagenWrapperClass*
 
 _You must provide a custom class to invoke your schema generator. This
@@ -651,8 +650,8 @@ err)` generates the XML schemas from the
 If your implementation doesn't provide such
 a class, then create it and specify it here.
 
-Specify an Exclude List?
-^^^^^^^^^^^^^^^^^^^^^^^^
+==== Specify an Exclude List?
+
 *Property: jck.excludeList.needExcludeList*
 
 _Do you wish to specify an exclude list?_
@@ -665,8 +664,8 @@ list to use.
 Answer `No` if you want to run all tests that
 are not filtered out by other run filters.
 
-Which Exclude List?
-^^^^^^^^^^^^^^^^^^^
+==== Which Exclude List?
+
 *Property: jck.excludeList.excludeListType*
 
 _Which exclude list do you wish to use?_
@@ -680,8 +679,8 @@ exclude list provided with the test suite or
 the Specify option to specify the exclude list
 you wish to use.
 
-Specify Exclude List Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Specify Exclude List Files
+
 *Property: jck.excludeList.customFiles*
 
 _Specify the files that make up the exclude list you wish to use._
@@ -691,8 +690,8 @@ which you select an exclude list file. Exclude
 list files conventionally use the
 extension `.jtx`.
 
-Specify Keywords?
-^^^^^^^^^^^^^^^^^
+==== Specify Keywords?
+
 *Property: jck.keywords.needKeywords*
 
 _Do you wish to specify a keyword
@@ -711,8 +710,8 @@ specify the keyword to use.
 Answer `No` to run all tests that are not
 filtered out by other run filters.
 
-Specify Status?
-^^^^^^^^^^^^^^^
+==== Specify Status?
+
 *Property: jck.priorStatus.needStatus*
 
 _Do you wish to select tests to run
@@ -728,8 +727,8 @@ statuses.
 Answer No to run all tests that are not
 filtered out by other run filters.
 
-Concurrency
-^^^^^^^^^^^
+==== Concurrency
+
 *Property: jck.concurrency.concurrency*
 
 _The JavaTest harness can run tests
@@ -745,8 +744,8 @@ The default range of values that the
 JavaTest harness uses is from 1 to 50.
 For the first test run, keep this value set to 1.
 
-Time Factor
-^^^^^^^^^^^
+==== Time Factor
+
 *Property: jck.timeout.timeout*
 
 _Specify a time factor that is applied
