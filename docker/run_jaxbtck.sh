@@ -17,9 +17,10 @@
 
 if ls ${WORKSPACE}/bundles/*xml-binding-tck*.zip 1> /dev/null 2>&1; then
   echo "Using stashed bundle for xml-binding-tck created during the build phase"
-  mkdir -p ${WORKSPACE}/jaxb-tck-build/unzip/XMLB-TCK-3.0
-  unzip -o ${WORKSPACE}/bundles/*xml-binding-tck*.zip -d ${WORKSPACE}/jaxb-tck-build/unzip/XMLB-TCK-3.0
+  mkdir -p ${WORKSPACE}/jaxb-tck-build/unzip
+  unzip -o ${WORKSPACE}/bundles/*xml-binding-tck*.zip -d ${WORKSPACE}/jaxb-tck-build/unzip
   TCK_NAME=xml-binding-tck
+  mv ${WORKSPACE}/jaxb-tck-build/unzip/xml-binding-tck ${WORKSPACE}/jaxb-tck-build/unzip/XMLB-TCK-3.0
 fi
 
 
