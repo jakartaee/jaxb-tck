@@ -55,6 +55,12 @@ mkdir -p ${HOME}/.m2
 cd $WORKSPACE
 WGET_PROPS="--progress=bar:force --no-cache"
 
+if [ ! -z "$TCK_BUNDLE_BASE_URL" ]; then
+  #use pre-built tck bundle from this location to run test
+  mkdir -p ${WORKSPACE}/bundles
+  wget  $WGET_PROPS ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/${TCK_BUNDLE_FILE_NAME}
+  exit 0
+fi
 #wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
 
 cd $BASEDIR

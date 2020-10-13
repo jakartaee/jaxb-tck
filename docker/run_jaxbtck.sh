@@ -15,6 +15,13 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
+if ls ${WORKSPACE}/bundles/*xml-binding-tck*.zip 1> /dev/null 2>&1; then
+  echo "Using stashed bundle for xml-binding-tck created during the build phase"
+  unzip -o ${WORKSPACE}/bundles/*xml-binding-tck*.zip -d ${WORKSPACE}/jaxb-tck-build/unzip/XMLB-TCK-3.0
+  TCK_NAME=xml-binding-tck
+fi
+
+
 if [ -z "$ANT_HOME" ]; then
   export ANT_HOME=/usr/share/ant/
 fi
@@ -24,6 +31,7 @@ if [ -z "$JAVA_HOME" ]; then
 fi
 
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+
 
 cd $WORKSPACE
 export BASEDIR=`pwd`
