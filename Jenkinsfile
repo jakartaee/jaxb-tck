@@ -53,6 +53,12 @@ spec:
     string(name: 'JAF_BUNDLE_URL',
            defaultValue: 'https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.0-RC3/jakarta.activation-api-2.0.0-RC3.jar',
            description: 'URL required for downloading JAF implementation jar' )
+    string(name: 'TCK_BUNDLE_BASE_URL',
+           defaultValue: '',
+           description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
+    string(name: 'TCK_BUNDLE_FILE_NAME', 
+           defaultValue: 'jakarta-xml-binding-tck-3.0.0.zip', 
+	   description: 'Name of bundle file to be appended to the base url' )
     string(name: 'GF_BUNDLE_URL', 
            defaultValue: '', 
            description: 'URL required for downloading GlassFish Full/Web profile bundle' )
