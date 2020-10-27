@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2019, 2021 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -69,6 +69,8 @@ spec:
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   choice(name: 'RUNTIME', choices: 'Glassfish\nStandalone',
            description: 'Run JAXB Tests with Standalone/Glassfish' )
+  choice(name: 'JDK', choices: 'JDK8\nJDK11',
+           description: 'Java SE Version to be used for running TCK either JDK8/JDK11' )
 
   }
   environment {

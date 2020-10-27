@@ -1,5 +1,5 @@
 #
-# Copyright (c) 1998, 2020 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1998, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -122,7 +122,7 @@ include $(BUILDDIR)/Defs.SFBay.mk
 # GENERAL_JAVAxxx are used to run Java programs like JavaTest, Jasm, Jcod, etc
 # It is *not* used to run tests
 #
-GENERAL_JAVAC = $(GENERAL_JAVAHOME)/bin/javac -target 1.8
+GENERAL_JAVAC = $(GENERAL_JAVAHOME)/bin/javac 
 GENERAL_JAVA = $(GENERAL_JAVAHOME)/bin/java
 GENERAL_JAVADOC = $(GENERAL_JAVAHOME)/bin/javadoc
 GENERAL_JAVAG = $(GENERAL_JAVAHOME)/bin/java_g
@@ -132,39 +132,39 @@ GENERAL_JAVAG = $(GENERAL_JAVAHOME)/bin/java_g
 # PRECOMPILE_JAVAxxx is used to generate any precompiled classes for release
 # it is also used as the version of Java to be tested
 #
-PRECOMPILE_JAVAC = $(PRECOMPILE_JAVAHOME)/bin/javac -target 1.8
+PRECOMPILE_JAVAC = $(PRECOMPILE_JAVAHOME)/bin/javac
 PRECOMPILE_JAVA = $(PRECOMPILE_JAVAHOME)/bin/java
 PRECOMPILE_JAR = $(PRECOMPILE_JAVAHOME)/bin/jar
-JAVATEST_JAR_LOC = 
-SIGTESTDEV_JAR_LOC = 
-ASM_JAR_LOCATION =
+JAVATEST_JAR_LOC = /home/guru/jaxb-tck/jaxb-tck/lib
+SIGTESTDEV_JAR_LOC = /home/guru/jaxb-tck/jaxb-tck/lib
+ASM_JAR_LOCATION = /home/guru/jaxb-tck
 #----------------------------------------------------------------------
 #
 # General Utilities
 
-AWK = /bin/awk
+AWK = /usr/bin/awk
 BASENAME = /usr/bin/basename
-CHMOD = /bin/chmod
-CAT = /bin/cat
-CP = /bin/cp
-DATE = /bin/date
+CHMOD = /usr/bin/chmod
+CAT = /usr/bin/cat
+CP = /usr/bin/cp
+DATE = /usr/bin/date
 DIRNAME = /usr/bin/dirname
-EGREP = /bin/egrep
-FIND = /bin/find
-GREP = /bin/grep
-KSH = /bin/ksh
-LS = /bin/ls
-MKDIR = /bin/mkdir
-MV = /bin/mv
-NAWK = /usr/local/bin/nawk
+EGREP = /usr/bin/egrep
+FIND = /usr/bin/find
+GREP = /usr/bin/grep
+KSH = /usr/bin/ksh
+LS = /usr/bin/ls
+MKDIR = /usr/bin/mkdir
+MV = /usr/bin/mv
+NAWK = /usr/bin/awk
 PRINTF = /usr/bin/printf
-PS = /bin/ps
-PWD = /bin/pwd
-RM = /bin/rm -rf
-SED = /bin/sed
+PS = /usr/bin/ps
+PWD = /usr/bin/pwd
+RM = /usr/bin/rm -rf
+SED = /usr/bin/sed
 SORT = /usr/bin/sort
 SPLIT = /usr/bin/split
-TAR = /bin/tar
+TAR = /usr/bin/tar
 TEE = /usr/bin/tee
 TEST = /usr/bin/test
 TR = /usr/bin/tr
@@ -367,6 +367,6 @@ CLASSDEP = $(GENERAL_JAVA) -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar
 
 JAXB_LIBS.sh = for i in `$(LS) -1 $(JAXB_HOME)/mod/*.jar`; do JAXB_LIBS="$$JAXB_LIBS:$$i"; done; echo $$JAXB_LIBS;
 JAXB_LIBS = $(shell $(JAXB_LIBS.sh))
-JAVAC_6 = $(JAVAHOME_6)/bin/javac -target 1.8 -Xbootclasspath/p:$(JAXB_LIBS)
+JAVAC_6 = $(JAVAHOME_6)/bin/javac -Xbootclasspath/p:$(JAXB_LIBS)
 JAVA_6 = $(JAVAHOME_6)/bin/java -Xbootclasspath/p:$(JAXB_LIBS)
 
