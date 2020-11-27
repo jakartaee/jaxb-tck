@@ -60,7 +60,8 @@
           description="copy the file">
     <mkdir dir="${dist}"/>
     <mkdir dir="${dist}/${bundle.folder}"/>
-      <copy file="LICENSE_EFTL.md" todir="${dist}/${bundle.folder}"/>
+      <copy file="LICENSE_EFTL.md" tofile="LICENSE.md"/>
+      <copy file="LICENSE.md" todir="${dist}/${bundle.folder}"/>
   </target>
   
   <target name="dist_eftl" depends="clean"
