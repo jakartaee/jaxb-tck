@@ -1,5 +1,5 @@
 #
-# Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1999, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -20,7 +20,7 @@
 #
 # JavaTest
 
-TOOLS_JAVAC=$(PRECOMPILE_JAVAC) -target 1.8
+TOOLS_JAVAC=$(PRECOMPILE_JAVAC)
 
 JAVAFILES.com.sun.jaxb_tck.interview = \
 	JAXBTCKParameters.java \
