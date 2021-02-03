@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2003, 2021 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -32,7 +32,7 @@ import java.io.PrintWriter;
 public class SigTestWrapper implements Test {
 
     private final static int JAVA_8_0 = 80;
-    private final static int JAVA_9_0 = 90;
+    private final static int JAVA_11_0 = 110;
     private final static int UNSUPPORTED_JAVA = -1;
 
     private static String FILE_SEPARATOR =
@@ -50,8 +50,8 @@ public class SigTestWrapper implements Test {
         case JAVA_8_0:
             fileName += "8.0";
             break;
-        case JAVA_9_0:
-            fileName += "9.0";
+        case JAVA_11_0:
+            fileName += "11.0";
             break;
         default:
             return Status.failed("Unsupported Java version: "
@@ -86,8 +86,8 @@ public class SigTestWrapper implements Test {
 
         if (javaVersion.startsWith("1.8.0") || javaVersion.startsWith("8.0")) {
             return JAVA_8_0;
-        } else if (javaVersion.startsWith("1.9") || javaVersion.startsWith("9")) {
-            return JAVA_9_0;
+        } else if (javaVersion.startsWith("11.0")) {
+            return JAVA_11_0;
         } else {
             return UNSUPPORTED_JAVA;
         }
