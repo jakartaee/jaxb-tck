@@ -25,7 +25,7 @@ TEST_SUITE_SCRIPT.sh=echo "testsuite=com.sun.jaxb_tck.lib.JaxbTckTestSuite"
 test_run_testsuite_jtt.ok: $(ZIP.files)
 	@ $(RM) $(TCKDIR)/testsuite.jtt
 	echo "name=JAXB TCK testsuite" > $(TCKDIR)/testsuite.jtt
-	echo "id=XMLB-TCK-3.0" >> $(TCKDIR)/testsuite.jtt
+	echo "id=XMLB-TCK-3.1" >> $(TCKDIR)/testsuite.jtt
 	echo "classpath=./classes/" >> $(TCKDIR)/testsuite.jtt
 	echo "$(shell $(TEST_SUITE_SCRIPT.sh))" >> $(TCKDIR)/testsuite.jtt
 	echo "$(shell $(TEST_EXECUTE_SCRIPT.sh))" >> $(TCKDIR)/testsuite.jtt

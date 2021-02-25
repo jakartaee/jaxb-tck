@@ -64,7 +64,7 @@ export BASEDIR=`pwd`
 WGET_PROPS="--progress=bar:force --no-cache"
 
 if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
-  export JAXB_RI_BUNDLE_URL='https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-ri/3.0.0-M4/jaxb-ri-3.0.0-M4.zip'
+  export JAXB_RI_BUNDLE_URL='https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-ri/3.0.0/jaxb-ri-3.0.0.zip'
 fi
 
 echo "JAXB_RI_BUNDLE_URL=${JAXB_RI_BUNDLE_URL}"
