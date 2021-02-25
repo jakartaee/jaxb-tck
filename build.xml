@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 
-    Copyright (c) 2020 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2020, 2021 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -53,6 +53,12 @@
       <zipfileset dir="${dist}/${bundle.folder}" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="jaxb-tck-build/XMLB-TCK-3.0" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="dist" includes="docs/**/*" excludes="**/?/**" prefix="${bundle.folder}"/>
+      <zipfileset dir="${BASEDIR}/userguide/target/generated-docs"
+                  includes="*.pdf"
+                  prefix="${bundle.folder}/docs/pdf-usersguide"/>
+      <zipfileset dir="${BASEDIR}/userguide/target/staging"
+                  includes="*.html,css/*,img/*"
+                  prefix="${bundle.folder}/docs/html-usersguide"/>
     </zip>
   </target>
 
@@ -74,22 +80,19 @@
       <zipfileset dir="${dist}/${bundle.folder}" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="jaxb-tck-build/XMLB-TCK-3.0" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="dist" includes="docs/**/*" excludes="**/?/**" prefix="${bundle.folder}"/>
+      <zipfileset dir="${BASEDIR}/userguide/target/generated-docs"
+                  includes="*.pdf"
+                  prefix="${bundle.folder}/docs/pdf-usersguide"/>
+      <zipfileset dir="${BASEDIR}/userguide/target/staging"
+                  includes="*.html,css/*,img/*"
+                  prefix="${bundle.folder}/docs/html-usersguide"/>
     </zip>
   </target>
 
   <target name="mvn">
-        <exec dir="${BASEDIR}/userguide" executable="mvn"/>
-        <copy toDir="${dist}/docs/">
-            <fileset dir="${BASEDIR}/userguide/target"
-                     includes="staging/*.html,staging/css/*,staging/img/*,
-                     generated-docs/*.pdf"/>
-        </copy>
-        <move todir="${dist}/docs/pdf-usersguide">
-            <fileset dir="${dist}/docs/generated-docs"/>
-        </move>
-        <move todir="${dist}/docs/html-usersguide">
-            <fileset dir="${dist}/docs/staging"/>
-        </move>
+        <exec dir="${BASEDIR}/userguide" executable="mvn">
+              <arg line="-B"/>
+        </exec>
    </target>
 
 
