@@ -57,7 +57,7 @@ spec:
            defaultValue: '',
            description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
     string(name: 'TCK_BUNDLE_FILE_NAME', 
-           defaultValue: 'jakarta-xml-binding-tck-3.1.0.zip', 
+           defaultValue: 'jakarta-xml-binding-tck-3.0.1.zip', 
 	   description: 'Name of bundle file to be appended to the base url' )
     string(name: 'GF_BUNDLE_URL', 
            defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0-SNAPSHOT-nightly.zip', 
@@ -76,7 +76,7 @@ spec:
   environment {
     ANT_OPTS = "-Djavax.xml.accessExternalStylesheet=all -Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=file,http"
     LANG="en_US.UTF-8"
-    DEFAULT_GF_BUNDLE_URL="https://download.eclipse.org/ee4j/glassfish/glassfish-6.0.0-SNAPSHOT-nightly.zip" 
+    DEFAULT_GF_BUNDLE_URL="https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0-SNAPSHOT-nightly.zip" 
   }
   stages {
     stage('jaxb-tck-build') {

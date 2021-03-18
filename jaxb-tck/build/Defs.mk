@@ -27,7 +27,7 @@ TEST_JAXB_BUILD = b01
 JAXB_ID = jaxb-$(TEST_JAXB_VERSION)-$(TEST_JAXB_MILESTONE)-$(TEST_JAXB_BUILD)
 
 # TCK Version and release designation
-TCKMM_STAND_ALONE = 31
+TCKMM_STAND_ALONE = 30
 
 TCKMM.sh = \
     if [ -z "$(JCKMM)" ]; then \
@@ -39,7 +39,7 @@ TCKMM = $(shell $(TCKMM.sh))
 
 
 # TCK Version and release designation
-TCK.MM_STAND_ALONE = 3.1
+TCK.MM_STAND_ALONE = 3.0
 TCK.MM.sh = \
     if [ -z "$(JCK.MM)" ]; then \
         echo $(TCK.MM_STAND_ALONE) ; \
