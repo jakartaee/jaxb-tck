@@ -91,7 +91,7 @@
 
   <target name="mvn">
         <exec dir="${BASEDIR}/userguide" executable="mvn">
-              <arg line="-B"/>
+              <arg line="-B -V -Dmaven.repo.local=${BASEDIR}/.m2/repository"/>
         </exec>
    </target>
 
