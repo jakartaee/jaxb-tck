@@ -20,6 +20,8 @@ import com.sun.javatest.Test;
 import com.sun.javatest.Status;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class wraps the signature test.
@@ -31,46 +33,67 @@ import java.io.PrintWriter;
  */
 public class SigTestWrapper implements Test {
 
-    private final static int JAVA_8_0 = 80;
-    private final static int JAVA_11_0 = 110;
-    private final static int UNSUPPORTED_JAVA = -1;
-
     private static String FILE_SEPARATOR =
         System.getProperty("file.separator");
+
+
+    private static String[] excludeJdkClasses = {
+          "java.util.Map",
+          "java.lang.Object",
+          "java.io.ByteArrayInputStream",
+          "java.io.InputStream",
+          "java.lang.Deprecated",
+          "java.io.Writer",
+          "java.io.OutputStream",
+          "java.util.List",
+          "java.util.Collection",
+          "java.lang.instrument.IllegalClassFormatException",
+          "javax.transaction.xa.XAException",
+          "javax.xml.transform.sax",
+          "java.lang.annotation.Repeatable",
+          "java.lang.InterruptedException",
+          "java.lang.CloneNotSupportedException",
+          "java.lang.Throwable",
+          "java.lang.Thread",
+          "java.lang.Enum",
+          "org.xml.sax"
+    };
+
+    private static final String EXCLUDE_JDK_CLASS_FLAG = "-IgnoreJDKClass";
+
+    private static final String FILENAME_FLAG = "-FileName";
+
+
 
     /**
      * Implementation of method com.sun.javatest.Test.run()
      */
     public Status run(String [] args, PrintWriter err, PrintWriter out) {
-        String fileName = "sig" + FILE_SEPARATOR, testedPackage, sigTestArgs[];
 
-        
-        switch (getJavaVersion()) {
+        List command = new ArrayList();
 
-        case JAVA_8_0:
-            fileName += "8.0";
-            break;
-        case JAVA_11_0:
-            fileName += "11.0";
-            break;
-        default:
-            return Status.failed("Unsupported Java version: "
-                                 + System.getProperty("java.version"));
+        for(int i=0; i < args.length; i++){
+          command.add(args[i]);
         }
 
-        fileName += FILE_SEPARATOR;
+        String fileName = "sig" + FILE_SEPARATOR, testedPackage, sigTestArgs[];
+
         testedPackage = getTestedPackage(args);
         if (testedPackage == null) {
             return Status.failed("Package not specified.");
         }
         fileName += testedPackage + ".sig";
 
+        command.add(FILENAME_FLAG);
+        command.add(fileName);
         
-        sigTestArgs = new String[args.length + 2];
-        System.arraycopy(args, 0, sigTestArgs, 0, args.length);
-        sigTestArgs[args.length] = "-FileName";
-        sigTestArgs[args.length + 1] = fileName;
-        
+        for(String jdkClassName:excludeJdkClasses) {
+          command.add(EXCLUDE_JDK_CLASS_FLAG);
+          command.add(jdkClassName);
+        }
+
+        sigTestArgs = ((String[]) command.toArray(new String[command.size()]));
+       
         out.println("debug info:");
         out.println("  java.version: " + System.getProperty("java.version"));
         out.println("  sigtest args: ");
@@ -81,18 +104,7 @@ public class SigTestWrapper implements Test {
         return runSignatureTest(sigTestArgs, err, out);
     }
 
-    private int getJavaVersion() {
-        String javaVersion = System.getProperty("java.version");
-
-        if (javaVersion.startsWith("1.8.0") || javaVersion.startsWith("8.0")) {
-            return JAVA_8_0;
-        } else if (javaVersion.startsWith("11.0")) {
-            return JAVA_11_0;
-        } else {
-            return UNSUPPORTED_JAVA;
-        }
-    }
-
+    
     private String getTestedPackage(String args[]) {
         int i;
 

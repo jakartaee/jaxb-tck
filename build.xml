@@ -27,7 +27,7 @@
   <property name="BASEDIR" value="${basedir}"/>
   <property name="deliverable.name" value="xml-binding-tck"/>
   <property name="eclipse.deliverable.name" value="jakarta-xml-binding-tck"/>
-  <property name="deliverable.version" value="3.0.1"/>
+  <property name="deliverable.version" value="3.0.2"/>
   <property name="bundle.name"
             value="${deliverable.name}-${deliverable.version}.zip"/>
   <property name="bundle.folder"

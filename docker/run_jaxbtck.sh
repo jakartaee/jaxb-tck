@@ -39,17 +39,35 @@ if [ -z "$ANT_HOME" ]; then
 fi
 
 if [ -z "$JAVA_HOME" ]; then
-  export JAVA_HOME=/opt/jdk1.8.0_171
+  export JAVA_HOME=/opt/openjdk-8u292-b10
 fi
 
-if [[ "$JDK" == "JDK11" || "$JDK" == "jdk11" ]];then
-  export JAVA_HOME=${JDK11_HOME}
-  sed -i "s#^jck.env.jaxb.testExecute.cmdAsFile=.*#jck.env.jaxb.testExecute.cmdAsFile=${JDK11_HOME}/bin/java#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
+if [[ "$JDK" != "JDK8" || "$JDK" != "jdk8" ]];then
+
+  if [[ "$JDK" == "JDK9" || "$JDK" == "jdk9" ]];then
+    export JAVA_HOME=${JDK9_HOME}
+  elif [[ "$JDK" == "JDK10" || "$JDK" == "jdk10" ]];then
+    export JAVA_HOME=${JDK10_HOME}
+  elif [[ "$JDK" == "JDK11" || "$JDK" == "jdk11" ]];then
+	  export JAVA_HOME=${JDK11_HOME}
+	elif [[ "$JDK" == "JDK12" || "$JDK" == "jdk12" ]];then
+	  export JAVA_HOME=${JDK12_HOME}
+	elif [[ "$JDK" == "JDK13" || "$JDK" == "jdk13" ]];then
+	  export JAVA_HOME=${JDK13_HOME}
+	elif [[ "$JDK" == "JDK14" || "$JDK" == "jdk14" ]];then
+	  export JAVA_HOME=${JDK14_HOME}
+	elif [[ "$JDK" == "JDK15" || "$JDK" == "jdk15" ]];then
+	  export JAVA_HOME=${JDK15_HOME}
+	elif [[ "$JDK" == "JDK16" || "$JDK" == "jdk16" ]];then
+	  export JAVA_HOME=${JDK16_HOME}
+	fi  
+
+  sed -i "s#^jck.env.jaxb.testExecute.cmdAsFile=.*#jck.env.jaxb.testExecute.cmdAsFile=${JAVA_HOME}/bin/java#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
 
   if [[ "$RUNTIME" == "Glassfish" ]]; then
-    sed -i "s#^jck.env.jaxb.testExecute.otherEnvVars=.*#jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=${JDK11_HOME} JAXB_HOME=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
+    sed -i "s#^jck.env.jaxb.testExecute.otherEnvVars=.*#jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
   else
-    sed -i "s#^jck.env.jaxb.testExecute.otherEnvVars=.*#jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=${JDK11_HOME} JAXB_HOME=${WORKSPACE}/jaxb-ri#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
+    sed -i "s#^jck.env.jaxb.testExecute.otherEnvVars=.*#jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/jaxb-ri#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
   fi
 fi
 
