@@ -1,11 +1,8 @@
-#Signature file v4.3
-#Version 
-
-# Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
-
+#Signature file v4.1
+#Version 3.0_se8
 
 CLSS public abstract jakarta.xml.bind.Binder<%0 extends java.lang.Object>
-cons public <init>()
+cons public init()
 meth public abstract <%0 extends java.lang.Object> jakarta.xml.bind.JAXBElement<{%%0}> unmarshal({jakarta.xml.bind.Binder%0},java.lang.Class<{%%0}>) throws jakarta.xml.bind.JAXBException
 meth public abstract jakarta.xml.bind.ValidationEventHandler getEventHandler() throws jakarta.xml.bind.JAXBException
 meth public abstract java.lang.Object getJAXBNode({jakarta.xml.bind.Binder%0})
@@ -23,8 +20,8 @@ meth public abstract {jakarta.xml.bind.Binder%0} updateXML(java.lang.Object,{jak
 supr java.lang.Object
 
 CLSS public jakarta.xml.bind.DataBindingException
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 supr java.lang.RuntimeException
 
 CLSS public final jakarta.xml.bind.DatatypeConverter
@@ -132,14 +129,14 @@ hfds cache
 hcls Cache
 
 CLSS public abstract jakarta.xml.bind.JAXBContext
-cons protected <init>()
+cons protected init()
 fld public final static java.lang.String JAXB_CONTEXT_FACTORY = "jakarta.xml.bind.JAXBContextFactory"
 meth public !varargs static jakarta.xml.bind.JAXBContext newInstance(java.lang.Class<?>[]) throws jakarta.xml.bind.JAXBException
 meth public <%0 extends java.lang.Object> jakarta.xml.bind.Binder<{%%0}> createBinder(java.lang.Class<{%%0}>)
 meth public abstract jakarta.xml.bind.Marshaller createMarshaller() throws jakarta.xml.bind.JAXBException
 meth public abstract jakarta.xml.bind.Unmarshaller createUnmarshaller() throws jakarta.xml.bind.JAXBException
 meth public abstract jakarta.xml.bind.Validator createValidator() throws jakarta.xml.bind.JAXBException
- anno 0 java.lang.Deprecated(boolean forRemoval=false, java.lang.String since="")
+ anno 0 java.lang.Deprecated()
 meth public jakarta.xml.bind.Binder<org.w3c.dom.Node> createBinder()
 meth public jakarta.xml.bind.JAXBIntrospector createJAXBIntrospector()
 meth public static jakarta.xml.bind.JAXBContext newInstance(java.lang.Class<?>[],java.util.Map<java.lang.String,?>) throws jakarta.xml.bind.JAXBException
@@ -154,8 +151,8 @@ meth public abstract jakarta.xml.bind.JAXBContext createContext(java.lang.Class<
 meth public abstract jakarta.xml.bind.JAXBContext createContext(java.lang.String,java.lang.ClassLoader,java.util.Map<java.lang.String,?>) throws jakarta.xml.bind.JAXBException
 
 CLSS public jakarta.xml.bind.JAXBElement<%0 extends java.lang.Object>
-cons public <init>(javax.xml.namespace.QName,java.lang.Class<{jakarta.xml.bind.JAXBElement%0}>,java.lang.Class,{jakarta.xml.bind.JAXBElement%0})
-cons public <init>(javax.xml.namespace.QName,java.lang.Class<{jakarta.xml.bind.JAXBElement%0}>,{jakarta.xml.bind.JAXBElement%0})
+cons public init(javax.xml.namespace.QName,java.lang.Class<{jakarta.xml.bind.JAXBElement%0}>,java.lang.Class,{jakarta.xml.bind.JAXBElement%0})
+cons public init(javax.xml.namespace.QName,java.lang.Class<{jakarta.xml.bind.JAXBElement%0}>,{jakarta.xml.bind.JAXBElement%0})
 fld protected boolean nil
 fld protected final java.lang.Class scope
 fld protected final java.lang.Class<{jakarta.xml.bind.JAXBElement%0}> declaredType
@@ -177,15 +174,15 @@ hfds serialVersionUID
 
 CLSS public final static jakarta.xml.bind.JAXBElement$GlobalScope
  outer jakarta.xml.bind.JAXBElement
-cons public <init>()
+cons public init()
 supr java.lang.Object
 
 CLSS public jakarta.xml.bind.JAXBException
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.String)
-cons public <init>(java.lang.String,java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.String)
+cons public init(java.lang.String,java.lang.String,java.lang.Throwable)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 meth public java.lang.String getErrorCode()
 meth public java.lang.String toString()
 meth public java.lang.Throwable getCause()
@@ -198,23 +195,23 @@ supr java.lang.Exception
 hfds errorCode,linkedException,serialVersionUID
 
 CLSS public abstract jakarta.xml.bind.JAXBIntrospector
-cons public <init>()
+cons public init()
 meth public abstract boolean isElement(java.lang.Object)
 meth public abstract javax.xml.namespace.QName getElementName(java.lang.Object)
 meth public static java.lang.Object getValue(java.lang.Object)
 supr java.lang.Object
 
 CLSS public final jakarta.xml.bind.JAXBPermission
-cons public <init>(java.lang.String)
+cons public init(java.lang.String)
 supr java.security.BasicPermission
 hfds serialVersionUID
 
 CLSS public jakarta.xml.bind.MarshalException
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.String)
-cons public <init>(java.lang.String,java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.String)
+cons public init(java.lang.String,java.lang.String,java.lang.Throwable)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 supr jakarta.xml.bind.JAXBException
 
 CLSS public abstract interface jakarta.xml.bind.Marshaller
@@ -249,7 +246,7 @@ meth public abstract void setSchema(javax.xml.validation.Schema)
 
 CLSS public abstract static jakarta.xml.bind.Marshaller$Listener
  outer jakarta.xml.bind.Marshaller
-cons public <init>()
+cons public init()
 meth public void afterMarshal(java.lang.Object)
 meth public void beforeMarshal(java.lang.Object)
 supr java.lang.Object
@@ -264,25 +261,25 @@ CLSS public abstract interface jakarta.xml.bind.PrintConversionEvent
 intf jakarta.xml.bind.ValidationEvent
 
 CLSS public jakarta.xml.bind.PropertyException
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.Object)
-cons public <init>(java.lang.String,java.lang.String)
-cons public <init>(java.lang.String,java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.Object)
+cons public init(java.lang.String,java.lang.String)
+cons public init(java.lang.String,java.lang.String,java.lang.Throwable)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 supr jakarta.xml.bind.JAXBException
 
 CLSS public abstract jakarta.xml.bind.SchemaOutputResolver
-cons public <init>()
+cons public init()
 meth public abstract javax.xml.transform.Result createOutput(java.lang.String,java.lang.String) throws java.io.IOException
 supr java.lang.Object
 
 CLSS public jakarta.xml.bind.TypeConstraintException
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.String)
-cons public <init>(java.lang.String,java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.String)
+cons public init(java.lang.String,java.lang.String,java.lang.Throwable)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 meth public java.lang.String getErrorCode()
 meth public java.lang.String toString()
 meth public java.lang.Throwable getLinkedException()
@@ -293,11 +290,11 @@ supr java.lang.RuntimeException
 hfds errorCode,linkedException,serialVersionUID
 
 CLSS public jakarta.xml.bind.UnmarshalException
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.String)
-cons public <init>(java.lang.String,java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.String)
+cons public init(java.lang.String,java.lang.String,java.lang.Throwable)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 supr jakarta.xml.bind.JAXBException
 
 CLSS public abstract interface jakarta.xml.bind.Unmarshaller
@@ -334,7 +331,7 @@ meth public abstract void setValidating(boolean) throws jakarta.xml.bind.JAXBExc
 
 CLSS public abstract static jakarta.xml.bind.Unmarshaller$Listener
  outer jakarta.xml.bind.Unmarshaller
-cons public <init>()
+cons public init()
 meth public void afterUnmarshal(java.lang.Object,java.lang.Object)
 meth public void beforeUnmarshal(java.lang.Object,java.lang.Object)
 supr java.lang.Object
@@ -364,11 +361,11 @@ meth public abstract java.net.URL getURL()
 meth public abstract org.w3c.dom.Node getNode()
 
 CLSS public jakarta.xml.bind.ValidationException
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.String)
-cons public <init>(java.lang.String,java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.String)
+cons public init(java.lang.String,java.lang.String,java.lang.Throwable)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 supr jakarta.xml.bind.JAXBException
 
 CLSS public abstract interface jakarta.xml.bind.Validator
@@ -385,8 +382,8 @@ meth public abstract {jakarta.xml.bind.annotation.DomHandler%0} getElement({jaka
 meth public abstract {jakarta.xml.bind.annotation.DomHandler%1} createUnmarshaller(jakarta.xml.bind.ValidationEventHandler)
 
 CLSS public jakarta.xml.bind.annotation.W3CDomHandler
-cons public <init>()
-cons public <init>(javax.xml.parsers.DocumentBuilder)
+cons public init()
+cons public init(javax.xml.parsers.DocumentBuilder)
 intf jakarta.xml.bind.annotation.DomHandler<org.w3c.dom.Element,javax.xml.transform.dom.DOMResult>
 meth public javax.xml.parsers.DocumentBuilder getBuilder()
 meth public javax.xml.transform.Source marshal(org.w3c.dom.Element,jakarta.xml.bind.ValidationEventHandler)
@@ -417,14 +414,14 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccess
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessOrder value() value= UNDEFINED
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessOrder value()
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAccessorType
  anno 0 java.lang.annotation.Inherited()
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value() value= PUBLIC_MEMBER
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlAccessType value()
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAnyAttribute
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
@@ -435,8 +432,8 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAnyEle
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[FIELD, METHOD])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault boolean lax() value= false
-meth public abstract !hasdefault java.lang.Class<? extends jakarta.xml.bind.annotation.DomHandler> value() value= class jakarta.xml.bind.annotation.W3CDomHandler
+meth public abstract !hasdefault boolean lax()
+meth public abstract !hasdefault java.lang.Class<? extends jakarta.xml.bind.annotation.DomHandler> value()
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAttachmentRef
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
@@ -447,25 +444,25 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlAttrib
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[FIELD, METHOD])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault boolean required() value= false
-meth public abstract !hasdefault java.lang.String name() value= "##default"
-meth public abstract !hasdefault java.lang.String namespace() value= "##default"
+meth public abstract !hasdefault boolean required()
+meth public abstract !hasdefault java.lang.String name()
+meth public abstract !hasdefault java.lang.String namespace()
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlElement
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[FIELD, METHOD, PARAMETER])
 innr public final static DEFAULT
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault boolean nillable() value= false
-meth public abstract !hasdefault boolean required() value= false
-meth public abstract !hasdefault java.lang.Class type() value= class jakarta.xml.bind.annotation.XmlElement$DEFAULT
-meth public abstract !hasdefault java.lang.String defaultValue() value= " "
-meth public abstract !hasdefault java.lang.String name() value= "##default"
-meth public abstract !hasdefault java.lang.String namespace() value= "##default"
+meth public abstract !hasdefault boolean nillable()
+meth public abstract !hasdefault boolean required()
+meth public abstract !hasdefault java.lang.Class type()
+meth public abstract !hasdefault java.lang.String defaultValue()
+meth public abstract !hasdefault java.lang.String name()
+meth public abstract !hasdefault java.lang.String namespace()
 
 CLSS public final static jakarta.xml.bind.annotation.XmlElement$DEFAULT
  outer jakarta.xml.bind.annotation.XmlElement
-cons public <init>()
+cons public init()
 supr java.lang.Object
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlElementDecl
@@ -473,16 +470,16 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlElemen
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[METHOD])
 innr public final static GLOBAL
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault java.lang.Class scope() value= class jakarta.xml.bind.annotation.XmlElementDecl$GLOBAL
-meth public abstract !hasdefault java.lang.String defaultValue() value= " "
-meth public abstract !hasdefault java.lang.String namespace() value= "##default"
-meth public abstract !hasdefault java.lang.String substitutionHeadName() value= ""
-meth public abstract !hasdefault java.lang.String substitutionHeadNamespace() value= "##default"
+meth public abstract !hasdefault java.lang.Class scope()
+meth public abstract !hasdefault java.lang.String defaultValue()
+meth public abstract !hasdefault java.lang.String namespace()
+meth public abstract !hasdefault java.lang.String substitutionHeadName()
+meth public abstract !hasdefault java.lang.String substitutionHeadNamespace()
 meth public abstract java.lang.String name()
 
 CLSS public final static jakarta.xml.bind.annotation.XmlElementDecl$GLOBAL
  outer jakarta.xml.bind.annotation.XmlElementDecl
-cons public <init>()
+cons public init()
 supr java.lang.Object
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlElementRef
@@ -490,14 +487,14 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlElemen
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[FIELD, METHOD])
 innr public final static DEFAULT
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault boolean required() value= true
-meth public abstract !hasdefault java.lang.Class type() value= class jakarta.xml.bind.annotation.XmlElementRef$DEFAULT
-meth public abstract !hasdefault java.lang.String name() value= "##default"
-meth public abstract !hasdefault java.lang.String namespace() value= ""
+meth public abstract !hasdefault boolean required()
+meth public abstract !hasdefault java.lang.Class type()
+meth public abstract !hasdefault java.lang.String name()
+meth public abstract !hasdefault java.lang.String namespace()
 
 CLSS public final static jakarta.xml.bind.annotation.XmlElementRef$DEFAULT
  outer jakarta.xml.bind.annotation.XmlElementRef
-cons public <init>()
+cons public init()
 supr java.lang.Object
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlElementRefs
@@ -510,10 +507,10 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlElemen
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[FIELD, METHOD])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault boolean nillable() value= false
-meth public abstract !hasdefault boolean required() value= false
-meth public abstract !hasdefault java.lang.String name() value= "##default"
-meth public abstract !hasdefault java.lang.String namespace() value= "##default"
+meth public abstract !hasdefault boolean nillable()
+meth public abstract !hasdefault boolean required()
+meth public abstract !hasdefault java.lang.String name()
+meth public abstract !hasdefault java.lang.String namespace()
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlElements
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
@@ -525,7 +522,7 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnum
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault java.lang.Class<?> value() value= class java.lang.String
+meth public abstract !hasdefault java.lang.Class<?> value()
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlEnumValue
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
@@ -588,32 +585,32 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlRootEl
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault java.lang.String name() value= "##default"
-meth public abstract !hasdefault java.lang.String namespace() value= "##default"
+meth public abstract !hasdefault java.lang.String name()
+meth public abstract !hasdefault java.lang.String namespace()
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlSchema
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE])
 fld public final static java.lang.String NO_LOCATION = "##generate"
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlNsForm attributeFormDefault() value= UNSET
-meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlNsForm elementFormDefault() value= UNSET
-meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlNs[] xmlns() value= []
-meth public abstract !hasdefault java.lang.String location() value= "##generate"
-meth public abstract !hasdefault java.lang.String namespace() value= ""
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlNsForm attributeFormDefault()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlNsForm elementFormDefault()
+meth public abstract !hasdefault jakarta.xml.bind.annotation.XmlNs[] xmlns()
+meth public abstract !hasdefault java.lang.String location()
+meth public abstract !hasdefault java.lang.String namespace()
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlSchemaType
  anno 0 java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy value=RUNTIME)
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[FIELD, METHOD, PACKAGE])
 innr public final static DEFAULT
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault java.lang.Class type() value= class jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT
-meth public abstract !hasdefault java.lang.String namespace() value= "http://www.w3.org/2001/XMLSchema"
+meth public abstract !hasdefault java.lang.Class type()
+meth public abstract !hasdefault java.lang.String namespace()
 meth public abstract java.lang.String name()
 
 CLSS public final static jakarta.xml.bind.annotation.XmlSchemaType$DEFAULT
  outer jakarta.xml.bind.annotation.XmlSchemaType
-cons public <init>()
+cons public init()
 supr java.lang.Object
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlSchemaTypes
@@ -638,15 +635,15 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlType
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[TYPE])
 innr public final static DEFAULT
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault java.lang.Class factoryClass() value= class jakarta.xml.bind.annotation.XmlType$DEFAULT
-meth public abstract !hasdefault java.lang.String factoryMethod() value= ""
-meth public abstract !hasdefault java.lang.String name() value= "##default"
-meth public abstract !hasdefault java.lang.String namespace() value= "##default"
-meth public abstract !hasdefault java.lang.String[] propOrder() value= [""]
+meth public abstract !hasdefault java.lang.Class factoryClass()
+meth public abstract !hasdefault java.lang.String factoryMethod()
+meth public abstract !hasdefault java.lang.String name()
+meth public abstract !hasdefault java.lang.String namespace()
+meth public abstract !hasdefault java.lang.String[] propOrder()
 
 CLSS public final static jakarta.xml.bind.annotation.XmlType$DEFAULT
  outer jakarta.xml.bind.annotation.XmlType
-cons public <init>()
+cons public init()
 supr java.lang.Object
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlValue
@@ -655,27 +652,27 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.XmlValue
 intf java.lang.annotation.Annotation
 
 CLSS public jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter
-cons public <init>()
+cons public init()
 meth protected static boolean isWhiteSpace(char)
 meth public java.lang.String marshal(java.lang.String)
 meth public java.lang.String unmarshal(java.lang.String)
 supr jakarta.xml.bind.annotation.adapters.XmlAdapter<java.lang.String,java.lang.String>
 
 CLSS public final jakarta.xml.bind.annotation.adapters.HexBinaryAdapter
-cons public <init>()
+cons public init()
 meth public byte[] unmarshal(java.lang.String)
 meth public java.lang.String marshal(byte[])
 supr jakarta.xml.bind.annotation.adapters.XmlAdapter<java.lang.String,byte[]>
 
 CLSS public final jakarta.xml.bind.annotation.adapters.NormalizedStringAdapter
-cons public <init>()
+cons public init()
 meth protected static boolean isWhiteSpaceExceptSpace(char)
 meth public java.lang.String marshal(java.lang.String)
 meth public java.lang.String unmarshal(java.lang.String)
 supr jakarta.xml.bind.annotation.adapters.XmlAdapter<java.lang.String,java.lang.String>
 
 CLSS public abstract jakarta.xml.bind.annotation.adapters.XmlAdapter<%0 extends java.lang.Object, %1 extends java.lang.Object>
-cons protected <init>()
+cons protected init()
 meth public abstract {jakarta.xml.bind.annotation.adapters.XmlAdapter%0} marshal({jakarta.xml.bind.annotation.adapters.XmlAdapter%1}) throws java.lang.Exception
 meth public abstract {jakarta.xml.bind.annotation.adapters.XmlAdapter%1} unmarshal({jakarta.xml.bind.annotation.adapters.XmlAdapter%0}) throws java.lang.Exception
 supr java.lang.Object
@@ -685,12 +682,12 @@ CLSS public abstract interface !annotation jakarta.xml.bind.annotation.adapters.
  anno 0 java.lang.annotation.Target(java.lang.annotation.ElementType[] value=[PACKAGE, FIELD, METHOD, TYPE, PARAMETER])
 innr public final static DEFAULT
 intf java.lang.annotation.Annotation
-meth public abstract !hasdefault java.lang.Class type() value= class jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter$DEFAULT
+meth public abstract !hasdefault java.lang.Class type()
 meth public abstract java.lang.Class<? extends jakarta.xml.bind.annotation.adapters.XmlAdapter> value()
 
 CLSS public final static jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter$DEFAULT
  outer jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter
-cons public <init>()
+cons public init()
 supr java.lang.Object
 
 CLSS public abstract interface !annotation jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapters
@@ -700,7 +697,7 @@ intf java.lang.annotation.Annotation
 meth public abstract jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter[] value()
 
 CLSS public abstract jakarta.xml.bind.attachment.AttachmentMarshaller
-cons public <init>()
+cons public init()
 meth public abstract java.lang.String addMtomAttachment(byte[],int,int,java.lang.String,java.lang.String,java.lang.String)
 meth public abstract java.lang.String addMtomAttachment(jakarta.activation.DataHandler,java.lang.String,java.lang.String)
 meth public abstract java.lang.String addSwaRefAttachment(jakarta.activation.DataHandler)
@@ -708,14 +705,14 @@ meth public boolean isXOPPackage()
 supr java.lang.Object
 
 CLSS public abstract jakarta.xml.bind.attachment.AttachmentUnmarshaller
-cons public <init>()
+cons public init()
 meth public abstract byte[] getAttachmentAsByteArray(java.lang.String)
 meth public abstract jakarta.activation.DataHandler getAttachmentAsDataHandler(java.lang.String)
 meth public boolean isXOPPackage()
 supr java.lang.Object
 
 CLSS public abstract jakarta.xml.bind.helpers.AbstractMarshallerImpl
-cons public <init>()
+cons public init()
 intf jakarta.xml.bind.Marshaller
 meth protected boolean isFormattedOutput()
 meth protected boolean isFragment()
@@ -753,7 +750,7 @@ supr java.lang.Object
 hfds aliases,encoding,eventHandler,formattedOutput,fragment,noNSSchemaLocation,schemaLocation
 
 CLSS public abstract jakarta.xml.bind.helpers.AbstractUnmarshallerImpl
-cons public <init>()
+cons public init()
 fld protected boolean validating
 intf jakarta.xml.bind.Unmarshaller
 meth protected abstract java.lang.Object unmarshal(org.xml.sax.XMLReader,org.xml.sax.InputSource) throws jakarta.xml.bind.JAXBException
@@ -790,32 +787,32 @@ supr java.lang.Object
 hfds eventHandler,reader
 
 CLSS public jakarta.xml.bind.helpers.DefaultValidationEventHandler
-cons public <init>()
+cons public init()
 intf jakarta.xml.bind.ValidationEventHandler
 meth public boolean handleEvent(jakarta.xml.bind.ValidationEvent)
 supr java.lang.Object
 
 CLSS public jakarta.xml.bind.helpers.NotIdentifiableEventImpl
-cons public <init>(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator)
-cons public <init>(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator,java.lang.Throwable)
+cons public init(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator)
+cons public init(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator,java.lang.Throwable)
 intf jakarta.xml.bind.NotIdentifiableEvent
 supr jakarta.xml.bind.helpers.ValidationEventImpl
 
 CLSS public jakarta.xml.bind.helpers.ParseConversionEventImpl
-cons public <init>(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator)
-cons public <init>(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator,java.lang.Throwable)
+cons public init(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator)
+cons public init(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator,java.lang.Throwable)
 intf jakarta.xml.bind.ParseConversionEvent
 supr jakarta.xml.bind.helpers.ValidationEventImpl
 
 CLSS public jakarta.xml.bind.helpers.PrintConversionEventImpl
-cons public <init>(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator)
-cons public <init>(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator,java.lang.Throwable)
+cons public init(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator)
+cons public init(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator,java.lang.Throwable)
 intf jakarta.xml.bind.PrintConversionEvent
 supr jakarta.xml.bind.helpers.ValidationEventImpl
 
 CLSS public jakarta.xml.bind.helpers.ValidationEventImpl
-cons public <init>(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator)
-cons public <init>(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator,java.lang.Throwable)
+cons public init(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator)
+cons public init(int,java.lang.String,jakarta.xml.bind.ValidationEventLocator,java.lang.Throwable)
 intf jakarta.xml.bind.ValidationEvent
 meth public int getSeverity()
 meth public jakarta.xml.bind.ValidationEventLocator getLocator()
@@ -830,11 +827,11 @@ supr java.lang.Object
 hfds linkedException,locator,message,severity
 
 CLSS public jakarta.xml.bind.helpers.ValidationEventLocatorImpl
-cons public <init>()
-cons public <init>(java.lang.Object)
-cons public <init>(org.w3c.dom.Node)
-cons public <init>(org.xml.sax.Locator)
-cons public <init>(org.xml.sax.SAXParseException)
+cons public init()
+cons public init(java.lang.Object)
+cons public init(org.w3c.dom.Node)
+cons public init(org.xml.sax.Locator)
+cons public init(org.xml.sax.SAXParseException)
 intf jakarta.xml.bind.ValidationEventLocator
 meth public int getColumnNumber()
 meth public int getLineNumber()
@@ -853,20 +850,20 @@ supr java.lang.Object
 hfds columnNumber,lineNumber,node,object,offset,url
 
 CLSS public jakarta.xml.bind.util.JAXBResult
-cons public <init>(jakarta.xml.bind.JAXBContext) throws jakarta.xml.bind.JAXBException
-cons public <init>(jakarta.xml.bind.Unmarshaller) throws jakarta.xml.bind.JAXBException
+cons public init(jakarta.xml.bind.JAXBContext) throws jakarta.xml.bind.JAXBException
+cons public init(jakarta.xml.bind.Unmarshaller) throws jakarta.xml.bind.JAXBException
 meth public java.lang.Object getResult() throws jakarta.xml.bind.JAXBException
 supr javax.xml.transform.sax.SAXResult
 hfds unmarshallerHandler
 
 CLSS public jakarta.xml.bind.util.JAXBSource
-cons public <init>(jakarta.xml.bind.JAXBContext,java.lang.Object) throws jakarta.xml.bind.JAXBException
-cons public <init>(jakarta.xml.bind.Marshaller,java.lang.Object) throws jakarta.xml.bind.JAXBException
+cons public init(jakarta.xml.bind.JAXBContext,java.lang.Object) throws jakarta.xml.bind.JAXBException
+cons public init(jakarta.xml.bind.Marshaller,java.lang.Object) throws jakarta.xml.bind.JAXBException
 supr javax.xml.transform.sax.SAXSource
 hfds contentObject,marshaller,pseudoParser
 
 CLSS public jakarta.xml.bind.util.ValidationEventCollector
-cons public <init>()
+cons public init()
 intf jakarta.xml.bind.ValidationEventHandler
 meth public boolean handleEvent(jakarta.xml.bind.ValidationEvent)
 meth public boolean hasEvents()
@@ -881,7 +878,7 @@ CLSS public abstract interface java.lang.Comparable<%0 extends java.lang.Object>
 meth public abstract int compareTo({java.lang.Comparable%0})
 
 CLSS public abstract java.lang.Enum<%0 extends java.lang.Enum<{java.lang.Enum%0}>>
-cons protected <init>(java.lang.String,int)
+cons protected init(java.lang.String,int)
 intf java.io.Serializable
 intf java.lang.Comparable<{java.lang.Enum%0}>
 meth protected final java.lang.Object clone() throws java.lang.CloneNotSupportedException
@@ -898,19 +895,18 @@ supr java.lang.Object
 hfds name,ordinal
 
 CLSS public java.lang.Exception
-cons protected <init>(java.lang.String,java.lang.Throwable,boolean,boolean)
-cons public <init>()
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons protected init(java.lang.String,java.lang.Throwable,boolean,boolean)
+cons public init()
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 supr java.lang.Throwable
 hfds serialVersionUID
 
 CLSS public java.lang.Object
-cons public <init>()
+cons public init()
 meth protected java.lang.Object clone() throws java.lang.CloneNotSupportedException
 meth protected void finalize() throws java.lang.Throwable
- anno 0 java.lang.Deprecated(boolean forRemoval=false, java.lang.String since="9")
 meth public boolean equals(java.lang.Object)
 meth public final java.lang.Class<?> getClass()
 meth public final void notify()
@@ -922,20 +918,20 @@ meth public int hashCode()
 meth public java.lang.String toString()
 
 CLSS public java.lang.RuntimeException
-cons protected <init>(java.lang.String,java.lang.Throwable,boolean,boolean)
-cons public <init>()
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons protected init(java.lang.String,java.lang.Throwable,boolean,boolean)
+cons public init()
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 supr java.lang.Exception
 hfds serialVersionUID
 
 CLSS public java.lang.Throwable
-cons protected <init>(java.lang.String,java.lang.Throwable,boolean,boolean)
-cons public <init>()
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.Throwable)
-cons public <init>(java.lang.Throwable)
+cons protected init(java.lang.String,java.lang.Throwable,boolean,boolean)
+cons public init()
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.Throwable)
+cons public init(java.lang.Throwable)
 intf java.io.Serializable
 meth public final java.lang.Throwable[] getSuppressed()
 meth public final void addSuppressed(java.lang.Throwable)
@@ -951,7 +947,7 @@ meth public void printStackTrace(java.io.PrintStream)
 meth public void printStackTrace(java.io.PrintWriter)
 meth public void setStackTrace(java.lang.StackTraceElement[])
 supr java.lang.Object
-hfds CAUSE_CAPTION,EMPTY_THROWABLE_ARRAY,NULL_CAUSE_MESSAGE,SELF_SUPPRESSION_MESSAGE,SUPPRESSED_CAPTION,SUPPRESSED_SENTINEL,UNASSIGNED_STACK,backtrace,cause,depth,detailMessage,serialVersionUID,stackTrace,suppressedExceptions
+hfds CAUSE_CAPTION,EMPTY_THROWABLE_ARRAY,NULL_CAUSE_MESSAGE,SELF_SUPPRESSION_MESSAGE,SUPPRESSED_CAPTION,SUPPRESSED_SENTINEL,UNASSIGNED_STACK,backtrace,cause,detailMessage,serialVersionUID,stackTrace,suppressedExceptions
 hcls PrintStreamOrWriter,SentinelHolder,WrappedPrintStream,WrappedPrintWriter
 
 CLSS public abstract interface java.lang.annotation.Annotation
@@ -987,8 +983,8 @@ intf java.lang.annotation.Annotation
 meth public abstract java.lang.annotation.ElementType[] value()
 
 CLSS public abstract java.security.BasicPermission
-cons public <init>(java.lang.String)
-cons public <init>(java.lang.String,java.lang.String)
+cons public init(java.lang.String)
+cons public init(java.lang.String,java.lang.String)
 intf java.io.Serializable
 meth public boolean equals(java.lang.Object)
 meth public boolean implies(java.security.Permission)
@@ -1002,7 +998,7 @@ CLSS public abstract interface java.security.Guard
 meth public abstract void checkGuard(java.lang.Object)
 
 CLSS public abstract java.security.Permission
-cons public <init>(java.lang.String)
+cons public init(java.lang.String)
 intf java.io.Serializable
 intf java.security.Guard
 meth public abstract boolean equals(java.lang.Object)
@@ -1025,11 +1021,10 @@ meth public abstract void setSystemId(java.lang.String)
 CLSS public abstract interface javax.xml.transform.Source
 meth public abstract java.lang.String getSystemId()
 meth public abstract void setSystemId(java.lang.String)
-meth public boolean isEmpty()
 
 CLSS public javax.xml.transform.sax.SAXResult
-cons public <init>()
-cons public <init>(org.xml.sax.ContentHandler)
+cons public init()
+cons public init(org.xml.sax.ContentHandler)
 fld public final static java.lang.String FEATURE = "http://javax.xml.transform.sax.SAXResult/feature"
 intf javax.xml.transform.Result
 meth public java.lang.String getSystemId()
@@ -1042,12 +1037,11 @@ supr java.lang.Object
 hfds handler,lexhandler,systemId
 
 CLSS public javax.xml.transform.sax.SAXSource
-cons public <init>()
-cons public <init>(org.xml.sax.InputSource)
-cons public <init>(org.xml.sax.XMLReader,org.xml.sax.InputSource)
+cons public init()
+cons public init(org.xml.sax.InputSource)
+cons public init(org.xml.sax.XMLReader,org.xml.sax.InputSource)
 fld public final static java.lang.String FEATURE = "http://javax.xml.transform.sax.SAXSource/feature"
 intf javax.xml.transform.Source
-meth public boolean isEmpty()
 meth public java.lang.String getSystemId()
 meth public org.xml.sax.InputSource getInputSource()
 meth public org.xml.sax.XMLReader getXMLReader()

@@ -34,7 +34,7 @@ spec:
     - "localhost.localdomain"
   containers:
   - name: jaxb-tck-ci
-    image: jakartaee/jaxbtck-base:0.2
+    image: jakartaee/jaxbtck-base:0.3
     command:
     - cat
     tty: true
@@ -51,16 +51,16 @@ spec:
            defaultValue: 'https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip',
            description: 'URL required for downloading JAXB implementation jar' )
     string(name: 'JAF_BUNDLE_URL',
-           defaultValue: 'https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.0/jakarta.activation-api-2.0.0.jar',
+           defaultValue: 'https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.1/jakarta.activation-api-2.0.1.jar',
            description: 'URL required for downloading JAF implementation jar' )
     string(name: 'TCK_BUNDLE_BASE_URL',
            defaultValue: '',
            description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
     string(name: 'TCK_BUNDLE_FILE_NAME', 
-           defaultValue: 'jakarta-xml-binding-tck-3.0.1.zip', 
+           defaultValue: 'jakarta-xml-binding-tck-3.0.2.zip', 
 	   description: 'Name of bundle file to be appended to the base url' )
     string(name: 'GF_BUNDLE_URL', 
-           defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0-SNAPSHOT-nightly.zip', 
+           defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0.zip', 
            description: 'URL required for downloading GlassFish Full/Web profile bundle' )
     string(name: 'GF_VERSION_URL', 
            defaultValue: '', 
@@ -69,14 +69,14 @@ spec:
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   choice(name: 'RUNTIME', choices: 'Glassfish\nStandalone',
            description: 'Run JAXB Tests with Standalone/Glassfish' )
-  choice(name: 'JDK', choices: 'JDK8\nJDK11',
-           description: 'Java SE Version to be used for running TCK either JDK8/JDK11' )
+  choice(name: 'JDK', choices: 'JDK8\nJDK9\nJDK10\nJDK11\nJDK12\nJDK13\nJDK14\nJDK15\nJDK16',
+           description: 'Java SE Version to be used for running TCK either JDK8/JDK9/JDK10/JDK11/JDK12/JDK13/JDK14/JDK15/JDK16' )
 
   }
   environment {
     ANT_OPTS = "-Djavax.xml.accessExternalStylesheet=all -Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=file,http"
     LANG="en_US.UTF-8"
-    DEFAULT_GF_BUNDLE_URL="https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0-SNAPSHOT-nightly.zip" 
+    DEFAULT_GF_BUNDLE_URL="https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0.zip" 
   }
   stages {
     stage('jaxb-tck-build') {

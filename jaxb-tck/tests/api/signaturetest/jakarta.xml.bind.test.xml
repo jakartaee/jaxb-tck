@@ -45,8 +45,7 @@ API Signature verification of the jakarta.xml.bind package and its subpackages
         </TestCaseDocumentation>
         <CodeSet>
             <ExternalSupportClass SourceName="SigTestWrapper.java"/>
-            <ExternalData Type="iodata" SourceName="sig/8.0/jakarta.xml.bind.sig"/>
-            <ExternalData Type="iodata" SourceName="sig/11.0/jakarta.xml.bind.sig"/>
+            <ExternalData Type="iodata" SourceName="sig/jakarta.xml.bind.sig"/>
         </CodeSet>
     </TestCase>
 

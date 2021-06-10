@@ -1,6 +1,6 @@
 #!/bin/bash -x
 #
-# Copyright (c) 2019, 2020 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2019, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -19,19 +19,19 @@ if [ -z "$ANT_HOME" ]; then
 fi
 
 if [ -z "$JAVA_HOME" ]; then
-  export JAVA_HOME=/opt/jdk1.8.0_171
+  export JAVA_HOME=/opt/openjdk-8u292-b10
 fi
 
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
 
 if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
-  export JAXB_RI_BUNDLE_URL='https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-ri/3.0.0-M4/jaxb-ri-3.0.0-M4.zip'
+  export JAXB_RI_BUNDLE_URL='https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-ri/3.0.1/jaxb-ri-3.0.1.zip'
 fi
 if [ -z "${JAF_BUNDLE_URL}" ];then
-  export JAF_BUNDLE_URL='https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.0-RC3/jakarta.activation-api-2.0.0-RC3.jar'
+  export JAF_BUNDLE_URL='https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.1/jakarta.activation-api-2.0.1.jar'
 fi
 if [ -z "${GF_BUNDLE_URL}" ]; then
-  export GF_BUNDLE_URL='https://download.eclipse.org/ee4j/glassfish/glassfish-6.0.0-SNAPSHOT-nightly.zip'
+  export GF_BUNDLE_URL='https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0-SNAPSHOT-nightly.zip'
 fi
 
 echo "JAXB_RI_BUNDLE_URL=${JAXB_RI_BUNDLE_URL}"
@@ -119,11 +119,11 @@ sed -i 's#^PERL\s*=\s*.*#PERL = /usr/bin/perl#g' $WORKSPACE/jaxb-tck/build/Defs.
 sed -i 's#^ZIP\s*=\s*.*#ZIP = /usr/bin/zip#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^UNZIP\s*=\s*.*#UNZIP=/usr/bin/unzip#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 
-sed -i 's#^GENERAL_JAVAHOME\s*=\s*.*#GENERAL_JAVAHOME=/opt/jdk1.8.0_191#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
+sed -i 's#^GENERAL_JAVAHOME\s*=\s*.*#GENERAL_JAVAHOME=/opt/openjdk-8u292-b10#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^PWD\s*=\s*.*#PWD=/usr/bin/pwd#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^JAXB_HOME\s*=\s*.*#JAXB_HOME = '"${WORKSPACE}"'/jaxb-ri#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^JAXB_20_RI_HOME\s*=\s*.*#JAXB_20_RI_HOME = '"${WORKSPACE}"'/jaxb-ri#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
-sed -i 's#^JAVAHOME_6\s*=\s*.*#JAVAHOME_6 = /opt/jdk1.8.0_191#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
+sed -i 's#^JAVAHOME_6\s*=\s*.*#JAVAHOME_6 = /opt/openjdk-8u292-b10#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^SIGTEST_DIST\s*=\s*.*#SIGTEST_DIST = '"${WORKSPACE}"'/jaxb-tck#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^ANT_HOME\s*=\s*.*#ANT_HOME = /usr/share/ant#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 
