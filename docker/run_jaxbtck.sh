@@ -25,7 +25,6 @@ if ls ${WORKSPACE}/bundles/*xml-binding-tck*.zip 1> /dev/null 2>&1; then
   unzip -o -q ${WORKSPACE}/bundles/*xml-binding-tck*.zip -d ${WORKSPACE}/
 
   sed -i "s#^finder=.*#finder=com.sun.javatest.finder.BinaryTestFinder -binary ${WORKSPACE}/${TCK_NAME}/tests/testsuite.jtd#g" ${WORKSPACE}/${TCK_NAME}/testsuite.jtt
-  
   if [[ "$RUNTIME" == "Glassfish" ]]; then
     sed -i "s#^jck.env.jaxb.classes.jaxbClasses=.*#jck.env.jaxb.classes.jaxbClasses=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jaxb-osgi.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jersey-media-jaxb.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.activation.jar ${WORKSPACE}/checker.jar#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
   else
@@ -38,40 +37,31 @@ if [ -z "$ANT_HOME" ]; then
   export ANT_HOME=/usr/share/ant/
 fi
 
-if [ -z "$JAVA_HOME" ]; then
-  export JAVA_HOME=/opt/openjdk-8u292-b10
-fi
+export JAVA_HOME=${JDK11_HOME}
 
-if [[ "$JDK" != "JDK8" || "$JDK" != "jdk8" ]];then
+if [[ "$JDK" == "JDK12" || "$JDK" == "jdk12" ]];then
+  export JAVA_HOME=${JDK12_HOME}
+elif [[ "$JDK" == "JDK13" || "$JDK" == "jdk13" ]];then
+  export JAVA_HOME=${JDK13_HOME}
+elif [[ "$JDK" == "JDK14" || "$JDK" == "jdk14" ]];then
+  export JAVA_HOME=${JDK14_HOME}
+elif [[ "$JDK" == "JDK15" || "$JDK" == "jdk15" ]];then
+  export JAVA_HOME=${JDK15_HOME}
+elif [[ "$JDK" == "JDK16" || "$JDK" == "jdk16" ]];then
+  export JAVA_HOME=${JDK16_HOME}
+elif [[ "$JDK" == "JDK17" || "$JDK" == "jdk17" ]];then
+  export JAVA_HOME=${JDK17_HOME}
+fi  
 
-  if [[ "$JDK" == "JDK9" || "$JDK" == "jdk9" ]];then
-    export JAVA_HOME=${JDK9_HOME}
-  elif [[ "$JDK" == "JDK10" || "$JDK" == "jdk10" ]];then
-    export JAVA_HOME=${JDK10_HOME}
-  elif [[ "$JDK" == "JDK11" || "$JDK" == "jdk11" ]];then
-	  export JAVA_HOME=${JDK11_HOME}
-	elif [[ "$JDK" == "JDK12" || "$JDK" == "jdk12" ]];then
-	  export JAVA_HOME=${JDK12_HOME}
-	elif [[ "$JDK" == "JDK13" || "$JDK" == "jdk13" ]];then
-	  export JAVA_HOME=${JDK13_HOME}
-	elif [[ "$JDK" == "JDK14" || "$JDK" == "jdk14" ]];then
-	  export JAVA_HOME=${JDK14_HOME}
-	elif [[ "$JDK" == "JDK15" || "$JDK" == "jdk15" ]];then
-	  export JAVA_HOME=${JDK15_HOME}
-	elif [[ "$JDK" == "JDK16" || "$JDK" == "jdk16" ]];then
-	  export JAVA_HOME=${JDK16_HOME}
-	fi  
-
-  sed -i "s#^jck.env.jaxb.testExecute.cmdAsFile=.*#jck.env.jaxb.testExecute.cmdAsFile=${JAVA_HOME}/bin/java#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
-  sed -i "s#^WORKDIR=.*#WORKDIR=${WORKSPACE}/${TCK_NAME}/batch-multiJVM/work/#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
-  sed -i "s#^TESTSUITE=.*#TESTSUITE=${WORKSPACE}/${TCK_NAME}/#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
+sed -i "s#^jck.env.jaxb.testExecute.cmdAsFile=.*#jck.env.jaxb.testExecute.cmdAsFile=${JAVA_HOME}/bin/java#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
+sed -i "s#^WORKDIR=.*#WORKDIR=${WORKSPACE}/${TCK_NAME}/batch-multiJVM/work/#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
+sed -i "s#^TESTSUITE=.*#TESTSUITE=${WORKSPACE}/${TCK_NAME}/#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
 
 
-  if [[ "$RUNTIME" == "Glassfish" ]]; then
-    sed -i "s#^jck.env.jaxb.testExecute.otherEnvVars=.*#jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
-  else
-    sed -i "s#^jck.env.jaxb.testExecute.otherEnvVars=.*#jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/jaxb-ri#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
-  fi
+if [[ "$RUNTIME" == "Glassfish" ]]; then
+  sed -i "s#^jck.env.jaxb.testExecute.otherEnvVars=.*#jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
+else
+  sed -i "s#^jck.env.jaxb.testExecute.otherEnvVars=.*#jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/jaxb-ri#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
 fi
 
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH

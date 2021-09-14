@@ -137,11 +137,10 @@ PRECOMPILE_JAVA = $(PRECOMPILE_JAVAHOME)/bin/java
 PRECOMPILE_JAR = $(PRECOMPILE_JAVAHOME)/bin/jar
 JAVATEST_JAR_LOC = 
 SIGTESTDEV_JAR_LOC = 
-ASM_JAR_LOCATION =
+ASM_JAR_LOCATION = 
 #----------------------------------------------------------------------
 #
 # General Utilities
-
 AWK = /bin/awk
 BASENAME = /usr/bin/basename
 CHMOD = /bin/chmod
@@ -170,7 +169,6 @@ TEST = /usr/bin/test
 TR = /usr/bin/tr
 UNAME = /bin/uname
 LINE = /usr/bin/line
-
 #----------------------------------------------------------------------
 #
 # Deduce PRODUCT from the subdirectory after build  (as in build/PRODUCT)
@@ -365,8 +363,10 @@ SRCBUNDLE_ZIP = $(SRCBUNDLE_DEST)/jaxb_tck-ro-src.zip
 
 CLASSDEP = $(GENERAL_JAVA) -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar:$(GENERAL_JAVAHOME)/lib/tools.jar org.apache.river.tool.ClassDep -in com -in javasoft
 
+CLASSDEP_8 = $(JAVA_HOME_8)/bin/java -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar:$(JAVA_HOME_8)/lib/tools.jar org.apache.river.tool.ClassDep -in com -in javasoft
+
 JAXB_LIBS.sh = for i in `$(LS) -1 $(JAXB_HOME)/mod/*.jar`; do JAXB_LIBS="$$JAXB_LIBS:$$i"; done; echo $$JAXB_LIBS;
 JAXB_LIBS = $(shell $(JAXB_LIBS.sh))
-JAVAC_6 = $(JAVAHOME_6)/bin/javac -Xbootclasspath/p:$(JAXB_LIBS)
-JAVA_6 = $(JAVAHOME_6)/bin/java -Xbootclasspath/p:$(JAXB_LIBS)
+JAVAC_6 = $(JAVAHOME_6)/bin/javac  
+JAVA_6 = $(JAVAHOME_6)/bin/java
 

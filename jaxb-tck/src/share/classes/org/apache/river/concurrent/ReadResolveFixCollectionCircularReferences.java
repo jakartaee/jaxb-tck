@@ -1,4 +1,5 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
+ * Copyright (c) 2021 Oracle and/or its affiliates. All rights reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +43,12 @@ import java.util.concurrent.TimeUnit;
  * 
  * @author Peter Firmstone.
  */
+/*
+ extension of Set<T>, SortedSet<T>, NavigableSet<T> by ReadResolveFixCollectionCircularReferences  
+ has been removed to avoid compile time failures with JDK 11.
+*/
 abstract class ReadResolveFixCollectionCircularReferences<T> extends SerializationOfReferenceCollection<T>
-implements List<T>, Set<T>, SortedSet<T>, NavigableSet<T> , 
-Queue<T>, Deque<T>, BlockingQueue<T>, BlockingDeque<T>{
+implements List<T>, Queue<T>, Deque<T>, BlockingQueue<T>, BlockingDeque<T>{
    
     // This abstract class must not hold any serial data.
     

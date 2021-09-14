@@ -1,5 +1,5 @@
 #
-# Copyright (c) 1999, 2020 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1999, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -54,7 +54,7 @@ $(TCKZIP): $(ZIP.files) $(INSTALLER_EXPORT_FILE) test_run_testsuite_jtt.ok check
 	fi
 
 $(INSTALLER_EXPORT_FILE):
-	$(CLASSDEP) -cp $(TCKDIR)/classes com.sun.jck.utils.installer.Installer >$@
+	$(CLASSDEP_8) -cp $(TCKDIR)/classes com.sun.jck.utils.installer.Installer >$@
 
 
 CLEANFILES += $(TCKZIP) $(ZIP.files)
