@@ -69,8 +69,8 @@ spec:
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   choice(name: 'RUNTIME', choices: 'Glassfish\nStandalone',
            description: 'Run JAXB Tests with Standalone/Glassfish' )
-  choice(name: 'JDK', choices: 'JDK8\nJDK9\nJDK10\nJDK11\nJDK12\nJDK13\nJDK14\nJDK15\nJDK16',
-           description: 'Java SE Version to be used for running TCK either JDK8/JDK9/JDK10/JDK11/JDK12/JDK13/JDK14/JDK15/JDK16' )
+  choice(name: 'JDK', choices: 'JDK11\nJDK12\nJDK13\nJDK14\nJDK15\nJDK16',
+           description: 'Java SE Version to be used for running TCK either JDK11/JDK12/JDK13/JDK14/JDK15/JDK16' )
 
   }
   environment {

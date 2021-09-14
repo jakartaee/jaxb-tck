@@ -18,9 +18,9 @@ if [ -z "$ANT_HOME" ]; then
   export ANT_HOME=/usr/share/ant/
 fi
 
-if [ -z "$JAVA_HOME" ]; then
-  export JAVA_HOME=/opt/openjdk-8u292-b10
-fi
+export JAVA_HOME_8=${JAVA_HOME}
+export JAVA_HOME=${JDK11_HOME}
+
 
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
 
@@ -61,7 +61,7 @@ if [ ! -z "$TCK_BUNDLE_BASE_URL" ]; then
   wget  $WGET_PROPS ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/${TCK_BUNDLE_FILE_NAME}
   exit 0
 fi
-#wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
+wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
 
 cd $BASEDIR
 export TCK_ROOT=$WORKSPACE
@@ -72,8 +72,16 @@ wget ${WGET_PROPS} ${JAXB_RI_BUNDLE_URL} -O jaxb-ri.zip && unzip -o jaxb-ri.zip
 
 ls -l jaxb-ri/mod
 
+export JAXB_HOME=${WORKSPACE}/jaxb-ri
+
+export JAXB_JAR_LOC=${JAXB_HOME}/mod
+
+
+echo "$JAXB_HOME"
+
 wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm-commons/7.0-SNAPSHOT/asm-commons-7.0-20181027.133601-5.jar' -O asm-commons-7.0.jar
 wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar' -O asm-7.0.jar
+
 unzip -o latest-glassfish.zip
 ls -l $GF_HOME/glassfish6/glassfish/
 
@@ -119,11 +127,11 @@ sed -i 's#^PERL\s*=\s*.*#PERL = /usr/bin/perl#g' $WORKSPACE/jaxb-tck/build/Defs.
 sed -i 's#^ZIP\s*=\s*.*#ZIP = /usr/bin/zip#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^UNZIP\s*=\s*.*#UNZIP=/usr/bin/unzip#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 
-sed -i 's#^GENERAL_JAVAHOME\s*=\s*.*#GENERAL_JAVAHOME=/opt/openjdk-8u292-b10#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
+sed -i 's#^GENERAL_JAVAHOME\s*=\s*.*#GENERAL_JAVAHOME=${JAVA_HOME}#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^PWD\s*=\s*.*#PWD=/usr/bin/pwd#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^JAXB_HOME\s*=\s*.*#JAXB_HOME = '"${WORKSPACE}"'/jaxb-ri#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^JAXB_20_RI_HOME\s*=\s*.*#JAXB_20_RI_HOME = '"${WORKSPACE}"'/jaxb-ri#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
-sed -i 's#^JAVAHOME_6\s*=\s*.*#JAVAHOME_6 = /opt/openjdk-8u292-b10#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
+sed -i 's#^JAVAHOME_6\s*=\s*.*#JAVAHOME_6 = ${JAVA_HOME}#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^SIGTEST_DIST\s*=\s*.*#SIGTEST_DIST = '"${WORKSPACE}"'/jaxb-tck#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 sed -i 's#^ANT_HOME\s*=\s*.*#ANT_HOME = /usr/share/ant#g' $WORKSPACE/jaxb-tck/build/Defs.SFBay.mk
 

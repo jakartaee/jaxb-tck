@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2017, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2017, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -34,7 +34,7 @@ PWD = /usr/bin/pwd
 
 
 #Location of JAXB RI that should be tested
-JAXB_HOME=
+JAXB_HOME =
 
 #used for ant tasks from the build
 #JAXB_20_RI_HOME=
@@ -43,14 +43,14 @@ JAXB_HOME=
 
 #SIGTEST_WORKSPACE=../../jck-sigtest13
 #JAXB_SIGTEST_WS=../../jaxb-sigtest
-SIGTEST_DIST=
+SIGTEST_DIST = 
 
 #----------------------------------------------------------------------
 #
 # GENERAL_JAVAxxx are used to run Java programs like JavaTest, Jasm, Jcod, etc
 # It is *not* used to run tests
 #
-GENERAL_JAVAHOME =
+GENERAL_JAVAHOME = ${JAVA_HOME}
 #----------------------------------------------------------------------
 #
 # PRECOMPILE_JAVAxxx is used to generate any precompiled classes for release
@@ -62,7 +62,7 @@ PRECOMPILE_JAVAHOME = $(GENERAL_JAVAHOME)
 # Java that is used for compilation java2schema tests in J2XEmitterBase
 # (version >= 6)
 #
-JAVAHOME_6=
+JAVAHOME_6 = ${JAVA_HOME}
 
 # SQE Utilities
 PKGS_BASEDIR = /java/jct-tools/pkgs
@@ -75,7 +75,7 @@ LINKLINT = $(PERL) $(PKGS_BASEDIR)/linklint_2.1/linklint
 # TODO FMBATCH = /net/swpubs.sfbay/opt/local/framemaker,v7.0/bin/fmbatch
 FMBATCH = /java/jct-tools/pkgs/fm71/bin/fmbatch
 
-ANT_HOME=
+ANT_HOME = 
 #location of misc. tools
 UNZIP = /usr/bin/unzip
 ZIP = /bin/zip

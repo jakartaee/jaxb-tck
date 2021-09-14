@@ -1,6 +1,6 @@
 #!/bin/ksh
 #
-# Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2018, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -42,8 +42,8 @@ while [ $# -gt 0 ] ; do
   shift
 done
 
-JAVA=$JAVA_HOME/bin/java
-JAVAC=$JAVA_HOME/bin/javac
+JAVA=$JAVA_HOME/bin/java -Xlint:-deprecation -Xlint:unchecked
+JAVAC=$JAVA_HOME/bin/javac -Xlint:-deprecation -Xlint:unchecked 
 
 # quickly validate args
 if [ -z "${TCKDIR}" ]; then
