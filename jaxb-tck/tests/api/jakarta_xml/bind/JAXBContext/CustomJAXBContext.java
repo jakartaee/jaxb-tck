@@ -18,16 +18,12 @@ package javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Validator;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 
 public class CustomJAXBContext extends JAXBContext {
     public Marshaller createMarshaller() throws JAXBException {
         throw new JAXBException("unexpected call createMarshaller()");
-    }
-    public Validator createValidator() throws JAXBException {
-        throw new JAXBException("unexpected call createValidator()");
     }
     public Unmarshaller createUnmarshaller() throws JAXBException {
         throw new JAXBException("unexpected call createUnmarshaller()");

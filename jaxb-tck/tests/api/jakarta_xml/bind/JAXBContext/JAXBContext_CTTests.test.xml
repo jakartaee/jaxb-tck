@@ -2,7 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
-    Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2021 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -20,9 +20,9 @@
 
 <TestGroup ID="JAXBContext_">
     <TestGroupDocumentation>
-        <Title>createMarshaller, createUnmarshaller and createValidator tests. (content tree test)</Title>
+        <Title>createMarshaller, createUnmarshaller tests. (content tree test)</Title>
         <Description>Compile a simple schema to create a java binding classes. Test the methods
-        createMarshaller, createUnmarshaller and createValidator using this context.
+        createMarshaller, createUnmarshaller using this context.
         </Description>
     </TestGroupDocumentation>
     <TestGroupAttributes>
@@ -82,68 +82,6 @@
         }
         ]]></TestCode>
     </TestCase>
-<!-- Validator is not available in jaxb 2.0
-    <TestCase ID="createValidator001">
-        <TestCaseDocumentation>
-            <Title>createValidator creates a validator object</Title>
-            <Description>
-                The test creates a validator object, creates a java content tree and validate it
-                using the validator.
-            </Description>
-            <Author>Evgueni Rouban</Author>
-        </TestCaseDocumentation>
-        <CodeSet>
-            <Import>jakarta.xml.bind.JAXBContext</Import>
-            <Import>jakarta.xml.bind.JAXBException</Import>
-            <Import>jakarta.xml.bind.Validator</Import>
-            <Import>jakarta.xml.bind.ValidationException</Import>
-            <Import>javasoft.sqe.tests.api.jakarta.xml.bind.ErrorCollector</Import>
-        </CodeSet>
-        <TestCode><![CDATA[
-        boolean isValid;
-
-        ErrorCollector eh = new ErrorCollector();
-
-        try {
-            JAXBContext jc = getJAXBContext();
-
-            Object docInstance = (new ObjectFactory()).createRoot("createValidator001");
-
-            Validator v = jc.createValidator();
-            if (v == null) {
-                return Status.failed("createValidator returns null");
-            }
-
-            v.setEventHandler(eh);
-
-            isValid = v.validateRoot(docInstance);
-
-        } catch (ValidationException ve) {
-            ve.printStackTrace(ref);
-            isValid = false;
-        } catch (JAXBException jaxbe) {
-            jaxbe.printStackTrace(ref);
-            return Status.failed(jaxbe.toString());
-        } finally {
-            eh.printEvents(ref);
-        }
-
-        if (isValid) {
-            if (!eh.hasEvents()) {
-                return Status.passed("OK");
-            } else {
-                return Status.failed("validation passed but some error events are handled");
-            }
-        } else {
-            if (eh.hasEvents()) {
-                return Status.failed("validation failed and some error events are handled");
-            } else {
-                return Status.failed("validation failed but no error events are handled");
-            }
-        }
-        ]]></TestCode>
-    </TestCase>
--->
     <TestCase ID="createUnmarshaller001">
         <TestCaseDocumentation>
             <Title>createUnmarshaller creates a unmarshaller object</Title>

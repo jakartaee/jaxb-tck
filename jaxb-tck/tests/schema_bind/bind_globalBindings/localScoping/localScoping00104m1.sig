@@ -104,7 +104,7 @@ intf java.io.Serializable
 meth public boolean isGlobalScope()
 meth public boolean isNil()
 meth public boolean isTypeSubstituted()
-meth public java.lang.Class getScope()
+meth public java.lang.Class<?> getScope()
 meth public java.lang.Class<{jakarta.xml.bind.JAXBElement%0}> getDeclaredType()
 meth public javax.xml.namespace.QName getName()
 meth public void setNil(boolean)

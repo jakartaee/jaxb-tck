@@ -60,7 +60,6 @@
 		<Import>javax.xml.transform.stream.StreamSource</Import>
 		<Import>javax.xml.transform.stream.StreamResult</Import>
 		<Import>javax.xml.transform.Result</Import>
-        <Import>jakarta.xml.bind.Validator</Import>
         <Import>jakarta.xml.bind.Marshaller</Import>
         <Import>jakarta.xml.bind.Unmarshaller</Import>
         <BaseClass>MultiTest</BaseClass>
@@ -177,9 +176,6 @@
         }
         public Marshaller createMarshaller() throws JAXBException {
             throw new JAXBException("unexpected call createMarshaller()");
-        }
-        public Validator createValidator() throws JAXBException {
-            throw new JAXBException("unexpected call createValidator()");
         }
         public Unmarshaller createUnmarshaller() throws JAXBException {
             throw new JAXBException("unexpected call createUnmarshaller()");
