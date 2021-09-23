@@ -25,7 +25,7 @@ fi
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
 
 if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
-  export JAXB_RI_BUNDLE_URL='https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-ri/3.0.1/jaxb-ri-3.0.1.zip'
+  export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
 fi
 if [ -z "${JAF_BUNDLE_URL}" ];then
   export JAF_BUNDLE_URL='https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.1/jakarta.activation-api-2.0.1.jar'

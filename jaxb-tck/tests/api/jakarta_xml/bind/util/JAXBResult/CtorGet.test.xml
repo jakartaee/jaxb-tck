@@ -37,7 +37,6 @@
       <Import>jakarta.xml.bind.JAXBElement</Import>
       <Import>jakarta.xml.bind.Unmarshaller</Import>
       <Import>jakarta.xml.bind.Marshaller</Import>
-      <Import>jakarta.xml.bind.Validator</Import>
       <ExternalSupportClass SourceName="ObjectFactory.java"/>
       <ExternalData SourceName="enumeration-1-result.xsd" Type="iodata"/>
    </CodeSet>

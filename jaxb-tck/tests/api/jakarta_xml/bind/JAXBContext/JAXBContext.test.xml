@@ -60,7 +60,6 @@
 		<Import>javax.xml.transform.stream.StreamSource</Import>
 		<Import>javax.xml.transform.stream.StreamResult</Import>
 		<Import>javax.xml.transform.Result</Import>
-        <Import>jakarta.xml.bind.Validator</Import>
         <Import>jakarta.xml.bind.Marshaller</Import>
         <Import>jakarta.xml.bind.Unmarshaller</Import>
         <BaseClass>MultiTest</BaseClass>
@@ -153,8 +152,6 @@
         <ExternalSupportClass SourceName="colliding_type_names/Items.java"/>
         <ExternalSupportClass SourceName="colliding_type_names/package-info.java"/>
 
-        <ExternalData SourceName="jaxb.properties.rc" Type="resource"/>
-
         <ExternalData SourceName="package_with_jaxb_index/jaxb.index.rc" Type="resource"/>
     </CodeSet>
 
@@ -180,9 +177,6 @@
         public Marshaller createMarshaller() throws JAXBException {
             throw new JAXBException("unexpected call createMarshaller()");
         }
-        public Validator createValidator() throws JAXBException {
-            throw new JAXBException("unexpected call createValidator()");
-        }
         public Unmarshaller createUnmarshaller() throws JAXBException {
             throw new JAXBException("unexpected call createUnmarshaller()");
         }
@@ -194,214 +188,6 @@
             return Status.passed("Ok");
     }
     return Status.failed("Failed.");
-     ]]></TestCode>
-    </TestCase>
-
-    <TestCase ID="newInstance001">
-        <TestCaseDocumentation>
-            <TestCaseSpec>
-                <InlineAssertion><![CDATA[Obtains a new instance of a JAXBContext class.]]></InlineAssertion>
-                <MemberSig>public static JAXBContext newInstance(java.lang.String contextPath) throws JAXBException</MemberSig>
-                <Precondition>contextPath contains the package of the test</Precondition>
-                <ExpectedResultSideEffect>no exceptions, the returned class is
-                an instance of the custom class loader</ExpectedResultSideEffect>
-            </TestCaseSpec>
-
-            <TestCaseSpec>
-                <InlineAssertion><![CDATA[Default constructor called by default constructof of the child class.]]></InlineAssertion>
-                <MemberSig>protected JAXBContext()</MemberSig>
-                <Precondition>called from within a constructor of the child class</Precondition>
-                <ExpectedResultSideEffect>no exceptions</ExpectedResultSideEffect>
-            </TestCaseSpec>
-
-            <TestCaseSpec>
-                <InlineAssertion><![CDATA[newInstance(existent package name): JAXBException is not thrown.]]></InlineAssertion>
-                <TestTechnique Value="Boundary"/>
-                <MemberSig>public static JAXBContext newInstance(java.lang.String contextPath) throws JAXBException</MemberSig>
-                <Input Name="contextPath"> existent </Input>
-                <ExpectedResultSideEffect>no exceptions</ExpectedResultSideEffect>
-            </TestCaseSpec>
-
-        </TestCaseDocumentation>
-        <TestCaseAttributes/>
-        <TestCode><![CDATA[
-    ClassLoader oldCCL = Thread.currentThread().getContextClassLoader();
-
-    try {
-        Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
-
-        JAXBContext jc = JAXBContext.newInstance(testPackage);
-
-        Thread.currentThread().setContextClassLoader(oldCCL);
-
-        if (jc == null) {
-            return Status.failed("jc is null");
-        }
-
-        if (! (jc instanceof CustomJAXBContext)) {
-            return Status.failed("jc is not an instance of CustomJAXBContext"
-            + ", jc.getClass().getName() = " + jc.getClass().getName()
-            + ", jc.getClass().getClassLoader().getClass().getName() = " + jc.getClass().getClassLoader().getClass().getName()
-            + ", CustomJAXBContext.class.getName() = " + CustomJAXBContext.class.getName()
-            + ", CustomJAXBContext.class.getClassLoader().getClass().getName() = " + CustomJAXBContext.class.getClassLoader().getClass().getName());
-        }
-
-        return Status.passed("Ok");
-    } catch (JAXBException e) {
-        return Status.failed("unexpected exception " + e);
-    } finally {
-        Thread.currentThread().setContextClassLoader(oldCCL);
-    }
-     ]]></TestCode>
-    </TestCase>
-
-    <TestCase ID="newInstance002">
-        <TestCaseDocumentation>
-            <TestCaseSpec>
-                <InlineAssertion><![CDATA[Uses the context class loader of the current thread.]]></InlineAssertion>
-                <MemberSig>public static JAXBContext newInstance(java.lang.String contextPath) throws JAXBException</MemberSig>
-                <Precondition>set current context class loader to the custom class loader</Precondition>
-                <ExpectedResultSideEffect>the custom class loader is called to load the
-                jaxb.properties resource, the custom context factory class and the custom
-                JAXBContext class</ExpectedResultSideEffect>
-            </TestCaseSpec>
-
-        </TestCaseDocumentation>
-        <TestCaseAttributes/>
-        <TestCode><![CDATA[
-
-    ClassLoader oldCCL = Thread.currentThread().getContextClassLoader();
-
-    try {
-        CustomClassLoader cl = new CustomClassLoader(this.getClass().getClassLoader());
-        Thread.currentThread().setContextClassLoader(cl);
-
-        JAXBContext jc = JAXBContext.newInstance(testPackage);
-
-        Thread.currentThread().setContextClassLoader(oldCCL);
-
-        String result = "";
-
-        if (cl.log.toString().indexOf("jaxb.properties);") == -1) {
-            result += "; jaxb.properties was not loaded by the context class loader";
-        }
-
-        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.ContextFactory);") == -1 ) {
-            result += "; context factory javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.ContextFactory"
-                    + " was not loaded by the context class loader";
-        }
-
-        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.CustomJAXBContext);") == -1 ) {
-            result += "; custom JAXBContext javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.CustomJAXBContext"
-                    + " was not loaded by the context class loader";
-        }
-
-        if (result.length() > 0) {
-            ref.println("newInstance002: " + cl.log);
-            return Status.failed(result.substring(2));
-        }
-
-        return Status.passed("Ok");
-
-    } catch (JAXBException e) {
-        return Status.failed("unexpected exception " + e);
-    } finally {
-        Thread.currentThread().setContextClassLoader(oldCCL);
-    }
-     ]]></TestCode>
-    </TestCase>
-
-    <TestCase ID="newInstance003">
-        <TestCaseDocumentation>
-            <TestCaseSpec>
-                <InlineAssertion><![CDATA[Obtains a new instance of a JAXBContext class using the given class loader.]]></InlineAssertion>
-                <MemberSig>public static JAXBContext newInstance(java.lang.String contextPath, java.lang.ClassLoader classLoader) throws JAXBException</MemberSig>
-                <Precondition>contextPath contains the package of the test,
-                class loader is the test class loader</Precondition>
-                <ExpectedResultSideEffect>no exceptions, the returned class is
-                an instance of the custom JAXBContext class</ExpectedResultSideEffect>
-            </TestCaseSpec>
-
-            <TestCaseSpec>
-                <InlineAssertion><![CDATA[newInstance(existent package name, test class loader): JAXBException is not thrown.]]></InlineAssertion>
-                <TestTechnique Value="Boundary"/>
-                <MemberSig>public static JAXBContext newInstance(java.lang.String contextPath, java.lang.ClassLoader classLoader) throws JAXBException</MemberSig>
-                <Input Name="contextPath"> existent </Input>
-                <Input Name="classLoader"> test class loader </Input>
-                <ExpectedResultSideEffect>no exceptions</ExpectedResultSideEffect>
-            </TestCaseSpec>
-
-        </TestCaseDocumentation>
-        <TestCaseAttributes/>
-        <TestCode><![CDATA[
-    try {
-        JAXBContext jc = JAXBContext.newInstance(testPackage
-                                                , this.getClass().getClassLoader());
-
-        if (jc == null) {
-            return Status.failed("jc is null");
-        }
-
-        if (! (jc instanceof CustomJAXBContext)) {
-            return Status.failed("jc is not an instance of CustomJAXBContext"
-            + ", jc.getClass().getName() = " + jc.getClass().getName()
-            + ", jc.getClass().getClassLoader().getClass().getName() = " + jc.getClass().getClassLoader().getClass().getName()
-            + ", CustomJAXBContext.class.getName() = " + CustomJAXBContext.class.getName()
-            + ", CustomJAXBContext.class.getClassLoader().getClass().getName() = " + CustomJAXBContext.class.getClassLoader().getClass().getName());
-        }
-
-        return Status.passed("Ok");
-    } catch (JAXBException e) {
-        return Status.failed("unexpected exception " + e);
-    }
-     ]]></TestCode>
-    </TestCase>
-
-    <TestCase ID="newInstance004">
-        <TestCaseDocumentation>
-            <TestCaseSpec>
-                <InlineAssertion><![CDATA[Obtains a new instance of a JAXBContext class using the given class loader.]]></InlineAssertion>
-                <MemberSig>public static JAXBContext newInstance(java.lang.String contextPath, java.lang.ClassLoader classLoader) throws JAXBException</MemberSig>
-                <Precondition>contextPath contains the package of the test,
-                class loader is the custom class loader</Precondition>
-                <ExpectedResultSideEffect>no exceptions, the custom class loader is called to load the
-                jaxb.properties resource, the custom context factory class and the custom
-                JAXBContext class</ExpectedResultSideEffect>
-            </TestCaseSpec>
-
-        </TestCaseDocumentation>
-        <TestCaseAttributes/>
-        <TestCode><![CDATA[
-    try {
-        CustomClassLoader cl = new CustomClassLoader(this.getClass().getClassLoader());
-
-        JAXBContext jc = JAXBContext.newInstance(testPackage, cl);
-
-        String result = "";
-
-        if (cl.log.toString().indexOf("jaxb.properties);") == -1) {
-            result += "; jaxb.properties was not loaded by the custom class loader";
-        }
-
-        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.ContextFactory);") == -1 ) {
-            result += "; context factory javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.ContextFactory"
-                    + " was not loaded by the custom class loader";
-        }
-
-        if (cl.log.toString().indexOf("loadClass(javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.CustomJAXBContext);") == -1 ) {
-            result += "; custom JAXBContext javasoft.sqe.tests.api.jakarta.xml.bind.JAXBContext.CustomJAXBContext"
-                    + " was not loaded by the custom class loader";
-        }
-
-        if (result.length() > 0) {
-            ref.println("newInstance004: " + cl.log);
-            return Status.failed(result.substring(2));
-        }
-
-        return Status.passed("Ok");
-    } catch (JAXBException e) {
-        return Status.failed("unexpected exception " + e);
-    }
      ]]></TestCode>
     </TestCase>
 

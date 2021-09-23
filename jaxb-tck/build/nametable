@@ -28,9 +28,6 @@ tests/api/jakarta_xml/bind/UnmarshallerHandler/UnmarshallerHandler.xsd
 tests/api/jakarta_xml/bind/UnmarshallerHandler/UnmarshallerHandler_CTTests.test.xml
 tests/api/jakarta_xml/bind/ValidationException/ValidationException.tdoc.xml
 tests/api/jakarta_xml/bind/ValidationException/ValidationException.test.xml
-tests/api/jakarta_xml/bind/Validator/Validator_CTTests.test.xml
-tests/api/jakarta_xml/bind/Validator/Validator.xsd
-tests/api/jakarta_xml/bind/Validator/Validator.xml
 tests/api/jakarta_xml/bind/Unmarshaller/unmarshal-bad.xml
 tests/api/jakarta_xml/bind/Unmarshaller/MyValidationEventHandler.java
 tests/api/jakarta_xml/bind/Unmarshaller/ObjectFactory.java

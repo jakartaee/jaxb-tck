@@ -167,42 +167,6 @@ setEventHandler(): sets the ValidationEventHandler
     </TestCase>
 <!-- ======================================================================= -->
 
-<!-- ===============  is/setValidating() tests  ==================== -->
-    <TestCase ID="AbstUnmarImpl004">
-        <TestCaseDocumentation>
-            <TestCaseSpec>
-                <InlineAssertion>
-isValidating(): returns true if the Unmarshaller is configured to validate during unmarshal operations
-                </InlineAssertion>
-                <MemberSig>public boolean isValidating() throws JAXBException</MemberSig>
-                <ExpectedResultSideEffect>true</ExpectedResultSideEffect>
-            </TestCaseSpec>
-            <TestCaseSpec>
-                <InlineAssertion>
-setValidating(): sets that the Unmarshaller should validate during unmarshal
-                </InlineAssertion>
-                <MemberSig>public void setValidating(boolean validating) throws JAXBException</MemberSig>
-                <ExpectedResultSideEffect>the method isValidating() will return true</ExpectedResultSideEffect>
-            </TestCaseSpec>
-        </TestCaseDocumentation>
-
-        <TestCode>
-<![CDATA[
-    Stub s = new Stub();
-    try {
-        s.setValidating(true);
-        if (!s.isValidating()) {
-            return Status.failed("false was returned instead of true");
-        }
-        
-        return Status.passed("OK");
-    } catch (JAXBException e) {
-        return Status.failed(e.toString());
-    }
-]]></TestCode>
-    </TestCase>
-<!-- ======================================================================= -->
-
 <!-- ===============  getXMLReader() tests  ==================== -->
     <TestCase ID="AbstUnmarImpl005">
         <TestCaseDocumentation>
