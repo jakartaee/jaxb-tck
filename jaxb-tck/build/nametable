@@ -176,8 +176,6 @@ tests/schema2java/structures/SType/ST_facets/ST_facets00608/ST_facets00608_CTTes
 tests/schema2java/structures/SType/ST_facets/ST_facets00608/st_facets00608_-ST_facets00608_p.jbx
 tests/schema2java/structures/SType/ST_facets/ST_facets00608/ST_facets00608_.sig
 tests/schema2java/structures/SType/ST_facets/ST_facets00608/ST_facets00608_p.xml
-tests/schema2java/structures/SType/ST_facets/ST_facets00602/ST_facets00602_n.test.xml
-tests/schema2java/structures/SType/ST_facets/ST_facets00602/ST_facets00602.xsd
 tests/schema2java/structures/SType/ST_facets/ST_facets00602/ST_facets00602_n.sig
 tests/schema2java/structures/SType/ST_facets/ST_facets00602/ST_facets00602_n.sig
 tests/schema2java/structures/SType/ST_facets/ST_facets00601/ST_facets00601_.sig
@@ -185,10 +183,8 @@ tests/schema2java/structures/SType/ST_facets/ST_facets00601/ST_facets00601_CTTes
 tests/schema2java/structures/SType/ST_facets/ST_facets00601/st_facets00601_-ST_facets00601_p.jbx
 tests/schema2java/structures/SType/ST_facets/ST_facets00601/ST_facets00601.xsd
 tests/schema2java/structures/SType/ST_facets/ST_facets00601/ST_facets00601_p.xml
-tests/schema2java/structures/SType/ST_facets/ST_facets00603/ST_facets00603_n.test.xml
 tests/schema2java/structures/SType/ST_facets/ST_facets00603/ST_facets00603_p.xml
 tests/schema2java/structures/SType/ST_facets/ST_facets00603/ST_facets00603_.sig
-tests/schema2java/structures/SType/ST_facets/ST_facets00603/ST_facets00603.xsd
 tests/schema2java/structures/SType/ST_facets/ST_facets00603/st_facets00603_-ST_facets00603_p.jbx
 tests/schema2java/structures/SType/ST_facets/ST_facets00603/ST_facets00603_CTTests.test.xml
 tests/schema2java/structures/SType/ST_facets/ST_facets00604/ST_facets00604_CTTests.test.xml
