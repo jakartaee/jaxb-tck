@@ -88,9 +88,7 @@ compiler refers to both the schema compiler and the schema generator.
       generator script for your platform.
   g.  Set `jck.env.jaxb.xsd_compiler.testCompile.xjcCmd` property to contain
       proper schema compiler script for your platform. This property can also
-      affect which CI is used in tests. For example EclipseLink MOXy also
-      generates with model classes `jaxb.properties` file with following content
-      `jakarta.xml.bind.JAXBContextFactory=org.eclipse.persistence.jaxb.JAXBContextFactory`.
+      affect which CI is used in tests. 
   h.  Set `jck.env.jaxb.xsd_compiler.skipValidationOptional` property to contain
       value `Yes`. XML validation is implemented from JAXP
       in {TechnologyShortName} {TechnologyVersion} Compatible Implementation.
