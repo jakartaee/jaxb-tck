@@ -27,7 +27,7 @@
   <property name="BASEDIR" value="${basedir}"/>
   <property name="deliverable.name" value="xml-binding-tck"/>
   <property name="eclipse.deliverable.name" value="jakarta-xml-binding-tck"/>
-  <property name="deliverable.version" value="3.0.2"/>
+  <property name="deliverable.version" value="4.0.0"/>
   <property name="bundle.name"
             value="${deliverable.name}-${deliverable.version}.zip"/>
   <property name="bundle.folder"
@@ -51,7 +51,7 @@
     <antcall target="copyLicense"/>
     <zip destfile="${dist}/${bundle.name}">
       <zipfileset dir="${dist}/${bundle.folder}" excludes="**/?/**" prefix="${bundle.folder}"/>
-      <zipfileset dir="jaxb-tck-build/XMLB-TCK-3.0" excludes="**/?/**" prefix="${bundle.folder}"/>
+      <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.0" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="dist" includes="docs/**/*" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="${BASEDIR}/userguide/target/generated-docs"
                   includes="*.pdf"

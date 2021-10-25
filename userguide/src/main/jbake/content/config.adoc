@@ -100,8 +100,8 @@ An example of modified `${TS_HOME}/lib/javasoft-multiJVM.jti` file:
 --
 [source,oac_no_warn]
 ----
-TESTSUITE=/workspace/XMLB-TCK-3.0
-WORKDIR=/workspace/XMLB-TCK-3.0/batch-multiJVM/work
+TESTSUITE=/workspace/XMLB-TCK-4.0
+WORKDIR=/workspace/XMLB-TCK-4.0/batch-multiJVM/work
 jck.concurrency.concurrency=1
 jck.env.description=multi jvm
 jck.env.envName=multi_jvm
@@ -112,7 +112,7 @@ jck.env.jaxb.classes.jaxbClasses=/data/tck/tmp/checker.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-impl.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-jxc.jar
 jck.env.jaxb.schemagen.run.jxcCmd=/bin/sh
-  /workspace/XMLB-TCK-3.0/linux/bin/schemagen.sh
+  /workspace/XMLB-TCK-4.0/linux/bin/schemagen.sh
 jck.env.jaxb.schemagen.skipJ2XOptional=Yes
 jck.env.jaxb.testExecute.cmdAsFile=/opt/jdk1.8.0_192.jdk/bin/java
 jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=/opt/jdk1.8.0_192.jdk
@@ -121,7 +121,7 @@ jck.env.jaxb.testExecute.otherOpts=
 jck.env.jaxb.xsd_compiler.defaultOperationMode=Yes
 jck.env.jaxb.xsd_compiler.skipValidationOptional=Yes
 jck.env.jaxb.xsd_compiler.testCompile.xjcCmd=/bin/sh
-  /workspace/XMLB-TCK-3.0/linux/bin/xjc.sh
+  /workspace/XMLB-TCK-4.0/linux/bin/xjc.sh
 jck.env.testPlatform.local=Yes
 jck.env.testPlatform.multiJVM=Yes
 jck.excludeList.latestAutoCheck=No
@@ -204,7 +204,7 @@ test run reports, and could include the
 version number of the product and the name
 of the tester.
 
-Example: `John Smith x86 Eclipse Implementation of JAXB 3.0.0`
+Example: `John Smith x86 Eclipse Implementation of JAXB 4.0.0`
 
 ==== Execution Mode
 
@@ -478,14 +478,14 @@ provide a script `$TS_HOME/linux/bin/xjc.sh`,
 which compiles schemas into class files.
 The command is as follows:
 
-`/bin/sh /workspace/XMLB-TCK-3.0/linux/bin/xjc.sh`
+`/bin/sh /workspace/XMLB-TCK-4.0/linux/bin/xjc.sh`
 
 For the Eclipse XML Binding implementation on
 Windows, we provide a script `%TS_HOME%\win32\bin\xjc.bat`,
 which compiles schemas into class files.
 The command is as follows:
 
-`c:\workspace\XMLB-TCK-3.0\win32\bin\xjc.bat`
+`c:\workspace\XMLB-TCK-4.0\win32\bin\xjc.bat`
 
 The xjc script supports the following
 mandatory command-line options:
@@ -559,7 +559,7 @@ a class, then create it and specify it here.
 _Does your implementation provide schema generator which is able to
 generate schemas from Java sources?_
 
-Java Architecture for XML Binding 3.0
+Java Architecture for XML Binding 4.0
 specification does not require any
 implementation, which provides a possibility
 to generate the schemas from the java
@@ -579,14 +579,14 @@ provide a script `$TS_HOME/linux/bin/schemagen.sh`, which
 generates the schemas from the java files.
 The command is as follows:
 
-`/bin/sh /workspace/XMLB-TCK-3.0/linux/bin/schemagen.sh`
+`/bin/sh /workspace/XMLB-TCK-4.0/linux/bin/schemagen.sh`
 
 For the Eclipse {TechnologyShortName} implementation on
 Windows, we provide a script `%TS_HOME%\win32\bin\schemagen.bat`,
 which compiles the schemas into class files.
 The command is as follows:
 
-`c:\workspace\XMLB-TCK-3.0\win32\bin\schemagen.bat`
+`c:\workspace\XMLB-TCK-4.0\win32\bin\schemagen.bat`
 
 The schemagen script supports the following
 mandatory command-line options:
