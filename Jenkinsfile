@@ -51,7 +51,7 @@ spec:
            defaultValue: 'https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip',
            description: 'URL required for downloading JAXB implementation jar' )
     string(name: 'JAF_BUNDLE_URL',
-           defaultValue: 'https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.1/jakarta.activation-api-2.0.1.jar',
+           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0-RC1/jakarta.activation-api-2.1.0-RC1.jar',
            description: 'URL required for downloading JAF implementation jar' )
     string(name: 'TCK_BUNDLE_BASE_URL',
            defaultValue: '',

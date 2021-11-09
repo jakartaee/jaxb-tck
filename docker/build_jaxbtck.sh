@@ -28,7 +28,7 @@ if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
   export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
 fi
 if [ -z "${JAF_BUNDLE_URL}" ];then
-  export JAF_BUNDLE_URL='https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.0.1/jakarta.activation-api-2.0.1.jar'
+  export JAF_BUNDLE_URL='https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0-RC1/jakarta.activation-api-2.1.0-RC1.jar'
 fi
 if [ -z "${GF_BUNDLE_URL}" ]; then
   export GF_BUNDLE_URL='https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0-SNAPSHOT-nightly.zip'
@@ -61,7 +61,7 @@ if [ ! -z "$TCK_BUNDLE_BASE_URL" ]; then
   wget  $WGET_PROPS ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/${TCK_BUNDLE_FILE_NAME}
   exit 0
 fi
-wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation.jar
+wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation-api.jar
 
 cd $BASEDIR
 export TCK_ROOT=$WORKSPACE
