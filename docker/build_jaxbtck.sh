@@ -83,7 +83,7 @@ wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/
 wget ${WGET_PROPS} 'https://repository.ow2.org/nexus/service/local/repositories/snapshots/content/org/ow2/asm/asm/7.0-SNAPSHOT/asm-7.0-20181027.133552-5.jar' -O asm-7.0.jar
 
 unzip -o latest-glassfish.zip
-ls -l $GF_HOME/glassfish6/glassfish/
+ls -l $GF_HOME/glassfish7/glassfish/
 
 if [ ! -z "$GF_VERSION_URL" ]; then
   wget --progress=bar:force --no-cache $GF_VERSION_URL -O glassfish.version
