@@ -78,7 +78,7 @@
     <antcall target="copyLicenseEFTL"/>
     <zip destfile="${dist}/${eclipse.bundle.name}">
       <zipfileset dir="${dist}/${bundle.folder}" excludes="**/?/**" prefix="${bundle.folder}"/>
-      <zipfileset dir="jaxb-tck-build/XMLB-TCK-3.0" excludes="**/?/**" prefix="${bundle.folder}"/>
+      <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.0" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="dist" includes="docs/**/*" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="${BASEDIR}/userguide/target/generated-docs"
                   includes="*.pdf"
