@@ -28,10 +28,10 @@ if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
   export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
 fi
 if [ -z "${JAF_BUNDLE_URL}" ];then
-  export JAF_BUNDLE_URL='https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0-RC1/jakarta.activation-api-2.1.0-RC1.jar'
+  export JAF_BUNDLE_URL='https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar'
 fi
 if [ -z "${GF_BUNDLE_URL}" ]; then
-  export GF_BUNDLE_URL='https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0-SNAPSHOT-nightly.zip'
+  export GF_BUNDLE_URL='https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.0-SNAPSHOT-nightly.zip'
 fi
 
 echo "JAXB_RI_BUNDLE_URL=${JAXB_RI_BUNDLE_URL}"
