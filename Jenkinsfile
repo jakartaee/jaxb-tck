@@ -34,7 +34,7 @@ spec:
     - "localhost.localdomain"
   containers:
   - name: jaxb-tck-ci
-    image: jakartaee/jaxbtck-base:0.3
+    image: jakartaee/jaxbtck-base:0.4
     command:
     - cat
     tty: true
@@ -51,7 +51,7 @@ spec:
            defaultValue: 'https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip',
            description: 'URL required for downloading JAXB implementation jar' )
     string(name: 'JAF_BUNDLE_URL',
-           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0-RC1/jakarta.activation-api-2.1.0-RC1.jar',
+           defaultValue: 'https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar',
            description: 'URL required for downloading JAF implementation jar' )
     string(name: 'TCK_BUNDLE_BASE_URL',
            defaultValue: '',
@@ -60,7 +60,7 @@ spec:
            defaultValue: 'jakarta-xml-binding-tck-4.0.0.zip', 
 	   description: 'Name of bundle file to be appended to the base url' )
     string(name: 'GF_BUNDLE_URL', 
-           defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-6.1.0.zip', 
+           defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.0-SNAPSHOT-nightly.zip', 
            description: 'URL required for downloading GlassFish Full/Web profile bundle' )
     string(name: 'GF_VERSION_URL', 
            defaultValue: '', 
@@ -69,8 +69,8 @@ spec:
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   choice(name: 'RUNTIME', choices: 'Glassfish\nStandalone',
            description: 'Run JAXB Tests with Standalone/Glassfish' )
-  choice(name: 'JDK', choices: 'JDK11\nJDK12\nJDK13\nJDK14\nJDK15\nJDK16',
-           description: 'Java SE Version to be used for running TCK either JDK11/JDK12/JDK13/JDK14/JDK15/JDK16' )
+  choice(name: 'JDK', choices: 'JDK11\nJDK17',
+           description: 'Java SE Version to be used for running TCK either JDK11/JDK17' )
 
   }
   environment {
