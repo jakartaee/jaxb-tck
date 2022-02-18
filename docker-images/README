@@ -26,9 +26,59 @@ Additional softwares to be downloaded
 -jdk-11.0.7_linux-x64_bin.tar.gz
 -jdk-8u191-linux-x64.tar.gz
 
-JDK11_HOME will the available as JDK11 home path at /opt/jdk-11.0.7
+JDK11_HOME will be available as JDK11 home path at /opt/jdk-11.0.7
 
 Build command : docker build -t jakartaee/jaxbtck-base:0.2 -f Dockerfile2 .
 Image push command : docker push jakartaee/jaxbtck-base:0.2
+
+=====================================
+
+Dockerfile3:
+
+Image - jakartaee/jaxbtck-base:0.3
+
+Additional softwares to be downloaded
+-OpenJDK8U-jdk_x64_linux_8u292b10.tar.gz 
+-openjdk-9.0.4_linux-x64_bin.tar.gz 
+-openjdk-10.0.2_linux-x64_bin.tar.gz 
+-openjdk-11.0.2_linux-x64_bin.tar.gz 
+-openjdk-12.0.2_linux-x64_bin.tar.gz 
+-openjdk-13.0.2_linux-x64_bin.tar.gz 
+-openjdk-14.0.2_linux-x64_bin.tar.gz 
+-openjdk-15.0.2_linux-x64_bin.tar.gz 
+-openjdk-16.0.1_linux-x64_bin.tar.gz 
+
+JAVA_HOME will be available as JDK8 home path at /opt/openjdk-8u292-b10
+JDK9_HOME will be available as JDK9 home path at /opt/jdk-9.0.4
+JDK10_HOME will be available as JDK10 home path at /opt/jdk-10.0.2
+JDK11_HOME will be available as JDK11 home path at /opt/jdk-11.0.2
+JDK12_HOME will be available as JDK12 home path at /opt/jdk-12.0.2
+JDK13_HOME will be available as JDK13 home path at /opt/jdk-13.0.2
+JDK14_HOME will be available as JDK14 home path at /opt/jdk-14.0.2
+JDK15_HOME will be available as JDK15 home path at /opt/jdk-15.0.2
+JDK16_HOME will be available as JDK16 home path at /opt/jdk-16.0.1
+
+
+Build command : docker build -t jakartaee/jaxbtck-base:0.3 -f Dockerfile3 .
+Image push command : docker push jakartaee/jaxbtck-base:0.3
+
+=====================================
+
+Dockerfile4:
+
+Image - jakartaee/jaxbtck-base:0.4
+
+Additional softwares to be downloaded
+-OpenJDK8U-jdk_x64_linux_8u292b10.tar.gz 
+-openjdk-11.0.2_linux-x64_bin.tar.gz 
+-openjdk-17.0.1_linux-x64_bin.tar.gz 
+
+JAVA_HOME will be available as JDK8 home path at /opt/openjdk-8u292-b10
+JDK11_HOME will be available as JDK11 home path at /opt/jdk-11.0.2
+JDK17_HOME will be available as JDK17 home path at /opt/jdk-17.0.1
+
+
+Build command : docker build -t jakartaee/jaxbtck-base:0.4 -f Dockerfile4 .
+Image push command : docker push jakartaee/jaxbtck-base:0.4
 
 =====================================
