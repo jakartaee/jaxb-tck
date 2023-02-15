@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2023 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -602,8 +602,6 @@
   		<arg line="-Xms256m" />
   		<arg line="-Xmx2048m" />
 		<arg line="-Xss128k" />
-  		<arg line="-XX:PermSize=512M"/>
-  		<arg line="-XX:MaxPermSize=512M"/>
   		<arg line="-XX:+UseParallelGC"/>
   		<arg line="-server"/>
   		<arg line="-cp ${java.class.path}:${sun.boot.class.path}"/>

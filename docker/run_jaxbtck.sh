@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 #
-# Copyright (c) 2019, 2021 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2019, 2023 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -15,9 +15,12 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
+WGET_PROPS="--progress=bar:force --no-cache"
+
 TOP_GLASSFISH_DIR="glassfish7"
 TCK_NAME=xml-binding-tck
 
+cd $WORKSPACE
 
 
 if ls ${WORKSPACE}/bundles/*xml-binding-tck*.zip 1> /dev/null 2>&1; then
@@ -37,22 +40,12 @@ if [ -z "$ANT_HOME" ]; then
   export ANT_HOME=/usr/share/ant/
 fi
 
-export JAVA_HOME=${JDK11_HOME}
-
-if [[ "$JDK" == "JDK12" || "$JDK" == "jdk12" ]];then
-  export JAVA_HOME=${JDK12_HOME}
-elif [[ "$JDK" == "JDK13" || "$JDK" == "jdk13" ]];then
-  export JAVA_HOME=${JDK13_HOME}
-elif [[ "$JDK" == "JDK14" || "$JDK" == "jdk14" ]];then
-  export JAVA_HOME=${JDK14_HOME}
-elif [[ "$JDK" == "JDK15" || "$JDK" == "jdk15" ]];then
-  export JAVA_HOME=${JDK15_HOME}
-elif [[ "$JDK" == "JDK16" || "$JDK" == "jdk16" ]];then
-  export JAVA_HOME=${JDK16_HOME}
-elif [[ "$JDK" == "JDK17" || "$JDK" == "jdk17" ]];then
-  export JAVA_HOME=${JDK17_HOME}
+if [[ "$JDK" == "JDK21" || "$JDK" == "jdk21" ]];then
+  wget ${WGET_PROPS} https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz -O jdk-21.tar.gz
+  tar -xvf jdk-21.tar.gz
+  export JAVA_HOME=$WORKSPACE/jdk-21.0.1
 fi  
-
+    
 sed -i "s#^jck.env.jaxb.testExecute.cmdAsFile=.*#jck.env.jaxb.testExecute.cmdAsFile=${JAVA_HOME}/bin/java#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
 sed -i "s#^WORKDIR=.*#WORKDIR=${WORKSPACE}/${TCK_NAME}/batch-multiJVM/work/#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
 sed -i "s#^TESTSUITE=.*#TESTSUITE=${WORKSPACE}/${TCK_NAME}/#g" ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
@@ -71,8 +64,6 @@ cat ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti
 
 cd ${WORKSPACE}
 export BASEDIR=`pwd`
-
-WGET_PROPS="--progress=bar:force --no-cache"
 
 if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
   export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
@@ -102,9 +93,9 @@ if [ -z "$GF_BUNDLE_URL" ]; then
   export GF_BUNDLE_URL=$DEFAULT_GF_BUNDLE_URL
 fi
 export TCK_ROOT=${WORKSPACE}
-export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
+export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8 -DnoSecurityManager=true"
 
-wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
+#wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
 
 wget ${WGET_PROPS} https://repo1.maven.org/maven2/org/checkerframework/checker/3.5.0/checker-3.5.0.jar -O ${WORKSPACE}/checker.jar
 
@@ -117,15 +108,15 @@ cd ${TCK_NAME}/tests/api/signaturetest
 
 ####RUN tests with GLassfish JAXB
 if [[ "$RUNTIME" == "Glassfish" ]]; then
-	$JAVA_HOME/bin/java -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -batch -testsuite ${WORKSPACE}/${TCK_NAME} -open ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti -workdir -create ${WORKSPACE}/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish" -set jck.env.jaxb.classes.jaxbClasses "${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jaxb-osgi.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jersey-media-jaxb.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.activation-api.jar ${WORKSPACE}/checker.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -runtests
-	$JAVA_HOME/bin/java -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -batch -testsuite ${WORKSPACE}/${TCK_NAME} -open ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti -workdir ${WORKSPACE}/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish" -set jck.env.jaxb.classes.jaxbClasses "${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jaxb-osgi.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jersey-media-jaxb.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.activation-api.jar ${WORKSPACE}/checker.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -set jck.priorStatus.needStatus Yes -set jck.priorStatus.status not_run -runtests
+	$JAVA_HOME/bin/java -DnoSecurityManager=true -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -batch -testsuite ${WORKSPACE}/${TCK_NAME} -open ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti -workdir -create ${WORKSPACE}/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish" -set jck.env.jaxb.classes.jaxbClasses "${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jaxb-osgi.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jersey-media-jaxb.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.activation-api.jar ${WORKSPACE}/checker.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -runtests
+	$JAVA_HOME/bin/java -DnoSecurityManager=true -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -batch -testsuite ${WORKSPACE}/${TCK_NAME} -open ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti -workdir ${WORKSPACE}/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish" -set jck.env.jaxb.classes.jaxbClasses "${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.xml.bind-api.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jaxb-osgi.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jersey-media-jaxb.jar ${WORKSPACE}/${TOP_GLASSFISH_DIR}/glassfish/modules/jakarta.activation-api.jar ${WORKSPACE}/checker.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -set jck.priorStatus.needStatus Yes -set jck.priorStatus.status not_run -runtests
 else 
 ####RUN tests with standalone JAXB RI
-	$JAVA_HOME/bin/java -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -batch -testsuite ${WORKSPACE}/${TCK_NAME} -open ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti -workdir -create ${WORKSPACE}/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/jaxb-ri" -set jck.env.jaxb.classes.jaxbClasses "${WORKSPACE}/checker.jar ${WORKSPACE}/jaxb-ri/mod/jakarta.xml.bind-api.jar ${WORKSPACE}/jaxb-ri/mod/jaxb-impl.jar ${WORKSPACE}/jaxb-ri/mod/jaxb-jxc.jar ${WORKSPACE}/jaxb-ri/mod/jakarta.activation-api.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -runtests
-	$JAVA_HOME/bin/java -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -batch -testsuite ${WORKSPACE}/${TCK_NAME} -open ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti -workdir ${WORKSPACE}/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/jaxb-ri" -set jck.env.jaxb.classes.jaxbClasses "${WORKSPACE}/checker.jar ${WORKSPACE}/jaxb-ri/mod/jakarta.xml.bind-api.jar ${WORKSPACE}/jaxb-ri/mod/jaxb-impl.jar ${WORKSPACE}/jaxb-ri/mod/jaxb-jxc.jar ${WORKSPACE}/jaxb-ri/mod/jakarta.activation-api.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -set jck.priorStatus.needStatus Yes -set jck.priorStatus.status not_run -runtests
+	$JAVA_HOME/bin/java -DnoSecurityManager=true -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -batch -testsuite ${WORKSPACE}/${TCK_NAME} -open ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti -workdir -create ${WORKSPACE}/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/jaxb-ri" -set jck.env.jaxb.classes.jaxbClasses "${WORKSPACE}/checker.jar ${WORKSPACE}/jaxb-ri/mod/jakarta.xml.bind-api.jar ${WORKSPACE}/jaxb-ri/mod/jaxb-impl.jar ${WORKSPACE}/jaxb-ri/mod/jaxb-jxc.jar ${WORKSPACE}/jaxb-ri/mod/jakarta.activation-api.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -runtests
+	$JAVA_HOME/bin/java -DnoSecurityManager=true -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -batch -testsuite ${WORKSPACE}/${TCK_NAME} -open ${WORKSPACE}/${TCK_NAME}/lib/javasoft-multiJVM.jti -workdir ${WORKSPACE}/batch-multiJVM/work -set jck.env.jaxb.xsd_compiler.skipValidationOptional Yes -set jck.env.jaxb.xsd_compiler.testCompile.xjcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/xjc.sh" -set jck.env.jaxb.schemagen.run.jxcCmd "/bin/sh ${WORKSPACE}/${TCK_NAME}/linux/bin/schemagen.sh" -set jck.env.jaxb.testExecute.otherEnvVars "JAVA_HOME=${JAVA_HOME} JAXB_HOME=${WORKSPACE}/jaxb-ri" -set jck.env.jaxb.classes.jaxbClasses "${WORKSPACE}/checker.jar ${WORKSPACE}/jaxb-ri/mod/jakarta.xml.bind-api.jar ${WORKSPACE}/jaxb-ri/mod/jaxb-impl.jar ${WORKSPACE}/jaxb-ri/mod/jaxb-jxc.jar ${WORKSPACE}/jaxb-ri/mod/jakarta.activation-api.jar" -set jck.env.jaxb.classes.needJaxbClasses Yes -set jck.priorStatus.needStatus Yes -set jck.priorStatus.status not_run -runtests
 fi
 
-  $JAVA_HOME/bin/java -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -workdir ${WORKSPACE}/batch-multiJVM/work -writereport ${WORKSPACE}/JAXB_REPORT/JAXB-TCK
+  $JAVA_HOME/bin/java -DnoSecurityManager=true -jar ${WORKSPACE}/${TCK_NAME}/lib/javatest.jar -workdir ${WORKSPACE}/batch-multiJVM/work -writereport ${WORKSPACE}/JAXB_REPORT/JAXB-TCK
 
 
 export HOST=`hostname -f`

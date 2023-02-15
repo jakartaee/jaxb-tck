@@ -1,6 +1,6 @@
 #! /bin/ksh 
 #
-# Copyright (c) 2007, 2018 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2007, 2023 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -101,7 +101,7 @@ test -d $outDir || mkdir $outDir
 
 #${jctTools}/solaris/bin/mlprint -J-mx128m 
 CLASSPATH=${javaTest}/javatest.jar \
-    ${genJava} -Xmx512m -XX:MaxPermSize=512M com.sun.jck.utils.mlprint.Main \
+    ${genJava} -Xmx512m com.sun.jck.utils.mlprint.Main \
     -b `cd ${buildDir}; pwd` \
     -c ${buildDir}/tck.mlc \
     -m ${buildDir}/tck.mlm \
