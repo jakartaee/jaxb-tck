@@ -65,6 +65,8 @@ xml_schema/msData/datatypes/Facets/NMTOKENS/jaxb/NMTOKENS_minLength001_1464.html
 xml_schema/msData/datatypes/Facets/NMTOKENS/jaxb/NMTOKENS_minLength001_1464.html#NMTOKENS_minLength001_1464.v 6540982 test_bug
 xml_schema/msData/datatypes/Facets/NMTOKENS/jaxb/NMTOKENS_minLength004_1467.html#NMTOKENS_minLength004_1467 6540982 test_bug
 xml_schema/msData/datatypes/Facets/NMTOKENS/jaxb/NMTOKENS_minLength004_1467.html#NMTOKENS_minLength004_1467.v 6540982 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/IDREFS_length006_395.html#IDREFS_length006_395 82 test_bug
+xml_schema/msData/datatypes/Facets/Schemas/jaxb/NMTOKENS_length006_438.html#NMTOKENS_length006_438 82 test_bug
 xml_schema/msData/datatypes/Facets/Schemas/jaxb/dateTime_maxInclusive004_104.html#dateTime_maxInclusive004_104 6540982 test_bug
 xml_schema/msData/datatypes/Facets/Schemas/jaxb/date_maxInclusive009_136.html#date_maxInclusive009_136 6540982 test_bug
 xml_schema/msData/datatypes/Facets/Schemas/jaxb/decimal_totalDigits007_43.html#decimal_totalDigits007_43 6540982 test_bug
