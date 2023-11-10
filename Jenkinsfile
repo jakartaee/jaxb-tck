@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2019, 2023 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -57,7 +57,7 @@ spec:
            defaultValue: '',
            description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
     string(name: 'TCK_BUNDLE_FILE_NAME', 
-           defaultValue: 'jakarta-xml-binding-tck-4.0.0.zip', 
+           defaultValue: 'jakarta-xml-binding-tck-4.0.1.zip',
 	   description: 'Name of bundle file to be appended to the base url' )
     string(name: 'GF_BUNDLE_URL', 
            defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.0-SNAPSHOT-nightly.zip', 
