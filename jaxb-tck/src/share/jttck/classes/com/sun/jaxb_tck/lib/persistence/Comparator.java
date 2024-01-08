@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2005, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -230,7 +230,7 @@ public class Comparator {
             for (int i = 0; i < sourcePDesc.length; i++) {
                 String propName = sourcePDesc[i].getName();
                 log("Checking property " + (i + 1) + "/" + sourcePDesc.length + ": " + sourceBName + "."  + propName);
-                if (propName.equals("class")) {
+                if (propName.equals("class") || isSequenceProperty(propName, source)) {
                     log("Skipped.");
                     continue;
                 } 
@@ -269,6 +269,36 @@ public class Comparator {
             throw new RuntimeException("Beans error.", e);
         }
         return Status.passed("Comparison passed.");
+    }
+
+    private static boolean isSequenceProperty(String propName, Object source) {
+        // avoid instanceof java.util.SequencedCollection for copatibility with SE < 21
+        if (implementsInterface(source.getClass(), "java.util.SequencedCollection")) {
+            return "first".equals(propName) || "last".equals(propName);
+        }
+        return false;
+    }
+
+    private static boolean implementsInterface(Class<?> aClass, String anInterface) {
+        Class<?>[] interfaces = aClass.getInterfaces();
+        // loop through the "directly declared" interfaces
+        for (int i = 0; i < interfaces.length; i++) {
+            if (anInterface.equals(interfaces[i].getName())) {
+                return true;
+            }
+        }
+        // recurse through the interfaces
+        for (int i = 0; i < interfaces.length; i++) {
+            if (implementsInterface(interfaces[i], anInterface)) {
+                return true;
+            }
+        }
+        // finally, recurse up through the superclasses to Object
+        Class<?> superClass = aClass.getSuperclass();
+        if (superClass == null) {
+            return false;
+        }
+        return implementsInterface(superClass, anInterface);
     }
 
     private static Method getReadMethod(PropertyDescriptor[] descArray,
