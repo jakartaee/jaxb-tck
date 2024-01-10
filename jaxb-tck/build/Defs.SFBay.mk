@@ -22,7 +22,7 @@
 # tools. Mapping problem leads to hanging the build.
 
 # Have to define $(PWD) here since the original definition of $(PWD)
-PWD=/usr/bin/pwd
+PWD = /usr/bin/pwd
 # is below the line 'include Defs.<domain>.mk' in the Defs.mk
 
 
@@ -34,7 +34,7 @@ PWD=/usr/bin/pwd
 
 
 #Location of JAXB RI that should be tested
-JAXB_HOME = /home/g/oracle/jaxb-tck/jaxb-ri
+JAXB_HOME =
 
 #used for ant tasks from the build
 #JAXB_20_RI_HOME=
@@ -43,14 +43,14 @@ JAXB_HOME = /home/g/oracle/jaxb-tck/jaxb-ri
 
 #SIGTEST_WORKSPACE=../../jck-sigtest13
 #JAXB_SIGTEST_WS=../../jaxb-sigtest
-SIGTEST_DIST = /home/g/oracle/jaxb-tck/jaxb-tck
+SIGTEST_DIST = 
 
 #----------------------------------------------------------------------
 #
 # GENERAL_JAVAxxx are used to run Java programs like JavaTest, Jasm, Jcod, etc
 # It is *not* used to run tests
 #
-GENERAL_JAVAHOME=${JAVA_HOME}
+GENERAL_JAVAHOME = ${JAVA_HOME}
 #----------------------------------------------------------------------
 #
 # PRECOMPILE_JAVAxxx is used to generate any precompiled classes for release
@@ -75,10 +75,10 @@ LINKLINT = $(PERL) $(PKGS_BASEDIR)/linklint_2.1/linklint
 # TODO FMBATCH = /net/swpubs.sfbay/opt/local/framemaker,v7.0/bin/fmbatch
 FMBATCH = /java/jct-tools/pkgs/fm71/bin/fmbatch
 
-ANT_HOME = /usr/share/ant
+ANT_HOME = 
 #location of misc. tools
-UNZIP=/usr/bin/unzip
-ZIP = /usr/bin/zip
+UNZIP = /usr/bin/unzip
+ZIP = /bin/zip
 PERL = /usr/bin/perl
 
 #----------------------------------------------------------------------
