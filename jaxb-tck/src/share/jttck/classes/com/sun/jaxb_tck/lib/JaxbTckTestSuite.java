@@ -30,7 +30,7 @@ import com.sun.javatest.TestFilter;
  */
 public class JaxbTckTestSuite extends TestSuite {
 
-    public JaxbTckTestSuite(File root, Map<?, ?> tsInfo, ClassLoader cl) throws Fault {
+    public JaxbTckTestSuite(File root, Map tsInfo, ClassLoader cl) throws Fault {
         super(root, tsInfo, cl);
     }
 

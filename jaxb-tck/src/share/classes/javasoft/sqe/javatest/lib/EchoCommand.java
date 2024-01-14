@@ -24,7 +24,6 @@ import java.io.PrintWriter;
 import java.util.Hashtable;
 import com.sun.javatest.Command;
 import com.sun.javatest.Status;
-import com.sun.javatest.util.Properties;
 
 /**
  * EchoCommand simply echoes its arguments to the log stream, and reports success.

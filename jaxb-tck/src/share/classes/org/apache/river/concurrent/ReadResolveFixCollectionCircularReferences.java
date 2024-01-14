@@ -45,7 +45,7 @@ import java.util.concurrent.TimeUnit;
  */
 /*
  extension of Set<T>, SortedSet<T>, NavigableSet<T> by ReadResolveFixCollectionCircularReferences  
- has been removed to avoid compile time failures with JDK 11.
+ has been removed due to compile time failures with JDK 11.
 */
 abstract class ReadResolveFixCollectionCircularReferences<T> extends SerializationOfReferenceCollection<T>
 implements List<T>, Queue<T>, Deque<T>, BlockingQueue<T>, BlockingDeque<T>{
