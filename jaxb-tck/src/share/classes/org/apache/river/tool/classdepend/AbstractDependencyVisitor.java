@@ -1,7 +1,5 @@
-package org.apache.river.tool.classdepend;
-
-/***
- * ASM examples: examples showing how ASM can be used
+/*
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
  * Copyright (c) 2000-2005 INRIA, France Telecom
  * All rights reserved.
  *
@@ -30,6 +28,8 @@ package org.apache.river.tool.classdepend;
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+package org.apache.river.tool.classdepend;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.objectweb.asm.AnnotationVisitor;
@@ -43,13 +43,12 @@ import org.objectweb.asm.signature.SignatureReader;
 import org.objectweb.asm.signature.SignatureVisitor;
 
 /**
- * 
- * 
+ * ASM examples: examples showing how ASM can be used
  */
 abstract class AbstractDependencyVisitor extends ClassVisitor {
 
     AbstractDependencyVisitor() {
-        super(Opcodes.ASM5);
+        super(Opcodes.ASM9);
     }
 
     abstract protected void addName(String name);
@@ -73,7 +72,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
     public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
 	addDesc(desc);
 	AnnotationVisitor ann = super.visitAnnotation(desc, visible);
-        if (ann != null) return new AnnotationVisit(Opcodes.ASM5, ann);
+        if (ann != null) return new AnnotationVisit(Opcodes.ASM9, ann);
         return null;
     }
 
@@ -102,7 +101,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
             addSignature(signature);
         }
         addNames(exceptions);
-        return new MethodVisit(Opcodes.ASM5, super.visitMethod(api, desc, desc, desc, exceptions));
+        return new MethodVisit(Opcodes.ASM9, super.visitMethod(api, desc, desc, desc, exceptions));
     }
 
     @Override
@@ -159,11 +158,11 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
     }
 
     private void addSignature(String signature) {
-	new SignatureReader(signature).accept(new SignatureVisit(Opcodes.ASM5));
+	new SignatureReader(signature).accept(new SignatureVisit(Opcodes.ASM9));
     }
 
     private void addTypeSignature(String signature) {
-	new SignatureReader(signature).acceptType(new SignatureVisit(Opcodes.ASM5));
+	new SignatureReader(signature).acceptType(new SignatureVisit(Opcodes.ASM9));
     }
     
     /**
@@ -193,7 +192,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
         public AnnotationVisitor visitAnnotation(String name, String desc) {
             addDesc(desc);
             AnnotationVisitor ann = super.visitAnnotation(name, desc);
-            if (ann != null) return new AnnotationVisit( Opcodes.ASM5, ann);
+            if (ann != null) return new AnnotationVisit( Opcodes.ASM9, ann);
             return null;
         }
         
@@ -216,7 +215,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
         {
             addDesc(desc);
             AnnotationVisitor ann = super.visitParameterAnnotation(parameter, desc, visible);
-            if (ann != null) return new AnnotationVisit(Opcodes.ASM5, ann );
+            if (ann != null) return new AnnotationVisit(Opcodes.ASM9, ann );
             return null;
         }
         @Override

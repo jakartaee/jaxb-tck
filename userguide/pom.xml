@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
+    Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
     Copyright (c) 2018, 2023 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
@@ -22,25 +23,22 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.7</version>
+        <version>2.0.2</version>
         <relativePath/>
     </parent>
     <groupId>org.glassfish.jaxb</groupId>
     <artifactId>tck-userguide</artifactId>
     <packaging>pom</packaging>
-    <version>4.0.2</version>
+    <version>4.0.3</version>
     <name>Eclipse Foundation Technology Compatibility Kit User's Guide for Jakarta XML Binding for Jakarta EE, Release 4.0</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <site.output.dir>${project.build.directory}/staging</site.output.dir>
         <maven.site.skip>true</maven.site.skip>
-        <asciidoctorj.version>2.5.3</asciidoctorj.version>
-        <asciidoctorj.diagram.version>2.2.1</asciidoctorj.diagram.version>
-        <asciidoctorj.maven.plugin.version>2.1.0</asciidoctorj.maven.plugin.version>
-        <asciidoctorj.pdf.version>1.6.2</asciidoctorj.pdf.version>
-        <jbake.maven.plugin.version>0.3.3</jbake.maven.plugin.version>
-        <freemarker.version>2.3.30</freemarker.version>
+        <asciidoctorj.maven.plugin.version>3.2.0</asciidoctorj.maven.plugin.version>
+        <asciidoctorj.pdf.version>2.3.23</asciidoctorj.pdf.version>
+        <jbake.maven.plugin.version>2.7.0</jbake.maven.plugin.version>
         <!-- status: DRAFT, BETA, etc., or blank for final -->
         <status></status>
         <doc.pdf>XMLB-TCK-Users-Guide.pdf</doc.pdf>
@@ -173,24 +171,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>deploy-site</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>publish-scm</goal>
-                        </goals>
-                        <configuration>
-                            <scmBranch>gh-pages</scmBranch>
-                            <skipDeletedFiles>false</skipDeletedFiles>
-                            <checkinComment>Update site</checkinComment>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
 
         <pluginManagement>
@@ -208,34 +188,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.0.0-M3</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-scm-publish-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.6.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jbake</groupId>
                     <artifactId>jbake-maven-plugin</artifactId>
                     <version>${jbake.maven.plugin.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.asciidoctor</groupId>
-                            <artifactId>asciidoctorj</artifactId>
-                            <version>${asciidoctorj.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.asciidoctor</groupId>
-                            <artifactId>asciidoctorj-diagram</artifactId>
-                            <version>${asciidoctorj.diagram.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.freemarker</groupId>
-                            <artifactId>freemarker</artifactId>
-                            <version>${freemarker.version}</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.asciidoctor</groupId>

@@ -1,5 +1,6 @@
 #!/bin/bash -x
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 2019, 2023 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -32,10 +33,10 @@ if [ -z "${JAXB_RI_BUNDLE_URL}" ]; then
   export JAXB_RI_BUNDLE_URL='https://ci.eclipse.org/jaxb-impl/job/jaxb-ri-master-build/lastSuccessfulBuild/artifact/jaxb-ri/bundles/ri/target/jaxb-ri.zip'
 fi
 if [ -z "${JAF_BUNDLE_URL}" ];then
-  export JAF_BUNDLE_URL='https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/activation/jakarta.activation-api/2.1.2/jakarta.activation-api-2.1.2.jar'
+  export JAF_BUNDLE_URL='https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar'
 fi
 if [ -z "${GF_BUNDLE_URL}" ]; then
-  export GF_BUNDLE_URL='https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.0.zip'
+  export GF_BUNDLE_URL='https://download.eclipse.org/ee4j/glassfish/glassfish-7.1.0-SNAPSHOT-nightly.zip'
 fi
 
 echo "JAXB_RI_BUNDLE_URL=${JAXB_RI_BUNDLE_URL}"
@@ -82,8 +83,8 @@ export JAXB_JAR_LOC=${JAXB_HOME}/mod
 
 echo "$JAXB_HOME"
 
-wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/7.0/asm-commons-7.0.jar' -O asm-commons-7.0.jar
-wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm/7.0/asm-7.0.jar' -O asm-7.0.jar
+wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/9.9.1/asm-commons-9.9.1.jar' -O asm-commons-7.0.jar
+wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm/9.9.1/asm-9.9.1.jar' -O asm-7.0.jar
 
 unzip -o latest-glassfish.zip
 ls -l $GF_HOME/glassfish7/glassfish/
