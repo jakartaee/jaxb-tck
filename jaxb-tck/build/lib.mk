@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -50,7 +51,7 @@ ZIP.files += $(LIB_FILES:%=$(TCKDIR)/lib/%)
 
 jaxb.mtl: unzipped.ok
 	@ echo "Generating MTL..."
-	@JCKUTILS_CLASSPATH=$(UNZIPDIR)/$(TCKVERSION)/classes:$(JAXB_HOME)/mod/jaxb-api.jar \
+	@JCKUTILS_CLASSPATH=$(UNZIPDIR)/$(TCKVERSION)/classes:$(JAXB_HOME)/mod/jakarta.xml.bind-api.jar \
 	JCKUTILS_JAVA=$(PRECOMPILE_JAVA) \
 	../jcktestlist  -o $@ -testCases -dirWalk $(UNZIPDIR)/$(TCKVERSION)/tests \
 	|| echo "Warning: Generation of MTL failed."
