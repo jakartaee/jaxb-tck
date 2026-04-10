@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation.
  * Copyright (c) 2008, 2020 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
@@ -27,7 +28,6 @@ import java.util.regex.Pattern;
 import com.sun.javatest.Script;
 import com.sun.javatest.TestDescription;
 import com.sun.javatest.TestEnvironment;
-import com.sun.jaxb_tck.interview.JAXBTCKParameters;
 
 import com.sun.javatest.Status;
 import com.sun.javatest.util.StringArray;
@@ -320,7 +320,8 @@ public class JaxbTckScript extends Script {
         isSameJVM = false;
         try {
             String str = env.lookup("xjc_sameOther")[0];
-            isSameJVM = (String.valueOf(JAXBTCKParameters.MODE_SAME).equals(str));
+//            isSameJVM = (String.valueOf(com.sun.jaxb_tck.interview.JAXBTCKParameters.MODE_SAME).equals(str));
+            isSameJVM = "1".equals(str);
         } catch (Exception e) {
         }
 
