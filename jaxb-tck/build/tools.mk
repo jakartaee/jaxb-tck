@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation.
 # Copyright (c) 1999, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -135,12 +136,11 @@ JAVAFILES.com.sun.jck.utils.installer = \
 		Root.java \
 		Zipper.java \
 
-#compile installer classes with JDK 1.8 source to avoid ASM errors.
 precompile-jckutils-installer-class.ok: javatest.ok $(BUILDCLASSDIR) \
                                 $(JAVAFILES.com.sun.jck.utils.installer:%=$(TOPDIR)/src/share/classes/com/sun/jck/utils/installer/%)
 	@echo precompile jckutils installer classes
 	CLASSPATH=$(JAVATEST_JAR):$(BUILDCLASSDIR):$(JAXB_CLASSPATH) \
-	$(TOOLS_JAVAC) -source 1.8 -target 1.8 -d $(BUILDCLASSDIR) \
+	$(TOOLS_JAVAC) --release 11 -d $(BUILDCLASSDIR) \
 	$(JAVAFILES.com.sun.jck.utils.installer:%=$(TOPDIR)/src/share/classes/com/sun/jck/utils/installer/%)
 	echo "jckutils installer class precompiled at `date`" > $@
 ZIP.files += precompile-jckutils-installer-class.ok
@@ -261,13 +261,12 @@ precompile-tckbtools-lib-classes.ok:
 	echo "tckbtools lib classes precompiled at `date`" > $@
 ZIP.files += precompile-tckbtools-lib-classes.ok
 
-#compile apache/river classes with JDK 1.8 source to avoid ASM errors.
 precompile-apache-river-jini.ok:
 	@echo precompile apache river jini classes
 	find $(TOPDIR)/src/share/classes/org/apache/river -name "*.java" > river_source_files.txt
 	find $(TOPDIR)/src/share/classes/net/jini -name "*.java" >> river_source_files.txt
-	CLASSPATH=$(WORKSPACE)/checker.jar:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar \
-	$(TOOLS_JAVAC) -source 1.8 -target 1.8 -d $(BUILDCLASSDIR) @river_source_files.txt
+	CLASSPATH=$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar \
+	$(TOOLS_JAVAC) --release 11 -d $(BUILDCLASSDIR) @river_source_files.txt
 	$(MKDIR) -p $(TCKDIR)/classes/org/apache/river/tool/resources
 	$(MKDIR) -p $(TCKDIR)/classes/org/apache/river/impl
 	$(CP) $(TOPDIR)/src/share/classes/org/apache/river/tool/resources/classdep.properties $(TCKDIR)/classes/org/apache/river/tool/resources/
