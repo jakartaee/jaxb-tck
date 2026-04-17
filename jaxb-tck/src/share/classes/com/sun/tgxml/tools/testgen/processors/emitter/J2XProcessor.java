@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
  * Copyright (c) 2005, 2018 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
@@ -18,6 +19,7 @@ package com.sun.tgxml.tools.testgen.processors.emitter;
 
 import java.util.*;
 import javax.annotation.processing.*;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.NestingKind;
 import javax.lang.model.element.TypeElement;
@@ -28,6 +30,10 @@ import javax.lang.model.element.TypeElement;
 public class J2XProcessor extends javax.annotation.processing.AbstractProcessor {
     
     ArrayList<String> classNames;
+
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latest();
+    }
 
     public Set<String> getSupportedAnnotationTypes() {
         Set set = new HashSet();
