@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -15,7 +16,7 @@
 #
 
 #CR 6670410 JAXB TCK content compare tests (26 + 7) fail due to internal error of jbx comparator
-schema_bind/bind_class/name/name00101m_Bind.html#name00101m1_Bind_p 6670410 6670410 framework_bug
+schema_bind/bind_class/name/name00101m_Bind.html#name00101m1_Bind_p 6670410 framework_bug
 schema_bind/bind_class/name/name00107m1.html#name00107m1_p 6670410 framework_bug
 schema_bind/bind_schemaBindings/map/map00101m1.html#map00101m1_p 6670410 framework_bug
 xml_schema/msData/additional/jaxb/addB012.html#addB012.v 6670410 framework_bug

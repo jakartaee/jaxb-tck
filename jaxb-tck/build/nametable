@@ -52,7 +52,6 @@ tests/api/jakarta_xml/bind/JAXBContext/package_with_jaxb_index/PurchaseOrderType
 tests/api/jakarta_xml/bind/JAXBContext/package_with_jaxb_index/jaxb.index.rc
 tests/api/jakarta_xml/bind/JAXBContext/package_with_jaxb_index/package-info.java
 tests/api/jakarta_xml/bind/JAXBContext/ContextFactory.java
-tests/api/jakarta_xml/bind/JAXBContext/jaxb.properties.rc
 tests/api/jakarta_xml/bind/JAXBContext/JAXBContext.xsd
 tests/api/jakarta_xml/bind/JAXBContext/JAXBContext.tdoc.xml
 tests/api/jakarta_xml/bind/JAXBContext/JAXBContext.xml
