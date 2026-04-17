@@ -1,5 +1,6 @@
 #!/bin/ksh
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 2018, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -59,7 +60,7 @@ fi
 portBase=${portBase:-`expr \( $$ % 32768 \) + 32768`}
 agentPoolPort=${agentPoolPort:-$portBase}
 
-jtRuntimeArgs="-verify -ms64m -mx512m"
+jtRuntimeArgs="-verify"
 
 if [ "$needAgent" ]; then
   jtAppArgs="$jtAppArgs -startAgentPool -agentPoolPort $agentPoolPort"
@@ -107,7 +108,7 @@ if [ "$needAgent" = 1 ]; then
   do
     CLASSPATH=./lib/javatest.jar:./classes:`dirname $JAVA`/../lib/tools.jar:$JAXB_JAR_CP \
     DISPLAY=${TCKDISPLAY} \
-	  ${JAVA}  -ms128m -mx256m \
+	  ${JAVA} \
 	-Djava.security.policy=./lib/tck.policy \
 	com.sun.javatest.agent.AgentMain -activeHost `uname -n` -activePort $agentPoolPort -concurrency $CONCURRENCY &
     agentPID=$!

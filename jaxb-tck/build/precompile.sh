@@ -1,5 +1,6 @@
 #!/bin/sh
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -64,7 +65,7 @@ set -x
 
 if CLASSPATH=$tckDir/classes:$tckDir/lib/javatest.jar:$jdktools:$JAXB_CLASSPATH:$precompileDir/classes \
    DEBUG_PROG="${TRUSS_PRECOMPILE+truss -a -topen,close  -s!all}" \
-   $jtjava -ms32m -mx256m \
+   $jtjava \
 	-Dprecompile \
 	-DsigtestDir=$precompileDir/classes \
 	com.sun.javatest.tool.Main \
