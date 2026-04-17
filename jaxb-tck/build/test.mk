@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -238,7 +239,7 @@ TESTS += $(TESTS.runtime)
 stats/index.html: tck-zip.lst
 	$(MKDIR) -p stats
 	CLASSPATH=$(TCKDIR)/classes:$(JAVATEST_JAR) \
-	$(GENERAL_JAVA) -mx256m com.sun.jck.utils.jckfilecheck.Main \
+	$(GENERAL_JAVA) com.sun.jck.utils.jckfilecheck.Main \
 		-d $(UNZIPDIR)/$(TCKVERSION) -o stats/index.html -a -f -iso \
 		-cbegin 4096 8192 16384 32768 -cend -extns COPYRIGHT README \
 		au aif c class dat dtd gif gm gz h jasm java jcod jtp jtr jts jtx \
