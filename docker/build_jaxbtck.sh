@@ -154,20 +154,19 @@ cd $TCK_ROOT/jaxb-tck/build
 
 make REPOSITORIES=$TCK_ROOT/xml_schema clean
 mvn clean -f ${WORKSPACE}/jaxb-tck/src/pom.xml
+echo ************* Calling Maven ************
 mvn verify -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes
 unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle/target/bundle-4.1.0-SNAPSHOT.jar
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes
 unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle.src/target/bundle-src-4.1.0-SNAPSHOT-sources.jar
-make REPOSITORIES=$TCK_ROOT/xml_schema nightly
-
-echo *************Building JAXB TCK Userguide************
-cd $WORKSPACE/userguide;mvn
 mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/html-userguide
+unzip -d $WORKSPACE/jaxb-tck-build/docs/html-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-4.1.0-SNAPSHOT-html.zip
 mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/pdf-userguide
-cp -r $WORKSPACE/userguide/target/staging/{*.html,css,img} $WORKSPACE/jaxb-tck-build/docs/html-userguide
-cp -r $WORKSPACE/userguide/target/generated-docs/*.pdf $WORKSPACE/jaxb-tck-build/docs/pdf-userguide
-echo *************Completed Building JAXB TCK Userguide************
+unzip -d $WORKSPACE/jaxb-tck-build/docs/pdf-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-4.1.0-SNAPSHOT-pdf.zip
+unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0 ${WORKSPACE}/jaxb-tck/src/docs/relnotes/target/tck-relnotes-4.1.0-SNAPSHOT-html.zip
+echo ************* Calling make ************
+make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
 mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build

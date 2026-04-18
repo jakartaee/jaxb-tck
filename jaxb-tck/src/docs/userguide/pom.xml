@@ -20,39 +20,24 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>org.eclipse.ee4j</groupId>
-        <artifactId>project</artifactId>
-        <version>2.0.2</version>
-        <relativePath/>
+        <groupId>jakarta.xml.bind</groupId>
+        <artifactId>tck-docs</artifactId>
+        <version>4.1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.glassfish.jaxb</groupId>
+
     <artifactId>tck-userguide</artifactId>
     <packaging>pom</packaging>
-    <version>4.0.3</version>
-    <name>Eclipse Foundation Technology Compatibility Kit User's Guide for Jakarta XML Binding for Jakarta EE, Release 4.0</name>
+    <name>XML Binding TCK User's Guide</name>
+    <description>Eclipse Foundation Technology Compatibility Kit User's Guide for Jakarta XML Binding for Jakarta EE, Release 4.0</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <site.output.dir>${project.build.directory}/staging</site.output.dir>
-        <maven.site.skip>true</maven.site.skip>
-        <asciidoctorj.maven.plugin.version>3.2.0</asciidoctorj.maven.plugin.version>
-        <asciidoctorj.pdf.version>2.3.23</asciidoctorj.pdf.version>
-        <jbake.maven.plugin.version>2.7.0</jbake.maven.plugin.version>
-        <!-- status: DRAFT, BETA, etc., or blank for final -->
-        <status></status>
         <doc.pdf>XMLB-TCK-Users-Guide.pdf</doc.pdf>
-        <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
-    <distributionManagement>
-        <site>
-            <url>scm:git:git@github.com:eclipse-ee4j/jaxb-tck.git</url>
-        </site>
-    </distributionManagement>
-
     <build>
-        <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -67,27 +52,6 @@
                         </fileset>
                     </filesets>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>enforce-versions</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireJavaVersion>
-                                    <version>[11,)</version>
-                                    <message>You need Java SE 11 or newer</message>
-                                </requireJavaVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.glassfish.doc</groupId>
@@ -171,43 +135,25 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/ug-html.xml</descriptor>
+                        <descriptor>src/main/assembly/ug-pdf.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.1.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.glassfish.doc</groupId>
-                    <artifactId>glassfish-doc-maven-plugin</artifactId>
-                    <version>1.3</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.6.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.jbake</groupId>
-                    <artifactId>jbake-maven-plugin</artifactId>
-                    <version>${jbake.maven.plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.asciidoctor</groupId>
-                    <artifactId>asciidoctor-maven-plugin</artifactId>
-                    <version>${asciidoctorj.maven.plugin.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.asciidoctor</groupId>
-                            <artifactId>asciidoctorj-pdf</artifactId>
-                            <version>${asciidoctorj.pdf.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 </project>
