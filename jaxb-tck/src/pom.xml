@@ -31,7 +31,7 @@
 
     <groupId>jakarta.xml.bind</groupId>
     <artifactId>tck-project</artifactId>
-    <version>4.1.0-SNAPSHOT</version>
+    <version>4.0.3</version>
     <packaging>pom</packaging>
     <name>XML Binding TCK Project</name>
     <description>XML Binding TCK Project</description>
@@ -73,7 +73,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
         <maven.compiler.testRelease>${maven.compiler.release}</maven.compiler.testRelease>
         <vendor.name>Eclipse Foundation</vendor.name>
 
