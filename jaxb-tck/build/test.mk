@@ -44,11 +44,11 @@ unpack_sigtestdev_jar.ok: $(PRECOMPILEDIR)/classes
 	(cd $(PRECOMPILEDIR)/classes ; $(PRECOMPILE_JAR) -xf $(SIGTESTDEV_JAR_LOC)/sigtestdev.jar ; $(RM) META-INF )
 	echo "sigtestdev.jar is unpacked at `date`" > $@
 
-SIGTEST_SETUP_RUN_SRC=$(TOPDIR)/src/share/jttck/classes/com/sun/jaxb_tck/lib/SigtestSetupRun.java
-
-precompile_sigtest_setup_run.ok: $(PRECOMPILEDIR)/classes unpack_sigtestdev_jar.ok $(SIGTEST_SETUP_RUN_SRC) javatest.ok jtlegacy.ok
-	CLASSPATH=$(PRECOMPILEDIR)/classes:$(TCKDIR)/classes:$(JAVATEST_JAR) $(PRECOMPILE_JAVAC) -d $(PRECOMPILEDIR)/classes $(SIGTEST_SETUP_RUN_SRC)
-	echo "SigtestSetupRun.java is precompiled at `date`" > $@
+#SIGTEST_SETUP_RUN_SRC=$(TOPDIR)/src/share/jttck/classes/com/sun/jaxb_tck/lib/SigtestSetupRun.java
+#
+#precompile_sigtest_setup_run.ok: $(PRECOMPILEDIR)/classes unpack_sigtestdev_jar.ok $(SIGTEST_SETUP_RUN_SRC) javatest.ok jtlegacy.ok
+#	CLASSPATH=$(PRECOMPILEDIR)/classes:$(TCKDIR)/classes:$(JAVATEST_JAR) $(PRECOMPILE_JAVAC) -d $(PRECOMPILEDIR)/classes $(SIGTEST_SETUP_RUN_SRC)
+#	echo "SigtestSetupRun.java is precompiled at `date`" > $@
 
 #----------------------------------------------------------------------
 
@@ -61,11 +61,11 @@ precompile_testsuite_jtt.ok: $(TCKDIR)
 	echo "script=com.sun.jaxb_tck.lib.PrecompileJaxbTckScript" >> $(TCKDIR)/testsuite.jtt
 	echo "testsuite.jtt for precompile built at `date`" > $@
 
-TEST_EXECUTE_SCRIPT_SRC=$(TOPDIR)/src/share/jttck/classes/com/sun/jaxb_tck/lib/PrecompileJaxbTckScript.java
-
-precompile_test_execute_script.ok: $(PRECOMPILEDIR)/classes com.sun.jaxb_tck.lib.ok com.sun.jaxb_tck.lib.persistence.ok
-	CLASSPATH=$(PRECOMPILEDIR)/classes:$(JAVATEST_JAR):$(TCKDIR)/classes $(PRECOMPILE_JAVAC) -d $(PRECOMPILEDIR)/classes $(TEST_EXECUTE_SCRIPT_SRC)
-	echo "PrecompileJaxbTckScript.java is precompiled at `date`" > $@
+#TEST_EXECUTE_SCRIPT_SRC=$(TOPDIR)/src/share/jttck/classes/com/sun/jaxb_tck/lib/PrecompileJaxbTckScript.java
+#
+#precompile_test_execute_script.ok: $(PRECOMPILEDIR)/classes com.sun.jaxb_tck.lib.ok com.sun.jaxb_tck.lib.persistence.ok
+#	CLASSPATH=$(PRECOMPILEDIR)/classes:$(JAVATEST_JAR):$(TCKDIR)/classes $(PRECOMPILE_JAVAC) -d $(PRECOMPILEDIR)/classes $(TEST_EXECUTE_SCRIPT_SRC)
+#	echo "PrecompileJaxbTckScript.java is precompiled at `date`" > $@
 
 #----------------------------------------------------------------------
 $(TCKDIR)/lib:
@@ -80,7 +80,7 @@ JAVATEST_CONCURRENCY.sh = \
 
 $(TCKDIR)/lib/javasoft-singleJVM.jti: precompile-jti-gen.ok $(@D)
 	@ $(RM) $@
-	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar \
+	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar:$(TOPDIR)/src/tools/jti/target/jtigen-4.1.0-SNAPSHOT.jar \
 	$(GENERAL_JAVA) com.sun.jaxb_tck.util.JtiGen -single \
 	-work $(BUILDAREA)/test/$(TCKVERSION)/batch-singleJVM/work \
 	-testsuite $(UNZIPDIR)/$(TCKVERSION) \
@@ -90,7 +90,7 @@ $(TCKDIR)/lib/javasoft-singleJVM.jti: precompile-jti-gen.ok $(@D)
 	
 $(TCKDIR)/lib/javasoft-multiJVM.jti: precompile-jti-gen.ok $(@D)
 	@ $(RM) $@
-	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar \
+	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar:$(TOPDIR)/src/tools/jti/target/jtigen-4.1.0-SNAPSHOT.jar \
 	$(GENERAL_JAVA) com.sun.jaxb_tck.util.JtiGen -multi \
 	-work $(BUILDAREA)/test/$(TCKVERSION)/batch-multiJVM/work \
 	-testsuite $(UNZIPDIR)/$(TCKVERSION) \
@@ -144,10 +144,6 @@ PRECOMPILE_WORK=$(@D:precompile-%=$(PRECOMPILEDIR)/work/%)
 $(PRECOMPILE_DIRS): html.ok $(BUILDDIR)/precompile.sh \
 			$(TCKDIR)/tests/testsuite.jtd \
 			$$(PRECOMPILE_WORK) \
-			com.sun.jaxb_tck.lib.ok \
-			com.sun.jaxb_tck.lib.persistence.ok \
-			precompile_sigtest_setup_run.ok \
-			precompile_test_execute_script.ok \
 			precompile_testsuite_jtt.ok
 	$(MKDIR) -p $(@D);
 	if [ -d $(TCKDIR)/tests/$(@:precompile-%.ok=%) ] ; then \
