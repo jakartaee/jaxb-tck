@@ -80,7 +80,7 @@ JAVATEST_CONCURRENCY.sh = \
 
 $(TCKDIR)/lib/javasoft-singleJVM.jti: precompile-jti-gen.ok $(@D)
 	@ $(RM) $@
-	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar:$(TOPDIR)/src/tools/jti/target/jtigen-4.1.0-SNAPSHOT.jar \
+	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar:$(TOPDIR)/src/tools/jti/target/classes \
 	$(GENERAL_JAVA) com.sun.jaxb_tck.util.JtiGen -single \
 	-work $(BUILDAREA)/test/$(TCKVERSION)/batch-singleJVM/work \
 	-testsuite $(UNZIPDIR)/$(TCKVERSION) \
@@ -90,7 +90,7 @@ $(TCKDIR)/lib/javasoft-singleJVM.jti: precompile-jti-gen.ok $(@D)
 	
 $(TCKDIR)/lib/javasoft-multiJVM.jti: precompile-jti-gen.ok $(@D)
 	@ $(RM) $@
-	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar:$(TOPDIR)/src/tools/jti/target/jtigen-4.1.0-SNAPSHOT.jar \
+	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar:$(TOPDIR)/src/tools/jti/target/classes \
 	$(GENERAL_JAVA) com.sun.jaxb_tck.util.JtiGen -multi \
 	-work $(BUILDAREA)/test/$(TCKVERSION)/batch-multiJVM/work \
 	-testsuite $(UNZIPDIR)/$(TCKVERSION) \

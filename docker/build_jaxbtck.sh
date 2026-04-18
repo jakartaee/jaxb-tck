@@ -15,6 +15,8 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
+TCK_MVN_VERSION=4.0.3
+
 if [ -z "$ANT_HOME" ]; then
   export ANT_HOME=/usr/share/ant/
 fi
@@ -157,14 +159,14 @@ mvn clean -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 echo ************* Calling Maven ************
 mvn verify -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes
-unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle/target/bundle-4.1.0-SNAPSHOT.jar
+unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle/target/bundle-${TCK_MVN_VERSION}.jar
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes
-unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle.src/target/bundle-src-4.1.0-SNAPSHOT-sources.jar
+unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle.src/target/bundle-src-${TCK_MVN_VERSION}-sources.jar
 mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/html-userguide
-unzip -d $WORKSPACE/jaxb-tck-build/docs/html-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-4.1.0-SNAPSHOT-html.zip
+unzip -d $WORKSPACE/jaxb-tck-build/docs/html-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-${TCK_MVN_VERSION}-html.zip
 mkdir -p ${WORKSPACE}/jaxb-tck-build/docs/pdf-userguide
-unzip -d $WORKSPACE/jaxb-tck-build/docs/pdf-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-4.1.0-SNAPSHOT-pdf.zip
-unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0 ${WORKSPACE}/jaxb-tck/src/docs/relnotes/target/tck-relnotes-4.1.0-SNAPSHOT-html.zip
+unzip -d $WORKSPACE/jaxb-tck-build/docs/pdf-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-${TCK_MVN_VERSION}-pdf.zip
+unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0 ${WORKSPACE}/jaxb-tck/src/docs/relnotes/target/tck-relnotes-${TCK_MVN_VERSION}-html.zip
 echo ************* Calling make ************
 make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
