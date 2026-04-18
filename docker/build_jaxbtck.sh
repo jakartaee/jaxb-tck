@@ -153,6 +153,12 @@ echo '----------------------------------------------------------------------'
 cd $TCK_ROOT/jaxb-tck/build
 
 make REPOSITORIES=$TCK_ROOT/xml_schema clean
+mvn clean -f ${WORKSPACE}/jaxb-tck/src/pom.xml
+mvn verify -f ${WORKSPACE}/jaxb-tck/src/pom.xml
+mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes
+unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle/target/bundle-4.1.0-SNAPSHOT.jar
+mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes
+unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle.src/target/bundle-src-4.1.0-SNAPSHOT-sources.jar
 make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
 echo *************Building JAXB TCK Userguide************

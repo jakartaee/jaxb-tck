@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation.
 # Copyright (c) 1999, 2020 Oracle and/or its affiliates. All rights reserved.
 # 
 # This program and the accompanying materials are made available under the
@@ -40,11 +41,11 @@ TCK_SPECIFIC_FILES = \
 	src/share/classes/com/sun/jaxb_tck/sigtest/JAXBTest.java
 
 
-files-src.lst: testsources.ok $(TCK_SPECIFIC_FILES:%=$(TCKDIR)/%)
-	@echo "+++ shared source files to be installed and compiled: $@"
-	(cd $(TCKDIR); $(FIND) src/share/classes -name \*.java -type f -print) > $@
-
-CLEANFILES += files-src.lst
+#files-src.lst: testsources.ok #$(TCK_SPECIFIC_FILES:%=$(TCKDIR)/%)
+#	@echo "+++ shared source files to be installed and compiled: $@"
+#	(cd $(TCKDIR); $(FIND) src/share/classes -name \*.java -type f -print) > $@
+#
+#CLEANFILES += files-src.lst
 TCKDIRFILES = $(TCK_SPECIFIC_FILES:%=$(TCKDIR)/%)
 TOPDIRFILES = $(TCKDIRFILES:$(TCKDIR)/%=$(TOPDIR)/%)
 
@@ -59,11 +60,9 @@ $(TCK_SPECIFIC_FILES:%=$(TCKDIR)/%): install $(TOPDIRFILES)
 $(BUILDCLASSDIR):
 	@ $(TEST) -d $(BUILDCLASSDIR) || $(MKDIR) -p $(BUILDCLASSDIR)
 
-precompile-src.ok: javatest.ok jtlegacy.ok files-src.lst $(BUILDCLASSDIR) com.sun.jaxb_tck.all.ok
+#precompile-src.ok: javatest.ok jtlegacy.ok files-src.lst $(BUILDCLASSDIR) com.sun.jaxb_tck.all.ok
+precompile-src.ok: javatest.ok jtlegacy.ok $(BUILDCLASSDIR)
 	@echo precompile shared test libraries
-	CLASSPATH=$(BUILDCLASSDIR):$(JAVATEST_JAR):$(JAXB_CLASSPATH):$(JTPLUGINCLASSDIR) \
-	$(PRECOMPILE_JAVAC) -d $(BUILDCLASSDIR) \
-	`$(CAT) files-src.lst | $(SED) -e "s|^|$(TCKDIR)/|"`
 	echo shared test libraries precompiled at `date` > $@
 
 ZIP.files += precompile-src.ok

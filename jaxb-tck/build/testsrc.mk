@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation.
 # Copyright (c) 2001, 2020 Oracle and/or its affiliates. All rights reserved.
 # 
 # This program and the accompanying materials are made available under the
@@ -64,7 +65,8 @@ ZIP.files += package_info.ok
 .SECONDEXPANSION:
 #XML_BUNDLES.sh= `$(LS) -1 xml-bundles/ | $(GREP) "\.lst" | $(CAT)`
 #XML_BUNDLES=$(shell $(XML_BUNDLES.sh))
-xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testemitter-plugin.ok $(BUILDCLASSDIR) tck.jtx jaxb_test_bug.jtx $(TCKDIR)/tests_j2xrt copy-bundles.ok
+#xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testemitter-plugin.ok $(BUILDCLASSDIR) tck.jtx jaxb_test_bug.jtx $(TCKDIR)/tests_j2xrt copy-bundles.ok
+xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testemitter-plugin.ok $(BUILDCLASSDIR) tck.jtx jaxb_test_bug.jtx $(TCKDIR)/tests_j2xrt
 	if [ -d xml-bundles ] ; then \
 		for f in `ls -1 xml-bundles/ | grep "\.lst" | cat` ; do \
 			$(TEST) -d $(TESTEXTRACTDIR)/xml-bundles/`echo $$f | awk -F '-' {'print $$1'}`/ || $(MKDIR) -p $(TESTEXTRACTDIR)/xml-bundles/`echo $$f | awk -F '-' {'print $$1'}`/; \
@@ -123,11 +125,12 @@ $(TCKDIR)/tests_j2xrt:
 	echo tests_j2xrt
 	mkdir -p $(TCKDIR)/tests_j2xrt
 
-copy-bundles.ok: $(TCKDIR)/classes
-	$(CP) $(TOPDIR)/src/share/classes/com/sun/tgxml/tjtf/tools/options/resources/ErrorsBundle.properties $(TCKDIR)/classes/com/sun/tgxml/tjtf/tools/options/resources/
-	$(CP) -r $(TOPDIR)/src/share/classes/com/sun/tgxml/tjtf/resources/dtd $(TCKDIR)/classes/com/sun/tgxml/tjtf/resources/	
-
-%-xml-bundle.ok: precompile-testemitter-plugin.ok precompile-j2x-testemitter-plugin.ok $(BUILDCLASSDIR) tck.jtx jaxb_test_bug.jtx $(J2XRT_DEST_DIR) copy-bundles.ok
+#copy-bundles.ok: $(TCKDIR)/classes
+#	$(CP) $(TOPDIR)/src/share/classes/com/sun/tgxml/tjtf/tools/options/resources/ErrorsBundle.properties $(TCKDIR)/classes/com/sun/tgxml/tjtf/tools/options/resources/
+#	$(CP) -r $(TOPDIR)/src/share/classes/com/sun/tgxml/tjtf/resources/dtd $(TCKDIR)/classes/com/sun/tgxml/tjtf/resources/
+#
+#%-xml-bundle.ok: precompile-testemitter-plugin.ok precompile-j2x-testemitter-plugin.ok $(BUILDCLASSDIR) tck.jtx jaxb_test_bug.jtx $(J2XRT_DEST_DIR) copy-bundles.ok
+%-xml-bundle.ok: precompile-testemitter-plugin.ok precompile-j2x-testemitter-plugin.ok $(BUILDCLASSDIR) tck.jtx jaxb_test_bug.jtx $(J2XRT_DEST_DIR)
 	$(TEST) -d $(TESTEXTRACTDIR)/$(@:%-xml-bundle.ok=%)/ || $(MKDIR) -p $(TESTEXTRACTDIR)/$(@:%-xml-bundle.ok=%)/
 	validator=""; \
 	CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
