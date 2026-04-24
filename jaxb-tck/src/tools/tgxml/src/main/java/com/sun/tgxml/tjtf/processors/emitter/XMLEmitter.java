@@ -17,15 +17,13 @@
 
 package com.sun.tgxml.tjtf.processors.emitter;
 
-import java.io.*;
-import java.util.*;
-import java.net.URL;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.processors.validator.IRValidator;
 import com.sun.tgxml.tjtf.api.XMLObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
- 
+
 /** 
  * TestFileParser - The basic engine for ClassDiag. 
  *  Visual versions of ClassDiag should override this class. 

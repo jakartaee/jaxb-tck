@@ -19,6 +19,7 @@ package org.apache.river.api.net;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.StringTokenizer;
+
 import org.apache.river.impl.Messages;
 
 /**

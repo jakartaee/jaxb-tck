@@ -17,13 +17,14 @@
 
 package com.sun.tgxml.tjtf.processors.taghandlers;
 
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
 import java.util.Stack;
+
+import org.xml.sax.SAXException;
+
 import com.sun.tgxml.tjtf.api.XMLObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
- 
+
 /** 
  * ParserHandlerSupport - The contract of methods that a (XML) ParserHandler must provide 
  * in order to support ParserTagHandlers. 

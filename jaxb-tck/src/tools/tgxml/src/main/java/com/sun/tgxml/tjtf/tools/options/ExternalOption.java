@@ -18,10 +18,7 @@
 package com.sun.tgxml.tjtf.tools.options;
 
 import java.util.ArrayList;
-import java.util.Vector;
-import java.util.Enumeration;
 import java.util.StringTokenizer;
-import com.sun.tgxml.tjtf.tools.options.util.ParsedOption;
 
 
 /**

@@ -18,24 +18,29 @@
 package com.sun.tgxml.tjtf.tools;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.XMLToolBase
-import org.xml.sax.*;
-import com.sun.tgxml.tjtf.*;
 
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
-import com.sun.tgxml.tjtf.processors.parser.*;
-import com.sun.tgxml.tjtf.processors.parser.impl.XMLParserImpl;
-import com.sun.tgxml.tjtf.processors.emitter.*;
-import com.sun.tgxml.tjtf.processors.emitter.impl.XMLEmitterImpl;
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
-import com.sun.tgxml.tjtf.api.exceptions.*;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 import java.io.File;
-import java.io.OutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintStream;
-import java.net.URL;
+
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+
+import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.exceptions.EmbeddedTFException;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.processors.emitter.EmitterFactory;
+import com.sun.tgxml.tjtf.processors.emitter.IREmitter;
+import com.sun.tgxml.tjtf.processors.emitter.impl.XMLEmitterImpl;
+import com.sun.tgxml.tjtf.processors.parser.IRParser;
+import com.sun.tgxml.tjtf.processors.parser.ParserFactory;
+import com.sun.tgxml.tjtf.processors.parser.impl.XMLParserImpl;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerFactory;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 
 // </importgen>
 

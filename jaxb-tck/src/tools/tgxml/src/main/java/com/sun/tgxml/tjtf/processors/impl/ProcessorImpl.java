@@ -18,12 +18,10 @@
 package com.sun.tgxml.tjtf.processors.impl;
 
 
-import com.sun.tgxml.tjtf.tools.Shell;
 import com.sun.tgxml.tjtf.processors.Processor;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.tools.Shell;
 import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
- 
+
 /** 
  * ProcessorImpl - The basic functionality for a processor. 
  * 

@@ -17,15 +17,31 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+
+import javax.annotation.processing.AbstractProcessor;
+import javax.tools.Diagnostic;
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.StandardLocation;
+import javax.tools.ToolProvider;
+
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
 import com.sun.tgxml.tjtf.api.data.ExternalData;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import java.nio.charset.Charset;
-import java.io.*;
-import java.util.*;
-import javax.tools.*;
-import javax.annotation.processing.AbstractProcessor;
 
 public class J2XEmitterBase extends MultiTestWriter {
 

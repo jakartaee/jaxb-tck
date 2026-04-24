@@ -18,14 +18,26 @@
 package com.sun.tgxml.tjtf.api.tests;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.tests.Testgroup
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.tests.impl.*;
-import com.sun.tgxml.tjtf.api.documentation.*;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
+import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.code.CodeFactory;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.TestCode;
+import com.sun.tgxml.tjtf.api.documentation.DocumentationFactory;
+import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.impl.InlineLibraryImpl;
+import com.sun.tgxml.tjtf.api.tests.impl.LibraryImpl;
+import com.sun.tgxml.tjtf.api.tests.impl.TestCaseImpl;
+import com.sun.tgxml.tjtf.api.tests.impl.TestGroupImpl;
 // </importgen>
 
 /**

@@ -17,6 +17,12 @@
 
 package com.sun.jaxb_tck.sigtest;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import com.sun.tdk.signaturetest.core.ClassHierarchy;
 import com.sun.tdk.signaturetest.model.AnnotationItem;
 import com.sun.tdk.signaturetest.model.ClassDescription;
 import com.sun.tdk.signaturetest.model.MemberDescription;
@@ -24,12 +30,6 @@ import com.sun.tdk.signaturetest.plugin.Filter;
 import com.sun.tdk.signaturetest.plugin.Plugin;
 import com.sun.tdk.signaturetest.plugin.PluginAPI;
 import com.sun.tdk.signaturetest.plugin.Transformer;
-import com.sun.tdk.signaturetest.core.ClassHierarchy;
-
-import java.util.Iterator;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
 
 class JaxbAccessibleFilter implements Filter {
 

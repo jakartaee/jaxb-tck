@@ -18,19 +18,12 @@
 package com.sun.tgxml.tools.indexgen.processors.emitter;
 
 
-import java.net.URL;
-import java.io.PrintStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.TreeMap;
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
-import com.sun.tgxml.tjtf.processors.emitter.impl.*;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.processors.emitter.EmitterFactory;
 import com.sun.tgxml.tjtf.processors.emitter.XMLEmitter;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
+import com.sun.tgxml.tjtf.processors.emitter.impl.XMLEmitterImpl;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerFactory;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
 import com.sun.tgxml.tools.indexgen.processors.taghandlers.TestSuiteTHFactory;
 
 /**

@@ -18,39 +18,33 @@
 package com.sun.tgxml.tools.filter;
 
 import java.io.PrintStream;
-import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.tools.options.Option;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
-
-import com.sun.tgxml.util.IR;
-import com.sun.tgxml.tools.elgen.ExcludeListMarker;
-import com.sun.tgxml.tools.elgen.ExcludeListFilter;
-import com.sun.tgxml.tools.elgen.ExcludeListToolFactory;
+import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tools.dependence.LibIDExtractor2;
-import com.sun.tgxml.tools.filter.processors.FilterFactory;
-import com.sun.tgxml.tools.filter.processors.TestFilter2;
-import com.sun.tgxml.tools.filter.processors.FilteringException;
+import com.sun.tgxml.tools.elgen.ExcludeListMarker;
+import com.sun.tgxml.tools.elgen.ExcludeListToolFactory;
+import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
 import com.sun.tgxml.tools.filter.libutil.LibMap;
 import com.sun.tgxml.tools.filter.libutil.LibSelectionInfo;
 import com.sun.tgxml.tools.filter.libutil.TestGroupLibsInfo;
-import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
+import com.sun.tgxml.tools.filter.processors.FilterFactory;
+import com.sun.tgxml.tools.filter.processors.FilteringException;
+import com.sun.tgxml.tools.filter.processors.TestFilter2;
 import com.sun.tgxml.tools.testgen.LibUtils;
 import com.sun.tgxml.tools.testgen.processors.emitter.ExternalEmitter;
+import com.sun.tgxml.util.IR;
 
 
 /**

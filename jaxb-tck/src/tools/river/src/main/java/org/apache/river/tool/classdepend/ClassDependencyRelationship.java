@@ -17,9 +17,7 @@
  */
 package org.apache.river.tool.classdepend;
 
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 /**

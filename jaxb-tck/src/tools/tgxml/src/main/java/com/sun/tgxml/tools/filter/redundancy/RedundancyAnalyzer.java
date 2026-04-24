@@ -20,6 +20,7 @@ package com.sun.tgxml.tools.filter.redundancy;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.tests.TestCase;

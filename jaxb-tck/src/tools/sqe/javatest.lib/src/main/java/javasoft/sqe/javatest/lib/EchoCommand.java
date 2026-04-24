@@ -16,11 +16,8 @@
  */
 package javasoft.sqe.javatest.lib;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Hashtable;
+
 import com.sun.javatest.Command;
 import com.sun.javatest.Status;
 

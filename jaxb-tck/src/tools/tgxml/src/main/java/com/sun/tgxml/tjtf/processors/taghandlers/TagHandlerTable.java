@@ -16,21 +16,18 @@
  */
 
 package com.sun.tgxml.tjtf.processors.taghandlers;
+
 import java.util.Hashtable;
-import java.util.TreeMap;
-import java.util.Map;
 import java.util.Iterator;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
+import java.util.Map;
+import java.util.TreeMap;
 
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.XMLObj;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
- 
-/** 
+/**
  * TagHandlerTable - The tag-handler table is a collection
  * of TagHandler objects.  The table manages them on behalf
  * of a processor (such as a parser or emitter).

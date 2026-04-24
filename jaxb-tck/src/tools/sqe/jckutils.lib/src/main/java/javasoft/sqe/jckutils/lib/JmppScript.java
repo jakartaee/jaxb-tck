@@ -17,16 +17,16 @@
  */
 package javasoft.sqe.jckutils.lib;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileReader;
 import java.io.BufferedReader;
-import java.util.Vector;
+import java.io.File;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
+import java.util.Vector;
+
 import com.sun.javatest.Script;
 import com.sun.javatest.Status;
-import com.sun.javatest.Test;
 import com.sun.javatest.TestDescription;
 import com.sun.javatest.TestEnvironment;
 import com.sun.javatest.TestResult;

@@ -16,13 +16,6 @@
  */
 package javasoft.sqe.javatest.lib;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.DataInputStream;
-import java.io.ByteArrayInputStream;
-
-import com.sun.javatest.Command;
 import com.sun.javatest.Status;
 
 /**

@@ -18,9 +18,10 @@
 package com.sun.tgxml.tjtf.api.attributes.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.attributes.impl.TestCaseAttributesImpl
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+
 import java.util.ArrayList;
+
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
 // </importgen>
 
 /**

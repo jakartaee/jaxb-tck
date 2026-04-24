@@ -19,8 +19,6 @@ package com.sun.jck.utils.installer;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.IllegalStateException;
-import java.lang.IllegalArgumentException;
 
 class Node {
 

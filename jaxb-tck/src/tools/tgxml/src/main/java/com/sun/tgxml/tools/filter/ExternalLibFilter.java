@@ -18,37 +18,28 @@
 package com.sun.tgxml.tools.filter;
 
 import java.io.File;
-import java.io.PrintStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.FileOutputStream;
-import java.io.BufferedOutputStream;
-import java.util.Iterator;
+import java.io.PrintStream;
 import java.util.ArrayList;
-
-import com.sun.tgxml.util.IR;
-import com.sun.tgxml.util.MiscUtils;
+import java.util.Iterator;
 
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.processors.emitter.XMLEmitter;
-import com.sun.tgxml.tjtf.tools.XMLValToolBase;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
+import com.sun.tgxml.tjtf.tools.XMLValToolBase;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
-
-import com.sun.tgxml.tools.dependence.LibraryDependency;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tools.dependence.LibraryDependencies;
-import com.sun.tgxml.tools.filter.processors.FilterFactory;
-import com.sun.tgxml.tools.filter.processors.FilteringException;
-
+import com.sun.tgxml.tools.dependence.LibraryDependency;
+import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
 import com.sun.tgxml.tools.filter.libutil.LibMap;
 import com.sun.tgxml.tools.filter.libutil.LibMapFile;
-import com.sun.tgxml.tools.filter.libutil.VariantsMap;
-import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
-import com.sun.tgxml.tools.filter.libutil.LibAttributesFilter;
-import com.sun.tgxml.tools.filter.libutil.LibDependencyFilter;
+import com.sun.tgxml.tools.filter.processors.FilteringException;
+import com.sun.tgxml.util.IR;
+import com.sun.tgxml.util.MiscUtils;
 
 /**
  * Provides filtering of whole bundle of external libraries.

@@ -17,8 +17,8 @@
 
 package com.sun.tgxml.tools.jmppconv;
 
-import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.jmpp.lib.JmppLibTest.BuildPropertiesProvider;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
 
 /**
  * JmppBuildPropertiesProvider - a class that provides a bridge between

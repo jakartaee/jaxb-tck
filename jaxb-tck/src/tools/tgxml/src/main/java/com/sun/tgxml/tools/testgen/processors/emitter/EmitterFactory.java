@@ -17,15 +17,15 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
-import java.util.Hashtable;
-import java.util.StringTokenizer;
 import java.util.Enumeration;
+import java.util.Hashtable;
+
+import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.tgxml.tools.testgen.LibUtils;
 
 public class EmitterFactory {

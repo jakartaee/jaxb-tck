@@ -17,16 +17,14 @@
 
 package com.sun.tgxml.tools.elgen;
 
-import java.util.Iterator;
-import java.util.Hashtable;
-import java.io.Reader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.util.Hashtable;
+import java.util.Iterator;
 
 import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
 
 /**
 * Represent an exclude list

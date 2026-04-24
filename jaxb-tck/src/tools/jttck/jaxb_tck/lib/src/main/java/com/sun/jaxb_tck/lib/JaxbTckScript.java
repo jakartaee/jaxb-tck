@@ -17,20 +17,19 @@
  */
 package com.sun.jaxb_tck.lib;
 
-import java.util.StringTokenizer;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.ArrayList;
+import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 import com.sun.javatest.Script;
+import com.sun.javatest.Status;
 import com.sun.javatest.TestDescription;
 import com.sun.javatest.TestEnvironment;
-
-import com.sun.javatest.Status;
 import com.sun.javatest.util.StringArray;
 
 /**

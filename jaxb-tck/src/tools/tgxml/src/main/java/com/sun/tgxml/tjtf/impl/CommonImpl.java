@@ -18,9 +18,11 @@
 package com.sun.tgxml.tjtf.impl;
 
 // <importgen> Generated imports for class: com.sun.specinfo.emitter.XMLPlatformEmitter
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
 import java.util.StringTokenizer;
+
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**

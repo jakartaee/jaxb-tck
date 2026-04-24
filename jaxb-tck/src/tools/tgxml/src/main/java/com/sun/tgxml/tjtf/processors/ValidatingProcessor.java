@@ -17,9 +17,9 @@
 
 package com.sun.tgxml.tjtf.processors;
 
-import com.sun.tgxml.tjtf.processors.validator.IRValidator;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
- 
+import com.sun.tgxml.tjtf.processors.validator.IRValidator;
+
 /** 
  * ValidatingProcessor describes the topmost interface for a processor that
  * a shell may own. 

@@ -16,21 +16,20 @@
  */
 package javasoft.sqe.javatest.lib;
 
-import java.io.PrintWriter;
-import javasoft.sqe.javatest.Status;
-import javasoft.sqe.javatest.lib.MultiTest;
-
-/* Imports for this test */
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.IOException;
 import java.io.OptionalDataException;
-import java.net.URL;
+import java.io.OutputStream;
 import java.lang.reflect.Method;
+import java.net.URL;
+
+import javasoft.sqe.javatest.Status;
+
+/* Imports for this test */
 
 /**
  * Abstract base class for simple serialization tests.

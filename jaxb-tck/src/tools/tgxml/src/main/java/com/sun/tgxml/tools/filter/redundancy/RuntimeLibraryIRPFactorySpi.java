@@ -18,10 +18,11 @@
 package com.sun.tgxml.tools.filter.redundancy;
 
 
+import java.util.Properties;
+
 import com.sun.tgxml.tools.filter.redundancy.processors.ExternalLibraryMapCollector;
 import com.sun.tgxml.tools.testgen.processors.ir.IRPFactorySpi;
 import com.sun.tgxml.tools.testgen.processors.ir.IRProcessor;
-import java.util.Properties;
 
 /**
  * <b>RuntimeLibraryIRPFactorySpi</b> class that provides implementation of 

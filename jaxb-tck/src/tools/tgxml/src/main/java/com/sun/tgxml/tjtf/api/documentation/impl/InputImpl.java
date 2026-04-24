@@ -18,9 +18,10 @@
 package com.sun.tgxml.tjtf.api.documentation.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.documentation.impl.InputImpl
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.documentation.Input;
+
 import com.sun.tgxml.tjtf.api.common.impl.NameValuePairImpl;
+import com.sun.tgxml.tjtf.api.documentation.Input;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**

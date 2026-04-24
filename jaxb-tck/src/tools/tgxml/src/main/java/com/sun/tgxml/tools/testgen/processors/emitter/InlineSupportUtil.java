@@ -19,21 +19,21 @@ package com.sun.tgxml.tools.testgen.processors.emitter;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.FileWriter;
-import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.StringTokenizer;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
+import com.sun.tgxml.tjtf.api.code.SupportClass;
 import com.sun.tgxml.tjtf.api.data.Data;
 import com.sun.tgxml.tjtf.api.data.InlineData;
-import com.sun.tgxml.tjtf.api.code.CodeSet;
-import com.sun.tgxml.tjtf.api.code.SupportClass;
-import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.util.MiscUtils;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.util.CopyrightManager;
+import com.sun.tgxml.util.MiscUtils;
 
 public class InlineSupportUtil {
 

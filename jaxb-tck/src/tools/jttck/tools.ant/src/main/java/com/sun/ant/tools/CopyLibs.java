@@ -16,13 +16,13 @@
  */
 package com.sun.ant.tools;
 
-import com.sun.tgxml.util.MiscUtils;
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.taskdefs.Copy;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import com.sun.tgxml.util.MiscUtils;
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.taskdefs.Copy;
 
 /**
  * The parsing code in <code>libXmlFromFile</code> and 

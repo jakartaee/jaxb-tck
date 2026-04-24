@@ -17,45 +17,33 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import com.sun.tgxml.tjtf.*;
-import com.sun.tgxml.tjtf.api.*;
-
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.tests.*;
-import com.sun.tgxml.tjtf.api.data.Data;
-import com.sun.tgxml.tjtf.api.data.DataType;
-import com.sun.tgxml.tjtf.api.data.ExternalData;
-import com.sun.tgxml.tjtf.api.data.InlineData;
-import com.sun.tgxml.tjtf.api.documentation.*;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.processors.emitter.*;
-import com.sun.tgxml.tjtf.tools.Shell;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
-import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
-
-
-import com.sun.tgxml.tools.testgen.api.source.java.*;
-import com.sun.tgxml.tools.elgen.*;
-
-import com.sun.tgxml.tools.testgen.LibUtils;
-import com.sun.tgxml.util.MiscUtils;
-import com.sun.tgxml.util.CopyrightManager;
-import com.sun.tgxml.util.IR;
-
 import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.io.FileWriter;
-import java.util.Properties;
-import java.util.Iterator;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Properties;
+
+import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
+import com.sun.tgxml.tjtf.api.code.SupportClass;
+import com.sun.tgxml.tjtf.api.data.Data;
+import com.sun.tgxml.tjtf.api.data.DataType;
+import com.sun.tgxml.tjtf.api.data.InlineData;
+import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.tools.Shell;
+import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
+import com.sun.tgxml.tools.elgen.ExcludeListCollector;
+import com.sun.tgxml.tools.testgen.LibUtils;
+import com.sun.tgxml.tools.testgen.api.source.java.JavaClass;
+import com.sun.tgxml.tools.testgen.api.source.java.JavaClassFile;
+import com.sun.tgxml.util.CopyrightManager;
+import com.sun.tgxml.util.IR;
+import com.sun.tgxml.util.MiscUtils;
 
 public class LibraryEmitter
     extends StandardOptionHandler

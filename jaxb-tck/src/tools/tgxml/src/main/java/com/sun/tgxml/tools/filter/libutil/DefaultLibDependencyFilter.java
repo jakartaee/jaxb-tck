@@ -17,16 +17,16 @@
 
 package com.sun.tgxml.tools.filter.libutil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.ArrayList;
 
-import com.sun.tgxml.util.IR;
-import com.sun.tgxml.tjtf.api.code. LibraryDependency;
-import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tools.filter.processors.FilteringException;
+import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tools.filter.FilterUtil;
+import com.sun.tgxml.tools.filter.processors.FilteringException;
+import com.sun.tgxml.util.IR;
+
 /**
  * Default impementation of LibDependencyFilter
  * 

@@ -17,11 +17,11 @@
 
 package com.sun.tgxml.tools.filter.processors;
 
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.code.SupportClass;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
  * Interface of nodes in the expression tree in filtering component.

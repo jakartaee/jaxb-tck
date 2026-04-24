@@ -16,23 +16,26 @@
  */
 
 package com.sun.tgxml.tjtf.processors.taghandlers.impl;
+
 import java.io.IOException;
-import java.util.*;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.Stack;
 
-import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
-import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
+import org.xml.sax.SAXException;
 
-import com.sun.tgxml.tjtf.api.tests.*;
-import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
 import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
 import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.InlineLibrary;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestFactory;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.impl.TagsImpl;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 
- 
+
 /** 
  * Library_TH - The tag-handler for a Library tag. 
  * 

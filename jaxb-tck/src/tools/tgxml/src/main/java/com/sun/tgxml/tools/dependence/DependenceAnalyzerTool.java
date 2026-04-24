@@ -17,19 +17,15 @@
 
 package com.sun.tgxml.tools.dependence;
 
-import java.io.PrintStream;
 import java.io.FileInputStream;
-import java.util.TreeSet;
-import java.util.Stack;
-import java.util.Iterator;
+import java.io.PrintStream;
 
-import com.sun.tgxml.tools.dependence.processors.DependenceAnalyzer;
-import com.sun.tgxml.tjtf.tools.ToolBase;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.ToolBase;
 import com.sun.tgxml.tjtf.tools.options.DefaultOperandsValidator;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
+import com.sun.tgxml.tools.dependence.processors.DependenceAnalyzer;
 
 // import com.sun.tgxml.tools.dependence.LibIDList;
 // import com.sun.tgxml.tools.dependence.LibraryDependencies;

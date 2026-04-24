@@ -17,17 +17,16 @@
 
 package com.sun.tgxml.tools.filter;
 
-import java.io.PrintStream;
 import java.io.IOException;
+import java.io.PrintStream;
 
-import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.tools.XMLValToolBase;
+import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.processors.emitter.XMLEmitter;
-
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.XMLValToolBase;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 
 /**
  * Build shell-tool. Accepts command-line arguments and instantiates

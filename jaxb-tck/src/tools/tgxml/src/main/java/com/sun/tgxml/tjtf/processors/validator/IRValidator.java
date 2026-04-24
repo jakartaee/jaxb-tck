@@ -17,13 +17,10 @@
 
 package com.sun.tgxml.tjtf.processors.validator;
 
-import java.io.*;
-import java.util.*;
-
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.processors.Processor;
 import com.sun.tgxml.tjtf.api.exceptions.ValidatorException;
- 
+import com.sun.tgxml.tjtf.processors.Processor;
+
 /** 
  * IRValidator is the top-most contract that a Validator must handle. 
  * <p>

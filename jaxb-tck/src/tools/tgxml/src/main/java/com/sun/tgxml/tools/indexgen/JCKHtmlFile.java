@@ -18,11 +18,7 @@
 package com.sun.tgxml.tools.indexgen;
 
 import java.io.File;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.StreamTokenizer;
-import java.io.FileReader;
-import java.util.Vector;
 
 /**
  * JCKHtmlFile is a JCK specific representation of html file.

@@ -17,19 +17,18 @@
 
 package javasoft.sqe.tests.api.jakarta.xml.bind;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.File;
-import java.io.FileWriter;
-
-import java.util.ArrayList;
-
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.SchemaOutputResolver;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.xml.transform.Result;
-import javax.xml.transform.stream.StreamSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
 import javasoft.sqe.javatest.Status;
 import javasoft.sqe.javatest.lib.MultiTest;

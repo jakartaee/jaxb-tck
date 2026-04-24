@@ -28,12 +28,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.StringTokenizer;
 
-
 import com.sun.javatest.ExcludeList;
-import com.sun.javatest.util.*;
-
+import com.sun.javatest.util.StringArray;
 import com.sun.tgxml.tjtf.IRObj;
 import com.sun.tgxml.tjtf.api.attributes.AttrElem;
 import com.sun.tgxml.tjtf.api.attributes.TargetSpec;
@@ -68,7 +67,6 @@ import com.sun.tgxml.tools.testgen.LibUtils;
 import com.sun.tgxml.tools.testgen.api.TestDescriptionIR;
 import com.sun.tgxml.util.IR;
 import com.sun.tgxml.util.MiscUtils;
-import java.util.List;
 
 /*
  * A class that is to convert JAXB TCK UTDs into html test descriptions. All

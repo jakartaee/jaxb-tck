@@ -17,15 +17,13 @@
 
 package com.sun.jaxb_tck.lib;
 
-import java.io.PrintWriter;
 import java.io.File;
-import java.io.StringWriter;
+import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.util.StringTokenizer;
 
 import com.sun.javatest.Command;
 import com.sun.javatest.Status;
-
-import java.lang.reflect.Method;
 
 /**
  * ExecStdTestSameJVMCmd executes a test (one that implements the Test

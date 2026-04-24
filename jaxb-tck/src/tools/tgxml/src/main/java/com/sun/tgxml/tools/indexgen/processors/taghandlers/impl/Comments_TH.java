@@ -16,21 +16,18 @@
  */
 
 package com.sun.tgxml.tools.indexgen.processors.taghandlers.impl;
+
 import java.io.IOException;
-import java.util.*;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
+import java.util.Stack;
 
-import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
+import org.xml.sax.SAXException;
 
-import com.sun.tgxml.tjtf.api.documentation.*;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
-
+import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
 import com.sun.tgxml.tjtf.processors.taghandlers.impl.TextStreamTagHandler;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
- 
+
 /** 
  * Comments_TH - The tag-handler for a Lib tag. 
  * 

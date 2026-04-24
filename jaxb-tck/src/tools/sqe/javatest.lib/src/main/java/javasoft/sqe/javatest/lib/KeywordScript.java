@@ -16,20 +16,18 @@
  */
 package javasoft.sqe.javatest.lib;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 import com.sun.javatest.JavaTestError;
 import com.sun.javatest.Script;
 import com.sun.javatest.Status;
-import com.sun.javatest.TestResult;
 import com.sun.javatest.TestDescription;
 import com.sun.javatest.TestEnvironment;
-import com.sun.javatest.util.BackupPolicy;
+import com.sun.javatest.TestResult;
 import com.sun.javatest.util.StringArray;
 
 /**

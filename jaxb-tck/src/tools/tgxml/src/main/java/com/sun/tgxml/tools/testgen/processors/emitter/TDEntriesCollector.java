@@ -17,15 +17,13 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import java.util.Iterator;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 
-import com.sun.tgxml.util.AttrElemsCollector;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.tgxml.tools.testgen.api.TestDescriptionIR;
+import com.sun.tgxml.util.AttrElemsCollector;
 
 
 /**

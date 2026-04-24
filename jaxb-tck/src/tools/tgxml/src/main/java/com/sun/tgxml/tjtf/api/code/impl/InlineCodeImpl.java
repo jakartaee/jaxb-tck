@@ -18,7 +18,7 @@
 package com.sun.tgxml.tjtf.api.code.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.code.impl.InlineCodeImpl
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
 import com.sun.tgxml.tjtf.api.code.InlineCode;
 // </importgen>
 

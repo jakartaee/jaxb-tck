@@ -17,11 +17,8 @@
 
 package com.sun.tgxml.tjtf.tools.options;
 
-import java.util.ArrayList;
-import java.util.Vector;
 import java.util.Properties;
-import java.util.Enumeration;
-import com.sun.tgxml.tjtf.tools.options.util.ParsedOption;
+
 import com.sun.tgxml.tjtf.tools.options.resources.ErrorMessages;
 
 

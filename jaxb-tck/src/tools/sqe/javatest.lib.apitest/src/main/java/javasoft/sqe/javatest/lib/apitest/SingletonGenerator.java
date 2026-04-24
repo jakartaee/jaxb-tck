@@ -16,14 +16,11 @@
  */
 package javasoft.sqe.javatest.lib.apitest;
 
-import java.util.Vector;
-import javasoft.sqe.javatest.*;
-import javasoft.sqe.javatest.lib.MultiStatus;
-import javasoft.sqe.javatest.lib.apitest.AssertionTest;
-import javasoft.sqe.javatest.lib.apitest.Factory;
-import javasoft.sqe.javatest.lib.apitest.Generator;
-import java.io.PrintWriter;
 import java.util.StringTokenizer;
+import java.util.Vector;
+
+import javasoft.sqe.javatest.Status;
+import javasoft.sqe.javatest.lib.MultiStatus;
 
 /**
  * <P>

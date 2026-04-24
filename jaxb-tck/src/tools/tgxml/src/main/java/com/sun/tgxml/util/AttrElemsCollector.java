@@ -17,12 +17,11 @@
 
 package com.sun.tgxml.util;
 
-import java.util.Iterator;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
 
 
 /**

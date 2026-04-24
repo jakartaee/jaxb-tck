@@ -17,8 +17,8 @@
 
 package com.sun.tgxml.tools.filter.libutil;
 
-import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Simple implementation of LibSelectionInfo interface

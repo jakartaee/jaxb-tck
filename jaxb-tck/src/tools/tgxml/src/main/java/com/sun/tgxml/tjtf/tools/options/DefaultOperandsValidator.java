@@ -18,6 +18,7 @@
 package com.sun.tgxml.tjtf.tools.options;
 
 import java.util.ArrayList;
+
 import com.sun.tgxml.tjtf.tools.options.resources.ErrorMessages;
 
 /**

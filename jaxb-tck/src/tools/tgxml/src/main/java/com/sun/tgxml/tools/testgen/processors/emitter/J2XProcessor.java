@@ -18,8 +18,13 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import java.util.*;
-import javax.annotation.processing.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.NestingKind;

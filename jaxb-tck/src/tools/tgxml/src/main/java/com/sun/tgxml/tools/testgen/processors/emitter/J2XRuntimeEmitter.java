@@ -17,28 +17,30 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import java.io.IOException;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Collections;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
-import java.nio.charset.Charset;
+
+import javax.annotation.processing.AbstractProcessor;
+import javax.tools.Diagnostic;
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.StandardLocation;
+import javax.tools.ToolProvider;
+
 import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.util.IR;
-import java.util.List;
-import javax.annotation.processing.AbstractProcessor;
-import javax.tools.JavaCompiler;
-import javax.tools.StandardLocation;
-import javax.tools.DiagnosticCollector;
-import javax.tools.Diagnostic;
-import javax.tools.JavaFileObject;
-import javax.tools.StandardJavaFileManager;
-import javax.tools.ToolProvider;
 
 
 /**

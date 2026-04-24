@@ -18,17 +18,10 @@
 package com.sun.jmpp.lib;
 
 import java.io.File;
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import java.util.Hashtable;
-import java.lang.reflect.Method;
 
-import com.sun.jmpp.share.Options;
 import com.sun.jmpp.share.OptionDescr;
+import com.sun.jmpp.share.Options;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 
 /**  

@@ -16,24 +16,24 @@
  */
 package com.sun.jaxb_tck.interview;
 
+import java.io.File;
+import java.util.Map;
+
+import com.sun.interview.ChoiceQuestion;
+import com.sun.interview.DirectoryFileFilter;
+import com.sun.interview.ExtensionFileFilter;
+import com.sun.interview.FileFilter;
+import com.sun.interview.FileListQuestion;
+import com.sun.interview.FinalQuestion;
+import com.sun.interview.IntQuestion;
+import com.sun.interview.Interview;
+import com.sun.interview.NullQuestion;
+import com.sun.interview.Question;
+import com.sun.interview.StringQuestion;
+import com.sun.interview.YesNoQuestion;
 import com.sun.javatest.agent.ActiveAgentCommand;
 import com.sun.javatest.agent.PassiveAgentCommand;
 import com.sun.jaxb_tck.lib.ExecTestSameJVMCmd;
-import java.util.Map;
-import java.io.File;
-
-import com.sun.interview.Interview;
-import com.sun.interview.Question;
-import com.sun.interview.ChoiceQuestion;
-import com.sun.interview.StringQuestion;
-import com.sun.interview.IntQuestion;
-import com.sun.interview.NullQuestion;
-import com.sun.interview.YesNoQuestion;
-import com.sun.interview.FinalQuestion;
-import com.sun.interview.FileListQuestion;
-import com.sun.interview.ExtensionFileFilter;
-import com.sun.interview.DirectoryFileFilter;
-import com.sun.interview.FileFilter;
 import javasoft.sqe.javatest.lib.ExecStdTestOtherJVMCmd;
 import javasoft.sqe.javatest.lib.ProcessCommand;
 

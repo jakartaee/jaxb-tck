@@ -17,7 +17,6 @@
  */
 package org.apache.river.tool.classdepend;
 
-import org.apache.river.tool.classdepend.ClassDependParameters.CDPBuilder;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +24,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -34,7 +32,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
-import org.apache.river.api.net.RFC3986URLClassLoader;
+
+import org.apache.river.tool.classdepend.ClassDependParameters.CDPBuilder;
 
 /**
  * Provides a utility for computing which classes are depended on by a set of

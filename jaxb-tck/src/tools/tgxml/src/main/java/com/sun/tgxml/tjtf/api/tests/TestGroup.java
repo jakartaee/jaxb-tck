@@ -18,12 +18,12 @@
 package com.sun.tgxml.tjtf.api.tests;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.tests.Testgroup
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
-import java.util.TreeMap;
+
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**

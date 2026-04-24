@@ -18,14 +18,9 @@
 package com.sun.tgxml.tools.elgen;
 
 import java.io.IOException;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
+
 import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
-import com.sun.tgxml.tjtf.api.attributes.Attributes;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
-import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 
 /** the default implementation of the ExludeListMarker

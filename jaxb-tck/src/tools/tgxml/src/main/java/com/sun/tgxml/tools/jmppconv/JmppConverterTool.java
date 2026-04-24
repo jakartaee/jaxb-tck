@@ -17,28 +17,30 @@
 
 package com.sun.tgxml.tools.jmppconv;
 
-import com.sun.tgxml.tjtf.tools.StandardToolBase;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.exceptions.ValidatorException;
-import com.sun.tgxml.tjtf.processors.emitter.EmitterFactory;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.exceptions.ValidatorException;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
+import com.sun.tgxml.tjtf.api.tests.TestRoot;
 import com.sun.tgxml.tjtf.processors.emitter.IREmitter;
 import com.sun.tgxml.tjtf.processors.parser.IRParser;
-import com.sun.tgxml.tjtf.processors.parser.XMLParser;
 import com.sun.tgxml.tjtf.processors.parser.ParserFactory;
+import com.sun.tgxml.tjtf.processors.parser.XMLParser;
 import com.sun.tgxml.tjtf.processors.validator.IRValidator;
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.StandardToolBase;
 import com.sun.tgxml.tjtf.tools.options.DefaultOperandsValidator;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tools.indexgen.api.TestSuite;
 import com.sun.tgxml.tools.jmppconv.processors.emitter.MiddleWareXMLEmitter;
 import com.sun.tgxml.tools.jmppconv.processors.parser.JmppTDParser;
-import com.sun.tgxml.tools.indexgen.api.TestSuite;
-import com.sun.tgxml.tjtf.resources.LibResHandler; 
 import com.sun.tgxml.util.MiscUtils;
 
 

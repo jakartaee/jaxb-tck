@@ -16,29 +16,56 @@
  */
 
 package com.sun.tgxml.tjtf.processors.validator;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeMap;
-import java.io.File;
 
-import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
-import com.sun.tgxml.tjtf.impl.ConstantsImpl;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.*;
-import com.sun.tgxml.tjtf.api.common.*;
-import com.sun.tgxml.tjtf.api.common.impl.*;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.data.*;
-import com.sun.tgxml.tjtf.api.documentation.*;
-import com.sun.tgxml.tjtf.api.tests.*;
+import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
+import com.sun.tgxml.tjtf.api.attributes.RequiredResource;
+import com.sun.tgxml.tjtf.api.attributes.TargetSpec;
+import com.sun.tgxml.tjtf.api.attributes.TargetSpecElem;
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
+import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
+import com.sun.tgxml.tjtf.api.code.LibraryDependency;
+import com.sun.tgxml.tjtf.api.code.SupportCode;
+import com.sun.tgxml.tjtf.api.code.TestCode;
+import com.sun.tgxml.tjtf.api.common.NameValuePair;
+import com.sun.tgxml.tjtf.api.common.impl.ClassUtils;
+import com.sun.tgxml.tjtf.api.data.ExternalData;
+import com.sun.tgxml.tjtf.api.data.InlineData;
+import com.sun.tgxml.tjtf.api.documentation.AssertionRef;
+import com.sun.tgxml.tjtf.api.documentation.DocElem;
+import com.sun.tgxml.tjtf.api.documentation.ExpectedResultException;
+import com.sun.tgxml.tjtf.api.documentation.ExpectedResultSideEffect;
+import com.sun.tgxml.tjtf.api.documentation.ExpectedResultValue;
+import com.sun.tgxml.tjtf.api.documentation.InlineAssertion;
+import com.sun.tgxml.tjtf.api.documentation.Input;
+import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.SpecElem;
+import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestCaseSpec;
+import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestTechnique;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.exceptions.ValidatorException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestRoot;
 import com.sun.tgxml.tjtf.api.tests.impl.TestVariantImpl;
-
 import com.sun.tgxml.tjtf.impl.CommonImpl;
+import com.sun.tgxml.tjtf.impl.ConstantsImpl;
+import com.sun.tgxml.tjtf.impl.TagsImpl;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.util.IR;
 
- 
+
 /** 
  * BaseUTDValidator - The generic UTD validator. 
  * <p>

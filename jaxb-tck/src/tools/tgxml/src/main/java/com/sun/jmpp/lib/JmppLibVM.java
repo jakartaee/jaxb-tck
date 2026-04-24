@@ -16,10 +16,11 @@
  */
 
 package com.sun.jmpp.lib;
+
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Vector;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 
 /**

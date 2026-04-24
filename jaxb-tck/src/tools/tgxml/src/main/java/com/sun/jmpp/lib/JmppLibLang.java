@@ -17,9 +17,7 @@
 
 package com.sun.jmpp.lib;
 
-import java.util.Vector;
-
-/**  
+/**
  * Class to be extend for test generation in section javasoft.sqe.tests.lang.
  *
  * @author Oleg V. Ulyankin

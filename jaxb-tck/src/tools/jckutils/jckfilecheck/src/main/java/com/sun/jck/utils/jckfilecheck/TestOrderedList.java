@@ -17,10 +17,10 @@
 package com.sun.jck.utils.jckfilecheck;
 
 import java.io.PrintStream;
+import java.util.Enumeration;
+
 import javasoft.sqe.harness.Status;
 import javasoft.sqe.harness.Test;
-
-import java.util.Enumeration;
 
 /* Auxillary class used for testing */
 public class TestOrderedList implements Test {

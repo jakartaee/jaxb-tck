@@ -16,21 +16,23 @@
  */
 
 package com.sun.tgxml.tjtf.processors.taghandlers.impl;
+
 import java.io.IOException;
-import java.util.*;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.Iterator;
+import java.util.Stack;
 
-import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
-import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
+import org.xml.sax.SAXException;
 
-import com.sun.tgxml.tjtf.api.tests.*;
-import com.sun.tgxml.tjtf.api.attributes.*;
+import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.impl.TagsImpl;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 
- 
+
 /** 
  * TestCaseAttributes_TH - The tag-handler for a TestCaseAttributes tag. 
  * 

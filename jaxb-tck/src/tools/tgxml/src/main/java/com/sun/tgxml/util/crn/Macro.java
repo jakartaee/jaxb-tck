@@ -17,8 +17,6 @@
 
 package com.sun.tgxml.util.crn;
 
-import java.util.ArrayList;
-
 /**
  * Represents a CRN macro. CRN macro object possesses the following
  * main characteristics: name, value, default value, value parser.

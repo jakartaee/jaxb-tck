@@ -18,8 +18,9 @@
 package com.sun.tgxml.tjtf.api.code.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.code.impl.LibraryDependencyImpl
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
 import com.sun.tgxml.tjtf.api.code.LibraryDependency;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 

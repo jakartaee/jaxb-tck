@@ -16,15 +16,15 @@
  */
 package javasoft.sqe.jck.lib;
 
-import javasoft.sqe.javatest.lib.MultiTest.SetupException;
-
 import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import javax.xml.transform.Source;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
+
+import javasoft.sqe.javatest.lib.MultiTest.SetupException;
 
 /**
  * Helper to load a schema.

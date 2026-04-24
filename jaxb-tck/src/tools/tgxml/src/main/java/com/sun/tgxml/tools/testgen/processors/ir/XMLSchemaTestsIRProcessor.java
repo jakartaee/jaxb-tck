@@ -17,29 +17,39 @@
 
 package com.sun.tgxml.tools.testgen.processors.ir;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import com.sun.tgxml.tjtf.api.attributes.impl.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.code.impl.*;
+import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.attributes.impl.AttrElemImpl;
+import com.sun.tgxml.tjtf.api.code.CodeDependency;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
+import com.sun.tgxml.tjtf.api.code.LibraryDependency;
+import com.sun.tgxml.tjtf.api.code.impl.CodeSetImpl;
+import com.sun.tgxml.tjtf.api.code.impl.ExternalSupportClassImpl;
+import com.sun.tgxml.tjtf.api.code.impl.LibraryDependencyImpl;
 import com.sun.tgxml.tjtf.api.data.ExternalData;
 import com.sun.tgxml.tjtf.api.data.impl.ExternalDataImpl;
 import com.sun.tgxml.tjtf.api.documentation.impl.TestGroupDocumentationImpl;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.tests.*;
-import com.sun.tgxml.tjtf.api.tests.impl.*;
-import com.sun.tgxml.tools.testgen.processors.emitter.XMLSchemaTestEmitter;
-import com.sun.tgxml.util.IR;
-import java.io.File;
-import java.util.*;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
+import com.sun.tgxml.tjtf.api.tests.impl.TestCaseImpl;
+import com.sun.tgxml.tjtf.api.tests.impl.TestGroupImpl;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.tgxml.tools.elgen.ExcludeList;
 import com.sun.tgxml.tools.elgen.ExcludeListToolFactory;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
-import com.sun.tgxml.tools.testgen.BundleTestGenFilter;
 import com.sun.tgxml.tools.elgen.IncorrectAttributesException;
-import java.io.IOException;
+import com.sun.tgxml.tools.testgen.BundleTestGenFilter;
+import com.sun.tgxml.tools.testgen.processors.emitter.XMLSchemaTestEmitter;
+import com.sun.tgxml.util.IR;
 
 public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
     

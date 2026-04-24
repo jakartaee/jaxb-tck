@@ -15,7 +15,6 @@
 
 package org.apache.river.concurrent;
 
-import java.lang.ref.Reference;
 import java.util.Map;
 import java.util.Map.Entry;
 

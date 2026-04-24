@@ -18,13 +18,11 @@
 package com.sun.tgxml.tools.dependence.processors;
 
 import java.io.PrintStream;
-import java.io.FileInputStream;
-import java.util.TreeSet;
-import java.util.Stack;
 import java.util.Iterator;
+import java.util.Stack;
+import java.util.TreeSet;
 
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-
 import com.sun.tgxml.tools.dependence.LibIDList;
 import com.sun.tgxml.tools.dependence.LibraryDependencies;
 import com.sun.tgxml.tools.dependence.LibraryDependency;

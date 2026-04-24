@@ -17,18 +17,15 @@
 
 package com.sun.tgxml.tools.testgen;
 
-import java.io.File;
-import java.io.PrintStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.PrintStream;
 import java.util.Vector;
 
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 import com.sun.tgxml.tjtf.tools.ToolBase;
-
-import com.sun.tgxml.tools.testgen.TestGenFilter;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 
 /**
  * Wrapper tool runs multiple TestGenFilters.

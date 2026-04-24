@@ -17,13 +17,13 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.parser;
 
-import com.sun.jmpp.lib.TDGenerator;
 import java.io.File;
-import com.sun.jmpp.JmppException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
+import com.sun.jmpp.JmppException;
+import com.sun.jmpp.lib.TDGenerator;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tools.jmppconv.processors.parser.IRGenerator;
 
 /**  
  * The class extends com.sun.jmpp.lib.JmppLibXMLSchema,

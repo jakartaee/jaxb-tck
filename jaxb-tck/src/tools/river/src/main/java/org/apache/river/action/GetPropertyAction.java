@@ -20,8 +20,9 @@ package org.apache.river.action;
 
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import net.jini.security.Security;
 
 /**

@@ -15,7 +15,6 @@
 
 package org.apache.river.concurrent;
 
-import java.util.Map.Entry;
 import java.util.NavigableMap;
 import java.util.NavigableSet;
 

@@ -24,9 +24,10 @@ import java.lang.reflect.Method;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
+
+import com.sun.javatest.util.WriterStream;
 import javasoft.sqe.javatest.Status;
 import javasoft.sqe.javatest.Test;
-import com.sun.javatest.util.WriterStream;
 
 /**
  * A handler for the set of test cases in a test.

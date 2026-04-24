@@ -17,19 +17,18 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.emitter;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.OutputStream;
 
-import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.api.XMLObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.processors.emitter.impl.XMLEmitterImpl;
-import com.sun.tgxml.tjtf.processors.emitter.XMLEmitter;
-import com.sun.tgxml.tjtf.processors.emitter.EmitterFactory;
 import com.sun.tgxml.tjtf.api.tests.TestRoot;
+import com.sun.tgxml.tjtf.processors.emitter.EmitterFactory;
+import com.sun.tgxml.tjtf.processors.emitter.XMLEmitter;
+import com.sun.tgxml.tjtf.processors.emitter.impl.XMLEmitterImpl;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 import com.sun.tgxml.tools.indexgen.processors.emitter.TestSuiteEmitterFactory;
- 
+
 /** 
  * Combined TestGroup &amp; Doc.xml emitter;
  * 

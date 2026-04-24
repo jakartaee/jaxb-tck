@@ -17,28 +17,21 @@
 
 package com.sun.tgxml.tools.indexgen;
 
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tools.indexgen.api.TestSuite;
-import com.sun.tgxml.tools.indexgen.api.impl.TestSuiteImpl;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
-import com.sun.tgxml.util.IR;
-import com.sun.tgxml.util.CopyrightUtil;
-
-
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.FileWriter;
 import java.util.Arrays;
-import java.util.Vector;
 import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
-import com.sun.tgxml.tjtf.tools.ToolBase;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
+import com.sun.tgxml.tools.indexgen.api.TestSuite;
+import com.sun.tgxml.util.IR;
 
 public class JCKIndexGen extends DefaultHtmlGenerator {
    

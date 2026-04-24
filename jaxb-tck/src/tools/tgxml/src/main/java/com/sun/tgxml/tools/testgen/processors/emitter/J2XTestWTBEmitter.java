@@ -17,6 +17,14 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
 import com.sun.tgxml.tjtf.IRObj;
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
@@ -24,10 +32,6 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.util.IR;
-import java.io.File;
-import java.io.IOException;
-
-import java.util.*;
 
 public class J2XTestWTBEmitter extends MultiTestWriter {
 

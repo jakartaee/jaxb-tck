@@ -21,11 +21,11 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import javasoft.sqe.javatest.Status;
-import javasoft.sqe.javatest.Test;
-import javasoft.sqe.javatest.Command;
+
 import com.sun.javatest.util.DirectoryClassLoader;
 import com.sun.javatest.util.WriterStream;
+import javasoft.sqe.javatest.Command;
+import javasoft.sqe.javatest.Status;
 
 /**
  * ExecSimpTestSameJVMCmd executes a test class, using either a private class loader or

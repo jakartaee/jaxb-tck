@@ -23,10 +23,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Vector;
 
-import com.sun.jmpp.share.Options;
 import com.sun.jmpp.share.OptionDescr;
+import com.sun.jmpp.share.Options;
 import com.sun.jmpp.share.Utils;
 
 /**

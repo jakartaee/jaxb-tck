@@ -17,23 +17,22 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import java.util.Stack;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Stack;
 
-import com.sun.tgxml.tjtf.api.data.ExternalData;
 import com.sun.tgxml.tjtf.api.data.Data;
+import com.sun.tgxml.tjtf.api.data.ExternalData;
 import com.sun.tgxml.tjtf.api.data.InlineData;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.tgxml.tjtf.tools.UTDVisitorBase;
 import com.sun.tgxml.tools.testgen.LibUtils;
-import com.sun.tgxml.util.CopyrightManager;
 import com.sun.tgxml.util.IR;
 import com.sun.tgxml.util.MiscUtils;
 

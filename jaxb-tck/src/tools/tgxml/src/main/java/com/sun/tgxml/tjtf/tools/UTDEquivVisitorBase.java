@@ -18,19 +18,51 @@
 package com.sun.tgxml.tjtf.tools;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.tests.Testgroup
-import java.util.Stack;
+
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.Hashtable;
 import java.util.Iterator;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.documentation.*;
-import com.sun.tgxml.tjtf.api.data.*;
-import com.sun.tgxml.tjtf.api.tests.*;
+import java.util.Map;
+import java.util.Stack;
+
+import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
+import com.sun.tgxml.tjtf.api.attributes.RequiredResource;
+import com.sun.tgxml.tjtf.api.attributes.TargetSpec;
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.code.CodeDependency;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
+import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
+import com.sun.tgxml.tjtf.api.code.LibraryDependency;
+import com.sun.tgxml.tjtf.api.code.SupportClass;
+import com.sun.tgxml.tjtf.api.code.SupportCode;
+import com.sun.tgxml.tjtf.api.code.TestCode;
+import com.sun.tgxml.tjtf.api.data.Data;
+import com.sun.tgxml.tjtf.api.data.DataType;
+import com.sun.tgxml.tjtf.api.data.ExternalData;
+import com.sun.tgxml.tjtf.api.data.InlineData;
+import com.sun.tgxml.tjtf.api.documentation.Assertion;
+import com.sun.tgxml.tjtf.api.documentation.AssertionRef;
+import com.sun.tgxml.tjtf.api.documentation.DocElem;
+import com.sun.tgxml.tjtf.api.documentation.ExpectedResultException;
+import com.sun.tgxml.tjtf.api.documentation.ExpectedResultSideEffect;
+import com.sun.tgxml.tjtf.api.documentation.ExpectedResultValue;
+import com.sun.tgxml.tjtf.api.documentation.InlineAssertion;
+import com.sun.tgxml.tjtf.api.documentation.Input;
+import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.SpecElem;
+import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestCaseSpec;
+import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestTechnique;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**

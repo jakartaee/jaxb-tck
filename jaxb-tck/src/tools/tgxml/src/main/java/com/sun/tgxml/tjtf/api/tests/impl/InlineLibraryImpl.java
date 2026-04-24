@@ -17,8 +17,8 @@
 
 package com.sun.tgxml.tjtf.api.tests.impl;
 
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.api.tests.InlineLibrary;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
  * Library - 

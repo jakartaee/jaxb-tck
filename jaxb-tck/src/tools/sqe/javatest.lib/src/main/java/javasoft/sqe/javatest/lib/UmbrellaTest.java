@@ -19,6 +19,7 @@ package javasoft.sqe.javatest.lib;
 
 import java.io.PrintWriter;
 import java.util.Vector;
+
 import javasoft.sqe.javatest.Status;
 import javasoft.sqe.javatest.Test;
 

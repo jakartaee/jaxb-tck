@@ -15,20 +15,11 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package com.sun.tgxml.tjtf.resources; 
- 
-import java.io.InputStream; 
-import java.io.IOException; 
-import java.text.MessageFormat; 
-import java.io.File; 
-import java.io.BufferedInputStream; 
-import java.io.FileInputStream; 
-import java.util.Properties; 
-import java.util.Enumeration; 
-import java.util.MissingResourceException; 
-import java.util.Vector; 
- 
- 
+package com.sun.tgxml.tjtf.resources;
+
+import java.text.MessageFormat;
+
+
 /** 
  * This is just a set of utils for error string substitution. 
  * 

@@ -17,8 +17,8 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.parser;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 

@@ -16,7 +16,6 @@
 package org.apache.river.concurrent;
 
 import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
 
 /**
  * ReferenceFactory creates References, representing the various subclasses

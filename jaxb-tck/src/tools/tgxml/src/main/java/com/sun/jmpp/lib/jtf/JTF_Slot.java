@@ -17,9 +17,9 @@
 
 package com.sun.jmpp.lib.jtf;
 
-import java.util.Vector;
 import java.io.PrintStream;
-import java.lang.ArithmeticException;
+import java.util.Vector;
+
 /**
  * <i>Jmpp Test Factory</i>
  *

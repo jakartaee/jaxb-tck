@@ -19,8 +19,8 @@ package com.sun.jck.utils.installer;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.TreeMap;
 import java.util.Iterator;
+import java.util.TreeMap;
 
 class Root {
 

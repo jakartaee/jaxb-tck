@@ -33,6 +33,7 @@ import java.security.AllPermission;
 import java.security.Permission;
 import java.security.PermissionCollection;
 import java.security.Permissions;
+import java.security.Principal;
 import java.security.UnresolvedPermission;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,6 +42,7 @@ import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+
 import net.jini.security.policy.DynamicPolicy;
 
 /**

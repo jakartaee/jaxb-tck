@@ -16,23 +16,23 @@
  */
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import java.util.Iterator;
+
 import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
 import com.sun.tgxml.tjtf.api.data.Data;
 import com.sun.tgxml.tjtf.api.data.ExternalData;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.tgxml.tools.testgen.api.TestDescriptionIR;
-import com.sun.tgxml.tools.testgen.processors.emitter.ExternalEmitter;
-import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
 import com.sun.tgxml.util.IR;
 
 /**

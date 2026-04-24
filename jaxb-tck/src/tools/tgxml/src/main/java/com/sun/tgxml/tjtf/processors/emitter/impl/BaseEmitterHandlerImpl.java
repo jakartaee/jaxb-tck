@@ -17,20 +17,17 @@
 
 package com.sun.tgxml.tjtf.processors.emitter.impl;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
+import com.sun.tgxml.tjtf.api.XMLObj;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
 import com.sun.tgxml.tjtf.processors.taghandlers.EmitterTagHandler;
 import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
-import com.sun.tgxml.tjtf.api.XMLObj;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
-import java.io.*;
-import java.util.*;
-import java.net.URL;
-
-import com.sun.tgxml.tjtf.*;
-import com.sun.tgxml.tjtf.tools.Shell;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
+import com.sun.tgxml.tjtf.tools.Shell;
 
 /** 
  * BaseEmitterHandlerImpl.java - The Handlers that the SAXparser uses to parse XML SpecFiles into. 

@@ -18,7 +18,6 @@
 package com.sun.tgxml.util.crn;
 
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
 import com.sun.tgxml.util.MiscUtils;

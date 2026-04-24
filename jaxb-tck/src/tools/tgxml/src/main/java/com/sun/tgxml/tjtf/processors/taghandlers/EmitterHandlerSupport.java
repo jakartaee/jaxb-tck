@@ -17,15 +17,11 @@
 
 package com.sun.tgxml.tjtf.processors.taghandlers;
 
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
-import java.util.Stack;
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
-
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import java.io.IOException;
 
- 
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
+
 /** 
  * EmitterHandlerSupport - The contract of methods that a (XML - TD) ParserHandler must provide 
  * in order to support ParserTagHandlers. 

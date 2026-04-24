@@ -16,15 +16,13 @@
  */
 
 package com.sun.tgxml.tjtf.processors.taghandlers;
+
 import java.io.IOException;
 
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 
- 
-/** 
+/**
  * EmitterTagHandler - The tag-handler abstraction. 
  * <p>
  * This is the (internal) contract (from the point of view of the

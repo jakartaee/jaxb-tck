@@ -17,16 +17,12 @@
 
 package com.sun.tgxml.tools.indexgen.api.impl;
 
-import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
-import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
+import java.util.ArrayList;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.impl.TestItemImpl;
-import com.sun.tgxml.tjtf.resources.LibResHandler; 
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 
 /**

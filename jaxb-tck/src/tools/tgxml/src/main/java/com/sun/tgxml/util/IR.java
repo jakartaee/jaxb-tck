@@ -19,20 +19,19 @@ package com.sun.tgxml.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.io.File;
 
-import com.sun.tgxml.tjtf.api.code. LibraryDependency;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.attributes.AttrElem;
 import com.sun.tgxml.tjtf.api.attributes.Attributes;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
-import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
 import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
+import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.code. LibraryDependency;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 
 /**

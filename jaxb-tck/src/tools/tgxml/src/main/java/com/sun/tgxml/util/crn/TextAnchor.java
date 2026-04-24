@@ -18,7 +18,6 @@
 package com.sun.tgxml.util.crn;
 
 import java.io.PrintStream;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;

@@ -18,17 +18,14 @@
 package com.sun.tgxml.tjtf.api.tests.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.tests.TestCase
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
+
 import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.code.TestCode;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.TreeMap;
+import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 // </importgen>
 
 /**

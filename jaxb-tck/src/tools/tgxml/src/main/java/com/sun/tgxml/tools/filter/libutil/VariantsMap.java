@@ -17,11 +17,12 @@
 
 package com.sun.tgxml.tools.filter.libutil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.ArrayList;
-import com.sun.tgxml.util.IR;
+
 import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.util.IR;
 
 /**
  * An object that maps libID to ArrayList of Variants IR

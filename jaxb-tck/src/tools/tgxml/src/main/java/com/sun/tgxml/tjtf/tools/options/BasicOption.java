@@ -17,14 +17,13 @@
 
 package com.sun.tgxml.tjtf.tools.options;
 
-import java.util.ArrayList;
 import java.util.Vector;
-import java.util.Enumeration;
+
+import com.sun.tgxml.tjtf.tools.options.util.ArgChecker;
 import com.sun.tgxml.tjtf.tools.options.util.ArgReader;
 import com.sun.tgxml.tjtf.tools.options.util.OptionReader;
-import com.sun.tgxml.tjtf.tools.options.util.ArgChecker;
-import com.sun.tgxml.tjtf.tools.options.util.SwitchChecker;
 import com.sun.tgxml.tjtf.tools.options.util.OptionSwitchChecker;
+import com.sun.tgxml.tjtf.tools.options.util.SwitchChecker;
 
 
 /**

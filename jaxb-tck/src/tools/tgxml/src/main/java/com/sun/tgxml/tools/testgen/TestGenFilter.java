@@ -17,23 +17,20 @@
 
 package com.sun.tgxml.tools.testgen;
 
-import java.io.PrintStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.tools.ToolBase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-
-import com.sun.tgxml.tjtf.tools.options.ExternalCompoundOption;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
-
-import com.sun.tgxml.util.IR;
-import com.sun.tgxml.util.MiscUtils;
 import com.sun.tgxml.tools.filter.TestFilterConveyer;
 import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
+import com.sun.tgxml.util.IR;
+import com.sun.tgxml.util.MiscUtils;
+
 /**
  * Wrapper tool including TestGen and TestFilterConveyer.
  */

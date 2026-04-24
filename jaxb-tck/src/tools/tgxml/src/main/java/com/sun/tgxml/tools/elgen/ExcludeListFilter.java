@@ -17,8 +17,8 @@
 
 package com.sun.tgxml.tools.elgen;
 
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
  *  Hides exclude list format and structure. Checks presence of testcase or the whole 

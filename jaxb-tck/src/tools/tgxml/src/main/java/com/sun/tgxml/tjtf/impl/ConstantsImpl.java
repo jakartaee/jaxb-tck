@@ -18,7 +18,6 @@
 package com.sun.tgxml.tjtf.impl;
 
 // <importgen> Generated imports for class: com.sun.specinfo.emitter.XMLPlatformEmitter
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**

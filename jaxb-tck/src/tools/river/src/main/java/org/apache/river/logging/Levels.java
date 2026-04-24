@@ -20,7 +20,6 @@ package org.apache.river.logging;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -29,7 +28,7 @@ import java.io.ObjectStreamException;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.LogManager;
 
 /**
 * Defines additional {@link Level} values. <p>

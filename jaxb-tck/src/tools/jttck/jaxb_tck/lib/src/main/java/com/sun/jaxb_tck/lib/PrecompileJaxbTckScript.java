@@ -20,9 +20,9 @@ package com.sun.jaxb_tck.lib;
 import java.io.File;
 
 import com.sun.javatest.Status;
-import com.sun.javatest.util.StringArray;
 import com.sun.javatest.TestDescription;
 import com.sun.javatest.TestEnvironment;
+import com.sun.javatest.util.StringArray;
 
 /**
  * Script to precompile JAXB tests.

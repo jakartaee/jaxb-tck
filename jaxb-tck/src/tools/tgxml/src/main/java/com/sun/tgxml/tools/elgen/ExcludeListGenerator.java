@@ -20,17 +20,14 @@ package com.sun.tgxml.tools.elgen;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
 import java.util.Vector;
-import java.util.Enumeration;
 
-import com.sun.tgxml.tjtf.tools.ToolBase;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.ToolBase;
 import com.sun.tgxml.tjtf.tools.options.DefaultOperandsValidator;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 
 public class ExcludeListGenerator extends ToolBase {
    

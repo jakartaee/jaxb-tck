@@ -18,8 +18,9 @@
 package com.sun.tgxml.tjtf.api.documentation.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.documentation.impl.ExpectedResultSideEffect
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
 import com.sun.tgxml.tjtf.api.documentation.ExpectedResultSideEffect;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 

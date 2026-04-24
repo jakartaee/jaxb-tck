@@ -19,8 +19,9 @@ package com.sun.tgxml.tools.elgen;
 
 import java.io.IOException;
 import java.util.Hashtable;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
 
 public class ExcludeListToolFactory {
 

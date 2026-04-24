@@ -18,31 +18,28 @@
 
 package javasoft.sqe.tests.api.jakarta.xml.bind;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.File;
-
-import java.net.URL;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
-import javax.xml.validation.Validator;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
+import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.SAXException;
 
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Schema;
-
-import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
-
+import com.sun.jaxb_tck.lib.JaxbTckScript;
 import javasoft.sqe.javatest.Status;
 import javasoft.sqe.javatest.lib.MultiTest;
 
-import com.sun.jaxb_tck.lib.JaxbTckScript;
+import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 
 /**
  * Represents an validation a generated schemas against a "golden" xml document

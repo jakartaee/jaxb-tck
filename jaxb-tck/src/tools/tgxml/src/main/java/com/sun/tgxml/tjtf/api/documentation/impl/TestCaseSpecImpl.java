@@ -18,13 +18,12 @@
 package com.sun.tgxml.tjtf.api.documentation.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.documentation.impl.TestCaseSpecImpl
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
+import java.util.ArrayList;
+
+import com.sun.tgxml.tjtf.api.documentation.ExpectedResultValue;
 import com.sun.tgxml.tjtf.api.documentation.TestCaseSpec;
 import com.sun.tgxml.tjtf.api.documentation.TestTechnique;
-import com.sun.tgxml.tjtf.api.documentation.ExpectedResultValue;
-import com.sun.tgxml.tjtf.api.documentation.ExpectedResultSideEffect;
-import com.sun.tgxml.tjtf.api.documentation.ExpectedResultException;
-import java.util.ArrayList;
 // </importgen>
 
 /**

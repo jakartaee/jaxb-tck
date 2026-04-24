@@ -17,8 +17,9 @@
 
 package com.sun.tgxml.tools.testgen.api;
 
-import java.util.Vector;
 import java.util.Enumeration;
+import java.util.Vector;
+
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.tgxml.util.CopyrightUtil;
 

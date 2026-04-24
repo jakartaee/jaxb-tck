@@ -19,6 +19,7 @@ package com.sun.tgxml.tools.indexgen;
 
 import java.io.File;
 import java.util.Vector;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 

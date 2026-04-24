@@ -20,10 +20,8 @@ package com.sun.tgxml.tools.jmppconv.processors.parser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Stack;
 import java.util.Vector;
 
@@ -37,7 +35,6 @@ import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestFactory;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
-import com.sun.tgxml.tools.jmppconv.processors.parser.IRTDGenerator;
 import com.sun.tgxml.tools.testgen.LibUtils;
 import com.sun.tgxml.util.IR;
 

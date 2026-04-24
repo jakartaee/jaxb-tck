@@ -18,7 +18,9 @@
 package com.sun.tgxml.tjtf.api.exceptions;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.CorrectSourceElement
-import java.io.*;
+
+import java.io.PrintStream;
+import java.io.PrintWriter;
 // </importgen>
 
 /**

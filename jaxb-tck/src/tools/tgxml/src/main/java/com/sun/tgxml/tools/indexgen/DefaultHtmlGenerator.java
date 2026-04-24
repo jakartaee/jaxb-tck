@@ -17,42 +17,27 @@
 
 package com.sun.tgxml.tools.indexgen;
 
-import org.xml.sax.*;
-import com.sun.tgxml.tjtf.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Enumeration;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
-import com.sun.tgxml.tjtf.tools.*;
-
-import org.xml.sax.*;
-import com.sun.tgxml.tjtf.*;
-
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
-import com.sun.tgxml.tjtf.processors.parser.*;
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.processors.parser.XMLParser;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
+import com.sun.tgxml.tjtf.tools.ToolBase;
 import com.sun.tgxml.tjtf.tools.options.DefaultOperandsValidator;
-
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
-import com.sun.tgxml.tools.indexgen.api.impl.TestSuiteImpl;
-import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.*;
-import com.sun.tgxml.tools.indexgen.processors.parser.*;
+import com.sun.tgxml.tools.indexgen.processors.parser.TestSuiteParserFactory;
 import com.sun.tgxml.util.CopyrightManager;
 import com.sun.tgxml.util.CopyrightUtil;
 import com.sun.tgxml.util.MiscUtils;
-
-
-
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.io.FileWriter;
-import java.util.Vector;
-import java.util.Enumeration;
-import java.util.StringTokenizer;
-
-import com.sun.tgxml.tjtf.tools.ToolBase;
 
 public class DefaultHtmlGenerator
     extends ToolBase

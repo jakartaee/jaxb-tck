@@ -20,16 +20,14 @@ package com.sun.tgxml.tools.filter.processors;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.code.SupportClass;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-
 import com.sun.tgxml.tools.elgen.ExcludeListFilter;
 import com.sun.tgxml.tools.elgen.FilteredOutList;
 import com.sun.tgxml.tools.elgen.IncorrectAttributesException;

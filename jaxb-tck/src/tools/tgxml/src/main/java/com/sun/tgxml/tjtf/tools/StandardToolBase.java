@@ -18,23 +18,17 @@
 package com.sun.tgxml.tjtf.tools;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.XMLToolBase
-import org.xml.sax.*;
-import com.sun.tgxml.tjtf.*;
 
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
-import com.sun.tgxml.tjtf.processors.parser.*;
-import com.sun.tgxml.tjtf.processors.emitter.*;
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
-import com.sun.tgxml.tjtf.api.exceptions.*;
-import com.sun.tgxml.tjtf.tools.options.FlagOption;
-import com.sun.tgxml.tjtf.tools.options.ExternalOption;
-import com.sun.tgxml.tjtf.tools.options.OptionHandler;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.URL;
+
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.processors.emitter.IREmitter;
+import com.sun.tgxml.tjtf.processors.parser.IRParser;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.options.FlagOption;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 
 // </importgen>
 

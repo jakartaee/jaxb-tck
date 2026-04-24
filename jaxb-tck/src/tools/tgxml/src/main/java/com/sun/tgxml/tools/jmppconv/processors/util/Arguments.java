@@ -17,8 +17,8 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.util;
 
-import java.util.Hashtable;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Arguments extends Hashtable {
     private String m_special = "";

@@ -18,16 +18,15 @@
 package com.sun.tgxml.tools.indexgen.processors.parser;
 
 
-
 import java.io.IOException;
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
-import com.sun.tgxml.tjtf.processors.parser.*;
-import com.sun.tgxml.tjtf.processors.parser.impl.*;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
-import com.sun.tgxml.tjtf.api.exceptions.*;
 
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.processors.parser.ParserFactory;
+import com.sun.tgxml.tjtf.processors.parser.XMLParser;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tools.indexgen.processors.taghandlers.TestSuiteTHFactory;
+
 /**
  * ParserFactory - 
  *

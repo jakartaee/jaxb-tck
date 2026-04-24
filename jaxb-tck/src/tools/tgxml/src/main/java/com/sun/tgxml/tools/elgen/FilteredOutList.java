@@ -17,8 +17,8 @@
 
 package com.sun.tgxml.tools.elgen;
 
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
  *  Hides format and structure of list where information about filtered out tests is gathered. 

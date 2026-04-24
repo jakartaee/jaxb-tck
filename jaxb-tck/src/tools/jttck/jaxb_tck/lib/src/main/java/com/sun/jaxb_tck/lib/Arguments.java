@@ -16,9 +16,9 @@
  */
 package com.sun.jaxb_tck.lib;
 
-import java.util.ArrayList;
 import java.io.File;
 import java.io.FileFilter;
+import java.util.ArrayList;
 
 import com.sun.javatest.util.StringArray;
 

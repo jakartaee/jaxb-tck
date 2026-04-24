@@ -22,8 +22,8 @@ import java.util.StringTokenizer;
 import com.sun.interview.Interview;
 import com.sun.interview.NullQuestion;
 import com.sun.interview.Question;
-import com.sun.javatest.TestEnvironment;
 import com.sun.javatest.Parameters.EnvParameters;
+import com.sun.javatest.TestEnvironment;
 import com.sun.javatest.interview.BasicInterviewParameters;
 
 /**

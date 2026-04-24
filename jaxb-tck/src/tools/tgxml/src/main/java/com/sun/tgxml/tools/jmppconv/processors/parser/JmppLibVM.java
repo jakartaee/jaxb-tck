@@ -17,18 +17,12 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.parser;
 
-import com.sun.tgxml.tjtf.processors.emitter.EmitterFactory;
-import com.sun.tgxml.tjtf.processors.emitter.XMLEmitter;
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.jmpp.lib.TDGenerator;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
 import java.io.File;
-import java.io.IOException;
-import com.sun.jmpp.JmppException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
+import com.sun.jmpp.JmppException;
+import com.sun.jmpp.lib.TDGenerator;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.util.CopyrightManager;
 

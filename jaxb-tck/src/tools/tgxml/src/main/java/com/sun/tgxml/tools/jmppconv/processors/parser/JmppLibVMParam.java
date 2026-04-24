@@ -21,7 +21,6 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Stack;
 
 import com.sun.jmpp.JmppException;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;

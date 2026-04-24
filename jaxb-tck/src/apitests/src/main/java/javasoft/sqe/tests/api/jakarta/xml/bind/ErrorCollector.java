@@ -17,14 +17,14 @@
 
 package javasoft.sqe.tests.api.jakarta.xml.bind;
 
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
 import jakarta.xml.bind.ValidationEvent;
 import jakarta.xml.bind.ValidationEventHandler;
 import jakarta.xml.bind.ValidationEventLocator;
 import jakarta.xml.bind.helpers.ValidationEventImpl;
 import jakarta.xml.bind.helpers.ValidationEventLocatorImpl;
+
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;

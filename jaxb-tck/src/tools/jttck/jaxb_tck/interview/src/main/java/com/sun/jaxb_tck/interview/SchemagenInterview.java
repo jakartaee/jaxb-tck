@@ -16,8 +16,6 @@
  */
 package com.sun.jaxb_tck.interview;
 
-import com.sun.jaxb_tck.lib.JaxbCommand;
-import com.sun.jaxb_tck.lib.SchemaGen;
 import java.util.Map;
 
 import com.sun.interview.FinalQuestion;
@@ -26,6 +24,8 @@ import com.sun.interview.NullQuestion;
 import com.sun.interview.Question;
 import com.sun.interview.StringQuestion;
 import com.sun.interview.YesNoQuestion;
+import com.sun.jaxb_tck.lib.JaxbCommand;
+import com.sun.jaxb_tck.lib.SchemaGen;
 import javasoft.sqe.javatest.lib.ProcessCommand;
 
 /**

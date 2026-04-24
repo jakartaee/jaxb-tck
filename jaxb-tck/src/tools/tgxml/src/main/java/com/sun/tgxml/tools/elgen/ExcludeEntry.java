@@ -19,10 +19,9 @@ package com.sun.tgxml.tools.elgen;
 
 import java.util.StringTokenizer;
 
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
 
 public class ExcludeEntry 
 {

@@ -17,28 +17,26 @@
 
 package com.sun.tgxml.tools.testgen.processors.parser;
 
-import com.sun.tgxml.tjtf.tools.Shell;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.tools.Shell;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
-import com.sun.tgxml.tjtf.processors.parser.IRParser;
-import com.sun.tgxml.tjtf.processors.parser.XMLParser;
-import java.util.Hashtable;
-import java.util.ArrayList;
 import java.io.File;
-import com.sun.tgxml.tools.indexgen.processors.parser.TestSuiteParserFactory;
-import com.sun.tgxml.tjtf.processors.parser.ParserFactory;
-import com.sun.tgxml.tjtf.processors.validator.IRValidator;
 import java.io.IOException;
+import java.util.Hashtable;
+
 import org.xml.sax.SAXException;
+
+import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
-import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
+import com.sun.tgxml.tjtf.processors.parser.IRParser;
+import com.sun.tgxml.tjtf.processors.parser.ParserFactory;
+import com.sun.tgxml.tjtf.processors.parser.XMLParser;
+import com.sun.tgxml.tjtf.processors.validator.IRValidator;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.Shell;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
+import com.sun.tgxml.tools.indexgen.processors.parser.TestSuiteParserFactory;
 import com.sun.tgxml.util.IR;
 
 public class MiddleWareXMLParser extends StandardOptionHandler implements IRParser {

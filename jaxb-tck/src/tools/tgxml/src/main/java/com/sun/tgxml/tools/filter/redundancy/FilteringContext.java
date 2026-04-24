@@ -19,9 +19,9 @@ package com.sun.tgxml.tools.filter.redundancy;
 
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
 
 /**
  * The class is simple container for used filters. It contains access methods

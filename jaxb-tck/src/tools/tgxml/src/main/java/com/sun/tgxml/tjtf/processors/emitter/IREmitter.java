@@ -17,12 +17,15 @@
 
 package com.sun.tgxml.tjtf.processors.emitter;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
- 
- 
+import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
+
+
 /** 
  * IREmitter is the top-most contract that an Emitter must handle. 
  * <p>

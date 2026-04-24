@@ -20,13 +20,8 @@ package com.sun.tgxml.tools.elgen;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.util.Iterator;
-import java.util.Enumeration;
+
 import com.sun.tgxml.tools.elgen.javatest.ExcludeTable;
 
 /**

@@ -18,12 +18,10 @@
 package com.sun.ant.tools;
 
 import java.io.File;
-import java.util.Arrays;
-
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.Task;
 
 import com.sun.jaxb_tck.lib.persistence.JBContentBuild;
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.Task;
 
 /**
  * @author Vladimir Sosnin

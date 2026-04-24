@@ -17,9 +17,9 @@
 
 package com.sun.tgxml.tools.testgen.api;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 

@@ -18,6 +18,7 @@
 package com.sun.tgxml.tools.testgen.processors.ir;
 
 import java.util.Properties;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 
