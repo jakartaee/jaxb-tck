@@ -1,5 +1,6 @@
 <!--
 
+    Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
     Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
@@ -79,8 +80,6 @@
 
         <property name="lib.btools" value="${btools.dir}/lib/tckbtools.jar"/>
         <property name="pl.btools.dir" value="${btools.dir}/bin/testgen"/>
-
-        <property name="jdk.tools.jar" value="${JAVA_HOME}/lib/tools.jar"/>
 
         <mkdir dir="${classes.dir}"/>
         <!--javac srcdir="src" destdir="${classes.dir}">

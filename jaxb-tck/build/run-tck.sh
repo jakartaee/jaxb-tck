@@ -106,7 +106,7 @@ if [ "$needAgent" = 1 ]; then
   # while loop provides for automatic restart if agent dies
   while echo "Starting JavaTest agent, connecting to JavaTest port $agentPoolPort"  
   do
-    CLASSPATH=./lib/javatest.jar:./classes:`dirname $JAVA`/../lib/tools.jar:$JAXB_JAR_CP \
+    CLASSPATH=./lib/javatest.jar:./classes:$JAXB_JAR_CP \
     DISPLAY=${TCKDISPLAY} \
 	  ${JAVA} \
 	-Djava.security.policy=./lib/tck.policy \
@@ -151,7 +151,7 @@ echo "jtruntimeArgs is $jtRuntimeArgs."
 echo "jtAppArgs is $jtAppArgs"
 echo 
 echo INITIALURLS=${INITIALURLS}
- 	${JAVA} -classpath ./lib/javatest.jar:./classes:$JAVA_HOME/lib/tools.jar:$JAXB_JAR_CP \
+ 	${JAVA} -classpath ./lib/javatest.jar:./classes:$JAXB_JAR_CP \
 	$jtRuntimeArgs com.sun.javatest.tool.Main \
 	${jtAppArgs} -batch @"${BATCH_COM_FILE}"
 exitCode=$?

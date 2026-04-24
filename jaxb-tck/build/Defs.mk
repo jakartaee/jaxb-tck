@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 1998, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -290,9 +291,8 @@ LEAFCLASSES = com.sun.javatest.lib.MultiTest com.sun.javatest.lib.MultiStatus
 
 
 
-TOOLS_JAR=$(PRECOMPILE_JAVAHOME)/lib/tools.jar
 JAXB_CLASSPATH.sh=(fl=`find $(JAXB_HOME)/mod -name '*.jar' -print` ; echo $$fl) | sed -e 's/ /:/g'
-JAXB_CLASSPATH=$(shell $(JAXB_CLASSPATH.sh)):$(TOOLS_JAR)
+JAXB_CLASSPATH=$(shell $(JAXB_CLASSPATH.sh))
 
 
 #---------------------------------------------------------------------
@@ -361,9 +361,9 @@ SRCBUNDLE_RELEASE_DOCS =
 SRCBUNDLE_DEST = $(BUILDAREA)/tempBundle
 SRCBUNDLE_ZIP = $(SRCBUNDLE_DEST)/jaxb_tck-ro-src.zip
 
-CLASSDEP = $(GENERAL_JAVA) -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar:$(GENERAL_JAVAHOME)/lib/tools.jar org.apache.river.tool.ClassDep -in com -in javasoft
+CLASSDEP = $(GENERAL_JAVA) -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar org.apache.river.tool.ClassDep -in com -in javasoft
 
-CLASSDEP_8 = $(JAVA_HOME_8)/bin/java -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar:$(JAVA_HOME_8)/lib/tools.jar org.apache.river.tool.ClassDep -in com -in javasoft
+CLASSDEP_8 = $(JAVA_HOME_8)/bin/java -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm-7.0.jar:$(ASM_JAR_LOCATION)/asm-commons-7.0.jar org.apache.river.tool.ClassDep -in com -in javasoft
 
 JAXB_LIBS.sh = for i in `$(LS) -1 $(JAXB_HOME)/mod/*.jar`; do JAXB_LIBS="$$JAXB_LIBS:$$i"; done; echo $$JAXB_LIBS;
 JAXB_LIBS = $(shell $(JAXB_LIBS.sh))

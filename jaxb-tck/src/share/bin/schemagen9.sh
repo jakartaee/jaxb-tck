@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 2011, 2018 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -45,8 +46,6 @@ if [ -z "$JXC_CLASSPATH" ]
 then
     JXC_CLASSPATH=.
 fi
-
-[[ ! "$JXC_CLASSPATH" = *tools.jar* ]] && JXC_CLASSPATH="$JXC_CLASSPATH:$JAVA_HOME/lib/tools.jar"
 
 SCHEMAGEN_REALIZATION=com.sun.jaxb_tck.lib.SchemaGen
 

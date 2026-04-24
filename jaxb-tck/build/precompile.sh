@@ -45,7 +45,6 @@ mkdir -p $precompileDir $precompileDir/report/$subdir
 
 PRECOMPILE_CONCURRENCY=1;
 
-jdktools=$javaHome/lib/tools.jar
 jtjava=$javaHome/bin/java
 
 # precompile the tests
@@ -63,7 +62,7 @@ cd $tckDir
 
 set -x
 
-if CLASSPATH=$tckDir/classes:$tckDir/lib/javatest.jar:$jdktools:$JAXB_CLASSPATH:$precompileDir/classes \
+if CLASSPATH=$tckDir/classes:$tckDir/lib/javatest.jar:$JAXB_CLASSPATH:$precompileDir/classes \
    DEBUG_PROG="${TRUSS_PRECOMPILE+truss -a -topen,close  -s!all}" \
    $jtjava \
 	-Dprecompile \

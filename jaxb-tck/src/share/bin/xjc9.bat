@@ -1,5 +1,6 @@
 @echo off
 REM
+REM  Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 REM  Copyright (c) 2011, 2018 Oracle and/or its affiliates. All rights reserved.
 REM
 REM  This program and the accompanying materials are made available under the
@@ -27,7 +28,7 @@ if "%JAXB_HOME%" == "" (
 
 set SCHEMACOMPILER_REALIZATION=com.sun.jaxb_tck.lib.SchemaCompiler
 set TCK_HOME=%~dp0..\..
-set CLASSPATH="%TCK_HOME%\classes;%TCK_HOME%\lib\javatest.jar;%JAVA_HOME%\lib\tools.jar;%TCK_HOME%\lib\jtjck.jar"
+set CLASSPATH="%TCK_HOME%\classes;%TCK_HOME%\lib\javatest.jar;%TCK_HOME%\lib\jtjck.jar"
 
 rem if "%TCK_JAXB_OPTIONS%" == "" (
     rem set TCK_JAXB_OPTIONS= --add-modules jdk.xml.ws,jdk.xml.bind --add-exports jdk.xml.bind/com.sun.tools.internal.xjc=ALL-UNNAMED,jdk.xml.bind/com.sun.tools.internal.jxc=ALL-UNNAMED,jdk.xml.ws/com.sun.tools.internal.ws=ALL-UNNAMED
