@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation.
 # Copyright (c) 2002, 2020 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -123,14 +124,8 @@ INIT:
 	    echo "  PRECOMPILE_JAVAHOME == $(PRECOMPILE_JAVAHOME)" ; \
 	    exit 1 ; \
 	fi
-	$(RM) -f log2html
-	$(CP) $(BUILDDIR)/log2html.ksh $(BUILDDIR)/log2html
-	$(CHMOD) +x $(BUILDDIR)/log2html
-	$(CHMOD) +x $(BUILDDIR)/run-ant-script
 
 .NO_PARALLEL: clean
-
-CLEANFILES += $(BUILDDIR)/log2html
 
 #.NO_PARALLEL: clean partial-clean
 

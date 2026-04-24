@@ -16,12 +16,10 @@
 #
 
 include ../tools.mk
-#include ../doc.mk
 include ../lib.mk
 include ../testextract.mk
 include ../testsrc.mk
 include ../html.mk
-include ../classes.mk
 include ../test.mk
 
 # put it all together
