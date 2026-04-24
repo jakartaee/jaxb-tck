@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 2011, 2018 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -45,8 +46,6 @@ if [ -z "$XJC_CLASSPATH" ]
 then
     XJC_CLASSPATH=.
 fi
-
-[[ ! "$XJC_CLASSPATH" = *tools.jar* ]] && XJC_CLASSPATH="$XJC_CLASSPATH:$JAVA_HOME/lib/tools.jar"
 
 SCHEMACOMPILER_REALIZATION=com.sun.jaxb_tck.lib.SchemaCompiler
 
