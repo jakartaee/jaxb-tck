@@ -1,0 +1,51 @@
+#
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
+#
+# This program and the accompanying materials are made available under the
+# terms of the Eclipse Public License v. 2.0 which is available at
+# http://www.eclipse.org/legal/epl-2.0,
+# or the Eclipse Distribution License v. 1.0 which is available at
+# http://www.eclipse.org/org/documents/edl-v10.php.
+#
+# SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
+#
+
+name: JAXB RI
+
+on:
+  pull_request:
+    paths:
+      - 'jaxb-tck/src/**'
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'jaxb-tck/src/**'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Test on JDK ${{ matrix.java_version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java_version: [ 17, 25 ]
+
+    steps:
+      - name: Checkout for build
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up JDK
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
+        with:
+          distribution: 'zulu'
+          java-version: ${{ matrix.java_version }}
+          cache: maven
+      - name: Verify
+        run: |
+          cd jaxb-tck/src
+          mvn -B -V -U -C -Pcheckstyle clean verify
