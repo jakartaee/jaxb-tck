@@ -85,8 +85,8 @@ export JAXB_JAR_LOC=${JAXB_HOME}/mod
 
 echo "$JAXB_HOME"
 
-wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/9.9.1/asm-commons-9.9.1.jar' -O asm-commons-7.0.jar
-wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm/9.9.1/asm-9.9.1.jar' -O asm-7.0.jar
+wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/9.9.1/asm-commons-9.9.1.jar' -O asm-commons.jar
+wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm/9.9.1/asm-9.9.1.jar' -O asm.jar
 
 unzip -o latest-glassfish.zip
 ls -l $GF_HOME/glassfish7/glassfish/
