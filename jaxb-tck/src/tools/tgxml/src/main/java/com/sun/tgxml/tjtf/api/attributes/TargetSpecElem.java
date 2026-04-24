@@ -18,7 +18,7 @@
 package com.sun.tgxml.tjtf.api.attributes;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.attributes.TargetSpecElem
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
 import com.sun.tgxml.tjtf.api.common.NameValuePair;
 // </importgen>
 

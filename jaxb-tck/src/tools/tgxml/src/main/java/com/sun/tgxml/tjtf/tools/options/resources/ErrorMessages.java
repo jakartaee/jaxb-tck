@@ -15,13 +15,13 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package com.sun.tgxml.tjtf.tools.options.resources; 
- 
-import java.util.ResourceBundle; 
-import java.util.MissingResourceException;
-import java.text.MessageFormat;
+package com.sun.tgxml.tjtf.tools.options.resources;
 
-  
+import java.text.MessageFormat;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
+
 /** 
  * ErrorMessages - functionality for access to internationalized 
  * error messages

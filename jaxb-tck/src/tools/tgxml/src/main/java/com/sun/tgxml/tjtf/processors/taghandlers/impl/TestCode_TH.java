@@ -16,22 +16,23 @@
  */
 
 package com.sun.tgxml.tjtf.processors.taghandlers.impl;
-import java.io.IOException;
-import java.util.*;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
 
-import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
-import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
+import java.io.IOException;
+import java.util.EmptyStackException;
+import java.util.Stack;
+import java.util.StringTokenizer;
+
+import org.xml.sax.SAXException;
+
+import com.sun.tgxml.tjtf.api.code.CodeFactory;
+import com.sun.tgxml.tjtf.api.code.TestCode;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.impl.ConstantsImpl;
 import com.sun.tgxml.tjtf.impl.TagsImpl;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 
-import com.sun.tgxml.tjtf.api.tests.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
- 
 /** 
  * TestCode_TH - The tag-handler for a TestCode tag. 
  * 

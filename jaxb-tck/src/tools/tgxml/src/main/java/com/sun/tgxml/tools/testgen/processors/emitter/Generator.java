@@ -17,12 +17,12 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import com.sun.tgxml.tjtf.processors.Processor;
+import java.io.IOException;
+import java.util.Properties;
+
 import com.sun.tgxml.tjtf.IRObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import java.util.Properties;
-import java.io.IOException;
-
+import com.sun.tgxml.tjtf.processors.Processor;
 import com.sun.tgxml.tools.elgen.ExcludeListCollector;
 
 public interface Generator extends Processor {

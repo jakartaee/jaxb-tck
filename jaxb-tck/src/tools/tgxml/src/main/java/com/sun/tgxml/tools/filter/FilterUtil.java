@@ -20,26 +20,24 @@ package com.sun.tgxml.tools.filter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.sun.tgxml.util.IR;
-
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.code.SupportClass;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tjtf.api.tests.TestVariant;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
-import com.sun.tgxml.tools.filter.processors.FilterExpression;
-import com.sun.tgxml.tools.filter.processors.FilteringException;
-
-import com.sun.tgxml.tools.filter.libutil.LibMap;
-import com.sun.tgxml.tools.filter.libutil.LibsInfo;
-import com.sun.tgxml.tools.filter.libutil.LibMapFile;
-import com.sun.tgxml.tools.filter.libutil.VariantsMap;
-import com.sun.tgxml.tools.filter.libutil.LibSelectionInfo;
-import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
 import com.sun.tgxml.tools.filter.libutil.LibAttributesFilter;
 import com.sun.tgxml.tools.filter.libutil.LibDependencyFilter;
+import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
+import com.sun.tgxml.tools.filter.libutil.LibMap;
+import com.sun.tgxml.tools.filter.libutil.LibMapFile;
+import com.sun.tgxml.tools.filter.libutil.LibSelectionInfo;
+import com.sun.tgxml.tools.filter.libutil.LibsInfo;
+import com.sun.tgxml.tools.filter.libutil.VariantsMap;
+import com.sun.tgxml.tools.filter.processors.FilterExpression;
+import com.sun.tgxml.tools.filter.processors.FilteringException;
+import com.sun.tgxml.util.IR;
 
 /**
  * Miscellaneous filtering utils

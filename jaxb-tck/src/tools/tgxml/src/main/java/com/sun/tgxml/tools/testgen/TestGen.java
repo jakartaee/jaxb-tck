@@ -17,25 +17,28 @@
 
 package com.sun.tgxml.tools.testgen;
 
-import com.sun.tgxml.tjtf.tools.StandardToolBase;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Properties;
+
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.processors.emitter.IREmitter;
 import com.sun.tgxml.tjtf.processors.parser.IRParser;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.PropertyOption;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
+import com.sun.tgxml.tjtf.tools.StandardToolBase;
 import com.sun.tgxml.tjtf.tools.options.DefaultOperandsValidator;
-import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
-import com.sun.tgxml.tools.testgen.processors.emitter.EmitterManager;
-import com.sun.tgxml.tools.testgen.processors.emitter.Generator;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.PropertyOption;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tools.elgen.ExcludeListCollector;
 import com.sun.tgxml.tools.elgen.ExcludeListToolFactory;
-import java.util.Properties;
+import com.sun.tgxml.tools.testgen.processors.emitter.EmitterManager;
+import com.sun.tgxml.tools.testgen.processors.emitter.Generator;
+import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
 
 /**
  * Jmpp to XML converter tool

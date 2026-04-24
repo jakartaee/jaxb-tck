@@ -18,9 +18,6 @@
 
 package net.jini.security;
 
-import org.apache.river.collection.WeakIdentityMap;
-import org.apache.river.logging.Levels;
-import org.apache.river.resource.Service;
 import java.lang.ref.SoftReference;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -42,23 +39,26 @@ import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.WeakHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+
 import javax.security.auth.AuthPermission;
 import javax.security.auth.Subject;
 import javax.security.auth.SubjectDomainCombiner;
+
 import net.jini.security.policy.DynamicPolicy;
 import net.jini.security.policy.SecurityContextSource;
 import org.apache.river.api.security.SubjectDomain;
+import org.apache.river.collection.WeakIdentityMap;
+import org.apache.river.logging.Levels;
+import org.apache.river.resource.Service;
 
 /**
  * Provides methods for executing actions with privileges enabled, for

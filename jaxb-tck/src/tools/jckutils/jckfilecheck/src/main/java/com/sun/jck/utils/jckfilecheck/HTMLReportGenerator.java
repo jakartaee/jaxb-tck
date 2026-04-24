@@ -31,9 +31,8 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.util.Vector;
 import java.util.Enumeration;
+import java.util.Vector;
 
 
 public class HTMLReportGenerator {

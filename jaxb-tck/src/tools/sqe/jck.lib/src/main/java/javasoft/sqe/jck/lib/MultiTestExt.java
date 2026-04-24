@@ -17,22 +17,22 @@
 
 package javasoft.sqe.jck.lib;
 
-import javasoft.sqe.javatest.lib.MultiTest;
-import javasoft.sqe.javatest.Status;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.Writer;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.StringTokenizer;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
+import javasoft.sqe.javatest.Status;
+import javasoft.sqe.javatest.lib.MultiTest;
 
 /**
  * Extension of MultiTest class.

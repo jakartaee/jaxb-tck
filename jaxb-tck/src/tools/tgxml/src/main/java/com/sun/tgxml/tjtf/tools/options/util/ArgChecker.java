@@ -17,8 +17,6 @@
 
 package com.sun.tgxml.tjtf.tools.options.util;
 
-import java.util.ArrayList;
-
 /**
  * ArgChecker - class for checking that element may be an option argument
  *

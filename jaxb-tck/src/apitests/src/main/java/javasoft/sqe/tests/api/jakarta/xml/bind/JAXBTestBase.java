@@ -29,8 +29,8 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 
 import javasoft.sqe.javatest.lib.MultiTest;
-import javasoft.sqe.jck.lib.SchemaLoader;
 import javasoft.sqe.jck.lib.MultiTestExt;
+import javasoft.sqe.jck.lib.SchemaLoader;
 
 /**
  * Base class for CTTest and JAXBTest.

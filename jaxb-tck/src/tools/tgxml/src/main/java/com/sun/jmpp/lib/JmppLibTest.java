@@ -18,18 +18,19 @@
 package com.sun.jmpp.lib;
 
 import java.io.BufferedWriter;
-import java.io.PrintWriter;
-import java.io.PrintStream;
-import java.io.FileWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Vector;
-import java.util.Hashtable;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.text.DateFormat;
-import javasoft.sqe.jckutils.lib.JmppScript;
+import java.util.Hashtable;
+import java.util.Vector;
+
 import com.sun.jmpp.JmppException;
-import com.sun.jmpp.share.Options;
 import com.sun.jmpp.share.OptionDescr;
+import com.sun.jmpp.share.Options;
+import javasoft.sqe.jckutils.lib.JmppScript;
 
 /**
  * Base class to be executed by Jmpp macro preprocessor for generating

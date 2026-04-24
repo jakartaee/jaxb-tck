@@ -17,22 +17,19 @@
 
 package com.sun.tgxml.tjtf.processors.emitter.impl;
 
-import java.io.*;
-import java.util.*;
-import java.net.URL;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.tools.Shell;
-import com.sun.tgxml.tjtf.processors.impl.ValidatingProcessorImpl;
-import com.sun.tgxml.tjtf.processors.validator.NullValidator;
-import com.sun.tgxml.tjtf.processors.validator.IRValidator;
-import com.sun.tgxml.tjtf.processors.emitter.XMLEmitter;
-import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
-import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.api.XMLObj;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.processors.emitter.XMLEmitter;
+import com.sun.tgxml.tjtf.processors.impl.ValidatingProcessorImpl;
+import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.tools.options.FlagOption;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 

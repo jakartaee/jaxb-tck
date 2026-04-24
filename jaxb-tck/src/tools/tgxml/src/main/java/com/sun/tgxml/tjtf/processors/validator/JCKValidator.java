@@ -16,22 +16,27 @@
  */
 
 package com.sun.tgxml.tjtf.processors.validator;
-import java.util.TreeMap;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.data.DataType;
+import com.sun.tgxml.tjtf.api.data.InlineData;
+import com.sun.tgxml.tjtf.api.documentation.Assertion;
+import com.sun.tgxml.tjtf.api.documentation.AssertionRef;
+import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
+import com.sun.tgxml.tjtf.api.exceptions.ValidatorException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.*;
-import com.sun.tgxml.tjtf.api.common.impl.*;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.data.*;
-import com.sun.tgxml.tjtf.api.documentation.*;
-import com.sun.tgxml.tjtf.api.tests.*;
 
- 
+
 /** 
  * JCKValidator - The full validator for a JCK test format. 
  * <p>

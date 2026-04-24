@@ -20,9 +20,6 @@ package net.jini.loader;
 
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import org.apache.river.concurrent.RC;
-import org.apache.river.concurrent.Ref;
-import org.apache.river.concurrent.Referrer;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -32,6 +29,10 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.river.concurrent.RC;
+import org.apache.river.concurrent.Ref;
+import org.apache.river.concurrent.Referrer;
 import org.apache.river.thread.NamedThreadFactory;
 
 /**

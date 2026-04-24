@@ -24,19 +24,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Vector;
-import java.util.ArrayList;
 import java.util.Iterator;
-
-import com.sun.jmpp.share.Options;
-import com.sun.jmpp.share.OptionDescr;
-import com.sun.jmpp.share.Utils;
-import com.sun.jmpp.share.DirClassLoader;
+import java.util.Vector;
 
 import com.sun.jmpp.lib.TargetSpec;
 import com.sun.jmpp.lib.TargetSpecElem;
+import com.sun.jmpp.share.DirClassLoader;
+import com.sun.jmpp.share.OptionDescr;
+import com.sun.jmpp.share.Options;
+import com.sun.jmpp.share.Utils;
 
 /**
  * Base class to be executed by Jmpp macro preprocessor for generating

@@ -18,9 +18,10 @@
 package com.sun.tgxml.tools.indexgen.api;
 
 
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.XMLObj;
 import java.util.ArrayList;
+
+import com.sun.tgxml.tjtf.api.XMLObj;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 /**
  * TestSuite - 

@@ -17,9 +17,9 @@
 
 package com.sun.tgxml.tjtf.tools.options;
 
-import java.util.Vector;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Vector;
 
 /**
  * CompoundOption has a set of registred options.

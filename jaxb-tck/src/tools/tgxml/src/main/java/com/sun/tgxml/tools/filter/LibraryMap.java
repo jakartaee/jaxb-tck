@@ -17,12 +17,12 @@
 
 package com.sun.tgxml.tools.filter;
 
-import java.io.File;
-import java.util.Vector;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
-import java.util.StringTokenizer;
 import java.io.IOException;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.resources.LibResHandler;

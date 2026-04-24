@@ -17,35 +17,29 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import com.sun.tgxml.tjtf.processors.Processor;
-import com.sun.tgxml.tjtf.tools.Shell;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Properties;
+
 import com.sun.tgxml.tjtf.IRObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import java.util.*;
-import java.io.IOException;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
-
-import com.sun.tgxml.tjtf.api.code.SupportClass;
-import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
-import com.sun.tgxml.tjtf.api.code.SupportCode;
-import com.sun.tgxml.tjtf.api.code.CodeSet;
-import com.sun.tgxml.tjtf.api.code.Code;
-
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.Shell;
+import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
 import com.sun.tgxml.tools.elgen.ExcludeListCollector;
 import com.sun.tgxml.tools.elgen.IncorrectAttributesException;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 import com.sun.tgxml.tools.testgen.LibUtils;
 import com.sun.tgxml.tools.testgen.processors.ir.IRPFactory;
 import com.sun.tgxml.tools.testgen.processors.ir.IRProcessor;
-
-import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
 
 
 public class EmitterManager extends StandardOptionHandler implements ExcludeListCollector, Generator {

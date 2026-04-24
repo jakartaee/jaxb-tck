@@ -18,19 +18,11 @@
 package com.sun.tgxml.tjtf.processors.emitter;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.tests.Testgroup
-import java.net.URL;
-import java.io.PrintStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.TreeMap;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
-import com.sun.tgxml.tjtf.processors.emitter.impl.*;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.processors.emitter.impl.XMLEmitterImpl;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerFactory;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
 // </importgen>
 
 /**

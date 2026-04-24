@@ -17,34 +17,31 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.parser;
 
-import java.util.ArrayList;
-import java.util.Vector;
-import java.util.StringTokenizer;
 import java.io.File;
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
-import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+import com.sun.jmpp.JmppException;
+import com.sun.jmpp.lib.JmppLibTest;
+import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.code.CodeFactory;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
+import com.sun.tgxml.tjtf.api.data.Data;
+import com.sun.tgxml.tjtf.api.data.DataFactory;
+import com.sun.tgxml.tjtf.api.data.ExternalData;
 import com.sun.tgxml.tjtf.api.documentation.DocumentationFactory;
 import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
-import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
-import com.sun.tgxml.tjtf.api.tests.TestFactory;
-import com.sun.tgxml.tjtf.api.code.CodeSet;
-import com.sun.tgxml.tjtf.api.code.CodeFactory;
-import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.data.Data;
-import com.sun.tgxml.tjtf.api.data.ExternalData;
-import com.sun.tgxml.tjtf.api.data.DataFactory;
+import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.resources.LibResHandler; 
-import com.sun.tgxml.tools.jmppconv.processors.parser.IRTDGenerator;
-import com.sun.tgxml.tools.jmppconv.processors.parser.JmppLibXMLSchema;
-import com.sun.jmpp.JmppException;
-import com.sun.jmpp.lib.TDGenerator;
-import com.sun.jmpp.lib.JmppLibTest;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestFactory;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestRoot;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
 /**  

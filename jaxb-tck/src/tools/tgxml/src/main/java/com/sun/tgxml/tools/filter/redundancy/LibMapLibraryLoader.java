@@ -30,12 +30,8 @@ import java.util.WeakHashMap;
 
 import org.xml.sax.SAXException;
 
-import com.sun.tgxml.tjtf.IRObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.processors.parser.ParserFactory;
-import com.sun.tgxml.tjtf.processors.parser.XMLParser;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
 

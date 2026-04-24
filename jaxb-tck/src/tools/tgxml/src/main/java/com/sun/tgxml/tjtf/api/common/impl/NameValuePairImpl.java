@@ -18,8 +18,9 @@
 package com.sun.tgxml.tjtf.api.common.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.common.impl.NameValuePairImpl
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+
 import com.sun.tgxml.tjtf.api.common.NameValuePair;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 

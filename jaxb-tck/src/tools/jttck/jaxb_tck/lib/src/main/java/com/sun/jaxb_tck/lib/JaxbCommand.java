@@ -17,13 +17,12 @@
 
 package com.sun.jaxb_tck.lib;
 
-import java.io.PrintWriter;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 
 import com.sun.javatest.Command;
-import com.sun.javatest.util.WriterStream;
-
 import com.sun.javatest.Status;
+import com.sun.javatest.util.WriterStream;
 
 public class JaxbCommand extends Command {
 

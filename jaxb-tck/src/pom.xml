@@ -80,6 +80,7 @@
         <asciidoctorj.maven.plugin.version>3.2.0</asciidoctorj.maven.plugin.version>
         <asciidoctorj.pdf.version>2.3.23</asciidoctorj.pdf.version>
         <jbake.maven.plugin.version>2.7.0</jbake.maven.plugin.version>
+        <checkstyle.version>13.4.0</checkstyle.version>
         <!-- status: DRAFT, BETA, etc., or blank for final -->
         <status></status>
 
@@ -264,6 +265,18 @@
                     <artifactId>maven-assembly-plugin</artifactId>
                     <version>3.8.0</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>3.6.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>${checkstyle.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -322,4 +335,50 @@
         <module>tools</module>
         <module>docs</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>checkstyle</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>checkstyle</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                                <configuration>
+                                    <checkstyleRules>
+                                        <module name="Checker">
+<!--                                            <module name="FileTabCharacter">-->
+<!--                                                <property name="eachLine" value="true"/>-->
+<!--                                            </module>-->
+                                            <module name="TreeWalker">
+                                                <module name="ImportOrder">
+                                                    <property name="groups" value="jakarta,java,javax,org.w3c,org.xml,*"/>
+                                                    <property name="ordered" value="true"/>
+                                                    <property name="separated" value="true"/>
+                                                    <property name="option" value="bottom"/>
+                                                    <property name="sortStaticImportsAlphabetically" value="true"/>
+                                                </module>
+                                                <module name="SuppressionXpathSingleFilter">
+                                                    <property name="checks" value="ImportOrder"/>
+                                                    <property name="message" value="^'java\..*'.*"/>
+                                                </module>
+                                                <module name="AvoidStarImport"/>
+                                            </module>
+                                        </module>
+                                    </checkstyleRules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

@@ -18,11 +18,12 @@
 package com.sun.tgxml.tjtf.api.code.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.InlineSupportClass
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.common.Export;
-import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
-import com.sun.tgxml.tjtf.api.code.InlineCode;
+
 import java.util.ArrayList;
+
+import com.sun.tgxml.tjtf.api.code.InlineCode;
+import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
+import com.sun.tgxml.tjtf.api.common.Export;
 // </importgen>
 
 /**

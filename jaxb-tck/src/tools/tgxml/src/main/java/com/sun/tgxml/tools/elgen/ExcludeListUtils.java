@@ -17,21 +17,10 @@
 
 package com.sun.tgxml.tools.elgen;
 
-import java.util.ArrayList;
 import java.io.File;
-import java.io.IOException;
 
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
-import com.sun.tgxml.tjtf.api.attributes.Attributes;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
-import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
-import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.util.IR;
 

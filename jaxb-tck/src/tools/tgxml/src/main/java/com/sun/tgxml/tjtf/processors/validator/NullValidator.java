@@ -18,12 +18,12 @@
 package com.sun.tgxml.tjtf.processors.validator;
 
 import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.exceptions.ValidatorException;
 import com.sun.tgxml.tjtf.processors.impl.ProcessorImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.*;
 import com.sun.tgxml.tjtf.tools.options.FlagOption;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
- 
+
 /** 
  * NullValidator - The basic engine for a validator. 
  * <p>

@@ -18,35 +18,28 @@
 package com.sun.tgxml.tools.testgen;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.FileInputStream;
-
-import java.util.Iterator;
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Properties;
-
-import com.sun.tgxml.util.IR;
 
 import com.sun.tgxml.tjtf.IRObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 import com.sun.tgxml.tjtf.processors.parser.IRParser;
-
-import com.sun.tgxml.tools.filter.FilterUtil;
-import com.sun.tgxml.tools.filter.libutil.LibMap;
-import com.sun.tgxml.tools.filter.libutil.LibMapFile;
-import com.sun.tgxml.tools.filter.libutil.XmlFileNameMap;
-import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
-
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tools.dependence.LibIDList;
 import com.sun.tgxml.tools.dependence.LibraryDependencies;
 import com.sun.tgxml.tools.dependence.processors.DependenceAnalyzer;
-
+import com.sun.tgxml.tools.filter.FilterUtil;
+import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
+import com.sun.tgxml.tools.filter.libutil.LibMap;
+import com.sun.tgxml.tools.filter.libutil.LibMapFile;
+import com.sun.tgxml.tools.filter.libutil.XmlFileNameMap;
 import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
+import com.sun.tgxml.util.IR;
 
 /**
  * Wrapper tool including TestGen and DependencyAnalyzerTool.

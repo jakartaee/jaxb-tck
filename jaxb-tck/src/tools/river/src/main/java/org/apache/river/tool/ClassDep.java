@@ -17,25 +17,26 @@
  */
 package org.apache.river.tool;
 
-import org.apache.river.tool.classdepend.ClassDepend;
-import org.apache.river.tool.classdepend.ClassDependParameters;
-import org.apache.river.tool.classdepend.ClassDependParameters.CDPBuilder;
-import org.apache.river.tool.classdepend.ClassDependencyRelationship;
+import java.io.File;
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.io.File;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import org.apache.river.tool.classdepend.ClassDepend;
+import org.apache.river.tool.classdepend.ClassDependParameters;
+import org.apache.river.tool.classdepend.ClassDependParameters.CDPBuilder;
+import org.apache.river.tool.classdepend.ClassDependencyRelationship;
 
 /**
  * Tool used to analyze a set of classes and determine on what other classes

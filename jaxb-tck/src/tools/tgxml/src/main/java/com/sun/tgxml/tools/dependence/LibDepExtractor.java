@@ -17,15 +17,15 @@
 
 package com.sun.tgxml.tools.dependence;
 
-import java.util.ArrayList;                
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
-import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
 
 /**
  * The <code>LibDepExtractor</code> is a list of library dependencies

@@ -17,13 +17,10 @@
 
 package com.sun.tgxml.tjtf.processors.impl;
 
-import com.sun.tgxml.tjtf.tools.Shell;
 import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
-import com.sun.tgxml.tjtf.processors.validator.NullValidator;
 import com.sun.tgxml.tjtf.processors.validator.IRValidator;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
- 
+import com.sun.tgxml.tjtf.processors.validator.NullValidator;
+
 /** 
  * ValidatingProcessorImpl - The basic functionality for a processor. 
  * 

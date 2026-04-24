@@ -18,9 +18,10 @@
 package com.sun.tgxml.tools.jmppconv.processors.parser;
 
 import java.io.File;
-import com.sun.jmpp.JmppException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
+import com.sun.jmpp.JmppException;
 
 public interface IRGenerator 
 {

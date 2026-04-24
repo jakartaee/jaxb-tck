@@ -17,15 +17,10 @@
 
 package com.sun.tgxml.tjtf.processors.taghandlers;
 
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
-
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
+import org.xml.sax.SAXException;
 
 
- 
-/** 
+/**
  * ParserTagHandler - The tag-handler abstraction. This is the
  * contract that a TagHandler must support (from the parser's perspective).
  * 

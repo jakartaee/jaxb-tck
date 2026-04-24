@@ -16,9 +16,20 @@
  */
 package com.sun.jaxb_tck.lib.persistence;
 
-import java.beans.*;
-import java.util.*;
-import java.lang.reflect.*;
+import java.beans.BeanInfo;
+import java.beans.Encoder;
+import java.beans.EventSetDescriptor;
+import java.beans.Expression;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PersistenceDelegate;
+import java.beans.PropertyDescriptor;
+import java.beans.Statement;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.EventListener;
+import java.util.List;
 
 /**
  * Just copied from <code>java.beans</code> with simple change in

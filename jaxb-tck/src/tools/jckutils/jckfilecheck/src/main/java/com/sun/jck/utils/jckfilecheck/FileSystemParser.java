@@ -26,7 +26,6 @@ package com.sun.jck.utils.jckfilecheck;
 import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
-import java.util.StringTokenizer;
 
 public class FileSystemParser {
   

@@ -19,34 +19,32 @@ package com.sun.tgxml.tools.testgen.processors.ir;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.code.CodeFactory;
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.code.LibraryDependency;
-import com.sun.tgxml.tjtf.api.code.CodeFactory;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestFactory;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
+import com.sun.tgxml.tjtf.processors.parser.XMLParser;
 import com.sun.tgxml.tjtf.tools.BuildProperties;
-
 import com.sun.tgxml.tools.filter.FilterUtil;
+import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
 import com.sun.tgxml.tools.filter.libutil.LibMap;
 import com.sun.tgxml.tools.filter.libutil.LibMapFile;
 import com.sun.tgxml.tools.filter.libutil.XmlFileNameMap;
-import com.sun.tgxml.tools.filter.libutil.LibFilterFactrory;
-
 import com.sun.tgxml.tools.testgen.LibUtils;
-import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
 import com.sun.tgxml.tools.testgen.processors.emitter.TGVisitor;
-import com.sun.tgxml.tjtf.processors.parser.XMLParser;
+import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
 import com.sun.tgxml.util.IR;
 
 /**

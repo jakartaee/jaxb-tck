@@ -18,9 +18,10 @@
 package com.sun.tgxml.tjtf.tools.options;
 
 import java.util.ArrayList;
+
+import com.sun.tgxml.tjtf.tools.options.resources.ErrorMessages;
 import com.sun.tgxml.tjtf.tools.options.util.OptionReader ;
 import com.sun.tgxml.tjtf.tools.options.util.SwitchChecker ;
-import com.sun.tgxml.tjtf.tools.options.resources.ErrorMessages;
 
 /**
  * Abstract class implementing based algorithm of option parsing

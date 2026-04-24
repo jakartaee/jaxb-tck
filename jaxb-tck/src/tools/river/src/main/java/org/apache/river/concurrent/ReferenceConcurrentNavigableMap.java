@@ -16,7 +16,6 @@
 package org.apache.river.concurrent;
 
 import java.util.Comparator;
-import java.util.Map.Entry;
 import java.util.NavigableSet;
 import java.util.concurrent.ConcurrentNavigableMap;
 

@@ -18,8 +18,8 @@
 package com.sun.tgxml.tjtf.api.data;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.data.ExternalData
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import java.io.PrintStream;
 // </importgen>
 
 /**

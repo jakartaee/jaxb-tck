@@ -18,11 +18,8 @@
 package com.sun.tgxml.tjtf.api.tests;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.TestRoot
+
 import com.sun.tgxml.tjtf.api.XMLObj;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.code.CodeSet;
-import com.sun.tgxml.tjtf.api.documentation.Documentation;
-import com.sun.tgxml.tjtf.api.attributes.Attributes;
 // </importgen>
 
 /**

@@ -17,8 +17,9 @@
 
 package com.sun.jmpp.lib;
 
-import com.sun.jmpp.lib.jtf.JTF_Slot;
 import java.io.PrintWriter;
+
+import com.sun.jmpp.lib.jtf.JTF_Slot;
 
 /**  
  * Jmpp Test Factory (JTF) support class for javasoft.sqe.tests.lang

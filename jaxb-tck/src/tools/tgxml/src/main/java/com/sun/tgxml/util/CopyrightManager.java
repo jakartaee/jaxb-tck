@@ -20,12 +20,10 @@ package com.sun.tgxml.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.Calendar;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.StringTokenizer;
 import java.util.Iterator;
 
 import com.sun.tgxml.tjtf.tools.BuildProperties;

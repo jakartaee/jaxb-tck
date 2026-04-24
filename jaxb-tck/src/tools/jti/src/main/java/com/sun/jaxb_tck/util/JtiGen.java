@@ -16,11 +16,12 @@
  */
 package com.sun.jaxb_tck.util;
 
-import com.sun.interview.Interview;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Calendar;
 import java.util.StringTokenizer;
+
+import com.sun.interview.Interview;
 
 public class JtiGen extends Interview {
 

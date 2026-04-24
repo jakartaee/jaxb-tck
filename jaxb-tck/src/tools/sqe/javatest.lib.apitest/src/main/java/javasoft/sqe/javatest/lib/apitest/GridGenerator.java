@@ -16,10 +16,8 @@
  */
 package javasoft.sqe.javatest.lib.apitest;
 
-import java.util.Vector;
 import javasoft.sqe.javatest.Status;
 import javasoft.sqe.javatest.lib.MultiStatus;
-import java.io.PrintWriter;
 
 /**
  * <P>

@@ -17,18 +17,6 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.parser;
 
-import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.processors.parser.IRParser;
-import com.sun.tgxml.tjtf.processors.validator.IRValidator;
-import com.sun.tgxml.tjtf.tools.Shell;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
-import com.sun.tgxml.tjtf.tools.options.PrefixOption;
-import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
-import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
-import com.sun.tgxml.tools.jmppconv.processors.util.Arguments;
-import com.sun.tgxml.tjtf.resources.LibResHandler; 
-import com.sun.tgxml.tjtf.tools.BuildProperties;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,6 +24,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.processors.parser.IRParser;
+import com.sun.tgxml.tjtf.processors.validator.IRValidator;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
+import com.sun.tgxml.tjtf.tools.Shell;
+import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.PrefixOption;
+import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
+import com.sun.tgxml.tools.jmppconv.processors.util.Arguments;
 
 public class JmppTDParser extends StandardOptionHandler implements IRParser {
     protected IRGenerator       theIRGenerator;

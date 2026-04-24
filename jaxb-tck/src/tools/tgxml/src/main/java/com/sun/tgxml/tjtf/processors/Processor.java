@@ -17,10 +17,10 @@
 
 package com.sun.tgxml.tjtf.processors;
 
-import com.sun.tgxml.tjtf.tools.options.OptionHandler;
-import com.sun.tgxml.tjtf.tools.Shell;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
- 
+import com.sun.tgxml.tjtf.tools.Shell;
+import com.sun.tgxml.tjtf.tools.options.OptionHandler;
+
 /** 
  * Processor describes the topmost interface for a processor that
  * a shell may own. 

@@ -17,11 +17,16 @@
 
 package com.sun.jmpp.lib;
 
-import java.io.*;
-import java.util.Vector;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
-import javasoft.sqe.jckutils.lib.JmppScript;
 import java.util.Hashtable;
+import java.util.Vector;
+
+import javasoft.sqe.jckutils.lib.JmppScript;
 
 /**
  * The class runs Jmpp in certain modes for FP templates

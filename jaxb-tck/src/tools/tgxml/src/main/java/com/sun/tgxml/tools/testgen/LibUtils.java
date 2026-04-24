@@ -17,15 +17,15 @@
 
 package com.sun.tgxml.tools.testgen;
 
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
-import com.sun.tgxml.util.IR;
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
+import com.sun.tgxml.util.IR;
 
 
 /**

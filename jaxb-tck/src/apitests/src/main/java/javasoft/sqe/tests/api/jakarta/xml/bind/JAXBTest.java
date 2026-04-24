@@ -17,21 +17,21 @@
 
 package javasoft.sqe.tests.api.jakarta.xml.bind;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.PrintWriter;
-import java.net.URL;
-
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 
-import javasoft.sqe.javatest.Status;
-import javasoft.sqe.javatest.lib.MultiTest;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.PrintWriter;
+import java.net.URL;
+
 import com.sun.jaxb_tck.lib.persistence.Comparator;
 import com.sun.jaxb_tck.lib.persistence.JaxbTreeDeserializer;
 import com.sun.jaxb_tck.lib.persistence.PersistenceFactory;
+import javasoft.sqe.javatest.Status;
+import javasoft.sqe.javatest.lib.MultiTest;
 
 /**
  * Main test class for testing XML Schema to Java compatibility

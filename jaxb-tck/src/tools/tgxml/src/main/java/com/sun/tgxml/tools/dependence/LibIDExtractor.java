@@ -17,18 +17,20 @@
 
 package com.sun.tgxml.tools.dependence;
 
-import java.util.ArrayList;                
-import java.util.Iterator;                
-import java.util.Hashtable;                
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
 
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tjtf.api.code.CodeSet;
 import com.sun.tgxml.tjtf.api.code.LibraryDependency;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tools.filter.processors.FilteringException;
 import com.sun.tgxml.tools.filter.processors.LibraryFilter;
 import com.sun.tgxml.util.IR;

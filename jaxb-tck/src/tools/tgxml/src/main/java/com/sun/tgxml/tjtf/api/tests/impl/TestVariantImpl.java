@@ -17,12 +17,11 @@
 
 package com.sun.tgxml.tjtf.api.tests.impl;
 
+import java.math.BigDecimal;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.TestVariant;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
 /**
  * TestVariantImpl - 

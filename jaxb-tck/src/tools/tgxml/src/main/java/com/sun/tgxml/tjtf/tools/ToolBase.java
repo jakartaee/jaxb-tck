@@ -18,20 +18,23 @@
 package com.sun.tgxml.tjtf.tools;
 
 // <importgen> Generated imports for class: cftools.ClassWriter
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.tools.options.Option;
-import com.sun.tgxml.tjtf.tools.options.HelpOption;
-import com.sun.tgxml.tjtf.tools.options.FlagOption;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tjtf.tools.options.ArgumentDecoder;
+import com.sun.tgxml.tjtf.tools.options.DefaultOperandsValidator;
+import com.sun.tgxml.tjtf.tools.options.FlagOption;
+import com.sun.tgxml.tjtf.tools.options.HelpOption;
 import com.sun.tgxml.tjtf.tools.options.HelpOptionException;
+import com.sun.tgxml.tjtf.tools.options.OperandsValidator;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
-import com.sun.tgxml.tjtf.tools.options.OperandsValidator;
-import com.sun.tgxml.tjtf.tools.options.DefaultOperandsValidator;
-import java.io.*;
-import java.util.ArrayList;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 // </importgen>
  
  

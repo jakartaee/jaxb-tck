@@ -18,11 +18,24 @@
 package com.sun.tgxml.tjtf.api.documentation;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.documentation.DocumentationFactory
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.documentation.impl.*;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import com.sun.tgxml.tjtf.api.documentation.impl.AssertionRefImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.DocElemImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.ExpectedResultExceptionImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.ExpectedResultSideEffectImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.ExpectedResultValueImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.InlineAssertionImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.InputImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.LibDocumentationImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.SpecElemImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.TestCaseDocumentationImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.TestCaseSpecImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.TestGroupDocumentationImpl;
+import com.sun.tgxml.tjtf.api.documentation.impl.TestTechniqueImpl;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**

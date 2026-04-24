@@ -18,13 +18,14 @@
 package com.sun.tgxml.tjtf.tools.options;
 
 import java.util.ArrayList;
-import java.util.Vector;
-import java.util.Iterator;
 import java.util.Enumeration;
-import com.sun.tgxml.tjtf.tools.options.util.ParsedOption;
+import java.util.Iterator;
+import java.util.Vector;
+
 import com.sun.tgxml.tjtf.tools.options.util.OptionReader;
-import com.sun.tgxml.tjtf.tools.options.util.SwitchChecker;
+import com.sun.tgxml.tjtf.tools.options.util.ParsedOption;
 import com.sun.tgxml.tjtf.tools.options.util.PrefixOptionChecker;
+import com.sun.tgxml.tjtf.tools.options.util.SwitchChecker;
 
 
 /**

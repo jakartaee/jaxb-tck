@@ -26,8 +26,8 @@ package com.sun.jck.utils.jckfilecheck;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.StringTokenizer;
 import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 

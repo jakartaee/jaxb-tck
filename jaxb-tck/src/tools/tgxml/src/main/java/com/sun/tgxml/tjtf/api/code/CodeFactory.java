@@ -18,14 +18,21 @@
 package com.sun.tgxml.tjtf.api.code;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.code.CodeFactory
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.code.impl.*;
-import com.sun.tgxml.tjtf.api.data.*;
-import com.sun.tgxml.tjtf.api.documentation.*;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import com.sun.tgxml.tjtf.api.code.impl.CodeSetImpl;
+import com.sun.tgxml.tjtf.api.code.impl.ExternalSupportClassImpl;
+import com.sun.tgxml.tjtf.api.code.impl.InlineSupportClassImpl;
+import com.sun.tgxml.tjtf.api.code.impl.LibraryDependencyImpl;
+import com.sun.tgxml.tjtf.api.code.impl.SupportCodeImpl;
+import com.sun.tgxml.tjtf.api.code.impl.TestCodeImpl;
+import com.sun.tgxml.tjtf.api.data.Data;
+import com.sun.tgxml.tjtf.api.data.DataFactory;
+import com.sun.tgxml.tjtf.api.data.ExternalData;
+import com.sun.tgxml.tjtf.api.data.InlineData;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**

@@ -22,6 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
+
 import com.sun.javatest.ExcludeList;
 import com.sun.javatest.util.BackupPolicy;
 import com.sun.javatest.util.StringArray;

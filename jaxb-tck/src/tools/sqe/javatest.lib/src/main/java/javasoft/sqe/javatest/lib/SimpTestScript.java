@@ -18,6 +18,7 @@
 package javasoft.sqe.javatest.lib;
 
 import java.io.File;
+
 import com.sun.javatest.Script;
 import com.sun.javatest.Status;
 import com.sun.javatest.TestDescription;

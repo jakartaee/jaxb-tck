@@ -17,16 +17,23 @@
 
 package javasoft.sqe.tests.api.jakarta.xml.bind;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import javax.xml.validation.Schema;
+
 import javasoft.sqe.javatest.Status;
-import javasoft.sqe.jck.lib.*;
+import javasoft.sqe.jck.lib.MultiTestExt;
+import javasoft.sqe.jck.lib.StringValue;
+import javasoft.sqe.jck.lib.URIValue;
 import javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTestExt.IFileResolver;
 import javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTestExt.SchemaParameterValue;
 import javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTestExt.XMLDocumentParameterValue;
-import jakarta.xml.bind.*;
-import javax.xml.validation.Schema;
 
 public class JAXBValidationCheckerTest extends MultiTestExt {
 	

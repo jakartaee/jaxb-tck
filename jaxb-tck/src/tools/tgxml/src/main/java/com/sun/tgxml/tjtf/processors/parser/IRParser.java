@@ -17,13 +17,13 @@
 
 package com.sun.tgxml.tjtf.processors.parser;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
 
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
- 
+import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
+
 /** 
  * IRParser is the top-most contract that a Parser must handle. 
  * <p>

@@ -17,13 +17,12 @@
 
 package com.sun.tgxml.tools.testgen.api;
 
-import java.util.Hashtable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
 
 public class TestGroupIR implements HtmlTestIR {
 

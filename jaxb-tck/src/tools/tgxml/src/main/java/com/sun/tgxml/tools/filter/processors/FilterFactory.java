@@ -18,10 +18,8 @@
 package com.sun.tgxml.tools.filter.processors;
 
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-
 import com.sun.tgxml.tools.elgen.ExcludeListFilter;
 import com.sun.tgxml.tools.elgen.FilteredOutList;
-
 
 /**
  * Factory for filter instances.

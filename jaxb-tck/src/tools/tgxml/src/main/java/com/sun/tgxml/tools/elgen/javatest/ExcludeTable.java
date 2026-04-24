@@ -27,16 +27,12 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.Writer;
-import java.net.URL;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.Vector;
-
-import com.sun.tgxml.tools.elgen.javatest.DynamicArray;
 
 /**
  * A set of tests to be excluded from a test run.

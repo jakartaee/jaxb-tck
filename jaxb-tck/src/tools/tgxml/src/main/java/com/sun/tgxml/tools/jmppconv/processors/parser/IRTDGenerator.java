@@ -17,37 +17,37 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.parser;
 
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
-import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
-import com.sun.tgxml.tjtf.api.documentation.DocumentationFactory;
-import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
-import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
-import com.sun.tgxml.tjtf.api.attributes.impl.RequiredResourceImpl;
-import com.sun.tgxml.tjtf.api.attributes.impl.AttrElemImpl;
-import com.sun.tgxml.tjtf.api.tests.TestFactory;
-import com.sun.tgxml.tjtf.api.code.CodeSet;
-import com.sun.tgxml.tjtf.api.code.CodeFactory;
-import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.jmpp.lib.JmppLibTest;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
-import com.sun.tgxml.util.IR;
-import java.util.ArrayList;
-import java.util.Vector;
-import java.util.Iterator;
-import java.util.Enumeration;
-import java.util.StringTokenizer;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.StringTokenizer;
+
 import com.sun.jmpp.JmppException;
-import com.sun.jmpp.lib.TDGenerator;
 import com.sun.jmpp.JmppLib;
-import com.sun.tgxml.tjtf.resources.LibResHandler; 
+import com.sun.jmpp.lib.JmppLibTest;
+import com.sun.jmpp.lib.TDGenerator;
+import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
+import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
+import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
+import com.sun.tgxml.tjtf.api.attributes.impl.AttrElemImpl;
+import com.sun.tgxml.tjtf.api.attributes.impl.RequiredResourceImpl;
+import com.sun.tgxml.tjtf.api.code.CodeFactory;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
+import com.sun.tgxml.tjtf.api.documentation.DocumentationFactory;
+import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
+import com.sun.tgxml.tjtf.api.documentation.TestGroupDocumentation;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestFactory;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestRoot;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
+import com.sun.tgxml.util.IR;
 
 
 /**  

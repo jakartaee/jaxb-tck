@@ -18,9 +18,9 @@
 package com.sun.tgxml.tools.elgen;
 
 import java.io.IOException;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
+
 import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 public interface ExcludeListCollector {
 

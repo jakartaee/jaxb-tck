@@ -17,40 +17,38 @@
 
 package com.sun.tgxml.tjtf.processors.parser.impl;
 
-import java.io.*;
-import java.util.*;
-import java.net.URL;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
-import javax.xml.parsers.*;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.tools.Shell;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
-import com.sun.tgxml.tjtf.processors.impl.ValidatingProcessorImpl;
-import com.sun.tgxml.tjtf.processors.validator.IRValidator;
-import com.sun.tgxml.tjtf.processors.parser.XMLParser;
-import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
-import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.api.XMLObj;
-import com.sun.tgxml.tjtf.api.tests.TestRoot;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.exceptions.EmbeddedTFException;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
-import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
-import com.sun.tgxml.tjtf.api.attributes.AttrElem;
-import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
-import com.sun.tgxml.tjtf.api.exceptions.*;
+import com.sun.tgxml.tjtf.processors.impl.ValidatingProcessorImpl;
+import com.sun.tgxml.tjtf.processors.parser.XMLParser;
+import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.BuildProperties;
+import com.sun.tgxml.tjtf.tools.Shell;
 import com.sun.tgxml.tjtf.tools.options.FlagOption;
-import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
+import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 import com.sun.tgxml.util.IR;
-import com.sun.tgxml.tjtf.tools.BuildProperties;
- 
+
 /** 
  * XMLParserImpl - The basic engine for an XML parser. 
  * 

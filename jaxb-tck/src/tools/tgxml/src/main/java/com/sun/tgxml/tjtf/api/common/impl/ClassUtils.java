@@ -18,7 +18,7 @@
 package com.sun.tgxml.tjtf.api.common.impl;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.common.impl.ClassUtils
-import java.util.Iterator;
+
 import java.util.StringTokenizer;
 // </importgen>
 

@@ -16,11 +16,7 @@
 package org.apache.river.concurrent;
 
 
-import java.lang.ref.Reference;
-import java.util.Random;
 import java.util.concurrent.ConcurrentMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * A referenced hash map, that encapsulates and utilises any ConcurrentMap

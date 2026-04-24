@@ -16,20 +16,19 @@
  */
 
 package com.sun.tgxml.tjtf.processors.taghandlers.impl;
-import java.util.*;
 
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
+import java.util.ArrayList;
+import java.util.Stack;
 
-import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
-import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
+import org.xml.sax.SAXException;
 
-import com.sun.tgxml.tjtf.api.attributes.*;
+import com.sun.tgxml.tjtf.api.attributes.AttrElem;
+import com.sun.tgxml.tjtf.api.attributes.AttributesFactory;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.impl.TagsImpl;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 
- 
+
 /** 
  * AttrElem_TH - The tag-handler for a AttrElem tag. 
  * 

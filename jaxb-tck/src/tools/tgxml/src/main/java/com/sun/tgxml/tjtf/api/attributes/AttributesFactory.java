@@ -18,11 +18,18 @@
 package com.sun.tgxml.tjtf.api.attributes;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.attributes.AttributesFactory
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.attributes.impl.*;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import com.sun.tgxml.tjtf.api.attributes.impl.AttrElemImpl;
+import com.sun.tgxml.tjtf.api.attributes.impl.LibAttributesImpl;
+import com.sun.tgxml.tjtf.api.attributes.impl.RequiredResourceImpl;
+import com.sun.tgxml.tjtf.api.attributes.impl.TargetSpecElemImpl;
+import com.sun.tgxml.tjtf.api.attributes.impl.TargetSpecImpl;
+import com.sun.tgxml.tjtf.api.attributes.impl.TestCaseAttributesImpl;
+import com.sun.tgxml.tjtf.api.attributes.impl.TestGroupAttributesImpl;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**

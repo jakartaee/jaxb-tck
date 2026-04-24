@@ -15,9 +15,7 @@
 
 package org.apache.river.concurrent;
 
-import java.lang.ref.Reference;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Map.Entry;
 
 /**

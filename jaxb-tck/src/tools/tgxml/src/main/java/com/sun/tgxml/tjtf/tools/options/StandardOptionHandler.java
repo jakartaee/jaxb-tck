@@ -17,10 +17,10 @@
 
 package com.sun.tgxml.tjtf.tools.options;
 
-import java.util.Vector;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 /**
  * StandardOptionHandler - 

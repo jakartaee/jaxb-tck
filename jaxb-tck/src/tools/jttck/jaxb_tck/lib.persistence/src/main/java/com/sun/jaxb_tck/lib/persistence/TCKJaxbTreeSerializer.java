@@ -17,14 +17,16 @@
 
 package com.sun.jaxb_tck.lib.persistence;
 
+import jakarta.xml.bind.JAXBElement;
+
 import java.beans.BeanInfo;
 import java.beans.Encoder;
 import java.beans.ExceptionListener;
 import java.beans.Expression;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
+import java.beans.PersistenceDelegate;
 import java.beans.XMLEncoder;
-import java.beans.PersistenceDelegate; 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.OutputStream;
@@ -34,7 +36,6 @@ import java.math.BigInteger;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import jakarta.xml.bind.JAXBElement;
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;

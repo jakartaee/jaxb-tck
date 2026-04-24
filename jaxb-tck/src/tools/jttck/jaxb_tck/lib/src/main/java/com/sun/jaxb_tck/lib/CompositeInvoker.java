@@ -16,8 +16,8 @@
  */
 package com.sun.jaxb_tck.lib;
 
-import java.util.ArrayList;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 /**
  * Composite invocation.

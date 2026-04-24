@@ -18,7 +18,6 @@
 package com.sun.tgxml.tjtf.api.common;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.common.Export
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**

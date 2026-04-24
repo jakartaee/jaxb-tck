@@ -16,20 +16,28 @@
  */
 
 package com.sun.tgxml.tjtf.processors.taghandlers.impl;
+
 import java.io.IOException;
-import java.util.*;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.Iterator;
+import java.util.Stack;
 
-import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
-import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
+import org.xml.sax.SAXException;
 
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.data.*;
-import com.sun.tgxml.tjtf.api.tests.*;
+import com.sun.tgxml.tjtf.api.code.CodeFactory;
+import com.sun.tgxml.tjtf.api.code.CodeSet;
+import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
+import com.sun.tgxml.tjtf.api.code.InlineSupportClass;
+import com.sun.tgxml.tjtf.api.code.SupportClass;
+import com.sun.tgxml.tjtf.api.code.SupportCode;
+import com.sun.tgxml.tjtf.api.data.Data;
+import com.sun.tgxml.tjtf.api.data.ExternalData;
+import com.sun.tgxml.tjtf.api.data.InlineData;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
+import com.sun.tgxml.tjtf.impl.TagsImpl;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 /** 
  * CodeSet_TH - The tag-handler for a CodeSet tag. 

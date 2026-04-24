@@ -19,12 +19,11 @@ package com.sun.tgxml.tjtf.tools;
 
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
-import java.util.Enumeration;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.Properties;
 
 
 /**

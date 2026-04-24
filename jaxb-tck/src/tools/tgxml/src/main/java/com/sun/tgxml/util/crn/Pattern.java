@@ -18,7 +18,6 @@
 package com.sun.tgxml.util.crn;
 
 import java.io.PrintStream;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;

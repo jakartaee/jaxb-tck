@@ -17,7 +17,6 @@
 
 package com.sun.tgxml.tools.filter.libutil;
 
-import com.sun.tgxml.tools.filter.processors.FilterExpression;
 import com.sun.tgxml.tools.filter.processors.FilteringException;
 
 /**

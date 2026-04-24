@@ -19,7 +19,6 @@ package com.sun.tgxml.tools.filter.redundancy.processors;
 
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.Library;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tools.filter.redundancy.TestItemSelectionListener;
 import com.sun.tgxml.util.IR;
 

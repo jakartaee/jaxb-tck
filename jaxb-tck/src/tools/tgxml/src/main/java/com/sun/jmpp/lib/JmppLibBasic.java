@@ -18,17 +18,6 @@
 package com.sun.jmpp.lib;
 
 import java.io.PrintWriter;
-import java.io.PrintStream;
-import java.io.FileWriter;
-import java.io.File;
-import java.io.IOException;
-
-
-import javasoft.sqe.jckutils.lib.JmppScript;
-import com.sun.jmpp.JmppLib;
-import com.sun.jmpp.JmppException;
-import com.sun.jmpp.share.Options;
-import com.sun.jmpp.share.OptionDescr;
 
 /**
  * Base class to be executed by Jmpp macro preprocessor for generating

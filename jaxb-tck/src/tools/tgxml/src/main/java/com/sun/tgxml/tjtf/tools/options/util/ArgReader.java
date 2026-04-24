@@ -18,6 +18,7 @@
 package com.sun.tgxml.tjtf.tools.options.util;
 
 import java.util.ArrayList;
+
 import com.sun.tgxml.tjtf.tools.options.ArgumentsNumberException;
 import com.sun.tgxml.tjtf.tools.options.resources.ErrorMessages;
 

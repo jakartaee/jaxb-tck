@@ -15,11 +15,9 @@
 
 package org.apache.river.concurrent;
 
-import java.lang.ref.ReferenceQueue;
 import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 /**

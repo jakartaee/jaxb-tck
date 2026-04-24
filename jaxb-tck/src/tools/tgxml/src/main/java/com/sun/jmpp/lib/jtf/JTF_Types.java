@@ -17,7 +17,6 @@
 
 package com.sun.jmpp.lib.jtf;
 
-import java.io.PrintStream;
 /**
  * <i>Jmpp Test Factory</i>
  * 

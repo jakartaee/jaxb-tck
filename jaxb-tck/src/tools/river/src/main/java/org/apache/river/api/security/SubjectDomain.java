@@ -18,7 +18,6 @@
 
 package org.apache.river.api.security;
 
-import java.security.ProtectionDomain;
 import javax.security.auth.Subject;
 
 /**

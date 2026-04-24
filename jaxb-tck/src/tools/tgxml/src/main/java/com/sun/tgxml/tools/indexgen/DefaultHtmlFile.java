@@ -17,12 +17,10 @@
 
 package com.sun.tgxml.tools.indexgen;
 
-import java.io.File;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StreamTokenizer;
+import java.io.File;
 import java.io.FileReader;
-import java.util.Vector;
+import java.io.IOException;
 
 
 /**

@@ -16,14 +16,15 @@
  */
 package javasoft.sqe.javatest.lib.apitest;
 
-import java.lang.reflect.*;
-import java.util.Vector;
-import java.util.StringTokenizer;
-import javasoft.sqe.javatest.Status;
-import javasoft.sqe.javatest.Test;
-import java.io.PrintWriter;
-import java.io.PrintStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Vector;
+
+import javasoft.sqe.javatest.Status;
 
 /**
  * This class is the kernel of AssertionTest which is responsible

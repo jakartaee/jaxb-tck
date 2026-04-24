@@ -32,6 +32,7 @@ package org.apache.river.tool.classdepend;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;

@@ -15,17 +15,13 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package com.sun.tgxml.tjtf.resources; 
- 
-import java.util.ResourceBundle; 
-import java.util.MissingResourceException;
-import java.awt.Image;
-import java.awt.Toolkit;
+package com.sun.tgxml.tjtf.resources;
+
 import java.net.URL;
- 
- 
- 
- 
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
+
 /** 
  * LibResHandler - functionality for loading, and parsing errors 
  * 

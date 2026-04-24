@@ -18,22 +18,21 @@
 package com.sun.tgxml.tools.indexgen.processors.taghandlers;
 
 import java.net.URL;
-import java.io.PrintStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.TreeMap;
-import java.util.Iterator;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
-import com.sun.tgxml.tjtf.processors.parser.*;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
+
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
-
-import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.*;
+import com.sun.tgxml.tjtf.processors.taghandlers.EmitterHandlerSupport;
+import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerFactory;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
+import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.AttrElem_TH;
+import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.Comments_TH;
+import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.Contents_TH;
+import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.Description_TH;
+import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.TestSuiteTagsImpl;
+import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.TestSuite_TH;
+import com.sun.tgxml.tools.indexgen.processors.taghandlers.impl.Title_TH;
 
 
 /**

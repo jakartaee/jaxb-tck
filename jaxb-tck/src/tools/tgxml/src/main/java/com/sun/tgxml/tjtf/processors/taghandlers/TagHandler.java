@@ -17,11 +17,8 @@
 
 package com.sun.tgxml.tjtf.processors.taghandlers;
 
-import com.sun.tgxml.tjtf.resources.LibResHandler;
 
-
- 
-/** 
+/**
  * TagHandler - The tag-handler abstraction. 
  * XML processors (parsers and emitters) get their abstraction
  * by defining a set of (plug-in) TagHandlers whose function is to

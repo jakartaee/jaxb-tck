@@ -17,9 +17,8 @@
 
 package com.sun.tgxml.tools.elgen;
 
-import com.sun.tgxml.tjtf.api.tests.TestItem;
-import com.sun.tgxml.tjtf.api.tests.TestGroup;
 import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
   * This interface is provided by an exclude list tool for a filtering tool 

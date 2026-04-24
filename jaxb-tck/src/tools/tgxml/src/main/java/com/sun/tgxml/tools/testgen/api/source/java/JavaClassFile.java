@@ -19,6 +19,7 @@ package com.sun.tgxml.tools.testgen.api.source.java;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 
 public class JavaClassFile {

@@ -19,15 +19,16 @@ package javasoft.sqe.javatest.lib;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
+
+import com.sun.javatest.util.WriterStream;
 import javasoft.sqe.javatest.Status;
 import javasoft.sqe.javatest.Test;
-import com.sun.javatest.util.WriterStream;
 
 /**
  * Base class for tests with multiple sub test cases.

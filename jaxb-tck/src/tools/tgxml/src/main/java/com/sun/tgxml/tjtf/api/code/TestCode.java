@@ -18,7 +18,6 @@
 package com.sun.tgxml.tjtf.api.code;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.TestCode
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**

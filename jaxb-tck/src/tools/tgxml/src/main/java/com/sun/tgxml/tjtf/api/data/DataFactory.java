@@ -18,11 +18,11 @@
 package com.sun.tgxml.tjtf.api.data;
 
 // <importgen> Generated imports for class: com.sun.tgxml.tjtf.api.data.DataFactory
+
+import com.sun.tgxml.tjtf.api.data.impl.DataTypeImpl;
+import com.sun.tgxml.tjtf.api.data.impl.ExternalDataImpl;
+import com.sun.tgxml.tjtf.api.data.impl.InlineDataImpl;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.data.impl.*;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Iterator;
 // </importgen>
 
 /**

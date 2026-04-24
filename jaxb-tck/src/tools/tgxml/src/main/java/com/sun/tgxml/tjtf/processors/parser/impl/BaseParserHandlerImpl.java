@@ -17,21 +17,20 @@
 
 package com.sun.tgxml.tjtf.processors.parser.impl;
 
-import com.sun.tgxml.tjtf.processors.taghandlers.*;
+import java.util.Stack;
+
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.Locator;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.DefaultHandler;
+
 import com.sun.tgxml.tjtf.api.XMLObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-
-import java.io.*;
-import java.util.*;
-import java.net.URL;
-
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
-import org.xml.sax.ext.DeclHandler;
-
-import com.sun.tgxml.tjtf.*;
+import com.sun.tgxml.tjtf.processors.taghandlers.ParserHandlerSupport;
+import com.sun.tgxml.tjtf.processors.taghandlers.ParserTagHandler;
+import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.tools.Shell;
 
 /** 

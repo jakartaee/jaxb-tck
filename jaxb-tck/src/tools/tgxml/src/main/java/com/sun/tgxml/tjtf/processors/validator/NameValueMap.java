@@ -16,20 +16,10 @@
  */
 
 package com.sun.tgxml.tjtf.processors.validator;
-import java.util.TreeMap;
-import java.util.Hashtable;
+
 import java.util.Iterator;
 
-import com.sun.tgxml.tjtf.IRObj;
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.exceptions.*;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.data.*;
-import com.sun.tgxml.tjtf.api.documentation.*;
-import com.sun.tgxml.tjtf.api.tests.*;
 
- 
 /** 
  * NameValueMap - Name-Value mapping. 
  * <p>

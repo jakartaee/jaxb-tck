@@ -17,16 +17,15 @@
 
 package com.sun.tgxml.tools.jmppconv.processors.parser;
 
-import java.io.File;
 import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-
-import java.util.Vector;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 

@@ -20,10 +20,10 @@ package com.sun.jaxb_tck.lib;
 import java.io.File;
 import java.util.Map;
 
-import com.sun.javatest.TestSuite;
 import com.sun.javatest.Harness;
 import com.sun.javatest.TestEnvironment;
 import com.sun.javatest.TestFilter;
+import com.sun.javatest.TestSuite;
 
 /**
  * @author Evgueni M. Astigueevitch

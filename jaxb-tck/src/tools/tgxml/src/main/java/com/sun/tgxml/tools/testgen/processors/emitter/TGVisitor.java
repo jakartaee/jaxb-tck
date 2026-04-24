@@ -17,14 +17,12 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import java.util.Iterator;
 import java.util.ArrayList;
-import com.sun.tgxml.util.IR;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.api.tests.TestItem;
+import java.util.Iterator;
+
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
-import com.sun.tgxml.tjtf.api.tests.TestCase;
-import com.sun.tgxml.tjtf.api.tests.Library;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
+import com.sun.tgxml.util.IR;
 
 /**
  * Utitlity class containing code that could used by different emitters

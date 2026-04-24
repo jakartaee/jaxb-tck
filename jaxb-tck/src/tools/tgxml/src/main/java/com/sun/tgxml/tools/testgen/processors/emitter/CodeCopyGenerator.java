@@ -17,42 +17,27 @@
 
 package com.sun.tgxml.tools.testgen.processors.emitter;
 
-import com.sun.tgxml.tjtf.*;
-import com.sun.tgxml.tjtf.api.*;
-
-import com.sun.tgxml.tjtf.resources.LibResHandler;
-import com.sun.tgxml.tjtf.api.tests.*;
-import com.sun.tgxml.tjtf.api.documentation.*;
-import com.sun.tgxml.tjtf.api.attributes.*;
-import com.sun.tgxml.tjtf.api.code.*;
-import com.sun.tgxml.tjtf.api.data.*;
-import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
-import com.sun.tgxml.tjtf.processors.emitter.*;
-import com.sun.tgxml.tjtf.tools.*;
-import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
-import com.sun.tgxml.util.MiscUtils;
-import com.sun.tgxml.util.CopyrightManager;
-import com.sun.tgxml.util.IR;
-
-import com.sun.tgxml.tools.testgen.LibUtils;
-import com.sun.tgxml.tools.testgen.api.*;
-import com.sun.tgxml.tools.elgen.*;
-
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
-import java.io.FileInputStream;
-import java.io.PrintStream;
-import java.io.FileWriter;
-import java.util.Vector;
-import java.util.Enumeration;
-import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Properties;
 import java.util.Stack;
+
+import com.sun.tgxml.tjtf.IRObj;
+import com.sun.tgxml.tjtf.api.code.ExternalSupportClass;
+import com.sun.tgxml.tjtf.api.data.ExternalData;
+import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
+import com.sun.tgxml.tjtf.api.tests.TestCase;
+import com.sun.tgxml.tjtf.api.tests.TestGroup;
+import com.sun.tgxml.tjtf.api.tests.TestItem;
+import com.sun.tgxml.tjtf.resources.LibResHandler;
+import com.sun.tgxml.tjtf.tools.Shell;
+import com.sun.tgxml.tjtf.tools.UTDVisitorBase;
+import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
+import com.sun.tgxml.tools.elgen.ExcludeListCollector;
+import com.sun.tgxml.tools.testgen.LibUtils;
+import com.sun.tgxml.util.CopyrightManager;
+import com.sun.tgxml.util.IR;
+import com.sun.tgxml.util.MiscUtils;
 
 
 public class CodeCopyGenerator extends StandardOptionHandler 
