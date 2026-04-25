@@ -27,16 +27,16 @@ import com.sun.tgxml.tools.filter.libutil.TestGroupLibsInfo;
  * @author   Ilya V. Neverov
  */
 public interface TestFilter2 {
-    /** 
+    /**
      * Removes irrelevant testcases and classes
      *
-     * @param      testGroup   TestGroup object to be processed. 
+     * @param      testGroup   TestGroup object to be processed.
      *             It is modified while the filtering.
      * @param      libsInfo   information about accepted/rejected libraries
      *
      * @return     null   if TestFilter2 instance.
      * @return     TestGroup reference to cleaned TestGroup object.
-     * @throws     FilteringException to diagnose problems discovered by 
+     * @throws     FilteringException to diagnose problems discovered by
      *             plugin or standard Test filtering implementation.
      */
     public TestGroup strip(TestGroup testGroup, TestGroupLibsInfo libsInfo)

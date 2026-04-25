@@ -21,32 +21,32 @@ import com.sun.tgxml.tjtf.IRObj;
 import com.sun.tgxml.tjtf.api.exceptions.ValidatorException;
 import com.sun.tgxml.tjtf.processors.Processor;
 
-/** 
- * IRValidator is the top-most contract that a Validator must handle. 
+/**
+ * IRValidator is the top-most contract that a Validator must handle.
  * <p>
  *  An implementation of an IRValidator validates a (single-format) specific
  *  IRObj tree.
  * <p>
- * 
- * 
- * @version 	1.0, 11/26/01 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    IRValidator 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 11/26/01
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    IRValidator
+ * ============================================================================================
+ */
 public interface IRValidator extends Processor {
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
 
   /**

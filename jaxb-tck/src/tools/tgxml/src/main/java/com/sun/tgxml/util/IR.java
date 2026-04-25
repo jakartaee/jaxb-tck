@@ -44,24 +44,24 @@ public class IR {
     public final static String serialTestTypeAttrElemName = "serialTestType";
     public final static String testSubPackageAttrElemName = "testSubPackage";
 
-    /** 
+    /**
      *  The method always returns some string for ID of the TestItem
      */
     public static String getID(TestItem ti) {
-	try {
-	    return ti.getID().trim();
-	} catch (Exception e) {
-	    return "<not set>";
-	}
+    try {
+        return ti.getID().trim();
+    } catch (Exception e) {
+        return "<not set>";
+    }
     }
 //=================================================================================
-    /** 
+    /**
      *   Tries to find specified AttrElem of the TestItem
      *
      */
-    public static String getAttrElem(String name, TestItem ti) {        
+    public static String getAttrElem(String name, TestItem ti) {
         Attributes attrs = ti.getAttributes();
-    	if (attrs == null) {
+        if (attrs == null) {
             return null;
         } else {
             return getAttrElem(name, attrs);
@@ -70,7 +70,7 @@ public class IR {
 
     public static String getAttrElem(String name, Attributes attrs) {
         ArrayList attrElems = attrs.getAttrElems();
-        if (attrElems == null) { 
+        if (attrElems == null) {
             return null;
         } else {
             return getAttrElem(name, attrElems);
@@ -79,15 +79,15 @@ public class IR {
 
     public static String getAttrElem(String name, TestSuite ts) {
         ArrayList attrElems = ts.getAttrElems();
-        if (attrElems == null) { 
+        if (attrElems == null) {
             return null;
         } else {
             return getAttrElem(name, attrElems);
         }
-    }     
+    }
 
     public static String getAttrElem(String name, ArrayList attrElems) {
-        if (name == null) { 
+        if (name == null) {
              return null;
         }
         Iterator it = attrElems.iterator();
@@ -100,9 +100,9 @@ public class IR {
         }
         return null;
     }
-    
 
-   /** set value of AttrElem for TestGroup and TestCase items. 
+
+   /** set value of AttrElem for TestGroup and TestCase items.
     *  Add the new AttrElem if needed.
     *  @return  null if the AttrElem had no value;
     *           old value of the AttrElem
@@ -115,7 +115,7 @@ public class IR {
             setAttributes(ti, attrs);
         }
         return setAttrElem(attrs, attrElemName, value);
-    }    	
+    }
 
     public static String setAttrElem(TestSuite ts, String attrElemName, String value) {
         ArrayList attrElems = ts.getAttrElems();
@@ -125,28 +125,28 @@ public class IR {
         }
         return setAttrElem(attrElems, attrElemName, value);
     }
-    
+
     public static String setAttrElem(Attributes attrs, String attrElemName, String value) {
         ArrayList attrElems = attrs.getAttrElems();
         if (attrElems == null) {
             attrElems = new ArrayList(1);
             attrs.setAttrElems(attrElems);
-        }        
+        }
         return setAttrElem(attrElems, attrElemName, value);
     }
-    
+
 
     public static String setAttrElem(ArrayList attrElems, String attrElemName, String value) {
 
         Iterator it = attrElems.iterator();
-	    while (it.hasNext()) {
+        while (it.hasNext()) {
             AttrElem ae = (AttrElem) it.next();
-	        if (ae.getName().equals(attrElemName)) {
+            if (ae.getName().equals(attrElemName)) {
                 String old = ae.getValue();
                 ae.setValue(value);
                 return old;
             }
-        }    
+        }
         // No such AttrElem found, create new one
         AttrElem ae = AttributesFactory.createAttrElem();
         try {
@@ -158,9 +158,9 @@ public class IR {
         attrElems.add(ae);
         return null;
     }
-    
 
-    /** 
+
+    /**
      * Tries to find all specified AttrElems of the TestItem
      * Return ArrayList of found AttrElem values or null if nothing if found.
      */
@@ -182,55 +182,55 @@ public class IR {
         }
     }
 
-    
+
 //=================================================================================
 
-   /** create empty instance of Attributes subtype appropriate for TestItem argument. 
+   /** create empty instance of Attributes subtype appropriate for TestItem argument.
     *  @return  null if argument type is not TestGroup, TestCase, Library
     */
 
     public static Attributes createAttributes(TestItem ti) {
-	    if (ti instanceof TestGroup) {
-		return AttributesFactory.createTestGroupAttributes();
-	    } else if (ti instanceof TestCase) {
-		return AttributesFactory.createTestCaseAttributes();
-	    } else if (ti instanceof Library) {
-		return AttributesFactory.createLibAttributes();
-	    } else {
-	    	return null;
-	    }
+        if (ti instanceof TestGroup) {
+        return AttributesFactory.createTestGroupAttributes();
+        } else if (ti instanceof TestCase) {
+        return AttributesFactory.createTestCaseAttributes();
+        } else if (ti instanceof Library) {
+        return AttributesFactory.createLibAttributes();
+        } else {
+            return null;
+        }
     }
 
-   /** set attrs as attributes for the ti testitem 
+   /** set attrs as attributes for the ti testitem
     *  @return  true if the value is set successfully
     *           false if argument types are not appropriate
     */
 
     public static boolean setAttributes(TestItem ti, Attributes attrs) {
-	    if (ti instanceof TestGroup) {
+        if (ti instanceof TestGroup) {
 
-		if (! (attrs instanceof TestGroupAttributes))
-		    return false;
-		((TestGroup)ti).setTGAttributes((TestGroupAttributes)attrs);
-		return true;
+        if (! (attrs instanceof TestGroupAttributes))
+            return false;
+        ((TestGroup)ti).setTGAttributes((TestGroupAttributes)attrs);
+        return true;
 
-	    } else if (ti instanceof TestCase) {
+        } else if (ti instanceof TestCase) {
 
-		if (! (attrs instanceof TestCaseAttributes))
-		    return false;
-		((TestCase)ti).setTCAttributes((TestCaseAttributes)attrs);
-		return true;
+        if (! (attrs instanceof TestCaseAttributes))
+            return false;
+        ((TestCase)ti).setTCAttributes((TestCaseAttributes)attrs);
+        return true;
 
-	    } else if (ti instanceof Library) {
+        } else if (ti instanceof Library) {
 
-		if (! (attrs instanceof LibAttributes))
-		    return false;
-		((Library)ti).setLibAttributes((LibAttributes)attrs);
-		return true;
+        if (! (attrs instanceof LibAttributes))
+            return false;
+        ((Library)ti).setLibAttributes((LibAttributes)attrs);
+        return true;
 
-	    } else {
-	    	return false;
-	    }
+        } else {
+            return false;
+        }
     }
 //=================================================================================
 
@@ -239,7 +239,7 @@ public class IR {
      * If passed TestGroup is null or does not contain inline libraries
      * an empty list is returned.
      */
-    public static ArrayList getInlineLibrariesIDs(TestGroup tg) 
+    public static ArrayList getInlineLibrariesIDs(TestGroup tg)
             throws TestFileException {
         ArrayList inlineLibrariesIDs = new ArrayList();
         if (tg != null) {
@@ -262,7 +262,7 @@ public class IR {
      * If passed TestItem is null or testItem CodeSet is null
      * an empty list is returned.
      */
-    public static ArrayList getDependentLibs(TestItem testItem) 
+    public static ArrayList getDependentLibs(TestItem testItem)
             throws TestFileException {
         ArrayList ids = new ArrayList();
         try {

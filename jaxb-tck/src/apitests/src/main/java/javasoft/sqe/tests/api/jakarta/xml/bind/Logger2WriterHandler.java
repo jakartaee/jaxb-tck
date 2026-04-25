@@ -23,18 +23,18 @@ import java.util.logging.LogRecord;
 
 
 /**
- * Simple implementation of Handler for redirecting log messages to 
+ * Simple implementation of Handler for redirecting log messages to
  * <code>java.io.PrintWriter</code>
- * 
+ *
  * @author Vladimir Sosnin
  *
  */
 public class Logger2WriterHandler extends Handler {
 
-    
+
     protected PrintWriter writer;
 
-    
+
     public Logger2WriterHandler() {
         super();
     }

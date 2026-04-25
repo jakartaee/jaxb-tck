@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,15 +30,15 @@ import java.util.concurrent.ConcurrentNavigableMap;
  *
  * @author peter
  */
-abstract class ReadResolveFixForMapCircularReferences<K,V> 
-    extends SerializationOfReferenceMap<K,V> 
-    implements Map<K,V>, SortedMap<K,V>, NavigableMap<K,V>, ConcurrentMap<K,V>, 
+abstract class ReadResolveFixForMapCircularReferences<K,V>
+    extends SerializationOfReferenceMap<K,V>
+    implements Map<K,V>, SortedMap<K,V>, NavigableMap<K,V>, ConcurrentMap<K,V>,
                                                 ConcurrentNavigableMap<K,V>{
 
     // Builder created Map on deserialization
     private volatile Map<K,V> map = null;
     private volatile boolean built = false;
-    
+
     @Override
     public Comparator<? super K> comparator() {
         if (getMap() instanceof SortedMap) return ((SortedMap<K,V>) getMap()).comparator();
@@ -228,49 +228,49 @@ abstract class ReadResolveFixForMapCircularReferences<K,V>
 
     @Override
     public ConcurrentNavigableMap<K, V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
-        if (getMap() instanceof NavigableMap) 
+        if (getMap() instanceof NavigableMap)
             return ((ConcurrentNavigableMap<K,V>) getMap()).subMap(fromKey, fromInclusive, toKey, toInclusive);
         throw new UnsupportedOperationException("Unsupported Interface Method.");
     }
 
     @Override
     public ConcurrentNavigableMap<K, V> headMap(K toKey, boolean inclusive) {
-        if (getMap() instanceof NavigableMap) 
+        if (getMap() instanceof NavigableMap)
             return ((ConcurrentNavigableMap<K,V>) getMap()).headMap(toKey, inclusive);
         throw new UnsupportedOperationException("Unsupported Interface Method.");
     }
 
     @Override
     public ConcurrentNavigableMap<K, V> tailMap(K fromKey, boolean inclusive) {
-        if (getMap() instanceof NavigableMap) 
+        if (getMap() instanceof NavigableMap)
             return ((ConcurrentNavigableMap<K,V>) getMap()).tailMap(fromKey, inclusive);
         throw new UnsupportedOperationException("Unsupported Interface Method.");
     }
 
     @Override
     public V putIfAbsent(K key, V value) {
-        if (getMap() instanceof ConcurrentMap) 
+        if (getMap() instanceof ConcurrentMap)
             return ((ConcurrentMap<K,V>) getMap()).putIfAbsent(key, value);
         throw new UnsupportedOperationException("Unsupported Interface Method.");
     }
 
     @Override
     public boolean remove(Object key, Object value) {
-        if (getMap() instanceof ConcurrentMap) 
+        if (getMap() instanceof ConcurrentMap)
             return ((ConcurrentMap<K,V>) getMap()).remove(key, value);
         throw new UnsupportedOperationException("Unsupported Interface Method.");
     }
 
     @Override
     public boolean replace(K key, V oldValue, V newValue) {
-        if (getMap() instanceof ConcurrentMap) 
+        if (getMap() instanceof ConcurrentMap)
             return ((ConcurrentMap<K,V>) getMap()).replace(key, oldValue, newValue);
         throw new UnsupportedOperationException("Unsupported Interface Method.");
     }
 
     @Override
     public V replace(K key, V value) {
-        if (getMap() instanceof ConcurrentMap) 
+        if (getMap() instanceof ConcurrentMap)
             return ((ConcurrentMap<K,V>) getMap()).replace(key, value);
         throw new UnsupportedOperationException("Unsupported Interface Method.");
     }
@@ -293,9 +293,9 @@ abstract class ReadResolveFixForMapCircularReferences<K,V>
     Map<K, V> build() throws InstantiationException, IllegalAccessException, ObjectStreamException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     /**
-     * @serialData 
+     * @serialData
      * @return the type
      */
     abstract Ref getType();
@@ -311,5 +311,5 @@ abstract class ReadResolveFixForMapCircularReferences<K,V>
      * @return the class
      */
     abstract Class getClazz();
-    
+
 }

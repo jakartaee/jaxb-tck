@@ -237,8 +237,8 @@ public class IRTDParamGenerator extends IRTDGenerator {
      * parameter class name to the "dependency list", which will drive combination
      * generation.
      *
-     * @param param_id 
-     * @throws JmppException 
+     * @param param_id
+     * @throws JmppException
      */
     public void addDependence(String param_id) throws JmppException {
         if (id2param.get(param_id) != null) {
@@ -647,7 +647,7 @@ public class IRTDParamGenerator extends IRTDGenerator {
      * After this method is called, no more parameters can be added to the dependence
      * lists.
      */
-	public void initIterators() {
+    public void initIterators() {
         strongParams = createParamArray(strongParamList);
         weakParams   = createParamArray(weakParamList);
         strongIter = createIterator(strongParams);
@@ -672,9 +672,9 @@ public class IRTDParamGenerator extends IRTDGenerator {
      * Jmpp library is invoked. Before calling this method, some internal
      * attributes are set which are then used by the library for naming split
      * tests (test cases) and variants of source files of the test cases.
-     * 
+     *
      * @param testNumber the number of current test to be split
-     * @throws TestFileException 
+     * @throws TestFileException
      */
     public void splitTest(int testNumber) throws TestFileException {
         TemplateParameter[] s_params = getStrongParameters();
@@ -700,7 +700,7 @@ public class IRTDParamGenerator extends IRTDGenerator {
 
                 getJmppLib().generateTest(testNumber);
 
-                if (!getJmppLib().skipTest) { 
+                if (!getJmppLib().skipTest) {
                     TestCase tc = irCreateTestCase(tc_var_name, tc_var_order);
                     test_cases.add(tc);
                     irFillTestCaseAttributes(tc, allParamList);
@@ -780,7 +780,7 @@ public class IRTDParamGenerator extends IRTDGenerator {
      * which will be generated immediately thereafter. This method is invoked
      * before the <code>makeTest()</code> which actually generates test case source
      * files.
-     * 
+     *
      * @param param_list the list of template parameters
      * @see TemplateParameter#updateTestcaseAttributes(AttributeSet,java.util.ArrayList)
      */
@@ -791,12 +791,12 @@ public class IRTDParamGenerator extends IRTDGenerator {
             param.updateTestcaseAttributes(attr_set, (ArrayList)param_list.clone());
         }
     }
-    
+
     /**
      * Gives every TP from a list a chance to update attributes of the test group
      * which has just been generated. This method is invoked after all test cases
      * of the test group has been generated.
-     * 
+     *
      * @param param_list the list of template parameters
      * @see TemplateParameter#updateTestGroupAttributes(AttributeSet,java.util.ArrayList)
      */
@@ -808,7 +808,7 @@ public class IRTDParamGenerator extends IRTDGenerator {
         }
     }
 
-    
+
     /**
      * Creates a <code>TestCase</code> TGXML IR object for the test case
      * currently being generated. Also, fills in its code set, documentation and
@@ -963,7 +963,7 @@ public class IRTDParamGenerator extends IRTDGenerator {
         public void addAttrElem(String name, String value) {
             lib.addTestGroupAttrElem(name, value);
         }
-        
+
         public void addTemplateAttribute(String name) {
             throw new RuntimeException("The addTemplateAttribute(String attribute)"
                                        + " is not supported by TestGroup");

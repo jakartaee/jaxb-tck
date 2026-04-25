@@ -24,7 +24,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 
 public interface HtmlGenerator {
-   
+
    /**
     * Creates specified html file from the doc.xml file.
     * Inserts links into generating html either as a list or as a table.
@@ -32,5 +32,5 @@ public interface HtmlGenerator {
     */
     public Vector create(File resultHTML, TestSuite xmlFile, Vector links)
          throws TestFileException;
-  
+
 }

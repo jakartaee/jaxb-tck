@@ -24,32 +24,32 @@ import com.sun.tgxml.tjtf.api.tests.Library;
 import com.sun.tgxml.tools.filter.redundancy.TestItemSelectionListener.EmptyListener;
 
 /**
- * The class implements TestItemSelectionListener interface. 
- * After it is registered as TestItemSelectionListener, it collects mapping 
+ * The class implements TestItemSelectionListener interface.
+ * After it is registered as TestItemSelectionListener, it collects mapping
  * between Library ID and a selected Library IR.
  * <p>
  * Afterward the mapping information is accessible.
- * 
+ *
  */
 public class ExternalLibraryMapCollector extends EmptyListener {
-	/**
-	 * internal map for storring mapping information
-	 */
-	private HashMap map = new HashMap();
-	
-	public void externalLibrarySelected(Library item)
-			throws TestFileException {
-		map.put(item.getID(), item);
-	}
-	
-	/**
-	 * returns selected Library with the given ID, or null if there were no 
-	 * libraries with the given ID selected. 
-	 * <p>
-	 * The library have to be selected by enhansed filtering tool prior this
-	 * method is invoked.
-	 */
-	public Library getLibrary(String id) {
-		return (Library)this.map.get(id);
-	}
+    /**
+     * internal map for storring mapping information
+     */
+    private HashMap map = new HashMap();
+
+    public void externalLibrarySelected(Library item)
+            throws TestFileException {
+        map.put(item.getID(), item);
+    }
+
+    /**
+     * returns selected Library with the given ID, or null if there were no
+     * libraries with the given ID selected.
+     * <p>
+     * The library have to be selected by enhansed filtering tool prior this
+     * method is invoked.
+     */
+    public Library getLibrary(String id) {
+        return (Library)this.map.get(id);
+    }
 }

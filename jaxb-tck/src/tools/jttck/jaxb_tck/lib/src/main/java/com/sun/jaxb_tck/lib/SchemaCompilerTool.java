@@ -21,19 +21,19 @@ import java.io.PrintStream;
 
 /**
  * Interface to invoke a schema compiler in sameJVM mode.
- * 
+ *
  * @author Leonid Kuskov
  * @version 1.3
  */
 public interface SchemaCompilerTool {
-	/**
-	 * @param xsdFiles array of strings containing schema files
-	 * @param packageName the target package
-	 * @param outDir output directory where java file(s) will be generated
-	 * @param out output stream for logging
-	 * @param err error stream for logging
-	 * @return 0 if java file(s) generated successfully
-	 */
-	int compile(String[] xsdFiles, String packageName, File outDir, 
-			    final PrintStream out, final PrintStream err) throws Exception;
+    /**
+     * @param xsdFiles array of strings containing schema files
+     * @param packageName the target package
+     * @param outDir output directory where java file(s) will be generated
+     * @param out output stream for logging
+     * @param err error stream for logging
+     * @return 0 if java file(s) generated successfully
+     */
+    int compile(String[] xsdFiles, String packageName, File outDir,
+                final PrintStream out, final PrintStream err) throws Exception;
 }

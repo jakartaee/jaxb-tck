@@ -36,47 +36,47 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * TestGroupDocumentation_TH - The tag-handler for a TestGroupDocumentation tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TestGroupDocumentation_TH 
- * ============================================================================================ 
- */ 
+/**
+ * TestGroupDocumentation_TH - The tag-handler for a TestGroupDocumentation tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TestGroupDocumentation_TH
+ * ============================================================================================
+ */
 public class TestGroupDocumentation_TH extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TestGroupDocumentation_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TestGroupDocumentation_TH constructor -
+    *       Initialize our internal fields.
+    */
     public TestGroupDocumentation_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -87,7 +87,7 @@ public class TestGroupDocumentation_TH extends TagHandlerImpl  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_testgroupdocumentation;
+    return TagsImpl.ctStr_tag_testgroupdocumentation;
     }
 
     //------------------------------------------------------------------------------
@@ -100,19 +100,19 @@ public class TestGroupDocumentation_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
-	if (! (testitem instanceof TestGroup))
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testgroup));
+    super.startTag(attrs);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
+    if (! (testitem instanceof TestGroup))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testgroup));
 
-	TestGroupDocumentation tgd = DocumentationFactory.createTestGroupDocumentation();
-	TestGroup tg = (TestGroup) testitem;
-	tg.setTGDocumentation(tgd);
-	testItemStack.push(tgd);
+    TestGroupDocumentation tgd = DocumentationFactory.createTestGroupDocumentation();
+    TestGroup tg = (TestGroup) testitem;
+    tg.setTGDocumentation(tgd);
+    testItemStack.push(tgd);
 
     }
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -120,92 +120,92 @@ public class TestGroupDocumentation_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void endTag() throws SAXException {
-	super.endTag();
-	try {
-	    Stack testItemStack = m_ParserHandler.getStack();
+    super.endTag();
+    try {
+        Stack testItemStack = m_ParserHandler.getStack();
 
-	    Object testitem = testItemStack.pop();
+        Object testitem = testItemStack.pop();
 
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if (! (testitem instanceof TestGroupDocumentation))
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
+        if (! (testitem instanceof TestGroupDocumentation))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
 
-	} catch (EmptyStackException e) {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
-	}
+    } catch (EmptyStackException e) {
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
     }
-     
+    }
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-          
-          
+
+
+
   /**
     *   emit a tags components.
     *  <p>
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof TestGroupDocumentation))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"TestGroupDocumentation", tdObject.getClass().getName()));
+    if (! (tdObject instanceof TestGroupDocumentation))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "TestGroupDocumentation", tdObject.getClass().getName()));
 
-	TestGroupDocumentation tgd = (TestGroupDocumentation) tdObject;
+    TestGroupDocumentation tgd = (TestGroupDocumentation) tdObject;
 
-	String title = tgd.getTitle();
-	m_EmitterHandler.emit(TagsImpl.ctStr_tag_title, title);
+    String title = tgd.getTitle();
+    m_EmitterHandler.emit(TagsImpl.ctStr_tag_title, title);
 
-	String description = tgd.getDescription();
-	if (description != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_description, description);
+    String description = tgd.getDescription();
+    if (description != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_description, description);
 
-	ArrayList assertions = tgd.getAssertions();
-	if (assertions != null) {
-	    Iterator it = assertions.iterator();
-	    Assertion assertion = null;
+    ArrayList assertions = tgd.getAssertions();
+    if (assertions != null) {
+        Iterator it = assertions.iterator();
+        Assertion assertion = null;
 
-	    while (it.hasNext()) {
-		assertion = (Assertion) it.next();
+        while (it.hasNext()) {
+        assertion = (Assertion) it.next();
 
-		if (assertion instanceof AssertionRef)
-		    m_EmitterHandler.emit(TagsImpl.ctStr_tag_assertionref, assertion);
-		else if (assertion instanceof InlineAssertion)
-		    m_EmitterHandler.emit(TagsImpl.ctStr_tag_inlineassertion, assertion);
-	    }
-	}
+        if (assertion instanceof AssertionRef)
+            m_EmitterHandler.emit(TagsImpl.ctStr_tag_assertionref, assertion);
+        else if (assertion instanceof InlineAssertion)
+            m_EmitterHandler.emit(TagsImpl.ctStr_tag_inlineassertion, assertion);
+        }
+    }
 
-	String testedpackage = tgd.getTestedPackage();
-	if (testedpackage != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_testedpackage, testedpackage);
+    String testedpackage = tgd.getTestedPackage();
+    if (testedpackage != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_testedpackage, testedpackage);
 
-	String testedclass = tgd.getTestedClass();
-	if (testedclass != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_testedclass, testedclass);
+    String testedclass = tgd.getTestedClass();
+    if (testedclass != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_testedclass, testedclass);
 
-	String membersig = tgd.getMemberSig();
-	if (membersig != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_membersig, membersig);
+    String membersig = tgd.getMemberSig();
+    if (membersig != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_membersig, membersig);
 
-	ArrayList docelems = tgd.getDocElems();
-	if (docelems != null) {
-	    Iterator it1 = docelems.iterator();
+    ArrayList docelems = tgd.getDocElems();
+    if (docelems != null) {
+        Iterator it1 = docelems.iterator();
 
-	    while (it1.hasNext()) {
-		m_EmitterHandler.emit(TagsImpl.ctStr_tag_docelem, it1.next());
-	    }
-	}
+        while (it1.hasNext()) {
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_docelem, it1.next());
+        }
+    }
 
 
-	ArrayList authors = tgd.getAuthors();
-	if (authors != null) {
-	    Iterator it2 = authors.iterator();
+    ArrayList authors = tgd.getAuthors();
+    if (authors != null) {
+        Iterator it2 = authors.iterator();
 
-	    while (it2.hasNext()) {
-		m_EmitterHandler.emit(TagsImpl.ctStr_tag_author, it2.next());
-	    }
-	}
+        while (it2.hasNext()) {
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_author, it2.next());
+        }
+    }
 
     }
 

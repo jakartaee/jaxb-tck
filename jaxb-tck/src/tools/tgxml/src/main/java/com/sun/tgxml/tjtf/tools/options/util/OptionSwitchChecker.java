@@ -23,8 +23,8 @@ import java.util.Vector;
  * OptionSwitchChecker - class for checking that element is one of specified
  * option switches
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -32,7 +32,7 @@ public class OptionSwitchChecker extends SwitchChecker {
 
 
     /**
-     * Creates OptionSwitchChecker instance. 
+     * Creates OptionSwitchChecker instance.
      * @param keys  array of option switches
      * @throws  IllegalArgumentException is keys is null or empty
      */
@@ -41,7 +41,7 @@ public class OptionSwitchChecker extends SwitchChecker {
     }
 
     /**
-     * Creates OptionSwitchChecker instance. 
+     * Creates OptionSwitchChecker instance.
      * @param keys  vector of option switches
      * @throws  IllegalArgumentException is keys is null or empty
      */

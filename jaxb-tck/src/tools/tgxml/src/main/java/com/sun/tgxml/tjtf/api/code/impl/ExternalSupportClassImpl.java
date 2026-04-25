@@ -26,13 +26,13 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * ExternalSupportClass - 
+ * ExternalSupportClass -
  *
  * <b>ExternalSupportClass</b> is the marker interface to a externally referenced Class (code).
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -50,7 +50,7 @@ public  class ExternalSupportClassImpl extends SupportClassImpl implements Exter
      *    Fields
      * ============================================================================================
      */
-   
+
     private String m_sourceName;
 
     /*
@@ -58,29 +58,29 @@ public  class ExternalSupportClassImpl extends SupportClassImpl implements Exter
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public ExternalSupportClassImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
    public ExternalSupportClassImpl(String langtype, String classID, ArrayList targetSpecs, String sourceName) {
        super(classID, targetSpecs);
        setCodeDelegate(new CodeImpl(langtype));
        try {
-	   setSourceName(sourceName);
+       setSourceName(sourceName);
        } catch (TestFileException e) {
 
        }
     }
 
     private void init() {
-	setCodeDelegate(new CodeImpl());
-	m_sourceName = null;
+    setCodeDelegate(new CodeImpl());
+    m_sourceName = null;
     }
 
 
@@ -96,11 +96,11 @@ public  class ExternalSupportClassImpl extends SupportClassImpl implements Exter
     * @see #setName
     */
     public String getSourceName() throws TestFileException {
-	if (m_sourceName == null || m_sourceName.equals(""))
-	    throw new TestFileException("Null source.");
-	return m_sourceName;
+    if (m_sourceName == null || m_sourceName.equals(""))
+        throw new TestFileException("Null source.");
+    return m_sourceName;
     }
-     
+
   /**
     *   Set the (fully-qualified) class name for the class.
     *  <p>
@@ -109,10 +109,10 @@ public  class ExternalSupportClassImpl extends SupportClassImpl implements Exter
     * @see #getName
     */
     public void setSourceName(String sourceName) throws TestFileException {
-	if (sourceName == null)
-	    throw new TestFileException("Null source name.");
+    if (sourceName == null)
+        throw new TestFileException("Null source name.");
 
-	    m_sourceName = sourceName;
+        m_sourceName = sourceName;
     }
 
 

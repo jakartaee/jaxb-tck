@@ -32,7 +32,7 @@ import com.sun.tgxml.tjtf.tools.options.StringOption;
  */
 
 public class BundleTestGenFilter extends ToolBase {
-    
+
     /**
      * Name of jtx to pass down to emitter
      */
@@ -50,12 +50,12 @@ public class BundleTestGenFilter extends ToolBase {
     *    Options parsing methods
     * ----------------------------------------------------------------------
     */
-    
+
     int cur_num = 0;
-    
-    String baseDir, plugin, exList, libListOut, outDir, dirList, el, libListOutDir, 
+
+    String baseDir, plugin, exList, libListOut, outDir, dirList, el, libListOutDir,
         libListOutSuffix, elSuffix, elDir, copyrightLink=null;
-    
+
     protected StringOption baseDirOption = new StringOption("-basedir",
         "  -basedir <basedir>  the base directory relatively to which the directories in -dirList are specified",
         OBLIGATORY);
@@ -69,8 +69,8 @@ public class BundleTestGenFilter extends ToolBase {
         OBLIGATORY);
 
     protected StringOption libListOutOption = new StringOption("-liblistOut",
-        "  -liblistOut <dir/libID.lst>  dirname of <dir/libID.lst> is used to store all created tests-on-libraries " + 
-        "libID.lst dependencies to, basename is used as suffix for all stored dependencies files", 
+        "  -liblistOut <dir/libID.lst>  dirname of <dir/libID.lst> is used to store all created tests-on-libraries " +
+        "libID.lst dependencies to, basename is used as suffix for all stored dependencies files",
         OBLIGATORY);
 
     protected StringOption outDirOption = new StringOption("-outDir",
@@ -78,8 +78,8 @@ public class BundleTestGenFilter extends ToolBase {
         OBLIGATORY);
 
     protected StringOption elOption = new StringOption("-el",
-        "  -el <dir/jdk.jtx>  dirname of <dir/jdk.jtx> is used to store all created jdk.jtx-es to, " + 
-        "basename is used as suffix for all stored jtx files", 
+        "  -el <dir/jdk.jtx>  dirname of <dir/jdk.jtx> is used to store all created jdk.jtx-es to, " +
+        "basename is used as suffix for all stored jtx files",
         OBLIGATORY);
 
     protected StringOption dirListOption = new StringOption("-dirList",
@@ -180,8 +180,8 @@ public class BundleTestGenFilter extends ToolBase {
      * @see java.io.PrintStream
      */
     public BundleTestGenFilter(PrintStream out, PrintStream err) {
-		super(out, err);
-		m_needsCommandLineArguments = true;
+        super(out, err);
+        m_needsCommandLineArguments = true;
     }
 
     /**
@@ -210,9 +210,9 @@ public class BundleTestGenFilter extends ToolBase {
                 args.add(outDir + File.separator + dirPath);
                 args.add("-el");
                 args.add(elDir + File.separator + uniqID + elSuffix);
-                
+
                 System.setProperty(EXLIST_SYSPROP, exList);
-                
+
                 if (copyrightLink != null){
                     String finalToOutRelativePath = getRelativePath((String)args.get(7), outDir);
                     // this should never happen:
@@ -271,7 +271,7 @@ public class BundleTestGenFilter extends ToolBase {
         }
         return str;
     }
-    
+
     protected String[] addOperands(Vector predefinedArgs, String inDir){
         File[] filesInDir = new File(inDir).listFiles();
         if (filesInDir == null || filesInDir.length == 0) {
@@ -292,7 +292,7 @@ public class BundleTestGenFilter extends ToolBase {
         }
         return (String[])predefinedArgs.toArray(new String[0]);
     }
-    
+
     protected int getUniqID(){
         return ++cur_num;
     }

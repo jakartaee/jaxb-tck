@@ -26,13 +26,13 @@ import com.sun.tgxml.tjtf.api.code.SupportCode;
 // </importgen>
 
 /**
- * CodeSet - 
+ * CodeSet -
  *
  * <b>CodeSet</b> is the grouping of support/related code in a TestGroup, TestCase, or Library.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -51,7 +51,7 @@ public  class CodeSetImpl implements CodeSet {
      *    Fields
      * ============================================================================================
      */
-   
+
     private ArrayList   m_dependencies = null;
     private ArrayList   m_imports = null;
     private ArrayList   m_exports = null;
@@ -67,24 +67,24 @@ public  class CodeSetImpl implements CodeSet {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public CodeSetImpl() {
-	init();
+    init();
     }
 
-    public CodeSetImpl(ArrayList dependencies, ArrayList imports, String baseClassName, 
-		      SupportCode supportCode, ArrayList supportClasses, ArrayList data) {
-       this(dependencies, imports, baseClassName, 
+    public CodeSetImpl(ArrayList dependencies, ArrayList imports, String baseClassName,
+              SupportCode supportCode, ArrayList supportClasses, ArrayList data) {
+       this(dependencies, imports, baseClassName,
                supportCode, supportClasses, data, null, null);
     }
 
 
-    public CodeSetImpl(ArrayList dependencies, ArrayList imports, String baseClassName, 
-		      SupportCode supportCode, ArrayList supportClasses, ArrayList data,
+    public CodeSetImpl(ArrayList dependencies, ArrayList imports, String baseClassName,
+              SupportCode supportCode, ArrayList supportClasses, ArrayList data,
                        String context, String executeArgs) {
 
        m_dependencies = dependencies;
@@ -112,7 +112,7 @@ public  class CodeSetImpl implements CodeSet {
     //------------------------------------------------------------------------------
     //  Getters and Setters
     //------------------------------------------------------------------------------
-   
+
 
 
   /**
@@ -123,9 +123,9 @@ public  class CodeSetImpl implements CodeSet {
     * @see #setDependencies
     */
     public ArrayList getDependencies() {
-	return m_dependencies;
+    return m_dependencies;
     }
-     
+
   /**
     *   Set the Dependencies associated with this CodeSet.
     *  <p>
@@ -134,7 +134,7 @@ public  class CodeSetImpl implements CodeSet {
     * @see #getDependencies
     */
     public void setDependencies(ArrayList dependencies) {
-	m_dependencies = dependencies;
+    m_dependencies = dependencies;
     }
 
 
@@ -146,9 +146,9 @@ public  class CodeSetImpl implements CodeSet {
     * @see #setImports
     */
     public ArrayList getImports() {
-	return m_imports;
+    return m_imports;
     }
-     
+
   /**
     *   Set the Imports associated with this TestItem.
     *  <p>
@@ -156,7 +156,7 @@ public  class CodeSetImpl implements CodeSet {
     * @see #getImports
     */
     public void setImports(ArrayList imports) {
-	m_imports = imports;
+    m_imports = imports;
     }
 
   /**
@@ -166,9 +166,9 @@ public  class CodeSetImpl implements CodeSet {
     * @see #setExports
     */
     public ArrayList getExports() {
-	return m_exports;
+    return m_exports;
     }
-     
+
   /**
     *   Set the Exports associated with this TestItem.
     *  <p>
@@ -176,60 +176,60 @@ public  class CodeSetImpl implements CodeSet {
     * @see #getExports
     */
     public void setExports(ArrayList exports) {
-	m_exports = exports;
+    m_exports = exports;
     }
 
   /**
     *   Get the execute-arguments associated with this CodeSet.
     *  <p>
-    *   This execute-arguments are optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This execute-arguments are optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @return     The execute-arguments associated with this CodeSet
     * @see #setExecuteArgs
     */
     public String getExecuteArgs(){
-	return m_executeArgs;
+    return m_executeArgs;
     }
-     
+
    /**
     *   Set the execute-arguments associated with this CodeSet.
     *  <p>
-    *   This execute-arguments are optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This execute-arguments are optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @param     executeArgs The execute-arguments of the CodeSet.
     * @see #getExecuteArgs
     */
     public void setExecuteArgs(String executeArgs){
-	m_executeArgs = executeArgs;
+    m_executeArgs = executeArgs;
     }
 
 
   /**
     *   Get the context associated with this CodeSet.
     *  <p>
-    *   This context is optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This context is optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @return     The context associated with this CodeSet
     * @see #setContext
     */
     public String getContext(){
-	return m_context;
+    return m_context;
     }
 
    /**
     *   Set the context associated with this CodeSet.
     *  <p>
-    *   This context is optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This context is optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @param     context The context of the CodeSet.
     * @see #getContext
     */
     public void setContext(String context){
-	m_context = context;
+    m_context = context;
     }
 
   /**
@@ -239,9 +239,9 @@ public  class CodeSetImpl implements CodeSet {
     * @see #setBaseClass
     */
     public String getBaseClass()  {
-	return m_baseclassname;
+    return m_baseclassname;
     }
-     
+
   /**
     *   Set the (fully-qualified) class name for the base class (the class that this class extends).
     *  <p>
@@ -249,7 +249,7 @@ public  class CodeSetImpl implements CodeSet {
     * @see #getBaseClass
     */
     public void setBaseClass(String baseClassName)  {
-	m_baseclassname = baseClassName;
+    m_baseclassname = baseClassName;
     }
 
 
@@ -261,9 +261,9 @@ public  class CodeSetImpl implements CodeSet {
     * @see com.sun.tgxml.tjtf.api.code.SupportCode
     */
     public SupportCode getSupportCode() {
-	return m_supportcode;
+    return m_supportcode;
     }
-     
+
   /**
     *   Set the SupportCode.
     *  <p>
@@ -272,7 +272,7 @@ public  class CodeSetImpl implements CodeSet {
     * @see #getSupportCode
     */
     public void setSupportCode(SupportCode supportcode){
-	m_supportcode = supportcode;
+    m_supportcode = supportcode;
     }
 
 
@@ -285,9 +285,9 @@ public  class CodeSetImpl implements CodeSet {
     * @see #setSupportClasses
     */
     public ArrayList getSupportClasses() {
-	return m_supportclasses;
+    return m_supportclasses;
     }
-     
+
   /**
     *   Set the Dependencies associated with this TestItem.
     *  <p>
@@ -296,7 +296,7 @@ public  class CodeSetImpl implements CodeSet {
     * @see #getSupportClasses
     */
     public void setSupportClasses(ArrayList supportClasses) {
-	m_supportclasses = supportClasses;
+    m_supportclasses = supportClasses;
     }
 
 
@@ -309,9 +309,9 @@ public  class CodeSetImpl implements CodeSet {
     * @see #setData
     */
     public ArrayList getData() {
-	return m_data;
+    return m_data;
     }
-     
+
   /**
     *   Set the Data associated with this TestItem.
     *  <p>
@@ -320,6 +320,6 @@ public  class CodeSetImpl implements CodeSet {
     * @see #getData
     */
     public void setData(ArrayList data) {
-	m_data = data;
+    m_data = data;
     }
 }

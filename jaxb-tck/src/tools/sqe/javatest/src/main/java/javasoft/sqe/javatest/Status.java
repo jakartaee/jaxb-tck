@@ -28,14 +28,14 @@ public class Status
      * Create a Status that represents the successful outcome of a test.
      */
     public static Status passed(String reason) {
-	return new Status(PASSED, reason);
+    return new Status(PASSED, reason);
     }
 
     /**
      * Create a Status that represents the unsuccessful outcome of a test.
      */
     public static Status failed(String reason) {
-	return new Status(FAILED, reason);
+    return new Status(FAILED, reason);
     }
 
     /**
@@ -43,7 +43,7 @@ public class Status
      * analysis of the output of the test against reference files is required.
      */
     public static Status error(String reason) {
-	return new Status(ERROR, reason);
+    return new Status(ERROR, reason);
     }
 
     /**
@@ -54,14 +54,14 @@ public class Status
      * @deprecated
      */
     public static Status notApplicable(String reason) {
-	return new Status(FAILED, "Not Applicable: " + reason);
+    return new Status(FAILED, "Not Applicable: " + reason);
     }
 
     /**
      * Create a Status that represents that the test has not yet been run
      */
     static Status notRun(String reason) {
-	return new Status(NOT_RUN, reason);
+    return new Status(NOT_RUN, reason);
     }
 
     /**
@@ -71,7 +71,7 @@ public class Status
      * @see #PASSED
      */
     public boolean isPassed() {
-	return (type == PASSED);
+    return (type == PASSED);
     }
 
     /**
@@ -81,7 +81,7 @@ public class Status
      * @see #FAILED
      */
     public boolean isFailed() {
-	return (type == FAILED);
+    return (type == FAILED);
     }
 
     /**
@@ -91,7 +91,7 @@ public class Status
      * @see #ERROR
      */
     public boolean isError() {
-	return (type == ERROR);
+    return (type == ERROR);
     }
 
     /**
@@ -118,8 +118,8 @@ public class Status
     public static final int ERROR = 2;
 
     /**
-     * A return code indicating that the test has not yet been run in this context.  
-     * (More specifically, no status file has been recorded for this test in the 
+     * A return code indicating that the test has not yet been run in this context.
+     * (More specifically, no status file has been recorded for this test in the
      * current work directory.)  This is for the internal use of the harness only.
      * @see #getType
      */
@@ -137,31 +137,31 @@ public class Status
      * @see #ERROR
      */
     public int getType() {
-	return type;
+    return type;
     }
 
     /**
      * Get the message given when the status was created.
      */
     public String getReason() {
-	return reason;
+    return reason;
     }
 
     /**
      * Return a new Status object with a possibly augmented reason field
      */
     public Status augment(String aux) {
-	if (aux == null || aux.length() == 0)
-	    return this;
-	else 
-	    return new Status(type, (reason + " [" + aux + "]"));
+    if (aux == null || aux.length() == 0)
+        return this;
+    else
+        return new Status(type, (reason + " [" + aux + "]"));
     }
 
     /**
      * Return a new Status object with a possibly augmented reason field
      */
     public Status augment(Status aux) {
-	return (aux == null ? this : augment(aux.reason));
+    return (aux == null ? this : augment(aux.reason));
     }
 
     /**
@@ -169,43 +169,43 @@ public class Status
      * @see #exit
      */
     public static Status parse(String s) {
-	try {
-	    return new Status(s);
-	}
-	catch (IllegalArgumentException e) {
-	    return null;
-	}
+    try {
+        return new Status(s);
+    }
+    catch (IllegalArgumentException e) {
+        return null;
+    }
     }
 
     private Status(String s) {
-	for (int t = 0; t < texts.length; t++) {
-	    if (s.startsWith(texts[t])) {
-		int l = texts[t].length();
-		String r;
-		if (l < s.length()) {
-		    if (s.charAt(l) == ' ')
-			r = s.substring(l + 1);
-		    else
-			r = s.substring(l);
-		}
-		else 
-		    r = "";
-		type = t;
-		reason = r;
-		return;
-	    }
-	}
-	throw new IllegalArgumentException();
+    for (int t = 0; t < texts.length; t++) {
+        if (s.startsWith(texts[t])) {
+        int l = texts[t].length();
+        String r;
+        if (l < s.length()) {
+            if (s.charAt(l) == ' ')
+            r = s.substring(l + 1);
+            else
+            r = s.substring(l);
+        }
+        else
+            r = "";
+        type = t;
+        reason = r;
+        return;
+        }
+    }
+    throw new IllegalArgumentException();
     }
 
     /**
      * Standard routine.
      */
     public String toString() {
-	if (reason == null || reason.length() == 0)
-	    return texts[type];	
-	else
-	    return texts[type] + " " + reason;
+    if (reason == null || reason.length() == 0)
+        return texts[type];
+    else
+        return texts[type] + " " + reason;
     }
 
     /**
@@ -216,60 +216,60 @@ public class Status
      * @return Will be null if the given integer was out of range.
      */
     public static String typeToString(int typeNum) {
-	if (typeNum < NUM_STATES)
-	    return texts[typeNum];
-	else
-	    return null;
+    if (typeNum < NUM_STATES)
+        return texts[typeNum];
+    else
+        return null;
     }
 
     /**
-     * Convenience exit() function for the main() of tests to exit in such a 
+     * Convenience exit() function for the main() of tests to exit in such a
      * way that the status passes up across process boundaries without losing
      * information (ie exit codes don't give the associated text of the status
-     * and return codes when exceptions are thrown could cause unintended 
+     * and return codes when exceptions are thrown could cause unintended
      * results). <p>
      *
      * An identifying marker is written to the error stream, which the script
-     * running the test watches for as the last output before returning, 
+     * running the test watches for as the last output before returning,
      * followed by the type and reason
      *
      * The method does not return.  It calls System.exit with a value
      * dependent on the type.
      */
     public void exit() {
-	if (System.err != null) {
-	    System.err.print(EXIT_PREFIX);
-	    System.err.print(texts[type]);
-	    System.err.println(reason);
-	    System.err.flush();
-	}
-	System.exit(exitCodes[type]);
+    if (System.err != null) {
+        System.err.print(EXIT_PREFIX);
+        System.err.print(texts[type]);
+        System.err.println(reason);
+        System.err.flush();
+    }
+    System.exit(exitCodes[type]);
     }
 
 
     //-----internal routines------------------------------------------------------
 
-    public Status(int type, String reason) { 
-	// if we find any bad characters in the reason string (e.g. newline)
-	// we rewrite the string replacing all such characters with a space.
-	for (int i = 0; i < reason.length(); i++) {
-	    if (!isPrintable(reason.charAt(i))) {
-		StringBuffer r = new StringBuffer(reason.length());
-		for (int j = 0; j < reason.length(); j++) {
-		    char c = reason.charAt(j);
-		    r.append(isPrintable(c) ? c : ' ');
-		}
-		reason = r.toString();
-		break;
-	    }
-	}
+    public Status(int type, String reason) {
+    // if we find any bad characters in the reason string (e.g. newline)
+    // we rewrite the string replacing all such characters with a space.
+    for (int i = 0; i < reason.length(); i++) {
+        if (!isPrintable(reason.charAt(i))) {
+        StringBuffer r = new StringBuffer(reason.length());
+        for (int j = 0; j < reason.length(); j++) {
+            char c = reason.charAt(j);
+            r.append(isPrintable(c) ? c : ' ');
+        }
+        reason = r.toString();
+        break;
+        }
+    }
 
-	this.type = type; 
-	this.reason = reason.trim(); 
+    this.type = type;
+    this.reason = reason.trim();
     }
 
     private static final boolean isPrintable(char c) {
-	return (32 <= c && c < 127);
+    return (32 <= c && c < 127);
     }
 
     //----------Data members---------------------------------------------------------
@@ -279,12 +279,12 @@ public class Status
 
     public static final String EXIT_PREFIX = "STATUS:";
 
-    private static String[] texts = {  
-	// correspond to PASSED, FAILED, ERROR, NOT_RUN
-	"Passed.", 
-        "Failed.", 
-	"Error.",
-	"Not run."
+    private static String[] texts = {
+    // correspond to PASSED, FAILED, ERROR, NOT_RUN
+    "Passed.",
+        "Failed.",
+    "Error.",
+    "Not run."
     };
 
     /**

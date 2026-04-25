@@ -41,7 +41,7 @@ public class PropRegexp extends org.apache.tools.ant.Task {
                 sb.append(ch);
             }
             value = sb.toString();
-        
+
             // add templates
             sb.setLength(0);
             for (int i = 0; i < value.length(); i++) {

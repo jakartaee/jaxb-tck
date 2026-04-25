@@ -21,7 +21,7 @@ package com.sun.tgxml.tjtf.impl;
 // </importgen>
 
 /**
- * ConstantsImpl - 
+ * ConstantsImpl -
  *
  * <b>ConstantsImpl</b> contains the string names for constants frequently used
  * (by JCK or other repositories) for XML variable-values.
@@ -29,7 +29,7 @@ package com.sun.tgxml.tjtf.impl;
  *
  *
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -47,7 +47,7 @@ public  class ConstantsImpl  {
     *    Member Fields
     * ============================================================================================
     */
-    
+
 
 
 

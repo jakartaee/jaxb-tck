@@ -17,14 +17,14 @@
 
 package com.sun.jmpp.lib;
 
-/**  
+/**
  * Interface for generation a test description basing on JmppLibTest variable set.
  *
  * @author Oleg Oleinik
- * @version @(#)TDGenerator.java	1.4 01/12/19
+ * @version @(#)TDGenerator.java    1.4 01/12/19
  */
 
-public interface TDGenerator { 
+public interface TDGenerator {
 
 /**
  * The method which is the entry point for test description generation.

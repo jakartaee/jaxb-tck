@@ -25,7 +25,7 @@ import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
 // </importgen>
 
 /**
- * TestGroupAttributes - 
+ * TestGroupAttributes -
  *
  * <b>TestGroupAttributes</b> is the basic interface for describing the attributes
  * associated with a TestGroup.
@@ -51,7 +51,7 @@ import com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes;
  *  </ul> <br>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -70,7 +70,7 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
      *    Fields
      * ============================================================================================
      */
-   
+
     private ArrayList m_Keywords;
     private String    m_Context;
     private String    m_ExecuteClass;
@@ -85,58 +85,58 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
     public TestGroupAttributesImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
 
     public TestGroupAttributesImpl(ArrayList reqResources, ArrayList attrElems, ArrayList targetSpecs,
-				   ArrayList keywords, String context, 
-				   String executeClass, String executeNative, String executeArgs, 
-				   ArrayList remotes, String RMICClasses, ArrayList selectIfs, String timeout) {
-	super(reqResources, attrElems, targetSpecs, timeout);
-	init();
-	setKeywords(keywords);
-	setContext(context);
-	setExecuteClass(executeClass);
-	setExecuteNative(executeNative);
-	setExecuteArgs(executeArgs);
-	setRemotes(remotes);
-	setRMICClasses(RMICClasses);
-	setSelectIfs(selectIfs);
+                   ArrayList keywords, String context,
+                   String executeClass, String executeNative, String executeArgs,
+                   ArrayList remotes, String RMICClasses, ArrayList selectIfs, String timeout) {
+    super(reqResources, attrElems, targetSpecs, timeout);
+    init();
+    setKeywords(keywords);
+    setContext(context);
+    setExecuteClass(executeClass);
+    setExecuteNative(executeNative);
+    setExecuteArgs(executeArgs);
+    setRemotes(remotes);
+    setRMICClasses(RMICClasses);
+    setSelectIfs(selectIfs);
     }
 
 
 
     private void init() {
 
-	if (m_Keywords == null)
-	    m_Keywords = new ArrayList();
-	else
-	    m_Keywords.clear();
+    if (m_Keywords == null)
+        m_Keywords = new ArrayList();
+    else
+        m_Keywords.clear();
 
-	if (m_Remotes == null)
-	    m_Remotes = new ArrayList();
-	else
-	    m_Remotes.clear();
+    if (m_Remotes == null)
+        m_Remotes = new ArrayList();
+    else
+        m_Remotes.clear();
 
-	if (m_SelectIfs == null)
-	    m_SelectIfs = new ArrayList();
-	else
-	    m_SelectIfs.clear();
+    if (m_SelectIfs == null)
+        m_SelectIfs = new ArrayList();
+    else
+        m_SelectIfs.clear();
 
-	m_Context = null;
-	m_ExecuteClass = null;
-	m_ExecuteArgs = null;
-	m_ExecuteNative = null;
-	m_RMICClasses = null;
+    m_Context = null;
+    m_ExecuteClass = null;
+    m_ExecuteArgs = null;
+    m_ExecuteNative = null;
+    m_RMICClasses = null;
     }
 
     /*
@@ -144,7 +144,7 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -161,9 +161,9 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
     * @see #setKeywords
     */
     public ArrayList getKeywords() {
-	return m_Keywords;
+    return m_Keywords;
     }
-     
+
    /**
     *   Set the keyword attributes associated with this entity.
     *  <p>
@@ -174,7 +174,7 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
     * @see #getKeywords
     */
     public void setKeywords(ArrayList keywords){
-	m_Keywords = keywords;
+    m_Keywords = keywords;
     }
 
 
@@ -182,27 +182,27 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
   /**
     *   Get the context associated with this TestGroup.
     *  <p>
-    *   This context is optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This context is optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @return     The context associated with this TestGroup
     * @see #setContext
     */
     public String getContext(){
-	return m_Context;
+    return m_Context;
     }
 
    /**
     *   Set the context associated with this TestGroup.
     *  <p>
-    *   This context is optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This context is optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @param     context The context of the TestGroup.
     * @see #getContext
     */
     public void setContext(String context){
-	m_Context = context;
+    m_Context = context;
     }
 
 
@@ -210,35 +210,35 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
   /**
     *   Get the execute-class associated with this TestGroup.
     *  <p>
-    *   This execute-class is optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This execute-class is optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     *  ExecuteClass is a string that is passed as the class that is
-    * executed to drive a test. 
+    * executed to drive a test.
     * <p>
     * @return     The execute-class associated with this TestGroup
     * @see #setExecuteClass
     * @see java.lang.String
     */
     public String getExecuteClass() {
-	return m_ExecuteClass;
+    return m_ExecuteClass;
     }
-     
+
    /**
     *   Set the execute-class associated with this TestGroup.
     *  <p>
-    *   This execute-class is optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This execute-class is optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     *  ExecuteClass is a string that is passed as the class that is
-    * executed to drive a test. 
+    * executed to drive a test.
     * <p>
     * @param     executeClass The execute-class of the TestGroup.
     * @see #getExecuteClass
     * @see java.lang.String
     */
     public void setExecuteClass(String executeClass){
-	m_ExecuteClass = executeClass;
+    m_ExecuteClass = executeClass;
     }
 
 
@@ -247,27 +247,27 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
   /**
     *   Get the execute-arguments associated with this TestGroup.
     *  <p>
-    *   This execute-arguments are optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This execute-arguments are optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @return     The execute-arguments associated with this TestGroup
     * @see #setExecuteArgs
     */
     public String getExecuteArgs(){
-	return m_ExecuteArgs;
+    return m_ExecuteArgs;
     }
-     
+
    /**
     *   Set the execute-arguments associated with this TestGroup.
     *  <p>
-    *   This execute-arguments are optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This execute-arguments are optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @param     executeArgs The execute-arguments of the TestGroup.
     * @see #getExecuteArgs
     */
     public void setExecuteArgs(String executeArgs){
-	m_ExecuteArgs = executeArgs;
+    m_ExecuteArgs = executeArgs;
     }
 
 
@@ -275,27 +275,27 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
   /**
     *   Get the execute-native-arguments associated with this TestGroup.
     *  <p>
-    *   This execute-native-arguments are optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This execute-native-arguments are optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @return     The context associated with this TestGroup
     * @see #setContext
     */
     public String getExecuteNative(){
-	return m_ExecuteNative;
+    return m_ExecuteNative;
     }
-     
+
    /**
     *   Set the execute-native-arguments associated with this TestGroup.
     *  <p>
-    *   This execute-native-arguments are optional, and must be either a valid String 
-    *   or  NULL.  
+    *   This execute-native-arguments are optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @param     executeNative The execute-native-arguments of the TestGroup.
     * @see #getContext
     */
     public void setExecuteNative(String executeNative){
-	m_ExecuteNative = executeNative;
+    m_ExecuteNative = executeNative;
     }
 
 
@@ -311,9 +311,9 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
     * @see #setRemotes
     */
     public ArrayList getRemotes(){
-	return m_Remotes;
+    return m_Remotes;
     }
-     
+
    /**
     *   Set the "remote" environment-strings associated with this test.
     *  <p>
@@ -324,34 +324,34 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
     * @see #getRemotes
     */
     public void setRemotes(ArrayList remotes){
-	m_Remotes = remotes;
+    m_Remotes = remotes;
     }
 
 
   /**
     *   Get the rmic-classes associated with this TestGroup.
     *  <p>
-    *   These rmic-classes are optional, and must be either a valid String 
-    *   or  NULL.  
+    *   These rmic-classes are optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @return     The context associated with this TestGroup
     * @see #setRMICClasses
     */
     public String getRMICClasses(){
-	return m_RMICClasses;
+    return m_RMICClasses;
     }
-     
+
    /**
     *   Set the rmic-classes associated with this TestGroup.
     *  <p>
-    *   These rmic-classes are optional, and must be either a valid String 
-    *   or  NULL.  
+    *   These rmic-classes are optional, and must be either a valid String
+    *   or  NULL.
     *  <p>
     * @param     rmicclasses The rmic-classes of the TestGroup.
     * @see #getRMICClasses
     */
     public void setRMICClasses(String rmicclasses){
-	m_RMICClasses = rmicclasses;
+    m_RMICClasses = rmicclasses;
     }
 
 
@@ -366,9 +366,9 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
     * @see #setSelectIfs
     */
     public ArrayList getSelectIfs(){
-	return m_SelectIfs;
+    return m_SelectIfs;
     }
-     
+
    /**
     *   Set the SelectIfs associated with this test.
     *  <p>
@@ -379,7 +379,7 @@ public  class TestGroupAttributesImpl extends TestAttributesImpl implements Test
     * @see #getSelectIfs
     */
     public void setSelectIfs(ArrayList selectifs){
-	m_SelectIfs = selectifs;
+    m_SelectIfs = selectifs;
     }
 
 }

@@ -32,50 +32,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * AssertionRef_TH - The tag-handler for a AssertionRef tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    AssertionRef_TH 
- * ============================================================================================ 
- */ 
+/**
+ * AssertionRef_TH - The tag-handler for a AssertionRef tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    AssertionRef_TH
+ * ============================================================================================
+ */
 public class AssertionRef_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   AssertionRef_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   AssertionRef_TH constructor -
+    *       Initialize our internal fields.
+    */
     public AssertionRef_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ public class AssertionRef_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_assertionref;
+    return TagsImpl.ctStr_tag_assertionref;
     }
 
     //------------------------------------------------------------------------------
@@ -99,59 +99,59 @@ public class AssertionRef_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	try {
-	    super.endTag(text);
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
+    try {
+        super.endTag(text);
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
 
-	    ArrayList assertions = null;
-	    if (testitem instanceof TestGroupDocumentation) {	    
-		//  Nothing is pushed onto the stack
-		TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
-		
-		assertions = tgd.getAssertions();
-		if (assertions == null) {
-		    assertions = new ArrayList();
-		    tgd.setAssertions(assertions);
-		}
-	    } else  if (testitem instanceof TestCaseSpec) {	    
-		//  Nothing is pushed onto the stack
-		TestCaseSpec tcs = (TestCaseSpec) testitem;
-		
-		assertions = tcs.getAssertions();
-		if (assertions == null) {
-		    assertions = new ArrayList();
-		    tcs.setAssertions(assertions);
-		}
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    } else
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext2", getTagName(), 
-							TagsImpl.ctStr_tag_testcasespec,
-							TagsImpl.ctStr_tag_testgroupdocumentation));
 
-		
-	    AssertionRef ar = DocumentationFactory.createAssertionRef();
-	    
-	    // validated the import name
-	    // validateAssertionRef(text);
-	    ar.setRef(text);
-	    assertions.add(ar);
+        ArrayList assertions = null;
+        if (testitem instanceof TestGroupDocumentation) {
+        //  Nothing is pushed onto the stack
+        TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
 
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+        assertions = tgd.getAssertions();
+        if (assertions == null) {
+            assertions = new ArrayList();
+            tgd.setAssertions(assertions);
+        }
+        } else  if (testitem instanceof TestCaseSpec) {
+        //  Nothing is pushed onto the stack
+        TestCaseSpec tcs = (TestCaseSpec) testitem;
+
+        assertions = tcs.getAssertions();
+        if (assertions == null) {
+            assertions = new ArrayList();
+            tcs.setAssertions(assertions);
+        }
+
+        } else
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext2", getTagName(),
+                            TagsImpl.ctStr_tag_testcasespec,
+                            TagsImpl.ctStr_tag_testgroupdocumentation));
+
+
+        AssertionRef ar = DocumentationFactory.createAssertionRef();
+
+        // validated the import name
+        // validateAssertionRef(text);
+        ar.setRef(text);
+        assertions.add(ar);
+
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-     
- 
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -159,13 +159,13 @@ public class AssertionRef_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof AssertionRef))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"AssertionRef", tdObject.getClass().getName()));
+    if (! (tdObject instanceof AssertionRef))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "AssertionRef", tdObject.getClass().getName()));
 
-	AssertionRef ar = (AssertionRef) tdObject;
+    AssertionRef ar = (AssertionRef) tdObject;
 
-	m_EmitterHandler.emitText(ar.getRef());
+    m_EmitterHandler.emitText(ar.getRef());
 
     }
 

@@ -24,8 +24,8 @@ import java.util.Properties;
  * implementation of <code>IRPFactorySpi</code> interface.
  *
  * <p>
- * @version 	1.0, 21/01/2004
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 21/01/2004
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -39,4 +39,4 @@ public class DefaultIRPFactorySpi implements IRPFactorySpi {
     }
 
 }
-        
+

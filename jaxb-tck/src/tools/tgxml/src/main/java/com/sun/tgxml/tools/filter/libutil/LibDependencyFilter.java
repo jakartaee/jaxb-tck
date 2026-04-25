@@ -21,7 +21,7 @@ import com.sun.tgxml.tools.filter.processors.FilteringException;
 
 /**
  * A filter of library bundle.
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */
@@ -37,7 +37,7 @@ public interface LibDependencyFilter {
      * The purpose of this method is to select an appropriate variant
      * for each libID in the library bundle.
      * This method returns a map with the same set of keys (libIDs).
-     * Returned LibMap object maps libID to accepted variant or null if 
+     * Returned LibMap object maps libID to accepted variant or null if
      * library is rejected.
      * <p>
      * This methods rejects variants that depends on alreay rejected libraries.
@@ -46,7 +46,7 @@ public interface LibDependencyFilter {
      * If no variant can be accepted then the Library is considered rejected
      * along with all the Libraries that depend on it.
      * If two or more library variants are accepted, then
-     * variant having the lowest VarOrder is accepted.     
+     * variant having the lowest VarOrder is accepted.
      * <p>
      * Loop dependency causes to an error.
      * <p>
@@ -59,7 +59,7 @@ public interface LibDependencyFilter {
      *         returned map and in the libBundle map is exactly the same.
      *         If libID is contained in both filtered and libBundle
      *         bundles it will be treated as not filtered yet.
-     * @exception FilteringException if loop dependency or unknown libID is 
+     * @exception FilteringException if loop dependency or unknown libID is
      *            found out.
      */
     public LibMap filter(VariantsMap libBundle, LibSelectionInfo filtered)

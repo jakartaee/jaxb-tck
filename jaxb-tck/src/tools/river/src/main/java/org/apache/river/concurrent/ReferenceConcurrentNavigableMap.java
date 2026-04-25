@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,14 +21,14 @@ import java.util.concurrent.ConcurrentNavigableMap;
 
 /**
  *
- * @param <K> 
- * @param <V> 
+ * @param <K>
+ * @param <V>
  * @author Peter Firmstone.
  */
-class ReferenceConcurrentNavigableMap<K,V> 
+class ReferenceConcurrentNavigableMap<K,V>
 extends ReferenceConcurrentMap<K,V> implements ConcurrentNavigableMap<K,V>{
     private final ConcurrentNavigableMap<Referrer<K>,Referrer<V>> map;
-    
+
     ReferenceConcurrentNavigableMap(ConcurrentNavigableMap<Referrer<K>, Referrer<V>> map, Ref keyRef, Ref valRef, boolean gcThreads, long gcKeyCycle, long gcValCycle){
         super(map, keyRef, valRef, gcThreads, gcKeyCycle, gcValCycle);
         this.map = map;
@@ -39,16 +39,16 @@ extends ReferenceConcurrentMap<K,V> implements ConcurrentNavigableMap<K,V>{
         super(map, krqf, vrqf, key, val);
         this.map = map;
     }
-    
+
     public ConcurrentNavigableMap<K, V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
         processQueue();
         return new ReferenceConcurrentNavigableMap<K,V>(
             map.subMap(
-                wrapKey(fromKey, false, true), 
-                fromInclusive, 
+                wrapKey(fromKey, false, true),
+                fromInclusive,
                 wrapKey(toKey, false, true),
                 toInclusive
-            ), 
+            ),
             getKeyRQF(),
             getValRQF(), keyRef(), valRef()
         );

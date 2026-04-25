@@ -34,21 +34,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 */
 /**
- * The class represents generation exclude list. 
+ * The class represents generation exclude list.
  * The excluded TestItems are defined in format specified in superclass.
  */
 public class GenerationExcludeListFilter extends TestItemListFilter {
     private static final String EXTERNAL_MULTITEST = "ExternalMultiTest";
     /*
      * commented to be compatible with jdk 1.3.0
-     
+
     public static final String LOGGING_SYBSYSTEM_NAME = "com.sun.tgxml.tools.filter.redundancy";
-        
+
     protected Logger logger = Logger.getLogger(LOGGING_SYBSYSTEM_NAME);
     */
     /**
      * creates instance with the given arguments list.
-     * The argument list have contain at least one element, 
+     * The argument list have contain at least one element,
      * which is assumed as name of the resource, which contains TestItems list.
      * The resource should be accessible via
      * <code>ClassLoader.getResourceAsStream()</code>.
@@ -58,9 +58,9 @@ public class GenerationExcludeListFilter extends TestItemListFilter {
     public GenerationExcludeListFilter(String[] args) {
         this(args[0]);
     }
-    
+
     /**
-     * creates instance with the given name of the resource, which contains 
+     * creates instance with the given name of the resource, which contains
      * TestItems list.
      * The resource should be accessible via
      * <code>ClassLoader.getResourceAsStream()</code>.
@@ -69,7 +69,7 @@ public class GenerationExcludeListFilter extends TestItemListFilter {
     public GenerationExcludeListFilter(String name) {
         super(name);
     }
-    
+
     /*
      * commented to be compatible with jdk 1.3.0
     protected boolean checkAccepted(String key) {
@@ -82,16 +82,16 @@ public class GenerationExcludeListFilter extends TestItemListFilter {
          return status;
     }
      */
-   
+
     public boolean accept(TestItem item) {
         if (item instanceof TestGroup) {
             verifyTestGroupComponents((TestGroup)item);
         }
         return !super.accept(item);
     }
-    
+
     private void verifyTestGroupComponents(TestGroup tg) {
-        
+
         try {
             Set set = getExcludedComponents(tg);
             if (set == null) {
@@ -135,9 +135,9 @@ public class GenerationExcludeListFilter extends TestItemListFilter {
                     LibResHandler.getResStr("filter.redundancy.error.unexpectedExcepton",
                                             e.toString()));
         }
-        
+
     }
-    
+
     public static boolean containsVariant(ArrayList items, String name) {
         if ((items == null) || (items.size() == 0)) { // No testcases
             return false;

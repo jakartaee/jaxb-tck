@@ -32,7 +32,7 @@ public class ClassDependencyRelationship {
     private final String fullyQualifiedClassName;
     private final int hash;
     private final boolean rootClass;
-    
+
     ClassDependencyRelationship (String fullyQualifiedClassName, boolean rootClass){
         this.fullyQualifiedClassName = fullyQualifiedClassName;
         hash = 59 * 7 + (this.fullyQualifiedClassName != null ? this.fullyQualifiedClassName.hashCode() : 0);
@@ -40,11 +40,11 @@ public class ClassDependencyRelationship {
         providers = new HashSet();
         this.rootClass = rootClass;
     }
-    
+
     ClassDependencyRelationship (String fullyQualifiedClassName){
-        this(fullyQualifiedClassName, false);    
+        this(fullyQualifiedClassName, false);
     }
-    
+
     // This is private since we tend to recurse the dependency tree from the
     // dependant end to the provider.
     private void addDependant(ClassDependencyRelationship dependant) {
@@ -89,7 +89,7 @@ public class ClassDependencyRelationship {
         }
         return prov;
     }
-    
+
     public String toString(){
         return fullyQualifiedClassName;
     }
@@ -98,7 +98,7 @@ public class ClassDependencyRelationship {
     public int hashCode() {
         return hash;
     }
-    
+
     public boolean equals(Object o){
         if ( o == null ) return false;
         if (!(o instanceof ClassDependencyRelationship)) return false;

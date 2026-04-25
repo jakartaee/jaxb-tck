@@ -21,55 +21,55 @@ import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
 import com.sun.tgxml.tjtf.processors.validator.IRValidator;
 import com.sun.tgxml.tjtf.processors.validator.NullValidator;
 
-/** 
- * ValidatingProcessorImpl - The basic functionality for a processor. 
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ValidatingProcessorImpl 
- * ============================================================================================ 
- */ 
+/**
+ * ValidatingProcessorImpl - The basic functionality for a processor.
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ValidatingProcessorImpl
+ * ============================================================================================
+ */
 public class ValidatingProcessorImpl extends ProcessorImpl implements ValidatingProcessor {
 
     protected IRValidator m_validator;
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
-   /** 
-    *   ValidatingProcessorImpl constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
+   /**
+    *   ValidatingProcessorImpl constructor -
+    *       Initialize our internal fields.
+    */
     public ValidatingProcessorImpl() {
-	// by default - get the null validator
-	setValidator(null);
+    // by default - get the null validator
+    setValidator(null);
     }
 
 
 
-   /** 
+   /**
     *  Sets the Validator (3rd-level semantics validation engine).
     * <p>
     * @param validator The validator to set.
-    */ 
+    */
     public void setValidator(IRValidator validator) {
-	if (validator == null)
-	    // set the validator to the null validator
-	    m_validator = new NullValidator();
-	else
-	    m_validator = validator;
+    if (validator == null)
+        // set the validator to the null validator
+        m_validator = new NullValidator();
+    else
+        m_validator = validator;
 
-	m_validator.setShell(m_shell);
+    m_validator.setShell(m_shell);
     }
 
   /**
@@ -78,7 +78,7 @@ public class ValidatingProcessorImpl extends ProcessorImpl implements Validating
     * @returns The shell that owns this parser.
     */
     public IRValidator getValidator() {
-	return m_validator;
+    return m_validator;
     }
 
 }

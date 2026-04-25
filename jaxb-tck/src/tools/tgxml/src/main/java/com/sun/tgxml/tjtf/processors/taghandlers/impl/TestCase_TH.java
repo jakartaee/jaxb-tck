@@ -36,47 +36,47 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * TestCase_TH - The tag-handler for a TestCase tag. 
- * 
- * 
- * @version 	1.1, 10/24/02 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TestCase_TH 
- * ============================================================================================ 
- */ 
+/**
+ * TestCase_TH - The tag-handler for a TestCase tag.
+ *
+ *
+ * @version     1.1, 10/24/02
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TestCase_TH
+ * ============================================================================================
+ */
 public class TestCase_TH extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TestCase_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TestCase_TH constructor -
+    *       Initialize our internal fields.
+    */
     public TestCase_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -87,7 +87,7 @@ public class TestCase_TH extends TagHandlerImpl  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_testcase;
+    return TagsImpl.ctStr_tag_testcase;
     }
 
     //------------------------------------------------------------------------------
@@ -100,68 +100,68 @@ public class TestCase_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	try {
-	    String ID = "";
-	    String VarID = null;
+    super.startTag(attrs);
+    try {
+        String ID = "";
+        String VarID = null;
             boolean isDeleted = false;
-	    if (attrs != null) {
-		for (int i = 0; i < attrs.getLength (); i++) {
-		    // Get the ID
-		    if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_id)) {
-			ID = attrs.getValue (i);
-		    }
-		    // Get the VarID
-		    else if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_varid)) {
-			VarID = attrs.getValue (i);
-		    // Get the Deleted
-		    } else if ((attrs.getQName (i)).equals
+        if (attrs != null) {
+        for (int i = 0; i < attrs.getLength (); i++) {
+            // Get the ID
+            if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_id)) {
+            ID = attrs.getValue (i);
+            }
+            // Get the VarID
+            else if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_varid)) {
+            VarID = attrs.getValue (i);
+            // Get the Deleted
+            } else if ((attrs.getQName (i)).equals
                            (TagsImpl.ctStr_attr_deleted)) {
-			String deletedValue = attrs.getValue (i);
+            String deletedValue = attrs.getValue (i);
                         isDeleted = TagsImpl.isTrueOrFalse(deletedValue);
-		    }
-		    // unknown attribute
-		    else 
-			// Unknown spec attribute
-			m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownTDAttr", attrs.getQName (i)));
-		}
+            }
+            // unknown attribute
+            else
+            // Unknown spec attribute
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownTDAttr", attrs.getQName (i)));
+        }
 
-		Stack testItemStack = getParserHandler().getStack();
-		Object tgo = testItemStack.peek();
-		if (! (tgo instanceof TestGroup))
-		    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testgroup));
+        Stack testItemStack = getParserHandler().getStack();
+        Object tgo = testItemStack.peek();
+        if (! (tgo instanceof TestGroup))
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testgroup));
 
-		TestGroup tg = (TestGroup) tgo;
-		TestCase tc  = TestFactory.createTestCase();
-		tc.setID(ID);
-		tc.setVarID(VarID);
-		tc.setDeleted(isDeleted);
-		tc.setTestGroup(tg);
+        TestGroup tg = (TestGroup) tgo;
+        TestCase tc  = TestFactory.createTestCase();
+        tc.setID(ID);
+        tc.setVarID(VarID);
+        tc.setDeleted(isDeleted);
+        tc.setTestGroup(tg);
 
-		ArrayList cases = tg.getTestCases();
-		if (cases == null) {
-		    cases = new ArrayList();
-		    tg.setTestCases(cases);
-		}
-		
-		TestCase other = tg.getTestCase(ID, VarID);
-		if (other != null)
-		    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.tg.tc.dupvariant", ID, VarID));
-		
-		cases.add(tc);
+        ArrayList cases = tg.getTestCases();
+        if (cases == null) {
+            cases = new ArrayList();
+            tg.setTestCases(cases);
+        }
 
-		// push the TestCase to the top of the stack
-		testItemStack.push(tc);
+        TestCase other = tg.getTestCase(ID, VarID);
+        if (other != null)
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.tg.tc.dupvariant", ID, VarID));
 
-	    }
-	} catch (EmptyStackException e) {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.push"));
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+        cases.add(tc);
+
+        // push the TestCase to the top of the stack
+        testItemStack.push(tc);
+
+        }
+    } catch (EmptyStackException e) {
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.push"));
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
+    }
 
     }
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -169,74 +169,74 @@ public class TestCase_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void endTag() throws SAXException {
-	super.endTag();
-	try {
-	    Stack testItemStack = m_ParserHandler.getStack();
+    super.endTag();
+    try {
+        Stack testItemStack = m_ParserHandler.getStack();
 
-	    Object testitem = testItemStack.pop();
+        Object testitem = testItemStack.pop();
 
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if (! (testitem instanceof TestCase))
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack"));
-	} catch (EmptyStackException e) {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
-	}
+        if (! (testitem instanceof TestCase))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack"));
+    } catch (EmptyStackException e) {
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
+    }
 
     }
-     
- 
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-          
+
+
   /**
     *   emit a tags attributes.
     *  <p>
     */
     public void emitAttributes(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof TestCase))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"TestCase", tdObject.getClass().getName()));
+    if (! (tdObject instanceof TestCase))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "TestCase", tdObject.getClass().getName()));
 
-	TestCase tc = (TestCase) tdObject;
-	m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_id, tc.getID());
-	String varID = tc.getVarID();
-	if (varID != null && ! varID.equals(""))
-	    m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_varid, varID);
-        if (tc.isDeleted()) 
-	    m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_deleted, "true");
+    TestCase tc = (TestCase) tdObject;
+    m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_id, tc.getID());
+    String varID = tc.getVarID();
+    if (varID != null && ! varID.equals(""))
+        m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_varid, varID);
+        if (tc.isDeleted())
+        m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_deleted, "true");
     }
 
-          
+
   /**
     *   emit a tags components.
     *  <p>
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof TestCase))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"TestCase", tdObject.getClass().getName()));
+    if (! (tdObject instanceof TestCase))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "TestCase", tdObject.getClass().getName()));
 
-	TestCase tc = (TestCase) tdObject;
+    TestCase tc = (TestCase) tdObject;
 
-	TestCaseDocumentation tcd = tc.getTCDocumentation();
-	if (tcd != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_testcasedocumentation, tcd);
+    TestCaseDocumentation tcd = tc.getTCDocumentation();
+    if (tcd != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_testcasedocumentation, tcd);
 
-	TestCaseAttributes tca = tc.getTCAttributes();
-	if (tca != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_testcaseattributes, tca);
+    TestCaseAttributes tca = tc.getTCAttributes();
+    if (tca != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_testcaseattributes, tca);
 
-	CodeSet cs = tc.getCodeSet();
-	if (cs != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_codeset, cs);
+    CodeSet cs = tc.getCodeSet();
+    if (cs != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_codeset, cs);
 
-	TestCode tcode = tc.getTestCode();
-	if (tcode != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_testcode, tcode);
+    TestCode tcode = tc.getTestCode();
+    if (tcode != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_testcode, tcode);
 
     }
 

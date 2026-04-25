@@ -25,43 +25,43 @@ import com.sun.tgxml.tjtf.api.XMLObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 
-/** 
- * ParserHandlerSupport - The contract of methods that a (XML) ParserHandler must provide 
- * in order to support ParserTagHandlers. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ParserHandlerSupport 
- * ============================================================================================ 
- */ 
+/**
+ * ParserHandlerSupport - The contract of methods that a (XML) ParserHandler must provide
+ * in order to support ParserTagHandlers.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ParserHandlerSupport
+ * ============================================================================================
+ */
 public interface ParserHandlerSupport   {
 
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *  Get the (XML TD) ParserHandler's stack. 
+   /**
+    *  Get the (XML TD) ParserHandler's stack.
     * <p>
     * @return a Stack of the items in the contect of the currently parsed item.
-    */ 
+    */
     public Stack getStack();
 
   /**
@@ -131,6 +131,6 @@ public interface ParserHandlerSupport   {
     * @return A string of text.
     */
     public String getTextStream ();
-          
+
 
 }

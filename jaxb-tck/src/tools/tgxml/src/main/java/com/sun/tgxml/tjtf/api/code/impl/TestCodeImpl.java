@@ -23,13 +23,13 @@ import com.sun.tgxml.tjtf.api.code.TestCode;
 // </importgen>
 
 /**
- * TestCode - 
+ * TestCode -
  *
  * <b>TestCode</b> is the interface to a for the code that actually does the test.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,20 +48,20 @@ public  class TestCodeImpl extends InlineCodeImpl implements TestCode  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public TestCodeImpl() {
-	super();
+    super();
     }
 
     public TestCodeImpl(String langtype, String source) {
        super(langtype, source);
     }
 
-   
+
 
 }
 

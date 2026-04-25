@@ -24,73 +24,73 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.tools.options.FlagOption;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 
-/** 
- * NullValidator - The basic engine for a validator. 
+/**
+ * NullValidator - The basic engine for a validator.
  * <p>
  * A null validator accepts anything thrown at it (except null).
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    NullValidator 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    NullValidator
+ * ============================================================================================
+ */
 public class NullValidator extends ProcessorImpl implements IRValidator {
 
 
- 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
     /** The debugging flag for this validator. */
     protected boolean m_debug;
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
-   /** 
-    *   NullValidator constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
+   /**
+    *   NullValidator constructor -
+    *       Initialize our internal fields.
+    */
     public NullValidator() {
-	init();
+    init();
     }
 
 
-   /** 
-    *   init internal fields. 
-    */ 
+   /**
+    *   init internal fields.
+    */
     private void init() {
-	m_debug = false;
+    m_debug = false;
     }
 
 
-   /** 
-    *   Setter for the debug flag. 
-    */ 
+   /**
+    *   Setter for the debug flag.
+    */
     public void setDebug(boolean debug) {
-	m_debug = debug;
+    m_debug = debug;
     }
 
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    IRValidator Interface implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    IRValidator Interface implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
 
   /**
     *  Primary Validation contract.
@@ -107,23 +107,23 @@ public class NullValidator extends ProcessorImpl implements IRValidator {
     * @see #accepts
     */
     public final void validate (IRObj objTree) throws ValidatorException {
-	if (objTree == null)
-	    throw new ValidatorException(LibResHandler.getResStr("nullvalidator.error.irobj.null"));
+    if (objTree == null)
+        throw new ValidatorException(LibResHandler.getResStr("nullvalidator.error.irobj.null"));
 
-	if (! accepts(objTree))
-	    throw new ValidatorException(LibResHandler.getResStr("nullvalidator.error.type.notaccept", objTree.getClass().getName()));
+    if (! accepts(objTree))
+        throw new ValidatorException(LibResHandler.getResStr("nullvalidator.error.type.notaccept", objTree.getClass().getName()));
 
-	_validate(objTree);
+    _validate(objTree);
     }
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    FlagOption debugOption = new FlagOption("-Vdiag", 
+    FlagOption debugOption = new FlagOption("-Vdiag",
             "  -Vdiag   debug mode");
 
     /**
@@ -138,22 +138,22 @@ public class NullValidator extends ProcessorImpl implements IRValidator {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      */
     public void applyOptionsValues() throws ParseArgumentException {
         if (debugOption.isSet()) {
-	    setDebug(true); 
+        setDebug(true);
         }
 
         super.applyOptionsValues();
     }
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    NullValidator implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    NullValidator implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
 
 
   /**
@@ -173,9 +173,9 @@ public class NullValidator extends ProcessorImpl implements IRValidator {
     * @param objTree The IR object tree to be validated.
     * @return false if the validator doesn't validate the given IRObj type.
     */
-   
+
     public boolean accepts(IRObj objTree) {
-	return true;
+    return true;
     }
 
 
@@ -189,8 +189,8 @@ public class NullValidator extends ProcessorImpl implements IRValidator {
     * <p>
     * @param objTree The IR object tree to be validated.
     * @exception ValidatorException if there is a violation.
-    */   
+    */
     public void _validate (IRObj objTree) throws ValidatorException {
     }
-   
+
 }

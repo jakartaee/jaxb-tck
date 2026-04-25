@@ -23,7 +23,7 @@ import java.util.ArrayList;
 // </importgen>
 
 /**
- * TestGroupDocumentation - 
+ * TestGroupDocumentation -
  *
  * <b>TestGroupDocumentation</b> is the typed-documentation interface for describing the documentation
  * associated with a TestGroup.
@@ -38,7 +38,7 @@ import java.util.ArrayList;
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -57,7 +57,7 @@ public  interface TestGroupDocumentation extends Documentation  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -77,7 +77,7 @@ public  interface TestGroupDocumentation extends Documentation  {
     */
     public ArrayList getAssertions();
 
-     
+
  /**
     *   Set the Assertions associated with this documentation.
     *  <p>
@@ -102,7 +102,7 @@ public  interface TestGroupDocumentation extends Documentation  {
     * @see #setTestedPackage
     */
     public String getTestedPackage();
-     
+
    /**
     *   Set the TestedPackage associated with this documentation.
     *  <p>
@@ -125,7 +125,7 @@ public  interface TestGroupDocumentation extends Documentation  {
     * @see #setTestedClass
     */
     public String getTestedClass();
-     
+
    /**
     *   Set the TestedClass associated with this documentation.
     *  <p>
@@ -148,7 +148,7 @@ public  interface TestGroupDocumentation extends Documentation  {
     * @see #setMemberSig
     */
     public String getMemberSig();
-     
+
    /**
     *   Set the member signature associated with this documentation.
     *  <p>
@@ -171,7 +171,7 @@ public  interface TestGroupDocumentation extends Documentation  {
     */
     public ArrayList getDocElems();
 
-     
+
  /**
     *   Set the (Repository Specific) description-entities associated with this documentation.
     *  <p>

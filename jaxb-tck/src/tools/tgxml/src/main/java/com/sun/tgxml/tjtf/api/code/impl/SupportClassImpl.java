@@ -27,20 +27,20 @@ import com.sun.tgxml.tjtf.tools.BuildProperties;
 // </importgen>
 
 /**
- * SupportClass - 
+ * SupportClass -
  *
  * <b>SupportClass</b> is the marker interface to a class structure that describes the root of a test description.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    InlineSupportClassImpl 
+ *    InlineSupportClassImpl
  * ============================================================================================
  */
 
@@ -53,7 +53,7 @@ public  class SupportClassImpl implements SupportClass {
      */
     private static final String TARGET_SPEC_LEGACY_MODE = "legacymode.support_class.targetspec";
     private static final String TRUE = "true";
-    
+
     /*
      * ============================================================================================
      *    Fields
@@ -69,25 +69,25 @@ public  class SupportClassImpl implements SupportClass {
      *    Methods
      * ============================================================================================
      */
-   
-   
+
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public SupportClassImpl() {
-	init();
+    init();
     }
 
     public SupportClassImpl(String classID, ArrayList targetSpecs) {
-	m_classID = classID;
-	setTargetSpecs(targetSpecs);
+    m_classID = classID;
+    setTargetSpecs(targetSpecs);
     }
 
 
     private void init() {
-	m_classID = null;
-	m_targetSpecs = new ArrayList();
+    m_classID = null;
+    m_targetSpecs = new ArrayList();
     }
 
 
@@ -103,9 +103,9 @@ public  class SupportClassImpl implements SupportClass {
     * @see #setClassID
     */
     public Code getCodeDelegate() {
-	return m_codeDelegate;
+    return m_codeDelegate;
     }
-     
+
   /**
     *   Set the ClassID string.
     *  <p>
@@ -113,7 +113,7 @@ public  class SupportClassImpl implements SupportClass {
     * @see #getClassID
     */
     public void setCodeDelegate(Code del) {
-	m_codeDelegate = del;
+    m_codeDelegate = del;
     }
 
 
@@ -124,9 +124,9 @@ public  class SupportClassImpl implements SupportClass {
     * @see #setSourceLang
     */
     public String getSourceLang() {
-	return m_codeDelegate.getSourceLang();
+    return m_codeDelegate.getSourceLang();
     }
-     
+
   /**
     *   (delegate impl) Set the source-language of this code  (default is "java").
     *  <p>
@@ -134,9 +134,9 @@ public  class SupportClassImpl implements SupportClass {
     * @see #getSourceLang
     */
     public void setSourceLang(String sourcelang) {
-	m_codeDelegate.setSourceLang(sourcelang);
+    m_codeDelegate.setSourceLang(sourcelang);
     }
-   
+
 
   /**
     *   Get the ClassID string.
@@ -145,9 +145,9 @@ public  class SupportClassImpl implements SupportClass {
     * @see #setClassID
     */
     public String getClassID() {
-	return m_classID;
+    return m_classID;
     }
-     
+
   /**
     *   Set the ClassID string.
     *  <p>
@@ -155,7 +155,7 @@ public  class SupportClassImpl implements SupportClass {
     * @see #getClassID
     */
     public void setClassID(String classID) {
-	m_classID = classID;
+    m_classID = classID;
     }
 
 
@@ -172,7 +172,7 @@ public  class SupportClassImpl implements SupportClass {
     */
     public ArrayList getTargetSpecs() {
         checkTargetSpecs(m_targetSpecs);
-	return m_targetSpecs;
+    return m_targetSpecs;
     }
 
     /**
@@ -189,7 +189,7 @@ public  class SupportClassImpl implements SupportClass {
             }
         }
     }
-    
+
    /**
     *   Set the TargetSpecs associated with this support-class.
     *  <p>
@@ -201,13 +201,13 @@ public  class SupportClassImpl implements SupportClass {
     */
     public void setTargetSpecs(ArrayList targetspecs) {
         checkTargetSpecs(targetspecs);
-	if (targetspecs == null)
-	    targetspecs.clear();
-	else
-	    m_targetSpecs = targetspecs;
+    if (targetspecs == null)
+        targetspecs.clear();
+    else
+        m_targetSpecs = targetspecs;
     }
 
-   
+
 
 }
 

@@ -38,7 +38,7 @@ import javasoft.sqe.jck.lib.SchemaLoader;
 public class JAXBTestBase extends MultiTestExt {
 
     /*
-     * Null indicates that during testing a schemas must be ignored since them 
+     * Null indicates that during testing a schemas must be ignored since them
      * could not be loaded. "Null" schema turns off a schema validation.
      */
     protected Schema schema;
@@ -46,13 +46,13 @@ public class JAXBTestBase extends MultiTestExt {
     protected ArrayList<String> schemaNameList = new ArrayList<String>();
 
     protected Source[]          schemaSources;
-    
+
     /**
      * Test URL which is used as a root directory to find xml documents. Use
      * option -TestURL.
      */
     private String testURL;
-    
+
     /**
      * Get next argument from array of args.
      *
@@ -93,7 +93,7 @@ public class JAXBTestBase extends MultiTestExt {
                 || args[index].equals("-contextPath")) {
             setPackageName(getNextArgument(args, index));
         } else if (args[index].equals("-TestURL")) {
-    		this.testURL = getNextArgument(args, index);
+            this.testURL = getNextArgument(args, index);
         } else if (args[index].equals("-classpath")
                 || args[index].equals("-cp")) {
             setClassPath(getNextArgument(args, index));
@@ -107,10 +107,10 @@ public class JAXBTestBase extends MultiTestExt {
         } else if (args[index].equals("-out") || args[index].equals("-o")) {
             String dest = getNextArgument(args, index);
             if (dest.equals(":ref")) {
-            	setOut(ref);
+                setOut(ref);
             } else {
                 try {
-                	setOut(new FileWriter(dest));
+                    setOut(new FileWriter(dest));
                 } catch (IOException ioe) {
                     throw new MultiTest.SetupException("cannot open file "
                             + dest);
@@ -137,7 +137,7 @@ public class JAXBTestBase extends MultiTestExt {
         super.init();
         schemaSources    = getSchemaSources(schemaNameList);
         schema           = SchemaLoader.loadSchema(schemaSources);
-    }  
+    }
 
     /**
      * Returns document URL for a given document file name and testURL set in
@@ -180,7 +180,7 @@ public class JAXBTestBase extends MultiTestExt {
         }
         return srcList.toArray(new Source[srcList.size()]);
     }
-    
+
     /**
      * Returns string path for a given docURL represented as URL.
      *

@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,7 +28,7 @@ import java.lang.ref.Reference;
  * @author Peter Firmstone
  */
 public interface Referrer<T> {
-    
+
     /**
      * @see Reference#get()
      */
@@ -38,16 +38,16 @@ public interface Referrer<T> {
      */
     public void clear();
     /**
-     * @see Reference#isEnqueued() 
+     * @see Reference#isEnqueued()
      * @return true if enqueued.
      */
     public boolean isEnqueued();
     /**
-     * @see Reference#enqueue() 
+     * @see Reference#enqueue()
      * @return true if successfully enqueued.
      */
     public boolean enqueue();
-    
+
     /**
      * <p>
      * Equals is calculated on IDENTITY or EQUALITY.
@@ -77,7 +77,7 @@ public interface Referrer<T> {
      * @return true if equal
      */
     public boolean equals(Object o);
-    
+
     /**
      * <p>
      * Standard hashCode calculation for IDENTITY based references, where k

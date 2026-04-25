@@ -22,15 +22,15 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * Shell - 
+ * Shell -
  *
  * <b>Shell</b> is a generic contract for services that a Tool BaseClass provides to
  * it's component processors.
  * <p>
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -50,14 +50,14 @@ public  interface Shell  {
      * ============================================================================================
      */
 
- 
-   /* 
+
+   /*
     * -------------------------------------------------------------------
     *    I/O Functions - provide conduit for streaming messages.
     * -------------------------------------------------------------------
-    */   
+    */
 
- 
+
   /**
     * output a message.
     * @param msg the message to output.
@@ -71,7 +71,7 @@ public  interface Shell  {
     */
     public void reportErrorMsg(String msg);
 
- 
+
   /**
     * log a message.
     * @param msg the message to output.

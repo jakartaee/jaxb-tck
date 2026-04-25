@@ -92,7 +92,7 @@ public class MultiTestExt extends MultiTest {
             super.printStackTrace(writer);
         }
     }
-	
+
 
     /**
      * Class path for the contextPath packages. Default value is "".
@@ -134,29 +134,29 @@ public class MultiTestExt extends MultiTest {
      */
     private String packageName = "";
 
- 
-	/**
-	 * @param classPath the classPath to set
-	 */
-	public void setClassPath(String classPath) {
-		this.classPath = classPath;
-	}
 
-	/**
-	 * @param packageName the packageName to set
-	 */
-	public void setPackageName(String packageName) {
-		this.packageName = packageName;
-	}
+    /**
+     * @param classPath the classPath to set
+     */
+    public void setClassPath(String classPath) {
+        this.classPath = classPath;
+    }
 
-	/**
+    /**
+     * @param packageName the packageName to set
+     */
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
+
+    /**
      * get packageName.
      */
     protected String getPackageName() {
         return packageName;
     }
 
-    
+
     /**
      * Writer for marshaler to write document, nullWriter if not set.
      */
@@ -181,9 +181,9 @@ public class MultiTestExt extends MultiTest {
     public Writer getOut() {
         return outWriter;
     }
-    
+
     /**
-     * set writer to marshal document to. 
+     * set writer to marshal document to.
      */
     public void setOut(Writer  out) {
         this.outWriter = out;
@@ -195,17 +195,17 @@ public class MultiTestExt extends MultiTest {
      * @see classPath, packageName
      */
     public JAXBContext getJAXBContext() throws JAXBException {
-		int counter = 40;
-		while (true) {
-			try {
-				return JAXBContext.newInstance(getPackageName(), getClassPathLoader());
-			} catch (ClassFormatError ex) {
-				if (--counter == 0)
-					throw new JAXBException(ex.getMessage(), ex.getCause());
-			}
-		}
-	}
-    
+        int counter = 40;
+        while (true) {
+            try {
+                return JAXBContext.newInstance(getPackageName(), getClassPathLoader());
+            } catch (ClassFormatError ex) {
+                if (--counter == 0)
+                    throw new JAXBException(ex.getMessage(), ex.getCause());
+            }
+        }
+    }
+
     /**
      * Initializes test arguments: creates classPathLoader. Initializes test
      * arguments: document url. A setup method called after argument decoding is
@@ -218,7 +218,7 @@ public class MultiTestExt extends MultiTest {
      *             test should not execute for some reason.
      */
     protected void init() throws MultiTest.SetupException {
-    	super.init();
+        super.init();
         if ( getClassPath() != null) {
             StringTokenizer tokenizer = new StringTokenizer(getClassPath(), File.pathSeparator);
             int tokNum = tokenizer.countTokens();
@@ -231,10 +231,10 @@ public class MultiTestExt extends MultiTest {
                 }
             }
             // Context ClassLoader was set in ExecTestSameJVM run()
-    		this.classPathLoader = URLClassLoader.newInstance( paths, Thread.currentThread().getContextClassLoader());
+            this.classPathLoader = URLClassLoader.newInstance( paths, Thread.currentThread().getContextClassLoader());
         }
-    }  
-    
+    }
+
     /**
      * Overrides base class method. If test throws <code>TestFailException</code> exception method
      * translates this exception into <code>Status</code> value.
@@ -353,8 +353,8 @@ public class MultiTestExt extends MultiTest {
         public int parseValue(String[] argv);
 
         public static class InvalidValue extends RuntimeException {
-			private static final long serialVersionUID = 1L;
-			public InvalidValue(String msg) {
+            private static final long serialVersionUID = 1L;
+            public InvalidValue(String msg) {
                 super(msg);
             }
         }

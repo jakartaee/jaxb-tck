@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,7 +23,7 @@ import java.lang.ref.ReferenceQueue;
 
 /**
  * Implemented as per Ref.STRONG
- * 
+ *
  * @see Ref#STRONG
  * @author Peter Firmstone
  */
@@ -31,7 +31,7 @@ class StrongReference<T> implements Referrer<T>, Serializable{
     private static final long serialVersionUID = 1L;
     private T referent;
     private final int hash;
-    
+
     /**
      * Creates a new strong reference that refers to the given object.  The new
      * reference is not registered with any queue.
@@ -54,7 +54,7 @@ class StrongReference<T> implements Referrer<T>, Serializable{
      * @param q queue is never used.
      */
     StrongReference(T referent, ReferenceQueue<? super T> q) {
-	this(referent);
+    this(referent);
     }
 
     @Override
@@ -69,7 +69,7 @@ class StrongReference<T> implements Referrer<T>, Serializable{
         }
         return hash;
     }
-    
+
     public boolean equals(Object o){
         if (this == o)  return true; // Same reference.
         if (!(o instanceof Referrer))  return false;
@@ -78,7 +78,7 @@ class StrongReference<T> implements Referrer<T>, Serializable{
         if ( k1 != null && k1.equals(k2)) return true;
         return ( k1 == null && k2 == null && hashCode() == o.hashCode());
     }
-    
+
     @Override
     public String toString(){
         Object s = get();
@@ -88,14 +88,14 @@ class StrongReference<T> implements Referrer<T>, Serializable{
 
     @Override
     public void clear() {
-	this.referent = null;
+    this.referent = null;
     }
-    
+
     final Object writeReplace() throws ObjectStreamException {
         return ReferenceSerializationFactory.create(get());
     }
-    
-    private void readObject(ObjectInputStream stream) 
+
+    private void readObject(ObjectInputStream stream)
             throws InvalidObjectException{
         throw new InvalidObjectException("Builder required");
     }

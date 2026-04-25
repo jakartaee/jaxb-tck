@@ -34,22 +34,22 @@ import java.util.Properties;
  * Build properties may be specified in two ways:<br>
  *   (1) in a property file <br>
  *   (2) using a command line, through JVM system property (-DXXX=YYY) <br>
- * The (2) supersedes the (1). 
+ * The (2) supersedes the (1).
  *
  * The property file has a format specified in java.util.Properties class <br>
- * 
- * The name of the properties file is specified via system property with 
+ *
+ * The name of the properties file is specified via system property with
  * key "tck.build.propfile" (stored in the constant
  * <code>BuildProperties.TCK_PROPERTIES_FILE_NAME)</code>.
- * 
+ *
  * Note: to make properties specified in file readable method loadProperties()
- * should be invoked before. This method may called only once. The next 
+ * should be invoked before. This method may called only once. The next
  * trying to invoke it will be ignored.
- * 
+ *
  * If no file is specified or loadProperties() method has not been invoked
  * then all properties are treated as not specified except
  * properties explicitly specified  via system properties<br>
- * 
+ *
  */
 
 
@@ -66,7 +66,7 @@ public final class BuildProperties {
      * Loads build properties from the configuration file specified by
      * <code>tck.build.propfile</code> system property.<BR>
      *
-     * If no file is specified all properties are treated as not 
+     * If no file is specified all properties are treated as not
      * specified except properties explicitly specified
      * via system properties<br>
      *
@@ -84,7 +84,7 @@ public final class BuildProperties {
     /**
      * Loads build properties from the configuration file<BR>
      *
-     * If no file is specified all properties are treated as not 
+     * If no file is specified all properties are treated as not
      * specified except properties explicitly specified
      * via system properties<br>
      *
@@ -94,20 +94,20 @@ public final class BuildProperties {
      * @param   propertyFileName the name of build properties file
      * @exception IOException if an I/O exception occurs
      */
-    static void loadProperties(String propertyFileName) 
+    static void loadProperties(String propertyFileName)
             throws IOException {
         if (props != null) {
             // ignore: properties are already loaded
             return;
         }
 
-        props = new Properties();        
+        props = new Properties();
         if (propertyFileName != null && propertyFileName.trim().length() > 0) {
             FileInputStream is = new FileInputStream(propertyFileName);
             props.load(is);
         }
     }
- 
+
     /**
      * Returns an enumeration of all the build properties keys
      */
@@ -116,7 +116,7 @@ public final class BuildProperties {
     }
 
     /**
-     * Returns an enumeration of all the build properties keys starting 
+     * Returns an enumeration of all the build properties keys starting
      * with specified prefix
      */
     public static Enumeration propertyNames(String prefix) {
@@ -136,7 +136,7 @@ public final class BuildProperties {
                     set.add(key);
             }
         }
-       
+
         // converting Collection -> Enumeration
         return Collections.enumeration(set);
 
@@ -156,7 +156,7 @@ public final class BuildProperties {
 
     /**
      * Searches for the property with the specified key.
-     * The method returns the default value argument if the property 
+     * The method returns the default value argument if the property
      * is not found.
      *
      * @param   key            the hashtable key.
@@ -187,7 +187,7 @@ public final class BuildProperties {
     /**
      * Searches for the property prefix + "." + key.
      * If not found searches for the property with the specified key.
-     * The method returns the default value argument if the property 
+     * The method returns the default value argument if the property
      * is not found.
      *
      * @param   prefix         the prefix of property.
@@ -196,19 +196,19 @@ public final class BuildProperties {
      *
      * @return  the value in this property list with the specified key value.
      */
-    public static String getPrefixString(String prefix, String key, 
+    public static String getPrefixString(String prefix, String key,
             String defaultValue) {
 
-        if  (prefix != null && prefix.trim().length() > 0) 
+        if  (prefix != null && prefix.trim().length() > 0)
             prefix = prefix.trim();
         else
             prefix = null;
 
 
         String val = null;
-        if (prefix != null) 
-            val = get(prefix + "." + key);            
-        
+        if (prefix != null)
+            val = get(prefix + "." + key);
+
         if (val != null)
             return val;
 
@@ -341,7 +341,7 @@ public final class BuildProperties {
      * @return  the value in this property list with the specified key value.
      */
 
-    public static float getPrefixFloat(String prefix, String key, 
+    public static float getPrefixFloat(String prefix, String key,
             float defaultValue)
     {
         String val = getPrefixString(prefix, key, null);

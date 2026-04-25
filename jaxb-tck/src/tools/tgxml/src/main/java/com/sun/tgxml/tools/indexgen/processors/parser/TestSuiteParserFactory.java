@@ -28,9 +28,9 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tools.indexgen.processors.taghandlers.TestSuiteTHFactory;
 
 /**
- * ParserFactory - 
+ * ParserFactory -
  *
- * <b>ParserFactory</b> is a static factory class for creating Parser implementations. 
+ * <b>ParserFactory</b> is a static factory class for creating Parser implementations.
  *<p>
  *
  */
@@ -45,20 +45,20 @@ import com.sun.tgxml.tools.indexgen.processors.taghandlers.TestSuiteTHFactory;
 
 public  class TestSuiteParserFactory {
 
-   
+
     /*
      * ============================================================================================
      *    Member Fields
      * ============================================================================================
      */
-    
-    
+
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Factories
@@ -74,11 +74,11 @@ public  class TestSuiteParserFactory {
     * @see com.sun.tgxml.tjtf.processors.parser.XMLParser
     */
     static public XMLParser  createTestSuiteParser() throws TestFileException, IOException  {
-			// get the default DTD and TagHandlers.
-			// reuse them in parser and emitter (to conserve objects).
-		TagHandlerTable table = TestSuiteTHFactory.getTestSuiteHandlerTable();
+            // get the default DTD and TagHandlers.
+            // reuse them in parser and emitter (to conserve objects).
+        TagHandlerTable table = TestSuiteTHFactory.getTestSuiteHandlerTable();
 
-		return  (XMLParser)ParserFactory.createXMLParser(LibResHandler.getDTDURL("testsuite"), table);
+        return  (XMLParser)ParserFactory.createXMLParser(LibResHandler.getDTDURL("testsuite"), table);
 
     }
 }

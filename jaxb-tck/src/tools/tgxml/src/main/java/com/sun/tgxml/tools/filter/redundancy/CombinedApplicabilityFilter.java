@@ -26,7 +26,7 @@ import com.sun.tgxml.tjtf.api.tests.TestItem;
 public class CombinedApplicabilityFilter implements ApplicabilityFilter {
     private ApplicabilityFilter[] filters = null;
     private String name;
-    
+
     /**
      * creates CombinedApplicabilityFilter with the given ApplicabilityFilter
      * list.
@@ -48,7 +48,7 @@ public class CombinedApplicabilityFilter implements ApplicabilityFilter {
     }
 
     /**
-     * returns true if at least one ApplicabilityFilter from union accepts 
+     * returns true if at least one ApplicabilityFilter from union accepts
      * TestItem.
      */
     public boolean accept(TestItem item) {

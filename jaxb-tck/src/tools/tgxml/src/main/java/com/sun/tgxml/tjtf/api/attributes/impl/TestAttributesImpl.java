@@ -28,14 +28,14 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * TestAttributes - 
+ * TestAttributes -
  *
  * <b>TestAttributes</b> is the basic interface for describing the attributes
  * associated with a TestCase.
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -62,33 +62,33 @@ public  class TestAttributesImpl  extends AttributesImpl implements TestAttribut
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
     public TestAttributesImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
 
     public TestAttributesImpl(ArrayList reqResources, ArrayList attrElems, ArrayList targetSpecs, String timeout) {
-	super(reqResources, attrElems, targetSpecs);
-	init();
+    super(reqResources, attrElems, targetSpecs);
+    init();
 
-	try {
-	    setTimeout(timeout);
-	} catch (TestFileException e) {
-	    init();
-	}
+    try {
+        setTimeout(timeout);
+    } catch (TestFileException e) {
+        init();
+    }
     }
 
 
 
     private void init() {
-	m_Timeout = null;
+    m_Timeout = null;
     }
 
     /*
@@ -96,7 +96,7 @@ public  class TestAttributesImpl  extends AttributesImpl implements TestAttribut
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -113,9 +113,9 @@ public  class TestAttributesImpl  extends AttributesImpl implements TestAttribut
     * @see #setTimeout
     */
     public String getTimeout(){
-	return m_Timeout;
+    return m_Timeout;
     }
-     
+
    /**
     *   Set the timeout associated with this test.
     *  <p>
@@ -126,13 +126,13 @@ public  class TestAttributesImpl  extends AttributesImpl implements TestAttribut
     * @see #getTimeout
     */
     public void setTimeout(int timeout) throws TestFileException {
-	if (timeout < 0)
-	    throw new TestFileException(LibResHandler.getResStr("api.attributes.testattributes.timeout.neg", 
-								    Integer.toString(timeout)));
+    if (timeout < 0)
+        throw new TestFileException(LibResHandler.getResStr("api.attributes.testattributes.timeout.neg",
+                                    Integer.toString(timeout)));
 
-	m_Timeout = Integer.toString(timeout);
+    m_Timeout = Integer.toString(timeout);
     }
-     
+
    /**
     *   Set the timeout associated with this test.
     *  <p>
@@ -143,18 +143,18 @@ public  class TestAttributesImpl  extends AttributesImpl implements TestAttribut
     * @see #getTimeout
     */
     public void setTimeout(String timeout) throws TestFileException {
-	String ptimeout = CommonImpl.getSingleToken(timeout);
-	if (ptimeout == null) {
-	    m_Timeout = null;
-	    return;
-	}
+    String ptimeout = CommonImpl.getSingleToken(timeout);
+    if (ptimeout == null) {
+        m_Timeout = null;
+        return;
+    }
 
-	try {
-	    int val = Integer.parseInt(ptimeout);
-	    setTimeout(val);
-	} catch (NumberFormatException e) {
-	    throw new TestFileException(LibResHandler.getResStr("api.attributes.testattributes.timeout.bad", ptimeout));
-	}
+    try {
+        int val = Integer.parseInt(ptimeout);
+        setTimeout(val);
+    } catch (NumberFormatException e) {
+        throw new TestFileException(LibResHandler.getResStr("api.attributes.testattributes.timeout.bad", ptimeout));
+    }
     }
 
 }

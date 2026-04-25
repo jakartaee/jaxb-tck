@@ -23,7 +23,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestItem;
 
-public class ExcludeEntry 
+public class ExcludeEntry
 {
    private String directory;
    private String testCaseID;
@@ -31,173 +31,173 @@ public class ExcludeEntry
    private String comments;
    protected KeywordSet keywords;
    protected KeywordSet bugIDs;
-   
+
    public ExcludeEntry(String line) throws ParseException {
-	   parse(line);
+       parse(line);
    }
-   
+
    protected void parse (String line) throws ParseException  {
-		  
-			
-		StringTokenizer st = new StringTokenizer(line);
-		// parse url part of entry
-		if(st.hasMoreTokens()) {
-			parseURL(st.nextToken());
-		} else {
-			throw new ParseException("EmptyString");
-		}
-		
-		// parse bugIDs
-		if(st.hasMoreTokens()) {
-			bugIDs = new KeywordSet(st.nextToken());
-		} else {
-			throw new ParseException("No bugIDs");
-		}
-		
-		// parse keywords
-		if(st.hasMoreTokens()) {
-			keywords = new KeywordSet(st.nextToken());
-		} else {
-			keywords = new KeywordSet();
-			//throw new ParseException("No keywords");
-		}
 
-		// find comments
-		if(st.hasMoreTokens()) {
-			comments = st.nextToken("\n");
-		} 
 
-		  
-	}
+        StringTokenizer st = new StringTokenizer(line);
+        // parse url part of entry
+        if(st.hasMoreTokens()) {
+            parseURL(st.nextToken());
+        } else {
+            throw new ParseException("EmptyString");
+        }
+
+        // parse bugIDs
+        if(st.hasMoreTokens()) {
+            bugIDs = new KeywordSet(st.nextToken());
+        } else {
+            throw new ParseException("No bugIDs");
+        }
+
+        // parse keywords
+        if(st.hasMoreTokens()) {
+            keywords = new KeywordSet(st.nextToken());
+        } else {
+            keywords = new KeywordSet();
+            //throw new ParseException("No keywords");
+        }
+
+        // find comments
+        if(st.hasMoreTokens()) {
+            comments = st.nextToken("\n");
+        }
+
+
+    }
    protected void parseURL (String line) throws ParseException  {
-		  
-		// find TestCaseID
-		int testcaseLeft = line.indexOf("[");
-		int testcaseRight = line.indexOf("]");
-		if(testcaseLeft !=-1) {
-			if(testcaseRight < testcaseLeft ) {
-				throw new ParseException("Incorrect testcase description");
-			}
-			
-			testCaseID = line.substring(testcaseLeft+1, testcaseRight);
-			line = line.substring(0, testcaseLeft);
-		}
-			
 
-		int testgroupLeft = line.lastIndexOf("/");
-		if(testgroupLeft ==-1) {
-			throw new ParseException("No TestGroup defined");
-		}
-		testGroupID = line.substring(testgroupLeft+1, line.length());
-		directory = line.substring(0, testgroupLeft);
-	}
+        // find TestCaseID
+        int testcaseLeft = line.indexOf("[");
+        int testcaseRight = line.indexOf("]");
+        if(testcaseLeft !=-1) {
+            if(testcaseRight < testcaseLeft ) {
+                throw new ParseException("Incorrect testcase description");
+            }
+
+            testCaseID = line.substring(testcaseLeft+1, testcaseRight);
+            line = line.substring(0, testcaseLeft);
+        }
 
 
-	public void mergeWith(ExcludeEntry e) {
-		getBugIDs().addAll(e.getBugIDs());
-		getKeywords().addAll(e.getKeywords());
-		comments += " " + e.getComments();
-	}
-	
+        int testgroupLeft = line.lastIndexOf("/");
+        if(testgroupLeft ==-1) {
+            throw new ParseException("No TestGroup defined");
+        }
+        testGroupID = line.substring(testgroupLeft+1, line.length());
+        directory = line.substring(0, testgroupLeft);
+    }
+
+
+    public void mergeWith(ExcludeEntry e) {
+        getBugIDs().addAll(e.getBugIDs());
+        getKeywords().addAll(e.getKeywords());
+        comments += " " + e.getComments();
+    }
+
    /**
     *
     */
    public String getDirectory() {
-	   return directory;
+       return directory;
    }
-   
+
    /**
    */
    public String getTestGroupID() {
-	   return testGroupID;
+       return testGroupID;
    }
-   
+
    /**
    */
    public String getTestCaseID(){
-	   return testCaseID;
+       return testCaseID;
    }
-   
+
    /**
    */
    public KeywordSet getBugIDs(){
-	   return bugIDs;
+       return bugIDs;
    }
-   
+
    /**
    */
    public KeywordSet getKeywords(){
-	   return keywords;
+       return keywords;
    }
-   
+
    /**
    */
    public String getComments(){
-	   return comments;
+       return comments;
    }
 
 
-	public String toString() {
-		String str = directory + "/" + testGroupID;
-		if(testCaseID != null) {
-			str += "[" + testCaseID + "]";
-		}
-		
-		str += " " + bugIDs + " " + keywords;
-		if(comments != null) {
-			str +=" " + comments;
-		}
-		return str;		
-	}
-    /** 
+    public String toString() {
+        String str = directory + "/" + testGroupID;
+        if(testCaseID != null) {
+            str += "[" + testCaseID + "]";
+        }
+
+        str += " " + bugIDs + " " + keywords;
+        if(comments != null) {
+            str +=" " + comments;
+        }
+        return str;
+    }
+    /**
      * create key to use in exclude list hashtable search
-	 */
+     */
     String createKey() {
-		String key = directory + "/" + testGroupID;
-		if(testCaseID != null) {
-			key += "[" + testCaseID + "]";
-		}
-		return key;
-	}
+        String key = directory + "/" + testGroupID;
+        if(testCaseID != null) {
+            key += "[" + testCaseID + "]";
+        }
+        return key;
+    }
 
-	static String createKey(TestItem ti) throws IncorrectAttributesException{
-		String testCaseID = null;
-		TestItem testGroup = null;
-		String testGroupID = null;
-		String directory = null;
+    static String createKey(TestItem ti) throws IncorrectAttributesException{
+        String testCaseID = null;
+        TestItem testGroup = null;
+        String testGroupID = null;
+        String directory = null;
 
-		if(ti instanceof TestCase) {
-			try {
-				testCaseID = ti.getID();
-			} catch (TestFileException e) {
-				return null;
-			}
-				
-			testGroup = ((TestCase)ti).getTestGroup();
-			try {
-				directory = ExcludeListUtils.getSourceDir(ti);
-			} catch (IncorrectAttributesException e) {
-				directory = ExcludeListUtils.getSourceDir(testGroup);
-			}
-		} else {			
-			testGroup = ti;
-			directory = ExcludeListUtils.getSourceDir(ti);
-		}
-		
+        if(ti instanceof TestCase) {
+            try {
+                testCaseID = ti.getID();
+            } catch (TestFileException e) {
+                return null;
+            }
 
-		try {
-			testGroupID = testGroup.getID();
-		} catch (TestFileException e) {
-			return null;
-		}
+            testGroup = ((TestCase)ti).getTestGroup();
+            try {
+                directory = ExcludeListUtils.getSourceDir(ti);
+            } catch (IncorrectAttributesException e) {
+                directory = ExcludeListUtils.getSourceDir(testGroup);
+            }
+        } else {
+            testGroup = ti;
+            directory = ExcludeListUtils.getSourceDir(ti);
+        }
+
+
+        try {
+            testGroupID = testGroup.getID();
+        } catch (TestFileException e) {
+            return null;
+        }
 
         // create key the same way  that createKey() does
-		String key = directory + "/" + testGroupID;
-		if(testCaseID != null) {
-			key += "[" + testCaseID + "]";
-		}
-		return key;
-   	}
- 
+        String key = directory + "/" + testGroupID;
+        if(testCaseID != null) {
+            key += "[" + testCaseID + "]";
+        }
+        return key;
+    }
+
 
 }

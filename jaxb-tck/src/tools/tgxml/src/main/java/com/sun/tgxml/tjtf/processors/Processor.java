@@ -21,31 +21,31 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.tools.Shell;
 import com.sun.tgxml.tjtf.tools.options.OptionHandler;
 
-/** 
+/**
  * Processor describes the topmost interface for a processor that
- * a shell may own. 
+ * a shell may own.
  * <p>
  * All processors are OptionHandler, and they can participate
  * in command-line argument delegation.
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Processor 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Processor
+ * ============================================================================================
+ */
 public interface Processor extends OptionHandler {
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
   /**
     *  Get the registered shell from a processor.

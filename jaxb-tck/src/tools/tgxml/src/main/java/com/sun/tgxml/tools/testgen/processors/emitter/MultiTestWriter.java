@@ -87,8 +87,8 @@ import com.sun.tgxml.util.MiscUtils;
  */
 public class MultiTestWriter
     extends JmppLibAPI
-    implements Generator, CopyrightManager.Constants, 
-    	EmitterManager.HtmlConflictModeInsert
+    implements Generator, CopyrightManager.Constants,
+        EmitterManager.HtmlConflictModeInsert
 {
     protected IRContainer container;
 
@@ -130,7 +130,7 @@ public class MultiTestWriter
      * collector for tck specific TestDescription field entries
      */
     protected TDEntriesCollector tdCollector = createTDEntriesCollector();
-    
+
     /**
     * set of conflict fiels
     */
@@ -204,8 +204,8 @@ public class MultiTestWriter
             }
             clone.setExcludeListCollector(m_elCollector);
             clone.setProperties(m_properties);
-			clone.setConflictFiles(conflictFiles);
-			clone.setOriginal(this);
+            clone.setConflictFiles(conflictFiles);
+            clone.setOriginal(this);
             clone.makeOut(container);
         }
     }
@@ -320,11 +320,11 @@ public class MultiTestWriter
         else {
             return copyright;
         }
-    }   
+    }
 
     protected void processTestGroup(TestGroup testGroup, String outputDirName)
             throws TestFileException {
-	copyright = IR.getAttrElem("copyright", testGroup);    
+    copyright = IR.getAttrElem("copyright", testGroup);
         String fileName = outputDirName;
         fileName = fileName.trim().endsWith(File.separator)?fileName.trim():
                 fileName.trim() + File.separator;
@@ -563,15 +563,15 @@ public class MultiTestWriter
 
         Iterator keywordsIt = tgAttributes.getKeywords().iterator();
 
-		while(keywordsIt.hasNext()) {
-			String keyword =  keywordsIt.next().toString();
-			if (getDefaultKeywords().indexOf(keyword) == -1) {
-				if (this.keywords == null) {
-					this.keywords =  keyword;
-				} else {
-					this.keywords +=  " " + keyword;
-				}
-			}
+        while(keywordsIt.hasNext()) {
+            String keyword =  keywordsIt.next().toString();
+            if (getDefaultKeywords().indexOf(keyword) == -1) {
+                if (this.keywords == null) {
+                    this.keywords =  keyword;
+                } else {
+                    this.keywords +=  " " + keyword;
+                }
+            }
         }
 
         this.rmicClass = tgAttributes.getRMICClasses();
@@ -674,7 +674,7 @@ public class MultiTestWriter
             String imp = (String)it.next();
             if (imp != null && !imp.equals("")  && !result.contains(imp)
                && (imp.lastIndexOf('.') < 0 ||
-                  !imp.substring(0, imp.lastIndexOf('.')).equals(packageName))) 
+                  !imp.substring(0, imp.lastIndexOf('.')).equals(packageName)))
             {
                  result.add(imp);
             }
@@ -880,7 +880,7 @@ public class MultiTestWriter
                         rc = externalRC;
                         if (sname.endsWith(".rc")) {
                             sname = sname.substring(0,sname.lastIndexOf(".rc"));
-                        } 
+                        }
                     } else {
                         sname = ((InlineData)data).getTargetName();
                         rc = inlineRC;
@@ -1066,7 +1066,7 @@ public class MultiTestWriter
 
 
     protected void fireGenerationEvent(TestGroup ti, String fileName) throws TestFileException {
-    	try {
+        try {
             IR.setAttrElem(ti, ExcludeListUtils.TestDescriptionURLAttrElemName, fileName);
             m_elCollector.addEntry(ti);
         } catch (IncorrectAttributesException e) {
@@ -1164,7 +1164,7 @@ public class MultiTestWriter
             }
         } catch (CopyrightManager.Fault cf) {
             CopyrightManager.errorSkipCRN("(MultiTestWriter) " + cf.getMessage(), f);
-	    return super.getHtmlCopyrightBlock() + "\n";
+        return super.getHtmlCopyrightBlock() + "\n";
         }
     }
 
@@ -1345,52 +1345,52 @@ public class MultiTestWriter
             return (TestGroup)testGroupIterator.next();
         }
     }
-	
-	/**
-	*  Adds conflict files or clear file set if parameter is null
-	*/    
-    public void setConflictFiles(HashSet files) {
-    	if (files != null) 
-	    	conflictFiles.addAll(files);
-		else 
-			conflictFiles.clear();    
-    }
-	
+
     /**
-	*	Checks whenever file is in conflict set
-	*/	
-    public boolean isInConflictMode(String file) {
-		return conflictFiles.contains(file);
+    *  Adds conflict files or clear file set if parameter is null
+    */
+    public void setConflictFiles(HashSet files) {
+        if (files != null)
+            conflictFiles.addAll(files);
+        else
+            conflictFiles.clear();
     }
-	
-	/**
-	*	This method will help setting data after clonning object. It's
-	*	useful in derived classes. 
-	*/
-	protected void setOriginal(MultiTestWriter original) {
-	}
-		
-	/**
-	* Insert mark after top list
-	*/	
+
+    /**
+    *   Checks whenever file is in conflict set
+    */
+    public boolean isInConflictMode(String file) {
+        return conflictFiles.contains(file);
+    }
+
+    /**
+    *   This method will help setting data after clonning object. It's
+    *   useful in derived classes.
+    */
+    protected void setOriginal(MultiTestWriter original) {
+    }
+
+    /**
+    * Insert mark after top list
+    */
     protected void generateHTMLTopListOfMethods(Object[] methodsArray) {
         super.generateHTMLTopListOfMethods(methodsArray);
-        if (isInConflictMode(htmlindex)) 
-			printString(EmitterManager.HtmlConflictModeIntf.AFTER_TOPLIST);
+        if (isInConflictMode(htmlindex))
+            printString(EmitterManager.HtmlConflictModeIntf.AFTER_TOPLIST);
     }
-	
-	/**
-	*	Insert mark after html table
-	*/	
+
+    /**
+    *   Insert mark after html table
+    */
     protected  void generateHTML() {
-		super.generateHTML();
-        if (isInConflictMode(htmlindex)) 
-			printString(EmitterManager.HtmlConflictModeIntf.AFTER_TABLE);
+        super.generateHTML();
+        if (isInConflictMode(htmlindex))
+            printString(EmitterManager.HtmlConflictModeIntf.AFTER_TABLE);
     }
-	
-	/**
-	* Helper method. Prints string into internal html buffer.	
-	*/
+
+    /**
+    * Helper method. Prints string into internal html buffer.
+    */
     protected void printString(String str) {
         StringBuffer savedBuffer = outBuffer;
         outBuffer = htmlBuffer;
@@ -1583,5 +1583,5 @@ class LibAPIPropertiesImpl implements  LibAPIProperties {
     protected String getBaseClassShortName(String baseClassName) {
         return baseClassName.substring(baseClassName.lastIndexOf(".") + 1);
     }
-	
+
 }

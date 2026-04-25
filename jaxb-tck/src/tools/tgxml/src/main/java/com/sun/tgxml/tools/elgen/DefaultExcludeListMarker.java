@@ -24,7 +24,7 @@ import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 
 /** the default implementation of the ExludeListMarker
-  * 
+  *
   */
 public class DefaultExcludeListMarker implements ExcludeListMarker {
 
@@ -34,7 +34,7 @@ public class DefaultExcludeListMarker implements ExcludeListMarker {
     }
 
 
-    public DefaultExcludeListMarker (String excludeListFile) 
+    public DefaultExcludeListMarker (String excludeListFile)
              throws IOException {
         init(excludeListFile);
     }
@@ -42,7 +42,7 @@ public class DefaultExcludeListMarker implements ExcludeListMarker {
     public DefaultExcludeListMarker (ExcludeList excludeList) {
         setExcludeList(excludeList);
     }
-    
+
     /**
      * Does initialization. Parses specified exclude list source file name
      */
@@ -55,18 +55,18 @@ public class DefaultExcludeListMarker implements ExcludeListMarker {
     }
 
 
-    /**  
+    /**
       * The method mark the given testItem  as excluded
       * by adding "exclude" attrElement with keywords_list as contents.
       * keywords_list is provided for filterring purpose
       * It also add "excludeParams" attribute that will used by exclude list
-      * generator 
+      * generator
       *
       * The testItem should have attrElem named "sourceDirectory", that
       * contains a name of test directory relative to the repository test root
       * directory
-      * @throws IncorrectAttributesException if "sourceDirectory"  are not defined.      
-      * @return true, if the item was marked  
+      * @throws IncorrectAttributesException if "sourceDirectory"  are not defined.
+      * @return true, if the item was marked
           */
 
     public boolean markExcluded (TestCase testItem) throws IncorrectAttributesException {
@@ -80,18 +80,18 @@ public class DefaultExcludeListMarker implements ExcludeListMarker {
 
     }
 
-    /**  
+    /**
       * The method mark the given testItem  as excluded
       * by adding "exclude" attrElement with keywords_list as contents.
       * keywords_list is provided for filterring purpose
       * It also add "excludeParams" attribute that will used by exclude list
-      * generator 
+      * generator
       *
       * The testItem should have attrElem named "sourceDirectory", that
       * contains a name of test directory relative to the repository test root
       * directory
-      * @throws IncorrectAttributesException if "sourceDirectory"  are not defined.      
-      * @return true, if the item was marked  
+      * @throws IncorrectAttributesException if "sourceDirectory"  are not defined.
+      * @return true, if the item was marked
           */
 
     public boolean markExcluded (TestGroup testItem) throws IncorrectAttributesException {
@@ -102,7 +102,7 @@ public class DefaultExcludeListMarker implements ExcludeListMarker {
             ExcludeListUtils.addExcludedElem(testItem, entry);
             return true;
         }
-    
-        
+
+
     }
-} 
+}

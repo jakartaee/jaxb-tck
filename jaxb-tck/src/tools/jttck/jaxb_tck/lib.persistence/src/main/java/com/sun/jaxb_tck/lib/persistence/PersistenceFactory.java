@@ -22,7 +22,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Class providing implemnataions for serializers and desirealizers
  * in JAXB TCK persistence framework. Implementations of these classes
- * are choosen using TCK configuration file 
+ * are choosen using TCK configuration file
  * @author Vladimir Sosnin
  *
  */
@@ -48,7 +48,7 @@ public class PersistenceFactory {
     /**
      * JaxbTreeSerializer factory method
      * @return Instance of implementaion of JaxbTreeSerializer defined in
-     * configuration 
+     * configuration
      */
     public JaxbTreeSerializer createJaxbTreeSerializer() {
         return new TCKJaxbTreeSerializer();
@@ -57,7 +57,7 @@ public class PersistenceFactory {
     /**
      * JaxbTreeDeserializer factory method
      * @return Instance of implementaion of JaxbTreeDeserializer defined in
-     * configuration 
+     * configuration
      */
     public JaxbTreeDeserializer createJaxbTreeDeserializer() {
         return new TCKJaxbTreeDeserializer();

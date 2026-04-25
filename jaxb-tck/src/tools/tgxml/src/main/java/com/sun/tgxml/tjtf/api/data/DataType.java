@@ -21,11 +21,11 @@ package com.sun.tgxml.tjtf.api.data;
 // </importgen>
 
 /**
- * DataType - 
+ * DataType -
  *
  * <b>DataType</b>  is the enumeration for a type of data.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -49,7 +49,7 @@ public interface DataType  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
 
     //------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ public interface DataType  {
     * @return     The true if this technique is Resource.
     */
     public boolean isResource();
-     
+
 
   /**
     *   Is this an IOData type.
@@ -71,6 +71,6 @@ public interface DataType  {
     * @return     The true if this technique is IOData.
     */
     public boolean isIOData();
-          
+
 
 }

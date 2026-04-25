@@ -36,36 +36,36 @@ import javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTestExt.SchemaParameterV
 import javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTestExt.XMLDocumentParameterValue;
 
 public class JAXBValidationCheckerTest extends MultiTestExt {
-	
+
     protected IFileResolver fr = new IFileResolver() {
-    	public File[] getFile(String... names) {
-        	int len = names.length;
-        	File[] files = new File[len];
-        	for(int i = 0; i<len; i++) {
-        		files[i] = new File(new File( testURL.get().getPath() ).getParentFile(), names[i]);
-        	}
+        public File[] getFile(String... names) {
+            int len = names.length;
+            File[] files = new File[len];
+            for(int i = 0; i<len; i++) {
+                files[i] = new File(new File( testURL.get().getPath() ).getParentFile(), names[i]);
+            }
             return files;
-		}
+        }
     };
-    
-	/**
+
+    /**
      * get packageName.
      */
     @Override
     protected String getPackageName() {
         return packageName.get();
     }
-    
+
     public URIValue.Parameter testURL = new URIValue.Parameter( "TestURL" );
     public SchemaParameterValue schema = new SchemaParameterValue( "schema", fr );
     public XMLDocumentParameterValue xml = new XMLDocumentParameterValue( "xml", fr );
     public StringValue.Parameter packageName = new StringValue.Parameter( "package" );
-    
+
     public Status test() {
         boolean ignoreSchema;
         try {
             JAXBContext jc = getJAXBContext();
-            
+
             Unmarshaller u = jc.createUnmarshaller();
             Marshaller   m = jc.createMarshaller();
             try {
@@ -90,10 +90,10 @@ public class JAXBValidationCheckerTest extends MultiTestExt {
             x.printStackTrace( ref );
             throw new TestFailureException( x );
         }
-        return Status.passed( ignoreSchema ? "OK. [Cannot load schemas. The test passed without XML schema validation ]"  : 
+        return Status.passed( ignoreSchema ? "OK. [Cannot load schemas. The test passed without XML schema validation ]"  :
                                              "OK"  );
     }
-    
+
     public static void main( String[] args ) {
         new JAXBValidationCheckerTest().run( args, System.err, System.out).exit();
     }

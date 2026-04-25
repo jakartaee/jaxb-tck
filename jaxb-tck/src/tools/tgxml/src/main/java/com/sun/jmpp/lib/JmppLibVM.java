@@ -27,7 +27,7 @@ import java.util.Vector;
  * Class to be extend for test generation in section javasoft.sqe.tests.vm.
  *
  * @author Oleg V. Ulyankin, Artem A. Jilenko, Viatcheslav G. Rybalov
- * @version @(#)JmppLibVM.java	1.30 06/02/15
+ * @version @(#)JmppLibVM.java  1.30 06/02/15
  */
 public class JmppLibVM extends JmppLibTest {
     public final static String JVMS_STACK_MAP = "StackMap";
@@ -665,7 +665,7 @@ public class JmppLibVM extends JmppLibTest {
         L("    Object[] args={argv, out};");
         L("    Integer retStatus = new Integer(2); // STATUS_FAILED");
 
-       
+
         L("    try {");
         L("        retStatus = (Integer)runMethod.invoke(null, args);");
         L("    } catch (NullPointerException e) {");

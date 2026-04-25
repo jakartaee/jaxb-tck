@@ -18,53 +18,53 @@
 package com.sun.tgxml.tjtf.processors.validator;
 
 
-/** 
- * Mapping - Abstract definition of a Name-Value mapping. 
+/**
+ * Mapping - Abstract definition of a Name-Value mapping.
  * <p>
  * A Mapping is defined by a specific name, and a validate function
  * which validates potential values associated with a given mapping.
- * <p>  
+ * <p>
  * A mapping could be defined over an enumerated set of values, or it
  * could even be a function which calculates to a certain value.
  * <p>
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Mapping 
- * ============================================================================================ 
- */ 
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Mapping
+ * ============================================================================================
+ */
 abstract public class Mapping  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
     /** The name of this mapping. */
     protected String  m_name;
 
     /** The debug flag.  */
     protected boolean m_debug;
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    Mapping  methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    Mapping  methods
+    * --------------------------------------------------------------------------------------------
+    */
 
- 
-   /** 
-    *   Mapping constructor - 
-    *       Initialize our internal fields. 
-    */ 
+
+   /**
+    *   Mapping constructor -
+    *       Initialize our internal fields.
+    */
     public Mapping(String name) {
-	m_name = name;
-	m_debug = false;
+    m_name = name;
+    m_debug = false;
     }
 
 
@@ -74,7 +74,7 @@ abstract public class Mapping  {
     * @return The Mapping name.
     */
     public String getName() {
-	return m_name;
+    return m_name;
     }
 
   /**
@@ -83,7 +83,7 @@ abstract public class Mapping  {
     * @param debug The value to set the debug flag to.
     */
     public void setDebug(boolean debug) {
-	m_debug = debug;
+    m_debug = debug;
     }
 
   /**

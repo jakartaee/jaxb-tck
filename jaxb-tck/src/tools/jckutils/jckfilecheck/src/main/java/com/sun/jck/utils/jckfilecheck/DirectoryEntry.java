@@ -20,10 +20,10 @@
 //
 // Author: Kevin A Smith & Rampalli Narasimhan
 //
-// The Zip List file contains a list of entries. Each entry is nothing but a 
-// file or a directory name, the size, date and time stamp. For the purpose 
+// The Zip List file contains a list of entries. Each entry is nothing but a
+// file or a directory name, the size, date and time stamp. For the purpose
 // of this program we just need the following information:
-// 
+//
 // The name of the file or directory
 // The size of the file or directory (O if its a directory)
 // The status - whether this is a file or a directory?
@@ -41,31 +41,31 @@ public class DirectoryEntry implements Comparable {
     // Constructors for this class
     //
     public DirectoryEntry () {
-	entry = null;
-	size  = 0;
-	isDirectory = false;
+    entry = null;
+    size  = 0;
+    isDirectory = false;
     }
     public DirectoryEntry (File fn) {
-	entry = fn.getAbsolutePath(); 
-	size = fn.length();
-	isDirectory = fn.isDirectory();
+    entry = fn.getAbsolutePath();
+    size = fn.length();
+    isDirectory = fn.isDirectory();
     }
 
     public DirectoryEntry (String baseDirectory, File fn) {
-	entry = fn.getAbsolutePath().substring (baseDirectory.length());
-	this.isDirectory = fn.isDirectory();
-	size = fn.length();
+    entry = fn.getAbsolutePath().substring (baseDirectory.length());
+    this.isDirectory = fn.isDirectory();
+    size = fn.length();
     }
 
     public DirectoryEntry (String fileName, long size) {
-	if (size == 0L) {
-	    this.isDirectory = true;
-	}
-	else {
-	    this.isDirectory = false;
-	}
-	this.size = size;
-	entry = fileName;
+    if (size == 0L) {
+        this.isDirectory = true;
+    }
+    else {
+        this.isDirectory = false;
+    }
+    this.size = size;
+    entry = fileName;
     }
 
     //
@@ -74,22 +74,22 @@ public class DirectoryEntry implements Comparable {
     public int compareTo (Comparable obj) {
         int retval;
         if (obj instanceof DirectoryEntry) {
-	    retval = this.entry.compareTo (((DirectoryEntry) obj).entry);
-	}
+        retval = this.entry.compareTo (((DirectoryEntry) obj).entry);
+    }
         else {
-	    retval = -1;
-	}
+        retval = -1;
+    }
         return retval;
     }
 
     public boolean equals (Object obj) {
         boolean retval;
         if (obj instanceof DirectoryEntry) {
-	    retval = this.entry.equals(((DirectoryEntry) obj).entry);
+        retval = this.entry.equals(((DirectoryEntry) obj).entry);
         }
         else {
-	    retval = false;
-	}
+        retval = false;
+    }
         return retval;
     }
 
@@ -106,19 +106,19 @@ public class DirectoryEntry implements Comparable {
     }
 
     public long getSize() {
-	return isDirectory ? 1L : size;
+    return isDirectory ? 1L : size;
     }
 
     public boolean isDirectory() {
-	return isDirectory;
+    return isDirectory;
     }
-  
+
     public String getEntry() {
-	return entry;
+    return entry;
     }
 
     public long getSizeValue() {
-	return size;
+    return size;
     }
 }
 

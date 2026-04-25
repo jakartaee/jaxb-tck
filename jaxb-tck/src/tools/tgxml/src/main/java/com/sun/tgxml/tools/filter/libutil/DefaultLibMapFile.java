@@ -30,11 +30,11 @@ import com.sun.tgxml.util.IR;
 import com.sun.tgxml.util.MiscUtils;
 
 /**
- * 
+ *
  * Default implementation of LibMapFile interface.
  * It uses java.util.Proptery format for storage LibMap,
  * where property name is libID, property value is lib.xml file name
- * for accepted library and an empty string for rejected one. 
+ * for accepted library and an empty string for rejected one.
  * <p>
  * This implementation does not provide parsing of lib.xml files.
  * So getLibMap() just returns the value set by setLibMap() method.
@@ -108,7 +108,7 @@ public class DefaultLibMapFile implements LibMapFile, XmlFileNameMap {
      *         other exception occurs during file reading.
      */
     public void read() throws IOException {
-        if (fileName == null) 
+        if (fileName == null)
             throw new IllegalArgumentException("fileName is not set");
         props = new Properties();
         props.load(new FileInputStream(new File(fileName)));
@@ -131,7 +131,7 @@ public class DefaultLibMapFile implements LibMapFile, XmlFileNameMap {
      * @throws IllegalArgumentException if file name is not specified.
      */
     public void write() throws IOException {
-        if (fileName == null) 
+        if (fileName == null)
             throw new IllegalArgumentException("fileName is not set");
         if (props == null) {
             libMap2Properties();
@@ -161,7 +161,7 @@ public class DefaultLibMapFile implements LibMapFile, XmlFileNameMap {
      *            specified for accepted library.
      */
     protected void libMap2Properties() {
-        if (libMap == null) 
+        if (libMap == null)
             throw new IllegalArgumentException("LibMap is not set");
         if (libDir == null)
             throw new IllegalArgumentException("LibDir is not set");
@@ -172,14 +172,14 @@ public class DefaultLibMapFile implements LibMapFile, XmlFileNameMap {
             String xmlName = "";
             Library lib = libMap.get(libID);
             if (lib != null) {
-                String relName = 
+                String relName =
                         IR.getAttrElem(IR.relSourcePathAttrElemName, lib);
-                if (relName == null) 
+                if (relName == null)
                     throw new IllegalArgumentException(
                             "relSourcePath is not specified for " + libID);
-                xmlName = libDir + relName;                 
+                xmlName = libDir + relName;
             }
-            props.setProperty(libID, xmlName);            
+            props.setProperty(libID, xmlName);
         }
     }
 
@@ -202,7 +202,7 @@ public class DefaultLibMapFile implements LibMapFile, XmlFileNameMap {
             return props;
 
         if (libMap != null)
-            libMap2Properties();            
+            libMap2Properties();
         return props;
     }
 

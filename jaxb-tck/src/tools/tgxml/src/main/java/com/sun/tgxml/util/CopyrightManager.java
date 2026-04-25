@@ -330,7 +330,7 @@ public class CopyrightManager implements CRNConstants, MacroParserImpls {
      *     a file from which the text was read. Necessary to determine
      *     a set of possible anchors which may present in the text.
      * @param sc_info the source code control information. Must have the format
-     *     <code>@(#)<i>filename  delta</i></code> <i>yy/mm/dd ... </i>. For example: <i>@(#)CopyrightManager.java	1.4 04/04/28 1.4</i>.
+     *     <code>@(#)<i>filename  delta</i></code> <i>yy/mm/dd ... </i>. For example: <i>@(#)CopyrightManager.java  1.4 04/04/28 1.4</i>.
      * @return
      *     the original text with valid CRN inserted.
      */

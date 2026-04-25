@@ -55,10 +55,10 @@ public class JmppConverterTool extends StandardToolBase {
      * ========================================================================
      */
     private static final String CtStr_ToolName = "JmppConverterTool";
-    
+
     private static final String str_Term = System.getProperty("line.separator");
     private static final String str_FileSep = System.getProperty("file.separator");
-    
+
     private File                m_InputFile;
     private String              m_inputfileString;
 
@@ -69,7 +69,7 @@ public class JmppConverterTool extends StandardToolBase {
      *    Methods
      * =========================================================================
      */
-    
+
     /**
      * Program entry
      *
@@ -82,15 +82,15 @@ public class JmppConverterTool extends StandardToolBase {
             new JmppBuildPropertiesProvider());
         System.exit(c.run(args));
     }
-    
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public JmppConverterTool( PrintStream out, PrintStream err) {
         super(out, err, CtStr_ToolName);
@@ -98,19 +98,19 @@ public class JmppConverterTool extends StandardToolBase {
         m_emitter = null;
         m_needsCommandLineArguments = true;
     }
-    
+
 
   /**
     * Create a (generic processor).
     * <p>
     *  Sub-classes may override this to install
     *  different types of parsers.
-    * <p> 
+    * <p>
     * @return a (generic) IRParser.
     * @throws TestFileException if there is a problem creating a parser.
     */
     public IRParser createParser() throws TestFileException {
-	    return new JmppTDParser();
+        return new JmppTDParser();
     }
 
     /**
@@ -118,15 +118,15 @@ public class JmppConverterTool extends StandardToolBase {
      * <p>
      *  Sub-classes may override this to install
      *  different types of emitters.
-     * <p> 
+     * <p>
      * @return a (generic) IREmitter.
      * @throws TestFileException if there is a problem creating an emitter.
      */
     public IREmitter createEmitter() throws TestFileException {
-	    return new MiddleWareXMLEmitter();
+        return new MiddleWareXMLEmitter();
     }
 
-    /** 
+    /**
      *  Parse inputs, process the IR, emit outputs.
      * <p>
      *  Tools should override this, this function determines
@@ -137,7 +137,7 @@ public class JmppConverterTool extends StandardToolBase {
      * @throws TestFileException If there is a problem with an IR tree.
      * @throws IOException if there is some type of IO problem.
      */
-    public void executeTool() 
+    public void executeTool()
             throws TestFileException, IOException, ValidatorException {
         File[] files = {getInputFile()};
         IRObj[] trees = m_parser.parse(files);
@@ -154,18 +154,18 @@ public class JmppConverterTool extends StandardToolBase {
                 attrElems = ts.getAttrElems();
                 outputFileName = getOutputDir(attrElems) + ts.getID() + ".tdoc.xml";
             }
-            if (outputFileName != null) {                
+            if (outputFileName != null) {
                 File       outputFile = new File(outputFileName);
                 createTestDir(outputFile);
                 File[]     outputFiles = {outputFile};
                 IRObj[]    outputObjects = {trees[i]};
                 m_emitter.emit(outputObjects, outputFiles);
-                if (validator != null) 
+                if (validator != null)
                     validateXML(outputFiles);
             }
         }
     }
-    
+
     private String getOutputDir(ArrayList attrElems) {
         if (attrElems != null) {
             Iterator it = attrElems.iterator();
@@ -184,29 +184,29 @@ public class JmppConverterTool extends StandardToolBase {
    /**
     *  Creates subdir for outputFile
     *  @throws TestFileException if cannot create subdir
-    */	
+    */
     protected void createTestDir(File outputFile) throws TestFileException {
         File dir = outputFile.getParentFile();
         if ((dir != null) && (!dir.exists())) {
             if (!MiscUtils.mkdirs(dir)) {
                 throw new TestFileException(LibResHandler.getResStr("jmppconv.error.createdir", dir.toString()));
             }
-        }         
+        }
     }
 
     /**
      * get this tool's input file.
-     * <p> 
+     * <p>
      * @return a String with the tool name.
      * @see #setInputFile
      */
     public final File getInputFile() {
-	    return m_InputFile;
+        return m_InputFile;
     }
 
     /**
      * Set this tool's input file.
-     * <p> 
+     * <p>
      * @param input A String with the tool name.
      * @see #getInputFile
      */
@@ -217,9 +217,9 @@ public class JmppConverterTool extends StandardToolBase {
 
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
@@ -232,22 +232,22 @@ public class JmppConverterTool extends StandardToolBase {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
-    public void applyOptionsValues() throws ParseArgumentException {	   
+    public void applyOptionsValues() throws ParseArgumentException {
         m_inputfileString = operands[0];
         File file = new File(m_inputfileString);
         if (!file.exists() || file.isDirectory()) {
             throw new ParseArgumentException("file does not exist or is a directory: " + file);
         }
-	    
+
         setInputFile(file);
 
         super.applyOptionsValues();
     }
 
-    /** 
+    /**
      * Sets OperandsValidator that validates that only one operand
      * is passed, operand ends with ".jmpp" and does not start with "-"
      */
@@ -256,26 +256,26 @@ public class JmppConverterTool extends StandardToolBase {
             "Operands: ",
             "  <fileName>.jmpp"
         };
-        operandsValidator = new DefaultOperandsValidator(1, 1, 
+        operandsValidator = new DefaultOperandsValidator(1, 1,
             "-", ".jmpp", operandsUsageLines);
     }
-    
+
     /**
      * Sets jmppconv usage header
      */
     protected void setToolUsageHeader() {
-        toolUsageHeader = 
-            "Usage: " + getProgramName() + " [<options>] <fileName>.jmpp\n" + 
+        toolUsageHeader =
+            "Usage: " + getProgramName() + " [<options>] <fileName>.jmpp\n" +
             "where options include:";
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    
+    *
     * ----------------------------------------------------------------------
     */
 
-    /** 
+    /**
      *  setup validator
      */
     public void setupTool() throws TestFileException, IOException {
@@ -290,15 +290,15 @@ public class JmppConverterTool extends StandardToolBase {
                 validator = (IRValidator)
                         Class.forName(validatorName).newInstance();
             else
-                validator = null;    
+                validator = null;
         } catch (Exception e) {
              throw new TestFileException("Cannot initialize validator: " + e);
         }
     }
 
 
-    private void validateXML(File[] emittedFiles) 
-             throws ValidatorException, TestFileException, IOException { 
+    private void validateXML(File[] emittedFiles)
+             throws ValidatorException, TestFileException, IOException {
         XMLParser parser = ParserFactory.createDefaultXMLParser();
         for (int i = 0; i < emittedFiles.length; i++) {
             try {

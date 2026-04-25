@@ -17,17 +17,17 @@ package org.apache.river.concurrent;
 
 /**
  *
- * @param <T> 
+ * @param <T>
  * @author peter
  */
-class TimedComparableReferrerDecorator<T> extends TimedReferrerDecorator<T> 
+class TimedComparableReferrerDecorator<T> extends TimedReferrerDecorator<T>
                                         implements Comparable<Referrer<T>> {
     private static final long serialVersionUID = 1L;
-    
+
     TimedComparableReferrerDecorator(Referrer<T> r){
         super(r);
     }
-    
+
     public int compareTo(Referrer<T> o) {
         T t = null;
         Referrer<T> ref = getReference();

@@ -27,17 +27,17 @@ import com.sun.tgxml.tjtf.tools.options.util.SwitchChecker;
 
 
 /**
- *  This is the base class for most commonly used options. Each option 
+ *  This is the base class for most commonly used options. Each option
  *  is responsible for extracing itself from a command line.
- *  To implement parsing subclasses need provide implementaistions only for 
+ *  To implement parsing subclasses need provide implementaistions only for
  *  the following methods:<p>
  *  <tt>getArgReader()</tt><p>
  *  <tt>calculateValue(ArrayList parsedOption)</tt><p>
- *  Subclasses should also provide get methods for retrieving value of 
+ *  Subclasses should also provide get methods for retrieving value of
  *  the option
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -49,7 +49,7 @@ public abstract class BasicOption extends StandardOption {
     protected Vector keys = null;
 
     private String patt_missedOptionParameter = null;
-    
+
     /**
      * Creates in-obligatory option with one specified switch and usageInfo
      *
@@ -73,27 +73,27 @@ public abstract class BasicOption extends StandardOption {
      *
      * @throws IllegalArgumentException if usageInfo is null, or array of
      * switches is empty or contains null.
-     */    
-    public BasicOption(String[] switches, String usageInfo, 
+     */
+    public BasicOption(String[] switches, String usageInfo,
             boolean isObligatory) {
-        if (usageInfo == null) 
+        if (usageInfo == null)
              throw new IllegalArgumentException("usageInfo should not be null");
-        if (switches == null || switches.length == 0) 
+        if (switches == null || switches.length == 0)
              throw new IllegalArgumentException("switches should not be empty");
 
         keys = new Vector(switches.length);
-        for (int i = 0; i < switches.length; i++) 
+        for (int i = 0; i < switches.length; i++)
             addSwitch(switches[i]);
 
         setUsageInfo(usageInfo);
-        setObligatory(isObligatory);        
+        setObligatory(isObligatory);
     }
 
     /**
      * Add option switch to the set of specified switches
      *
      * @throws IllegalArgumentException if <code>sw</code> is null
-     */ 
+     */
     public void addSwitch(String sw) {
         if (sw == null)
             throw new IllegalArgumentException("switch cannot be null");
@@ -105,19 +105,19 @@ public abstract class BasicOption extends StandardOption {
     /**
      * Returns ArgReader used to extact option arguments from the list
      * If option has not arguments (flag) returns null
-     */ 
+     */
     public abstract ArgReader getArgReader();
 
     /**
      * Returns ArgChecker checking that an argument does not start with "-"
-     */ 
+     */
     public ArgChecker getArgChecker() {
         return new ArgChecker("-", null);
     }
 
     /**
      * Returns OptionReader used to extact option with arguments from the list
-     */ 
+     */
     public OptionReader getOptionReader() {
          ArgReader ar = getArgReader();
          if (ar != null) {
@@ -132,13 +132,13 @@ public abstract class BasicOption extends StandardOption {
     /**
      * Returns SwitchChecker checking that an element is one of specified
      * option switches
-     */ 
+     */
     public SwitchChecker getSwitchChecker() {
         return new OptionSwitchChecker(keys);
     }
 
 
-    /** 
+    /**
      * Returns name of the option (the first specified option switch)
      */
     public String toString() {
@@ -154,7 +154,7 @@ public abstract class BasicOption extends StandardOption {
     /**
      * Sets error message pattern will be printed if option parameter
      * is missed.
-     * <p>Example of pattern : 
+     * <p>Example of pattern :
      * <pre>
      *     "{0}" option expects {1} parameter(s), passed only {2}
      * </pre>

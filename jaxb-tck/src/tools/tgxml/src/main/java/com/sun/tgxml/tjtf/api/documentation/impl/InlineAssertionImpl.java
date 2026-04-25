@@ -25,12 +25,12 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * InlineAssertion - 
+ * InlineAssertion -
  *
  * <b>InlineAssertion</b> is a (non-specification) assertion that a given test
  * is testing.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -58,8 +58,8 @@ public class InlineAssertionImpl implements InlineAssertion {
      * ============================================================================================
      */
 
-   
-   
+
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -86,7 +86,7 @@ public class InlineAssertionImpl implements InlineAssertion {
     * @see com.sun.tgxml.tjtf.api.documentation.Assertion
     */
     public InlineAssertionImpl(String value){
-	m_inlineString = value;
+    m_inlineString = value;
     }
 
 
@@ -103,9 +103,9 @@ public class InlineAssertionImpl implements InlineAssertion {
     * @see #setValue
     */
     public String getValue() {
-	return m_inlineString; 
+    return m_inlineString;
     }
-     
+
    /**
     *   Set the value associated with this rsde.
     *  <p>
@@ -113,10 +113,10 @@ public class InlineAssertionImpl implements InlineAssertion {
     * @see #getValue
     */
     public void setValue(String value) throws TestFileException {
-	if (value == null || value.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.doc.inlineassertion.value.null") );
+    if (value == null || value.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.doc.inlineassertion.value.null") );
 
-	m_inlineString = value;
+    m_inlineString = value;
     }
 
 }

@@ -18,30 +18,30 @@
 package com.sun.tgxml.tools.testgen.api.source.java;
 
 public class JavaClass {
-    
+
     private String name;
     private String classCode;
-    
+
     public void setClassCode(String value) {
         classCode = value;
     }
-    
+
     protected String getClassCode() {
         return classCode == null?"":classCode;
     }
-    
+
     public boolean isClassCodeSet() {
         return getClassCode() != null;
     }
-    
+
     public String toString() {
         return getClassCode();
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getName() {
        return name;
     }

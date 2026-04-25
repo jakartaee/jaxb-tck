@@ -23,17 +23,17 @@ import java.util.ArrayList;
  * Interface of methods to parse option.
  * Subclasses of these should override the methods
  * of this interface in order to implement their own algorithm of
- * option parsing. Subclasses should also provide type-safe methods 
+ * option parsing. Subclasses should also provide type-safe methods
  * to get value of the parsed option.
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public interface Option {
-   
+
     /**
      * Parse and extracts itself from options list.
      * @return new list of unparsed arguments (without this option)

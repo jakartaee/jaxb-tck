@@ -13,7 +13,7 @@
  * https://www.gnu.org/software/classpath/license.html.
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
- * 
+ *
  * */
 
 package javasoft.sqe.harness;
@@ -26,7 +26,7 @@ import java.io.PrintStream;
  * A class to embody the result of a test: a status-code and a related message.
  *
  * @author Jonathan J Gibbons
- * @version @(#)Status.java	1.23 02/01/03
+ * @version @(#)Status.java 1.23 02/01/03
  * @deprecated
  * @see javasoft.sqe.javatest.Status
  */
@@ -37,14 +37,14 @@ public class Status
      * Create a Status that represents the successful outcome of a test.
      */
     public static Status passed(String reason) {
-	return new Status(PASSED, reason);
+    return new Status(PASSED, reason);
     }
 
     /**
      * Create a Status that represents the unsuccessful outcome of a test.
      */
     public static Status failed(String reason) {
-	return new Status(FAILED, reason);
+    return new Status(FAILED, reason);
     }
 
     /**
@@ -52,7 +52,7 @@ public class Status
      * analysis of the output of the test against reference files is required.
      */
     public static Status checkFile(String reason) {
-	return new Status(CHECK_FILE, reason);
+    return new Status(CHECK_FILE, reason);
     }
 
     /**
@@ -60,14 +60,14 @@ public class Status
      * the conditions given it was not applicable.
      */
     public static Status notApplicable(String reason) {
-	return new Status(NOT_APPLICABLE, reason);
+    return new Status(NOT_APPLICABLE, reason);
     }
 
     /**
      * Create a Status that represents that the test has not yet been run
      */
     public static Status notRun(String reason) {
-	return new Status(NOT_RUN, reason);
+    return new Status(NOT_RUN, reason);
     }
 
     /**
@@ -85,8 +85,8 @@ public class Status
     public static final int FAILED = 1;
 
     /**
-     * A return code indicating that the test did not itself determine whether it 
-     * succeeded or failed;  instead, the output the test generated must be compared 
+     * A return code indicating that the test did not itself determine whether it
+     * succeeded or failed;  instead, the output the test generated must be compared
      * against a known correct version (a `golden file') to determine if it passed or not.
      * @see #checkFile
      * @see #getType
@@ -94,17 +94,17 @@ public class Status
     public static final int CHECK_FILE = 2;
 
     /**
-     * A return code indicating that the test was not run because the test description 
-     * was not applicable for the current run of the harness. 
-     * For example, this might occur if the test involved native code for one type of 
+     * A return code indicating that the test was not run because the test description
+     * was not applicable for the current run of the harness.
+     * For example, this might occur if the test involved native code for one type of
      * machine and the harness was trying to run it on another.
      * @see #getType
      */
     public static final int NOT_APPLICABLE = 3;
 
     /**
-     * A return code indicating that the test has not yet been run in this context.  
-     * (More specifically, no status file has been recorded for this test in the 
+     * A return code indicating that the test has not yet been run in this context.
+     * (More specifically, no status file has been recorded for this test in the
      * current work directory.)
      * @see #getType
      */
@@ -119,24 +119,24 @@ public class Status
      * @see #NOT_RUN
      */
     public int getType() {
-	return type;
+    return type;
     }
 
     /**
      * Get the message given when the status was created.
      */
     public String getReason() {
-	return reason;
+    return reason;
     }
 
     /**
      * Return a new Status object with a possibly augmented reason field
      */
     public Status augment(Status aux) {
-	if (aux.reason == null || aux.reason.length() == 0)
-	    return this;
-	else 
-	    return new Status(type, (reason + " [" + aux.reason + "]"));
+    if (aux.reason == null || aux.reason.length() == 0)
+        return this;
+    else
+        return new Status(type, (reason + " [" + aux.reason + "]"));
     }
 
 
@@ -145,7 +145,7 @@ public class Status
      * @see #read
      */
     public void write(PrintStream out) {
-	out.println(toString());
+    out.println(toString());
     }
 
     /**
@@ -153,28 +153,28 @@ public class Status
      * @see #write
      */
     public static Status read(DataInputStream in) throws IOException {
-	String s = in.readLine();
-	for (int i = 0; i < texts.length; i++)
-	    if (s.startsWith(texts[i]))
-		return new Status(i, s.substring(texts[i].length()).trim());
-	return null;
+    String s = in.readLine();
+    for (int i = 0; i < texts.length; i++)
+        if (s.startsWith(texts[i]))
+        return new Status(i, s.substring(texts[i].length()).trim());
+    return null;
     }
 
     /**
      * Standard routine.
      */
     public String toString() {
-	if (reason == null || reason.length() == 0)
-	    return texts[type];	
-	else
-	    return texts[type] + " " + reason;
+    if (reason == null || reason.length() == 0)
+        return texts[type];
+    else
+        return texts[type] + " " + reason;
     }
 
     /**
-     * Convenience exit() function for the main() of tests to exit in such a 
+     * Convenience exit() function for the main() of tests to exit in such a
      * way that the status passes up across process boundaries without losing
      * information (ie exit codes don't give the associated text of the status
-     * and return codes when exceptions are thrown could cause unintended 
+     * and return codes when exceptions are thrown could cause unintended
      * results). <p>
      *
      * An identifying marker is written to the error stream, which the script
@@ -184,19 +184,19 @@ public class Status
      * The method does not return.
      */
     public void exit() {
-	PrintStream strm = System.err;
-	strm.print(marker);
-	write(strm);
-	strm.flush();
-	System.exit(exitCodes[type]);
+    PrintStream strm = System.err;
+    strm.print(marker);
+    write(strm);
+    strm.flush();
+    System.exit(exitCodes[type]);
     }
 
 
     //-----internal routines------------------------------------------------------
 
-    public Status(int type, String reason) { 
-	this.type = type; 
-	this.reason = reason; 
+    public Status(int type, String reason) {
+    this.type = type;
+    this.reason = reason;
     }
 
     //----------Data members---------------------------------------------------------
@@ -206,13 +206,13 @@ public class Status
 
     private static final String marker = "STATUS:";
 
-    private static String[] texts = {  
-	// correspond to PASSED, FAILED, CHECK_FILE, NOT_APPLICABLE, NOT_RUN
-	"Passed.", 
-        "Failed.", 
-	"Completed--check results.",
-	"Not applicable.",
-	"Not run."
+    private static String[] texts = {
+    // correspond to PASSED, FAILED, CHECK_FILE, NOT_APPLICABLE, NOT_RUN
+    "Passed.",
+        "Failed.",
+    "Completed--check results.",
+    "Not applicable.",
+    "Not run."
     };
 
     /**

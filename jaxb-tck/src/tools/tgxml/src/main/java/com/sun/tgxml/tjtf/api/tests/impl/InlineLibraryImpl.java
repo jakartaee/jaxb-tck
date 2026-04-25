@@ -21,15 +21,15 @@ import com.sun.tgxml.tjtf.api.tests.InlineLibrary;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
- * Library - 
+ * Library -
  *
- * <b>Library</b> is the entity that describes a library that TestCodes depend on.  
+ * <b>Library</b> is the entity that describes a library that TestCodes depend on.
  * <p>
  * <b>Library</b>s derive from <b>TestItem</b>. These properties describe
  * the comments, assertions, and descriptions that this class contains.
  * <p>
  *
- * @version 	1.1, 30/11/03
+ * @version     1.1, 30/11/03
  * @author  Kevin T. Looney
  */
 
@@ -55,12 +55,12 @@ public  class InlineLibraryImpl extends LibraryImpl implements InlineLibrary  {
 
 
   /**
-    *  Returns true 
+    *  Returns true
     */
     public boolean isInline() {
         return true;
     }
-     
+
   /**
     *  Does nothing
     */

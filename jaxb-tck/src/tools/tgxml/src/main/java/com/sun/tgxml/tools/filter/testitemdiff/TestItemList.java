@@ -23,7 +23,7 @@ import java.util.Iterator;
 
 /**
  * The class represents the TestItem list.
- */ 
+ */
 public class TestItemList {
     private HashMap entries = new HashMap();
 

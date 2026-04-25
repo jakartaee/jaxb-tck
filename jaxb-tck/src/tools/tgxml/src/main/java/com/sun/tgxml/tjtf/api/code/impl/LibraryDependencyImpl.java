@@ -25,13 +25,13 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * LibraryDependency - 
+ * LibraryDependency -
  *
  * <b>LibraryDependency</b> is the interface for a code dependency on a Library.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -60,21 +60,21 @@ public  class LibraryDependencyImpl implements LibraryDependency {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public LibraryDependencyImpl() {
-	init();
+    init();
     }
 
    public LibraryDependencyImpl(String id) {
-	m_ID = id;
+    m_ID = id;
     }
 
     private void init() {
-	m_ID = "";
+    m_ID = "";
     }
 
 
@@ -83,7 +83,7 @@ public  class LibraryDependencyImpl implements LibraryDependency {
     //------------------------------------------------------------------------------
 
 
-   
+
   /**
     *   Get the Id for the library.
     *  <p>
@@ -91,12 +91,12 @@ public  class LibraryDependencyImpl implements LibraryDependency {
     * @see #setID
     */
     public String getID() throws TestFileException {
-	if (m_ID == null || m_ID.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.code.libdep.id.null") );
+    if (m_ID == null || m_ID.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.code.libdep.id.null") );
 
-	return m_ID;
+    return m_ID;
     }
-     
+
   /**
     *   Set the Id for the library.
     *  <p>
@@ -104,10 +104,10 @@ public  class LibraryDependencyImpl implements LibraryDependency {
     * @see #getID
     */
     public void setID(String ID) throws TestFileException {
-	if (ID == null || ID.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.code.libdep.id.null") );
+    if (ID == null || ID.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.code.libdep.id.null") );
 
-	m_ID = ID;
+    m_ID = ID;
     }
 
 }

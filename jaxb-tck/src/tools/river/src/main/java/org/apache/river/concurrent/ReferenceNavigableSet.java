@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,25 +22,25 @@ import java.util.NavigableSet;
 
 /**
  *
- * @param <T> 
+ * @param <T>
  * @author Peter Firmstone.
  */
-class ReferenceNavigableSet<T> 
+class ReferenceNavigableSet<T>
     extends ReferenceSortedSet<T> implements NavigableSet<T> {
     private static final long serialVersionUID = 1L;
     private final NavigableSet<Referrer<T>> set;
-    
+
     public ReferenceNavigableSet(NavigableSet<Referrer<T>> set, Ref type, boolean gcThreads, long gcCycle){
         super(set, type, gcThreads, gcCycle);
         this.set = set;
     }
-    
+
     ReferenceNavigableSet(NavigableSet<Referrer<T>> set, ReferenceQueuingFactory<T, Referrer<T>> rqf, Ref type){
         super(set, rqf, type);
         this.set = set;
     }
-    
-    private void readObject(ObjectInputStream stream) 
+
+    private void readObject(ObjectInputStream stream)
             throws InvalidObjectException{
         throw new InvalidObjectException("Builder required");
     }
@@ -101,9 +101,9 @@ class ReferenceNavigableSet<T>
         processQueue();
         return new ReferenceNavigableSet<T>(
             set.subSet(
-                wrapObj(fromElement, false, true), 
-                fromInclusive, 
-                wrapObj(toElement, false, true), 
+                wrapObj(fromElement, false, true),
+                fromInclusive,
+                wrapObj(toElement, false, true),
                 toInclusive
             ), getRQF(), getRef());
     }
@@ -113,7 +113,7 @@ class ReferenceNavigableSet<T>
         return new ReferenceNavigableSet<T>(
                 set.headSet(
                     wrapObj(toElement, false, true), inclusive),
-                    getRQF(), 
+                    getRQF(),
                     getRef()
                 );
     }
@@ -123,10 +123,10 @@ class ReferenceNavigableSet<T>
         return new ReferenceNavigableSet<T>(
                 set.tailSet(
                     wrapObj(fromElement, false, true),
-                    inclusive), 
-                    getRQF(), 
+                    inclusive),
+                    getRQF(),
                     getRef()
                 );
     }
-    
+
 }

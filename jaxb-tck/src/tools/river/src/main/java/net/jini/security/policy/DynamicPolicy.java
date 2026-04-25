@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,7 +32,7 @@ import java.security.Principal;
  * permission.
  *
  * @author Sun Microsystems, Inc.
- * 
+ *
  * @since 2.0
  */
 public interface DynamicPolicy {
@@ -48,7 +48,7 @@ public interface DynamicPolicy {
      * support is in effect.
      *
      * @return  <code>true</code> if policy supports dynamic permission grants
-     * 		under current context, <code>false</code> otherwise
+     *      under current context, <code>false</code> otherwise
      */
     boolean grantSupported();
 
@@ -80,18 +80,18 @@ public interface DynamicPolicy {
      * operation.
      *
      * @param   cl class to grant permissions to the class loader of, or
-     * 		<code>null</code> if granting across all class loaders
-     * @param	principals if non-<code>null</code>, minimum set of principals
-     * 		to which grants apply
-     * @param	permissions if non-<code>null</code>, permissions to grant
-     * @throws	UnsupportedOperationException if policy does not support
+     *      <code>null</code> if granting across all class loaders
+     * @param   principals if non-<code>null</code>, minimum set of principals
+     *      to which grants apply
+     * @param   permissions if non-<code>null</code>, permissions to grant
+     * @throws  UnsupportedOperationException if policy does not support
      *          dynamic grants, or if <code>cl</code> is non-<code>null</code>
      *          and belongs to a protection domain with a <code>null</code>
      *          class loader other than the system domain
-     * @throws	SecurityException if a security manager is installed and the
+     * @throws  SecurityException if a security manager is installed and the
      *          calling context does not have sufficient permissions to grant
      *          the given permissions
-     * @throws	NullPointerException if any element of the principals or
+     * @throws  NullPointerException if any element of the principals or
      *          permissions arrays is <code>null</code>
      */
     void grant(Class cl, Principal[] principals, Permission[] permissions);
@@ -123,14 +123,14 @@ public interface DynamicPolicy {
      *          class loader of, or <code>null</code> if querying permissions
      *          granted across all class loaders
      * @param   principals if non-<code>null</code>, principals to query
-     * 		dynamic grants for
+     *      dynamic grants for
      * @return  new array containing the permissions dynamically granted to the
      *          indicated class loader (if any) and principals
-     * @throws	UnsupportedOperationException if policy does not support
+     * @throws  UnsupportedOperationException if policy does not support
      *          dynamic grants, or if <code>cl</code> is non-<code>null</code>
      *          and belongs to a protection domain with a <code>null</code>
      *          class loader other than the system domain
-     * @throws	NullPointerException if any element of the principals array is
+     * @throws  NullPointerException if any element of the principals array is
      *          <code>null</code>
      */
     Permission[] getGrants(Class cl, Principal[] principals);

@@ -216,7 +216,7 @@ class XSDCompilerInterview extends MInterview {
             "CLASSPATH=\"$testSuiteRootDir$/classes$" +
             ":${jaxbClasses}$" +
             ":$testSuiteRootDir$/lib$/javatest.jar\" ";
-        
+
         if (id.xjc_local) {
             data.put("xjc_file_separator", File.separator);
             data.put("xjc_path_separator", File.pathSeparator);

@@ -29,19 +29,19 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  */
 
 public class ConveyerIRProcessor extends BasicIRProcessor {
-    
+
     IRProcessor[] ps = null;
-    
+
     public ConveyerIRProcessor(IRProcessor[] processors) {
         super();
         this.ps = processors;
     }
-    
-    
+
+
     /**
      * Invokes processors consecutively on passed array of IRObj
      * @param irs  IRObj array to be processed
-     * @return     result of processing passed array 
+     * @return     result of processing passed array
      * @exception  TestFileException  - if there is some processing problem.
      */
     public IRObj[] process(IRObj[] irs) throws TestFileException {
@@ -56,7 +56,7 @@ public class ConveyerIRProcessor extends BasicIRProcessor {
 
     }
 
-    
+
 
 }
 

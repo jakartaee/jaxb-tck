@@ -22,13 +22,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Effectively Immutable parameter class for ClassDepend.  
+ * Effectively Immutable parameter class for ClassDepend.
  * When River transitions to Java 5, this will
  * allow easy concurrent programming using the new concurrent utils packages.
- * 
+ *
  * This class cannot be instantiated directly, you must use a CDPBuilder to
  * return a ClassDependParamters object instance.
- * 
+ *
  * @author Peter Firmstone
  * @see ClassDepend
  * @see CDPBuilder
@@ -73,9 +73,9 @@ public class ClassDependParameters {
     }
 
     /**
-     * outsidePackagesOrClasses - excluded from search ,excludes the names 
-     * of classes, or package patterns, that should be excluded from the 
-     * dependency computation 
+     * outsidePackagesOrClasses - excluded from search ,excludes the names
+     * of classes, or package patterns, that should be excluded from the
+     * dependency computation
      * @see ClassDepend
      * @return outsidePackagesOrClasses
      */
@@ -86,15 +86,15 @@ public class ClassDependParameters {
     public List insidePackages() {
         return cloneArraytoList(insidePackages);
     }
-    
+
     public List showPackages() {
         return cloneArraytoList(showPackages);
     }
-    
+
     public List hidePackages() {
         return cloneArraytoList(hidePackages);
     }
-    
+
     public boolean ignoreOuterParentClass() {
         return ignoreOuterParentClass;
     }
@@ -110,11 +110,11 @@ public class ClassDependParameters {
     /**
      * CDPBuilder - to build an immutable ClassDependParameters object, much
      * like the StringBuilder and String class relationship.
-     * 
+     *
      * CDP Builder is not threadsafe.
-     * 
+     *
      * Optional Parameters are set by methods that can be chained on the
-     * Builder object, which has a no argument constructor.  
+     * Builder object, which has a no argument constructor.
      * The <code>build()</code> method returns the new ClassDependParameters
      * object, the builder can be used to build as many ClassDependParameter
      * objects as desired.
@@ -141,9 +141,9 @@ public class ClassDependParameters {
          * @param outsidePackageOrClass Package pattern or Class to be excluded from
          * dependency checking.
          * A package pattern ending in .* excludes the packages in the package
-         * root directory, to decend recursively into and exclude subpackages, 
+         * root directory, to decend recursively into and exclude subpackages,
          * the package pattern should end in .**
-         * 
+         *
          * @see ClassDepend
          * @see ClassDependParameters
          * @return CDPBuilder so named optional parameters can be chained
@@ -171,7 +171,7 @@ public class ClassDependParameters {
         /**
          * Inside packages limit the scope of the dependency search to
          * Classes within these packages.
-         * @param insidePackage A String pattern including the fully qualified 
+         * @param insidePackage A String pattern including the fully qualified
          *                      package name, followed by .* to capture classes
          *                      in the packages root directory or by .** to
          *                      include subpackages recursively as well.
@@ -181,7 +181,7 @@ public class ClassDependParameters {
             insidePackages.add(insidePackage);
             return this;
         }
-        
+
         /**
          * Inside packages limit the scope of the dependency search to
          * Classes within these packages.
@@ -199,41 +199,41 @@ public class ClassDependParameters {
             insidePackages.addAll(inside);
             return this;
         }
-        
+
         public CDPBuilder addShowPackages(String [] showPackages){
             for (int i = 0, l = showPackages.length; i < l; i++){
                 this.showPackages.add(showPackages[i]);
             }
             return this;
         }
-        
+
         public CDPBuilder addShowPackages(List showPackages){
             this.showPackages.addAll(showPackages);
             return this;
         }
-        
+
         public CDPBuilder addShowPackage(String showPackage){
             this.showPackages.add(showPackage);
             return this;
         }
-        
+
         public CDPBuilder addHidePackages(String [] hidePackages){
             for (int i = 0, l = hidePackages.length; i < l; i++){
                 this.hidePackages.add(hidePackages[i]);
             }
             return this;
         }
-        
+
         public CDPBuilder addHidePackages(List hidePackages){
             this.hidePackages.addAll(hidePackages);
             return this;
         }
-        
+
         public CDPBuilder addHidePackage(String hidePackage){
             this.hidePackages.add(hidePackage);
             return this;
         }
-        
+
         public CDPBuilder ignoreOuterParentClass(boolean b) {
             ignoreOuterParentClass = b;
             return this;
@@ -244,7 +244,7 @@ public class ClassDependParameters {
          * from the dependency search.
          * If false the platform classes returned will depend on the Java
          * platform and version the test is executing on.
-         * 
+         *
          * @see ClassDepend
          * @see ClassDependParameters
          * @param b

@@ -49,21 +49,21 @@ public class FilteringContext {
      * filter and new tests filter.
      */
     private static ApplicabilityFilter combinedFilter = new ApplicabilityFilter() {
-    	
-    	private boolean isDeletedTestItem(TestItem item) {
-    		if (item instanceof TestCase) {
-    			TestCase tc = (TestCase)item;
-    			return tc.isDeleted();
-    		}
-    		else if (item instanceof TestGroup ) {
-    			TestGroup tg = (TestGroup)item;
-    			return tg.isDeleted();
-    		}
-    		else {
-    			return false;
-    		}
 
-    	}
+        private boolean isDeletedTestItem(TestItem item) {
+            if (item instanceof TestCase) {
+                TestCase tc = (TestCase)item;
+                return tc.isDeleted();
+            }
+            else if (item instanceof TestGroup ) {
+                TestGroup tg = (TestGroup)item;
+                return tg.isDeleted();
+            }
+            else {
+                return false;
+            }
+
+        }
 
         public boolean accept(TestItem item) {
             String id;
@@ -72,10 +72,10 @@ public class FilteringContext {
             } catch (TestFileException e) {
                 id = "Unknown";
             }
-            
+
             if (isDeletedTestItem(item)) {
-            	StatusLogger.reportRejectDeleted(id);
-            	return false;
+                StatusLogger.reportRejectDeleted(id);
+                return false;
             }
 
             if ((mainApplicablityFilter == null)

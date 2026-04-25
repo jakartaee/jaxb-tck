@@ -23,46 +23,46 @@ import com.sun.tgxml.tjtf.tools.options.resources.ErrorMessages;
 
 /**
  * DefaultOperandsValidator verifies that number of operands is expected,
- * there is no operand startring with invalid prefix, all operands 
+ * there is no operand startring with invalid prefix, all operands
  * end with specified suffix
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 public class DefaultOperandsValidator implements OperandsValidator {
-   
-    /** 
+
+    /**
      * The number of minimal required parameters
      */
     protected int min = 0;
 
-    /** 
+    /**
      * The number of maximum required parameters
      */
     protected int max = 0;
 
-    /** 
+    /**
      * Descriptions of operands usage
      */
     protected String[] usageLines = null;
 
-    /** 
+    /**
      * Invalid operand prefix, if null - any prefix allowed
      */
     protected String invalidPrefix = null;
 
-    /** 
+    /**
      * Obligatory operand suffix, if null - any suffix allowed
      */
     protected String validSuffix = null;
 
 
-    private String patt_badPrefix = 
+    private String patt_badPrefix =
             ErrorMessages.getPattern("operand.BadPrefix");
 
-    private String patt_badSuffix = 
+    private String patt_badSuffix =
             ErrorMessages.getPattern("operand.BadSuffix");
 
     private String patt_tooFew    = ErrorMessages.getPattern("operand.TooFew");
@@ -75,7 +75,7 @@ public class DefaultOperandsValidator implements OperandsValidator {
      * @param min         a number of minimal required parameters
      * @param max         a number of maximum required parameters
      * @param usageLines  descriptions of operands
-     * @throws IllegalArgumentException if the following condition is 
+     * @throws IllegalArgumentException if the following condition is
      *         is broken: <code> 0 <= min <= max </code>
      */
 
@@ -85,19 +85,19 @@ public class DefaultOperandsValidator implements OperandsValidator {
 
 
     /**
-     * Creates new DefaultOperandsValidator. 
+     * Creates new DefaultOperandsValidator.
      * @param min         a number of minimal required parameters
      * @param max         a number of maximum required parameters
      * @param invalidPrefix  invalid operand prefix
      * @param validSuffix    obligatory operand suffix
      * @param usageLines  descriptions of operands
-     * @throws IllegalArgumentException if the following condition is 
+     * @throws IllegalArgumentException if the following condition is
      *         is broken: <code> 0 <= min <= max </code>
      */
-    public DefaultOperandsValidator(int min, int max, 
+    public DefaultOperandsValidator(int min, int max,
             String invalidPrefix, String validSuffix, String[] usageLines) {
-        if (min < 0 || min > max) 
-             throw new IllegalArgumentException("Illegal paramaters: " + min 
+        if (min < 0 || min > max)
+             throw new IllegalArgumentException("Illegal paramaters: " + min
                  + ", " + max);
         this.min = min;
         this.max = max;
@@ -107,7 +107,7 @@ public class DefaultOperandsValidator implements OperandsValidator {
     }
 
     /**
-     * validates operands 
+     * validates operands
      * @throws OperandException if operands format is incorrect
      */
     public void validate(ArrayList operands) throws OperandException {
@@ -128,10 +128,10 @@ public class DefaultOperandsValidator implements OperandsValidator {
                      patt_badSuffix, operands.get(i), validSuffix));
          }
 
-         if (size < min) 
+         if (size < min)
              throw new OperandException(ErrorMessages.getMessage(
                      patt_tooFew, min, size));
-         else if (size > max) 
+         else if (size > max)
              throw new OperandException(ErrorMessages.getMessage(
                      patt_tooMany, max, size));
     }
@@ -158,8 +158,8 @@ public class DefaultOperandsValidator implements OperandsValidator {
 
     /**
      * Sets error message pattern will be printed if operand prefix is
-     * is incorrect. 
-     * <p>Example of pattern : 
+     * is incorrect.
+     * <p>Example of pattern :
      * <pre>
      *     Bad prefix of operand: {0} (should not start with {1})
      * </pre>
@@ -170,7 +170,7 @@ public class DefaultOperandsValidator implements OperandsValidator {
 
     /**
      * Returns error message pattern will be printed if operand prefix is
-     * is incorrect. 
+     * is incorrect.
      */
     public String getIncorrectPrefixPattern() {
         return patt_badPrefix;
@@ -180,8 +180,8 @@ public class DefaultOperandsValidator implements OperandsValidator {
 
     /**
      * Sets error message pattern will be printed if operand suffix is
-     * is incorrect. 
-     * <p>Example of pattern : 
+     * is incorrect.
+     * <p>Example of pattern :
      * <pre>
      *     Bad suffix of operand: {0} (should end with {1})
      * </pre>
@@ -192,7 +192,7 @@ public class DefaultOperandsValidator implements OperandsValidator {
 
     /**
      * Returns error message pattern will be printed if operand suffix is
-     * is incorrect. 
+     * is incorrect.
      */
     public String getObligatorySuffixPattern() {
         return patt_badSuffix;
@@ -201,7 +201,7 @@ public class DefaultOperandsValidator implements OperandsValidator {
 
     /**
      * Sets error message pattern will be printed if operand missed
-     * <p>Example of pattern : 
+     * <p>Example of pattern :
      * <pre>
      *     Too few operands: {1}  (expected: {0})
      * </pre>
@@ -211,7 +211,7 @@ public class DefaultOperandsValidator implements OperandsValidator {
     }
 
     /**
-     * Returns error message pattern will be printed if operand missed 
+     * Returns error message pattern will be printed if operand missed
      */
     public String getOperandMissedPattern() {
         return patt_tooFew;
@@ -220,7 +220,7 @@ public class DefaultOperandsValidator implements OperandsValidator {
 
     /**
      * Sets error message pattern will be printed if too many operands passed
-     * <p>Example of pattern : 
+     * <p>Example of pattern :
      * <pre>
      *     Too many operands: {1}  (expected: {0})
      * </pre>

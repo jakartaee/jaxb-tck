@@ -19,12 +19,12 @@ package com.sun.tgxml.tjtf.api.tests;
 
 
 /**
- * InlineLibrary - 
+ * InlineLibrary -
  *
- * <b>InlineLibrary</b> is an entity for inline libraries (library 
+ * <b>InlineLibrary</b> is an entity for inline libraries (library
  * that belongs to some TestGroup)
  *
- * @version 	1.1, 11/30/03
+ * @version     1.1, 11/30/03
  * @author  Dmitry Fazunenko
  */
 

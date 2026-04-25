@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,19 +23,19 @@ import java.util.concurrent.TimeUnit;
 
 /**
  *
- * @param <T> 
+ * @param <T>
  * @author Peter Firmstone.
  */
 class ReferenceBlockingQueue<T> extends ReferencedQueue<T> implements BlockingQueue<T> {
     private static final long serialVersionUID = 1L;
     private final BlockingQueue<Referrer<T>> queue;
-    
+
     ReferenceBlockingQueue(BlockingQueue<Referrer<T>> queue, Ref type, boolean gcThreads, long gcCycle){
         super(queue, type, gcThreads, gcCycle);
         this.queue = queue;
     }
-    
-    private void readObject(ObjectInputStream stream) 
+
+    private void readObject(ObjectInputStream stream)
             throws InvalidObjectException{
         throw new InvalidObjectException("Builder required");
     }
@@ -77,7 +77,7 @@ class ReferenceBlockingQueue<T> extends ReferencedQueue<T> implements BlockingQu
         if (c == this) throw new IllegalArgumentException();
         @SuppressWarnings("unchecked")
         Collection<Referrer<T>> dr = new CollectionDecorator<T>( (Collection<T>) c, getRQF(), false, true);
-        return queue.drainTo(dr);   
+        return queue.drainTo(dr);
         }
 
     public int drainTo(Collection<? super T> c, int maxElements) {
@@ -88,5 +88,5 @@ class ReferenceBlockingQueue<T> extends ReferencedQueue<T> implements BlockingQu
         Collection<Referrer<T>> drain = new CollectionDecorator<T>( (Collection<T>) c, getRQF(), false, true);
         return queue.drainTo(drain, maxElements);
         }
-    
+
 }

@@ -19,7 +19,7 @@
 // Program: ShortChecker.java  (Not a very creative name :-( )
 // Author : Rampalli Narasimhan
 // Purpose: Just do a statistics check on the number of files/directories
-//         
+//
 
 package com.sun.jck.utils.jckfilecheck;
 
@@ -28,8 +28,8 @@ import java.io.IOException;
 import java.util.Enumeration;
 
 public class ShortChecker implements Checker {
-    
-    // 
+
+    //
     // fileList    : A list of entries processed by the parser
     // sizeOfFiles : size of all the files in the list
     // noOfFiles   : Number of all the files in the list
@@ -45,40 +45,40 @@ public class ShortChecker implements Checker {
     // Constructor()
     //
     public ShortChecker (File outDir) {
-	outFileName = new File(outDir, "shrcheck.html");
+    outFileName = new File(outDir, "shrcheck.html");
     }
 
     public File getOutputFile() {
-	return outFileName;
+    return outFileName;
     }
 
     public String getName() {
-	return "Accumulator Checker";
+    return "Accumulator Checker";
     }
 
     //
     // run() - calculate the sizes and generate the report
     //
     public void run(OrderedList fileList) throws IOException {
-	this.fileList = fileList;
-	HTMLReportGenerator rep = new HTMLReportGenerator (outFileName);
-	calculateStatistics();
-	rep.generateShortCheckerReport (noOfFiles, noOfDirs, sizeOfFiles);
+    this.fileList = fileList;
+    HTMLReportGenerator rep = new HTMLReportGenerator (outFileName);
+    calculateStatistics();
+    rep.generateShortCheckerReport (noOfFiles, noOfDirs, sizeOfFiles);
     }
 
     private void calculateStatistics() {
-	Enumeration fileListIter = fileList.getIterator();
-	DirectoryEntry entry = new DirectoryEntry();
-	while (fileListIter.hasMoreElements()) {
-	    entry = (DirectoryEntry) fileListIter.nextElement();
-	    if (entry.isDirectory()) {
-		noOfDirs += 1;
-	    } else {
-		noOfFiles += 1;
-		sizeOfFiles += entry.getSize();
-	    }
-	}
-	System.out.println ("Dirs  = " + noOfDirs);
-	System.out.println ("Files = " + noOfFiles);
+    Enumeration fileListIter = fileList.getIterator();
+    DirectoryEntry entry = new DirectoryEntry();
+    while (fileListIter.hasMoreElements()) {
+        entry = (DirectoryEntry) fileListIter.nextElement();
+        if (entry.isDirectory()) {
+        noOfDirs += 1;
+        } else {
+        noOfFiles += 1;
+        sizeOfFiles += entry.getSize();
+        }
+    }
+    System.out.println ("Dirs  = " + noOfDirs);
+    System.out.println ("Files = " + noOfFiles);
     }
 }

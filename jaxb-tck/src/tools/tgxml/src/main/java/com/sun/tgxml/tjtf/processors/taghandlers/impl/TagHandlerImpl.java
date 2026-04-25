@@ -29,27 +29,27 @@ import com.sun.tgxml.tjtf.processors.taghandlers.ParserTagHandler;
 
 
 /**
- * TagHandlerImpl - The tag-handler abstraction. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    AttrElem_TH 
- * ============================================================================================ 
- */ 
+ * TagHandlerImpl - The tag-handler abstraction.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    AttrElem_TH
+ * ============================================================================================
+ */
 public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
     /**  The handler support (SAXParser handler) for this tag-handler. */
@@ -60,21 +60,21 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TagHandlerImpl constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TagHandlerImpl constructor -
+    *       Initialize our internal fields.
+    */
     public TagHandlerImpl() {
 
     }
@@ -85,21 +85,21 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
 
 
     public final void setParserHandler(ParserHandlerSupport parserHandler) {
-	m_ParserHandler = parserHandler;
+    m_ParserHandler = parserHandler;
     }
 
     public final ParserHandlerSupport getParserHandler() {
-	return m_ParserHandler;
+    return m_ParserHandler;
     }
 
 
     public final void setEmitterHandler(EmitterHandlerSupport emitterHandler) {
-	m_EmitterHandler = emitterHandler;
+    m_EmitterHandler = emitterHandler;
     }
 
 
     public final EmitterHandlerSupport getEmitterHandler() {
-	return m_EmitterHandler;
+    return m_EmitterHandler;
     }
 
     //------------------------------------------------------------------------------
@@ -121,12 +121,12 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	try {
-	    if (m_ParserHandler.getDebug())
-		m_ParserHandler.log("xxxxx Starting to parse an <" + getTagName() + ">   xxx");
-	} catch (TestFileException e) {
-	    throw new SAXException(e);
-	}
+    try {
+        if (m_ParserHandler.getDebug())
+        m_ParserHandler.log("xxxxx Starting to parse an <" + getTagName() + ">   xxx");
+    } catch (TestFileException e) {
+        throw new SAXException(e);
+    }
     }
 
 
@@ -136,18 +136,18 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
     * @see #endTag
     */
     public void endTag() throws SAXException {
-	try {
-	    if (m_ParserHandler.getDebug())
-		m_ParserHandler.log("xxxxx Ending <" + getTagName() + ">   xxx");
-	} catch (TestFileException e) {
-	    throw new SAXException(e);
-	}
+    try {
+        if (m_ParserHandler.getDebug())
+        m_ParserHandler.log("xxxxx Ending <" + getTagName() + ">   xxx");
+    } catch (TestFileException e) {
+        throw new SAXException(e);
     }
- 
+    }
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
 
   /**
     *   emit a tag (general function).
@@ -155,17 +155,17 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
     * @see #endTag
     */
     public void emit(Object tdObject) throws TestFileException, IOException {
-	m_EmitterHandler.indent();
-	emitStartTag(tdObject);
-	m_EmitterHandler.newline();
-	m_EmitterHandler.incrementIndentation();
-	emitComponents(tdObject);
-	m_EmitterHandler.decrementIndentation();
-	m_EmitterHandler.indent();
-	emitEndTag();
-	m_EmitterHandler.newline();
+    m_EmitterHandler.indent();
+    emitStartTag(tdObject);
+    m_EmitterHandler.newline();
+    m_EmitterHandler.incrementIndentation();
+    emitComponents(tdObject);
+    m_EmitterHandler.decrementIndentation();
+    m_EmitterHandler.indent();
+    emitEndTag();
+    m_EmitterHandler.newline();
     }
-          
+
 
   /**
     *   emit a start tag (general function).
@@ -173,11 +173,11 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
     * @see #endTag
     */
     public void emitStartTag(Object tdObject) throws TestFileException, IOException {
-	m_EmitterHandler.emitHeadBeginTag(getTagName());
-	emitAttributes(tdObject);
-	m_EmitterHandler.emitHeadEndTag();
+    m_EmitterHandler.emitHeadBeginTag(getTagName());
+    emitAttributes(tdObject);
+    m_EmitterHandler.emitHeadEndTag();
     }
-          
+
   /**
     *   emit a tags attributes (general function).
     *  <p>
@@ -186,7 +186,7 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
     public void emitAttributes(Object tdObject) throws TestFileException, IOException {
     }
 
-          
+
   /**
     *   emit a tags attributes (general function).
     *  <p>
@@ -194,7 +194,7 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
     }
-          
+
 
   /**
     *   emit a start tag (general function).
@@ -202,7 +202,7 @@ public class TagHandlerImpl implements ParserTagHandler, EmitterTagHandler  {
     * @see #endTag
     */
     public void emitEndTag() throws TestFileException, IOException {
-	m_EmitterHandler.emitTailTag(getTagName());
+    m_EmitterHandler.emitTailTag(getTagName());
     }
 
 }

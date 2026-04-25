@@ -29,97 +29,97 @@ import com.sun.tgxml.tjtf.api.tests.TestItem;
 /**
 * Represent an exclude list
 */
-public class ExcludeList 
+public class ExcludeList
 {
    protected Hashtable entries = new Hashtable();
-   
-   /** 
+
+   /**
      * create an empty exclude list
      */
-	public ExcludeList(){
+    public ExcludeList(){
     }
 
-   /** 
-     * read exclude list from the file 
+   /**
+     * read exclude list from the file
      */
-	public ExcludeList(Reader source) throws IOException {
-		BufferedReader reader = new BufferedReader(source);
-		for (String str = reader.readLine(); str !=null; 
-			     str = reader.readLine()) {
-			if(!isComments(str)) {
-				addEntry(new ExcludeEntry(str));
-			}
-		}
-	}
+    public ExcludeList(Reader source) throws IOException {
+        BufferedReader reader = new BufferedReader(source);
+        for (String str = reader.readLine(); str !=null;
+                 str = reader.readLine()) {
+            if(!isComments(str)) {
+                addEntry(new ExcludeEntry(str));
+            }
+        }
+    }
 
-   /** 
-     * read exclude list from the file 
+   /**
+     * read exclude list from the file
      */
-	public ExcludeList(String name)  throws IOException {
-		this(new FileReader(name));
-	}
+    public ExcludeList(String name)  throws IOException {
+        this(new FileReader(name));
+    }
 
-	protected boolean isComments(String line) {
-	   String str = line.trim();
-	   return (str.length() == 0 || str.startsWith("#"));
-	}
+    protected boolean isComments(String line) {
+       String str = line.trim();
+       return (str.length() == 0 || str.startsWith("#"));
+    }
 
-	public void addEntry(ExcludeEntry entry) {
-		String key = entry.createKey();
-		ExcludeEntry old = (ExcludeEntry)entries.get(key);
-		if (old == null) {
-			entries.put(key, entry);
-		} else {
-			old.mergeWith(entry);
-		}
-	}
+    public void addEntry(ExcludeEntry entry) {
+        String key = entry.createKey();
+        ExcludeEntry old = (ExcludeEntry)entries.get(key);
+        if (old == null) {
+            entries.put(key, entry);
+        } else {
+            old.mergeWith(entry);
+        }
+    }
 
-	public void addEntries(ExcludeList list) {}
+    public void addEntries(ExcludeList list) {}
 
-	public void removeEntry(ExcludeEntry entry) {}
+    public void removeEntry(ExcludeEntry entry) {}
 
-	public void removeEntries(ExcludeList list) {}
+    public void removeEntries(ExcludeList list) {}
 
-	/**
-	 * retrun internal text representation of the exclude list
-	 */
-	public String toString() {
-		String result ="";
-		for (Iterator entries = getAllEntries(); entries.hasNext(); ) {
-			result += ((ExcludeEntry) entries.next()).toString() + "\n";
-		}
-		return result;
-	}
-   
-	/**
-	 * Returns any iterator for all exclude entries.
-	 */
-	public Iterator getAllEntries() {
-		return entries.values().iterator();
-	}
-   
-	/**
-	 * Access method for the entries property.
-	 *
-	 * @return   the current value of the entries
-	 */
-	//public ExcludeEntry[] getEntries(){} 
+    /**
+     * retrun internal text representation of the exclude list
+     */
+    public String toString() {
+        String result ="";
+        for (Iterator entries = getAllEntries(); entries.hasNext(); ) {
+            result += ((ExcludeEntry) entries.next()).toString() + "\n";
+        }
+        return result;
+    }
 
-	/**
+    /**
+     * Returns any iterator for all exclude entries.
+     */
+    public Iterator getAllEntries() {
+        return entries.values().iterator();
+    }
+
+    /**
+     * Access method for the entries property.
+     *
+     * @return   the current value of the entries
+     */
+    //public ExcludeEntry[] getEntries(){}
+
+    /**
      * Sets the value of the entries.
      *
      * @param aEntries the new value of the entries
-	 */
-	public void setEntries(ExcludeEntry[] aEntries) {}
+     */
+    public void setEntries(ExcludeEntry[] aEntries) {}
 
 
-    /** 
-	 * Find entry correspondent to the given TestItem.
-	 * Retruns null if entry is not found
-	 */
-	
-	public ExcludeEntry find(TestItem item) throws IncorrectAttributesException{
-		String key = ExcludeEntry.createKey(item);
-		return (ExcludeEntry) (entries.get(key));
-	}
+    /**
+     * Find entry correspondent to the given TestItem.
+     * Retruns null if entry is not found
+     */
+
+    public ExcludeEntry find(TestItem item) throws IncorrectAttributesException{
+        String key = ExcludeEntry.createKey(item);
+        return (ExcludeEntry) (entries.get(key));
+    }
 }

@@ -25,12 +25,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * Input - 
+ * Input -
  *
  * <b>Input</b> (Repository Specific Description Entities) is the name value pair for
  * a description item that may be defined in a given repository entities.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -49,14 +49,14 @@ public class InputImpl extends NameValuePairImpl implements Input {
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -73,7 +73,7 @@ public class InputImpl extends NameValuePairImpl implements Input {
     * @see com.sun.tgxml.tjtf.api.common.NameValuePair
     */
     public InputImpl(String name, String value) throws TestFileException {
-	super(name, value);
+    super(name, value);
     }
 
 
@@ -87,7 +87,7 @@ public class InputImpl extends NameValuePairImpl implements Input {
     * @return     true if the Input's are equal
     */
     public boolean equals(Input other) {
-	return (getName().equals(other.getName()) && getValue().equals(other.getValue())); 
+    return (getName().equals(other.getName()) && getValue().equals(other.getValue()));
     }
 
 }

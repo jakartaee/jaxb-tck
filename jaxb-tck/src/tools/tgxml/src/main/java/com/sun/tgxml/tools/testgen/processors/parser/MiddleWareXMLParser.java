@@ -43,14 +43,14 @@ public class MiddleWareXMLParser extends StandardOptionHandler implements IRPars
     private Shell m_shell = null;
     private String m_outputDir = ".";
     private Hashtable parsersHash;
-    
+
     public MiddleWareXMLParser() {
         parsersHash = new Hashtable();
     }
-    
+
     protected XMLParser getParser(String key) throws TestFileException {
         XMLParser result = null;
-        
+
         if (parsersHash.contains(key)) {
             result = (XMLParser)parsersHash.get(key);
         } else {
@@ -59,31 +59,31 @@ public class MiddleWareXMLParser extends StandardOptionHandler implements IRPars
             } catch (IOException ioe) {
                 result = null;
             }
-            
-            
+
+
             parsersHash.put(key, result);
         }
-        
+
         if (result == null) {
             throw new TestFileException(LibResHandler.getResStr("testgen.error.parsernotfound", key));
         }
 
         return result;
-            
+
     }
-    
-    protected XMLParser createParser(String key) 
-            throws TestFileException, 
+
+    protected XMLParser createParser(String key)
+            throws TestFileException,
             IOException {
         if (key.equals("doc")) {
             return TestSuiteParserFactory.createTestSuiteParser();
-        } else if (key.equals("test")) {        
+        } else if (key.equals("test")) {
             return ParserFactory.createDefaultXMLParser();
         }
-        
+
         return null;
     }
-    
+
     protected String getKey(File file) {
         String name = file.getName();
         if (name.endsWith(".tdoc.xml")) {
@@ -93,7 +93,7 @@ public class MiddleWareXMLParser extends StandardOptionHandler implements IRPars
         }
         return "";
     }
-    
+
     public IRObj[] parse(java.io.File[] files)
             throws TestFileException,
             IOException {
@@ -103,7 +103,7 @@ public class MiddleWareXMLParser extends StandardOptionHandler implements IRPars
          }
          return result;
     }
-         
+
     public IRObj parse(java.io.File file, String tckSourceRoot)
         throws TestFileException,
         IOException {
@@ -115,7 +115,7 @@ public class MiddleWareXMLParser extends StandardOptionHandler implements IRPars
                setOutputDir(retVal, file);
            } else {
                String fileName = file.getName();
-               String id = fileName.substring(0,  
+               String id = fileName.substring(0,
                    fileName.length() - ".tdoc.xml".length());
                ((TestSuite)retVal).setID(id);
            }
@@ -134,47 +134,47 @@ public class MiddleWareXMLParser extends StandardOptionHandler implements IRPars
 
     protected void setOutputDir(IRObj tree) {
         if (tree instanceof TestItem) {
-            setOutputDir((TestItem)tree, m_outputDir); 
+            setOutputDir((TestItem)tree, m_outputDir);
         }
     }
-     
+
     protected void setOutputDir(TestItem ti, String value) {
         IR.setAttrElem(ti, "OutputDir", (value!=null) ? value : "");
     }
-       
-            
+
+
     public Shell getShell() throws TestFileException {
         return m_shell;
     }
-    
+
     public void setShell(Shell shell) {
         m_shell = shell;
     }
-    
-  /** 
+
+  /**
     *  Sets the Validator
     * <p>
     *  do nothing
     * @param validator The validator to set.
-    */ 
+    */
     public void setValidator(IRValidator validator) {
-	}
+    }
 
-   /** 
+   /**
     * <p>
-    * @return null 
-    */ 
+    * @return null
+    */
     public IRValidator getValidator() {
         return null;
-	}
+    }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    StringOption outputOption = new StringOption("-o", 
+    StringOption outputOption = new StringOption("-o",
         "  -o <outputdir> output directory");
 
 
@@ -187,10 +187,10 @@ public class MiddleWareXMLParser extends StandardOptionHandler implements IRPars
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
-    public void applyOptionsValues() throws ParseArgumentException {	   
+    public void applyOptionsValues() throws ParseArgumentException {
 
         if (outputOption.isSet()) {
             m_outputDir = outputOption.getStringValue();

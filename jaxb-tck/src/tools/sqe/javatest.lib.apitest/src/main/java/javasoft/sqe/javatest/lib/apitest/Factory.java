@@ -19,7 +19,7 @@ package javasoft.sqe.javatest.lib.apitest;
 
 /**
  * This interface abstracts the basic functionality provided
- * by all type of Factories. 
+ * by all type of Factories.
  *
  * @author     Jonathan Gibbons, Rampalli Narasimhan, Kevin A Smith
  * @see        ImmutableObjectFactory
@@ -38,9 +38,9 @@ public interface Factory {
   /**
    * This method returns the name of the element located at the index
    * i.
-   * 
+   *
    * @param i index of the element.
-   */ 
+   */
    String getName (int i);
 
   /**

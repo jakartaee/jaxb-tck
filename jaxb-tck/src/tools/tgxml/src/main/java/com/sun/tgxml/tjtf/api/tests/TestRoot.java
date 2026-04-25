@@ -23,14 +23,14 @@ import com.sun.tgxml.tjtf.api.XMLObj;
 // </importgen>
 
 /**
- * TestRoot - 
+ * TestRoot -
  *
  * <b>TestRoot</b> is the marker interface that describes TestItems that are root elements of
  * a TestDescription document (typically, TestGroup or Library).
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -49,9 +49,9 @@ public  interface TestRoot extends XMLObj {
      *    Methods
      * ============================================================================================
      */
-   
 
-   
+
+
 
 }
 

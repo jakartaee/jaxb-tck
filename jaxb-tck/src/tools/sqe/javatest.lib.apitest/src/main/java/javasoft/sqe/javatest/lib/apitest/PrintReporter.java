@@ -55,15 +55,15 @@ public class PrintReporter implements Reporter {
     if (args != null) {
     for (int i = 0; i < args.length; ++i) {
       if (args[i].equals("-verbose")) {
-	verbose = true;
+    verbose = true;
       }
       else if (args[i].equals ("-showpoint")) {
-	  // Use this rarely - when there are large test points and if the test seems to hang
-	  // somewhere 
-	  shouldShowPoint = true;
+      // Use this rarely - when there are large test points and if the test seems to hang
+      // somewhere
+      shouldShowPoint = true;
       }
-      if (args[i].equals("-generator")) { 
-	throw new AssertionTest.Fault("There was no -end at the end of Argument list for the Reporter");
+      if (args[i].equals("-generator")) {
+    throw new AssertionTest.Fault("There was no -end at the end of Argument list for the Reporter");
       }
     }
     }
@@ -119,9 +119,9 @@ public class PrintReporter implements Reporter {
   public void reportAssertion (String s, boolean b) {
     if (!b) {
       if (firstTime) {
-	firstTime = false;
-	printTestData();
-	ref.println (" List of Assertion Failures:");
+    firstTime = false;
+    printTestData();
+    ref.println (" List of Assertion Failures:");
       }
       ref.println ("  - " + s);
     }
@@ -138,12 +138,12 @@ public class PrintReporter implements Reporter {
   public void reportTestResult (Object res, Status s) {
     result = res;
     if (s.getType() == Status.PASSED) {
-      pass += 1; 
+      pass += 1;
     } else {
       printTestData();
       fail += 1;
       if (verbose) {
-	ref.println (" Test Returned             : " + result);
+    ref.println (" Test Returned             : " + result);
       }
       ref.println (" Test Status               : " + s.getReason());
       ref.println ("--------------------------------------------------------------");
@@ -186,13 +186,13 @@ public class PrintReporter implements Reporter {
     if (shouldShowPoint) {
       log.print ("Excecution Signature at this point: ");
       for (int i = 0; i < exeSignature.length; ++i) {
-	log.print (exeSignature[i]);
+    log.print (exeSignature[i]);
       }
       log.println ("");
     }
-    
+
   }
- 
+
   /**
    * <P>
    * This method is called when all the test points are executed and the tests conclude.
@@ -207,7 +207,7 @@ public class PrintReporter implements Reporter {
     } else {
       status = "Failed";
     }
-    ref.println ("--------------------------------------------------------------------");   
+    ref.println ("--------------------------------------------------------------------");
     ref.println ("               Overall AssertionTest Result Summary                 ");
     ref.println ("--------------------------------------------------------------------");
     ref.println (" Overall Test Status        : " + status);
@@ -215,7 +215,7 @@ public class PrintReporter implements Reporter {
     ref.println (" Total Tests Passed         : " + pass);
     ref.println (" Total Tests Failed         : " + fail);
     ref.println ("--------------------------------------------------------------------");
-    ref.flush(); 
+    ref.flush();
   }
 
   //
@@ -226,19 +226,19 @@ public class PrintReporter implements Reporter {
       printData = false;
       ref.println ("--------------------------------------------------------------");
       if (verbose) {
-	ref.print   (" Parameter Passed          : ");
-	for (int i = 0; i < exeParameters.length; ++i) {
-	  ref.print (exeParameters[i]+ " ");
-	}
-	ref.println ("");
-	ref.println (" Object Under Test         : " + objectUnderTest );
+    ref.print   (" Parameter Passed          : ");
+    for (int i = 0; i < exeParameters.length; ++i) {
+      ref.print (exeParameters[i]+ " ");
+    }
+    ref.println ("");
+    ref.println (" Object Under Test         : " + objectUnderTest );
       }
       ref.print (" Index of factory objects  : ");
       for (int i = 0; i < exeSignature.length; ++i) {
-	if (i == exeSignature.length - 1) 
-	  ref.print (exeSignature[i]);
-	else 
-	  ref.print (exeSignature[i] + ":");
+    if (i == exeSignature.length - 1)
+      ref.print (exeSignature[i]);
+    else
+      ref.print (exeSignature[i] + ":");
       }
       ref.println ("");
     }

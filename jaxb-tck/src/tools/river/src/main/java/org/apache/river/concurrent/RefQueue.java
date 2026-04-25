@@ -19,8 +19,8 @@ package org.apache.river.concurrent;
  * This interface defines the only ReferenceQueue method used,
  * to not depend directly on ReferenceQueue, allowing the use of other Queue
  * implementations.
- * 
- * @param <T> 
+ *
+ * @param <T>
  * @author peter
  */
 interface RefQueue<T> {

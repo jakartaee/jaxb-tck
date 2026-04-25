@@ -18,18 +18,18 @@ package org.apache.river.concurrent;
 import java.util.concurrent.Future;
 
 /**
- * 
+ *
  * @author Peter Firmstone.
  */
 class TimedReferrer<T> implements UntouchableReferrer<T>, TimeBomb {
-    
+
     private volatile long clock;
     private volatile long read;
     private final TimedRefQueue queue;
     private final T referent;
     private volatile boolean enqued;
     private final Object lock;
-    
+
     TimedReferrer(T k, TimedRefQueue q){
         long time = System.nanoTime();
         clock = time;
@@ -65,20 +65,20 @@ class TimedReferrer<T> implements UntouchableReferrer<T>, TimeBomb {
         }
         return enqued;
     }
-    
+
     @Override
     public void updateClock(long time){
         if (read < clock) { // only write volatile if necessary.
             if (referent instanceof Future) ((Future)referent).cancel(false);
             enqueue();
-            // Don't clear, it will be removed soon anyway, prevents 
+            // Don't clear, it will be removed soon anyway, prevents
             // non empty Queue.poll() returning null.
             //clear();
         } else {
             clock = time;
         }
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o)  return true; // Same reference.
@@ -97,7 +97,7 @@ class TimedReferrer<T> implements UntouchableReferrer<T>, TimeBomb {
         hash = 29 * hash + k.getClass().hashCode();
         return hash;
     }
-    
+
     @Override
     public String toString(){
         Object s = get();
@@ -108,5 +108,5 @@ class TimedReferrer<T> implements UntouchableReferrer<T>, TimeBomb {
     public T lookDontTouch() {
         return referent;
     }
-    
+
 }

@@ -24,11 +24,11 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 /**
  * <b>IRProcessor</b> is a generic contract for IRObj processors
- * used by TestGen tool before code generation. 
+ * used by TestGen tool before code generation.
  *
  *
- * @version 	1.0, 21/01/2004
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 21/01/2004
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -37,13 +37,13 @@ public interface IRProcessor {
     /**
      * Processes passed array of IRObj
      * @param irs  IRObj array to be processed
-     * @return     result of processing passed array 
+     * @return     result of processing passed array
      * @exception  TestFileException  - if there is some processing problem.
      */
     public IRObj[] process(IRObj[] irs) throws TestFileException;
 
     /**
-     * Sets properties for processor. 
+     * Sets properties for processor.
      */
     public void setProperties(Properties props);
 
@@ -66,4 +66,4 @@ public interface IRProcessor {
     public String getProperty(String name);
 
 }
-        
+

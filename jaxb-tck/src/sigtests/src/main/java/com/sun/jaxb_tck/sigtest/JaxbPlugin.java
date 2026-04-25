@@ -149,7 +149,7 @@ class AfterBuildMembersTransformer implements Transformer {
 class BeforeTestTransformer implements Transformer {
 
     private static HashMap<String, String> replacements = new HashMap<String, String>() {
-    	{
+        {
             put("java.lang.Byte", "byte");
             put("java.lang.Char", "char");
             put("java.lang.Double", "double");
@@ -158,7 +158,7 @@ class BeforeTestTransformer implements Transformer {
             put("java.lang.Long", "long");
             put("java.lang.Short", "short");
             put("java.lang.Boolean", "boolean");
-    	}
+        }
     };
 
     public ClassDescription transform(ClassDescription cls) {

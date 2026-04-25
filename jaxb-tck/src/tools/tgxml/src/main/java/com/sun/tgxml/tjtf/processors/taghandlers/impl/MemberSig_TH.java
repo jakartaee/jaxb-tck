@@ -30,50 +30,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * MemberSig_TH - The tag-handler for a MemberSig tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    MemberSig_TH 
- * ============================================================================================ 
- */ 
+/**
+ * MemberSig_TH - The tag-handler for a MemberSig tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    MemberSig_TH
+ * ============================================================================================
+ */
 public class MemberSig_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   MemberSig_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   MemberSig_TH constructor -
+    *       Initialize our internal fields.
+    */
     public MemberSig_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ public class MemberSig_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_membersig;
+    return TagsImpl.ctStr_tag_membersig;
     }
 
     //------------------------------------------------------------------------------
@@ -98,47 +98,47 @@ public class MemberSig_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
-	
-	if (testitem == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	
-	// validated the member sig name
-	//   If the tag is parsed in, it can not have null text.
-	if (text == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+    super.endTag(text);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
 
-	StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
-	if (! tknzr.hasMoreTokens())
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+    if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	
-	if (testitem instanceof TestGroupDocumentation) {
-	    //  Nothing is pushed onto the stack
-	    TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
-	    
-	    tgd.setMemberSig(text);
-	} else if (testitem instanceof TestCaseSpec) {
-	    //  Nothing is pushed onto the stack
-	    TestCaseSpec tcs = (TestCaseSpec) testitem;
-	    
-	    tcs.setMemberSig(text);
-	    
-	} else 
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext2", getTagName(), 
-							     TagsImpl.ctStr_tag_testgroupdocumentation,
-							     TagsImpl.ctStr_tag_testcasespec));
-	    
+    // validated the member sig name
+    //   If the tag is parsed in, it can not have null text.
+    if (text == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+
+    StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
+    if (! tknzr.hasMoreTokens())
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+
+
+    if (testitem instanceof TestGroupDocumentation) {
+        //  Nothing is pushed onto the stack
+        TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
+
+        tgd.setMemberSig(text);
+    } else if (testitem instanceof TestCaseSpec) {
+        //  Nothing is pushed onto the stack
+        TestCaseSpec tcs = (TestCaseSpec) testitem;
+
+        tcs.setMemberSig(text);
+
+    } else
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext2", getTagName(),
+                                 TagsImpl.ctStr_tag_testgroupdocumentation,
+                                 TagsImpl.ctStr_tag_testcasespec));
+
     }
-     
- 
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -146,15 +146,15 @@ public class MemberSig_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String sig = (String) tdObject;
+    String sig = (String) tdObject;
 
-	m_EmitterHandler.emitText(sig);
+    m_EmitterHandler.emitText(sig);
 
     }
-     
+
 
 }

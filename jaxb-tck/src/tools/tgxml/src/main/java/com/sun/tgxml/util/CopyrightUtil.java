@@ -23,13 +23,13 @@ package com.sun.tgxml.util;
 public class CopyrightUtil {
     public final static String COPYRIGHT_MACRO = "%Copyright%";
 
-    /** 
+    /**
      *  Expands macro in copyright string. Inserts link instead.
      *  'xxx %yyy% zzz' --> 'xxx <A HREF="link">yyy</A> zzz'
      *
      */
     public static String expandCopyrightMacro(String copyright, String link) {
-	if (copyright == null || link == null || link.equals("")) 
+    if (copyright == null || link == null || link.equals(""))
             return copyright;
 
         StringBuffer buf = new StringBuffer(copyright);
@@ -37,7 +37,7 @@ public class CopyrightUtil {
         int end = copyright.lastIndexOf("%");
         if ((-1 < start) && (start < end)) {
             String replacement = copyright.substring(start+1, end);
-            replacement = "<A HREF=\"" + link 
+            replacement = "<A HREF=\"" + link
                         + "\">" + replacement + "</A>";
             buf.replace(start, end+1, replacement);
         }

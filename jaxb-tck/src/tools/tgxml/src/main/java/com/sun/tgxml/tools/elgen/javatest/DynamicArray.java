@@ -27,10 +27,10 @@ import java.lang.reflect.Array;
  * or use the append method that accepts the Class argument to prevent array
  * storage exceptions.  This is an issue when this class is forced to create a
  * new array of unknown type and determine the type from the item being appended.</em>
- * 
+ *
  *
  * @author Brian Kurotsuchi
- * @version @(#)DynamicArray.java	1.15 02/01/18
+ * @version @(#)DynamicArray.java   1.15 02/01/18
  */
 
 public final class DynamicArray {
@@ -54,12 +54,12 @@ public final class DynamicArray {
             else {
                 throw new IllegalArgumentException("Cannot add null item to null array.");
             }
-        } 
-	else {
-	    newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length+1));
-	    System.arraycopy(oldArr, 0, newArr, 0, oldArr.length);
-	    newArr[newArr.length-1] = newObj;
-        } 
+        }
+    else {
+        newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length+1));
+        System.arraycopy(oldArr, 0, newArr, 0, oldArr.length);
+        newArr[newArr.length-1] = newObj;
+        }
 
         return newArr;
     }
@@ -76,14 +76,14 @@ public final class DynamicArray {
      * @throws ArrayStoreException If there is a type mismatch between oldArr and newObj.
      */
     public static Object[] append(Object[] oldArr, Object newObj, Class arrayClass) {
-	Object[] localArr;
+    Object[] localArr;
 
-	if (oldArr == null && arrayClass != null)
-	    localArr = (Object[])(Array.newInstance(arrayClass, 0));
-	else
-	    localArr = oldArr;
+    if (oldArr == null && arrayClass != null)
+        localArr = (Object[])(Array.newInstance(arrayClass, 0));
+    else
+        localArr = oldArr;
 
-	return append(localArr, newObj);
+    return append(localArr, newObj);
     }
 
     /**
@@ -109,12 +109,12 @@ public final class DynamicArray {
             else {
                 throw new IllegalArgumentException("Cannot add null item to null array.");
             }
-        } 
-	else {
+        }
+    else {
             if (location > oldArr.length)
                 throw new IllegalArgumentException("Index location too large (" + location +
                                                     ").");
-	    newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length+1));
+        newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length+1));
 
             if (location == 0) {
                 newArr[0] = newObj;
@@ -125,7 +125,7 @@ public final class DynamicArray {
                 System.arraycopy(oldArr, location, newArr, location + 1,
                                  oldArr.length - location);
             }
-        } 
+        }
 
         return newArr;
     }
@@ -151,29 +151,29 @@ public final class DynamicArray {
     public static Object[] remove(Object[] oldArr, int index) {
         Object[] newArr;
 
-	if (oldArr == null)
-	    throw new IllegalArgumentException("Cannot remove from null array.");
-	else if (index > oldArr.length-1 || index < 0) {
-	    // invalid index
-	    throw new IllegalArgumentException("Index to remove from array is invalid (too small/large).");
-	}
-	else if (index == 0) {
-	    // chop the head
-	    newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length-1));
-	    System.arraycopy(oldArr, 1, newArr, 0, oldArr.length-1);
-	} 
-	else if (index == oldArr.length-1) {
-	    // chop the tail
-	    newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length-1));
-	    System.arraycopy(oldArr, 0, newArr, 0, oldArr.length-1);
-	} 
-	else {
-	    // chop the middle
-	    newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length-1));
-	    System.arraycopy(oldArr, 0, newArr, 0, index);
-	    System.arraycopy(oldArr, index+1, newArr, index,
-			     oldArr.length-index-1);
-	}
+    if (oldArr == null)
+        throw new IllegalArgumentException("Cannot remove from null array.");
+    else if (index > oldArr.length-1 || index < 0) {
+        // invalid index
+        throw new IllegalArgumentException("Index to remove from array is invalid (too small/large).");
+    }
+    else if (index == 0) {
+        // chop the head
+        newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length-1));
+        System.arraycopy(oldArr, 1, newArr, 0, oldArr.length-1);
+    }
+    else if (index == oldArr.length-1) {
+        // chop the tail
+        newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length-1));
+        System.arraycopy(oldArr, 0, newArr, 0, oldArr.length-1);
+    }
+    else {
+        // chop the middle
+        newArr = (Object[])(Array.newInstance(getArrayClass(oldArr), oldArr.length-1));
+        System.arraycopy(oldArr, 0, newArr, 0, index);
+        System.arraycopy(oldArr, index+1, newArr, index,
+                 oldArr.length-index-1);
+    }
 
         return newArr;
     }
@@ -194,7 +194,7 @@ public final class DynamicArray {
         } else {
             int location = find(oldArr, victim);
             if(location != -1) {
-                newArr = remove(oldArr, location);    
+                newArr = remove(oldArr, location);
             } else {
                 // not found, return the original array
                 newArr = oldArr;
@@ -239,4 +239,4 @@ public final class DynamicArray {
     }
 
 }
- 
+

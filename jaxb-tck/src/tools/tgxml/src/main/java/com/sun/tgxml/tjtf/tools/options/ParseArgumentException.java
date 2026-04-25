@@ -18,16 +18,16 @@
 package com.sun.tgxml.tjtf.tools.options;
 
 /**
- * ParseArgumentException - 
+ * ParseArgumentException -
  *
- * <b>ParseArgumentException</b> is the basic Exception class for 
+ * <b>ParseArgumentException</b> is the basic Exception class for
  * command line argument parsing<br>
  * Signals that an error has been reached unexpectedly while parsing
- * command line option. 
+ * command line option.
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -40,8 +40,8 @@ public  class ParseArgumentException extends Exception {
      * @param message  a an exception message string.
      */
     public ParseArgumentException (String message) {
-	super(message);
+    super(message);
     }
 }
-     
+
 

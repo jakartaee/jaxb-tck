@@ -30,51 +30,51 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * Import_TH - The tag-handler for a Lib tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Import_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Import_TH - The tag-handler for a Lib tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Import_TH
+ * ============================================================================================
+ */
 public class Import_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Import_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Import_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Import_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ public class Import_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_import;
+    return TagsImpl.ctStr_tag_import;
     }
 
     //------------------------------------------------------------------------------
@@ -99,37 +99,37 @@ public class Import_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
-	Stack testItemStack = getParserHandler().getStack();
-	Object testitem = testItemStack.peek();
-	if (! (testitem instanceof CodeSet)  )
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
-	
-	//  Nothing is pushed onto the stack
-	//    just check to make sure there is a list there.
-	CodeSet cs = (CodeSet) testitem;
-	ArrayList imports = cs.getImports();
-	if (imports == null) {
-	    imports = new ArrayList();
-	    cs.setImports(imports);
-	}
+    super.endTag(text);
+    Stack testItemStack = getParserHandler().getStack();
+    Object testitem = testItemStack.peek();
+    if (! (testitem instanceof CodeSet)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
 
-	// validated the import name
-	if (text == null || text.equals(""))
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.text.null", getTagName()));
-	try {
-	    String impt = CommonImpl.getSingleToken(text);
-	    imports.add(impt);
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e);
-	}
+    //  Nothing is pushed onto the stack
+    //    just check to make sure there is a list there.
+    CodeSet cs = (CodeSet) testitem;
+    ArrayList imports = cs.getImports();
+    if (imports == null) {
+        imports = new ArrayList();
+        cs.setImports(imports);
     }
- 
+
+    // validated the import name
+    if (text == null || text.equals(""))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.text.null", getTagName()));
+    try {
+        String impt = CommonImpl.getSingleToken(text);
+        imports.add(impt);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e);
+    }
+    }
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -137,18 +137,18 @@ public class Import_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String importstr = (String) tdObject;
-	// validated the import name
-	if (importstr == null || importstr.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
+    String importstr = (String) tdObject;
+    // validated the import name
+    if (importstr == null || importstr.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
 
-	m_EmitterHandler.emitText(importstr);
+    m_EmitterHandler.emitText(importstr);
 
     }
-     
+
 
 }

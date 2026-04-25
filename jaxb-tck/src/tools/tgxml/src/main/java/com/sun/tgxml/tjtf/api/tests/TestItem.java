@@ -26,18 +26,18 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TestItem - 
+ * TestItem -
  *
- * <b>TestItem</b> is the interface that describes that this object is a 
+ * <b>TestItem</b> is the interface that describes that this object is a
  * TestEntity (TestGroup, TestCase, or TestLibrary).
  * <b>TestItem</b> describes all of the common member functions of a TestEntity.
  * <p>
  *  A test Item typically contains some Documentation entity, an Attributes entity,
  *  and a CodeSet (common-shared code parts for an entity).
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -66,7 +66,7 @@ public  interface TestItem {
     */
     public String getID() throws TestFileException;
 
-     
+
   /**
     *   Set the identifier associated with the TestGroup, TestClass, or Library.
     *  <p>
@@ -85,7 +85,7 @@ public  interface TestItem {
     * @see com.sun.tgxml.tjtf.api.documentation.Documentation
     */
     public Documentation getDocumentation();
-     
+
 
 
 
@@ -97,7 +97,7 @@ public  interface TestItem {
     * @see com.sun.tgxml.tjtf.api.attributes.Attributes
     */
     public Attributes getAttributes();
-     
+
 
 
   /**
@@ -109,9 +109,9 @@ public  interface TestItem {
     * @see #setCodeSet
     */
     public CodeSet getCodeSet();
-     
 
-     
+
+
   /**
     *   Set the CodeSet for this TestItem.
     *  <p>

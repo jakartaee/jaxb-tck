@@ -22,7 +22,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TagsImpl - 
+ * TagsImpl -
  *
  * <b>TagsImpl</b> contains the the string names for all XML entity tags, attributes, and
  * enumerated values.  These are used for both parsing and emitting.
@@ -30,7 +30,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  *
  *
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -48,7 +48,7 @@ public  class TagsImpl  {
     *    Member Fields
     * ============================================================================================
     */
-    
+
 
 
 
@@ -137,7 +137,7 @@ public  class TagsImpl  {
 
     public static final String  ctStr_attr_testtech_enum_eqclass      = "EqClass";
     public static final String  ctStr_attr_testtech_enum_boundary     = "Boundary";
- 
+
     public static final String  ctStr_attr_extdata_enum_resource      = "resource";
     public static final String  ctStr_attr_extdata_enum_iodata        = "iodata";
 
@@ -153,7 +153,7 @@ public  class TagsImpl  {
     *    Methods
     * ============================================================================================
     */
- 
+
   /**
     *   Predicate - determines if the enumerated attr value is a true or false flag.
     *  <p>
@@ -162,14 +162,14 @@ public  class TagsImpl  {
     * @return     true or false according to string value.
     */
     static public boolean isTrueOrFalse(String trueOrFalseString) throws TestFileException {
-	if (trueOrFalseString == null || trueOrFalseString.equals(""))
-	    throw new TestFileException("Null boolean attribute string-value.");
-	if (trueOrFalseString.equals(ctStr_attr_enum_true))
-	    return true;
-	if (trueOrFalseString.equals(ctStr_attr_enum_false))
-	    return false;
+    if (trueOrFalseString == null || trueOrFalseString.equals(""))
+        throw new TestFileException("Null boolean attribute string-value.");
+    if (trueOrFalseString.equals(ctStr_attr_enum_true))
+        return true;
+    if (trueOrFalseString.equals(ctStr_attr_enum_false))
+        return false;
 
-	throw new TestFileException("Non-boolean attribute string-value: " + trueOrFalseString + ".");
+    throw new TestFileException("Non-boolean attribute string-value: " + trueOrFalseString + ".");
 
     }
 

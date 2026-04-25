@@ -20,9 +20,9 @@ package com.sun.tgxml.tools.filter.libutil;
 import com.sun.tgxml.tools.filter.processors.FilteringException;
 
 /**
- * This factory provides default implementations for 
+ * This factory provides default implementations for
  * LibAttributesFilter, LibDependencyFilter and LibMapFile interfaces
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */

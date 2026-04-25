@@ -20,13 +20,13 @@ package com.sun.jmpp.lib;
 import java.util.Hashtable;
 
 /**
- * This interface represents a set of properties typically used by the 
+ * This interface represents a set of properties typically used by the
  * API tests generation library. Developers who may want to configure
  * JmppLibAPI dynamically via configuration class should implement this
  * interface.
  */
 public interface LibAPIProperties {
-    
+
     /**
      * Returns copyright notice to be inserted into test code.
      */
@@ -36,33 +36,33 @@ public interface LibAPIProperties {
      * Returns the default imports.
      */
     public String getDefaultImports();
-    
+
     /**
      * Returns hastable containing baseClass - execute arguments pairs.
      */
     public Hashtable getBaseClassExecuteArgs();
-    
+
     /**
      * Returns default keywords.
      */
     public String getDefaultKeywords();
-    
+
     /**
      * Returns default rmic keywords.
      */
     public String getDefaultRmicKeywords();
-    
+
     /**
      * Returns hashtable containing baseclass name - full baseclass name paris
      */
     public Hashtable getBaseClasses();
-    
+
     /**
      * Returns package prefix to be appended into a package name
      * of the tests generated.
      */
     public String getPackagePrefix();
-    
+
     /**
      * Returns maximum file name length allowed for output files.
      */

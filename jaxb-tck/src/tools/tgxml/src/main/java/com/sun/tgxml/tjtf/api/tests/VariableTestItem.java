@@ -18,14 +18,14 @@
 package com.sun.tgxml.tjtf.api.tests;
 
 /**
- * ItemVariant - 
+ * ItemVariant -
  *
- * <b>ItemVariant</b> is the interface that describes that this object is a 
+ * <b>ItemVariant</b> is the interface that describes that this object is a
  * TestItem and TestVariant(TestCase or Library).
- * 
+ *
  * <p>
  *
- * @version 	1.0, 11/30/2003
+ * @version     1.0, 11/30/2003
  * @author  Dmitry Fazunenko
  */
 

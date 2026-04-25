@@ -30,9 +30,9 @@ import java.util.logging.Logger;
  */
 public class TckUtil {
 
-	protected static Logger logger = Logger.getLogger(TckUtil.class.getName());
-	
-	public static final String PACKAGE_NAME_PREFFIX = "javasoft.sqe.tests";
+    protected static Logger logger = Logger.getLogger(TckUtil.class.getName());
+
+    public static final String PACKAGE_NAME_PREFFIX = "javasoft.sqe.tests";
 
     /**
      * Java keyword list.
@@ -48,63 +48,63 @@ public class TckUtil {
             "package", "synchronized", "enum", "assert" };
 
     protected static String fixJavaKeywords(String pkg) {
-		StringTokenizer tokenizer = new StringTokenizer(pkg, ".");
-		ArrayList segments = new ArrayList();
-		while (tokenizer.hasMoreTokens()) {
-			String tkn = tokenizer.nextToken();
-			if (tkn.length() > 0) {
-				// check for Java keyword list
-				for (int i = javaKeywords.length; --i >= 0;) {
-					if (tkn.equals(javaKeywords[i])) {
-						tkn = "_" + tkn;
-						break;
-					}
-				}
-				segments.add(tkn);
-			}
-		}
-		StringBuffer result = new StringBuffer();
-		for (int i = 2; i < segments.size(); i++)
-			result.append("." + segments.get(i));
+        StringTokenizer tokenizer = new StringTokenizer(pkg, ".");
+        ArrayList segments = new ArrayList();
+        while (tokenizer.hasMoreTokens()) {
+            String tkn = tokenizer.nextToken();
+            if (tkn.length() > 0) {
+                // check for Java keyword list
+                for (int i = javaKeywords.length; --i >= 0;) {
+                    if (tkn.equals(javaKeywords[i])) {
+                        tkn = "_" + tkn;
+                        break;
+                    }
+                }
+                segments.add(tkn);
+            }
+        }
+        StringBuffer result = new StringBuffer();
+        for (int i = 2; i < segments.size(); i++)
+            result.append("." + segments.get(i));
 
-		return result.length() != 0 ? result.substring(1).toString():result.toString();
-	}
-	
-	public static String getPackage(String path, String schemaPath) {
-    	try {
-			String preffix =  PACKAGE_NAME_PREFFIX;
+        return result.length() != 0 ? result.substring(1).toString():result.toString();
+    }
 
-			URI testUri = new URI(path);
-			URI schemaUri = testUri.resolve(schemaPath);
-			
-			logger.info(String.format("getPackage: path = '%s', schemaPath = '%s', schemaURI = %s\n", 
-					path, schemaPath, schemaUri.toString()));			
+    public static String getPackage(String path, String schemaPath) {
+        try {
+            String preffix =  PACKAGE_NAME_PREFFIX;
 
-			/* 
-			 * 1. toLowerCase
-			 * 2. Remove .xsd extension
-			 * 3. Replace package names started with digits to _digit
-			 * 4. Replace all slashes to dots
-			 * 5. Replace all non java identifier symbols to '_'
-			 */
-			String packageName = schemaUri.toString().toLowerCase()
-				.replaceAll("\\.xsd$", "")
-				.replaceAll("[\\\\/]+", ".")
-				.replaceAll("\\.([0-9])", "._$1")
-				.replaceAll("[^a-z0-9.]", "_");
-			/*
-			 * 1. Remove first two parts of the path, 
-			 * 2. prepend keyworkds with _,
-			 * 3. add prefix 
-			 */
-			packageName = (preffix + (preffix.length() == 0 ? "" : "."))+fixJavaKeywords(packageName);
-			logger.info(String.format("Constructed package: %s", packageName));
-			return packageName;
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-		
-	}
+            URI testUri = new URI(path);
+            URI schemaUri = testUri.resolve(schemaPath);
+
+            logger.info(String.format("getPackage: path = '%s', schemaPath = '%s', schemaURI = %s\n",
+                    path, schemaPath, schemaUri.toString()));
+
+            /*
+             * 1. toLowerCase
+             * 2. Remove .xsd extension
+             * 3. Replace package names started with digits to _digit
+             * 4. Replace all slashes to dots
+             * 5. Replace all non java identifier symbols to '_'
+             */
+            String packageName = schemaUri.toString().toLowerCase()
+                .replaceAll("\\.xsd$", "")
+                .replaceAll("[\\\\/]+", ".")
+                .replaceAll("\\.([0-9])", "._$1")
+                .replaceAll("[^a-z0-9.]", "_");
+            /*
+             * 1. Remove first two parts of the path,
+             * 2. prepend keyworkds with _,
+             * 3. add prefix
+             */
+            packageName = (preffix + (preffix.length() == 0 ? "" : "."))+fixJavaKeywords(packageName);
+            logger.info(String.format("Constructed package: %s", packageName));
+            return packageName;
+        } catch (URISyntaxException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 }

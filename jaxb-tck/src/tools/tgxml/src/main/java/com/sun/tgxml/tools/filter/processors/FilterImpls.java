@@ -51,93 +51,93 @@ class TestFilterImpl implements TestFilter {
     ArrayList IDset = new ArrayList();
 
     TestFilterImpl(FilterExpression tree, ExcludeListFilter elf,
-					  FilteredOutList fol) {
-	elFilter = elf;
-	foList = fol;
+                      FilteredOutList fol) {
+    elFilter = elf;
+    foList = fol;
 
-	TGtree = makeNonEmptyTree(tree.getRelevant((TestGroup)null));
-	TCtree = makeNonEmptyTree(tree.getRelevant((TestCase)null));
-	SCtree = makeNonEmptyTree(tree.getRelevant((SupportClass)null));
+    TGtree = makeNonEmptyTree(tree.getRelevant((TestGroup)null));
+    TCtree = makeNonEmptyTree(tree.getRelevant((TestCase)null));
+    SCtree = makeNonEmptyTree(tree.getRelevant((SupportClass)null));
     }
 //---------------------------------------------------------------------------
-    
+
     static FilterExpression makeNonEmptyTree(FilterExpression root) {
-	return root == null? new NodeTRUE()
-			   : root ;
+    return root == null? new NodeTRUE()
+               : root ;
     }
 
 //---------------------------------------------------------------------------
 
     void filterOut(TestGroup testGroup) throws FilteringException {
-	if (foList != null) {
-	    try {
-		foList.add(testGroup);
-	    } catch (IncorrectAttributesException iae) {
-		throw new FilteringException(
-				LibResHandler.getResStr("filter.error.testfilter.repFilteredTGroup",
-							iae.toString())  );
-	    }
-	}
+    if (foList != null) {
+        try {
+        foList.add(testGroup);
+        } catch (IncorrectAttributesException iae) {
+        throw new FilteringException(
+                LibResHandler.getResStr("filter.error.testfilter.repFilteredTGroup",
+                            iae.toString())  );
+        }
+    }
     }
 
     void filterOut(TestCase testCase) throws FilteringException {
-	if (foList != null) {
-	    try {
-		foList.add(testCase);
-	    } catch (IncorrectAttributesException iae) {
-		throw new FilteringException(
-				LibResHandler.getResStr("filter.error.testfilter.repFilteredTCase",
-							iae.toString())  );
-	    }
-	}
+    if (foList != null) {
+        try {
+        foList.add(testCase);
+        } catch (IncorrectAttributesException iae) {
+        throw new FilteringException(
+                LibResHandler.getResStr("filter.error.testfilter.repFilteredTCase",
+                            iae.toString())  );
+        }
+    }
     }
 //---------------------------------------------------------------------------
 
     boolean excluded(TestGroup testGroup) throws FilteringException {
-	if (elFilter == null)
-	    return false;
-	try {
-	    return elFilter.excluded(testGroup);
-	} catch (IncorrectAttributesException iae) {
-	    throw new FilteringException(
-				LibResHandler.getResStr("filter.error.testfilter.excludedTGroup",
-							iae.toString())  );
-	}
+    if (elFilter == null)
+        return false;
+    try {
+        return elFilter.excluded(testGroup);
+    } catch (IncorrectAttributesException iae) {
+        throw new FilteringException(
+                LibResHandler.getResStr("filter.error.testfilter.excludedTGroup",
+                            iae.toString())  );
+    }
     }
 
     boolean excluded(TestCase testCase) throws FilteringException {
-	if (elFilter == null)
-	    return false;
-	try {
-	    return elFilter.excluded(testCase);
-	} catch (IncorrectAttributesException iae) {
-	    throw new FilteringException(
-				LibResHandler.getResStr("filter.error.testfilter.excludedTCase",
-							iae.toString())  );
-	}
+    if (elFilter == null)
+        return false;
+    try {
+        return elFilter.excluded(testCase);
+    } catch (IncorrectAttributesException iae) {
+        throw new FilteringException(
+                LibResHandler.getResStr("filter.error.testfilter.excludedTCase",
+                            iae.toString())  );
+    }
     }
 //---------------------------------------------------------------------------
 
-    /** 
+    /**
      *  removes irrelevant testcases and support classes
      */
     public TestGroup strip(TestGroup testGroup) throws FilteringException {
-	if ( testGroup.isDeleted() ||  !TGtree.accept(testGroup) || excluded(testGroup) ) {
-	    filterOut(testGroup);
-	    return null;
-	}
+    if ( testGroup.isDeleted() ||  !TGtree.accept(testGroup) || excluded(testGroup) ) {
+        filterOut(testGroup);
+        return null;
+    }
 
-	ArrayList tcList = testGroup.getTestCases();
+    ArrayList tcList = testGroup.getTestCases();
         Hashtable idHash = new Hashtable();
 
-	for (int j = tcList.size()-1; j >= 0; j--) {
-	    TestCase tc = (TestCase)tcList.get(j);
-	    if ( tc.isDeleted() ||  !TCtree.accept(tc, testGroup) || excluded(tc) ) {
-		filterOut(tc);
-		tcList.remove(j);
-		continue;
-	    }
-	    String id = IR.getID(tc);
+    for (int j = tcList.size()-1; j >= 0; j--) {
+        TestCase tc = (TestCase)tcList.get(j);
+        if ( tc.isDeleted() ||  !TCtree.accept(tc, testGroup) || excluded(tc) ) {
+        filterOut(tc);
+        tcList.remove(j);
+        continue;
+        }
+        String id = IR.getID(tc);
             TestCase tc2 = (TestCase)idHash.get(id);
             if (tc2 == null) {
                 idHash.put(id, tc);
@@ -156,24 +156,24 @@ class TestFilterImpl implements TestFilter {
                     }
                 } else {
                     throw new FilteringException(
-                        "filter cannot select a testcase with id = '" + id + 
-                        "' between variants: '" + tc.getVarID()+ 
+                        "filter cannot select a testcase with id = '" + id +
+                        "' between variants: '" + tc.getVarID()+
                         "' and '" + tc2.getVarID() + "'");
                 }
             }
-	}
+    }
 
-	for (int j = tcList.size()-1; j >= 0; j--) {
-	    LibraryFilterImpl.stripCodeSet((TestCase)tcList.get(j), SCtree);
+    for (int j = tcList.size()-1; j >= 0; j--) {
+        LibraryFilterImpl.stripCodeSet((TestCase)tcList.get(j), SCtree);
         }
 
-	if (tcList.size() == 0) {
-	    filterOut(testGroup);
-	    return null;
-	}
+    if (tcList.size() == 0) {
+        filterOut(testGroup);
+        return null;
+    }
 
-	LibraryFilterImpl.stripCodeSet(testGroup, SCtree);
-	return testGroup;
+    LibraryFilterImpl.stripCodeSet(testGroup, SCtree);
+    return testGroup;
     }
 }
 //---------------------------------------------------------------------------
@@ -191,8 +191,8 @@ class LibraryFilterImpl implements LibraryFilter {
     FilterExpression SCtree;
 
     LibraryFilterImpl(FilterExpression tree) {
-	LibTree = TestFilterImpl.makeNonEmptyTree(tree.getRelevant((Library)null));
-	SCtree  = TestFilterImpl.makeNonEmptyTree(tree.getRelevant((SupportClass)null));
+    LibTree = TestFilterImpl.makeNonEmptyTree(tree.getRelevant((Library)null));
+    SCtree  = TestFilterImpl.makeNonEmptyTree(tree.getRelevant((SupportClass)null));
     }
 
     /**
@@ -201,21 +201,21 @@ class LibraryFilterImpl implements LibraryFilter {
      *  Returns null if no library is chosen.
      */
     public Library strip(Library[] libraryImpls) throws FilteringException {
-	Library chosenLib = null;
+    Library chosenLib = null;
 
-	for (int j = libraryImpls.length-1; j >= 0; j--) {
-	    Library lib = libraryImpls[j];
-	    if ( LibTree.accept(lib) ) {
-		if (chosenLib != null) {
+    for (int j = libraryImpls.length-1; j >= 0; j--) {
+        Library lib = libraryImpls[j];
+        if ( LibTree.accept(lib) ) {
+        if (chosenLib != null) {
                     String id1 = "";
                     String id2 = "";
-                    try { 
+                    try {
                         id1 = lib.getID();
                         id2 = chosenLib.getID();
                     } catch (TestFileException e) {
                        // should never arise
                     }
-                    
+
                     String vn1 = lib.getVarName();
                     String vn2 = chosenLib.getVarName();
                     int o1 = lib.order();
@@ -233,17 +233,17 @@ class LibraryFilterImpl implements LibraryFilter {
                             "lib1: '" + id1 + ":" + lib.getVarID() + "' and " +
                             "lib2: '" + id2 + ":" + chosenLib.getVarID() + "'");
                     }
-		} else {
-		    chosenLib = lib;
+        } else {
+            chosenLib = lib;
                 }
-	    }         
-	}
+        }
+    }
 
         if (chosenLib != null) {
             stripCodeSet(chosenLib, SCtree);
         }
 
-	return chosenLib;
+    return chosenLib;
     }
 //---------------------------------------------------------------------------
 
@@ -251,32 +251,32 @@ class LibraryFilterImpl implements LibraryFilter {
      *  strips support classes for CodeSet of any TestItem
      */
     static void stripCodeSet(TestItem ti, FilterExpression SCtree) throws FilteringException {
-	CodeSet cs = ti.getCodeSet();
-	if ( cs == null )
-	    return;
+    CodeSet cs = ti.getCodeSet();
+    if ( cs == null )
+        return;
 
-	ArrayList scList = cs.getSupportClasses();
-	if ( scList == null )
-	    return;
+    ArrayList scList = cs.getSupportClasses();
+    if ( scList == null )
+        return;
 
-	ArrayList IDset = new ArrayList();
+    ArrayList IDset = new ArrayList();
 
-	for (int j = scList.size()-1; j >= 0; j--) {
-	    SupportClass sc = (SupportClass)scList.get(j);
-	    if ( !SCtree.accept(sc, cs) ) {
-		scList.remove(j);
-		continue;
-	    }
-	    String id = sc.getClassID();
-	    if (id==null)
-		continue;
-	    if (IDset.contains(id)) {
-		throw new FilteringException(
-				LibResHandler.getResStr("filter.error.libfilter.duplicatedSClass",
-							id, IR.getID(ti))  );
-	    }
-	    IDset.add(id);
-	}
+    for (int j = scList.size()-1; j >= 0; j--) {
+        SupportClass sc = (SupportClass)scList.get(j);
+        if ( !SCtree.accept(sc, cs) ) {
+        scList.remove(j);
+        continue;
+        }
+        String id = sc.getClassID();
+        if (id==null)
+        continue;
+        if (IDset.contains(id)) {
+        throw new FilteringException(
+                LibResHandler.getResStr("filter.error.libfilter.duplicatedSClass",
+                            id, IR.getID(ti))  );
+        }
+        IDset.add(id);
+    }
     }
 
 }

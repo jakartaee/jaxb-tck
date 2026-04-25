@@ -95,18 +95,18 @@ public class J2XEmitterBase extends MultiTestWriter {
 
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
-        StandardJavaFileManager fileManager = 
+        StandardJavaFileManager fileManager =
             compiler.getStandardFileManager(diagnostics, (Locale) null, (Charset) null);
         J2XProcessor processor = new J2XProcessor();
-        
+
         synchronized( fileManager ) {
             List<String> options = new ArrayList<String>();
             options.add("-classpath");
             options.add(SEPARATOR + JAXB_JAR_LOC + "/jakarta.activation.jar" + SEPARATOR +
-                        JAXB_JAR_LOC + "/jakarta.xml.bind-api.jar" + SEPARATOR + 
-                        JAXB_JAR_LOC + "/jaxb-core.jar" + SEPARATOR  + 
-                        JAXB_JAR_LOC + "/jaxb-impl.jar" + SEPARATOR  + 
-                        JAXB_JAR_LOC + "/jaxb-jxc.jar" + SEPARATOR  + 
+                        JAXB_JAR_LOC + "/jakarta.xml.bind-api.jar" + SEPARATOR +
+                        JAXB_JAR_LOC + "/jaxb-core.jar" + SEPARATOR  +
+                        JAXB_JAR_LOC + "/jaxb-impl.jar" + SEPARATOR  +
+                        JAXB_JAR_LOC + "/jaxb-jxc.jar" + SEPARATOR  +
                         JAXB_JAR_LOC + "/jaxb-xjc.jar" + SEPARATOR);
             Iterable<? extends JavaFileObject> compilationUnits =
                     fileManager.getJavaFileObjectsFromStrings( sourceFiles );
@@ -118,7 +118,7 @@ public class J2XEmitterBase extends MultiTestWriter {
             List<AbstractProcessor> processors = new ArrayList<AbstractProcessor>();
             processors.add( processor );
             task.setProcessors( processors );
-            
+
             if ( !task.call() ) {
                 StringBuffer compMessage = new StringBuffer();
                 for (Diagnostic diagnostic : diagnostics.getDiagnostics()) {
@@ -129,7 +129,7 @@ public class J2XEmitterBase extends MultiTestWriter {
                 }
                 throw new RuntimeException(compMessage.toString());
             }
-        }        
+        }
         return processor.getClassNames();
     }
 

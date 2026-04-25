@@ -92,13 +92,13 @@ import com.sun.tgxml.util.IR;
  * parsed only by the first request. On the next request library with
  * the same libID the library will be taken from cache.
  *
- * @version 	1.0, 21/01/2004
+ * @version     1.0, 21/01/2004
  * @author      Dmitry Fazunenko
  *
  */
 
 public class LibLinker extends One2OneProcessor {
-    
+
     private boolean isInitialized = false;
     protected LazyMap lazyMap = null;
     protected static final int EXEC_ARGS = 0;
@@ -107,11 +107,11 @@ public class LibLinker extends One2OneProcessor {
     public LibLinker() {
         super();
     }
-    
+
     public LibLinker(Properties props) {
         super(props);
     }
-    
+
     /**
      * Adds required imports for external libraries.
      * For inline library does nothing.
@@ -120,24 +120,24 @@ public class LibLinker extends One2OneProcessor {
         if (lib == null || lib.isInline())
             return lib;
         initialize();
-        
+
         ArrayList directDeps = IR.getDependentLibs(lib);
         if (directDeps == null || directDeps.size() == 0) {
             return lib;
         }
-        
+
         ArrayList newImports = new ArrayList();
         for (Iterator it = removeDups(directDeps).iterator(); it.hasNext();) {
             String libID = (String)it.next();
             newImports.addAll(detectExports(libID));
         }
-        
+
         addLibImports(lib, newImports);
-        
+
         return lib;
-        
+
     }
-    
+
     /**
      * Adds required imports and ExternalInline libraries.
      */
@@ -145,35 +145,35 @@ public class LibLinker extends One2OneProcessor {
         if (tg == null)
             return tg;
         initialize();
-        
+
         /*
           step #1:
           Detect the list of library ids which TestGroup
           (and all testcases and inline libraries) direclty depends on.
-         
+
           step #2:
           Detect External Inline libraries which TestGroup
           recursively depends on and include them into TestGroup
          */
-        
+
         ArrayList externalDeps = includeExternalInline(tg);
-        
+
         if (isMultiTest(tg)) {
             processExternalExports(tg, externalDeps);
         }
-        
+
         HashMap baseClassExecArgs = new HashMap();
         processBaseClasses(tg, externalDeps, baseClassExecArgs);
-        
-        
+
+
         if (canGetExternalLibrary()) {
             processExternalExecuteArgs(tg, externalDeps, baseClassExecArgs);
             processExternalContext(tg, externalDeps);
         }
-        
+
         return tg;
     }
-    
+
     protected void processBaseClasses(TestGroup tg, ArrayList externalDeps, HashMap baseClassExecArgs) throws TestFileException {
         ArrayList tiList = getAllTestItems(tg);
         ArrayList baseClasses = new ArrayList();
@@ -191,13 +191,13 @@ public class LibLinker extends One2OneProcessor {
             if (bcLibID == null || bcLibID.trim().equals("") ) {
                 bcLibID = bcID;
             }
-            
+
             propExecArgs = BuildProperties.getString("test.baseClass."+bcID+".executeArgs");
             if (propExecArgs == null) {
                 propExecArgs = "";
             }
             propExecArgs.trim();
-            
+
             try {
                 bcLib = getExternalLibrary(bcLibID);
             }
@@ -213,12 +213,12 @@ public class LibLinker extends One2OneProcessor {
                 execArgs = "";
             }
             execArgs.trim();
-            
+
             if (!execArgs.equals("") && !propExecArgs.equals("")) {
                 throw new TestFileException("ExecuteArgs Definition Conflict! Execute Args found in build properties file for base class " +
                                         bcID + " as well as within UTD definition for " + bcID + ".\n");
             }
-            
+
             if  (execArgs.equals("")) {
                 baseClassExecArgs.put(bcLibID, propExecArgs);
             }
@@ -227,7 +227,7 @@ public class LibLinker extends One2OneProcessor {
             }
         }
     }
-    
+
     private void collectBaseClasses(Iterator i, ArrayList res) throws TestFileException {
        CodeSet cs = null;
        while (i.hasNext()) {
@@ -252,9 +252,9 @@ public class LibLinker extends One2OneProcessor {
                 continue;
             }
             res.add(bc.trim());
-        } 
+        }
     }
-    
+
     /**
      * Detects the list of library ids which TestGroup
      * (and all testcases and inline libraries) direclty depends on.
@@ -265,27 +265,27 @@ public class LibLinker extends One2OneProcessor {
      */
     protected ArrayList includeExternalInline(TestGroup tg)
     throws TestFileException {
-        
+
         /* step #1:
           Detect the list of library ids which TestGroup
           (and all testcases and inline libraries) direclty depends on.
          */
-        
+
         // libraries which TestGroup direclty depends on.
         ArrayList directDeps = new ArrayList();
-        
+
         // list of ID of processed libraries
         ArrayList processedLibs = new ArrayList();
-        
+
         directDeps.addAll(IR.getDependentLibs(tg));
-        
+
         ArrayList testCases = tg.getTestCases();
         if (testCases != null) {
             for (Iterator it = testCases.iterator(); it.hasNext();) {
                 directDeps.addAll(IR.getDependentLibs((TestCase)it.next()));
             }
         }
-        
+
         ArrayList inlineLibs = tg.getLibraries();
         ArrayList inlineLibIDs = new ArrayList();
         if (inlineLibs != null) {
@@ -298,7 +298,7 @@ public class LibLinker extends One2OneProcessor {
         } else {
             inlineLibs = new ArrayList();
         }
-        
+
         /* step #2:
           Detect External Inline libraries which TestGroup
           recursively depends on.
@@ -312,66 +312,66 @@ public class LibLinker extends One2OneProcessor {
                     continue;
                 }
                 processedLibs.add(libID);
-                
+
                 Library lib = getExternalLibrary(libID);
                 if (lib.isInline()) {
                     newInlineLibs.add(TestFactory.createInlineLibrary(lib));
                 }
                 toProcess.addAll(IR.getDependentLibs(lib));
-        
+
             }
             inlineLibs.addAll(newInlineLibs);
             tg.setLibraries(inlineLibs);
-            
+
             // add newInlineLibs dependencies to the direct dependencies list
             for (Iterator it = newInlineLibs.iterator(); it.hasNext();) {
                 Library lib = (Library)(it.next());
                 directDeps.addAll(IR.getDependentLibs(lib));
                 inlineLibIDs.add(IR.getID(lib));
             }
-            
+
         }
         directDeps.removeAll(inlineLibIDs);
         return removeDups(directDeps);
     }
-    
+
     /**
      * Adds imports required for External Libraries usage
      */
     protected void processExternalExports(TestGroup tg,
             ArrayList externalDeps) throws TestFileException {
-        
+
         ArrayList newImports = new ArrayList();
         for (Iterator it = externalDeps.iterator(); it.hasNext();) {
             String libID = (String)it.next();
             newImports.addAll(detectExports(libID));
         }
-        
+
         addTGImports(tg, newImports);
     }
-    
+
     /**
      * Sets "externalLibsExecuteArgs" AttrElem as summary of
      * "ExecuteArgs" defined in the external libraries TestGroup depends on.
      */
     protected void processExternalExecuteArgs(TestGroup tg,
             ArrayList externalDeps, HashMap bassClassExecArgs) throws TestFileException {
-        
+
         HashSet processedTestitems = new HashSet();
         StringBuffer execArgsBuf = new StringBuffer();
-        
+
         for (Iterator it = externalDeps.iterator(); it.hasNext();) {
             String libID = (String)it.next();
             getAllExecuteArgs(getExternalLibrary(libID),processedTestitems,execArgsBuf, bassClassExecArgs);
         }
-       
-        
+
+
         //set final value execArgs in IR
         if (!execArgsBuf.toString().trim().equals("")) {
             IR.setAttrElem(tg, TGVisitor.EXE_ARGS_ATTRELEM, execArgsBuf.toString().trim());
         }
     }
-    
+
     /**
      * Returns TestItem list TestGroup has. (TestGroup itself, TestCases
      * and InlineLibraries.
@@ -389,14 +389,14 @@ public class LibLinker extends One2OneProcessor {
          }
          return list;
     }
-    
+
     /**
      * Sets "externalLibsContext" AttrElem as summary of
      * "Context" defined in the external libraries TestGroup depends on.
      */
     protected void processExternalContext(TestGroup tg,
             ArrayList externalDeps) throws TestFileException {
-        
+
         StringBuffer contextsBuf = new StringBuffer();
         HashMap processedLibraries = new HashMap();
         for (Iterator it = externalDeps.iterator(); it.hasNext();) {
@@ -408,27 +408,27 @@ public class LibLinker extends One2OneProcessor {
             IR.setAttrElem(tg, TGVisitor.CONTEXT_ATTRELEM, contextsBuf.toString());
         }
     }
-    
-    
+
+
     /**
      * Returns ExecuteArgs defined in external library, or null if not defined.
      */
     protected String getExecuteArgs(String libID) throws TestFileException {
         return IR.getExecuteArgs(getExternalLibrary(libID));
     }
-    
 
-    
+
+
     protected void getCodeSetParms(TestItem ti, HashSet processedTestitems, StringBuffer args, int type, HashMap values) throws TestFileException {
-        
+
         if (processedTestitems == null) {
             processedTestitems = new HashSet();
         }
-        
+
         if (args == null) {
             args = new StringBuffer();
         }
-        
+
         if (ti == null) {
             return;
         }
@@ -457,16 +457,16 @@ public class LibLinker extends One2OneProcessor {
                 default:
                     throw new TestFileException("getCodeSetParams Unsupported type: " + type + ".");
             }
-            
 
-            
+
+
             if (IRParmArgs != null) {
                 if(args.length() > 0) {
                     args.append(" ");
                 }
                 args.append(IRParmArgs);
             }
-            
+
             ArrayList dep = cs.getDependencies();
             if (dep != null) {
                 Iterator iter = dep.iterator();
@@ -480,22 +480,22 @@ public class LibLinker extends One2OneProcessor {
             }
         }
     }
-    
+
     protected void getAllExecuteArgs(TestItem ti, HashSet processedTestitems, StringBuffer args, HashMap baseClassExecArgs) throws TestFileException {
         getCodeSetParms(ti, processedTestitems, args, EXEC_ARGS, baseClassExecArgs);
     }
     protected void getAllContexts(TestItem ti, HashSet processedTestitems, StringBuffer contexts) throws TestFileException{
         getCodeSetParms(ti, processedTestitems, contexts, CONTEXT, null);
     }
-    
+
     /**
      * Returns Context defined in external library, or null if not defined.
      */
     protected String getContext(String libID) throws TestFileException {
         return IR.getContext(getExternalLibrary(libID));
     }
-    
-    
+
+
     /**
      * Detects classes list required required to be imported by libID.
      */
@@ -516,7 +516,7 @@ public class LibLinker extends One2OneProcessor {
                 // InlineLibrary cannot provide any exports
             }
         }
-        
+
         ArrayList bpExports = getBuildPropsExports(libID);
         if (bpExports.size() == 0 && exports.size() == 0) {
             // provided classes are no specified explicitly
@@ -526,13 +526,13 @@ public class LibLinker extends One2OneProcessor {
         } else if (exports.size() == 0) {
             return bpExports;
         }
-        
+
         // provided classes are specified in two ways: via Export and
         // via build properties.
         checkConflict(exports, bpExports, libID);
         return exports;
     }
-    
+
     /**
      * Returns Export list defined in the passed library.
      * If no Export is defined for library an empty list will be returned.
@@ -562,7 +562,7 @@ public class LibLinker extends One2OneProcessor {
             return new ArrayList();
         }
     }
-    
+
     /**
      * Returns Library imports from build properties
      */
@@ -578,7 +578,7 @@ public class LibLinker extends One2OneProcessor {
         }
         return result;
     }
-    
+
     /**
      * Returns default Library imports
      */
@@ -587,14 +587,14 @@ public class LibLinker extends One2OneProcessor {
         result.add(LibUtils.getLibraryPackage(libID) +"." + LibUtils.getLibraryClassName(libID));
         return result;
     }
-    
+
     /**
      * Adds new imports to the passed TestGroup.
      */
     protected void addTGImports(TestGroup tg, ArrayList newImports) {
         if (newImports == null || newImports.size() == 0)
             return;
-        
+
         CodeSet cs = tg.getCodeSet();
         if (cs == null)
             cs = CodeFactory.createCodeSet();
@@ -612,14 +612,14 @@ public class LibLinker extends One2OneProcessor {
         }
         cs.setImports(oldImports);
     }
-    
+
     /**
      * Adds new imports to the passed TestGroup.
      */
     protected void addLibImports(Library lib, ArrayList newImports) {
         if (newImports == null || newImports.size() == 0)
             return;
-        
+
         CodeSet cs = lib.getCodeSet();
         if (cs == null)
             cs = CodeFactory.createCodeSet();
@@ -636,8 +636,8 @@ public class LibLinker extends One2OneProcessor {
         }
         cs.setImports(oldImports);
     }
-    
-    
+
+
     /**
      * Returns true if the passed import is redundant
      */
@@ -650,7 +650,7 @@ public class LibLinker extends One2OneProcessor {
         }
         return false;
     }
-    
+
     /**
      * Checks that list of classes provided by library defined
      * via build properties does not conflict with list of library Exports.
@@ -675,10 +675,10 @@ public class LibLinker extends One2OneProcessor {
             throw new TestFileException("The following classes:\n" + conflicts
                     + " are specified in build properties as provided by"
                     + " library '" + libID + "', but missed in library exports");
-            
+
         }
     }
-    
+
     /**
      * returns true if passed TestGroup is MultiTest test
      */
@@ -686,7 +686,7 @@ public class LibLinker extends One2OneProcessor {
         String type = LibUtils.getTestType(tg);
         return type == null || type.equals("MultiTest");
     }
-    
+
     /**
      * initializes LibLinker if not initializes yet.
      */
@@ -702,7 +702,7 @@ public class LibLinker extends One2OneProcessor {
             try {
                 LibFilterFactrory factory = FilterUtil.
                         createLibFilterFactrory("libgen");
-                
+
                 LibMapFile libMapFile = factory.createLibMapFile();
                 libMapFile.setFileName(libmapFileName);
                 libMapFile.read();
@@ -713,7 +713,7 @@ public class LibLinker extends One2OneProcessor {
             }
         }
     }
-    
+
     /**
      * Returns true if LibLinker is initialized to retrieve
      * external library IR by libID.
@@ -721,7 +721,7 @@ public class LibLinker extends One2OneProcessor {
     public boolean canGetExternalLibrary() {
         return lazyMap != null;
     }
-    
+
     /**
      * Returns Library IR by libID, or null if library cannot be
      * retrieved.
@@ -733,7 +733,7 @@ public class LibLinker extends One2OneProcessor {
             return null;
         }
     }
-    
+
     /**
      * Returns list that contains only unique elements of the original list
      */
@@ -747,14 +747,14 @@ public class LibLinker extends One2OneProcessor {
         }
         return newList;
     }
-    
+
     class LazyMap {
         LibParser lib_parser = new LibParser();
         LibMapFile libMapFile;
         HashMap cashedLibs = new HashMap();
         XmlFileNameMap xmlMap = null;
         LibMap libMap = null;
-        
+
         LazyMap(LibMapFile libMapFile) throws TestFileException {
             this.libMapFile = libMapFile;
             if (libMapFile instanceof XmlFileNameMap) {
@@ -768,18 +768,18 @@ public class LibLinker extends One2OneProcessor {
                 }
             }
         }
-        
+
         Library getExternalLibrary(String libID) throws TestFileException {
             Library lib = (Library)cashedLibs.get(libID);
             if (lib != null)
                 return lib;
-            
+
             if (xmlMap != null) {
                 String xml = xmlMap.xmlFileName(libID);
                 if (xml == null) {
                     throw new TestFileException("Cannot find library: "+libID);
                 }
-                
+
                 try {
                     lib = lib_parser.parseLibrary(xml);
                 } catch (IOException ioe){
@@ -793,19 +793,19 @@ public class LibLinker extends One2OneProcessor {
             return lib;
         }
     }
-    
+
     class LibParser extends MiddleWareXMLParser {
-        
+
         LibParser() {
             super();
         }
-        
+
         Library parseLibrary(String fileName) throws
                 TestFileException, IOException {
             File f = new File(fileName);
             XMLParser parser = getParser(getKey(f));
             parser.setSourceFileMode(false);
-            
+
             try {
                 return (Library)parser.parse(f);
             } catch (org.xml.sax.SAXException saxe) {

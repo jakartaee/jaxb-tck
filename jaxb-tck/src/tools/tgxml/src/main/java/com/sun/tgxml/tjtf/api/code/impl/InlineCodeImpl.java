@@ -23,20 +23,20 @@ import com.sun.tgxml.tjtf.api.code.InlineCode;
 // </importgen>
 
 /**
- * InlineCode - 
+ * InlineCode -
  *
  * <b>InlineCode</b> is the interface to a class structure that describes code that is inlined in a test.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    InlineCodeImpl  
+ *    InlineCodeImpl
  * ============================================================================================
  */
 
@@ -48,7 +48,7 @@ public  class InlineCodeImpl extends CodeImpl implements InlineCode {
      *    Fields
      * ============================================================================================
      */
-   
+
     private String m_source;
 
     /*
@@ -56,14 +56,14 @@ public  class InlineCodeImpl extends CodeImpl implements InlineCode {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public InlineCodeImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
    public InlineCodeImpl(String langtype, String source) {
@@ -72,14 +72,14 @@ public  class InlineCodeImpl extends CodeImpl implements InlineCode {
     }
 
     private void init() {
-	m_source = "";
+    m_source = "";
     }
 
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
     //------------------------------------------------------------------------------
-   
+
 
   /**
     *   Get the source.
@@ -88,9 +88,9 @@ public  class InlineCodeImpl extends CodeImpl implements InlineCode {
     * @see #setSource
     */
     public String getSource() {
-	return m_source;
+    return m_source;
     }
-     
+
   /**
     *   Set the source.
     *  <p>
@@ -98,7 +98,7 @@ public  class InlineCodeImpl extends CodeImpl implements InlineCode {
     * @see #getSource
     */
     public void setSource(String source) {
-	m_source = source;
+    m_source = source;
     }
 
 }

@@ -28,13 +28,13 @@ import java.io.IOException;
  * This class provides methods to read an html title from the html file.
  */
 public class DefaultHtmlFile {
-   
+
     protected String title = null;
     protected File name = null;
     protected String descr = null;
     protected StringBuffer buf = null;
-    
-    /** 
+
+    /**
      * create DefaultHtmlFile object from the file.
      * the html file is parsed and the title of the html file became a title
      * of the oblect
@@ -42,10 +42,10 @@ public class DefaultHtmlFile {
     public DefaultHtmlFile(File name) throws IOException {
         buf = readFile(name);
         this.name = name;
-        this.title = findTitle(buf);        
+        this.title = findTitle(buf);
     }
 
-    /** 
+    /**
      * create DefaultHtmlFile object for given file and with given title.
      */
 
@@ -62,7 +62,7 @@ public class DefaultHtmlFile {
             return title = buf.substring(start+7, end).replace('\n', ' ');
         } else {
             return "no title";
-        }    
+        }
     }
 
     private StringBuffer readFile(File name)  throws IOException {

@@ -23,7 +23,7 @@ import com.sun.tgxml.tjtf.api.common.Export;
 // </importgen>
 
 /**
- * InlineData - 
+ * InlineData -
  *
  * <b>InlineData</b> describes the data that a test needs to be able to
  * execute.
@@ -31,7 +31,7 @@ import com.sun.tgxml.tjtf.api.common.Export;
  * <b>InlineData</b> contains either a URL to a data file, or inline text
  * that represents data.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -51,7 +51,7 @@ public interface InlineData extends Data, Export {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -69,7 +69,7 @@ public interface InlineData extends Data, Export {
     * @see #setData
     */
     public String getData();
-     
+
    /**
     *   Set the inline-data associated with this data element.
     *  <p>

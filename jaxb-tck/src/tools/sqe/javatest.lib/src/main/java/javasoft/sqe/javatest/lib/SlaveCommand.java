@@ -31,18 +31,18 @@ import com.sun.javatest.agent.PassiveAgentCommand;
  */
 public class SlaveCommand extends Command {
     public Status run(String[] args, PrintWriter log, PrintWriter ref) {
-	// if there is a -h/-host or -p/-port specification, it is a passive
-	// command, otherwise, it's an active one.
-	for (int i = 0; i < args.length && args[i].startsWith("-"); i++) {
-	    if (args[i].equals("-h") || args[i].equals("-host") ||
-		args[i].equals("-p") || args[i].equals("-port") ) {
-		PassiveAgentCommand pac = new PassiveAgentCommand();
-		pac.setClassLoader(getClassLoader());
-		return pac.run(args, log, ref);
-	    }
-	}
-	ActiveAgentCommand aac = new ActiveAgentCommand();
-	aac.setClassLoader(getClassLoader());
-	return aac.run(args, log, ref);
+    // if there is a -h/-host or -p/-port specification, it is a passive
+    // command, otherwise, it's an active one.
+    for (int i = 0; i < args.length && args[i].startsWith("-"); i++) {
+        if (args[i].equals("-h") || args[i].equals("-host") ||
+        args[i].equals("-p") || args[i].equals("-port") ) {
+        PassiveAgentCommand pac = new PassiveAgentCommand();
+        pac.setClassLoader(getClassLoader());
+        return pac.run(args, log, ref);
+        }
+    }
+    ActiveAgentCommand aac = new ActiveAgentCommand();
+    aac.setClassLoader(getClassLoader());
+    return aac.run(args, log, ref);
     }
 }

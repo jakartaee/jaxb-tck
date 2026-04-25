@@ -21,59 +21,59 @@ import java.util.ArrayList;
 
 /**
  * Composite invocation.
- * 
+ *
  * @author Leonid Kuskov
  * @version 1.5
  */
 public abstract class CompositeInvoker extends Invoker {
 
-	//Arguments.
-	protected 	String[] args;
+    //Arguments.
+    protected   String[] args;
 
-	/**
-	 * ctor
-	 */
-	public CompositeInvoker(String[] args) {
-		super();
-	    this.args = args;
-	}
-	
-	
-	// Components container
-	private ArrayList<Invoker> container = new ArrayList<Invoker>();
+    /**
+     * ctor
+     */
+    public CompositeInvoker(String[] args) {
+        super();
+        this.args = args;
+    }
 
-	/**
-	 * Walks through the list of Invoker(s) placed in container, performs the
-	 * invocation.
-	 */
-	@Override
-	protected final int invoke(PrintStream out, PrintStream err) throws Exception {
-		
-	  synchronized (this) {
-		  int rc = PASSED;
-			for (Invoker i : container) {
-			  try {
-			    rc = i.execute(out, err);
-			  } catch(InterruptedException ex) {
-			    
-			  }
-				if (rc != PASSED)
-					break;
-			}
-			try {
-				Thread.sleep(500);
-			} catch(InterruptedException ex){/*ignore*/}
-			return rc;
-		}
-	  
-	}
 
-	/**
-	 * Engages the invokers list.
-	 * 
-	 * @param i The invoker to be used in the list.
-	 */
-	public void add(Invoker i) {
-		container.add(i);
-	}
+    // Components container
+    private ArrayList<Invoker> container = new ArrayList<Invoker>();
+
+    /**
+     * Walks through the list of Invoker(s) placed in container, performs the
+     * invocation.
+     */
+    @Override
+    protected final int invoke(PrintStream out, PrintStream err) throws Exception {
+
+      synchronized (this) {
+          int rc = PASSED;
+            for (Invoker i : container) {
+              try {
+                rc = i.execute(out, err);
+              } catch(InterruptedException ex) {
+
+              }
+                if (rc != PASSED)
+                    break;
+            }
+            try {
+                Thread.sleep(500);
+            } catch(InterruptedException ex){/*ignore*/}
+            return rc;
+        }
+
+    }
+
+    /**
+     * Engages the invokers list.
+     *
+     * @param i The invoker to be used in the list.
+     */
+    public void add(Invoker i) {
+        container.add(i);
+    }
 }

@@ -38,24 +38,24 @@ public interface TargetSpec {
 
     /**
      * Sets version value.
-     */     
+     */
      public void setVersion(String version);
 
 
     /**
      * Sets id value.
-     */     
+     */
      public void setId(String id);
 
     /**
      *   Get the (ArrayList) list of TargetSpecElems that this TargetSpec owns.
      */
      public ArrayList getTargetSpecElems();
-          
+
     /**
      *   Set the (ArrayList) list of TargetSpecElems that this TargetSpec owns.
      */
      public void setTargetSpecElems(ArrayList specelems);
-       
+
 }
 

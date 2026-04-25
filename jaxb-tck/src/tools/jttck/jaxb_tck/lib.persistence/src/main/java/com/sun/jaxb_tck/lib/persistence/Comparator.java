@@ -91,7 +91,7 @@ public class Comparator {
                     return namespaceUri.equals(comparedNode.getNamespaceURI()) ? 0: 1;
 
                 } else
-                    
+
                     log("Comapring Element: \n\tnodeName: " + nodeName
                             + " - " + comparedNode.getNodeName()
                             + ", textContent: " + textContent + " - "
@@ -178,7 +178,7 @@ public class Comparator {
 
         private int compareNull(Object obj) {
             return obj == null ? 0 : 1;
-        }                                             
+        }
     }
 
     /**
@@ -206,8 +206,8 @@ public class Comparator {
         BeanInfo sourceBInfo = null;
         BeanInfo targetBInfo = null;
         try {
-            // Leonid Kuskov fix:: 
-            // The prefix is NOT used in QName.equals(Object) or to compute the QName.hashCode(). 
+            // Leonid Kuskov fix::
+            // The prefix is NOT used in QName.equals(Object) or to compute the QName.hashCode().
             // Equality and the hash code are defined using only the Namespace URI and local part.
             if ((source instanceof QName) && (target instanceof QName)) {
                  QName s = (QName)source;
@@ -216,10 +216,10 @@ public class Comparator {
                      return Status.passed("Comparison passed.");
                  }
                  return Status.failed("QName objects are not equal:\n" +
-                 		              "source.localPart=" + s.getLocalPart() + " target.localPart=" +t.getLocalPart() + "\n" +
+                                      "source.localPart=" + s.getLocalPart() + " target.localPart=" +t.getLocalPart() + "\n" +
                                       "source.namespaceURI=" + s.getNamespaceURI() + " target.namespaceURI=" +t.getNamespaceURI() );
-            } 
-            
+            }
+
             sourceBInfo = Introspector.getBeanInfo(source.getClass());
             targetBInfo = Introspector.getBeanInfo(target.getClass());
             String sourceBName = sourceBInfo.getBeanDescriptor().getName();
@@ -234,20 +234,20 @@ public class Comparator {
                 if (propName.equals("class") || isSequenceProperty(propName, source)) {
                     log("Skipped.");
                     continue;
-                } 
+                }
                 Method sourceReadMethod = getReadMethod(sourcePDesc, propName);
                 Method targetReadMethod = getReadMethod(targetPDesc, propName);
                 if (!(sourceReadMethod == null || targetReadMethod == null)) {
                     Object sourceValue = sourceReadMethod.invoke(source,(Object[]) null);
                     Object targetValue = targetReadMethod.invoke(target);
-                    
+
                     // Possible skipping of check for two identical objects with
                     // same identityHashCode
                     if (comparedValues.contains(targetValue))
                         continue;
                     comparedValues.add(targetValue);
                     Comparable<Object> sourceComparableValue = getComparable(sourceValue);
-                    
+
                     if (sourceComparableValue.compareTo(targetValue) != 0) {
                         log("Value isn't equal for property '"
                                 + sourceBName + "." + propName + "': "

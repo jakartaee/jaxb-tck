@@ -40,7 +40,7 @@ public interface AttributeSet {
      * @param value   specification element value
      */
     public void addTargetSpecElem(String id, String version, String name, String value);
-    
+
     /**
      * Adds new required resource to this container.
      *

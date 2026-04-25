@@ -21,10 +21,10 @@ import java.io.PrintStream;
 
 /**
  * This class should take the hit for all deprecated methods used in this
- * package.  
+ * package.
  *
  * @author Iris A Garcia
- * @version @(#)Deprecated.java	1.6 02/01/03
+ * @version @(#)Deprecated.java 1.6 02/01/03
  */
 class Deprecated
 {
@@ -40,6 +40,6 @@ class Deprecated
      * @return     A PrintStream.
      */
     static PrintStream createPrintStream(OutputStream out) {
-	return new PrintStream(out);
+    return new PrintStream(out);
     }
 }

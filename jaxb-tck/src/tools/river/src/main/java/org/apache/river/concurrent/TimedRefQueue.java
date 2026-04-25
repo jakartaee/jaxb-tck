@@ -23,5 +23,5 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 class TimedRefQueue extends ConcurrentLinkedQueue implements RefQueue{
     private static final long serialVersionUID = 1L;
-    
+
 }

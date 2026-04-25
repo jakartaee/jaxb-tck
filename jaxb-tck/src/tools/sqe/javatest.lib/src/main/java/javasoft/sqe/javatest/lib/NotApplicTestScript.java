@@ -23,16 +23,16 @@ import com.sun.javatest.TestDescription;
 import com.sun.javatest.TestEnvironment;
 
 /**
- * A Script that indicates the test is not applicable. 
+ * A Script that indicates the test is not applicable.
  *
  * @author Jonathan J Gibbons
- * @version @(#)NotApplicTestScript.java	1.14 02/01/03
+ * @version @(#)NotApplicTestScript.java    1.14 02/01/03
  */
 public class NotApplicTestScript extends Script
 {
     public Status run(String[] args, TestDescription td, TestEnvironment env) {
-	String s = (args.length == 0 ? "" : args[0]);
-	return Status.error(s);
+    String s = (args.length == 0 ? "" : args[0]);
+    return Status.error(s);
     }
 
 }

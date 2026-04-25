@@ -29,50 +29,50 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
-/** 
- * DocElem_TH - The tag-handler for a DocElem tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    DocElem_TH 
- * ============================================================================================ 
- */ 
+/**
+ * DocElem_TH - The tag-handler for a DocElem tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    DocElem_TH
+ * ============================================================================================
+ */
 public class DocElem_TH extends NameValueTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   DocElem_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   DocElem_TH constructor -
+    *       Initialize our internal fields.
+    */
     public DocElem_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ public class DocElem_TH extends NameValueTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_docelem;
+    return TagsImpl.ctStr_tag_docelem;
     }
 
     //------------------------------------------------------------------------------
@@ -96,40 +96,40 @@ public class DocElem_TH extends NameValueTagHandler  {
     * @see #endTag
     */
     public void endTag(String name, String value) throws SAXException {
-	try {
-	    super.endTag(name, value);
-	    
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    if (! (testitem instanceof TestGroupDocumentation)  )
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testgroupdocumentation));
-	    
-	    //  Nothing is pushed onto the stack
-	    TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
-	    
-	    ArrayList docelems = tgd.getDocElems();
-	    if (docelems == null) {
-		docelems = new ArrayList();
-		tgd.setDocElems(docelems);
-	    }
-	    
-	    DocElem de = DocumentationFactory.createDocElem(name, value);
-	    // validated the import name
-	    // validateDocElem(de);
-	    docelems.add(de);
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+    try {
+        super.endTag(name, value);
+
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
+
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        if (! (testitem instanceof TestGroupDocumentation)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testgroupdocumentation));
+
+        //  Nothing is pushed onto the stack
+        TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
+
+        ArrayList docelems = tgd.getDocElems();
+        if (docelems == null) {
+        docelems = new ArrayList();
+        tgd.setDocElems(docelems);
+        }
+
+        DocElem de = DocumentationFactory.createDocElem(name, value);
+        // validated the import name
+        // validateDocElem(de);
+        docelems.add(de);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-          
- 
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
     // NameValueTagHandler handles emitting.
 }

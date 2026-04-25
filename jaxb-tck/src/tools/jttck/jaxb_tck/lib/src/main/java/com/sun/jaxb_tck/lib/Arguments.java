@@ -64,11 +64,11 @@ public final class Arguments implements Cloneable {
             }
         }
     }
-    
+
     public void insert(int index, String[] value){
-    	for(int i=value.length-1;i>=0;i--){
-    		args.add(index, value[i]);
-    	}
+        for(int i=value.length-1;i>=0;i--){
+            args.add(index, value[i]);
+        }
    }
 
     /**
@@ -106,17 +106,17 @@ public final class Arguments implements Cloneable {
     public String get(int index) {
         return args.get(Math.min(index,args.size()-1));
     }
-    
+
     /**
-     * Replaces the element at the specified position in this 
+     * Replaces the element at the specified position in this
      * list with the specified element.
-     * 
+     *
      */
     public void set(int index, String value) {
         if( index > -1 && index < args.size()) {
             args.set(index, value);
         }
-    }    
+    }
 
     /**
      *  Returns the number of elements in this list.

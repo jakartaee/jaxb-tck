@@ -19,13 +19,13 @@ package com.sun.tgxml.tjtf.tools.options;
 
 
 /**
- * ArgumentsNumberException - 
+ * ArgumentsNumberException -
  *
  * Signals about illegal numbers of option arguments
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -38,8 +38,8 @@ public  class ArgumentsNumberException extends ParseArgumentException {
      * @param message  a an exception message string.
      */
     public ArgumentsNumberException (String message) {
-	super(message);
+    super(message);
     }
 }
-     
+
 

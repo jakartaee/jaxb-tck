@@ -29,22 +29,22 @@ import com.sun.tgxml.tjtf.processors.emitter.impl.XMLEmitterImpl;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 import com.sun.tgxml.tools.indexgen.processors.emitter.TestSuiteEmitterFactory;
 
-/** 
+/**
  * Combined TestGroup &amp; Doc.xml emitter;
- * 
- * @version 	1.0, 10/02/97 
+ *
+ * @version     1.0, 10/02/97
  * @author Nickolay Kuznetsov
- */ 
- 
+ */
+
 public class MiddleWareXMLEmitter extends XMLEmitterImpl {
 
-  	XMLEmitter m_testrootEmitter = null;
-	XMLEmitter m_docxmlEmitter = null;
+    XMLEmitter m_testrootEmitter = null;
+    XMLEmitter m_docxmlEmitter = null;
 
-	public MiddleWareXMLEmitter() {
-		
-	}
-    
+    public MiddleWareXMLEmitter() {
+
+    }
+
     /**
      * @param root The root TD object from which to start emitting.
      * @param stream The output stream describing where the XML will be emitted.

@@ -25,26 +25,26 @@ import com.sun.jmpp.JmppException;
 import com.sun.jmpp.lib.TDGenerator;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
-/**  
+/**
  * The class extends com.sun.jmpp.lib.JmppLibXMLSchema,
  * but instead of HTML test descriptions IR objects corresponding
  * to test descriptions are created.
  */
 
-public class JmppLibXMLSchema 
+public class JmppLibXMLSchema
     extends com.sun.jmpp.lib.JmppLibXMLSchema implements IRGenerator {
 
 /**
  * @return an ArrayList of TestRoot objects created during JMPP to test generation.
- */ 
+ */
     protected ArrayList getRoots(){
         return ((XmlSchemaIRTDGenerator) tdGenerator).getRoots();
     }
 
 /**
- * Overriden JmppLibXMLSchema method which initializes tdGenerator variable with the 
+ * Overriden JmppLibXMLSchema method which initializes tdGenerator variable with the
  * instance of IRTDGenerator class.
- */ 
+ */
     protected void initTDGenerator(){
         tdGenerator = (TDGenerator) new XmlSchemaIRTDGenerator();
     }
@@ -78,12 +78,12 @@ public class JmppLibXMLSchema
             super.parseOptions(hash);
             String workDirTail = lastSegments(workJavaDir, File.separator, 3);
             String outpDirTail = lastSegments(outputDir,   File.separator, 2);
-            if (outpDirTail.length()>1 && 
+            if (outpDirTail.length()>1 &&
                 workDirTail.startsWith(outpDirTail)) {
                 outputDir += File.separator + lastSegments(workJavaDir, File.separator, 1);
             }
         }
-    
+
 /**
  * Implemented IRGenerator method, starts test generation.
  * @param inputFile an input JMPP template to generate tests from.
@@ -111,7 +111,7 @@ public class JmppLibXMLSchema
         }
         return getRoots();
     }
-    
+
     public String getUniqNum() {
         synchronized (Counter.class) {
             return new Integer(Counter.getNum()).toString();
@@ -121,7 +121,7 @@ public class JmppLibXMLSchema
 
 class Counter {
     public static volatile int num = 0;
-    
+
     public static synchronized int getNum() {
         return ++num;
     }

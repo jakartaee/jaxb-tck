@@ -21,13 +21,13 @@ package com.sun.tgxml.tjtf.api.documentation;
 // </importgen>
 
 /**
- * ExpectedResult - 
+ * ExpectedResult -
  *
  * <b>ExpectedResult</b> is a the expected state describing the outcome of a test.
  * An ExpectedResult comes in three forms - it may either be an ExpectedResultValue,
  * an ExpectedResultSideEffect, or an ExpectedResultException.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -42,7 +42,7 @@ package com.sun.tgxml.tjtf.api.documentation;
 public interface ExpectedResult {
 
 
-     
+
 
 
 }

@@ -21,14 +21,14 @@ package com.sun.tgxml.tjtf.api.documentation;
 // </importgen>
 
 /**
- * Assertion - 
+ * Assertion -
  *
  * <b>Assertion</b> is a specification-assertion that a given test verifies.
- * An assertion comes in two forms - it may either be an inline assertion 
+ * An assertion comes in two forms - it may either be an inline assertion
  * (contains no reference to an external specification) or an assertion-ref
  * (contains an ID (String) reference to a part of an external specification)
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -43,7 +43,7 @@ package com.sun.tgxml.tjtf.api.documentation;
 public interface Assertion {
 
 
-     
+
 
 
 }

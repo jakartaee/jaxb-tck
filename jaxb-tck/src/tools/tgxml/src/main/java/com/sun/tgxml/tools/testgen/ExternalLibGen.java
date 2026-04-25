@@ -52,7 +52,7 @@ public class ExternalLibGen extends TestGen {
      * ========================================================================
      */
     private static final String CtStr_ToolName = "ExternalLibGen";
-    
+
 
     String reqLibsFile = null;
     ArrayList requiredLibIDs = null;
@@ -71,7 +71,7 @@ public class ExternalLibGen extends TestGen {
      * =========================================================================
      */
 
-    
+
     /**
      * Program entry
      *
@@ -79,31 +79,31 @@ public class ExternalLibGen extends TestGen {
      * @param args The command line arguments to  this tool.
      */
     public static void main(String args[]) {
-			//System.err.println(">>>> Start main()");
+            //System.err.println(">>>> Start main()");
         ExternalLibGen c = new ExternalLibGen(System.out, System.err);
         System.exit(c.run(args));
     }
-    
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public ExternalLibGen( PrintStream out, PrintStream err) {
-	super(out, err);
+    super(out, err);
         setProgramName(CtStr_ToolName);
-			//System.err.println(">>>> super ctor ends");
-	
+            //System.err.println(">>>> super ctor ends");
+
     }
-    
-       
-   /* 
+
+
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
@@ -141,7 +141,7 @@ public class ExternalLibGen extends TestGen {
      */
     protected StringOption changeRuleOption = new StringOption(
         "-changeRule",
-        "  -changeRule <ruleFile> file that contains relative path " + 
+        "  -changeRule <ruleFile> file that contains relative path " +
                 "change rules"
         );
 
@@ -158,7 +158,7 @@ public class ExternalLibGen extends TestGen {
     /**
      * Registers options
      */
-    public void registerOptions() {         
+    public void registerOptions() {
         super.registerOptions();
         removeOption(elOption);
         addOption(libMapOption);
@@ -169,7 +169,7 @@ public class ExternalLibGen extends TestGen {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
     public void applyOptionsValues() throws ParseArgumentException {
@@ -206,19 +206,19 @@ public class ExternalLibGen extends TestGen {
      * Sets ExternalLibGen usage header
      */
     protected void setToolUsageHeader() {
-        toolUsageHeader = 
-            "Usage: " + getProgramName() + " [<options>] \n" + 
+        toolUsageHeader =
+            "Usage: " + getProgramName() + " [<options>] \n" +
             "where options include:";
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    
+    *
     * ----------------------------------------------------------------------
     */
 
 
-    /** 
+    /**
      *  Sets out field.
      */
     public void processArgs() throws TestFileException, IOException {
@@ -244,7 +244,7 @@ public class ExternalLibGen extends TestGen {
         LibIDList libIDList = new LibIDList();
         libIDList.read(new FileInputStream(libraryListFile));
 
-        DependenceAnalyzer dependenceAnalyzer = 
+        DependenceAnalyzer dependenceAnalyzer =
             new DependenceAnalyzer(getStandardErr());
 
         return dependenceAnalyzer.analyze(libIDList, libraryDependencies);
@@ -256,7 +256,7 @@ public class ExternalLibGen extends TestGen {
      * @param map        mapping: libID <--> file name
      * @return   File array of the same size as libIDList, or an empty
      *            array if libIDList is null
-     * @exception TestFileException if some libID does not maps to 
+     * @exception TestFileException if some libID does not maps to
      *            existing .lib.xml file
      */
     protected File[] libXmlFiles(LibIDList libIDList, XmlFileNameMap map)
@@ -270,8 +270,8 @@ public class ExternalLibGen extends TestGen {
         for (int i = 0; i < xmls.length; i++) {
              String libID = libIDList.getString(i);
              String fileName = map.xmlFileName(libID);
-             if (fileName == null) {                 
-                 badFiles.append("   " + libID 
+             if (fileName == null) {
+                 badFiles.append("   " + libID
                          + ": cannot find .lib.xml file name for this libID\n");
              } else {
                  xmls[i] = new File(fileName);
@@ -293,9 +293,9 @@ public class ExternalLibGen extends TestGen {
 
 
 
-    /** 
+    /**
      * Parses lib.xml files to Library[].
-     * @throws TestFileException if one xml file cannot be parsed or not 
+     * @throws TestFileException if one xml file cannot be parsed or not
      *         a Library.
      */
     protected Library[] parseXMLs(File[] libXmls) throws TestFileException {
@@ -316,17 +316,17 @@ public class ExternalLibGen extends TestGen {
         return allLibs;
     }
 
-    /** 
+    /**
      * Returns prepared for generation Library array.
      * @param libIDList   required libID list
      * @param libMapFile  mapping: libID <--> file name | Library
-     *        if libMapFile is an instance of XmlFileNameMap then 
+     *        if libMapFile is an instance of XmlFileNameMap then
      *        own parser will be used.
      *        Otherwise, libMapFile.getLibMap() should return a map,
      *        that provides an Library IR by libID.
      * @throws TestFileException if impossible to get all required library IRs.
      */
-    protected Library[] libsToGenerate(LibIDList libIDList,  
+    protected Library[] libsToGenerate(LibIDList libIDList,
             LibMapFile libMapFile) throws TestFileException, IOException {
 
         Library[] libs = null;
@@ -337,7 +337,7 @@ public class ExternalLibGen extends TestGen {
             LibMap libMap = libMapFile.getLibMap();
             if (libMap == null) {
                 throw new TestFileException("LibMapFile object is not suitable:"
-                        + " getLibMap() returns null and XmlFileNameMap " 
+                        + " getLibMap() returns null and XmlFileNameMap "
                         + " interface is not implemented");
             }
 
@@ -356,7 +356,7 @@ public class ExternalLibGen extends TestGen {
         return (Library[])(toGen.toArray(new Library[0]));
     }
 
-    /** 
+    /**
      * Provides library cross dependency analysis.
      * Generates all required libraries.
      * <p>
@@ -386,17 +386,17 @@ public class ExternalLibGen extends TestGen {
         m_generator.generate(toGenerate);
     }
 
-    /** 
+    /**
      * Overrides TestGen method.
      */
     public IRParser createParser() throws TestFileException {
-	return new LibMiddleWareXMLParser();
+    return new LibMiddleWareXMLParser();
     }
 
     /**
      * Returns output directory for the passed Library.
      * It detects the relative path of srcFile within the repository.
-     * The output dir for this file will be calculated as 
+     * The output dir for this file will be calculated as
      * "tck root dir" + "relative path".
      * This method is called from parser to set OutputDir AttrElem
      */
@@ -414,9 +414,9 @@ public class ExternalLibGen extends TestGen {
     }
 
     public String getGenType() {
-    	return "libgen";
+        return "libgen";
     }
-    
+
     class LibMiddleWareXMLParser extends MiddleWareXMLParser {
 
         public LibMiddleWareXMLParser() {
@@ -428,12 +428,12 @@ public class ExternalLibGen extends TestGen {
         }
 
         // no options required
-        public void applyOptionsValues() throws ParseArgumentException {	   
+        public void applyOptionsValues() throws ParseArgumentException {
         }
 
         protected void setOutputDir(IRObj tree, File srcFile) {
             if (tree instanceof Library) {
-                setOutputDir((Library)tree, getLibOutputDir((Library)tree)); 
+                setOutputDir((Library)tree, getLibOutputDir((Library)tree));
             }
         }
     }
@@ -455,7 +455,7 @@ class Changer {
 
 
     public String change(String str) {
-        if (str == null) 
+        if (str == null)
             return null;
         for (int i = count - 1; i >= 0; i--) {
             String p = pattern[i];

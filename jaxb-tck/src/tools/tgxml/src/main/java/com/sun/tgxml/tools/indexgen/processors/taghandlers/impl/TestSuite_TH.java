@@ -33,47 +33,47 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 import com.sun.tgxml.tools.indexgen.api.impl.TestSuiteImpl;
 
-/** 
- * TestSuite_TH - The tag-handler for a TestSuite tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TestSuite_TH 
- * ============================================================================================ 
- */ 
+/**
+ * TestSuite_TH - The tag-handler for a TestSuite tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TestSuite_TH
+ * ============================================================================================
+ */
 public class TestSuite_TH extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TestSuite_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TestSuite_TH constructor -
+    *       Initialize our internal fields.
+    */
     public TestSuite_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ public class TestSuite_TH extends TagHandlerImpl  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TestSuiteTagsImpl.ctStr_tag_testsuite;
+    return TestSuiteTagsImpl.ctStr_tag_testsuite;
     }
 
     //------------------------------------------------------------------------------
@@ -97,38 +97,38 @@ public class TestSuite_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-		super.startTag(attrs);
+        super.startTag(attrs);
 
-		String ID = null;
-		if (attrs != null) {
-			for (int i = 0; i < attrs.getLength (); i++) {
-				// Get the ID
-				if ((attrs.getQName(i)).equals(TagsImpl.ctStr_attr_id)) {
-					ID = attrs.getValue (i);
-				}
-				// unknown attribute
-				else { 
-					// Unknown spec attribute
-					getParserHandler().throwError(LibResHandler.getResStr("parser.error.unknownTDAttr", attrs.getQName(i)));
+        String ID = null;
+        if (attrs != null) {
+            for (int i = 0; i < attrs.getLength (); i++) {
+                // Get the ID
+                if ((attrs.getQName(i)).equals(TagsImpl.ctStr_attr_id)) {
+                    ID = attrs.getValue (i);
                 }
-			}
-		}
-		if (getParserHandler().getRoot() != null) {
-			getParserHandler().throwError(LibResHandler.getResStr("parser.error.multipleRoot"));
-		}
+                // unknown attribute
+                else {
+                    // Unknown spec attribute
+                    getParserHandler().throwError(LibResHandler.getResStr("parser.error.unknownTDAttr", attrs.getQName(i)));
+                }
+            }
+        }
+        if (getParserHandler().getRoot() != null) {
+            getParserHandler().throwError(LibResHandler.getResStr("parser.error.multipleRoot"));
+        }
 
-		TestSuite tg = new TestSuiteImpl();
+        TestSuite tg = new TestSuiteImpl();
         tg.setID(ID);
 
-		getParserHandler().setRoot(tg);
-    		
-		Stack testItemStack = getParserHandler().getStack();
-		if (! testItemStack.empty() )
-			getParserHandler().throwError(LibResHandler.getResStr("parser.error.tg.nonemptystack"));
-		
-		testItemStack.push(tg);
-	}
-      
+        getParserHandler().setRoot(tg);
+
+        Stack testItemStack = getParserHandler().getStack();
+        if (! testItemStack.empty() )
+            getParserHandler().throwError(LibResHandler.getResStr("parser.error.tg.nonemptystack"));
+
+        testItemStack.push(tg);
+    }
+
 
   /**
     *   End handling a given XML tag.
@@ -136,44 +136,44 @@ public class TestSuite_TH extends TagHandlerImpl  {
     * @see #startTag
     */
     public void endTag() throws SAXException {
-	super.endTag();
-	try {
-	    Stack testItemStack = getParserHandler().getStack();
+    super.endTag();
+    try {
+        Stack testItemStack = getParserHandler().getStack();
 
-	    Object testitem = testItemStack.pop();
+        Object testitem = testItemStack.pop();
 
-	    if (testitem == null)
-		getParserHandler().throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+        if (testitem == null)
+        getParserHandler().throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if (! (testitem instanceof TestSuite))
-		getParserHandler().throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
+        if (! (testitem instanceof TestSuite))
+        getParserHandler().throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
 
-	    if (! testItemStack.empty() )
-		getParserHandler().throwError(LibResHandler.getResStr("parser.error.nonemptystack"));
-	} catch (EmptyStackException e) {
-	    getParserHandler().throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
-	}
+        if (! testItemStack.empty() )
+        getParserHandler().throwError(LibResHandler.getResStr("parser.error.nonemptystack"));
+    } catch (EmptyStackException e) {
+        getParserHandler().throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
+    }
 
     }
 
- 
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
 
   /**
     *   emit a tags components.
     *  <p>
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
-		EmitterHandlerSupport eh = getEmitterHandler();
-		
-		if (! (tdObject instanceof TestSuite))
-			throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-								"TestSuite", tdObject.getClass().getName()));
+        EmitterHandlerSupport eh = getEmitterHandler();
 
-		TestSuite tgd = (TestSuite) tdObject;
+        if (! (tdObject instanceof TestSuite))
+            throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                                "TestSuite", tdObject.getClass().getName()));
+
+        TestSuite tgd = (TestSuite) tdObject;
 
         String title = tgd.getTitle();
         eh.emit(TestSuiteTagsImpl.ctStr_tag_title, title);
@@ -191,17 +191,17 @@ public class TestSuite_TH extends TagHandlerImpl  {
         String comments = tgd.getComments();
         if (comments != null)
             eh.emit(TestSuiteTagsImpl.ctStr_tag_comments, comments);
-            
-            
+
+
         ArrayList attrelems = tgd.getAttrElems();
-    	if (attrelems != null) {
-	        Iterator it1 = attrelems.iterator();
-    	    while (it1.hasNext()) {
-	        	eh.emit(TagsImpl.ctStr_tag_attrelem, it1.next());
-	        }
-    	}
-            
-            
+        if (attrelems != null) {
+            Iterator it1 = attrelems.iterator();
+            while (it1.hasNext()) {
+                eh.emit(TagsImpl.ctStr_tag_attrelem, it1.next());
+            }
+        }
+
+
     }
 
 
@@ -215,14 +215,14 @@ public class TestSuite_TH extends TagHandlerImpl  {
 
         if (! (tdObject instanceof TestSuite)) {
             throw new TestFileException(LibResHandler.getResStr(
-					   "emitter.error.invObj", "TestSuite", 
-					   tdObject.getClass().getName()));
-		}
+                       "emitter.error.invObj", "TestSuite",
+                       tdObject.getClass().getName()));
+        }
         TestSuite tg = (TestSuite) tdObject;
-        // ID is currently not included in testsuite.dtd 
-		//if (tg.getID() != null) {
-		//	eh.emitAttribute(TagsImpl.ctStr_attr_id, tg.getID());
-		//}
-	}
+        // ID is currently not included in testsuite.dtd
+        //if (tg.getID() != null) {
+        //  eh.emitAttribute(TagsImpl.ctStr_attr_id, tg.getID());
+        //}
+    }
 
 }

@@ -20,11 +20,11 @@ package com.sun.tgxml.tools.testgen.processors.ir;
 import java.util.Properties;
 
 /**
- * <b>BasicIRProcessor</b> class that defines set/get properties methods. 
+ * <b>BasicIRProcessor</b> class that defines set/get properties methods.
  *
  *
- * @version 	1.0, 21/01/2004
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 21/01/2004
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -41,7 +41,7 @@ public abstract class BasicIRProcessor implements IRProcessor {
     }
 
     /**
-     * Sets properties for processor. 
+     * Sets properties for processor.
      */
     public void setProperties(Properties props) {
         if (props != null) {
@@ -76,4 +76,4 @@ public abstract class BasicIRProcessor implements IRProcessor {
     }
 
 }
-        
+

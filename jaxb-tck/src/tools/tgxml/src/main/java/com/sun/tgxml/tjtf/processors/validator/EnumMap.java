@@ -20,32 +20,32 @@ package com.sun.tgxml.tjtf.processors.validator;
 import java.util.TreeMap;
 
 
-/** 
- * EnumMap - Name-Value map for Extension tags in the IR. 
+/**
+ * EnumMap - Name-Value map for Extension tags in the IR.
  * <p>
- * An EnumMap is a type of mapping that enumerates a 
+ * An EnumMap is a type of mapping that enumerates a
  * set of var-names that a given map may contain.  Validation
  * for an EnumMap means that the enumeration contains a var-name entry
  * for a given value.
  * <p>
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ExtensionMap 
- * ============================================================================================ 
- */ 
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ExtensionMap
+ * ============================================================================================
+ */
 public class EnumMap extends Mapping {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
     /** The enumeration */
     protected TreeMap m_hash;
@@ -55,32 +55,32 @@ public class EnumMap extends Mapping {
     protected boolean m_validateIfMissing;
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
-   /** 
-    *   EnumMap constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
+   /**
+    *   EnumMap constructor -
+    *       Initialize our internal fields.
+    */
     public EnumMap(String name) {
-	super(name);
-	m_hash = new TreeMap();
-	
-	// by default:
-	// if the map is missing the requested variable - 
-	//  just accept the var-value (i.e. ignore it).
-	m_validateIfMissing = true;
+    super(name);
+    m_hash = new TreeMap();
+
+    // by default:
+    // if the map is missing the requested variable -
+    //  just accept the var-value (i.e. ignore it).
+    m_validateIfMissing = true;
     }
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    ExtensionMap implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */    
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    ExtensionMap implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
 
 
   /**
@@ -88,9 +88,9 @@ public class EnumMap extends Mapping {
     * <p>
     * @param validateIfMissing The value to set the flag to.
     */
-   
+
     public void setValidateIfMissing(boolean validateIfMissing) {
-	m_validateIfMissing =  validateIfMissing;
+    m_validateIfMissing =  validateIfMissing;
     }
 
 
@@ -104,22 +104,22 @@ public class EnumMap extends Mapping {
     * @param val The value to be looked up in the enumeration-set.
     * @return true if the value validates (or fn doesn't care), false otherwise.
     */
-   
+
     public boolean validate(String val) {
-	if (m_hash.containsKey(val))
-	    return true;
+    if (m_hash.containsKey(val))
+        return true;
 
-	// otherwise
-	if (m_debug) {
-	    if (m_validateIfMissing)
-		System.out.println("     ****  Missing Var: (Var: " + val 
-				   + ") Assuming mapping is valid (" + val + ") ****");
-	    else
-		System.out.println("     ****  Missing Var: (Var: " + val 
-				   + ") Assuming mapping is invalid (" + val + ") ****");
-	}
+    // otherwise
+    if (m_debug) {
+        if (m_validateIfMissing)
+        System.out.println("     ****  Missing Var: (Var: " + val
+                   + ") Assuming mapping is valid (" + val + ") ****");
+        else
+        System.out.println("     ****  Missing Var: (Var: " + val
+                   + ") Assuming mapping is invalid (" + val + ") ****");
+    }
 
-	return m_validateIfMissing;
+    return m_validateIfMissing;
     }
 
 }

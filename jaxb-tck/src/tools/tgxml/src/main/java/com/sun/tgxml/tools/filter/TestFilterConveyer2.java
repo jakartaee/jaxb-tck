@@ -63,9 +63,9 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
 
     String pluginName,
            libmapFileName,
-	   exListFileName,
-	   libListFileName,
-	   libListOutFileName;
+       exListFileName,
+       libListFileName,
+       libListOutFileName;
 
     protected PrintStream err;
 
@@ -77,39 +77,39 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
     protected LibSelectionInfo externalLibsInfo;
 
     public TestFilterConveyer2(PrintStream err) {
-	if (err == null)
-	    throw new IllegalArgumentException(
-				LibResHandler.getResStr("filter.error.tfc.noErrorStream"));
-	this.err = err;
+    if (err == null)
+        throw new IllegalArgumentException(
+                LibResHandler.getResStr("filter.error.tfc.noErrorStream"));
+    this.err = err;
     }
-    
+
 //=================================================================================
 
     public void setup() throws TestFileException {
-	try {
-	    elMarker = ExcludeListToolFactory.createELMarker(exListFileName);
-	} catch ( Exception e ) {
-	    throw new TestFileException(
-			    LibResHandler.getResStr("filter.error.tfc.badExList", exListFileName
-										, e.toString())  );
-	}
-	
-	try {
-	    libEx = new LibIDExtractor2(libListFileName, libListOutFileName);
-	} catch ( Exception e ) {
-	    throw new TestFileException(
-			    LibResHandler.getResStr("filter.error.tfc.badLibList", libListFileName
-										, e.toString())  );
-	}
+    try {
+        elMarker = ExcludeListToolFactory.createELMarker(exListFileName);
+    } catch ( Exception e ) {
+        throw new TestFileException(
+                LibResHandler.getResStr("filter.error.tfc.badExList", exListFileName
+                                        , e.toString())  );
+    }
 
-	try {
-	    FilterFactory filtFact = FilterFactory.newInstance(pluginName);
-	    filter = filtFact.getTestFilter2(null);
-	} catch ( FilteringException fe ) {
-	    throw new TestFileException(
-			    LibResHandler.getResStr("filter.error.tfc.badPlugin", pluginName
-										, fe.toString())  );
-	}
+    try {
+        libEx = new LibIDExtractor2(libListFileName, libListOutFileName);
+    } catch ( Exception e ) {
+        throw new TestFileException(
+                LibResHandler.getResStr("filter.error.tfc.badLibList", libListFileName
+                                        , e.toString())  );
+    }
+
+    try {
+        FilterFactory filtFact = FilterFactory.newInstance(pluginName);
+        filter = filtFact.getTestFilter2(null);
+    } catch ( FilteringException fe ) {
+        throw new TestFileException(
+                LibResHandler.getResStr("filter.error.tfc.badPlugin", pluginName
+                                        , fe.toString())  );
+    }
 
         libFilterFactory = FilterUtil.createLibFilterFactrory("testfilter");
         externalLibsInfo = FilterUtil.extenalSelectionInfo(
@@ -118,69 +118,69 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
     }
 
     public static void markExcluded(TestGroup testGroup, ExcludeListMarker elMarker)
-									throws TestFileException {
-	try {
-	    elMarker.markExcluded(testGroup);
+                                    throws TestFileException {
+    try {
+        elMarker.markExcluded(testGroup);
 
-	    ArrayList tcList = testGroup.getTestCases();
+        ArrayList tcList = testGroup.getTestCases();
             if (tcList != null) {
-	        for (int j = tcList.size()-1; j >= 0; j--) {
-		    elMarker.markExcluded((TestCase)tcList.get(j));
-	        }
+            for (int j = tcList.size()-1; j >= 0; j--) {
+            elMarker.markExcluded((TestCase)tcList.get(j));
             }
-	} catch ( Exception e ) {
-	    throw new TestFileException(
-			    LibResHandler.getResStr("filter.error.tfc.elMarker", e.toString())  );
-	}
+            }
+    } catch ( Exception e ) {
+        throw new TestFileException(
+                LibResHandler.getResStr("filter.error.tfc.elMarker", e.toString())  );
+    }
     }
 //=================================================================================
 
     public TestGroup process(TestGroup testGroup) throws TestFileException {
 
-	if (IR.getAttrElem(FilteredAttrElemName, testGroup) != null)
-	    return testGroup;
+    if (IR.getAttrElem(FilteredAttrElemName, testGroup) != null)
+        return testGroup;
 
         if (ExternalEmitter.EXTERNAL_MULTITEST.
                 equals(LibUtils.getTestType(testGroup))) {
             // check that testcases do not contain selection attributes
-            // (Selection Attributes have no effect on 
+            // (Selection Attributes have no effect on
             // ExternalMultiTest TestCases)
             checkExternalMultiTestTCAttributes(testGroup);
         }
 
-	markExcluded(testGroup, elMarker);
+    markExcluded(testGroup, elMarker);
 
         LibMap inlineLibMap = filterInlineLibs(testGroup);
         // merge selection info about external and inline libraries.
         TestGroupLibsInfo libsInfo = new TestGroupLibsInfo(
             externalLibsInfo, inlineLibMap);
 
-	try {
-	    if (filter.strip(testGroup, libsInfo) == null) {
-		return null;
-	    }
-	} catch ( FilteringException fe ) {
-	    throw new TestFileException(
-			    LibResHandler.getResStr("filter.error.tfc.filtering", fe.toString())  );
-	}
+    try {
+        if (filter.strip(testGroup, libsInfo) == null) {
+        return null;
+        }
+    } catch ( FilteringException fe ) {
+        throw new TestFileException(
+                LibResHandler.getResStr("filter.error.tfc.filtering", fe.toString())  );
+    }
 
-	try {
-	     libEx.extract(testGroup, inlineLibMap);
-	     libEx.close();
-	} catch (Exception e) {
-	    throw new TestFileException(
-			    LibResHandler.getResStr("filter.error.tfc.libIdExtract", e.toString())  );
-	}
+    try {
+         libEx.extract(testGroup, inlineLibMap);
+         libEx.close();
+    } catch (Exception e) {
+        throw new TestFileException(
+                LibResHandler.getResStr("filter.error.tfc.libIdExtract", e.toString())  );
+    }
 
-	IR.setAttrElem(testGroup, FilteredAttrElemName, pluginName);
-	return testGroup;
+    IR.setAttrElem(testGroup, FilteredAttrElemName, pluginName);
+    return testGroup;
     }
 
     /**
      * Provides filtering of inline libraries for the passed TestGroup.
      * @return LibMap for inline libraries.
      */
-    protected LibMap filterInlineLibs(TestGroup tg) 
+    protected LibMap filterInlineLibs(TestGroup tg)
             throws TestFileException {
 
         ArrayList inLibs = tg.getLibraries();
@@ -192,8 +192,8 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
         Library[] libs = (Library[])inLibs.toArray(new Library[0]);
 
         LibMap libMap = null;
-        try {            
-            libMap = FilterUtil.filterLibBundle(libs, pluginName, 
+        try {
+            libMap = FilterUtil.filterLibBundle(libs, pluginName,
                     libFilterFactory, externalLibsInfo);
         } catch (FilteringException fe) {
             throw new TestFileException(
@@ -211,7 +211,7 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
     protected void checkExternalMultiTestTCAttributes(TestGroup tg)
             throws TestFileException {
         if (tg == null)
-            return;         
+            return;
 
         ArrayList testCases = tg.getTestCases();
         if (testCases == null) {
@@ -272,7 +272,7 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
         }
 
         if (errMsg.length() > 0) {
-            throw new TestFileException( 
+            throw new TestFileException(
             "Selection Attributes have no effect on ExternalMultiTest TestCases"
                 + "\nTestGroup: " + tg.getID()
                 + "\n" + errMsg
@@ -286,11 +286,11 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
      */
     public String getLibMapFileName() {
         return libmapFileName;
-    }    
+    }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
@@ -298,16 +298,16 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
         LibResHandler.getResStr("filter.option.tfc.plugin"),
         OBLIGATORY);
 
-    protected StringOption exlistOption = new StringOption(LibResHandler.getResStr("filter.option.tfc.exlist.mnem"), 
+    protected StringOption exlistOption = new StringOption(LibResHandler.getResStr("filter.option.tfc.exlist.mnem"),
         LibResHandler.getResStr("filter.option.tfc.exlist"),
         OBLIGATORY);
 
 
-    protected StringOption liblistOption = new StringOption(LibResHandler.getResStr("filter.option.tfc.liblist.mnem"), 
+    protected StringOption liblistOption = new StringOption(LibResHandler.getResStr("filter.option.tfc.liblist.mnem"),
         LibResHandler.getResStr("filter.option.tfc.liblist"),
         OPTIONAL);
 
-    protected StringOption liblistOutOption = new StringOption(LibResHandler.getResStr("filter.option.tfc.liblistOut.mnem"), 
+    protected StringOption liblistOutOption = new StringOption(LibResHandler.getResStr("filter.option.tfc.liblistOut.mnem"),
         LibResHandler.getResStr("filter.option.tfc.liblistOut"),
         OPTIONAL);
 
@@ -337,12 +337,12 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      */
     public void applyOptionsValues() throws ParseArgumentException {
 
         if (pluginOption.isSet()) {
-	    pluginName = pluginOption.getStringValue(); 
+        pluginName = pluginOption.getStringValue();
         }
 
         if (libMapOption.isSet()) {
@@ -350,15 +350,15 @@ public class TestFilterConveyer2 extends StandardOptionHandler {
         }
 
         if (exlistOption.isSet()) {
-	    exListFileName = exlistOption.getStringValue(); 
+        exListFileName = exlistOption.getStringValue();
         }
 
         if (liblistOption.isSet()) {
-	    libListFileName = liblistOption.getStringValue(); 
+        libListFileName = liblistOption.getStringValue();
         }
 
         if (liblistOutOption.isSet()) {
-	    libListOutFileName = liblistOutOption.getStringValue(); 
+        libListOutFileName = liblistOutOption.getStringValue();
         }
 
         super.applyOptionsValues();

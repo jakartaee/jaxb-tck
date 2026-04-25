@@ -24,27 +24,27 @@ import com.sun.tgxml.tjtf.tools.options.ArgumentsNumberException;
 /**
  * Class for reading option with arguments from ArrayList.
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public class OptionReader {
 
-    ArgReader argReader;   
+    ArgReader argReader;
     SwitchChecker swChecker;
 
     /**
-     * Creates new OptionReader with specified switch checker and option 
+     * Creates new OptionReader with specified switch checker and option
      * arguments reader
      *
      * @param swChecker   switch checker
      * @param argReader   reader of option arguments
      *
-     * @throws IllegalArgumentException if switch checker not set 
+     * @throws IllegalArgumentException if switch checker not set
      */
     public OptionReader (SwitchChecker swChecker, ArgReader argReader) {
-        if (swChecker == null) 
+        if (swChecker == null)
             throw new IllegalArgumentException("switch checker not set");
         this.swChecker = swChecker;
         this.argReader = argReader;
@@ -53,23 +53,23 @@ public class OptionReader {
     /**
      * Finds all occurrences of the option in the <code>unparsed</code> list,
      * removes found options with their arguments from the list.
-     * 
+     *
      * @param   unparsed - unparsed command line arguments list
      *
      * @return list of ParsedOption
-     *           
+     *
      * @throws  ArgumentsNumberException - if insufficient number of arguments
      *          can be read
      */
     public ArrayList read(ArrayList unparsed) throws ArgumentsNumberException {
 
         ArrayList v = new ArrayList();
-        int i = 0; 
+        int i = 0;
         while (i < unparsed.size()) {
             if (swChecker.check(unparsed, i)) {
                 String sw = (String)unparsed.remove(i);
                 ArrayList args = null;
-                if (argReader != null) 
+                if (argReader != null)
                     args = argReader.read(unparsed, i);
                 v.add(new ParsedOption(sw, args));
             } else {

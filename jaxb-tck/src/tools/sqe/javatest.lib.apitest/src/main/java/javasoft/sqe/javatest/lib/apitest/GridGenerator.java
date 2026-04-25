@@ -21,10 +21,10 @@ import javasoft.sqe.javatest.lib.MultiStatus;
 
 /**
  * <P>
- * GridGenerator.java: This class is an implementation of the Generator 
- * interface. This is a type of data provider. In this data provider 
+ * GridGenerator.java: This class is an implementation of the Generator
+ * interface. This is a type of data provider. In this data provider
  * class, a grid of execution parameters are generated from the factory
- * objects. 
+ * objects.
  * </P>
  * @author Rampalli Narasimhan, Jonathan Gibbons, Kevin A Smith
  * @see    Generator
@@ -67,8 +67,8 @@ public class GridGenerator implements Generator {
   public void init (String[] args) throws AssertionTest.Fault {
     if (args != null) {
       for (int i = 0; i < args.length; ++i) {
-	if (args[i].equals("-reporter")) 
-	    throw  new AssertionTest.Fault ("There was no -end at the end of the argument list for Generator");
+    if (args[i].equals("-reporter"))
+        throw  new AssertionTest.Fault ("There was no -end at the end of the argument list for Generator");
       }
     }
   }
@@ -84,17 +84,17 @@ public class GridGenerator implements Generator {
     }
     int factory_length = fact.length;
     int[] points = new int[fact.length];
-    int i = 0;    
+    int i = 0;
     while (true) {
       if (points[i] < fact[i]) {
-	if (i == factory_length - 1) {
-	  executeTestCase (points);
-	} else {
-	  points[++i] = 0;
-	  continue;
-	} 
-      } else if (--i < 0) 
-	break;
+    if (i == factory_length - 1) {
+      executeTestCase (points);
+    } else {
+      points[++i] = 0;
+      continue;
+    }
+      } else if (--i < 0)
+    break;
       points[i]++;
     }
   }
@@ -116,7 +116,7 @@ public class GridGenerator implements Generator {
     Status testStatus = testObject.runTest (objectUnderTest, exeParameters, p);
     overallStatus.add (testID, testStatus);
     factory[0].disposeElement (objectUnderTest);
-    for (int i = 1; i < factory.length; ++i) 
+    for (int i = 1; i < factory.length; ++i)
       factory[i].disposeElement (exeParameters[i - 1]);
     } catch (AssertionTest.Fault f) {
       throw new AssertionTest.Fault (f.getMessage() + " Execution Signature at this point: " + testID);
@@ -130,5 +130,5 @@ public class GridGenerator implements Generator {
   private Factory[] factory;
   private MultiStatus overallStatus;
 
- 
+
 }

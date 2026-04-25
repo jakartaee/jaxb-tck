@@ -34,14 +34,14 @@ import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 
 
 /**
- * StandardToolBase - 
+ * StandardToolBase -
  *
- * The StandardToolBase class defines a simple form of a tool requiring 
+ * The StandardToolBase class defines a simple form of a tool requiring
  * parser and an emitter (generic - IRParser and IREmitter) Processors.  StandardToolBase
  * provides overrideable methods for creating and initializing these processors, such
  * that they can be done in an agnostic way.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -62,11 +62,11 @@ public  class StandardToolBase extends ToolBase {
 
     //-------------------------------------------------------
     // CommandLine options
-    private static final String ctStr_arg_debug = LibResHandler.getResStr("standardtoolbase.debugarg.mnem"); 
+    private static final String ctStr_arg_debug = LibResHandler.getResStr("standardtoolbase.debugarg.mnem");
 
     protected FlagOption debugOption = new FlagOption(ctStr_arg_debug, LibResHandler.getResStr("standardtoolbase.debugarg.desc"));
 
-          
+
             /** Put this tool in a debug mode.   */
     protected static boolean m_debug = false;
 
@@ -85,16 +85,16 @@ public  class StandardToolBase extends ToolBase {
      *    Methods
      * ============================================================================================
      */
-    
-    
-    
-    /* 
+
+
+
+    /*
      * -----------------------------------------------------------
      * -----------------------------------------------------------
      *    Program Entry
      * -----------------------------------------------------------
      * -----------------------------------------------------------
-     */ 
+     */
   /**
     *  Program entry
     *
@@ -105,52 +105,52 @@ public  class StandardToolBase extends ToolBase {
         StandardToolBase c = new StandardToolBase(System.out, System.err);
         System.exit(c.run(args));
     }
-    
 
-    /* 
+
+    /*
      * -----------------------------------------------------------
      * -----------------------------------------------------------
      *    Public Methods (outside world can call these)
      * -----------------------------------------------------------
      * -----------------------------------------------------------
-     */ 
-    
+     */
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public StandardToolBase( PrintStream out, PrintStream err) {
-	this(out, err, CtStr_ToolName);
+    this(out, err, CtStr_ToolName);
     }
 
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      * @param name The name of the tool.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public StandardToolBase( PrintStream out, PrintStream err, String name) {
-	super(out, err, name);
-	m_parser = null;
-	m_emitter = null;
+    super(out, err, name);
+    m_parser = null;
+    m_emitter = null;
     }
 
 
- 
-   /* 
+
+   /*
     * -------------------------------------------------------------------
-    *    Getters/Setters 
+    *    Getters/Setters
     * -------------------------------------------------------------------
-    */ 
+    */
 
 
 
@@ -161,12 +161,12 @@ public  class StandardToolBase extends ToolBase {
     * <p>
     *  Sub-classes may override this to install
     *  different types of parsers.
-    * <p> 
+    * <p>
     * @return a (generic) IRParser.
     * @throws TestFileException if there is a problem creating a parser.
     */
     public IRParser createParser() throws TestFileException {
-	throw new TestFileException(LibResHandler.getResStr("standardtoolbase.error.createparser.nooverride"));
+    throw new TestFileException(LibResHandler.getResStr("standardtoolbase.error.createparser.nooverride"));
     }
 
 
@@ -175,13 +175,13 @@ public  class StandardToolBase extends ToolBase {
     * <p>
     *  Sub-classes may override this to initialize
     *  a parser.
-    * <p> 
+    * <p>
     * @throws TestFileException if there is a problem setting-up a parser.
     */
     public void setupParser()  throws TestFileException {
     }
 
- 
+
 
 
   /**
@@ -189,12 +189,12 @@ public  class StandardToolBase extends ToolBase {
     * <p>
     *  Sub-classes may override this to install
     *  different types of emitters.
-    * <p> 
+    * <p>
     * @return a (generic) IREmitter.
     * @throws TestFileException if there is a problem creating an emitter.
     */
     public IREmitter createEmitter() throws TestFileException {
-	throw new TestFileException(LibResHandler.getResStr("standardtoolbase.error.createemitter.nooverride"));
+    throw new TestFileException(LibResHandler.getResStr("standardtoolbase.error.createemitter.nooverride"));
     }
 
 
@@ -202,44 +202,44 @@ public  class StandardToolBase extends ToolBase {
     * Setup an emitter.
     * <p>
     *  Sub-classes may override this initialize the emitter.
-    * <p> 
+    * <p>
     * @throws TestFileException if there is a problem setting-up an emitter.
     */
     public void setupEmitter()  throws TestFileException {
     }
 
- 
-   /* 
+
+   /*
     * -------------------------------------------------------------------
-    *    
+    *
     * -------------------------------------------------------------------
-    */ 
+    */
 
    /**
     * Handles TestFileException and IOException.
     * Other exception are handled by super
     */
     protected void handleShellException(Exception e) {
-	// Handle TestFile Exception (general)
-	if (e instanceof TestFileException) {
+    // Handle TestFile Exception (general)
+    if (e instanceof TestFileException) {
             reportErrorMsg(e.getMessage());
-	    if (m_debug)
-		e.printStackTrace();
-	    setResultCode(ctInt_ErrorCode_Error);
+        if (m_debug)
+        e.printStackTrace();
+        setResultCode(ctInt_ErrorCode_Error);
         // Handle IOException
-	} else if (e instanceof IOException) {
+    } else if (e instanceof IOException) {
             reportErrorMsg(e.getMessage());
-	    if (m_debug)
-		e.printStackTrace();
-	    setResultCode(ctInt_ErrorCode_Error);
+        if (m_debug)
+        e.printStackTrace();
+        setResultCode(ctInt_ErrorCode_Error);
 
-	} else
-	    // let the super handle the exception
-	    super.handleShellException(e);
+    } else
+        // let the super handle the exception
+        super.handleShellException(e);
     }
-    
-    /** 
-     *  
+
+    /**
+     *
      *  Primary tool (set-up) interface.
      * <p>
      * This method creates/sets-up a parser and emitter (calls the create/setup methods).
@@ -248,17 +248,17 @@ public  class StandardToolBase extends ToolBase {
      *  return-codes:  Return Code (int) - 0 = normal termination, > 0 abnormal termination.
      */
     public void setupTool() throws TestFileException, IOException {
-	m_parser = createParser();
-	setupParser();
-	m_emitter = createEmitter();
-	setupEmitter();
+    m_parser = createParser();
+    setupParser();
+    m_emitter = createEmitter();
+    setupEmitter();
     }
 
 
- 
-    
-    /** 
-     *  
+
+
+    /**
+     *
      *  Primary tool interface.
      * <p>
      * This method sets up a parser and emitter, and processes the arguments.
@@ -268,31 +268,31 @@ public  class StandardToolBase extends ToolBase {
      *  return-codes:  Return Code (int) - 0 = normal termination, > 0 abnormal termination.
      */
     public void startTool() {
-	int returnCode = ctInt_ErrorCode_NoError;
+    int returnCode = ctInt_ErrorCode_NoError;
 
         try {
-	    processArgs();
-	    executeTool();
-	} catch  (TestFileException e) {
+        processArgs();
+        executeTool();
+    } catch  (TestFileException e) {
             reportErrorMsg(e.getMessage());
-	    if (m_debug)
-		e.printStackTrace();
-	    setResultCode(ctInt_ErrorCode_Error);
-	}  catch (IOException e) {
+        if (m_debug)
+        e.printStackTrace();
+        setResultCode(ctInt_ErrorCode_Error);
+    }  catch (IOException e) {
             reportErrorMsg(e.getMessage());
-	    if (m_debug)
-		e.printStackTrace();
-	    setResultCode(ctInt_ErrorCode_Error);
-	} 
+        if (m_debug)
+        e.printStackTrace();
+        setResultCode(ctInt_ErrorCode_Error);
+    }
     }
 
 
 
 
 
-    
-    /** 
-     *  
+
+    /**
+     *
      *  Sub-classes override this method when they wish to process any arguments
      *  before running the "executeTool" method. (Called by startTool()).
      * <p>
@@ -301,9 +301,9 @@ public  class StandardToolBase extends ToolBase {
      */
     public void processArgs() throws TestFileException, IOException {
     }
-    
-    /** 
-     *  
+
+    /**
+     *
      *  Parse inputs, process the IR, emit outputs.
      * <p>
      *  Tools should override this, this function determines
@@ -320,10 +320,10 @@ public  class StandardToolBase extends ToolBase {
     }
 
 
-    
-   /* 
+
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
@@ -342,7 +342,7 @@ public  class StandardToolBase extends ToolBase {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      */
     public void applyOptionsValues() throws ParseArgumentException {
         if (debugOption.isSet()) {

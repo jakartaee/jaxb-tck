@@ -28,14 +28,14 @@ import com.sun.tgxml.tjtf.tools.options.util.ArgChecker;
  *  Use <tt>getIntValue()</tt> to retrieve integer value of parsed option and
  *  <tt>getStringValue()</tt> to retrieve string value.
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public class IntOption extends StringOption {
 
-    private String patt_intFormatError = 
+    private String patt_intFormatError =
             ErrorMessages.getPattern("option.ArgumentFormat.Integer");
 
     /**
@@ -48,7 +48,7 @@ public class IntOption extends StringOption {
     }
 
     /**
-     * Creates option with one specified switch and usageInfo 
+     * Creates option with one specified switch and usageInfo
      *
      * @throws IllegalArgumentException if usageInfo is null, or sw is null
      */
@@ -61,8 +61,8 @@ public class IntOption extends StringOption {
      *
      * @throws IllegalArgumentException if usageInfo is null, or array of
      * switches is empty or contains null.
-     */    
-    public IntOption(String[] switches, String usageInfo, 
+     */
+    public IntOption(String[] switches, String usageInfo,
             boolean isObligatory) {
         super(switches, usageInfo, isObligatory);
     }
@@ -70,7 +70,7 @@ public class IntOption extends StringOption {
 
     /**
      * Returns ArgChecker that allows argument starts with "-"
-     */ 
+     */
     public ArgChecker getArgChecker() {
         return new ArgChecker(null, null);
     }
@@ -115,7 +115,7 @@ public class IntOption extends StringOption {
     /**
      * Sets error message pattern will be printed if option parameter cannot
      * be converted into int.
-     * <p>Example of pattern : 
+     * <p>Example of pattern :
      * <pre>
      *     "{1}" is illegal parameter of "{0}" option : "{2}"
      * </pre>

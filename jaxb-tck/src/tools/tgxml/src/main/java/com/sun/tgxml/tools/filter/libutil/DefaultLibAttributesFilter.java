@@ -34,7 +34,7 @@ import com.sun.tgxml.util.IR;
 
 /**
  * This class is default implementation of LibAttributesFilter interface
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */
@@ -48,7 +48,7 @@ public class DefaultLibAttributesFilter implements LibAttributesFilter {
     FilterExpression scTree;
 
 
-    public DefaultLibAttributesFilter(String pluginName) 
+    public DefaultLibAttributesFilter(String pluginName)
             throws FilteringException {
 
         FilterFactory filtFact = FilterFactory.newInstance(pluginName);
@@ -64,7 +64,7 @@ public class DefaultLibAttributesFilter implements LibAttributesFilter {
      * values into resulting map.
      */
     public VariantsMap filter(VariantsMap libBundle) throws FilteringException {
-        
+
         VariantsMap filteredMap = new VariantsMap();
 
         for (Iterator it = libBundle.libIDs(); it.hasNext();) {
@@ -79,7 +79,7 @@ public class DefaultLibAttributesFilter implements LibAttributesFilter {
                     filteredMap.addVariant(fVar);
                 }
             }
-            
+
         }
         return filteredMap;
     }
@@ -89,7 +89,7 @@ public class DefaultLibAttributesFilter implements LibAttributesFilter {
      * Provides attribute filtering of passed library.
      * Methods returns null if library attributes does not satisfy
      * the selection criteria.
-     * Otherwise it returns stripped Library (removes irrelevant 
+     * Otherwise it returns stripped Library (removes irrelevant
      * support classes from Library CodeSet).
      */
     public Library filter(Library lib) throws FilteringException {
@@ -104,7 +104,7 @@ public class DefaultLibAttributesFilter implements LibAttributesFilter {
     /**
      * Removes irrelevant support classes from the CodeSet
      */
-    public static void stripCodeSet(TestItem ti, FilterExpression scTree) 
+    public static void stripCodeSet(TestItem ti, FilterExpression scTree)
             throws FilteringException {
         CodeSet cs = ti.getCodeSet();
         if ( cs == null )
@@ -134,8 +134,8 @@ public class DefaultLibAttributesFilter implements LibAttributesFilter {
     }
 
     public static FilterExpression makeNonEmptyTree(FilterExpression root) {
-	return root == null? new NodeTRUE()
-			   : root ;
+    return root == null? new NodeTRUE()
+               : root ;
     }
 
 }

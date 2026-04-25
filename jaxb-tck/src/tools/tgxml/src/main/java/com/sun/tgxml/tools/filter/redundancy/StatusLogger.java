@@ -32,13 +32,13 @@ public class StatusLogger {
     public static final String LOGGING_SYBSYSTEM_NAME = "com.sun.tgxml.tools.filter.redundancy";
 
     protected static Logger logger = Logger.getLogger(LOGGING_SYBSYSTEM_NAME);
-    
+
     public static class DetailsLevel extends Level {
         public DetailsLevel(String name, int level) {
             super(name, level);
         }
     }
-    
+
     protected static void reportRejectByAttribute(String logId) {
         logger.log(REJECT_BY_ATTRIBUTE, logId);
     }
@@ -46,7 +46,7 @@ public class StatusLogger {
     protected static void reportRejectByDependency(String logId, String dependency) {
         logger.log(REJECT_BY_DEPENDENCY, logId + " -> '" + dependency + "'");
     }
-    
+
     protected static void reportRejectExcluded(String logId) {
         logger.log(REJECT_EXCLUDED, logId);
     }
@@ -54,17 +54,17 @@ public class StatusLogger {
     protected static void reportRejectNewTest(String logId) {
         logger.log(REJECT_NEW_TEST, logId);
     }
-    
+
     protected static void reportRejectRedundancy(String logId, String filterName) {
         logger.log(REJECT_REDUNDANT_TEST, logId, filterName);
     }
-    
+
     protected static void reportRejectEmptyTestGroup(String logId) {
         logger.log(REJECT_EMPTY_TEST_GROUP, logId);
     }
-    
+
     protected static void reportRejectDeleted (String logId) {
-    	logger.log(REJECT_DELETED, logId);
+        logger.log(REJECT_DELETED, logId);
     }
-    
+
 }

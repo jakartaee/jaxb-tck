@@ -26,46 +26,46 @@ import java.io.PrintStream;
  * @version 1.3
  */
 public abstract class Invoker {
-    
-    public static class ArgumentException extends Exception {
-		private static final long serialVersionUID = -2080407318175799071L;
 
-		public ArgumentException(String message) {
+    public static class ArgumentException extends Exception {
+        private static final long serialVersionUID = -2080407318175799071L;
+
+        public ArgumentException(String message) {
             super(message);
         }
     }
 
     public static class InvokeException extends Exception {
-		private static final long serialVersionUID = 7732323011436329862L;
+        private static final long serialVersionUID = 7732323011436329862L;
 
-		public InvokeException(String message) {
+        public InvokeException(String message) {
             super(message);
         }
     }
-    
+
     public static final String EMPTY_OUT_PARAMETER = "-empty_output";
-    
+
     // Predefined return codes
     protected final static int PASSED = 0;
     protected final static int FAILED = -1;
-    
+
     // Command line argument(s) holder.
     protected Arguments args;
-    
+
     //Output directory.
     protected File outDir;
-    
-	/**
-	 * ctor
-	 */
-	public Invoker(String[] args) {
-	    this.args = new Arguments(args);
-	}
-    
-    
+
+    /**
+     * ctor
+     */
+    public Invoker(String[] args) {
+        this.args = new Arguments(args);
+    }
+
+
     public Invoker() {}
 
-	protected int execute(PrintStream out, PrintStream err) 
+    protected int execute(PrintStream out, PrintStream err)
                   throws Exception
     {
         int rc;
@@ -73,30 +73,30 @@ public abstract class Invoker {
         rc = invoke(out, err);
         return rc;
     }
-    
+
     /**
      * Processes command line arguments.
      */
     protected  void processArguments() throws ArgumentException {
-    	String outDirStr = null;
+        String outDirStr = null;
         // Verify output directory.
-    	outDirStr = args.getValue("-d");
+        outDirStr = args.getValue("-d");
         if(outDirStr == null) {
             args.removeArgs("-d", 1);
             args.addArgs("-d", ".");
             outDirStr = ".";
-        } 
+        }
         outDir = new File(outDirStr);
         // remove EMPTY_OUT_PARAMETER parameter.
         if(args.contains(EMPTY_OUT_PARAMETER)) {
             args.removeArgs(EMPTY_OUT_PARAMETER);
-        }        
-        
+        }
+
     }
-    
+
     /**
      * Invokes command.
-     * @throws Exception 
+     * @throws Exception
      */
     protected abstract int invoke(PrintStream out, PrintStream err) throws Exception;
 }

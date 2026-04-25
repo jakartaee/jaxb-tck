@@ -22,14 +22,14 @@ import com.sun.tgxml.tjtf.IRObj;
 // </importgen>
 
 /**
- * XMLObj - 
+ * XMLObj -
  *
- * <b>XMLObj</b> is the root interface for XML Internal Representations of 
+ * <b>XMLObj</b> is the root interface for XML Internal Representations of
  * JavaObjects that are parsed in the B&I framework.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,8 +48,8 @@ public  interface XMLObj extends IRObj  {
      *    Methods
      * ============================================================================================
      */
-   
 
-   
+
+
 
 }

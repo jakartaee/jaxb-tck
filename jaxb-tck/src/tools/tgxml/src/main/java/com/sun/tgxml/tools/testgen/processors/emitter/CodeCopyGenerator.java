@@ -40,14 +40,14 @@ import com.sun.tgxml.util.IR;
 import com.sun.tgxml.util.MiscUtils;
 
 
-public class CodeCopyGenerator extends StandardOptionHandler 
+public class CodeCopyGenerator extends StandardOptionHandler
         implements Generator {
-   
+
     /**
      * Source Directory
      */
     File sourceDir = null;
-    
+
     /**
      *Output directory
      */
@@ -58,11 +58,11 @@ public class CodeCopyGenerator extends StandardOptionHandler
     public CodeCopyGenerator() {
     }
 
-    
+
     public void setExcludeListCollector(ExcludeListCollector collector){
     }
-    
-    public void setProperties(Properties props){        
+
+    public void setProperties(Properties props){
     }
 
     public Shell getShell() {
@@ -76,13 +76,13 @@ public class CodeCopyGenerator extends StandardOptionHandler
      */
     public void generate(IRObj[] trees) throws TestFileException {
         int numIRs = trees.length;
-        
+
         for (int i=0; i < numIRs; i++) {
             generate(trees[i]);
         }
-        
+
     }
-       
+
     public void generate (IRObj root) throws TestFileException  {
         if (root instanceof com.sun.tgxml.tools.indexgen.api.TestSuite)
             return;
@@ -94,14 +94,14 @@ public class CodeCopyGenerator extends StandardOptionHandler
 
         // Create a visitor class to get to a ExternalSupportClass
         UTDVisitorBase myVisitor = new UTDVisitorBase() {
-            
+
             /**
              * visit a ExternalSupportClass object.
              * <p>
              * @param obj a TestCase.
              * @exception Throws TestFileException.
              */
-            public void visit_ExternalSupportClass(ExternalSupportClass tdObject) 
+            public void visit_ExternalSupportClass(ExternalSupportClass tdObject)
                     throws TestFileException {
 
                 TestCase tc = getParentTestCase();
@@ -111,22 +111,22 @@ public class CodeCopyGenerator extends StandardOptionHandler
 
                 try {
                     copy(fname, out_name, skipCrn());
-                } catch (IOException e) { 
+                } catch (IOException e) {
                     throw new TestFileException(LibResHandler.getResStr(
                             "testgen.error.codecopy", fname));
                 }
-                
+
                 super.visit_ExternalSupportClass(tdObject);
             }
 
-            public void visit_ExternalData(ExternalData tdObject) 
+            public void visit_ExternalData(ExternalData tdObject)
                     throws TestFileException {
 
                 TestCase tc = getParentTestCase();
                 String var_name = tc == null ? null : tc.getVarName();
-                String fname = tdObject.getSourceName();            
+                String fname = tdObject.getSourceName();
                 try {
-                    if (tdObject.getType() != null 
+                    if (tdObject.getType() != null
                         && tdObject.getType().isIOData()) {
                         String out_name =
                             LibUtils.removeVariantNameFromSource(fname,
@@ -134,13 +134,13 @@ public class CodeCopyGenerator extends StandardOptionHandler
                         String outputFilePath = outputDir.getAbsolutePath() + File.separator + out_name;
                         IODataLogger.getInstance().log(outputFilePath);
                         copy(fname, out_name, skipCrn());
-                    }                    
-                } catch (IOException e) { 
+                    }
+                } catch (IOException e) {
                     e.printStackTrace();
                     throw new TestFileException(LibResHandler.getResStr(
                             "testgen.error.codecopy", fname));
                 }
-                
+
                 super.visit_ExternalData(tdObject);
             }
 
@@ -150,7 +150,7 @@ public class CodeCopyGenerator extends StandardOptionHandler
                 for (int i = s.size() - 1; i >= 0; i--) {
                     Object o = s.get(i);
 
-               	    if (!(o instanceof TestCase)) {
+                    if (!(o instanceof TestCase)) {
                         continue;
                     }
                     return (TestCase)o;
@@ -164,7 +164,7 @@ public class CodeCopyGenerator extends StandardOptionHandler
                 for (int i = s.size() - 1; i >= 0; i--) {
                     Object o = s.get(i);
 
-               	    if (!(o instanceof TestGroup)) {
+                    if (!(o instanceof TestGroup)) {
                         continue;
                     }
                     return (TestGroup)o;

@@ -19,16 +19,16 @@
 // comparable.java
 //
 // Author: Kevin A Smith
-// 
+//
 // This is an interface.
 //
 // Objects that implement this interface are comparable to less than, equal to
 // or greater than.
 //
 
-package com.sun.jck.utils.jckfilecheck; 
+package com.sun.jck.utils.jckfilecheck;
 
 public interface Comparable {
     public int compareTo (Comparable obj);
-    public boolean equals (Object obj); 
+    public boolean equals (Object obj);
 }

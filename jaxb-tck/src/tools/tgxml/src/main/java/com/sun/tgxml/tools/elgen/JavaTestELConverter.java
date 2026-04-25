@@ -29,63 +29,63 @@ import com.sun.tgxml.tools.elgen.javatest.ExcludeTable;
   * should implements this interface, and pass the implementation to the ExcludeListGenerator algorithm
 */
 public class JavaTestELConverter implements ExcludeListConverter {
-   
-	public String avalablePlatforms="solaris-sparc,win-NT,win-95,generic";
 
-	protected KeywordSet aPlatform = null;
+    public String avalablePlatforms="solaris-sparc,win-NT,win-95,generic";
 
-	public JavaTestELConverter () {
-		aPlatform = new KeywordSet (avalablePlatforms);
-	}
+    protected KeywordSet aPlatform = null;
+
+    public JavaTestELConverter () {
+        aPlatform = new KeywordSet (avalablePlatforms);
+    }
 
    /**
     * Implements this method to convert exclude list class to the
     * stream. The stream will be saved in the result file or redirected.
    */
-	public void convert(ExcludeList el, File output) throws IOException{
+    public void convert(ExcludeList el, File output) throws IOException{
 
-		ExcludeTable table = new ExcludeTable();
-		for (Iterator entries = el.getAllEntries(); entries.hasNext();) {
-			ExcludeTable.Entry entry = convertEntry ((ExcludeEntry)entries.next());
-			try {
-				table.addEntry(entry);
-			} catch (ExcludeTable.Fault e) {
-				//TODO
-			}
-		}
+        ExcludeTable table = new ExcludeTable();
+        for (Iterator entries = el.getAllEntries(); entries.hasNext();) {
+            ExcludeTable.Entry entry = convertEntry ((ExcludeEntry)entries.next());
+            try {
+                table.addEntry(entry);
+            } catch (ExcludeTable.Fault e) {
+                //TODO
+            }
+        }
 
-		table.write(output);
-	}
+        table.write(output);
+    }
 
-	protected ExcludeTable.Entry convertEntry (ExcludeEntry src) {
-		String u = src.getDirectory() + "/" + src.getTestGroupID(); 
-		String tc = src.getTestCaseID();
-		String s = src.getComments();
-		if (s == null) {
-			s = "";
-		}
+    protected ExcludeTable.Entry convertEntry (ExcludeEntry src) {
+        String u = src.getDirectory() + "/" + src.getTestGroupID();
+        String tc = src.getTestCaseID();
+        String s = src.getComments();
+        if (s == null) {
+            s = "";
+        }
 
-		// create bugIds
-		KeywordSet bugIDs = src.getBugIDs();
- 		int[] b = new int [bugIDs.size()];
-					
-		int i = 0;
-		for (Iterator bugIter = bugIDs.iterator(); bugIter.hasNext();i++) {
-			b[i] = Integer.parseInt ((String)(bugIter.next()));
-		}
+        // create bugIds
+        KeywordSet bugIDs = src.getBugIDs();
+        int[] b = new int [bugIDs.size()];
 
-		 // filter and create platforms
-		 KeywordSet keywords =  src.getKeywords();
-		 keywords.retainAll(aPlatform);
-		 if(keywords.size() == 0) {
-			 keywords.add("generic");
-		 }
-		 String[] p = new String[keywords.size()];
-		 i = 0;
-		 for (Iterator keyIter = keywords.iterator(); keyIter.hasNext();i++) {
-			 p[i] = (String)(keyIter.next());
-		 }
+        int i = 0;
+        for (Iterator bugIter = bugIDs.iterator(); bugIter.hasNext();i++) {
+            b[i] = Integer.parseInt ((String)(bugIter.next()));
+        }
 
-		 return new ExcludeTable.Entry (u, tc, b, p, s);
-	} 
+         // filter and create platforms
+         KeywordSet keywords =  src.getKeywords();
+         keywords.retainAll(aPlatform);
+         if(keywords.size() == 0) {
+             keywords.add("generic");
+         }
+         String[] p = new String[keywords.size()];
+         i = 0;
+         for (Iterator keyIter = keywords.iterator(); keyIter.hasNext();i++) {
+             p[i] = (String)(keyIter.next());
+         }
+
+         return new ExcludeTable.Entry (u, tc, b, p, s);
+    }
 }

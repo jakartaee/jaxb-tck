@@ -29,7 +29,7 @@ import com.sun.tgxml.tjtf.api.tests.Library;
 
 /**
  * The <code>LibDepExtractor</code> is a list of library dependencies
- * capable to extract the dependencies from the given <i>Library</i> 
+ * capable to extract the dependencies from the given <i>Library</i>
  * and store them to the file.
  * If the <code>LibDepExtractor</code> is constructed with <strong>outUpdatesFileName</strong>
  * defined then only new entries are written to the  <strong>outUpdatesFileName</strong>.
@@ -43,13 +43,13 @@ public class LibDepExtractor extends LibraryDependencies {
     protected String fileName;
 
     /**
-     * Name of the file where updates of the list are written to. 
+     * Name of the file where updates of the list are written to.
      * If set to null the input file is updated.
      */
     protected String outUpdatesFileName;
 
     /**
-     * The updates are collected there if output file is defined. 
+     * The updates are collected there if output file is defined.
      */
     protected LibraryDependencies updates;
 
@@ -75,7 +75,7 @@ public class LibDepExtractor extends LibraryDependencies {
     /**
      * Constructs the list which updates the given output file with new entries found.
      * @param fileName
-     *        name of the file where the list is read from. If the name is null no pre-existent 
+     *        name of the file where the list is read from. If the name is null no pre-existent
      *        entries are read so all found entries are treated new.
      * @param outFileName
      *        name of the file where updates of the list are written to.
@@ -93,8 +93,8 @@ public class LibDepExtractor extends LibraryDependencies {
     }
 
     /**
-     * Adds to the list one library dependecy extracted from the the given 
-     * library. 
+     * Adds to the list one library dependecy extracted from the the given
+     * library.
      * @param library
      *        a <i>Library</i> from which the dependency should be exctracted
      * @throws TestFileException
@@ -124,21 +124,21 @@ public class LibDepExtractor extends LibraryDependencies {
                               (com.sun.tgxml.tjtf.api.code.LibraryDependency)dep).getID());
             }
         }
-	if (!newId)
-	    return;
+    if (!newId)
+        return;
 
-	newFound = true;
-	if (newDep)
+    newFound = true;
+    if (newDep)
             put(dependency);
 
-	if (updates == null) {
-	    if (outUpdatesFileName == null)
-		return;
-	    else
-		updates = new LibraryDependencies();
-	}
-	if (updates.get(libID) == null)
-	    updates.put(dependency);
+    if (updates == null) {
+        if (outUpdatesFileName == null)
+        return;
+        else
+        updates = new LibraryDependencies();
+    }
+    if (updates.get(libID) == null)
+        updates.put(dependency);
     }
 
     /**
@@ -156,7 +156,7 @@ public class LibDepExtractor extends LibraryDependencies {
             if (fileName == null)
                 return;
             else
-		fn = fileName;
+        fn = fileName;
         }
         FileOutputStream fos = new FileOutputStream(fn);
         if (outUpdatesFileName == null)

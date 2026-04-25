@@ -20,67 +20,67 @@ import java.io.PrintStream;
 
 /**
  * Wrapper to generate a schema
- * 
+ *
  * @author Leonid Kuskov
  * @version 1.6
  */
 public class Jxc extends CompositeInvoker {
 
-	private boolean isSetIOAllowed;
-	
-	{
-		SecurityManager sm = System.getSecurityManager();
-		if (sm == null) {
-			isSetIOAllowed = true;
-		} else {
-			try {
-				sm.checkPermission(new RuntimePermission("setIO"));
+    private boolean isSetIOAllowed;
 
-				isSetIOAllowed = true;
-			} catch (SecurityException e) {
-				isSetIOAllowed = false;
-			}
-		}
-	}
+    {
+        SecurityManager sm = System.getSecurityManager();
+        if (sm == null) {
+            isSetIOAllowed = true;
+        } else {
+            try {
+                sm.checkPermission(new RuntimePermission("setIO"));
 
-	/**
-	 * ctor
-	 */
-	public Jxc(String[] args) {
-	    super(args);
-	}
+                isSetIOAllowed = true;
+            } catch (SecurityException e) {
+                isSetIOAllowed = false;
+            }
+        }
+    }
 
-	/**
-	 * Processes command line arguments.
-	 */
-	@Override
-	public void processArguments() throws Invoker.ArgumentException {
-		add(new SchemaGenInvoker(args));
-	}
+    /**
+     * ctor
+     */
+    public Jxc(String[] args) {
+        super(args);
+    }
 
-	/**
-	 * Performs the schema generation
-	 */
-	@Override
-	protected int execute(PrintStream out, PrintStream err) throws Exception {
-		PrintStream oldSystemOut = System.out;
-		PrintStream oldSystemErr = System.err;
-		try {
-			if (isSetIOAllowed) {
-				System.setOut(out);
-				System.setErr(err);
-			}
-			return super.execute(out, err);
-		} finally {
-			err.flush();
-			out.flush();
+    /**
+     * Processes command line arguments.
+     */
+    @Override
+    public void processArguments() throws Invoker.ArgumentException {
+        add(new SchemaGenInvoker(args));
+    }
 
-			if (isSetIOAllowed) {
-				System.setOut(oldSystemOut);
-				System.setErr(oldSystemErr);
-				oldSystemOut = null;
-				oldSystemErr = null;
-			}
-		}
-	}
+    /**
+     * Performs the schema generation
+     */
+    @Override
+    protected int execute(PrintStream out, PrintStream err) throws Exception {
+        PrintStream oldSystemOut = System.out;
+        PrintStream oldSystemErr = System.err;
+        try {
+            if (isSetIOAllowed) {
+                System.setOut(out);
+                System.setErr(err);
+            }
+            return super.execute(out, err);
+        } finally {
+            err.flush();
+            out.flush();
+
+            if (isSetIOAllowed) {
+                System.setOut(oldSystemOut);
+                System.setErr(oldSystemErr);
+                oldSystemOut = null;
+                oldSystemErr = null;
+            }
+        }
+    }
 }

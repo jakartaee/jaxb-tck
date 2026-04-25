@@ -27,20 +27,20 @@ import com.sun.tgxml.tjtf.api.common.Export;
 // </importgen>
 
 /**
- * InlineSupportClass - 
+ * InlineSupportClass -
  *
  * <b>InlineSupportClass</b> is the marker interface to a class structure that describes the root of a test description.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    InlineSupportClassImpl 
+ *    InlineSupportClassImpl
  * ============================================================================================
  */
 
@@ -58,19 +58,19 @@ public  class InlineSupportClassImpl extends SupportClassImpl implements InlineS
      *    Methods
      * ============================================================================================
      */
-   
-   
+
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public InlineSupportClassImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
-    public InlineSupportClassImpl(String langtype, String source, String classID, ArrayList targetSpecs, 
-				  String targetName) {
+    public InlineSupportClassImpl(String langtype, String source, String classID, ArrayList targetSpecs,
+                  String targetName) {
        super(classID, targetSpecs);
        setCodeDelegate(new InlineCodeImpl(langtype, source));
        setTargetName(targetName);
@@ -78,8 +78,8 @@ public  class InlineSupportClassImpl extends SupportClassImpl implements InlineS
 
 
     private void init() {
-	setCodeDelegate(new InlineCodeImpl());
-	m_targetName = null;
+    setCodeDelegate(new InlineCodeImpl());
+    m_targetName = null;
     }
 
 
@@ -93,9 +93,9 @@ public  class InlineSupportClassImpl extends SupportClassImpl implements InlineS
     * @see #setSource
     */
     public String getSource() {
-	return ((InlineCode) getCodeDelegate()).getSource();
+    return ((InlineCode) getCodeDelegate()).getSource();
     }
-     
+
   /**
     *   (delegate) Set the source.
     *  <p>
@@ -103,7 +103,7 @@ public  class InlineSupportClassImpl extends SupportClassImpl implements InlineS
     * @see #getSource
     */
     public void setSource(String source) {
-	((InlineCode) getCodeDelegate()).setSource(source);
+    ((InlineCode) getCodeDelegate()).setSource(source);
     }
 
 
@@ -114,10 +114,10 @@ public  class InlineSupportClassImpl extends SupportClassImpl implements InlineS
     * @see #setTargetFilename
     */
     public String getTargetName() {
-	return m_targetName;
+    return m_targetName;
     }
 
-     
+
   /**
     *   Set the Filename for the exportable.
     *  <p>
@@ -125,19 +125,19 @@ public  class InlineSupportClassImpl extends SupportClassImpl implements InlineS
     * @see #getTargetFilename
     */
     public void setTargetName(String filename) {
-	m_targetName = filename;
+    m_targetName = filename;
     }
 
-     
+
   /**
     *   Is this item exportable (predicate).
     *  <p>
     */
     public boolean isExport() {
-	return (m_targetName != null && ! m_targetName.equals("") );
+    return (m_targetName != null && ! m_targetName.equals("") );
     }
 
-   
+
 
 }
 

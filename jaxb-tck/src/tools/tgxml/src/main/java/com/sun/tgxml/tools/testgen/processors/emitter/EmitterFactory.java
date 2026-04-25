@@ -42,7 +42,7 @@ public class EmitterFactory {
      */
     public static Generator getGenerator(IRObj obj) throws TestFileException{
         String key = null;
-        if (obj instanceof TestGroup) {   
+        if (obj instanceof TestGroup) {
             key = "TestGroup." + detectKey((TestGroup)obj);
         } else if (obj instanceof Library) {
             key = "Library";
@@ -55,13 +55,13 @@ public class EmitterFactory {
             if (instanceTable.containsKey(className)) {
                 return (Generator)instanceTable.get(className);
             }
-            
+
             result = createGenerator(className);
             if (result != null) instanceTable.put(className, result);
         }
-        return result; 
+        return result;
     }
-    
+
 
     /**
      * Returns generator by the classname
@@ -78,7 +78,7 @@ public class EmitterFactory {
         }
         return result;
     }
-    
+
     /**
      * Initializes table of the known generators
      */
@@ -90,7 +90,7 @@ public class EmitterFactory {
         while (keys.hasMoreElements()) {
              String key = (String)keys.nextElement();
              String className = BuildProperties.getString(key);
-             if (className != null && className.trim().length() > 0) 
+             if (className != null && className.trim().length() > 0)
                  classTable.put(key.substring(propPrefix.length()), className);
         }
     }
@@ -105,7 +105,7 @@ public class EmitterFactory {
     protected static String getGeneratorClassName(String key) {
         if (key == null)
              return null;
-        if (classTable == null) 
+        if (classTable == null)
             initClassTable();
         return (String)classTable.get(key);
     }
@@ -126,4 +126,4 @@ public class EmitterFactory {
 
 
 }
-        
+

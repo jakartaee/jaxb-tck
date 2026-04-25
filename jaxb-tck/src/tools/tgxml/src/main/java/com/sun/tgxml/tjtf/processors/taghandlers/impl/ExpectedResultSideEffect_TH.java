@@ -31,50 +31,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * ExpectedResultSideEffect_TH - The tag-handler for a Description tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ExpectedResultSideEffect_TH 
- * ============================================================================================ 
- */ 
+/**
+ * ExpectedResultSideEffect_TH - The tag-handler for a Description tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ExpectedResultSideEffect_TH
+ * ============================================================================================
+ */
 public class ExpectedResultSideEffect_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   ExpectedResultSideEffect_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   ExpectedResultSideEffect_TH constructor -
+    *       Initialize our internal fields.
+    */
     public ExpectedResultSideEffect_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -85,13 +85,13 @@ public class ExpectedResultSideEffect_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_expectedresultsideeffect;
+    return TagsImpl.ctStr_tag_expectedresultsideeffect;
     }
 
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -99,43 +99,43 @@ public class ExpectedResultSideEffect_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	try {
+    try {
 
-	    super.endTag(text);
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    if (! (testitem instanceof TestCaseSpec)  )
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcasespec));
-	    
-	    //  Nothing is pushed onto the stack
-	    TestCaseSpec tcs = (TestCaseSpec) testitem;
-	    
-	    ArrayList sideeffects = tcs.getExpectedResultSideEffects();
-	    if (sideeffects == null) {
-		sideeffects = new ArrayList();
-		tcs.setExpectedResultSideEffects(sideeffects);
-	    }
-	    
-	    // validated the author name
-	    // validateExpectedResultSideEffect(text);
-	    ExpectedResultSideEffect se = DocumentationFactory.createExpectedResultSideEffect();
-	    se.setSideEffect(text);
-	    sideeffects.add(se);
- 	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+        super.endTag(text);
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
+
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        if (! (testitem instanceof TestCaseSpec)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcasespec));
+
+        //  Nothing is pushed onto the stack
+        TestCaseSpec tcs = (TestCaseSpec) testitem;
+
+        ArrayList sideeffects = tcs.getExpectedResultSideEffects();
+        if (sideeffects == null) {
+        sideeffects = new ArrayList();
+        tcs.setExpectedResultSideEffects(sideeffects);
+        }
+
+        // validated the author name
+        // validateExpectedResultSideEffect(text);
+        ExpectedResultSideEffect se = DocumentationFactory.createExpectedResultSideEffect();
+        se.setSideEffect(text);
+        sideeffects.add(se);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
+    }
    }
 
- 
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -143,16 +143,16 @@ public class ExpectedResultSideEffect_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof ExpectedResultSideEffect))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"ExpectedResultSideEffect", tdObject.getClass().getName()));
+    if (! (tdObject instanceof ExpectedResultSideEffect))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "ExpectedResultSideEffect", tdObject.getClass().getName()));
 
-	ExpectedResultSideEffect sideeffect = (ExpectedResultSideEffect) tdObject;
+    ExpectedResultSideEffect sideeffect = (ExpectedResultSideEffect) tdObject;
 
-	m_EmitterHandler.emitText(sideeffect.getSideEffect());
+    m_EmitterHandler.emitText(sideeffect.getSideEffect());
 
     }
 
-     
+
 
 }

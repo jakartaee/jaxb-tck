@@ -21,41 +21,41 @@ import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
-  * This interface is provided by an exclude list tool for a filtering tool 
+  * This interface is provided by an exclude list tool for a filtering tool
   * to mark any excluded entries before filterring
-  * 
+  *
   */
 public interface ExcludeListMarker {
 
-    /**  
+    /**
       * The method mark the given testItem  as excluded
       * by adding "exclude" attrElement with keywords_list as contents.
       * keywords_list is provided for filterring purpose
       * It also add "excludeParams" attribute that will used by exclude list
-      * generator 
+      * generator
       *
       * The testItem should have attrElem named "sourceDirectory", that
       * contains a name of test directory relative to the repository test root
       * directory
-      * @throws IncorrectAttributesException if "sourceDirectory"  are not defined.      
-      * @return true, if the item was marked  
+      * @throws IncorrectAttributesException if "sourceDirectory"  are not defined.
+      * @return true, if the item was marked
           */
 
     public boolean markExcluded (TestCase testItem)
             throws IncorrectAttributesException;
 
-    /**  
+    /**
       * The method mark the given testItem  as excluded
       * by adding "exclude" attrElement with keywords_list as contents.
       * keywords_list is provided for filterring purpose
       * It also add "excludeParams" attribute that will used by exclude list
-      * generator 
+      * generator
       *
       * The testItem should have attrElem named "sourceDirectory", that
       * contains a name of test directory relative to the repository test root
       * directory
-      * @throws IncorrectAttributesException if "sourceDirectory"  are not defined.      
-      * @return true, if the item was marked  
+      * @throws IncorrectAttributesException if "sourceDirectory"  are not defined.
+      * @return true, if the item was marked
           */
 
     public boolean markExcluded (TestGroup testItem)

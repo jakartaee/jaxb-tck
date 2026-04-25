@@ -24,14 +24,14 @@ import java.io.PrintWriter;
  * final macroprocessor output for test generation.
  *
  * @author Kevin T. Looney
- * @version @(#)JmppLibBasic.java	1.0 04/09/15
+ * @version @(#)JmppLibBasic.java   1.0 04/09/15
  */
 
 public class JmppLibBasic
-	extends com.sun.jmpp.JmppLib {
+    extends com.sun.jmpp.JmppLib {
 
     public JmppLibBasic() {
-        
+
     }
 
 
@@ -39,19 +39,19 @@ public class JmppLibBasic
      * This is the only way to (externally) reset the input name to
      * arg[0] (since it was just put into outName).
      */
-	public void resetInputName() {
-	    inName = outName;
-	}
+    public void resetInputName() {
+        inName = outName;
+    }
 
     /**
      * This is the only way to (externally) call setOutput.
      */
-	public void resetOutputName_Hook() {
-	    if (inName.indexOf(".jmpp") >= 0) {
-		String outName = inDir + inName.substring(0, inName.indexOf(".jmpp"));
-		setOutput(outName);
-	    }
-	}
+    public void resetOutputName_Hook() {
+        if (inName.indexOf(".jmpp") >= 0) {
+        String outName = inDir + inName.substring(0, inName.indexOf(".jmpp"));
+        setOutput(outName);
+        }
+    }
 
     /**
      * Hook - allows sub-classes to change the output filename (from the default jmpp filename)
@@ -59,13 +59,13 @@ public class JmppLibBasic
      * @param out where to output the redirect
      * @see #makeOut()
      */
-	public void redirectOutputFile_Hook(PrintWriter out) {
+    public void redirectOutputFile_Hook(PrintWriter out) {
             // initialize the input file.
-		out.println("            x.resetInputName();");
+        out.println("            x.resetInputName();");
 
             // then redirect the output file.
-		out.println("            x.resetOutputName_Hook();");
-	}
+        out.println("            x.resetOutputName_Hook();");
+    }
 
 
     /**
@@ -78,8 +78,8 @@ public class JmppLibBasic
      * prolog and epilog generation methods in a library, and this method -
      * in the jmpp source file itself.
      */
-	public void make() {
-	}
+    public void make() {
+    }
 
     /**
      * Method to override in jmpp source file and other Jmpp libraries.
@@ -88,10 +88,10 @@ public class JmppLibBasic
      * Note that Users generally should NOT override this method (since it redefines the
      * output filename), they should override make().
      */
-	public void makeOut() {
+    public void makeOut() {
             // re-define output.
-	    resetOutputName_Hook();
-	    make();
+        resetOutputName_Hook();
+        make();
        }
 
     /**
@@ -102,31 +102,31 @@ public class JmppLibBasic
      * @see #makeOut()
      * @see #closeOut()
      */
-	protected void generateMain(PrintWriter out, String shortClassName) {
-		String s = getClass().getName().replace('$', '.');
-		out.println("    {");
-		out.println("        className = \"" + shortClassName + "\";");
-		out.println("    }");
-		out.println("    public static void main(String[] argv) {");
-		out.println("        " + s + " x = null;");
-		out.println("        try {");
-		out.println("            x = (" + s + ") Class.forName(\"" +
+    protected void generateMain(PrintWriter out, String shortClassName) {
+        String s = getClass().getName().replace('$', '.');
+        out.println("    {");
+        out.println("        className = \"" + shortClassName + "\";");
+        out.println("    }");
+        out.println("    public static void main(String[] argv) {");
+        out.println("        " + s + " x = null;");
+        out.println("        try {");
+        out.println("            x = (" + s + ") Class.forName(\"" +
                     intermediateClassName + "\").newInstance();");
-		out.println("        } catch (Throwable e) {\n"+
+        out.println("        } catch (Throwable e) {\n"+
                     "            System.err.println(\"" + shortClassName +
                     " error:\");\n" +
                     "            e.printStackTrace();\n" +
                     "            throw new com.sun.jmpp.JmppException" +
                     "(\"Could not create library instance\");\n" +
                     "        }");
-		out.println("        if (argv.length > 0) {");
-		out.println("            x.outName = argv[0];");
-		redirectOutputFile_Hook(out);
-		out.println("        }");
-		out.println("        x.makeOut();");
-		out.println("        x.closeOut();");
-		out.println("    }");
-	}
+        out.println("        if (argv.length > 0) {");
+        out.println("            x.outName = argv[0];");
+        redirectOutputFile_Hook(out);
+        out.println("        }");
+        out.println("        x.makeOut();");
+        out.println("        x.closeOut();");
+        out.println("    }");
+    }
 
 
 
@@ -136,11 +136,11 @@ public class JmppLibBasic
      * @param out where to output the prolog
      * @param shortClassName short i-class name (without package)
      */
-	protected void generateProlog(PrintWriter out, String shortClassName) {
-		out.println("package " + templatePackage + ";\n");
-		out.println("public class " + shortClassName+" extends " +
+    protected void generateProlog(PrintWriter out, String shortClassName) {
+        out.println("package " + templatePackage + ";\n");
+        out.println("public class " + shortClassName+" extends " +
                     getClass().getName()+" {");
-	}
+    }
 
 
     /**
@@ -148,10 +148,10 @@ public class JmppLibBasic
      * @param out where to output the epilog
      * @param shortClassName short i-class name (without package)
      */
-	protected void generateEpilog(PrintWriter out, String shortClassName) {
-		generateMain(out, shortClassName);
-		out.println("}");
-	}
+    protected void generateEpilog(PrintWriter out, String shortClassName) {
+        generateMain(out, shortClassName);
+        out.println("}");
+    }
 
 
 
@@ -159,25 +159,25 @@ public class JmppLibBasic
 
     /**
      * Override - If the (non-qualified) filename has dots
-     * replace the dots with underscore (to differentiate 
+     * replace the dots with underscore (to differentiate
      * the filename from a directory path).
      * @param s a string (filename)
      * @return the input string without trailing (if any) .*
      */
-	public String trimExtension(String s) {
+    public String trimExtension(String s) {
         int i = s.lastIndexOf('.');
-	String result =  (i < 0 ? s : s.substring(0, i));
-	result =  result.replace('.', '_');
+    String result =  (i < 0 ? s : s.substring(0, i));
+    result =  result.replace('.', '_');
 
-	return result;
-	}
+    return result;
+    }
 
     /**
      * Command-line interface.
      * @param argv command-line arguments
      */
-	public static void main(String[] argv) {
-		libMain(argv,new JmppLibBasic());
-	}
+    public static void main(String[] argv) {
+        libMain(argv,new JmppLibBasic());
+    }
 
 }

@@ -21,16 +21,16 @@ package com.sun.tgxml.tjtf.api.code;
 // </importgen>
 
 /**
- * TestCode - 
+ * TestCode -
  *
- * A TestCase's <b>TestCode</b> describes the source of the actual test. 
+ * A TestCase's <b>TestCode</b> describes the source of the actual test.
  * This source is often in the form of a Java method body,
- * but can be almost any grouping of source code. A <b>TestCode</b> has a language 
- * (String) attribute, whose default value is "java". A <b>TestCode</b> also contains 
- * (String) the actual source. 
+ * but can be almost any grouping of source code. A <b>TestCode</b> has a language
+ * (String) attribute, whose default value is "java". A <b>TestCode</b> also contains
+ * (String) the actual source.
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -49,7 +49,7 @@ public  interface TestCode extends InlineCode {
      *    Methods
      * ============================================================================================
      */
-   
+
 
 }
 

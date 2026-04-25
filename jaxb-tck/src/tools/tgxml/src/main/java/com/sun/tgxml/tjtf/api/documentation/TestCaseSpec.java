@@ -23,7 +23,7 @@ import java.util.ArrayList;
 // </importgen>
 
 /**
- * TestCaseSpec - 
+ * TestCaseSpec -
  *
  * <b>TestCaseSpec</b> is the basic interface for describing a JCK API test specification.
  * <p>
@@ -39,12 +39,12 @@ import java.util.ArrayList;
  *  </ul> <br>
  *
  * <p>
- * A <b>TestCaseSpec</b> is registered in the <b>TestCaseDocumentation</b>of a <b>TestCase</b> 
- *  element.  
- * <p> 
+ * A <b>TestCaseSpec</b> is registered in the <b>TestCaseDocumentation</b>of a <b>TestCase</b>
+ *  element.
+ * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -63,7 +63,7 @@ public  interface TestCaseSpec  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -85,7 +85,7 @@ public  interface TestCaseSpec  {
     */
     public ArrayList getAssertions();
 
-     
+
  /**
     *   Set the assertions associated with this TestCaseSpec.
     *   An Assertion is a specification-assertion  that a given test
@@ -109,18 +109,18 @@ public  interface TestCaseSpec  {
   /**
     *   Get the TestTechnique associated with this documentation.
     *  <p>
-    *   This TestTechnique may be NULL.  
+    *   This TestTechnique may be NULL.
     *  <p>
     * @return     The TestTechnique associated with this TestCaseSpec
     * @see com.sun.tgxml.tjtf.api.documentation.TestTechnique
     * @see #setTestTechnique
     */
     public TestTechnique getTestTechnique();
-     
+
    /**
     *   Set the TestTechnique associated with this documentation.
     *  <p>
-    *   This TestTechnique may be NULL.  
+    *   This TestTechnique may be NULL.
     *  <p>
     * @param     technique The TestTechnique of the TestCaseSpec.
     * @see com.sun.tgxml.tjtf.api.documentation.TestTechnique
@@ -140,12 +140,12 @@ public  interface TestCaseSpec  {
     * @see #setMemberSig
     */
     public String getMemberSig();
-     
+
    /**
     *   Set the MemberSig associated with this TestCaseSpec.
     *  <p>
     *   This MemberSig may be a valid String
-    *   or NULL.  
+    *   or NULL.
     *  <p>
     * @param     membersig The MemberSig of the TestCaseSpec.
     * @see #getMemberSig
@@ -167,7 +167,7 @@ public  interface TestCaseSpec  {
     */
     public ArrayList getInputs();
 
-     
+
  /**
     *   Set the list of values of test input for a given test.
     *  <p>
@@ -200,7 +200,7 @@ public  interface TestCaseSpec  {
     * @see #setPreconditions
     */
     public ArrayList getPreconditions();
-     
+
    /**
     *   Set the list of Precondition values associated with this documentation.
     *   A Precondition is the expected state of the system before
@@ -228,7 +228,7 @@ public  interface TestCaseSpec  {
     * @see #setExpectedResultValue
     */
     public ExpectedResultValue getExpectedResultValue();
-     
+
    /**
     *   Set the ExpectedResultValue associated with this TestCaseSpec.
     *   The ExpectedResults is the expected state of the system after
@@ -252,7 +252,7 @@ public  interface TestCaseSpec  {
     */
     public ArrayList getExpectedResultSideEffects();
 
-     
+
  /**
     *   Set the expected side-effects.
     *  <p>
@@ -271,7 +271,7 @@ public  interface TestCaseSpec  {
     */
     public ArrayList getExpectedResultExceptions();
 
-     
+
  /**
     *   Set the expected exceptions.
     *  <p>
@@ -295,7 +295,7 @@ public  interface TestCaseSpec  {
     */
     public ArrayList getSpecElems();
 
-     
+
  /**
     *   Set the SpecElems associated with this documentation.
     *  <p>

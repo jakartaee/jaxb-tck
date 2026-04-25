@@ -20,19 +20,19 @@ package com.sun.tgxml.tools.filter.redundancy;
 import com.sun.tgxml.tjtf.api.tests.TestItem;
 
 /**
- * The interface for applicability filters. The applicability filter accepts 
- * TestItems using attributes and does not parse dependencies. 
+ * The interface for applicability filters. The applicability filter accepts
+ * TestItems using attributes and does not parse dependencies.
  * Each filter represents some Java platform.
  */
 public interface ApplicabilityFilter {
 
     /**
      * returns true if the given TestItem is acceptable for platform.
-     * @param item a given TestItem. An instances of the ApplicabilityFilter 
+     * @param item a given TestItem. An instances of the ApplicabilityFilter
      * should not modify the TestItem.
      */
     public boolean accept(TestItem item);
-    
+
     /**
      * returns name of the filter. This name should be unique in current VM.
      */

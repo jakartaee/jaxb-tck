@@ -25,16 +25,16 @@ public class Arguments extends Hashtable {
     String[] args;
     ArrayList fileNames = new ArrayList();
     boolean files = false;
-    
+
     public Arguments() {
         super();
     }
-    
+
     public void init(String[] args) throws Exception{
         this.args = args;
         _createArguments(args);
     }
-    
+
     private void setDefaultNameSpace(String value) {
         if (value != null
                 && !value.equals("")) {
@@ -43,24 +43,24 @@ public class Arguments extends Hashtable {
             m_special = "";
         }
     }
-        
+
     public Object get(Object value) {
         return _get(value.toString());
     }
-        
-    
+
+
     private Object _get(String value) {
         String key = m_special + (value.startsWith("-")?value.substring(1):value);
         Object temp = super.get(key);
         return temp != null?temp:super.get(value);
     }
-    
+
     public synchronized Arguments clone(String nameSpace) {
         Arguments temp = (Arguments)clone();
         temp.setDefaultNameSpace(nameSpace);
         return temp;
     }
-    
+
     private void _createArguments(String[] args) throws Exception {
         String key = null;
         String file = null;
@@ -68,7 +68,7 @@ public class Arguments extends Hashtable {
             //option names
             ////
             if(args[i].startsWith("-")) {
-                if (args[i].equals("-files")) { 
+                if (args[i].equals("-files")) {
                     files = true;
                 } else if (!files) {
                     //option or switch
@@ -97,14 +97,14 @@ public class Arguments extends Hashtable {
                 } else {
                     files = true;
                     fileNames.add(args[i]);
-                } 
+                }
             }
         }
-        
+
         if (key != null) {
             put(key, "true");
         }
-        
+
         put("files", fileNames);
     }
 }

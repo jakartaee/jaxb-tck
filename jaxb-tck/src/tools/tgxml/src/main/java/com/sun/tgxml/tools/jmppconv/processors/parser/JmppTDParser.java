@@ -46,18 +46,18 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
     protected String            packagePrefix =
            "com.sun.tgxml.tools.jmppconv.processors.parser";
     private Arguments           parserOptions;
-    
+
     /**  The Shell this parser belongs to */
     private Shell               m_shell;
-    
+
     static final String exToken = "!";
 
     public JmppTDParser() {
         parserOptions = new Arguments();
-        
+
     }
-    
-    public IRObj[] parse(java.io.File[] files) 
+
+    public IRObj[] parse(java.io.File[] files)
             throws TestFileException, java.io.IOException {
         if (files.length > 1) {
             throw new TestFileException(
@@ -69,15 +69,15 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
         }
 
         theIRGenerator.setProperties(parserOptions.clone("-P"));
-                
+
         ArrayList result = theIRGenerator.generate(files[0]);
-        
+
         Object[] temp = result.toArray();
         IRObj[] tempRes = new IRObj[temp.length];
         for (int i=0; i<temp.length; i++) {
             tempRes[i] = (IRObj)temp[i];
         }
-        
+
         return tempRes;
     }
 
@@ -86,7 +86,7 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
         throw new TestFileException(
                 LibResHandler.getResStr("jmppconv.error.inputstream"));
     }
-                     
+
 
     protected String getIRGeneratorClassName(File inputFile)
             throws TestFileException{
@@ -94,7 +94,7 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
         BufferedReader br;
         String         firstLine = null;
         String         className = null;
-        
+
         try {
             fr = new FileReader(inputFile);
             br = new BufferedReader(fr);
@@ -103,30 +103,30 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
             }
         } catch (FileNotFoundException fnfe) {
             throw new TestFileException(
-                LibResHandler.getResStr("jmppconv.error.filenotfound", 
+                LibResHandler.getResStr("jmppconv.error.filenotfound",
                 inputFile.toString()));
         } catch (IOException ioe) {
             throw new TestFileException(
-                LibResHandler.getResStr("jmppconv.error.fileread", 
+                LibResHandler.getResStr("jmppconv.error.fileread",
                 inputFile.toString()));
         }
-        
+
         //can't create IRGenerator
         if (firstLine == null) return null;
-        
+
         int start = firstLine.indexOf(JmppTDParser.exToken);
         if (start <0) return null;
-        
-        StringTokenizer st = 
+
+        StringTokenizer st =
                 new StringTokenizer(firstLine.substring(start+1));
         if (st.countTokens() > 0) className = st.nextToken();
-    
+
         return className;
     }
-    
+
     /**
      * Creates IRGenerator by 'genClass' and 'packageName'.
-     * If IRGenerater class name for 'genClass' is defined in the 
+     * If IRGenerater class name for 'genClass' is defined in the
      * build properties an instance of specified class will be returned.
      * Otherwise the IRGenerater class name will be calculated as
      * 'packageName' + "." + 'genClass'
@@ -142,8 +142,8 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
 
         String fqClassName = BuildProperties.getPrefixString(
                 "jmppconv", "parser." + genClass, null);
-        // check whether IRGenerater class name is not defined 
-        // in the build properties 
+        // check whether IRGenerater class name is not defined
+        // in the build properties
         if (fqClassName == null) {
             fqClassName = packageName + "." + genClass;
         }
@@ -157,19 +157,19 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
      */
     protected IRGenerator createIRGenerator(String fqClassName)
             throws TestFileException {
-        IRGenerator    result    = null;               
+        IRGenerator    result    = null;
         try {
             result = (IRGenerator)Class.forName(fqClassName).newInstance();
         } catch (Exception e) {
             throw new TestFileException(
                LibResHandler.getResStr("jmppconv.error.genclass", fqClassName));
         }
-        
+
         return result;
 
     }
 
-    
+
    /**
     * Sets the Shell that owns this parser.
     * <p>
@@ -189,39 +189,39 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
     }
 
 
-  /** 
+  /**
     *  Sets the Validator
     * <p>
     *  do nothing
     * @param validator The validator to set.
-    */ 
+    */
     public void setValidator(IRValidator validator) {
     }
 
-   /** 
+   /**
     * <p>
-    * @return null 
-    */ 
+    * @return null
+    */
     public IRValidator getValidator() {
         return null;
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-     StringOption outputOption = new StringOption("-o", 
+     StringOption outputOption = new StringOption("-o",
          "  -o <outputdir> output directory");
 
-     StringOption workdirOption = new StringOption("-w", 
+     StringOption workdirOption = new StringOption("-w",
          "  -w <workdir> working directory");
 
-     StringOption fnOption = new StringOption("-fn", 
+     StringOption fnOption = new StringOption("-fn",
          "  -fn <classname> parser class name");
 
-     StringOption ppOption = new StringOption("-pp", 
+     StringOption ppOption = new StringOption("-pp",
          "  -pp <packagename> parser class name package");
 
      PrefixOption POption = new PrefixOption("-P",
@@ -243,10 +243,10 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
-    public void applyOptionsValues() throws ParseArgumentException {       
+    public void applyOptionsValues() throws ParseArgumentException {
 
         if (fnOption.isSet()) {
             className = fnOption.getStringValue();
@@ -275,7 +275,7 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
                 if (delim < 0) {
                     parserOptions.put(ops[i],"true");
                 } else {
-                    parserOptions.put(ops[i].substring(0,delim), 
+                    parserOptions.put(ops[i].substring(0,delim),
                                       ops[i].substring(delim+1));
                 }
             }
@@ -285,17 +285,17 @@ public class JmppTDParser extends StandardOptionHandler implements IRParser {
         if (className != null && !className.trim().equals("")) {
             String fqClassName = className;
             // add packagePrefix to the className is defined
-            // (if packagePrefix is not defined className is treated 
+            // (if packagePrefix is not defined className is treated
             // as fully qualified)
             if (packagePrefix != null && !packagePrefix.trim().equals("")) {
                  // remove last '.' from the package prefix if needed
                  if (packagePrefix.endsWith(".")) {
-                     packagePrefix = 
+                     packagePrefix =
                          packagePrefix.substring(0, packagePrefix.length() - 1);
                  }
                  fqClassName = packagePrefix + "." + className;
             }
-        
+
             try {
                 theIRGenerator = createIRGenerator(fqClassName);
             } catch (Exception e) {

@@ -23,22 +23,22 @@ import com.sun.tgxml.tjtf.api.common.Export;
 // </importgen>
 
 /**
- * InlineSupportClass - 
+ * InlineSupportClass -
  *
  * <b>InlineSupportClass</b> is the marker interface to an inline-specified Class (code).
- * <b>InlineSupportClass</b> describes auxiliary classes that a test uses to compile or execute. 
+ * <b>InlineSupportClass</b> describes auxiliary classes that a test uses to compile or execute.
  * <p>
  * <b>InlineSupportClass</b> is contains CodeSource (from InlineCode) which is the text of a class.
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    InlineSupportClass 
+ *    InlineSupportClass
  * ============================================================================================
  */
 
@@ -50,7 +50,7 @@ public  interface InlineSupportClass extends SupportClass, InlineCode, Export {
      *    Methods
      * ============================================================================================
      */
-   
+
 
 }
 

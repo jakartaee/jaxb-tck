@@ -31,7 +31,7 @@ import com.sun.tgxml.util.IR;
  */
 public class DependencyManager {
     protected LibraryLoader loader;
-    
+
     /**
      * sets LibraryLoader used for external libraries resolving.
      * @param loader
@@ -39,25 +39,25 @@ public class DependencyManager {
     public void setLibraryLoader(LibraryLoader loader) {
         this.loader = loader;
     }
-    
+
     /**
      * extracts existing dependencies list from the given TestItem.
      * @param item
      * @return list of String objects, which defines ID of dependent TestItems.
      * @throws TestFileException
-     */ 
+     */
     public Iterator getDependencies(TestItem item) throws TestFileException {
         return IR.getDependentLibs(item).iterator();
     }
-    
+
     /**
      * resolves dependency from current TestItem with given name. All TestItems
-     * variant visible from current TestItem are loaded and returned. 
+     * variant visible from current TestItem are loaded and returned.
      * Currently only dependency on libraries are supported by B&amp;I.
      * The method implements the following scheme for dependency resolving:
      * <ul>
-     *  <li>If the current TestItem is part of enclosing TestGroup and inline 
-     *    libraries with the given ID exist in enclosing TestGroup, the all 
+     *  <li>If the current TestItem is part of enclosing TestGroup and inline
+     *    libraries with the given ID exist in enclosing TestGroup, the all
      *    inline libraries with the given ID are returned
      *  <li> Otherwise, if there are external libraries with the given ID, then they are returned.
      *  <li> Otherwise, ItemNotFoundException is thrown.
@@ -67,7 +67,7 @@ public class DependencyManager {
      * references to libraries.
      * @return all visible TestItems (currently all they are Libraries)
      */
-    public VariantList resolveDependency(TestItem current, String refID) 
+    public VariantList resolveDependency(TestItem current, String refID)
         throws TestFileException, ItemNotFoundException {
         TestGroup tg = null;
         if (current instanceof TestGroup) {

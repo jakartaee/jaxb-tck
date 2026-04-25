@@ -160,7 +160,7 @@ public class BeansPersistenceDelegate extends PersistenceDelegate {
     protected Expression instantiate(Object oldInstance, Encoder out) {
         int nArgs = constructor.length;
 //        log("WriteObj:" + oldInstance);
-        
+
         Class<?> type = oldInstance.getClass();
         Object[] constructorArgs = new Object[nArgs];
         for(int i = 0; i < nArgs; i++) {
@@ -176,7 +176,7 @@ public class BeansPersistenceDelegate extends PersistenceDelegate {
     }
 
     private Method findMethod(Class<?> type, String property) throws IntrospectionException {
-//        log("Trying property " + property + " in " + type); 
+//        log("Trying property " + property + " in " + type);
         if (property == null) {
             throw new IllegalArgumentException("Property name is null");
         }
@@ -232,28 +232,28 @@ public class BeansPersistenceDelegate extends PersistenceDelegate {
     private void doProperty(Class<?> type, PropertyDescriptor pd, Object oldInstance, Object newInstance, Encoder out) throws Exception {
         Method getter = pd.getReadMethod();
         Method setter = pd.getWriteMethod();
-        
+
         // if (setter != null)
         // Workaround for jaxb:generateIsSetMethod binding customization
         if (getter != null && getter.getName().startsWith("isSet") && setter == null)
-            return;             
+            return;
 
         if (getter != null && !isTransient(type, pd)) {
             Expression oldGetExp = new Expression(oldInstance, getter.getName(), new Object[]{});
             Expression newGetExp = new Expression(newInstance, getter.getName(), new Object[]{});
             Object oldValue = oldGetExp.getValue();
             Object newValue = newGetExp.getValue();
-            out.writeExpression(oldGetExp); 
-            if (!equals(newValue, out.get(oldValue))) { 
-                // Search for a static constant with this value; 
-                Object e = (Object[])pd.getValue("enumerationValues"); 
-                if (e instanceof Object[] && Array.getLength(e) % 3 == 0) { 
-                    Object[] a = (Object[])e; 
-                    for(int i = 0; i < a.length; i = i + 3) { 
-                        try { 
-                           Field f = type.getField((String)a[i]); 
-                           if (f.get(null).equals(oldValue)) { 
-                               out.remove(oldValue); 
+            out.writeExpression(oldGetExp);
+            if (!equals(newValue, out.get(oldValue))) {
+                // Search for a static constant with this value;
+                Object e = (Object[])pd.getValue("enumerationValues");
+                if (e instanceof Object[] && Array.getLength(e) % 3 == 0) {
+                    Object[] a = (Object[])e;
+                    for(int i = 0; i < a.length; i = i + 3) {
+                        try {
+                           Field f = type.getField((String)a[i]);
+                           if (f.get(null).equals(oldValue)) {
+                               out.remove(oldValue);
                                out.writeExpression(new Expression(oldValue, f, "get", new Object[]{null}));
                            }
                         }
@@ -299,12 +299,12 @@ public class BeansPersistenceDelegate extends PersistenceDelegate {
         TableModelListener (the JTable itself in this case) to the supplied
         table model.
 
-        We do not need to explicitly add these listeners to the model in an 
-        archive as they will be added automatically by, in the above case, 
-        the JTable's "setModel" method. In some cases, we must specifically 
+        We do not need to explicitly add these listeners to the model in an
+        archive as they will be added automatically by, in the above case,
+        the JTable's "setModel" method. In some cases, we must specifically
         avoid trying to do this since the listener may be an inner class
-    that cannot be instantiated using public API. 
-    
+    that cannot be instantiated using public API.
+
     No general mechanism currently
         exists for differentiating between these kind of listeners and
         those which were added explicitly by the user. A mechanism must
@@ -439,14 +439,14 @@ public class BeansPersistenceDelegate extends PersistenceDelegate {
 
         return info;
     }
-    
+
 //    static private boolean debug = (Boolean.valueOf(System.getProperty("debug","false"))).booleanValue();
-    
+
 //    static private void log(String msg) {
 //        if(debug)
 //            System.out.println(msg);
 //    }
-    
+
 }
 
 

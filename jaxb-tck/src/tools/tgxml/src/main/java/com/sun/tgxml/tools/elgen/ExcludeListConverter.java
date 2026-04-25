@@ -25,7 +25,7 @@ import java.io.IOException;
   * should implements this interface, and pass the implementation to the ExcludeListGenerator algorithm
 */
 public interface ExcludeListConverter {
-   
+
    /**
     * Implements this method to convert exclude list class to the
     * stream. The stream will be saved in the result file or redirected.

@@ -24,12 +24,12 @@ import java.io.PrintWriter;
 // </importgen>
 
 /**
- * EmbeddedTFException - 
+ * EmbeddedTFException -
  *
  * <b>EmbeddedTFException</b> is the basic Exception class for the TestDescription library.
  * All throwable exceptions from the library derive from this exception.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -50,7 +50,7 @@ public  class EmbeddedTFException  extends TestFileException {
      */
 
     private Exception m_embedded;
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -62,8 +62,8 @@ public  class EmbeddedTFException  extends TestFileException {
      * @param embedded  an exception embedded within  this TestFileException.
      */
     public EmbeddedTFException (Exception embedded) {
-	super(embedded.getMessage());
-	m_embedded = embedded;
+    super(embedded.getMessage());
+    m_embedded = embedded;
     }
 
 
@@ -73,7 +73,7 @@ public  class EmbeddedTFException  extends TestFileException {
      * @return The embedded exception's message.
      */
     public String getMessage() {
-	return m_embedded.getMessage();
+    return m_embedded.getMessage();
     }
 
 
@@ -83,16 +83,16 @@ public  class EmbeddedTFException  extends TestFileException {
      * @return The embedded exception.
      */
     public Exception getException() {
-	return m_embedded;
+    return m_embedded;
     }
-   
+
 
     /**
      * Print the (embedded) exception's stack-trace.
      *
      */
     public void printStackTrace() {
-	m_embedded.printStackTrace();
+    m_embedded.printStackTrace();
     }
 
     /**
@@ -100,7 +100,7 @@ public  class EmbeddedTFException  extends TestFileException {
      * @param s The print-stream to use to print the stack-trace.
      */
     public void printStackTrace(PrintStream s) {
-	m_embedded.printStackTrace(s);
+    m_embedded.printStackTrace(s);
     }
 
     /**
@@ -108,8 +108,8 @@ public  class EmbeddedTFException  extends TestFileException {
      * @param s The print-writer to use to print the stack-trace.
      */
     public void printStackTrace(PrintWriter s) {
-	m_embedded.printStackTrace(s);
+    m_embedded.printStackTrace(s);
     }
 }
-     
+
 

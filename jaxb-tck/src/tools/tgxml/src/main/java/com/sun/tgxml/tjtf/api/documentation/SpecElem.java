@@ -23,12 +23,12 @@ import com.sun.tgxml.tjtf.api.common.NameValuePair;
 // </importgen>
 
 /**
- * SpecElem - 
+ * SpecElem -
  *
  * <b>SpecElem</b> (Repository Test-Specific Entities) is the name value pair for
  * a description item that may be defined in a given repository for test-specific description entities.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,7 +48,7 @@ public interface SpecElem extends NameValuePair {
      *    Methods
      * ============================================================================================
      */
-   
+
 
 
     //------------------------------------------------------------------------------
@@ -62,6 +62,6 @@ public interface SpecElem extends NameValuePair {
     * @return     true if the SpecElems are equal
     */
     public boolean equals(SpecElem other);
-     
+
 
 }

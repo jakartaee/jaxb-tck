@@ -33,14 +33,14 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * AttributesFactory - 
+ * AttributesFactory -
  *
- * <b>AttributesFactory</b> is a static factory class for creating attribute objects (TestGroupAttributes, 
- * TestCaseAttributes, LibAttributes). 
- *<p> <b>AttributesFactory</b> also creates other contained attribute objects 
+ * <b>AttributesFactory</b> is a static factory class for creating attribute objects (TestGroupAttributes,
+ * TestCaseAttributes, LibAttributes).
+ *<p> <b>AttributesFactory</b> also creates other contained attribute objects
  * (AttrElem, RequiredResource, TargetSpec).
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -59,7 +59,7 @@ public  final class AttributesFactory {
      *    constructors
      * ============================================================================================
      */
-    
+
     private AttributesFactory () {
 
     }
@@ -69,14 +69,14 @@ public  final class AttributesFactory {
      *    Member Fields
      * ============================================================================================
      */
-    
-    
+
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Factories
@@ -92,9 +92,9 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes
     */
     static public TestGroupAttributes  createTestGroupAttributes() {
-	return new TestGroupAttributesImpl();
+    return new TestGroupAttributesImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) TestGroupAttributes object.
@@ -115,28 +115,28 @@ public  final class AttributesFactory {
     * @throws TestFileException for invalid args.
     * @see com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes
     */
-    static public TestGroupAttributes  createTestGroupAttributes (ArrayList reqResources, ArrayList attrElems, 
-								  ArrayList targetSpecs, ArrayList keywords, String context, 
-								  String executeClass, String executeNative, String executeArgs, 
-								  ArrayList remotes, String RMICClasses, 
-								  ArrayList selectIfs, String timeout )  throws TestFileException {
-	TestGroupAttributes tga = createTestGroupAttributes();
-	tga.setRequiredResources(reqResources);
-	tga.setAttrElems(attrElems);
-	tga.setTargetSpecs(targetSpecs);
-	tga.setKeywords(keywords);
-	tga.setContext(context);
-	tga.setExecuteClass(executeClass);
-	tga.setExecuteNative(executeNative);
-	tga.setExecuteArgs(executeArgs);
-	tga.setRemotes(remotes);
-	tga.setRMICClasses(RMICClasses);
-	tga.setSelectIfs(selectIfs);
-	tga.setTimeout(timeout);
+    static public TestGroupAttributes  createTestGroupAttributes (ArrayList reqResources, ArrayList attrElems,
+                                  ArrayList targetSpecs, ArrayList keywords, String context,
+                                  String executeClass, String executeNative, String executeArgs,
+                                  ArrayList remotes, String RMICClasses,
+                                  ArrayList selectIfs, String timeout )  throws TestFileException {
+    TestGroupAttributes tga = createTestGroupAttributes();
+    tga.setRequiredResources(reqResources);
+    tga.setAttrElems(attrElems);
+    tga.setTargetSpecs(targetSpecs);
+    tga.setKeywords(keywords);
+    tga.setContext(context);
+    tga.setExecuteClass(executeClass);
+    tga.setExecuteNative(executeNative);
+    tga.setExecuteArgs(executeArgs);
+    tga.setRemotes(remotes);
+    tga.setRMICClasses(RMICClasses);
+    tga.setSelectIfs(selectIfs);
+    tga.setTimeout(timeout);
 
-	return tga;
+    return tga;
     }
-     
+
 
 
   /**
@@ -147,90 +147,90 @@ public  final class AttributesFactory {
     * @throws TestFileException for invalid args.
     * @see com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes
     */
-    static public TestGroupAttributes  cloneTestGroupAttributes (TestGroupAttributes origTGA ) 
-	throws TestFileException {
-	if (origTGA == null)
-	    return null;
+    static public TestGroupAttributes  cloneTestGroupAttributes (TestGroupAttributes origTGA )
+    throws TestFileException {
+    if (origTGA == null)
+        return null;
 
-	TestGroupAttributes cloneTGA = createTestGroupAttributes();
+    TestGroupAttributes cloneTGA = createTestGroupAttributes();
 
-	// let sub-classes override their clone fields
-	cloneOverrideTestGroupAttributes(origTGA, cloneTGA);
+    // let sub-classes override their clone fields
+    cloneOverrideTestGroupAttributes(origTGA, cloneTGA);
 
-	ArrayList origRRs = origTGA.getRequiredResources();
-	if (origRRs != null) {
-	    ArrayList cloneRRs = new ArrayList();
-	    Iterator it = origRRs.iterator();
-	    while (it.hasNext()) {
-		cloneRRs.add(cloneRequiredResource((RequiredResource) it.next()));
-	    }
-	    cloneTGA.setRequiredResources(cloneRRs);
-	}
-
-
-	ArrayList origAE = origTGA.getAttrElems();
-	if (origAE != null) {
-	    ArrayList cloneAE = new ArrayList();
-	    Iterator it1 = origAE.iterator();
-	    while (it1.hasNext()) {
-		cloneAE.add(cloneAttrElem((AttrElem)it1.next()));
-	    }
-	    cloneTGA.setAttrElems(cloneAE);
-	}
-
-
-	ArrayList origTSs = origTGA.getTargetSpecs();
-	if (origTSs != null) {
-	    ArrayList cloneTSs = new ArrayList();
-	    Iterator it2 = origTSs.iterator();
-	    while (it2.hasNext()) {
-		cloneTSs.add(cloneTargetSpec((TargetSpec)it2.next()));
-	    }
-	    cloneTGA.setTargetSpecs(cloneTSs);
-	}
-
-
-	ArrayList origKeywords = origTGA.getKeywords();
-	if (origKeywords != null) {
-	    ArrayList cloneKeywords = new ArrayList();
-	    Iterator it3 = origKeywords.iterator();
-	    while (it3.hasNext()) {
-		cloneKeywords.add((String) it3.next());
-	    }
-	    cloneTGA.setKeywords(cloneKeywords);
-	}
-
-	cloneTGA.setContext(origTGA.getContext());
-	cloneTGA.setExecuteClass(origTGA.getExecuteClass());
-	cloneTGA.setExecuteNative(origTGA.getExecuteNative());
-	cloneTGA.setExecuteArgs(origTGA.getExecuteArgs());
-
-	ArrayList origRemotes = origTGA.getRemotes();
-	if (origRemotes != null) {
-	    ArrayList cloneRemotes = new ArrayList();
-	    Iterator it4 = origRemotes.iterator();
-	    while (it4.hasNext()) {
-		cloneRemotes.add((String) it4.next());
-	    }
-	    cloneTGA.setRemotes(cloneRemotes);
-	}
-
-	ArrayList origSelectIfs = origTGA.getSelectIfs();
-	if (origSelectIfs != null) {
-	    ArrayList cloneSelectIfs = new ArrayList();
-	    Iterator it5 = origSelectIfs.iterator();
-	    while (it5.hasNext()) {
-		cloneSelectIfs.add((String) it5.next());
-	    }
-	    cloneTGA.setSelectIfs(cloneSelectIfs);
-	}
-
-	cloneTGA.setRMICClasses(origTGA.getRMICClasses());
-	cloneTGA.setTimeout(origTGA.getTimeout());
-
-	return cloneTGA;
+    ArrayList origRRs = origTGA.getRequiredResources();
+    if (origRRs != null) {
+        ArrayList cloneRRs = new ArrayList();
+        Iterator it = origRRs.iterator();
+        while (it.hasNext()) {
+        cloneRRs.add(cloneRequiredResource((RequiredResource) it.next()));
+        }
+        cloneTGA.setRequiredResources(cloneRRs);
     }
-     
+
+
+    ArrayList origAE = origTGA.getAttrElems();
+    if (origAE != null) {
+        ArrayList cloneAE = new ArrayList();
+        Iterator it1 = origAE.iterator();
+        while (it1.hasNext()) {
+        cloneAE.add(cloneAttrElem((AttrElem)it1.next()));
+        }
+        cloneTGA.setAttrElems(cloneAE);
+    }
+
+
+    ArrayList origTSs = origTGA.getTargetSpecs();
+    if (origTSs != null) {
+        ArrayList cloneTSs = new ArrayList();
+        Iterator it2 = origTSs.iterator();
+        while (it2.hasNext()) {
+        cloneTSs.add(cloneTargetSpec((TargetSpec)it2.next()));
+        }
+        cloneTGA.setTargetSpecs(cloneTSs);
+    }
+
+
+    ArrayList origKeywords = origTGA.getKeywords();
+    if (origKeywords != null) {
+        ArrayList cloneKeywords = new ArrayList();
+        Iterator it3 = origKeywords.iterator();
+        while (it3.hasNext()) {
+        cloneKeywords.add((String) it3.next());
+        }
+        cloneTGA.setKeywords(cloneKeywords);
+    }
+
+    cloneTGA.setContext(origTGA.getContext());
+    cloneTGA.setExecuteClass(origTGA.getExecuteClass());
+    cloneTGA.setExecuteNative(origTGA.getExecuteNative());
+    cloneTGA.setExecuteArgs(origTGA.getExecuteArgs());
+
+    ArrayList origRemotes = origTGA.getRemotes();
+    if (origRemotes != null) {
+        ArrayList cloneRemotes = new ArrayList();
+        Iterator it4 = origRemotes.iterator();
+        while (it4.hasNext()) {
+        cloneRemotes.add((String) it4.next());
+        }
+        cloneTGA.setRemotes(cloneRemotes);
+    }
+
+    ArrayList origSelectIfs = origTGA.getSelectIfs();
+    if (origSelectIfs != null) {
+        ArrayList cloneSelectIfs = new ArrayList();
+        Iterator it5 = origSelectIfs.iterator();
+        while (it5.hasNext()) {
+        cloneSelectIfs.add((String) it5.next());
+        }
+        cloneTGA.setSelectIfs(cloneSelectIfs);
+    }
+
+    cloneTGA.setRMICClasses(origTGA.getRMICClasses());
+    cloneTGA.setTimeout(origTGA.getTimeout());
+
+    return cloneTGA;
+    }
+
 
 
   /**
@@ -242,7 +242,7 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TestGroupAttributes
     */
     static public void  cloneOverrideTestGroupAttributes (TestGroupAttributes origTGA,
-							     TestGroupAttributes cloneTGA ) throws TestFileException {
+                                 TestGroupAttributes cloneTGA ) throws TestFileException {
 
     }
 
@@ -256,9 +256,9 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes
     */
     static public TestCaseAttributes  createTestCaseAttributes() {
-	return new TestCaseAttributesImpl();
+    return new TestCaseAttributesImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) TestCaseAttributes object.
@@ -271,17 +271,17 @@ public  final class AttributesFactory {
     * @throws TestFileException for invalid args.
     * @see com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes
     */
-    static public TestCaseAttributes  createTestCaseAttributes (ArrayList reqResources, ArrayList attrElems, 
-								ArrayList targetSpecs, String timeout )  throws TestFileException {
-	TestCaseAttributes tca = createTestCaseAttributes();
-	tca.setRequiredResources(reqResources);
-	tca.setAttrElems(attrElems);
-	tca.setTargetSpecs(targetSpecs);
-	tca.setTimeout(timeout);
+    static public TestCaseAttributes  createTestCaseAttributes (ArrayList reqResources, ArrayList attrElems,
+                                ArrayList targetSpecs, String timeout )  throws TestFileException {
+    TestCaseAttributes tca = createTestCaseAttributes();
+    tca.setRequiredResources(reqResources);
+    tca.setAttrElems(attrElems);
+    tca.setTargetSpecs(targetSpecs);
+    tca.setTimeout(timeout);
 
-	return tca;
+    return tca;
     }
-     
+
 
 
 
@@ -293,53 +293,53 @@ public  final class AttributesFactory {
     * @throws TestFileException for invalid args.
     * @see com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes
     */
-    static public TestCaseAttributes  cloneTestCaseAttributes (TestCaseAttributes origTCA ) 
-	throws TestFileException {
-	if (origTCA == null)
-	    return null;
+    static public TestCaseAttributes  cloneTestCaseAttributes (TestCaseAttributes origTCA )
+    throws TestFileException {
+    if (origTCA == null)
+        return null;
 
-	TestCaseAttributes cloneTCA = createTestCaseAttributes();
+    TestCaseAttributes cloneTCA = createTestCaseAttributes();
 
-	// let sub-classes override their clone fields
-	cloneOverrideTestCaseAttributes(origTCA, cloneTCA);
+    // let sub-classes override their clone fields
+    cloneOverrideTestCaseAttributes(origTCA, cloneTCA);
 
-	ArrayList origRRs = origTCA.getRequiredResources();
-	if (origRRs != null) {
-	    ArrayList cloneRRs = new ArrayList();
-	    Iterator it = origRRs.iterator();
-	    while (it.hasNext()) {
-		cloneRRs.add(cloneRequiredResource((RequiredResource) it.next()));
-	    }
-	    cloneTCA.setRequiredResources(cloneRRs);
-	}
-
-
-	ArrayList origAE = origTCA.getAttrElems();
-	if (origAE != null) {
-	    ArrayList cloneAE = new ArrayList();
-	    Iterator it1 = origAE.iterator();
-	    while (it1.hasNext()) {
-		cloneAE.add(cloneAttrElem((AttrElem)it1.next()));
-	    }
-	    cloneTCA.setAttrElems(cloneAE);
-	}
-
-
-	ArrayList origTSs = origTCA.getTargetSpecs();
-	if (origTSs != null) {
-	    ArrayList cloneTSs = new ArrayList();
-	    Iterator it2 = origTSs.iterator();
-	    while (it2.hasNext()) {
-		cloneTSs.add(cloneTargetSpec((TargetSpec)it2.next()));
-	    }
-	    cloneTCA.setTargetSpecs(cloneTSs);
-	}
-
-	cloneTCA.setTimeout(origTCA.getTimeout());
-
-	return cloneTCA;
+    ArrayList origRRs = origTCA.getRequiredResources();
+    if (origRRs != null) {
+        ArrayList cloneRRs = new ArrayList();
+        Iterator it = origRRs.iterator();
+        while (it.hasNext()) {
+        cloneRRs.add(cloneRequiredResource((RequiredResource) it.next()));
+        }
+        cloneTCA.setRequiredResources(cloneRRs);
     }
-     
+
+
+    ArrayList origAE = origTCA.getAttrElems();
+    if (origAE != null) {
+        ArrayList cloneAE = new ArrayList();
+        Iterator it1 = origAE.iterator();
+        while (it1.hasNext()) {
+        cloneAE.add(cloneAttrElem((AttrElem)it1.next()));
+        }
+        cloneTCA.setAttrElems(cloneAE);
+    }
+
+
+    ArrayList origTSs = origTCA.getTargetSpecs();
+    if (origTSs != null) {
+        ArrayList cloneTSs = new ArrayList();
+        Iterator it2 = origTSs.iterator();
+        while (it2.hasNext()) {
+        cloneTSs.add(cloneTargetSpec((TargetSpec)it2.next()));
+        }
+        cloneTCA.setTargetSpecs(cloneTSs);
+    }
+
+    cloneTCA.setTimeout(origTCA.getTimeout());
+
+    return cloneTCA;
+    }
+
 
   /**
     *   An override method for cloning extra member fields in a sub-class of a TestCaseAttributes.
@@ -350,7 +350,7 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes
     */
     static public void  cloneOverrideTestCaseAttributes (TestCaseAttributes origTCA,
-							     TestCaseAttributes cloneTCA ) throws TestFileException {
+                                 TestCaseAttributes cloneTCA ) throws TestFileException {
 
     }
 
@@ -362,9 +362,9 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.LibAttributes
     */
     static public LibAttributes  createLibAttributes() {
-	return new LibAttributesImpl();
+    return new LibAttributesImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) LibAttributes object.
@@ -376,15 +376,15 @@ public  final class AttributesFactory {
      * @throws TestFileException for invalid args.
    * @see com.sun.tgxml.tjtf.api.attributes.LibAttributes
     */
-    static public LibAttributes  createLibAttributes (ArrayList reqResources, ArrayList attrElems, 
-						      ArrayList targetSpecs ) throws TestFileException {
-	LibAttributes lib = createLibAttributes();
-	lib.setRequiredResources(reqResources);
-	lib.setAttrElems(attrElems);
-	lib.setTargetSpecs(targetSpecs);
-	return lib;
+    static public LibAttributes  createLibAttributes (ArrayList reqResources, ArrayList attrElems,
+                              ArrayList targetSpecs ) throws TestFileException {
+    LibAttributes lib = createLibAttributes();
+    lib.setRequiredResources(reqResources);
+    lib.setAttrElems(attrElems);
+    lib.setTargetSpecs(targetSpecs);
+    return lib;
     }
-     
+
 
 
 
@@ -396,52 +396,52 @@ public  final class AttributesFactory {
     * @throws TestFileException for invalid args.
     * @see com.sun.tgxml.tjtf.api.attributes.LibAttributes
     */
-    static public LibAttributes  cloneLibAttributes (LibAttributes origLibA ) 
-	throws TestFileException {
+    static public LibAttributes  cloneLibAttributes (LibAttributes origLibA )
+    throws TestFileException {
 
-	if (origLibA == null)
-	    return null;
+    if (origLibA == null)
+        return null;
 
-	LibAttributes cloneLibA = createLibAttributes();
+    LibAttributes cloneLibA = createLibAttributes();
 
-	// let sub-classes override their clone fields
-	cloneOverrideLibAttributes(origLibA, cloneLibA);
+    // let sub-classes override their clone fields
+    cloneOverrideLibAttributes(origLibA, cloneLibA);
 
-	ArrayList origRRs = origLibA.getRequiredResources();
-	if (origRRs != null) {
-	    ArrayList cloneRRs = new ArrayList();
-	    Iterator it = origRRs.iterator();
-	    while (it.hasNext()) {
-		cloneRRs.add(cloneRequiredResource((RequiredResource) it.next()));
-	    }
-	    cloneLibA.setRequiredResources(cloneRRs);
-	}
-
-
-	ArrayList origAE = origLibA.getAttrElems();
-	if (origAE != null) {
-	    ArrayList cloneAE = new ArrayList();
-	    Iterator it1 = origAE.iterator();
-	    while (it1.hasNext()) {
-		cloneAE.add(cloneAttrElem((AttrElem)it1.next()));
-	    }
-	    cloneLibA.setAttrElems(cloneAE);
-	}
-
-
-	ArrayList origTSs = origLibA.getTargetSpecs();
-	if (origTSs != null) {
-	    ArrayList cloneTSs = new ArrayList();
-	    Iterator it2 = origTSs.iterator();
-	    while (it2.hasNext()) {
-		cloneTSs.add(cloneTargetSpec((TargetSpec)it2.next()));
-	    }
-	    cloneLibA.setTargetSpecs(cloneTSs);
-	}
-
-	return cloneLibA;
+    ArrayList origRRs = origLibA.getRequiredResources();
+    if (origRRs != null) {
+        ArrayList cloneRRs = new ArrayList();
+        Iterator it = origRRs.iterator();
+        while (it.hasNext()) {
+        cloneRRs.add(cloneRequiredResource((RequiredResource) it.next()));
+        }
+        cloneLibA.setRequiredResources(cloneRRs);
     }
-     
+
+
+    ArrayList origAE = origLibA.getAttrElems();
+    if (origAE != null) {
+        ArrayList cloneAE = new ArrayList();
+        Iterator it1 = origAE.iterator();
+        while (it1.hasNext()) {
+        cloneAE.add(cloneAttrElem((AttrElem)it1.next()));
+        }
+        cloneLibA.setAttrElems(cloneAE);
+    }
+
+
+    ArrayList origTSs = origLibA.getTargetSpecs();
+    if (origTSs != null) {
+        ArrayList cloneTSs = new ArrayList();
+        Iterator it2 = origTSs.iterator();
+        while (it2.hasNext()) {
+        cloneTSs.add(cloneTargetSpec((TargetSpec)it2.next()));
+        }
+        cloneLibA.setTargetSpecs(cloneTSs);
+    }
+
+    return cloneLibA;
+    }
+
 
   /**
     *   An override method for cloning extra member fields in a sub-class of a LibAttributes.
@@ -452,7 +452,7 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.LibAttributes
     */
     static public void  cloneOverrideLibAttributes (LibAttributes origLibA,
-							     LibAttributes cloneLibA ) throws TestFileException {
+                                 LibAttributes cloneLibA ) throws TestFileException {
 
     }
 
@@ -465,14 +465,14 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.AttrElem
     */
     static public AttrElem  createAttrElem() {
-	// Fill in with blank name/value (some other code should set name/values)
-	try {
-	    return new AttrElemImpl(" ", "");
-	} catch (TestFileException e) {
-	    return null;
-	}
+    // Fill in with blank name/value (some other code should set name/values)
+    try {
+        return new AttrElemImpl(" ", "");
+    } catch (TestFileException e) {
+        return null;
     }
-     
+    }
+
 
   /**
     *   Create an (cannon) AttrElem object.
@@ -484,10 +484,10 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.AttrElem
     */
     static public AttrElem  createAttrElem (String name, String value ) throws TestFileException {
-	AttrElem ae = createAttrElem();
-	ae.setName(name);
-	ae.setValue(value);
-	return ae;
+    AttrElem ae = createAttrElem();
+    ae.setName(name);
+    ae.setValue(value);
+    return ae;
     }
 
 
@@ -500,20 +500,20 @@ public  final class AttributesFactory {
     * @throws TestFileException for invalid args.
     * @see com.sun.tgxml.tjtf.api.attributes.AttrElem
     */
-    static public AttrElem  cloneAttrElem (AttrElem origAE ) 
-	throws TestFileException {
+    static public AttrElem  cloneAttrElem (AttrElem origAE )
+    throws TestFileException {
 
-	if (origAE == null)
-	    return null;
+    if (origAE == null)
+        return null;
 
-	AttrElem cloneAE = createAttrElem();
+    AttrElem cloneAE = createAttrElem();
 
-	cloneAE.setName(origAE.getName());
-	cloneAE.setValue(origAE.getValue());
+    cloneAE.setName(origAE.getName());
+    cloneAE.setValue(origAE.getValue());
 
-	return cloneAE;
+    return cloneAE;
     }
-     
+
 
 
   /**
@@ -525,7 +525,7 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.AttrElem
     */
     static public void  cloneOverrideAttrElem (AttrElem origAE,
-							     AttrElem cloneAE ) throws TestFileException {
+                                 AttrElem cloneAE ) throws TestFileException {
 
     }
 
@@ -536,14 +536,14 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.RequiredResource
     */
     static public RequiredResource  createRequiredResource() {
-	// Fill in with blank name/value (some other code should set name/values)
-	try {
-	    return new RequiredResourceImpl(" ", "");
-	} catch (TestFileException e) {
-	    return null;
-	}
+    // Fill in with blank name/value (some other code should set name/values)
+    try {
+        return new RequiredResourceImpl(" ", "");
+    } catch (TestFileException e) {
+        return null;
     }
-     
+    }
+
 
   /**
     *   Create an (cannon) RequiredResource object.
@@ -555,10 +555,10 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.RequiredResource
     */
     static public RequiredResource  createRequiredResource (String name, String value ) throws TestFileException {
-	RequiredResource rr = createRequiredResource();
-	rr.setName(name);
-	rr.setValue(value);
-	return rr;
+    RequiredResource rr = createRequiredResource();
+    rr.setName(name);
+    rr.setValue(value);
+    return rr;
     }
 
 
@@ -571,19 +571,19 @@ public  final class AttributesFactory {
     * @throws TestFileException for invalid args.
     * @see com.sun.tgxml.tjtf.api.attributes.RequiredResource
     */
-    static public RequiredResource  cloneRequiredResource (RequiredResource origRR ) 
-	throws TestFileException {
-	if (origRR == null)
-	    return null;
+    static public RequiredResource  cloneRequiredResource (RequiredResource origRR )
+    throws TestFileException {
+    if (origRR == null)
+        return null;
 
-	RequiredResource cloneRR = createRequiredResource();
+    RequiredResource cloneRR = createRequiredResource();
 
-	cloneRR.setName(origRR.getName());
-	cloneRR.setValue(origRR.getValue());
+    cloneRR.setName(origRR.getName());
+    cloneRR.setValue(origRR.getValue());
 
-	return cloneRR;
+    return cloneRR;
     }
-     
+
 
 
   /**
@@ -595,7 +595,7 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.RequiredResource
     */
     static public void  cloneOverrideRequiredResource (RequiredResource origRR,
-							     RequiredResource cloneRR ) throws TestFileException {
+                                 RequiredResource cloneRR ) throws TestFileException {
 
     }
 
@@ -607,9 +607,9 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TargetSpec
     */
     static public TargetSpec  createTargetSpec() {
-	return new TargetSpecImpl();
+    return new TargetSpecImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) TargetSpec object.
@@ -621,10 +621,10 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TargetSpec
     */
     static public TargetSpec  createTargetSpec(String name, String version ) throws TestFileException {
-	TargetSpec ts =  createTargetSpec();
-	ts.setID(name);
-	ts.setVersion(version);
-	return ts;
+    TargetSpec ts =  createTargetSpec();
+    ts.setID(name);
+    ts.setVersion(version);
+    return ts;
     }
 
   /**
@@ -637,14 +637,14 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TargetSpec
     */
     static public TargetSpec  createTargetSpec(String name, String version, ArrayList targetSpecElems ) throws TestFileException {
-	TargetSpec ts =  createTargetSpec();
-	ts.setID(name);
-	ts.setVersion(version);
-	ts.setTargetSpecElems(targetSpecElems);
-	return ts;
+    TargetSpec ts =  createTargetSpec();
+    ts.setID(name);
+    ts.setVersion(version);
+    ts.setTargetSpecElems(targetSpecElems);
+    return ts;
     }
 
- 
+
 
   /**
     *   Create an (clone) TargetSpec object.
@@ -655,28 +655,28 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TargetSpec
     */
     static public TargetSpec  cloneTargetSpec (TargetSpec origTS )  throws TestFileException {
-	if (origTS == null)
-	    return null;
+    if (origTS == null)
+        return null;
 
-	TargetSpec cloneTS = createTargetSpec();
+    TargetSpec cloneTS = createTargetSpec();
 
-	cloneTS.setID(origTS.getID());
-	cloneTS.setVersion(origTS.getVersion());
+    cloneTS.setID(origTS.getID());
+    cloneTS.setVersion(origTS.getVersion());
 
-	ArrayList origTSE = origTS.getTargetSpecElems();
-	if (origTSE != null) {
-	    ArrayList cloneTSE = new ArrayList();
-	    Iterator it1 = origTSE.iterator();
-	    while (it1.hasNext()) {
-		cloneTSE.add(cloneTargetSpecElem((TargetSpecElem)it1.next()));
-	    }
-	    cloneTS.setTargetSpecElems(cloneTSE);
-	}
-
-
-	return cloneTS;
+    ArrayList origTSE = origTS.getTargetSpecElems();
+    if (origTSE != null) {
+        ArrayList cloneTSE = new ArrayList();
+        Iterator it1 = origTSE.iterator();
+        while (it1.hasNext()) {
+        cloneTSE.add(cloneTargetSpecElem((TargetSpecElem)it1.next()));
+        }
+        cloneTS.setTargetSpecElems(cloneTSE);
     }
-     
+
+
+    return cloneTS;
+    }
+
 
   /**
     *   An override method for cloning extra member fields in a sub-class of a TargetSpec.
@@ -698,9 +698,9 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TargetSpecElem
     */
     static public TargetSpecElem  createTargetSpecElem() {
-	return new TargetSpecElemImpl();
+    return new TargetSpecElemImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) TargetSpecElem object.
@@ -712,10 +712,10 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TargetSpecElem
     */
     static public TargetSpecElem  createTargetSpecElem(String name, String value ) throws TestFileException {
-	TargetSpecElem ts =  createTargetSpecElem();
-	ts.setName(name);
-	ts.setValue(value);
-	return ts;
+    TargetSpecElem ts =  createTargetSpecElem();
+    ts.setName(name);
+    ts.setValue(value);
+    return ts;
     }
 
 
@@ -729,17 +729,17 @@ public  final class AttributesFactory {
     * @see com.sun.tgxml.tjtf.api.attributes.TargetSpecElem
     */
     static public TargetSpecElem  cloneTargetSpecElem (TargetSpecElem origTS )  throws TestFileException {
-	if (origTS == null)
-	    return null;
+    if (origTS == null)
+        return null;
 
-	TargetSpecElem cloneTS = createTargetSpecElem();
+    TargetSpecElem cloneTS = createTargetSpecElem();
 
-	cloneTS.setName(origTS.getName());
-	cloneTS.setValue(origTS.getValue());
+    cloneTS.setName(origTS.getName());
+    cloneTS.setValue(origTS.getValue());
 
-	return cloneTS;
+    return cloneTS;
     }
-     
+
 
   /**
     *   An override method for cloning extra member fields in a sub-class of a TargetSpecElem.

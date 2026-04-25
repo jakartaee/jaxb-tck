@@ -22,8 +22,8 @@ import java.util.Vector;
 /**
  * PrefixOptionChecker - class for checking that element is PrefixOption
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -31,7 +31,7 @@ public class PrefixOptionChecker extends SwitchChecker {
 
 
     /**
-     * Creates PrefixOptionChecker instance. 
+     * Creates PrefixOptionChecker instance.
      * @param keys  array of option prefixes
      * @throws  IllegalArgumentException is keys is null or empty
      */
@@ -40,7 +40,7 @@ public class PrefixOptionChecker extends SwitchChecker {
     }
 
     /**
-     * Creates PrefixOptionChecker instance. 
+     * Creates PrefixOptionChecker instance.
      * @param keys  array of option prefixes
      * @throws  IllegalArgumentException is keys is null or empty
      */
@@ -51,7 +51,7 @@ public class PrefixOptionChecker extends SwitchChecker {
 
 
     /**
-     * Checks whether <code>elem</code> starts with one of the 
+     * Checks whether <code>elem</code> starts with one of the
      * specified prefixes<p>
      *
      * @return <code>true</code> if elem is specified PrefixOption

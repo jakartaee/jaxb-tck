@@ -21,13 +21,13 @@ package com.sun.tgxml.tjtf.api.code;
 // </importgen>
 
 /**
- * CodeDependency - 
+ * CodeDependency -
  *
  * <b>CodeDependency</b> is the marker interface to a (generic) dependency object.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -52,7 +52,7 @@ public  interface CodeDependency {
      *    Methods
      * ============================================================================================
      */
-   
+
 
 
 }

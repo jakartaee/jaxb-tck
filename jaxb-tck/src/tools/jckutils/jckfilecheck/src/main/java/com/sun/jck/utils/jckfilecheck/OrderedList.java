@@ -19,7 +19,7 @@
 // This is the ordered list class
 //
 // Author: Kevin A Smith & Rampalli Narasimhan
-//  
+//
 
 package com.sun.jck.utils.jckfilecheck;
 
@@ -29,13 +29,13 @@ import java.util.Vector;
 
 public class OrderedList {
 
-  private Vector list;    
+  private Vector list;
   private int msgLevel = 1;
   private PrintStream err;
 
   //
   // The default constructor creates a node of 256 elements.
-  // 
+  //
   public OrderedList () {
      this (256, System.err);
   }
@@ -45,7 +45,7 @@ public class OrderedList {
   // size. If size is less than 1 then there is something wrong.
   //
   public OrderedList (int size) {
-   
+
     if (size >= 1) {
      list = new Vector (size);
      this.err = System.err;
@@ -63,7 +63,7 @@ public class OrderedList {
     this.err = err;
   }
 
-  // 
+  //
   // Some utilities to this class
   //
   public void setMsgLevel (int msgLevel) {
@@ -86,8 +86,8 @@ public class OrderedList {
 
       int left;
       int right;
-      int x = 0;  
-      
+      int x = 0;
+
       if (list.isEmpty()) {
               list.addElement(obj);
               return;
@@ -97,7 +97,7 @@ public class OrderedList {
               list.addElement(obj);
               return;
       }
-      
+
       if (msgLevel == 2) {
           err.println ("Searching for object: " + obj);
       }
@@ -112,22 +112,22 @@ public class OrderedList {
             x = (left + right)/ 2;
             if (msgLevel == 2) {
                 err.println ("Left: " + left + "Right: " + right + "Index: " + x);
-	    }
-	    if (x < list.size()) {
-	      if (obj.compareTo ((Comparable) list.elementAt (x)) < 0) {
+        }
+        if (x < list.size()) {
+          if (obj.compareTo ((Comparable) list.elementAt (x)) < 0) {
                       right = x - 1;
-	      }
-	      else {
+          }
+          else {
                       left = x + 1;
-	      }
-	    }
-	    else {
+          }
+        }
+        else {
               right = -1;
-	    }
-	    if (left > right) {
+        }
+        if (left > right) {
               x = left;
               right = -1;
-	    }
+        }
       }
 
       try {
@@ -137,7 +137,7 @@ public class OrderedList {
          err.println ("Error: Out of memory while adding object: " + obj);
       }
   }
-}     
+}
 
 
 

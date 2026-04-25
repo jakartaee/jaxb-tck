@@ -23,13 +23,13 @@ import com.sun.tgxml.tjtf.api.common.NameValuePair;
 // </importgen>
 
 /**
- * DocElem - 
+ * DocElem -
  *
- * <b>DocElem</b> is an (extension) element that provides additional documentation 
+ * <b>DocElem</b> is an (extension) element that provides additional documentation
  * a repository may use to describe a test. DocElem contains a name-value pair for
  * a description item that may be defined in a given repository entity.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,14 +48,14 @@ public interface DocElem extends NameValuePair {
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
     //------------------------------------------------------------------------------
     //  Operations
     //------------------------------------------------------------------------------
@@ -67,9 +67,9 @@ public interface DocElem extends NameValuePair {
     * @return     true if the DocElems are equal
     */
     public boolean equals(DocElem other);
-     
 
-     
+
+
 
 
 }

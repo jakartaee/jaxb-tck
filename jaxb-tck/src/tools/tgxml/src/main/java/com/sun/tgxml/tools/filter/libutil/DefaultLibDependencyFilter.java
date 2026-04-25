@@ -29,7 +29,7 @@ import com.sun.tgxml.util.IR;
 
 /**
  * Default impementation of LibDependencyFilter
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */
@@ -37,7 +37,7 @@ import com.sun.tgxml.util.IR;
 public class DefaultLibDependencyFilter implements LibDependencyFilter {
 
     /**
-     * Creates DefaultLibDependencyFilter instance 
+     * Creates DefaultLibDependencyFilter instance
      */
     public DefaultLibDependencyFilter() {
     }
@@ -55,7 +55,7 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
     protected static final int S_REJECTED    = 3;
     protected static final int S_UNKONW      = 4;
 
-   
+
     // resulting LibMap
     // libID --> selected variant
     protected LibMap libMap = null;
@@ -75,7 +75,7 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
      * @exception  FilteringException if one variants depends on unknown
      *             library, or library variant cannot be selected between
      *             two accepted ones.
-     */  
+     */
     public LibMap filter(VariantsMap libBundle, LibSelectionInfo filtered)
             throws FilteringException {
 
@@ -114,7 +114,7 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
                 if (state(libID) == S_UNKONW) {
                     mark(libID, S_TO_REJECT);
                 }
-            }            
+            }
         }
 
         createDependenciesMap(allVariants);
@@ -188,9 +188,9 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
     }
 
     /**
-     * Select more appropriate variant for each accepted library 
+     * Select more appropriate variant for each accepted library
      * from the bundle.
-     * @exception FilteringException if cannot make a selection 
+     * @exception FilteringException if cannot make a selection
      *            between of two variants.
      */
     protected void selectVariants() throws FilteringException {
@@ -201,7 +201,7 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
                 Library accepted = null;
                 for (int i = 0; i < libVars.size(); i++) {
                     Library var = (Library)libVars.get(i);
-                    accepted = (accepted == null) ? var  
+                    accepted = (accepted == null) ? var
                              : selectVariant(accepted, var);
                 }
                 libAccepted(libID, accepted);
@@ -210,7 +210,7 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
         }
     }
 
-     
+
     /**
      * Returns the more appropriate variant from the passed pair
      */
@@ -221,11 +221,11 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
     }
 
     /**
-     * Checks that no one of accepted library does not depneds 
+     * Checks that no one of accepted library does not depneds
      * on inline libraries.
-     * 
+     *
      * @exception FilteringException if accepted library depends on
-     *            Inline library. 
+     *            Inline library.
      */
     protected void checkForInlineDependencies() throws FilteringException {
         for (Iterator it = libMap.accepted().iterator(); it.hasNext();) {
@@ -246,7 +246,7 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
                 String depLibID = (String)depIt.next();
                 Library depLib = libMap.get(depLibID);
                 if (depLib.isInline()) {
-                    throw new FilteringException("Library: " + libID + 
+                    throw new FilteringException("Library: " + libID +
                         " depends on inline library: " + depLibID);
                 }
             }
@@ -296,7 +296,7 @@ public class DefaultLibDependencyFilter implements LibDependencyFilter {
         Object st = libState.get(libID);
         if (st == null)
             return S_UNKONW;
-        else 
+        else
             return ((Integer)st).intValue();
     }
 

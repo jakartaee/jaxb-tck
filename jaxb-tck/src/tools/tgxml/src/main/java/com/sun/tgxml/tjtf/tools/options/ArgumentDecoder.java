@@ -23,15 +23,15 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 
-/** 
+/**
  * ArgumentDecoder -
  * <p>This is the class that allows to parse arguments based on
  *   set of options. Tool specifies a number of required options
- *   and registries theses options in OptionHandler. (This 
+ *   and registries theses options in OptionHandler. (This
  *   OptionHandler should be added to ArgumentDecoder handlers list)
- *   During the initialization tool calls parseArguments(String[] args) 
- *   method of 
- *   ArgumentDecoder with an arguments list. 
+ *   During the initialization tool calls parseArguments(String[] args)
+ *   method of
+ *   ArgumentDecoder with an arguments list.
  * <p>Method parseArguments() method does:
  * <ul>
  * <li>returns an array of string, that contains a set of tool operands
@@ -45,29 +45,29 @@ import java.util.Vector;
  * <pre>
  *   1. Converts array of arguments into array list of string
  *   2. Consequently calls parseArguments() method for all handlers
- *      with current unparsed list. Each handler, in turn, consequently 
- *      calls parse() method for the each registred option. Each option 
+ *      with current unparsed list. Each handler, in turn, consequently
+ *      calls parse() method for the each registred option. Each option
  *      knows how to process unparsed list:
- *         - it cuts own parameters from the list 
+ *         - it cuts own parameters from the list
  *         - initializes own value
  *         - returns the new list without parsed parameters.
  *         - throws an exception if option is required but missed
  *           or option format is incorrect
  *   3. Remaining list are treated as operands list. If operands validator
  *      is set, operands will be checked by validator.
- * 
+ *
  *   4. ArgumentDecoder uses FIFO order of options parsing:
  *      first registered options will be used first for parsing.
  * </pre>
- * 
+ *
  *   ArgumentDecoder has <tt>getUsageLines()</tt> method that returns
  *   a tool usage info (list of all registered options with their meanings).
- * 
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
  *
- */ 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
+ *
+ */
 
 public class ArgumentDecoder {
 
@@ -81,7 +81,7 @@ public class ArgumentDecoder {
     String[] usageOptions  = null;
     String[] usageOperands = null;
 
-    /** 
+    /**
      * Creates ArgumentDecoder object
      */
     public ArgumentDecoder() {
@@ -91,7 +91,7 @@ public class ArgumentDecoder {
      * Returns operands, set values for all options
      * @throws ParseArgumentException  if parsing error occurs
      */
-    public String[] parseArguments(String args[]) 
+    public String[] parseArguments(String args[])
             throws ParseArgumentException {
 
         // convert String[] --> ArrayList
@@ -186,7 +186,7 @@ public class ArgumentDecoder {
      *            Usage Info methods
      *==============================================
      */
- 
+
     // ---- header -----
 
     /**
@@ -331,7 +331,7 @@ public class ArgumentDecoder {
      * If usage lines are explicitly set returns set lines.
      */
     public String[] getUsageInfo() {
-        if (usageLines != null) 
+        if (usageLines != null)
             return usageLines;
 
 
@@ -349,7 +349,7 @@ public class ArgumentDecoder {
      */
     public void printUsageInfo(java.io.PrintStream out) {
         String[] usageLines = getUsageInfo();
-        for (int i = 0; i < usageLines.length; i++) 
+        for (int i = 0; i < usageLines.length; i++)
             out.println(usageLines[i]);
     }
 
@@ -372,7 +372,7 @@ public class ArgumentDecoder {
         StringTokenizer st = new StringTokenizer(line, "\n");
         while (st.hasMoreElements()) {
             v.add(st.nextToken());
-        }    
+        }
     }
 
     private void addLines(Vector v, String[] lines) {

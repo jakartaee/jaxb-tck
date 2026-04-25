@@ -29,27 +29,27 @@ import org.apache.river.impl.Messages;
 
 /**
  * This class represents an immutable instance of a URI as defined by RFC 3986.
- * 
+ *
  * This class replaces java.net.URI functionality.
- * 
- * Unlike java.net.URI this class is not Serializable and hashCode and 
+ *
+ * Unlike java.net.URI this class is not Serializable and hashCode and
  * equality is governed by strict RFC3986 normalisation. In addition "other"
- * characters allowed in java.net.URI as specified by javadoc, not specifically 
+ * characters allowed in java.net.URI as specified by javadoc, not specifically
  * allowed by RFC3986 are illegal and must be escaped.  This strict adherence
  * is essential to eliminate false negative or positive matches.
- * 
+ *
  * In addition to RFC3896 normalisation, on OS platforms with a \ file separator
  * the path is converted to UPPER CASE for comparison for file: schema, during
  * equals and hashCode calls.
- * 
- * IPv6 and IPvFuture host addresses must be enclosed in square brackets as per 
+ *
+ * IPv6 and IPvFuture host addresses must be enclosed in square brackets as per
  * RFC3986.
  * @since 3.0.0
  */
 public final class Uri implements Comparable<Uri> {
 
     /* Class Implementation */
-    
+
     /* Legacy java.net.URI RFC 2396 syntax*/
     static final String unreserved = "_-!.~\'()*"; //$NON-NLS-1$
     static final String punct = ",;:$&+="; //$NON-NLS-1$
@@ -57,19 +57,19 @@ public final class Uri implements Comparable<Uri> {
     // String someLegal = unreserved + punct;
     // String queryLegal = unreserved + reserved + "\\\""; //$NON-NLS-1$
     // String allLegal = unreserved + reserved;
-    
+
     static final String someLegal = unreserved + punct;
-    
+
     static final String queryLegal = unreserved + reserved + "\\\""; //$NON-NLS-1$
-    
+
 //    static final String allLegal = unreserved + reserved;
-    
+
     /* RFC 3986 */
 //    private static final char [] latin = new char[256];
 //    private static final String [] latinEsc = new String[256];
-    
+
     /* 2.1.  Percent-Encoding
-     * 
+     *
      * A percent-encoding mechanism is used to represent a data octet in a
      * component when that octet's corresponding character is outside the
      * allowed set or is being used as a delimiter of, or within, the
@@ -80,9 +80,9 @@ public final class Uri implements Comparable<Uri> {
      * "00100000" (ABNF: %x20), which in US-ASCII corresponds to the space
      * character (SP).  Section 2.4 describes when percent-encoding and
      * decoding is applied.
-     * 
+     *
      *    pct-encoded = "%" HEXDIG HEXDIG
-     * 
+     *
      * The uppercase hexadecimal digits 'A' through 'F' are equivalent to
      * the lowercase digits 'a' through 'f', respectively.  If two URIs
      * differ only in the case of hexadecimal digits used in percent-encoded
@@ -95,11 +95,11 @@ public final class Uri implements Comparable<Uri> {
     // Section 2.1 Percent encoding must be converted to upper case during normalisation.
     private static final char escape = '%';
      /* RFC3986 obsoletes RFC2396 and RFC2732
-     * 
+     *
      * reserved    = gen-delims / sub-delims
-     * 
+     *
      * gen-delims  = ":" / "/" / "?" / "#" / "[" / "]" / "@"
-     * 
+     *
      * sub-delims  = "!" / "$" / "&" / "'" / "(" / ")"
      *               / "*" / "+" / "," / ";" / "="
      */
@@ -119,24 +119,24 @@ public final class Uri implements Comparable<Uri> {
 //    private static final char [] upalpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 //    private static final char [] numeric = "0123456789".toCharArray();
 //    private static final char [] unres_punct =  {'-' , '.' , '_' , '~'};
-    
+
     // Section 3.1 Scheme
 //    private static final char [] schemeEx = "+-.".toCharArray(); // + ALPHA and numeric.
-    
+
     // To be unescaped during normalisation, unmodifiable and safely published.
-//    final static Map<String, Character> unReserved; 
+//    final static Map<String, Character> unReserved;
 //    final static Map<String, Character> schemeUnreserved;
-    
+
     /* Explicit legal String fields follow, ALPHA and DIGIT are implicitly legal */
-    
+
     /* All characters that are legal URI syntax */
     static final String allLegalUnescaped = ":/?#[]@!$&'()*+,;=-._~";
     static final String allLegal = "%:/?#[]@!$&'()*+,;=-._~";
     /*
      *  Syntax Summary
-     * 
+     *
      *  URI         = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
-     * 
+     *
      *  hier-part   = "//" authority path-abempty
      *              / path-absolute
      *              / path-rootless
@@ -145,16 +145,16 @@ public final class Uri implements Comparable<Uri> {
      *  scheme      = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
      */
     static final String schemeLegal = "+-.";
-    /* 
+    /*
      *  authority   = [ userinfo "@" ] host [ ":" port ]
      *  userinfo    = *( unreserved / pct-encoded / sub-delims / ":" )
-     */ 
+     */
     static final String userinfoLegal = "-._~!$&'()*+,;=:";
     static final String authorityLegal = userinfoLegal + "@[]";
     /*  host        = IP-literal / IPv4address / reg-name
      *  IP-literal = "[" ( IPv6address / IPvFuture  ) "]"
      *  IPvFuture  = "v" 1*HEXDIG "." 1*( unreserved / sub-delims / ":" )
-     */ 
+     */
     static final String iPvFuture = "-._~!$&'()*+,;=:";
     /*  IPv6address =                            6( h16 ":" ) ls32
      *              /                       "::" 5( h16 ":" ) ls32
@@ -165,15 +165,15 @@ public final class Uri implements Comparable<Uri> {
      *              / [ *4( h16 ":" ) h16 ] "::"              ls32
      *              / [ *5( h16 ":" ) h16 ] "::"              h16
      *              / [ *6( h16 ":" ) h16 ] "::"
-     * 
+     *
      *  ls32        = ( h16 ":" h16 ) / IPv4address
      *              ; least-significant 32 bits of address
-     * 
+     *
      *  h16         = 1*4HEXDIG
      *              ; 16 bits of address represented in hexadecimal
-     * 
+     *
      *  IPv4address = dec-octet "." dec-octet "." dec-octet "." dec-octet
-     * 
+     *
      *  dec-octet   = DIGIT                 ; 0-9
      *              / %x31-39 DIGIT         ; 10-99
      *              / "1" 2DIGIT            ; 100-199
@@ -183,65 +183,65 @@ public final class Uri implements Comparable<Uri> {
      */
     static final String hostRegNameLegal = "-._~!$&'()*+,;=";
     /*  port        = *DIGIT
-     * 
+     *
      *  path        = path-abempty    ; begins with "/" or is empty
      *              / path-absolute   ; begins with "/" but not "//"
      *              / path-noscheme   ; begins with a non-colon segment
      *              / path-rootless   ; begins with a segment
      *              / path-empty      ; zero characters
-     * 
+     *
      *  path-abempty  = *( "/" segment )
      *  path-absolute = "/" [ segment-nz *( "/" segment ) ]
      *  path-noscheme = segment-nz-nc *( "/" segment )
      *  path-rootless = segment-nz *( "/" segment )
      *  path-empty    = 0<pchar>
-     *  
+     *
      *  segment       = *pchar
      *  segment-nz    = 1*pchar
      *  segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" ) ; non-zero-length segment without any colon ":"
-     * 
+     *
      *  pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
-     */ 
+     */
     static final String pcharLegal = "-._~!$&'()*+,;=:@";
     static final String segmentNzNcLegal = "-._~!$&'()*+,;=@";
     static final String segmentLegal = pcharLegal;
     static final String pathLegal = segmentLegal + "/";
-            
+
     /*  query       = *( pchar / "/" / "?" )
-     * 
+     *
      *  fragment    = *( pchar / "/" / "?" )
      */
     static final String queryFragLegal = pcharLegal + "/?";
-  
+
     private final static char a = 'a';
     private final static char z = 'z';
     private final static char A = 'A';
     private final static char Z = 'Z';
     private final static char upperCaseBitwiseMask = 0xdf;
     private final static char lowerCaseBitwiseMask = 0x20;
-    
+
     static String toAsciiUpperCase(String s){
         return new String(toAsciiUpperCase(s.toCharArray()));
     }
-    
+
     static char [] toAsciiUpperCase(char [] array){
         int length = array.length;
         for (int i = 0; i < length ; i++){
             if (array[i] >= a && array[i] <= z) {
                 array[i] = toAsciiUpperCase(array[i]);
-            } 
+            }
         }
         return array;
     }
-    
+
     static char toAsciiUpperCase(char c){
         return (char) (c & upperCaseBitwiseMask);
     }
-    
+
     static String toAsciiLowerCase(String s){
         return new String(toAsciiLowerCase(s.toCharArray()));
     }
-    
+
     static char[] toAsciiLowerCase(char [] array){
         int length = array.length;
         for (int i = 0; i < length ; i++){
@@ -251,11 +251,11 @@ public final class Uri implements Comparable<Uri> {
         }
         return array;
     }
-    
+
     static char toAsciiLowerCase(char c){
         return (char) (c | lowerCaseBitwiseMask);
     }
-    
+
     static boolean charArraysEqual( char [] a , char [] b){
         int alen = a.length;
         int blen = b.length;
@@ -265,7 +265,7 @@ public final class Uri implements Comparable<Uri> {
         }
         return true;
     }
-    
+
     static boolean asciiStringsUpperCaseEqual(String a, String b){
         char [] ac = a.toCharArray();
         toAsciiUpperCase(ac);
@@ -273,7 +273,7 @@ public final class Uri implements Comparable<Uri> {
         toAsciiUpperCase(bc);
         return charArraysEqual(ac, bc);
     }
-    
+
     static boolean asciiStringsLowerCaseEqual(String a, String b){
         char [] ac = a.toCharArray();
         toAsciiLowerCase(ac);
@@ -292,7 +292,7 @@ public final class Uri implements Comparable<Uri> {
         if (File.separatorChar != '\\') return uri;
         if ( uri.startsWith("file:") || uri.startsWith("FILE:")){
             char [] u = uri.toCharArray();
-            int l = u.length; 
+            int l = u.length;
             StringBuilder sb = new StringBuilder(uri.length()+1);
             for (int i=0; i<l; i++){
                 // Ensure we use forward slashes
@@ -311,19 +311,19 @@ public final class Uri implements Comparable<Uri> {
         }
         return uri;
     }
-    
+
     public static URI uriToURI(Uri uri){
         return URI.create(uri.toString());
     }
-    
+
     public static Uri urlToUri(URL url) throws URISyntaxException{
         return Uri.parseAndCreate(fixWindowsURI(url.toString()));
     }
-    
+
     public static File uriToFile(Uri uri){
         return new File(uriToURI(uri));
     }
-   
+
     public static Uri fileToUri(File file) throws URISyntaxException{
         String path = file.getAbsolutePath();
         if (File.separatorChar == '\\') {
@@ -332,7 +332,7 @@ public final class Uri implements Comparable<Uri> {
         path = fixWindowsURI("file:" + path);
         return Uri.escapeAndCreate(path); //$NON-NLS-1$
     }
-    
+
     public static Uri filePathToUri(String path) throws URISyntaxException{
         String forwardSlash = "/";
         if (path == null || path.length() == 0) {
@@ -355,7 +355,7 @@ public final class Uri implements Comparable<Uri> {
         path = fixWindowsURI("file:" + path);
         return Uri.escapeAndCreate(path); //$NON-NLS-1$
     }
-    
+
     /* Begin Object Implementation */
 
     private final String string;
@@ -374,9 +374,9 @@ public final class Uri implements Comparable<Uri> {
     private final String hashString;
     private final int hash;
     private final boolean fileSchemeCaseInsensitiveOS;
-  
+
     /**
-     * 
+     *
      * @param string
      * @param scheme
      * @param schemespecificpart
@@ -390,7 +390,7 @@ public final class Uri implements Comparable<Uri> {
      * @param opaque
      * @param absolute
      * @param serverAuthority
-     * @param hash 
+     * @param hash
      */
     private Uri(String string,
             String scheme,
@@ -405,7 +405,7 @@ public final class Uri implements Comparable<Uri> {
             boolean opaque,
             boolean absolute,
             boolean serverAuthority,
-            int hash, 
+            int hash,
             boolean fileSchemeCaseInsensitiveOS)
     {
         super();
@@ -458,13 +458,13 @@ public final class Uri implements Comparable<Uri> {
         this.hash = hash == -1 ? hashString.hashCode(): hash;
         this.fileSchemeCaseInsensitiveOS = fileSchemeCaseInsensitiveOS;
     }
-    
+
     /**
      * Private constructor that doesn't throw URISyntaxException, all public
-     * constructors are designed to avoid finalizer attacks by calling static 
+     * constructors are designed to avoid finalizer attacks by calling static
      * methods that throw URISyntaxException, just in case we
      * decide to make this class non final at some point in future.
-     * @param p 
+     * @param p
      */
     private Uri(UriParser p){
         this(p.string,
@@ -480,19 +480,19 @@ public final class Uri implements Comparable<Uri> {
         p.opaque,
         p.absolute,
         p.serverAuthority,
-        p.hash, 
+        p.hash,
         p.fileSchemeCaseInsensitiveOS);
     }
-    
+
     /**
      * Creates a new URI instance according to the given string {@code uri}.
      *
      * The URI must strictly conform to RFC3986, it doesn't support extended
      * characters sets like java.net.URI, instead all non ASCII characters
      * must be escaped.
-     * 
+     *
      * Any encoded unreserved characters are decoded.
-     * 
+     *
      * @param uri
      *            the textual URI representation to be parsed into a URI object.
      * @throws URISyntaxException
@@ -502,7 +502,7 @@ public final class Uri implements Comparable<Uri> {
     public Uri(String uri) throws URISyntaxException {
         this(constructor1(uri));
     }
-    
+
     private static UriParser constructor1(String uri) throws URISyntaxException {
         uri = URIEncoderDecoder.decodeUnreserved(uri);
         UriParser p = new UriParser();
@@ -530,7 +530,7 @@ public final class Uri implements Comparable<Uri> {
     public Uri(String scheme, String ssp, String frag) throws URISyntaxException {
         this(constructor2(scheme, ssp, frag));
     }
-    
+
     private static UriParser constructor2(String scheme, String ssp, String frag) throws URISyntaxException{
         StringBuilder uri = new StringBuilder();
         if (scheme != null) {
@@ -584,7 +584,7 @@ public final class Uri implements Comparable<Uri> {
             throws URISyntaxException {
         this(constructor3(scheme, userinfo, host, port, path, query, fragment));
     }
-    
+
     private static UriParser constructor3(String scheme, String userinfo, String host, int port,
             String path, String query, String fragment) throws URISyntaxException {
         if (scheme == null && userinfo == null && host == null && path == null
@@ -740,10 +740,10 @@ public final class Uri implements Comparable<Uri> {
         p.parseURI(uri.toString(), false);
         return p;
     }
-    
+
     /*
      * Quote illegal chars for each component, but not the others
-     * 
+     *
      * @param component java.lang.String the component to be converted @param
      * legalset java.lang.String the legal character set allowed in the
      * component s @return java.lang.String the converted string
@@ -845,7 +845,7 @@ public final class Uri implements Comparable<Uri> {
 
             // authorities are the same
             // compare paths
-            
+
             if (fileSchemeCaseInsensitiveOS){
                 ret = toAsciiUpperCase(path).compareTo(toAsciiUpperCase(uri.path));
 //                ret = path.toUpperCase(Locale.ENGLISH).compareTo(uri.path.toUpperCase(Locale.ENGLISH));
@@ -889,7 +889,7 @@ public final class Uri implements Comparable<Uri> {
     /**
      * Parses the given argument {@code rfc3986compliantURI} and creates an appropriate URI
      * instance.
-     * 
+     *
      * The parameter string is checked for compliance, an IllegalArgumentException
      * is thrown if the string is non compliant.
      *
@@ -906,14 +906,14 @@ public final class Uri implements Comparable<Uri> {
         }
         return result;
     }
-    
+
     /**
      * The parameter string doesn't contain any existing escape sequences, any
-     * escape character % found is encoded as %25. Illegal characters are 
+     * escape character % found is encoded as %25. Illegal characters are
      * escaped if possible.
-     * 
+     *
      * The Uri is normalised according to RFC3986.
-     * 
+     *
      * @param unescapedString
      * @return an RFC3986 compliant Uri.
      * @throws java.net.URISyntaxException
@@ -921,20 +921,20 @@ public final class Uri implements Comparable<Uri> {
     public static Uri escapeAndCreate(String unescapedString) throws URISyntaxException{
         return new Uri(quoteComponent(unescapedString, allLegalUnescaped));
     }
-    
+
     /**
      * The parameter string may already contain escaped sequences, any illegal
      * characters are escaped and any that shouldn't be escaped are un-escaped.
-     * 
+     *
      * The escape character % is not re-encoded.
-     * @param nonCompliantEscapedString 
+     * @param nonCompliantEscapedString
      * @return an RFC3986 compliant Uri.
      * @throws java.net.URISyntaxException
      */
     public static Uri parseAndCreate(String nonCompliantEscapedString) throws URISyntaxException{
         return new Uri(quoteComponent(nonCompliantEscapedString, allLegal));
     }
-    
+
 
     /*
      * Takes a string that may contain hex sequences like %F1 or %2b and
@@ -964,7 +964,7 @@ public final class Uri implements Comparable<Uri> {
      */
     private boolean equalsHexCaseInsensitive(String first, String second) {
         //Hex will always be upper case.
-        if (first != null) return first.equals(second); 
+        if (first != null) return first.equals(second);
         return second == null;
     }
 
@@ -1008,11 +1008,11 @@ public final class Uri implements Comparable<Uri> {
             return equalsHexCaseInsensitive(uri.schemespecificpart,
                     schemespecificpart);
         } else if (!uri.opaque && !opaque) {
-            if ( !(path != null && (path.equals(uri.path) 
+            if ( !(path != null && (path.equals(uri.path)
                     || fileSchemeCaseInsensitiveOS
                     // Upper case comparison required for Windows & VMS.
                     && asciiStringsUpperCaseEqual(path, uri.path)
-                    ))) 
+                    )))
             {
                 return false;
             }
@@ -1064,8 +1064,8 @@ public final class Uri implements Comparable<Uri> {
             return false;
         }
     }
-    
-    /** 
+
+    /**
      * Indicates whether the specified Uri is implied by this {@link
      * Uri}. Returns {@code true} if all of the following conditions are
      * {@code true}, otherwise {@code false}:
@@ -1119,7 +1119,7 @@ public final class Uri implements Comparable<Uri> {
         //.This section of code was copied from Apache Harmony's CodeSource
         // SVN Revision 929252
         //
-        // Here, javadoc:N refers to the appropriate item in the API spec for 
+        // Here, javadoc:N refers to the appropriate item in the API spec for
         // the CodeSource.implies()
         // The info was taken from the 1.5 final API spec
 
@@ -1128,11 +1128,11 @@ public final class Uri implements Comparable<Uri> {
 //            return false;
 //        }
 
-        
+
         // javadoc:2
-        // with a comment: the javadoc says only about certificates and does 
+        // with a comment: the javadoc says only about certificates and does
         // not explicitly mention CodeSigners' certs.
-        // It seems more convenient to use getCerts() to get the real 
+        // It seems more convenient to use getCerts() to get the real
         // certificates - with a certificates got form the signers
 //        Certificate[] thizCerts = getCertificatesNoClone();
 //        if (thizCerts != null) {
@@ -1144,8 +1144,8 @@ public final class Uri implements Comparable<Uri> {
 //        }
 
         // javadoc:3
-        
-            
+
+
             //javadoc:3.1
 //            URL otherURL = cs.getLocation();
 //            if ( otherURL == null) {
@@ -1175,26 +1175,26 @@ public final class Uri implements Comparable<Uri> {
                     return false;
                 }
 
-                // 1. According to the spec, an empty string will be considered 
+                // 1. According to the spec, an empty string will be considered
                 // as "localhost" in the SocketPermission
                 // 2. 'file://' URLs will have an empty getHost()
-                // so, let's make a special processing of localhost-s, I do 
-                // believe this'll improve performance of file:// code sources 
+                // so, let's make a special processing of localhost-s, I do
+                // believe this'll improve performance of file:// code sources
 
                 //
                 // Don't have to evaluate both the boolean-s each time.
                 // It's better to evaluate them directly under if() statement.
-                // 
+                //
                 // boolean thisIsLocalHost = thisHost.length() == 0 || "localhost".equals(thisHost);
                 // boolean thatIsLocalHost = thatHost.length() == 0 || "localhost".equals(thatHost);
-                // 
+                //
                 // if( !(thisIsLocalHost && thatIsLocalHost) &&
                 // !thisHost.equals(thatHost)) {
 
                 if (!((host.length() == 0 || "localhost".equals(host)) && (implied.host //$NON-NLS-1$
                         .length() == 0 || "localhost".equals(implied.host))) //$NON-NLS-1$
                         && !host.equals(implied.host)) {
-                    
+
                     // Do wildcard matching here to replace SocketPermission functionality.
                     // This section was copied from Apache Harmony SocketPermission
                     boolean hostNameMatches = false;
@@ -1211,17 +1211,17 @@ public final class Uri implements Comparable<Uri> {
                         }
                     }
                     if (!hostNameMatches) return false; // else continue.
-                    
+
                     /* Don't want to try resolving URI with DNS, it either has a
                      * matching host or it doesn't.
-                     * 
+                     *
                      * The following section is for resolving hosts, it is
                      * not relevant here, but has been preserved for information
                      * purposes only.
-                     * 
+                     *
                      * Not only is it expensive to perform DNS resolution, hence
                      * the creation of Uri, but a CodeSource.implies
-                     * may also require another SocketPermission which may 
+                     * may also require another SocketPermission which may
                      * cause the policy to get stuck in an endless loop, since it
                      * doesn't perform the implies in priviledged mode, it might
                      * also allow an attacker to substitute one codebase for
@@ -1231,23 +1231,23 @@ public final class Uri implements Comparable<Uri> {
                      * are greater than the threat posed by SocketPermission
                      * which simply allows a network connection, as this may
                      * apply to any Permission, even AllPermission.
-                     * 
+                     *
                      * Typically the URI of the codebase will be a match for
                      * the codebase annotation string that is stored as a URL
                      * in CodeSource, then converted to a URI for comparison.
                      */
 
                     // Obvious, but very slow way....
-                    // 
+                    //
                     // SocketPermission thisPerm = new SocketPermission(
                     //          this.location.getHost(), "resolve");
                     // SocketPermission thatPerm = new SocketPermission(
                     //          cs.location.getHost(), "resolve");
-                    // if (!thisPerm.implies(thatPerm)) { 
+                    // if (!thisPerm.implies(thatPerm)) {
                     //      return false;
                     // }
                     //
-                    // let's cache it: 
+                    // let's cache it:
 
 //                    if (this.sp == null) {
 //                        this.sp = new SocketPermission(thisHost, "resolve"); //$NON-NLS-1$
@@ -1255,12 +1255,12 @@ public final class Uri implements Comparable<Uri> {
 //
 //                    if (cs.sp == null) {
 //                        cs.sp = new SocketPermission(thatHost, "resolve"); //$NON-NLS-1$
-//                    } 
+//                    }
 //
 //                    if (!this.sp.implies(cs.sp)) {
 //                        return false;
 //                    }
-                    
+
                 } // if( ! this.location.getHost().equals(cs.location.getHost())
             } // if (this.location.getHost() != null)
 
@@ -1309,7 +1309,7 @@ public final class Uri implements Comparable<Uri> {
                     }
                 }
             }
-            
+
             // Fragment and path are ignored.
             //javadoc:3.7
             // A URL Anchor is a URI Fragment.
@@ -1318,12 +1318,12 @@ public final class Uri implements Comparable<Uri> {
 //                    return false;
 //                }
 //            }
-            // ok, every check was made, and they all were successful. 
+            // ok, every check was made, and they all were successful.
             // it's ok to return true.
-        
 
-        // javadoc: a note about CodeSource with null location and null Certs 
-        // is applicable here 
+
+        // javadoc: a note about CodeSource with null location and null Certs
+        // is applicable here
         return true;
     }
 
@@ -1338,7 +1338,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the decoded fragment part of this URI.
-     * 
+     *
      * @return the decoded fragment part or {@code null} if undefined.
      */
     public String getFragment() {
@@ -1347,7 +1347,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the host part of this URI.
-     * 
+     *
      * @return the host part or {@code null} if undefined.
      */
     public String getHost() {
@@ -1356,7 +1356,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the decoded path part of this URI.
-     * 
+     *
      * @return the decoded path part or {@code null} if undefined.
      */
     public String getPath() {
@@ -1365,7 +1365,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the port number of this URI.
-     * 
+     *
      * @return the port number or {@code -1} if undefined.
      */
     public int getPort() {
@@ -1374,7 +1374,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the decoded query part of this URI.
-     * 
+     *
      * @return the decoded query part or {@code null} if undefined.
      */
     public String getQuery() {
@@ -1383,7 +1383,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the authority part of this URI in raw form.
-     * 
+     *
      * @return the encoded authority part or {@code null} if undefined.
      */
     public String getRawAuthority() {
@@ -1392,7 +1392,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the fragment part of this URI in raw form.
-     * 
+     *
      * @return the encoded fragment part or {@code null} if undefined.
      */
     public String getRawFragment() {
@@ -1401,7 +1401,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the path part of this URI in raw form.
-     * 
+     *
      * @return the encoded path part or {@code null} if undefined.
      */
     public String getRawPath() {
@@ -1410,7 +1410,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the query part of this URI in raw form.
-     * 
+     *
      * @return the encoded query part or {@code null} if undefined.
      */
     public String getRawQuery() {
@@ -1419,7 +1419,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the scheme-specific part of this URI in raw form.
-     * 
+     *
      * @return the encoded scheme-specific part or {@code null} if undefined.
      */
     public String getRawSchemeSpecificPart() {
@@ -1428,7 +1428,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the user-info part of this URI in raw form.
-     * 
+     *
      * @return the encoded user-info part or {@code null} if undefined.
      */
     public String getRawUserInfo() {
@@ -1437,7 +1437,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the scheme part of this URI.
-     * 
+     *
      * @return the scheme part or {@code null} if undefined.
      */
     public String getScheme() {
@@ -1446,7 +1446,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the decoded scheme-specific part of this URI.
-     * 
+     *
      * @return the decoded scheme-specific part or {@code null} if undefined.
      */
     public String getSchemeSpecificPart() {
@@ -1455,7 +1455,7 @@ public final class Uri implements Comparable<Uri> {
 
     /**
      * Gets the decoded user-info part of this URI.
-     * 
+     *
      * @return the decoded user-info part or {@code null} if undefined.
      */
     public String getUserInfo() {
@@ -1475,7 +1475,7 @@ public final class Uri implements Comparable<Uri> {
     /**
      * Indicates whether this URI is absolute, which means that a scheme part is
      * defined in this URI.
-     * 
+     *
      * @return {@code true} if this URI is absolute, {@code false} otherwise.
      */
     public boolean isAbsolute() {
@@ -1487,13 +1487,13 @@ public final class Uri implements Comparable<Uri> {
      * and has a scheme-specific part which does not start with a slash
      * character. All parts except scheme, scheme-specific and fragment are
      * undefined.
-     * 
+     *
      * @return {@code true} if the URI is opaque, {@code false} otherwise.
      */
     public boolean isOpaque() {
         return opaque;
     }
-    
+
     /**
      * Normalizes the path part of this URI.
      *
@@ -1524,7 +1524,7 @@ public final class Uri implements Comparable<Uri> {
                         opaque,
                         absolute,
                         serverAuthority,
-                        hash, 
+                        hash,
                         fileSchemeCaseInsensitiveOS);
     }
 
@@ -1700,7 +1700,7 @@ public final class Uri implements Comparable<Uri> {
                         false,
                         false,
                         false,
-                        -1, 
+                        -1,
                 fileSchemeCaseInsensitiveOS);
     }
 
@@ -1723,7 +1723,7 @@ public final class Uri implements Comparable<Uri> {
             // if the relative URI only consists of fragment,
             // the resolved URI is very similar to this URI,
             // except that it has the fragement from the relative URI.
-            
+
             return new Uri( null,
                         scheme,
                         schemespecificpart,
@@ -1741,7 +1741,7 @@ public final class Uri implements Comparable<Uri> {
                     fileSchemeCaseInsensitiveOS);
             // no need to re-calculate the scheme specific part,
             // since fragment is not part of scheme specific part.
-           
+
         }
 
         if (relative.authority != null) {
@@ -1761,7 +1761,7 @@ public final class Uri implements Comparable<Uri> {
                         relative.opaque,
                         absolute,
                         relative.serverAuthority,
-                        relative.hash, 
+                        relative.hash,
                     fileSchemeCaseInsensitiveOS);
         } else {
             // since relative URI has no authority,
@@ -1771,7 +1771,7 @@ public final class Uri implements Comparable<Uri> {
             // re-calculate the scheme specific part since
             // query and path of the resolved URI is different from this URI.
             int endindex = path.lastIndexOf('/') + 1;
-            String p = relative.path.startsWith("/")? relative.path: 
+            String p = relative.path.startsWith("/")? relative.path:
                         normalize(path.substring(0, endindex) + relative.path);
             return new Uri( null,
                         scheme,
@@ -1786,7 +1786,7 @@ public final class Uri implements Comparable<Uri> {
                         opaque,
                         absolute,
                         serverAuthority,
-                        hash, 
+                        hash,
                     fileSchemeCaseInsensitiveOS);
         }
     }
@@ -1832,9 +1832,9 @@ public final class Uri implements Comparable<Uri> {
     /*
      * Encode unicode chars that are not part of US-ASCII char set into the
      * escaped form
-     * 
+     *
      * i.e. The Euro currency symbol is encoded as "%E2%82%AC".
-     * 
+     *
      * @param component java.lang.String the component to be converted @param
      * legalset java.lang.String the legal character set allowed in the
      * component s @return java.lang.String the converted string
@@ -1889,8 +1889,8 @@ public final class Uri implements Comparable<Uri> {
      * Form a string from the components of this URI, similarly to the
      * toString() method. But this method converts scheme and host to lowercase,
      * and converts escaped octets to uppercase.
-     * 
-     * Should convert octets to uppercase and follow platform specific 
+     *
+     * Should convert octets to uppercase and follow platform specific
      * normalization rules for file: uri.
      */
     private String getHashString() {

@@ -43,9 +43,9 @@ import java.util.Vector;
  */
 
 public class ImmutableObjectFactory implements Factory {
-  
 
-  /** 
+
+  /**
    * The Default Constructor for the Primitive Factory
    */
   public ImmutableObjectFactory() {
@@ -92,7 +92,7 @@ public class ImmutableObjectFactory implements Factory {
   /**
    * This method returns the size of the Factory
    */
-  public int getSize() { 
+  public int getSize() {
     return names.size();
   }
 
@@ -101,12 +101,12 @@ public class ImmutableObjectFactory implements Factory {
    * located at index i.
    *
    * @param i index of the element
-   * @exception AssertionTest.Fault is raised when an error occurs while 
+   * @exception AssertionTest.Fault is raised when an error occurs while
    * creating the element.
    */
   public Object createElement(int i) throws AssertionTest.Fault {
-    if (i > values.size()) 
-      throw new AssertionTest.Fault ("Error: test point index > factory length"); 
+    if (i > values.size())
+      throw new AssertionTest.Fault ("Error: test point index > factory length");
     return values.elementAt(i);
   }
 
@@ -128,176 +128,176 @@ public class ImmutableObjectFactory implements Factory {
    * @param i index of the element.
    *
    */
-  public String getName(int i) { 
+  public String getName(int i) {
     return (String) names.elementAt(i);
   }
 
   /**
    * This method creates a ImmutableObjectFactory from an array of doubles.
-   * 
+   *
    * @param values an array of doubles used for creating the factory.
    */
-  public static ImmutableObjectFactory createDoubleFactory(double[] values) { 
+  public static ImmutableObjectFactory createDoubleFactory(double[] values) {
     return createDoubleFactory(values, false);
   }
 
   /**
-   * This method creates a ImmutableObjectFactory from an array of doubles and 
-   * a boolean flag that signals whether this factory should include 
+   * This method creates a ImmutableObjectFactory from an array of doubles and
+   * a boolean flag that signals whether this factory should include
    * "null" or not.
    *
    * @param values an array of doubles used for creating the factory.
-   * @param includeNull a boolean flag to specify the inclusion of null. 
+   * @param includeNull a boolean flag to specify the inclusion of null.
    */
-  public static ImmutableObjectFactory createDoubleFactory(double[] values, boolean includeNull) { 
+  public static ImmutableObjectFactory createDoubleFactory(double[] values, boolean includeNull) {
     ImmutableObjectFactory df = new ImmutableObjectFactory(values.length, includeNull);
-    for (int i = 0; i < values.length; ++i) 
+    for (int i = 0; i < values.length; ++i)
       df.add(String.valueOf(values[i]), new Double (values[i]));
-    return df; 
+    return df;
   }
 
  /**
    * This method creates a ImmutableObjectFactory from an array of floats.
-   * 
+   *
    * @param values an array of floats used for creating the factory.
    */
-  public static ImmutableObjectFactory createFloatFactory(float[] values) { 
+  public static ImmutableObjectFactory createFloatFactory(float[] values) {
     return createFloatFactory(values, false);
   }
 
   /**
-   * This method creates a ImmutableObjectFactory from an array of floats and 
-   * a boolean flag that signals whether this factory should include 
+   * This method creates a ImmutableObjectFactory from an array of floats and
+   * a boolean flag that signals whether this factory should include
    * "null" or not.
    *
    * @param values an array of floats used for creating the factory.
-   * @param includeNull a boolean flag to specify the inclusion of null. 
+   * @param includeNull a boolean flag to specify the inclusion of null.
    */
-  public static ImmutableObjectFactory createFloatFactory(float[] values, boolean includeNull) { 
+  public static ImmutableObjectFactory createFloatFactory(float[] values, boolean includeNull) {
     ImmutableObjectFactory df = new ImmutableObjectFactory(values.length, includeNull);
-    for (int i = 0; i < values.length; ++i) 
+    for (int i = 0; i < values.length; ++i)
       df.add(String.valueOf(values[i]), new Float (values[i]));
-    return df; 
+    return df;
   }
 
  /**
    * This method creates a ImmutableObjectFactory from an array of integers.
-   * 
+   *
    * @param values an array of integers used for creating the factory.
    */
-  public static ImmutableObjectFactory createIntegerFactory(int[] values) { 
+  public static ImmutableObjectFactory createIntegerFactory(int[] values) {
     return createIntegerFactory(values, false);
   }
 
   /**
-   * This method creates a ImmutableObjectFactory from an array of integers and 
-   * a boolean flag that signals whether this factory should include 
+   * This method creates a ImmutableObjectFactory from an array of integers and
+   * a boolean flag that signals whether this factory should include
    * "null" or not.
    *
    * @param values an array of integers used for creating the factory.
-   * @param includeNull a boolean flag to specify the inclusion of null. 
+   * @param includeNull a boolean flag to specify the inclusion of null.
    */
-  public static ImmutableObjectFactory createIntegerFactory(int[] values, boolean includeNull) { 
+  public static ImmutableObjectFactory createIntegerFactory(int[] values, boolean includeNull) {
     ImmutableObjectFactory df = new ImmutableObjectFactory(values.length, includeNull);
-    for (int i = 0; i < values.length; ++i) 
+    for (int i = 0; i < values.length; ++i)
       df.add(String.valueOf(values[i]), new Integer (values[i]));
-    return df; 
+    return df;
   }
 
  /**
    * This method creates a ImmutableObjectFactory from an array of longs.
-   * 
+   *
    * @param values an array of longs used for creating the factory.
    */
-  public static ImmutableObjectFactory createLongFactory(long[] values) { 
+  public static ImmutableObjectFactory createLongFactory(long[] values) {
     return createLongFactory(values, false);
   }
 
   /**
-   * This method creates a ImmutableObjectFactory from an array of longs and 
-   * a boolean flag that signals whether this factory should include 
+   * This method creates a ImmutableObjectFactory from an array of longs and
+   * a boolean flag that signals whether this factory should include
    * "null" or not.
    *
    * @param values an array of longs used for creating the factory.
-   * @param includeNull a boolean flag to specify the inclusion of null. 
+   * @param includeNull a boolean flag to specify the inclusion of null.
    */
-  public static ImmutableObjectFactory createLongFactory(long[] values, boolean includeNull) { 
+  public static ImmutableObjectFactory createLongFactory(long[] values, boolean includeNull) {
     ImmutableObjectFactory df = new ImmutableObjectFactory(values.length, includeNull);
-    for (int i = 0; i < values.length; ++i) 
+    for (int i = 0; i < values.length; ++i)
       df.add(String.valueOf(values[i]), new Long (values[i]));
-    return df; 
+    return df;
   }
 
  /**
    * This method creates a ImmutableObjectFactory from an array of chars.
-   * 
+   *
    * @param values an array of chars used for creating the factory.
    */
-  public static ImmutableObjectFactory createCharacterFactory(char[] values) { 
+  public static ImmutableObjectFactory createCharacterFactory(char[] values) {
     return createCharacterFactory(values, false);
   }
 
   /**
-   * This method creates a ImmutableObjectFactory from an array of char and 
-   * a boolean flag that signals whether this factory should include 
+   * This method creates a ImmutableObjectFactory from an array of char and
+   * a boolean flag that signals whether this factory should include
    * "null" or not.
    *
    * @param values an array of char used for creating the factory.
-   * @param includeNull a boolean flag to specify the inclusion of null. 
+   * @param includeNull a boolean flag to specify the inclusion of null.
    */
-  public static ImmutableObjectFactory createCharacterFactory(char[] values, boolean includeNull) { 
+  public static ImmutableObjectFactory createCharacterFactory(char[] values, boolean includeNull) {
     ImmutableObjectFactory df = new ImmutableObjectFactory(values.length, includeNull);
-    for (int i = 0; i < values.length; ++i) 
+    for (int i = 0; i < values.length; ++i)
       df.add(String.valueOf(values[i]), new Character (values[i]));
-    return df; 
+    return df;
   }
 
  /**
    * This method creates a ImmutableObjectFactory from an array of Strings.
-   * 
+   *
    * @param values an array of Strings used for creating the factory.
    */
-  public static ImmutableObjectFactory createStringFactory(String[] values) { 
+  public static ImmutableObjectFactory createStringFactory(String[] values) {
     return createStringFactory(values, false);
   }
 
   /**
-   * This method creates a ImmutableObjectFactory from an array of Strings and 
-   * a boolean flag that signals whether this factory should include 
+   * This method creates a ImmutableObjectFactory from an array of Strings and
+   * a boolean flag that signals whether this factory should include
    * "null" or not.
    *
    * @param values an array of Strings used for creating the factory.
-   * @param includeNull a boolean flag to specify the inclusion of null. 
+   * @param includeNull a boolean flag to specify the inclusion of null.
    */
-  public static ImmutableObjectFactory createStringFactory(String[] values, boolean includeNull) { 
+  public static ImmutableObjectFactory createStringFactory(String[] values, boolean includeNull) {
     ImmutableObjectFactory df = new ImmutableObjectFactory(values.length, includeNull);
-    for (int i = 0; i < values.length; ++i) 
+    for (int i = 0; i < values.length; ++i)
       df.add(values[i], values[i]);
-    return df; 
+    return df;
   }
 
  /**
    * This method creates a ImmutableObjectFactory from an array of booleans.
-   * 
+   *
    * @param values an array of booleans used for creating the factory.
    */
-  public static ImmutableObjectFactory createBooleanFactory(boolean[] values) { 
+  public static ImmutableObjectFactory createBooleanFactory(boolean[] values) {
     return createBooleanFactory(values, false);
   }
 
   /**
-   * This method creates a ImmutableObjectFactory from an array of booleans and 
-   * a boolean flag that signals whether this factory should include 
+   * This method creates a ImmutableObjectFactory from an array of booleans and
+   * a boolean flag that signals whether this factory should include
    * "null" or not.
    *
    * @param values an array of booleans used for creating the factory.
-   * @param includeNull a boolean flag to specify the inclusion of null. 
+   * @param includeNull a boolean flag to specify the inclusion of null.
    */
-  public static ImmutableObjectFactory createBooleanFactory(boolean[] values, boolean includeNull) { 
+  public static ImmutableObjectFactory createBooleanFactory(boolean[] values, boolean includeNull) {
     ImmutableObjectFactory df = new ImmutableObjectFactory(values.length, includeNull);
-    for (int i = 0; i < values.length; ++i) 
+    for (int i = 0; i < values.length; ++i)
       df.add(String.valueOf(values[i]), new Boolean (values[i]));
-    return df; 
+    return df;
   }
 
  /**
@@ -306,24 +306,24 @@ public class ImmutableObjectFactory implements Factory {
    *
    * @param values an array of objects used for creating the factory.
    */
-  public static ImmutableObjectFactory createObjectFactory(Object[] values) { 
+  public static ImmutableObjectFactory createObjectFactory(Object[] values) {
     return createObjectFactory(values, false);
   }
 
   /**
-   * This method creates a ImmutableObjectFactory from an array of objectss and 
-   * a boolean flag that signals whether this factory should include 
+   * This method creates a ImmutableObjectFactory from an array of objectss and
+   * a boolean flag that signals whether this factory should include
    * "null" or not.
    * <B>NOTE</B> This works only for immutable objects
    *
    * @param values an array of objectss used for creating the factory.
-   * @param includeNull a boolean flag to specify the inclusion of null. 
+   * @param includeNull a boolean flag to specify the inclusion of null.
    */
-  public static ImmutableObjectFactory createObjectFactory(Object[] values, boolean includeNull) { 
+  public static ImmutableObjectFactory createObjectFactory(Object[] values, boolean includeNull) {
     ImmutableObjectFactory df = new ImmutableObjectFactory (values.length, includeNull);
-    for (int i = 0; i < values.length; ++i) 
+    for (int i = 0; i < values.length; ++i)
       df.add(String.valueOf(values[i]), values[i]);
-    return df; 
+    return df;
   }
 
   /*--------------- Private Data Members -----------------------*/

@@ -136,7 +136,7 @@ public class OptionDescr {
             isMultiple = true;
     }
 
-    /** 
+    /**
      * Creates new OptionDescr, filling all fields from &lt;src&gt;
      * @param src OptionDescr instance to copy fields from
      */
@@ -149,7 +149,7 @@ public class OptionDescr {
         usage         = src.usage;
         defVal        = src.defVal;
     }
-    
+
     /**
      * @return true if &lt;this&gt; equals o, false otherwise
      */
@@ -157,7 +157,7 @@ public class OptionDescr {
         if (!(o instanceof OptionDescr))
             return false;
         OptionDescr od = (OptionDescr)o;
-        return name.equals(od.name); 
+        return name.equals(od.name);
     }
 
     // Accessor methods

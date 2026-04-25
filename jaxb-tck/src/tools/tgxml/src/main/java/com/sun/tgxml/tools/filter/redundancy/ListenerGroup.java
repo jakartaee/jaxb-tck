@@ -33,12 +33,12 @@ import com.sun.tgxml.tjtf.api.tests.TestItem;
  * It also provides methods to maintain registered instances list.
  */
 public class ListenerGroup implements TestItemSelectionListener {
-    
+
     private ArrayList listeners = new ArrayList();
-    
+
     public ListenerGroup() {
     }
-    
+
     private ListenerGroup(ArrayList list) {
         this.listeners = (ArrayList)list.clone();
     }
@@ -64,7 +64,7 @@ public class ListenerGroup implements TestItemSelectionListener {
     public void unregisterListener(TestItemSelectionListener listener) {
         listeners.remove(listener);
     }
-    
+
     private interface Command {
         public void process(TestItemSelectionListener listener, TestItem item)
             throws TestFileException;
@@ -81,7 +81,7 @@ public class ListenerGroup implements TestItemSelectionListener {
             }
         }
     }
-    
+
 
     public void flush() {
         try {
@@ -94,10 +94,10 @@ public class ListenerGroup implements TestItemSelectionListener {
             // This Exception is never thrown.
         }
     }
-    
+
     public void externalLibrarySelected(Library item) throws TestFileException {
         this.execute(item, new Command() {
-            public void process(TestItemSelectionListener listener, TestItem item) 
+            public void process(TestItemSelectionListener listener, TestItem item)
                 throws TestFileException {
                 listener.externalLibrarySelected((Library)item);
             }
@@ -106,7 +106,7 @@ public class ListenerGroup implements TestItemSelectionListener {
 
     public void internalLibrarySelected(Library item) throws TestFileException {
         this.execute(item, new Command() {
-            public void process(TestItemSelectionListener listener, TestItem item) 
+            public void process(TestItemSelectionListener listener, TestItem item)
                 throws TestFileException {
                 listener.internalLibrarySelected((Library)item);
             }
@@ -115,7 +115,7 @@ public class ListenerGroup implements TestItemSelectionListener {
 
     public void testCaseSelected(TestCase item) throws TestFileException {
         this.execute(item, new Command() {
-            public void process(TestItemSelectionListener listener, TestItem item) 
+            public void process(TestItemSelectionListener listener, TestItem item)
             throws TestFileException {
                 listener.testCaseSelected((TestCase)item);
             }
@@ -124,11 +124,11 @@ public class ListenerGroup implements TestItemSelectionListener {
 
     public void testGroupSelected(TestGroup tGroup) throws TestFileException {
         this.execute(tGroup, new Command() {
-            public void process(TestItemSelectionListener listener, TestItem item) 
+            public void process(TestItemSelectionListener listener, TestItem item)
             throws TestFileException {
                 listener.testGroupSelected((TestGroup)item);
             }
-        });   
+        });
     }
 
     public Object clone() {

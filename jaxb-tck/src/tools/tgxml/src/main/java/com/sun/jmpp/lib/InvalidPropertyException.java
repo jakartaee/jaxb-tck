@@ -41,8 +41,8 @@ public class InvalidPropertyException extends LibAPIException {
      * @param reason the reason of this exception.     ÃÂ
      */
     public InvalidPropertyException(String propertyName, String reason) {
-        super("Invalid property found:\n" 
-                + propertyName + " : " + reason);   
+        super("Invalid property found:\n"
+                + propertyName + " : " + reason);
     }
-        
+
 }

@@ -54,7 +54,7 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
      * JavaBeans "persistence delegate" initialization to
      * <code>addPersistenceDelegate</code> method. Only plain file system
      * packages are supported
-     * 
+     *
      * @param context -
      *            name of JAXB context
      * @param cl -
@@ -62,29 +62,29 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
      * @see #addPersistenceDelegate(String, ClassLoader)
      * @throws RuntimeException
      *             This case realized when classes are in JAR file
-     * 
-     * 
+     *
+     *
      */
     protected void initJaxbInfo(Object jaxbTree, ClassLoader cl) {
 
         initPredefinedDelegates();
 
         String packageName = jaxbTree.getClass().getPackage().getName();
-        
+
         if (packageName.startsWith("java.") || packageName.startsWith("javax.")) {
             //"Internal" classes like jakarta.xml.bind.JAXBElement
             addPersistenceDelegate(jaxbTree, cl);
         } else {
-        	assignPersistenceDelegate(packageName, cl);
+            assignPersistenceDelegate(packageName, cl);
         }
     }
-    
+
     private void assignPersistenceDelegate(String packageName, ClassLoader cl) {
         if (packageName.startsWith("java.") || packageName.startsWith("javax.")) {
-        	// avoid cases JAXBElement<QName> 
-        	return;
+            // avoid cases JAXBElement<QName>
+            return;
         }
-    	
+
         String packagePath = packageName.replace('.', '/');
         URL packageUrl = cl.getResource(packagePath);
         if (packageUrl == null) {
@@ -93,7 +93,7 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
         if (packageUrl == null) {
             return;
         }
-        
+
         try {
             File packFile = new File(packageUrl.toURI());
             if (packFile.isDirectory()) {
@@ -109,18 +109,18 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
-    	
+
     }
-    
+
     private void addPersistenceDelegate(Object jaxbTree, ClassLoader cl) {
-    	Class<?> clazz  = jaxbTree.getClass();
+        Class<?> clazz  = jaxbTree.getClass();
         Class<?> superClass = clazz.getSuperclass();
-    	String className = clazz.getName();
+        String className = clazz.getName();
         String superClassName = superClass == null ? "" : superClass.getName();
         if (className.endsWith("JAXBElement") || superClassName.endsWith("JAXBElement")) {
-        	Class<?> dt = ((JAXBElement<?>)jaxbTree).getDeclaredType();
-        	assignPersistenceDelegate(dt.getPackage().getName(), cl);
-        } 
+            Class<?> dt = ((JAXBElement<?>)jaxbTree).getDeclaredType();
+            assignPersistenceDelegate(dt.getPackage().getName(), cl);
+        }
         addPersistenceDelegate(className, cl);
     }
 
@@ -132,7 +132,7 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
 
             BeanInfo bi = Introspector.getBeanInfo(clazz);
             if (className.endsWith("JAXBElement") || superClassName.endsWith("JAXBElement")) {
-            	
+
                 bi.getBeanDescriptor().setValue("persistenceDelegate", new BeansPersistenceDelegate() {
                     @Override
                     protected Expression instantiate(Object oldInstance, Encoder out) {
@@ -167,7 +167,7 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
     }
 
     /**
-     * 
+     *
      */
     private void initPredefinedDelegates() {
 
@@ -187,8 +187,8 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
             }
         });
 
-        encoder.setPersistenceDelegate(ObjectsWrapper.createElementNS("test", "testel", "test content").getClass(), 
-        								new PersistenceDelegate() {
+        encoder.setPersistenceDelegate(ObjectsWrapper.createElementNS("test", "testel", "test content").getClass(),
+                                        new PersistenceDelegate() {
             protected Expression instantiate(Object oldInstance, Encoder out) {
                 Element el = (Element) oldInstance;
                 return new Expression(oldInstance, ObjectsWrapper.class, "createElementNS", new Object[] { el.getNamespaceURI(), el.getNodeName(), el.getTextContent() });
@@ -210,7 +210,7 @@ class TCKJaxbTreeSerializer implements JaxbTreeSerializer {
             }
         });
     }
-    
+
 
     public void serialize(Object jaxbTree, OutputStream os, ClassLoader cl) {
         // There is some ClassLoader problem with XMLEncoder so, put it into

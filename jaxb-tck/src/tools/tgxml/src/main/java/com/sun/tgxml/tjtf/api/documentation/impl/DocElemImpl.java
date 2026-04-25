@@ -25,12 +25,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * DocElem - 
+ * DocElem -
  *
  * <b>DocElem</b> (Repository Specific Description Entities) is the name value pair for
  * a description item that may be defined in a given repository entities.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -49,14 +49,14 @@ public class DocElemImpl extends NameValuePairImpl implements DocElem {
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -71,7 +71,7 @@ public class DocElemImpl extends NameValuePairImpl implements DocElem {
     * @see com.sun.tgxml.tjtf.api.common.NameValuePair
     */
     public DocElemImpl(String name, String value) throws TestFileException {
-	super(name, value);
+    super(name, value);
     }
 
 
@@ -85,11 +85,11 @@ public class DocElemImpl extends NameValuePairImpl implements DocElem {
     * @return     true if the DocElems are equal
     */
     public boolean equals(DocElem other) {
-	return (getName().equals(other.getName()) && getValue().equals(other.getValue())); 
+    return (getName().equals(other.getName()) && getValue().equals(other.getValue()));
     }
-     
 
-     
+
+
 
 
 }

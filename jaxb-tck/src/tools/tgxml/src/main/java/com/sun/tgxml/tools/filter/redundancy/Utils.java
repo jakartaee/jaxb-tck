@@ -25,7 +25,7 @@ import com.sun.tgxml.tjtf.tools.BuildProperties;
  * The class defines static helper methods.
  */
 public class Utils {
-    
+
     private static final String SPLIT_REGEX = "[\n\t ]+";
 
     /**

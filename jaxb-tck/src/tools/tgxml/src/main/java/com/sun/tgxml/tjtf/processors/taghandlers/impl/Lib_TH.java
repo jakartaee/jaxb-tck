@@ -31,50 +31,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * Lib_TH - The tag-handler for a Lib tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Lib_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Lib_TH - The tag-handler for a Lib tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Lib_TH
+ * ============================================================================================
+ */
 public class Lib_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Lib_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Lib_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Lib_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -85,14 +85,14 @@ public class Lib_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_lib;
+    return TagsImpl.ctStr_tag_lib;
     }
 
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
 
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -100,35 +100,35 @@ public class Lib_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	try {
-	    super.endTag(text);
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    if (! (testitem instanceof CodeSet)  )
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
-	    
-	    //  Nothing is pushed onto the stack
-	    //    just check to make sure there is a list there.
-	    CodeSet cs = (CodeSet) testitem;
-	    ArrayList deps = cs.getDependencies();
-	    if (deps == null )
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.lib.dependency.null"));
-	    
-	    // validated the dependency name
-	    // validateDependencyName(text);
-	    LibraryDependency dep = CodeFactory.createLibraryDependency(text);
-	    
-	    deps.add(dep);
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+    try {
+        super.endTag(text);
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
+
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        if (! (testitem instanceof CodeSet)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
+
+        //  Nothing is pushed onto the stack
+        //    just check to make sure there is a list there.
+        CodeSet cs = (CodeSet) testitem;
+        ArrayList deps = cs.getDependencies();
+        if (deps == null )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.lib.dependency.null"));
+
+        // validated the dependency name
+        // validateDependencyName(text);
+        LibraryDependency dep = CodeFactory.createLibraryDependency(text);
+
+        deps.add(dep);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-     
- 
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
@@ -139,13 +139,13 @@ public class Lib_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof LibraryDependency))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"LibDependency", tdObject.getClass().getName()));
+    if (! (tdObject instanceof LibraryDependency))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "LibDependency", tdObject.getClass().getName()));
 
-	LibraryDependency dep = (LibraryDependency) tdObject;
+    LibraryDependency dep = (LibraryDependency) tdObject;
 
-	m_EmitterHandler.emitText(dep.getID());
+    m_EmitterHandler.emitText(dep.getID());
 
     }
 

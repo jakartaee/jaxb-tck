@@ -29,50 +29,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * AttrElem_TH - The tag-handler for a AttrElem tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    AttrElem_TH 
- * ============================================================================================ 
- */ 
+/**
+ * AttrElem_TH - The tag-handler for a AttrElem tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    AttrElem_TH
+ * ============================================================================================
+ */
 public class AttrElem_TH extends NameValueTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   AttrElem_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   AttrElem_TH constructor -
+    *       Initialize our internal fields.
+    */
     public AttrElem_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ public class AttrElem_TH extends NameValueTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_attrelem;
+    return TagsImpl.ctStr_tag_attrelem;
     }
 
     //------------------------------------------------------------------------------
@@ -96,45 +96,45 @@ public class AttrElem_TH extends NameValueTagHandler  {
     * @see #endTag
     */
     public void endTag(String name, String value) throws SAXException {
-	try {
-	    super.endTag(name, value);
-	    
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    if (! (testitem instanceof com.sun.tgxml.tjtf.api.attributes.Attributes)  )
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(), 
-							TagsImpl.ctStr_tag_testgroupattributes,
-							TagsImpl.ctStr_tag_testcaseattributes,
-							TagsImpl.ctStr_tag_libraryattributes));
-	    
-	    //  Nothing is pushed onto the stack
-	    com.sun.tgxml.tjtf.api.attributes.Attributes attrs = (com.sun.tgxml.tjtf.api.attributes.Attributes) testitem;
-	    
-	    ArrayList attrelems = attrs.getAttrElems();
-	    if (attrelems == null) {
-		attrelems = new ArrayList();
-		attrs.setAttrElems(attrelems);
-	    }
-	    
-	    AttrElem ae = AttributesFactory.createAttrElem(name, value);
-	    // validated the import name
-	    // validateAttrElem(ae);
-	    attrelems.add(ae);
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
-          
+    try {
+        super.endTag(name, value);
+
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
+
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        if (! (testitem instanceof com.sun.tgxml.tjtf.api.attributes.Attributes)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(),
+                            TagsImpl.ctStr_tag_testgroupattributes,
+                            TagsImpl.ctStr_tag_testcaseattributes,
+                            TagsImpl.ctStr_tag_libraryattributes));
+
+        //  Nothing is pushed onto the stack
+        com.sun.tgxml.tjtf.api.attributes.Attributes attrs = (com.sun.tgxml.tjtf.api.attributes.Attributes) testitem;
+
+        ArrayList attrelems = attrs.getAttrElems();
+        if (attrelems == null) {
+        attrelems = new ArrayList();
+        attrs.setAttrElems(attrelems);
+        }
+
+        AttrElem ae = AttributesFactory.createAttrElem(name, value);
+        // validated the import name
+        // validateAttrElem(ae);
+        attrelems.add(ae);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
 
- 
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
 
     //  NameValueTagHandler handles emit code
 }

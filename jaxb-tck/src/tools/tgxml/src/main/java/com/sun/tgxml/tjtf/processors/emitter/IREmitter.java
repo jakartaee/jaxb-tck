@@ -26,8 +26,8 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
 
 
-/** 
- * IREmitter is the top-most contract that an Emitter must handle. 
+/**
+ * IREmitter is the top-most contract that an Emitter must handle.
  * <p>
  *  An implementation of an IREmitter emits a (single-format, validatable)
  *   IRObj tree into some stream or file.
@@ -35,26 +35,26 @@ import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
  *  Tools that need to emit multiple forms of information should have
  *  a shell that contains an implementation of IREmitter for each different
  * form of info (i.e. an XMLTDEmitter (TD), an XMLTDEmitter (TestSuite), etc.)
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    IREmitter 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    IREmitter
+ * ============================================================================================
+ */
 public interface IREmitter extends ValidatingProcessor {
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
 
   /**
@@ -62,7 +62,7 @@ public interface IREmitter extends ValidatingProcessor {
     * <p>
     *  The emitter implementation determines the number of IR trees and files accepted.
     *  For Example, an XMLTD Emitter may
-    *  return one file for many IRObj trees.  Another emitter may 
+    *  return one file for many IRObj trees.  Another emitter may
     *  return many files for one IRObj tree.
     * <p>
     * @param irs The IR trees to be emitted.
@@ -79,7 +79,7 @@ public interface IREmitter extends ValidatingProcessor {
     * <p>
     *  The emitter implementation determines the number of IR trees and streams accepted.
     *  For Example, an XMLTD Emitter may
-    *  return one stream for many IRObj trees.  Another emitter may 
+    *  return one stream for many IRObj trees.  Another emitter may
     *  return many streams for one IRObj tree.
     * <p>
     * @param irs The IR trees to be emitted.

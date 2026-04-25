@@ -47,7 +47,7 @@ public class ZipListParser {
     private String zipFileName = null;
     private File outFileName;
     private Checker[] checkers;
-    private int lineNo = 0; 
+    private int lineNo = 0;
     private InputStream iStream;
     private OrderedList fileList = new OrderedList (60000, System.err);
     private int[] clusterSizes;
@@ -56,16 +56,16 @@ public class ZipListParser {
     //
     // Constructor()
     //
-    public  ZipListParser (String zipFile, File outFile, int msgLevel, 
-			   Checker[] checkers, 
-			   int[] clusterSize) 
-	{
-	    zipFileName = zipFile;
-	    outFileName = outFile;
-	    this.msgLevel = msgLevel;
-	    this.checkers = checkers;
-	    this.clusterSizes = clusterSizes;
-	}
+    public  ZipListParser (String zipFile, File outFile, int msgLevel,
+               Checker[] checkers,
+               int[] clusterSize)
+    {
+        zipFileName = zipFile;
+        outFileName = outFile;
+        this.msgLevel = msgLevel;
+        this.checkers = checkers;
+        this.clusterSizes = clusterSizes;
+    }
 
 
     //
@@ -73,17 +73,17 @@ public class ZipListParser {
     // calls the appropriate checker programs.
     //
     public void run() throws IOException {
-	HTMLReportGenerator report = new HTMLReportGenerator (outFileName);
-	report.generateMainPage(checkers);
-	FileInputStream fis = new FileInputStream (zipFileName);
-	BufferedInputStream bis = new BufferedInputStream (fis, 4096);
-	iStream = bis;
-	try {
-	    parseZipFile();
-	} catch (OutOfMemoryError e) {
-	    System.out.println ("Error: Out of Memory at line " + lineNo);
-	}
-	callCheckerPrograms();
+    HTMLReportGenerator report = new HTMLReportGenerator (outFileName);
+    report.generateMainPage(checkers);
+    FileInputStream fis = new FileInputStream (zipFileName);
+    BufferedInputStream bis = new BufferedInputStream (fis, 4096);
+    iStream = bis;
+    try {
+        parseZipFile();
+    } catch (OutOfMemoryError e) {
+        System.out.println ("Error: Out of Memory at line " + lineNo);
+    }
+    callCheckerPrograms();
     }
 
     //
@@ -92,99 +92,99 @@ public class ZipListParser {
     //
     private void parseZipFile() throws IOException {
 
-	String tok;                    // The file/directory name
-	boolean inList = false;
-	long fileSize;                 // The file/directory size
+    String tok;                    // The file/directory name
+    boolean inList = false;
+    long fileSize;                 // The file/directory size
 
-	// The parsing starts here
-	nextChar();
+    // The parsing starts here
+    nextChar();
 
-	while (c > 0) {
-	    tok = readToken ();
-	    if (msgLevel == 2) {
-		System.err.println("Token: " + tok);
-	    }
-	    if (tok.equals ("------")) {
-		if (msgLevel == 2) {
-		    System.err.println ("In List ...");
-		}
-		inList = !inList;
-		skipToEOL();
-		continue;
-	    }
-	    if (inList) {
-		//
-		// In order to understand this you need to take a look at the 
-		// input file. The input file contains the following format:
-		// 
-		// size date time name
-		// 
-		// All we need is the size and the name
-		//
-		fileSize = Long.parseLong (tok);
-		skipSpace();
-		skipToken();
-		skipSpace();
-		skipToken();
-		skipSpace();
-		tok = readToken();
-		skipToEOL();
-		fileList.addNode ((Comparable) new DirectoryEntry (tok, fileSize));
-		if (msgLevel == 2) {
-		    System.err.println (fileSize + "... " + tok);
-		}
-		if ((lineNo % 500 == 0) && (msgLevel == 2)) {
-		    System.out.println ("Working on...: " + tok);
-		}
-	    }
-	}
+    while (c > 0) {
+        tok = readToken ();
+        if (msgLevel == 2) {
+        System.err.println("Token: " + tok);
+        }
+        if (tok.equals ("------")) {
+        if (msgLevel == 2) {
+            System.err.println ("In List ...");
+        }
+        inList = !inList;
+        skipToEOL();
+        continue;
+        }
+        if (inList) {
+        //
+        // In order to understand this you need to take a look at the
+        // input file. The input file contains the following format:
+        //
+        // size date time name
+        //
+        // All we need is the size and the name
+        //
+        fileSize = Long.parseLong (tok);
+        skipSpace();
+        skipToken();
+        skipSpace();
+        skipToken();
+        skipSpace();
+        tok = readToken();
+        skipToEOL();
+        fileList.addNode ((Comparable) new DirectoryEntry (tok, fileSize));
+        if (msgLevel == 2) {
+            System.err.println (fileSize + "... " + tok);
+        }
+        if ((lineNo % 500 == 0) && (msgLevel == 2)) {
+            System.out.println ("Working on...: " + tok);
+        }
+        }
     }
-    
+    }
+
     //
     // The following functions are all helper functions. They help the parsing
     // process.
-    //              
+    //
     protected void nextChar() throws IOException {
-	c = iStream.read();
-	if (c == '\n') {
-            ++lineNo;   
-	}
+    c = iStream.read();
+    if (c == '\n') {
+            ++lineNo;
+    }
     }
 
     protected boolean isSpace() {
-	return ((c == ' ') || (c == '\t') || (c == '\n') || (c == '\r'));
+    return ((c == ' ') || (c == '\t') || (c == '\n') || (c == '\r'));
     }
 
     protected void skipToEOL() throws IOException {
-	while (c != '\n') {
-	    nextChar();
-	}
-	nextChar();
+    while (c != '\n') {
+        nextChar();
+    }
+    nextChar();
     }
 
     protected void skipSpace() throws IOException {
-	while (isSpace()) {
-	    nextChar();
-	}
+    while (isSpace()) {
+        nextChar();
+    }
     }
 
     protected void skipToken() throws IOException {
-	while (! isSpace()) {
-	    nextChar();
-	}
+    while (! isSpace()) {
+        nextChar();
+    }
     }
 
     protected String readToken() throws IOException {
-	int i;
-	int bufSize = 1024;
-	char buf[] = new char[bufSize];
-	skipSpace();
-     
-	for (i = 0; i < bufSize && (! isSpace()); ++i) {
-	    buf[i] = (char) c;
-	    nextChar();
-	}
-	return new String (buf, 0, i);
+    int i;
+    int bufSize = 1024;
+    char buf[] = new char[bufSize];
+    skipSpace();
+
+    for (i = 0; i < bufSize && (! isSpace()); ++i) {
+        buf[i] = (char) c;
+        nextChar();
+    }
+    return new String (buf, 0, i);
     }
 
     //
@@ -193,9 +193,9 @@ public class ZipListParser {
     // the reports
     //
     private void callCheckerPrograms() throws IOException {
-	for (int i = 0; i < checkers.length; ++i) {
-	    checkers[i].run(fileList);
-	}
+    for (int i = 0; i < checkers.length; ++i) {
+        checkers[i].run(fileList);
+    }
     }
 }
 

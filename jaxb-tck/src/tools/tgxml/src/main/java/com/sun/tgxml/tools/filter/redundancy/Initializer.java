@@ -101,9 +101,9 @@ class Initializer {
         // init ExternalLibraryContext
 
         // init ExternalLibraryProcessors
-        
-        // register a listener for LibLInker. The listener collect mapping of 
-        // the Library ID to a selected Library IR. 
+
+        // register a listener for LibLInker. The listener collect mapping of
+        // the Library ID to a selected Library IR.
         TestGroupFilter.listeners.registerListener(RuntimeLibraryIRPFactorySpi.getListener());
 
         registerListeners(TestGroupFilter.listeners, SELECTION_LISTENER);

@@ -25,12 +25,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TargetSpecElem - 
+ * TargetSpecElem -
  *
  * <b>TargetSpecElem</b>  is the name value pair for
- * an TargetSpec to specify a finer grain of API usage. 
+ * an TargetSpec to specify a finer grain of API usage.
  *
- * @version 	1.1, 10/28/2002
+ * @version     1.1, 10/28/2002
  * @author  Kevin T. Looney
  */
 
@@ -49,14 +49,14 @@ public class TargetSpecElemImpl extends NameValuePairImpl implements TargetSpecE
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -72,7 +72,7 @@ public class TargetSpecElemImpl extends NameValuePairImpl implements TargetSpecE
     * @see com.sun.tgxml.tjtf.api.common.NameValuePair
     */
     public TargetSpecElemImpl() {
-	super();
+    super();
     }
 
 
@@ -85,7 +85,7 @@ public class TargetSpecElemImpl extends NameValuePairImpl implements TargetSpecE
     * @see com.sun.tgxml.tjtf.api.common.NameValuePair
     */
     public TargetSpecElemImpl(String name, String value) throws TestFileException {
-	super(name, value);
+    super(name, value);
     }
 
 
@@ -99,11 +99,11 @@ public class TargetSpecElemImpl extends NameValuePairImpl implements TargetSpecE
     * @return     true if the RepositorySpecificAttributes are equal
     */
     public boolean equals(TargetSpecElem other) {
-	return (getName().equals(other.getName()) && getValue().equals(other.getValue())); 
+    return (getName().equals(other.getName()) && getValue().equals(other.getValue()));
     }
-     
 
-     
+
+
 
 
 }

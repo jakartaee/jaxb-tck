@@ -25,12 +25,12 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * ExpectedResultSideEffect - 
+ * ExpectedResultSideEffect -
  *
  * <b>ExpectedResultSideEffect</b> is a side-effect that is expected as the
  * outcome of a test.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -58,7 +58,7 @@ public class ExpectedResultSideEffectImpl implements ExpectedResultSideEffect  {
      * ============================================================================================
      */
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -85,7 +85,7 @@ public class ExpectedResultSideEffectImpl implements ExpectedResultSideEffect  {
     * @see com.sun.tgxml.tjtf.api.documentation.ExpectedResult
     */
     public ExpectedResultSideEffectImpl(String se){
-	m_sideeffect = se;
+    m_sideeffect = se;
     }
 
 
@@ -102,9 +102,9 @@ public class ExpectedResultSideEffectImpl implements ExpectedResultSideEffect  {
     * @see #setSideEffect
     */
     public String getSideEffect() {
-	return m_sideeffect; 
+    return m_sideeffect;
     }
-     
+
    /**
     *   Set the side-effect associated with this ExpectedResult.
     *  <p>
@@ -112,10 +112,10 @@ public class ExpectedResultSideEffectImpl implements ExpectedResultSideEffect  {
     * @see #getSideEffect
     */
     public void setSideEffect(String sideEffect) throws TestFileException {
-	if (sideEffect == null || sideEffect.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.doc.expectressideeffect.value.null") );
+    if (sideEffect == null || sideEffect.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.doc.expectressideeffect.value.null") );
 
-	m_sideeffect = sideEffect;
+    m_sideeffect = sideEffect;
     }
 
 }

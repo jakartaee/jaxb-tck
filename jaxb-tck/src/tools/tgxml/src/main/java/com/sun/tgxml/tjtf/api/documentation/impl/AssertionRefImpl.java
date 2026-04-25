@@ -25,12 +25,12 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * AssertionRef - 
+ * AssertionRef -
  *
  * <b>AssertionRef</b> is a (non-specification) assertion that a given test
  * is testing.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -58,7 +58,7 @@ public class AssertionRefImpl implements AssertionRef {
      * ============================================================================================
      */
 
-   
+
 
   /**
     *   Validator.
@@ -68,8 +68,8 @@ public class AssertionRefImpl implements AssertionRef {
     * @param     id  The AssertionRef ID value
     */
     public  boolean valid (String id) {
-	// default
-	return true;
+    // default
+    return true;
     }
 
     //------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ public class AssertionRefImpl implements AssertionRef {
     * @param     id  The AssertionRef value
     */
     public AssertionRefImpl(String id){
-	m_ID = id;
+    m_ID = id;
     }
 
 
@@ -112,9 +112,9 @@ public class AssertionRefImpl implements AssertionRef {
     * @see #setRef
     */
     public String getRef() {
-	return m_ID; 
+    return m_ID;
     }
-     
+
    /**
     *   Set the reference ID for this Assertion.
     *  <p>
@@ -122,14 +122,14 @@ public class AssertionRefImpl implements AssertionRef {
     * @see #getRef
     */
     public void setRef(String id) throws TestFileException {
-	if (id == null || id.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.doc.assertionref.id.null") );
+    if (id == null || id.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.doc.assertionref.id.null") );
 
 
-	if (! valid(id))
-	    throw new TestFileException(LibResHandler.getResStr("api.doc.assertionref.id.invalid", id) );
+    if (! valid(id))
+        throw new TestFileException(LibResHandler.getResStr("api.doc.assertionref.id.invalid", id) );
 
-	m_ID = id;
+    m_ID = id;
     }
 
 }

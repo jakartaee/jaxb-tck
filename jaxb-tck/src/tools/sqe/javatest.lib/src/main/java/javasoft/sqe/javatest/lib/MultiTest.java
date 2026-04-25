@@ -32,88 +32,88 @@ import javasoft.sqe.javatest.Test;
 
 /**
  * Base class for tests with multiple sub test cases.
- * This base class implements the standard javasoft.sqe.javatest.Test 
+ * This base class implements the standard javasoft.sqe.javatest.Test
  * features so that you can provide the additional test cases without concern about
- * the boilerplate needed to execute individual test case methods.  
- * MultiTest is designed as a base class used during development 
- * of new test classes.  In contrast to MultiTest, UmbrellaTest is designed 
- * as a packaging aid for existing test classes.  
+ * the boilerplate needed to execute individual test case methods.
+ * MultiTest is designed as a base class used during development
+ * of new test classes.  In contrast to MultiTest, UmbrellaTest is designed
+ * as a packaging aid for existing test classes.
  *
  * <P>You must add individual test case methods to your derived test class
- * to create a useful test class. Each test case method must take no 
- * arguments.  If you need to pass an argument into a test method, you should 
- * design a wrapper test case to calculate the argument values and then call 
- * the test method with the correct arguments.  The test case methods must 
- * implement this interface: 
+ * to create a useful test class. Each test case method must take no
+ * arguments.  If you need to pass an argument into a test method, you should
+ * design a wrapper test case to calculate the argument values and then call
+ * the test method with the correct arguments.  The test case methods must
+ * implement this interface:
  * <BLOCKQUOTE>
  * <STRONG><CODE>public Status methodName( )</CODE></STRONG>
  * </BLOCKQUOTE>
  *
- * <P>For examples of how to use this class see the 
+ * <P>For examples of how to use this class see the
  * TO BE PUT LATER test classes.
  *
  * <P>Possible future additions may include
  * <UL>
- * <LI>Method to assert a boolean expression and return a Status 
+ * <LI>Method to assert a boolean expression and return a Status
  * <LI>Method to assert string equality and return a Status
  * <LI>Method to parse argv for known and specified arrays from JavaTest
- * <LI>Methods to be called just before the test and just after the test 
+ * <LI>Methods to be called just before the test and just after the test
  *     is executed.
  *</UL>
  *
  * @see javasoft.sqe.javatest.Test
  * @see javasoft.sqe.javatest.lib.UmbrellaTest
  *
- * @version @(#)MultiTest.java	1.25 
+ * @version @(#)MultiTest.java  1.25
  * @author Kevin A. Smith
  */
 
 public class MultiTest implements Test {
     public static class SetupException extends Exception {
-	/**
-	 * Construct a new SetupException object that signals failure
-	 * with a corresponding message.
-	 * 
-	 * @param s the string containing a comment
-	 */
-	public SetupException(String s) {
-	    super(s);
-	}
-	
-	/**
-	 * Creates SetupException object which indicates that 
-	 * this test is not applicable. The cases when it is needed 
-	 * are rare, so please think twice whether you really need it.
-	 * 
-	 * @param s the string containing a comment
-	 */
-	public static SetupException notApplicable(String msg) {
-	    SetupException e = new SetupException("Test not applicable: " + msg);
-	    e.passed = true;
-	    return e;
-	}
-	
-	/**
-	 * Determines whether this SetupException signals failure or not.
-	 * 
-	 */
-	public boolean isPassed() {
-	    return passed;
-	    
-	}
+    /**
+     * Construct a new SetupException object that signals failure
+     * with a corresponding message.
+     *
+     * @param s the string containing a comment
+     */
+    public SetupException(String s) {
+        super(s);
+    }
 
-	/**
-	 * Indicate whether this exception was the result of calling {@notApplicable}.
-	 * @serial
-	 */
-	private boolean passed = false;
+    /**
+     * Creates SetupException object which indicates that
+     * this test is not applicable. The cases when it is needed
+     * are rare, so please think twice whether you really need it.
+     *
+     * @param s the string containing a comment
+     */
+    public static SetupException notApplicable(String msg) {
+        SetupException e = new SetupException("Test not applicable: " + msg);
+        e.passed = true;
+        return e;
+    }
+
+    /**
+     * Determines whether this SetupException signals failure or not.
+     *
+     */
+    public boolean isPassed() {
+        return passed;
+
+    }
+
+    /**
+     * Indicate whether this exception was the result of calling {@notApplicable}.
+     * @serial
+     */
+    private boolean passed = false;
     }
 
 
-    /** 
+    /**
      * Run the test contained in this object.
      *
-     * Implements Test.run using reflection to call test methods specified 
+     * Implements Test.run using reflection to call test methods specified
      * in the testMethods array.  Each test method specified in the testMethods
      * array can take no arguments.
      *
@@ -124,29 +124,29 @@ public class MultiTest implements Test {
      * @see #decodeAllArgs
      * @see #init
      *
-     * @param argv Execute arguments passed in from either the 
+     * @param argv Execute arguments passed in from either the
      *             command line or the execution harness.
      * @param log Output stream for general messages from the tests.
      * @param ref Output stream for reference output from the tests.
      * @return Overall status of running all of the test cases.
      */
     public final Status run(String[] argv, PrintStream log, PrintStream ref) {
-	PrintWriter pwLog = new PrintWriter(new OutputStreamWriter(log));
-	PrintWriter pwRef = new PrintWriter(new OutputStreamWriter(ref));
-	try {
-	    return run(argv, pwLog, pwRef);
-	}
-	finally {
-	    pwLog.flush();
-	    pwRef.flush();
-	}
+    PrintWriter pwLog = new PrintWriter(new OutputStreamWriter(log));
+    PrintWriter pwRef = new PrintWriter(new OutputStreamWriter(ref));
+    try {
+        return run(argv, pwLog, pwRef);
+    }
+    finally {
+        pwLog.flush();
+        pwRef.flush();
+    }
     }
 
 
-    /** 
+    /**
      * Run the test contained in this object.
      *
-     * Implements Test.run using reflection to call test methods specified 
+     * Implements Test.run using reflection to call test methods specified
      * in the testMethods array.  Each test method specified in the testMethods
      * array can take no arguments.
      *
@@ -154,13 +154,13 @@ public class MultiTest implements Test {
      * decode command line arguments, and then calls the init method to perform
      * any other initialization.
      * To add parsing for new arguments you need to override the decodeArg method.
-     * The init method may also be overridden in case you need additional  
+     * The init method may also be overridden in case you need additional
      * initialization.
      *
      * @see #decodeAllArgs
      * @see #init
      *
-     * @param argv Execute arguments passed in from either the 
+     * @param argv Execute arguments passed in from either the
      *             command line or the execution harness.
      * @param log Output stream for general messages from the tests.
      *            Is assigned to this.log.
@@ -169,113 +169,113 @@ public class MultiTest implements Test {
      * @return Overall status of running all of the test cases.
      */
     public Status run(String[] argv, PrintWriter log, PrintWriter ref) {
-	MultiStatus ms = new MultiStatus(log);
+    MultiStatus ms = new MultiStatus(log);
 
         // assign log and reference output streams
         this.ref = ref;
         this.log = log;
 
-	Status initStatus = init(argv);
-	if (testNotApplicable 
-		|| (initStatus != null && initStatus.getType( ) != Status.PASSED)) {
-	    return initStatus;
-	}
+    Status initStatus = init(argv);
+    if (testNotApplicable
+        || (initStatus != null && initStatus.getType( ) != Status.PASSED)) {
+        return initStatus;
+    }
 
-	/* Loop through the array of test cases
-	 * Each test case should have a method 
-	 * with the same name that takes no arguments
-	 */
-	if (testMethods == null)
-	    return Status.failed("No test cases supplied");
+    /* Loop through the array of test cases
+     * Each test case should have a method
+     * with the same name that takes no arguments
+     */
+    if (testMethods == null)
+        return Status.failed("No test cases supplied");
 
-	for (int i = 0; i < testMethods.length; ++i) {
-	    Status status = null;
+    for (int i = 0; i < testMethods.length; ++i) {
+        Status status = null;
 
-	    if (testMethods[i] == null) {
-		status = Status.failed( 
-		  "Test method is null for test case # " + i );
-	    }
-	    else {
-		try {
-		    Method m = testMethods[i];
+        if (testMethods[i] == null) {
+        status = Status.failed(
+          "Test method is null for test case # " + i );
+        }
+        else {
+        try {
+            Method m = testMethods[i];
 
-		    if (excludeTestCases.contains(m.getName()))
-			continue;
+            if (excludeTestCases.contains(m.getName()))
+            continue;
 
-		    status = invokeTestCase(testMethods[i]);
-		}
-		catch (IllegalAccessException e) {
-		    status = Status.failed("Could not execute test case: " +
-					       testMethods[i]);
-		}
-		catch (InvocationTargetException e) {
-		    printStackTrace(e.getTargetException());
-		    status = Status.failed("Test case throws exception: " +
-					       e.getTargetException().toString());
-		}
-		catch (RuntimeException e) {
-		    printStackTrace(e);
-		    status = Status.failed("Could not access the test case: " +
-					       e.toString());
-		}
-		catch (ThreadDeath t) {
-		    printStackTrace(t);
-		    throw t;
-		}
-		catch (Throwable t) {
-		    printStackTrace(t);
-		    status = Status.failed("Unexpected Throwable: " + t);
-		}
-	    }
+            status = invokeTestCase(testMethods[i]);
+        }
+        catch (IllegalAccessException e) {
+            status = Status.failed("Could not execute test case: " +
+                           testMethods[i]);
+        }
+        catch (InvocationTargetException e) {
+            printStackTrace(e.getTargetException());
+            status = Status.failed("Test case throws exception: " +
+                           e.getTargetException().toString());
+        }
+        catch (RuntimeException e) {
+            printStackTrace(e);
+            status = Status.failed("Could not access the test case: " +
+                           e.toString());
+        }
+        catch (ThreadDeath t) {
+            printStackTrace(t);
+            throw t;
+        }
+        catch (Throwable t) {
+            printStackTrace(t);
+            status = Status.failed("Unexpected Throwable: " + t);
+        }
+        }
 
-	    ms.add(testMethods[i].getName(), status);
-	}
+        ms.add(testMethods[i].getName(), status);
+    }
 
-	return ms.getStatus();
+    return ms.getStatus();
     }
 
 
-    /** 
+    /**
      * Parses the arguments passed to the test.
      *
-     * This method embodies the main for loop for all of the 
-     * execute arguments. It calls <CODE>decodeArg</CODE> 
+     * This method embodies the main for loop for all of the
+     * execute arguments. It calls <CODE>decodeArg</CODE>
      * for successive arguments in the argv array.
      *
      * @param argv execute arguments from the test harness or from the
      *             command line.
      *
-     * @exception SetupException raised when an invalid parameter is passed, 
+     * @exception SetupException raised when an invalid parameter is passed,
      * or another error occurred.
      *
-     * @see #decodeArg 
+     * @see #decodeArg
      */
     protected final void decodeAllArgs( String argv[] ) throws SetupException {
-	/* Please note, we do not increment i
-	 * that happens when decodeArg returns the 
-	 * number of array elements consumed
-	 */
-	for (int i = 0 ; i < argv.length; ) {
-	    int elementsConsumed = decodeArg(argv, i);
-	    if (elementsConsumed == 0 ) {
-		// The argument was not recognized.
-		throw new SetupException("Could not recognize argument: " + argv[i]);
-	    }
-	    i += elementsConsumed;
-	}
+    /* Please note, we do not increment i
+     * that happens when decodeArg returns the
+     * number of array elements consumed
+     */
+    for (int i = 0 ; i < argv.length; ) {
+        int elementsConsumed = decodeArg(argv, i);
+        if (elementsConsumed == 0 ) {
+        // The argument was not recognized.
+        throw new SetupException("Could not recognize argument: " + argv[i]);
+        }
+        i += elementsConsumed;
+    }
     }
 
 
-    /** 
+    /**
      * Decode the next argument in the argument array.
-     * May be overridden to parse additional execute arguments.  
+     * May be overridden to parse additional execute arguments.
      *
      * The default behavior of decodeArg( String argv[], int index )
-     * is to parse test case IDs starting from <CODE>index</CODE> 
+     * is to parse test case IDs starting from <CODE>index</CODE>
      * from execute arguments <CODE>argv</CODE>.
-     * <P>The derived class may override this method to provide 
+     * <P>The derived class may override this method to provide
      * parsing of additional arguments. However, it is recommended
-     * for this method to return super.decodeArg() if it 
+     * for this method to return super.decodeArg() if it
      * does not recognize the argument. So it has to parse
      * specific for derived class arguments only.
      *
@@ -288,74 +288,74 @@ public class MultiTest implements Test {
      * getAllTestCases() is called to gather the list of all methods
      * that match the test method signature.
      *
-     * <P>Once the execute argument <EM>-TestCaseID</EM> is found, all 
-     * subsequent execute arguments will be treated as test case method 
-     * names until either the execute argument array is exhausted or 
+     * <P>Once the execute argument <EM>-TestCaseID</EM> is found, all
+     * subsequent execute arguments will be treated as test case method
+     * names until either the execute argument array is exhausted or
      * an execute argument that begins with <EM>-</EM> is found.
      *
-     * @param argv execute arguments from the test harness or from the 
+     * @param argv execute arguments from the test harness or from the
      *             command line
      * @param index current index into argv.
      *
-     * @exception SetupException raised when an invalid argument is passed, 
+     * @exception SetupException raised when an invalid argument is passed,
      * or another error occurred.
      *
-     * @see #decodeAllArgs 
-     * @see #testMethods 
+     * @see #decodeAllArgs
+     * @see #testMethods
      */
     protected int decodeArg( String argv[], int index ) throws SetupException {
-	if (argv[index].equals("-exclude")) {
-	    split(argv[index + 1], excludeTestCases);
-	    return 2;
-	}
-	    
-	if (!argv[index].equals("-TestCaseID") ) 
-	    return 0;
+    if (argv[index].equals("-exclude")) {
+        split(argv[index + 1], excludeTestCases);
+        return 2;
+    }
 
-	/* consume elements until it is done
-	 * creating the array of test case id's
-	 * return the number of elements consumed
-	 */
-	int i = index + 1;
-	if (i < argv.length && argv[i].equals("ALL")) {
-	    getAllTestCases();
-	    return 2;
-	}
+    if (!argv[index].equals("-TestCaseID") )
+        return 0;
 
-	Vector tests = new Vector();
-	while (i < argv.length && ! argv[i].startsWith("-") ) {
-	    tests.addElement(getTestCase(argv[i++]));
-	}
+    /* consume elements until it is done
+     * creating the array of test case id's
+     * return the number of elements consumed
+     */
+    int i = index + 1;
+    if (i < argv.length && argv[i].equals("ALL")) {
+        getAllTestCases();
+        return 2;
+    }
 
-	if (tests.size() <= 0 )
-	    throw new SetupException("No test case(s) specified");
+    Vector tests = new Vector();
+    while (i < argv.length && ! argv[i].startsWith("-") ) {
+        tests.addElement(getTestCase(argv[i++]));
+    }
 
-	testMethods = new Method[tests.size()];
-	tests.copyInto(testMethods);
+    if (tests.size() <= 0 )
+        throw new SetupException("No test case(s) specified");
 
-	return i - index;
+    testMethods = new Method[tests.size()];
+    tests.copyInto(testMethods);
+
+    return i - index;
     }
 
     private void printStackTrace(Throwable t) {
-	PrintStream ps = Deprecated.createPrintStream(new WriterStream(log));
-	t.printStackTrace(ps);
-	ps.close();
+    PrintStream ps = Deprecated.createPrintStream(new WriterStream(log));
+    t.printStackTrace(ps);
+    ps.close();
     }
 
     private void split(String s, Vector v) {
-	int start = 0;
-	for (int i = s.indexOf(','); i != -1; i = s.indexOf(',', start)) {
-	    v.addElement(s.substring(start, i));
-	    start = i + 1;
-	}
-	if (start != s.length())
-	    v.addElement(s.substring(start));
+    int start = 0;
+    for (int i = s.indexOf(','); i != -1; i = s.indexOf(',', start)) {
+        v.addElement(s.substring(start, i));
+        start = i + 1;
+    }
+    if (start != s.length())
+        v.addElement(s.substring(start));
     }
 
-    /** 
+    /**
      * A setup method called after argument decoding is complete,
      * and before the test cases are executed. By default, it does
-     * nothing; it may be overridden to provide additional behavior. 
+     * nothing; it may be overridden to provide additional behavior.
      *
      * @throws SetupException if processing should not continue.
      * This may be due to some inconsistency in the arguments,
@@ -367,7 +367,7 @@ public class MultiTest implements Test {
 
     /** Creates a test case method using the name of the method.
      *
-     * This method uses reflection to find the method with given name 
+     * This method uses reflection to find the method with given name
      * that implement the standard test case method signature:
      *
      * <BLOCKQUOTE>
@@ -382,31 +382,31 @@ public class MultiTest implements Test {
      * as part of the test.  As an example, see the SerializeTests
      * base class.
      *
-     * @exception SetupException raised when no method with given name 
+     * @exception SetupException raised when no method with given name
      * and signature is found, or another error occurred.
      *
      * @see #decodeArg
      */
     protected Method getTestCase(String testCase) throws SetupException {
-	try {
-	    Method test = testClass.getMethod( testCase, testArgTypes );
-	    if ( ! Status.class.isAssignableFrom( test.getReturnType()) )
-		throw new SetupException( "Method for test case '" + 
-		    testCase + "' has wrong return type" ); 
-	    return test;
-	} 
-	catch (NoSuchMethodException e) {
-	    throw new SetupException("Could not find test case: " + testCase);
-	} 
-	catch (SecurityException e) {
-	    throw new SetupException("Failed during setup: " + e.toString());
-	}
+    try {
+        Method test = testClass.getMethod( testCase, testArgTypes );
+        if ( ! Status.class.isAssignableFrom( test.getReturnType()) )
+        throw new SetupException( "Method for test case '" +
+            testCase + "' has wrong return type" );
+        return test;
+    }
+    catch (NoSuchMethodException e) {
+        throw new SetupException("Could not find test case: " + testCase);
+    }
+    catch (SecurityException e) {
+        throw new SetupException("Failed during setup: " + e.toString());
+    }
     }
 
-    protected Status invokeTestCase(Method m) 
-		throws IllegalAccessException, InvocationTargetException {
-	Object[] testArgs = { };
-	return (Status)(m.invoke(this, testArgs));
+    protected Status invokeTestCase(Method m)
+        throws IllegalAccessException, InvocationTargetException {
+    Object[] testArgs = { };
+    return (Status)(m.invoke(this, testArgs));
     }
 
 
@@ -431,129 +431,129 @@ public class MultiTest implements Test {
      * as part of the test.  As an example, see the SerializeTests
      * base class.
      *
-     * @exception SetupException raised when no methods matching the test 
+     * @exception SetupException raised when no methods matching the test
      * method signature is found, or another error occurred.
      *
-     * @see #testMethods 
+     * @see #testMethods
      */
     protected void getAllTestCases() throws SetupException {
-	Vector tests = new Vector();
-	Vector sortedTests = new Vector();
-	Vector reversed = new Vector();
+    Vector tests = new Vector();
+    Vector sortedTests = new Vector();
+    Vector reversed = new Vector();
 
-	try {
-	    /* Get public methods for this class
-	     * Loop through them to get methods that return Status
-	     * and have no parameters
-	     */
-	    Method[] methods = testClass.getMethods();
-	    for (int i = 0; i < methods.length; ++i) {
-		
-		Class[] paramTypes = methods[i].getParameterTypes();
-		Class returnType = methods[i].getReturnType();
-		if ((paramTypes.length == 0) &&
-		    Status.class.isAssignableFrom( returnType ) ) {
-		    tests.addElement( methods[i] );
-		}
-	    }
+    try {
+        /* Get public methods for this class
+         * Loop through them to get methods that return Status
+         * and have no parameters
+         */
+        Method[] methods = testClass.getMethods();
+        for (int i = 0; i < methods.length; ++i) {
 
-	    // Check if testcases should be run in sorted order
-	    // (For internal testing only)
-	    testcaseOrder = System.getProperty("multitest.testcaseOrder");
+        Class[] paramTypes = methods[i].getParameterTypes();
+        Class returnType = methods[i].getReturnType();
+        if ((paramTypes.length == 0) &&
+            Status.class.isAssignableFrom( returnType ) ) {
+            tests.addElement( methods[i] );
+        }
+        }
 
-	    if ((tests.size() > 0) && (testcaseOrder != null) && 
-		(testcaseOrder.equals("sorted") ||
-		testcaseOrder.equals("reverseSorted"))) {
-		Object[] methodNameArray = new Object[tests.size()]; 
-		Hashtable ht = new Hashtable();
-		Method m;
+        // Check if testcases should be run in sorted order
+        // (For internal testing only)
+        testcaseOrder = System.getProperty("multitest.testcaseOrder");
 
-		for (Enumeration e = tests.elements(); e.hasMoreElements();) {
-		    m = (Method)e.nextElement();
-		    ht.put(m.getName(), m);		
-		}
+        if ((tests.size() > 0) && (testcaseOrder != null) &&
+        (testcaseOrder.equals("sorted") ||
+        testcaseOrder.equals("reverseSorted"))) {
+        Object[] methodNameArray = new Object[tests.size()];
+        Hashtable ht = new Hashtable();
+        Method m;
 
-		int j = 0;
-		for (Enumeration e = tests.elements(); e.hasMoreElements();) {
-		    methodNameArray[j] = ((Method)e.nextElement()).getName();
-		    j++;
-		}
+        for (Enumeration e = tests.elements(); e.hasMoreElements();) {
+            m = (Method)e.nextElement();
+            ht.put(m.getName(), m);
+        }
 
-		Arrays.sort(methodNameArray);
+        int j = 0;
+        for (Enumeration e = tests.elements(); e.hasMoreElements();) {
+            methodNameArray[j] = ((Method)e.nextElement()).getName();
+            j++;
+        }
 
-		for (int i=0; i < methodNameArray.length; i++)
-		    sortedTests.addElement(ht.get(methodNameArray[i]));
+        Arrays.sort(methodNameArray);
 
-		if (testcaseOrder.equals("reverseSorted")) {
-		    reversed = reverse(sortedTests);
-		    sortedTests = reversed;
-		}
-	    }
-	} 
-	catch (SecurityException e ) {
-	    throw new SetupException( "Failed during setup: " + e.toString() );
-	} 
+        for (int i=0; i < methodNameArray.length; i++)
+            sortedTests.addElement(ht.get(methodNameArray[i]));
 
-	/* Check size of vector, if <= 0, no methods match signature
-	 * if > 0, copy values into testMethods array
-	 */
-	if (tests.size() <= 0)
-	    throw new SetupException( "No methods match signature: \"public Status methodName()\"" );
+        if (testcaseOrder.equals("reverseSorted")) {
+            reversed = reverse(sortedTests);
+            sortedTests = reversed;
+        }
+        }
+    }
+    catch (SecurityException e ) {
+        throw new SetupException( "Failed during setup: " + e.toString() );
+    }
 
-	testMethods = new Method[tests.size()];
-	if ((testcaseOrder != null) &&
-	    (testcaseOrder.equals("sorted") ||
-	     testcaseOrder.equals("reverseSorted"))) 
-	    sortedTests.copyInto( testMethods );
-	else
-	    tests.copyInto( testMethods );
+    /* Check size of vector, if <= 0, no methods match signature
+     * if > 0, copy values into testMethods array
+     */
+    if (tests.size() <= 0)
+        throw new SetupException( "No methods match signature: \"public Status methodName()\"" );
+
+    testMethods = new Method[tests.size()];
+    if ((testcaseOrder != null) &&
+        (testcaseOrder.equals("sorted") ||
+         testcaseOrder.equals("reverseSorted")))
+        sortedTests.copyInto( testMethods );
+    else
+        tests.copyInto( testMethods );
     }
 
     // Reverse a vector containing methods to run
     public Vector reverse(Vector v) {
-	Vector reversed = new Vector();
-	
-	for (int i = v.size()-1; i >= 0; i--)
-	    reversed.addElement(v.elementAt(i));
-	
-	return reversed;
+    Vector reversed = new Vector();
+
+    for (int i = v.size()-1; i >= 0; i--)
+        reversed.addElement(v.elementAt(i));
+
+    return reversed;
     }
 
 
-    /** 
-     * 
+    /**
+     *
      * Initialize the test from the given arguments.
-     * 
+     *
      * @deprecated Use decodeArg(String and init() instead.
      */
-    protected Status init(String[] argv) { 
-     	/* Decode test arguments and delegate all other
-	 * test setup to the init method provided by
-	 * derived classes
-	 */
-	try {
-	    decodeAllArgs(argv);
+    protected Status init(String[] argv) {
+        /* Decode test arguments and delegate all other
+     * test setup to the init method provided by
+     * derived classes
+     */
+    try {
+        decodeAllArgs(argv);
 
-	    if (testMethods == null) {
-		/* Assuming that all test cases should be run 
-		 * if no "-TestCaseID" argument is specified.
-		 */
-		getAllTestCases();
-	    }
+        if (testMethods == null) {
+        /* Assuming that all test cases should be run
+         * if no "-TestCaseID" argument is specified.
+         */
+        getAllTestCases();
+        }
 
-	    init();
-	    return null;
-	}
-	catch (SetupException e) {
-	    testNotApplicable = true;
-	    return (e.isPassed() 
-			? Status.passed(e.getMessage()) 
-		    	: Status.failed(e.getMessage()) );
-	}
+        init();
+        return null;
+    }
+    catch (SetupException e) {
+        testNotApplicable = true;
+        return (e.isPassed()
+            ? Status.passed(e.getMessage())
+                : Status.failed(e.getMessage()) );
+    }
     }
 
 
-    /* Convenience variables, also added to improve performance 
+    /* Convenience variables, also added to improve performance
      */
     protected final Class testClass = this.getClass();
 
@@ -563,8 +563,8 @@ public class MultiTest implements Test {
 
 
 
-    /** 
-     * Output to be logged to result file.  
+    /**
+     * Output to be logged to result file.
      *
      * Output to this PrintWriter is not used during golden file comparison.
      * Also used to output the Status from each individual test case.
@@ -572,7 +572,7 @@ public class MultiTest implements Test {
     protected PrintWriter log;
 
 
-    /** 
+    /**
      * Output that can be used as reference.
      *
      * Output to this PrintWriter is used during golden file comparison.
@@ -580,7 +580,7 @@ public class MultiTest implements Test {
     protected PrintWriter ref;
 
 
-    /** 
+    /**
      * The list of test case methods to be executed.
      *
      * An array of test case methods to be executed. It is usually filled
@@ -592,7 +592,7 @@ public class MultiTest implements Test {
     // Order of testcase execution (for internal testing only)
     private String testcaseOrder;
 
-    /** 
+    /**
      * Formerly served as the list of test case methods to be executed.
      *
      * Left for backward compatibility only. Due to be deleted soon.

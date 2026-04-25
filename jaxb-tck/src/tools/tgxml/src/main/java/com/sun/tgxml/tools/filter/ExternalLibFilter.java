@@ -54,14 +54,14 @@ import com.sun.tgxml.util.MiscUtils;
  * This tool is a wrapper tool. It does the following:
  * <ul>
  * <li>parses command line options</li>
- * <li>parses all passed Libraries (default XML parser inherited from 
+ * <li>parses all passed Libraries (default XML parser inherited from
  *     XMLValToolBase is used)</li>
- * <li>creates an instance of LibFilterFactrory, that provides 
+ * <li>creates an instance of LibFilterFactrory, that provides
  *     LibAttributesFilter, LibDependencyFilter, LibMapFile implementations.
- *     The LibFilterFactrory class name can be specified via 
+ *     The LibFilterFactrory class name can be specified via
  *     "libfilter.LibFilterFactrory" build property. If not specified
- *     "com.sun.tgxml.tools.filter.libutil.DefaultLibFilterFactrory" 
- *     will be used<li> 
+ *     "com.sun.tgxml.tools.filter.libutil.DefaultLibFilterFactrory"
+ *     will be used<li>
  * <li>sequentially applies LibAttributesFilter and LibDependencyFilter</li>
  * <li>applies LibMapFile to write resulting map file</li>
  * <li>emits selected and cleaned Libraries into output directory
@@ -81,7 +81,7 @@ public class ExternalLibFilter extends XMLValToolBase {
     protected String deptreeFileName;
 
     public ExternalLibFilter(PrintStream out, PrintStream err) {
-	super(out, err, "ExternalLibFilter");
+    super(out, err, "ExternalLibFilter");
     }
 
     public static void main(String args[]) {
@@ -90,9 +90,9 @@ public class ExternalLibFilter extends XMLValToolBase {
     }
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
@@ -131,7 +131,7 @@ public class ExternalLibFilter extends XMLValToolBase {
 
 
     /**
-     * specifies the directory name for storage intermediate 
+     * specifies the directory name for storage intermediate
      * lib.xml files for filtered libs.
      */
     protected StringOption outputOption = new StringOption(
@@ -143,7 +143,7 @@ public class ExternalLibFilter extends XMLValToolBase {
     /**
      * Registers options
      */
-    public void registerOptions() {         
+    public void registerOptions() {
         super.registerOptions();
         removeOption(fileOption);
 
@@ -155,7 +155,7 @@ public class ExternalLibFilter extends XMLValToolBase {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
     public void applyOptionsValues() throws ParseArgumentException {
@@ -188,7 +188,7 @@ public class ExternalLibFilter extends XMLValToolBase {
     protected void setOperandsValidator() {
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
     *
     * ----------------------------------------------------------------------
@@ -201,7 +201,7 @@ public class ExternalLibFilter extends XMLValToolBase {
     /**
      * Parses libXmlListFile file that contains list of .lib.xml files.
      * Returns array list of xml file names from the file
-     * @throws TestFileException when one of lib.xml file either not found 
+     * @throws TestFileException when one of lib.xml file either not found
      *         or have not .lib.xml suffix
      * @throws IOException if there is some type of IO problem with reading
      *         libXmlListFile
@@ -247,10 +247,10 @@ public class ExternalLibFilter extends XMLValToolBase {
                 badFiles.append("    " + name + "\n");
             }
         }
-        if (badFiles.length() == 0) 
+        if (badFiles.length() == 0)
             return xmls;
         else
-            throw new TestFileException("The following files:\n" + badFiles + 
+            throw new TestFileException("The following files:\n" + badFiles +
                 "either not found " +
                 "or have not .lib.xml suffix " +
                 "or do not belong to any repository");
@@ -265,7 +265,7 @@ public class ExternalLibFilter extends XMLValToolBase {
             String name = (String)names.get(i);
             int index = name.lastIndexOf(':');
             if (index > 0) {
-                String rep = name.substring(0, index);           
+                String rep = name.substring(0, index);
                 String relPath = name.substring(index+1);
                 if (!reposName.equals(rep)) {
                     badFiles.append("    " + name + "\n");
@@ -279,21 +279,21 @@ public class ExternalLibFilter extends XMLValToolBase {
                 badFiles.append("    " + xmls[i] + "\n");
             }
         }
-        if (badFiles.length() == 0) 
+        if (badFiles.length() == 0)
             return xmls;
         else
-            throw new TestFileException("The following files:\n" + badFiles + 
+            throw new TestFileException("The following files:\n" + badFiles +
                 "either not found " +
                 "or have not .lib.xml suffix " +
                 "or do not belong to the specified repository: " + reposName);
     }
 
-    /** 
+    /**
      * Parses lib.xml files to Library[].
      * @throws TestFileException if xml file cannot be parsed or not a Library.
      * @throws IOException if there is an IO problem.
      */
-    protected Library[] parseXMLs(String libXmlListFile) 
+    protected Library[] parseXMLs(String libXmlListFile)
             throws TestFileException, IOException {
 
         IRObj[] irs;
@@ -305,7 +305,7 @@ public class ExternalLibFilter extends XMLValToolBase {
                 allLibs[i] = (Library)irs[i];
                 if (tckSourceDir == null) {
                     // parser does not set AttrElems
-                    IR.setAttrElem(allLibs[i], IR.SourcePathAttrElemName, 
+                    IR.setAttrElem(allLibs[i], IR.SourcePathAttrElemName,
                         repositories[i] + File.separator + relativePaths[i]);
                     IR.setAttrElem(allLibs[i], IR.relSourcePathAttrElemName,
                         relativePaths[i]);
@@ -317,7 +317,7 @@ public class ExternalLibFilter extends XMLValToolBase {
         return allLibs;
     }
 
-    /** 
+    /**
      * Emits filtered Libraries. The name of generated xml file are calculated
      * as outputDir + "relSourcePath".
      * @throws TestFileException Library cannot be emitted
@@ -331,16 +331,16 @@ public class ExternalLibFilter extends XMLValToolBase {
             Library lib = libMap.get(libID);
             emitXML(lib);
         }
-         
+
     }
 
-    /** 
+    /**
      * Emits single Library
      */
     protected void emitXML(Library lib) throws TestFileException, IOException {
         String relPath = IR.getAttrElem(IR.relSourcePathAttrElemName, lib);
         if (relPath == null) {
-            throw new TestFileException("Cannot get relativePath for: " + 
+            throw new TestFileException("Cannot get relativePath for: " +
                     IR.getID(lib));
         }
         String xmlFileName = outputDir + relPath;
@@ -350,7 +350,7 @@ public class ExternalLibFilter extends XMLValToolBase {
     }
 
 
-    /** 
+    /**
      * Creates file with library dependency tree in format of
      * DependencyAnalyzerTool
      */
@@ -376,17 +376,17 @@ public class ExternalLibFilter extends XMLValToolBase {
 
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
     *
     * ----------------------------------------------------------------------
     */
 
 
-    /** 
-     * Selects and parses input files, filter the Library array, 
+    /**
+     * Selects and parses input files, filter the Library array,
      * and emit the cleaned tree.
-     * 
+     *
      * @throws TestFileException If there is a problem with the IR parse tree.
      * @throws IOException if there is an IO problem.
      */
@@ -402,7 +402,7 @@ public class ExternalLibFilter extends XMLValToolBase {
 
         // filter libraries
         LibMap libMap = null;
-        try {            
+        try {
             libMap = FilterUtil.filterLibBundle(libs, pluginName, factory,null);
         } catch (FilteringException fe) {
             throw new TestFileException(
@@ -416,7 +416,7 @@ public class ExternalLibFilter extends XMLValToolBase {
         libMapFile.setFileName(libmapFileName);
         libMapFile.write();
 
-        
+
         // emit filtered libs
         emitXMLs(libMap);
 

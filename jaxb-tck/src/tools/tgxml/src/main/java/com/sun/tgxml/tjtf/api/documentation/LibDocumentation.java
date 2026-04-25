@@ -21,14 +21,14 @@ package com.sun.tgxml.tjtf.api.documentation;
 // </importgen>
 
 /**
- * LibDocumentation - 
+ * LibDocumentation -
  *
  * <b>LibDocumentation</b> is the typed-documentation interface for describing the documentation
  * associated with a Library.
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -47,7 +47,7 @@ public  interface LibDocumentation extends Documentation  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters

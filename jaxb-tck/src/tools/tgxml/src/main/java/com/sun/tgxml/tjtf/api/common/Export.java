@@ -21,21 +21,21 @@ package com.sun.tgxml.tjtf.api.common;
 // </importgen>
 
 /**
- * Export - 
+ * Export -
  *
  * <b>Export</b> describes that an internal code/data element is to be exported to
  * an external file.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    Export 
+ *    Export
  * ============================================================================================
  */
 
@@ -55,7 +55,7 @@ public  interface Export {
     * @see #setTargetName
     */
     public String getTargetName();
-     
+
   /**
     *   Set the Filename for the exportable.
     *  <p>
@@ -64,7 +64,7 @@ public  interface Export {
     */
     public void setTargetName(String filename);
 
-     
+
   /**
     *   Is this item exportable (predicate).
     *  <p>
@@ -72,7 +72,7 @@ public  interface Export {
     */
     public boolean isExport();
 
-   
+
 
 }
 

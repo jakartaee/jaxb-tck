@@ -22,35 +22,35 @@ import com.sun.tgxml.tjtf.processors.Processor;
 import com.sun.tgxml.tjtf.tools.Shell;
 import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
 
-/** 
- * ProcessorImpl - The basic functionality for a processor. 
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ProcessorImpl 
- * ============================================================================================ 
- */ 
+/**
+ * ProcessorImpl - The basic functionality for a processor.
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ProcessorImpl
+ * ============================================================================================
+ */
 public class ProcessorImpl extends StandardOptionHandler implements Processor {
 
     protected Shell m_shell;
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
-   /** 
-    *   ProcessorImpl constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
+   /**
+    *   ProcessorImpl constructor -
+    *       Initialize our internal fields.
+    */
     public ProcessorImpl() {
     }
 
@@ -62,7 +62,7 @@ public class ProcessorImpl extends StandardOptionHandler implements Processor {
     * @param shellClass The shell that owns this parser.
     */
     public void setShell(Shell shellClass) {
-	m_shell = shellClass;
+    m_shell = shellClass;
     }
 
   /**
@@ -71,7 +71,7 @@ public class ProcessorImpl extends StandardOptionHandler implements Processor {
     * @returns The shell that owns this parser.
     */
     public Shell getShell() {
-	return m_shell;
+    return m_shell;
     }
 
 }

@@ -22,13 +22,13 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * AssertionRef - 
+ * AssertionRef -
  *
  * <b>AssertionRef</b> is an external reference to a portion of a specification that describes a statement
  *  (assertion) that is to be tested. An AssertionRef contains an <em>assertion reference-ID</em> which
  * can be used to document and identify the assertion statement.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -49,7 +49,7 @@ public interface AssertionRef extends Assertion {
      * ============================================================================================
      */
 
-   
+
 
   /**
     *   Validator.
@@ -76,7 +76,7 @@ public interface AssertionRef extends Assertion {
     * @see #setRef
     */
     public String getRef();
-     
+
    /**
     *   Set the reference ID for this Assertion.
     *  <p>

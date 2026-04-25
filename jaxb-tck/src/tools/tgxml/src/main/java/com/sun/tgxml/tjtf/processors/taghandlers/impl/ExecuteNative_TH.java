@@ -29,50 +29,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * ExecuteNative_TH - The tag-handler for a Description tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ExecuteNative_TH 
- * ============================================================================================ 
- */ 
+/**
+ * ExecuteNative_TH - The tag-handler for a Description tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ExecuteNative_TH
+ * ============================================================================================
+ */
 public class ExecuteNative_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   ExecuteNative_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   ExecuteNative_TH constructor -
+    *       Initialize our internal fields.
+    */
     public ExecuteNative_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,13 +83,13 @@ public class ExecuteNative_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_executenative;
+    return TagsImpl.ctStr_tag_executenative;
     }
 
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -97,38 +97,38 @@ public class ExecuteNative_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
+    super.endTag(text);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
 
-	if (testitem == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+    if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	if (! (testitem instanceof TestGroupAttributes)  )
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), 
-						 TagsImpl.ctStr_tag_testgroupattributes));
+    if (! (testitem instanceof TestGroupAttributes)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(),
+                         TagsImpl.ctStr_tag_testgroupattributes));
 
-	//  Nothing is pushed onto the stack
-	TestGroupAttributes tga = (TestGroupAttributes) testitem;
+    //  Nothing is pushed onto the stack
+    TestGroupAttributes tga = (TestGroupAttributes) testitem;
 
 
-	// validated the ExecuteNative
-	//   If the tag is parsed in, it can not have null text.
-	if (text == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	
-	StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
-	if (! tknzr.hasMoreTokens())
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	tga.setExecuteNative(text);
+    // validated the ExecuteNative
+    //   If the tag is parsed in, it can not have null text.
+    if (text == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+
+    StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
+    if (! tknzr.hasMoreTokens())
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+    tga.setExecuteNative(text);
     }
-     
- 
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -136,13 +136,13 @@ public class ExecuteNative_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String execnative = (String) tdObject;
+    String execnative = (String) tdObject;
 
-	m_EmitterHandler.emitText(execnative);
+    m_EmitterHandler.emitText(execnative);
 
     }
 

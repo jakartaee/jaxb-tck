@@ -21,14 +21,14 @@ import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
- *  Hides exclude list format and structure. Checks presence of testcase or the whole 
+ *  Hides exclude list format and structure. Checks presence of testcase or the whole
  *  test group in the exclude list.
  *  Assumes the TestGroup objects have "sourceDir" AttrElem set.
  */
 public interface ExcludeListFilter {
 
     /** check if the whole test group
-     *  is excluded 
+     *  is excluded
      */
     boolean excluded(TestGroup tg) throws IncorrectAttributesException;
 

@@ -75,9 +75,9 @@ public class PrecompileJaxbTckScript extends JaxbTckScript {
         }
 
         if (isSchema || isDocument) {
-        	if ( onlyJavaSourcesPresented(sources) )
-        		return compileTogether(sources);
-        	return compileIndividually(sources);
+            if ( onlyJavaSourcesPresented(sources) )
+                return compileTogether(sources);
+            return compileIndividually(sources);
         }
         return compileTogether(sources);
     }
@@ -131,7 +131,7 @@ public class PrecompileJaxbTckScript extends JaxbTckScript {
     protected Status generate() {
         return Status.passed("OK");
     }
-    
+
     private boolean onlyJavaSourcesPresented(File[] sources) {
         for (int i = 0; i < sources.length; i++) {
              if (!sources[i].getName().endsWith(".java")) {

@@ -29,50 +29,50 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
-/** 
- * Dependency_TH - The tag-handler for a Dependency tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Dependency_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Dependency_TH - The tag-handler for a Dependency tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Dependency_TH
+ * ============================================================================================
+ */
 public class Dependency_TH extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Dependency_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Dependency_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Dependency_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ public class Dependency_TH extends TagHandlerImpl  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_dependency;
+    return TagsImpl.ctStr_tag_dependency;
     }
 
     //------------------------------------------------------------------------------
@@ -96,47 +96,47 @@ public class Dependency_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
-	if (! (testitem instanceof CodeSet)  )
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
+    super.startTag(attrs);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
+    if (! (testitem instanceof CodeSet)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
 
-	//  Nothing is pushed onto the stack
-	//    just check to make sure there is a list there.
-	CodeSet cs = (CodeSet) testitem;
-	ArrayList deps = cs.getDependencies();
-	if (deps == null) {
-	    deps = new ArrayList();
-	    cs.setDependencies(deps);
-	}
+    //  Nothing is pushed onto the stack
+    //    just check to make sure there is a list there.
+    CodeSet cs = (CodeSet) testitem;
+    ArrayList deps = cs.getDependencies();
+    if (deps == null) {
+        deps = new ArrayList();
+        cs.setDependencies(deps);
+    }
 
     }
-     
- 
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-                   
+
   /**
     *   emit a tags components.
     *  <p>
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof ArrayList))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"Dependency", tdObject.getClass().getName()));
+    if (! (tdObject instanceof ArrayList))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "Dependency", tdObject.getClass().getName()));
 
-	ArrayList depList = (ArrayList) tdObject;
+    ArrayList depList = (ArrayList) tdObject;
 
-	// currently, only LibDependencies are in Dependency struct
-	if (depList != null) {
-	    Iterator it1 = depList.iterator();
+    // currently, only LibDependencies are in Dependency struct
+    if (depList != null) {
+        Iterator it1 = depList.iterator();
 
-	    while (it1.hasNext()) {
-		m_EmitterHandler.emit(TagsImpl.ctStr_tag_lib, it1.next());
-	    }
-	}
+        while (it1.hasNext()) {
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_lib, it1.next());
+        }
+    }
     }
 
 }

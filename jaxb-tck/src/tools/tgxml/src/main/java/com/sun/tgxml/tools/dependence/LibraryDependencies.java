@@ -29,17 +29,17 @@ import java.util.StringTokenizer;
 
 /**
  * The <code>LibraryDependencies</code> is a set of library dependencies
- * (LibraryDependency). It can be written to a stream and read from it. 
- * It also provides fast methods to put and find a dependecy for 
+ * (LibraryDependency). It can be written to a stream and read from it.
+ * It also provides fast methods to put and find a dependecy for
  * a given library identifier.
  * @see LibraryDependency
  */
 public class LibraryDependencies extends Hashtable {
     /**
-     * Inserts the specified library dependency. The dependency cannot 
+     * Inserts the specified library dependency. The dependency cannot
      * be null.
      * <p>
-     * The dependency can be retrieved by calling the get method with 
+     * The dependency can be retrieved by calling the get method with
      * a string that is equal to the libID of the specified dependency.
      * @param libraryDependency the library dependency to be put.
      * @see #get(String)
@@ -50,7 +50,7 @@ public class LibraryDependencies extends Hashtable {
 
     /**
      * Returns the library dependency for the specified library identifier.
-     * @param libID 
+     * @param libID
      * @return the library dependency which corresponds to the specified
      *         library. <code>null</code> if there is no dependency defined
      *         for the library.
@@ -76,7 +76,7 @@ public class LibraryDependencies extends Hashtable {
             StringTokenizer tokenizer = new StringTokenizer(inLine);
 
             if(tokenizer.hasMoreTokens()) {
-                LibraryDependency libraryDependency 
+                LibraryDependency libraryDependency
                     = new LibraryDependency(tokenizer.nextToken());
 
                 while(tokenizer.hasMoreTokens()) {
@@ -89,7 +89,7 @@ public class LibraryDependencies extends Hashtable {
                 }
             }
         }
-    } 
+    }
     /**
      * Writes the list of dependencies to the specified stream.
      * The output format is acceptable by the method read(InputStream).
@@ -100,7 +100,7 @@ public class LibraryDependencies extends Hashtable {
         PrintWriter out = new PrintWriter(outputStream);
         Iterator valueIterator = values().iterator();
         while(valueIterator.hasNext()) {
-            LibraryDependency libraryDependency 
+            LibraryDependency libraryDependency
                 = (LibraryDependency)(valueIterator.next());
             out.print(libraryDependency.getLibID());
             out.print(' ');

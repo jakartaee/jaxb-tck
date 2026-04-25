@@ -34,23 +34,23 @@ import com.sun.tgxml.util.IR;
  * The interface represents redundancy checking scheme.
  */
 public interface RedundancyAnalyzer {
-    
+
     /**
      * checks that given TestCase is redundant.
      * @param enclGroup TestGroup, which contains given TestCase
      * @param testCaseID ID of the given TestCase
      * @param selector TestItemSelector, which calculates accepted by dependencies TestItems.
-     * @param applicability represents target platform 
+     * @param applicability represents target platform
      * @param redundancy represents platform, tests for which are redundant
      * @return true if the TestCase is redundant, false otherwise.
      */
-    public boolean isRedundant(TestGroup enclGroup, 
+    public boolean isRedundant(TestGroup enclGroup,
                                String testCaseID,
                                TestItemSelector selector,
                                ApplicabilityFilter applicability,
                                ApplicabilityFilter redundancy) throws TestFileException;
     /**
-     * The default implementation that assumes that TestCase is redundant if TestCase and 
+     * The default implementation that assumes that TestCase is redundant if TestCase and
      * all recursively dependent libraries have the same variant name.
      */
     public static final RedundancyAnalyzer DEFAULT = new DefaultRedundancyAnalyzer();
@@ -60,14 +60,14 @@ public interface RedundancyAnalyzer {
 
 class DefaultRedundancyAnalyzer implements RedundancyAnalyzer {
 
-        public synchronized boolean isRedundant(TestGroup encl, 
+        public synchronized boolean isRedundant(TestGroup encl,
                                                 String testCaseID,
                                                 TestItemSelector selector,
-                                                ApplicabilityFilter applicability, 
+                                                ApplicabilityFilter applicability,
                                                 ApplicabilityFilter redundancy) throws TestFileException {
             TestItem item = selector.getAcceptableTestCase(applicability, encl, testCaseID);
             try {
-                TestItem redundantCase = (selector.isAcceptedTestGroup(redundancy, encl) 
+                TestItem redundantCase = (selector.isAcceptedTestGroup(redundancy, encl)
                                           ? selector.getAcceptableTestCase(redundancy, encl, testCaseID)
                                           : TestItemSelector.REJECTED);
                 return equals(item, redundantCase)
@@ -76,7 +76,7 @@ class DefaultRedundancyAnalyzer implements RedundancyAnalyzer {
                 done.clear();
             }
         }
-        
+
         protected boolean equals(TestItem left, TestItem right) throws TestFileException {
             if (!left.getID().equals(right.getID())) {
                 return false;
@@ -96,8 +96,8 @@ class DefaultRedundancyAnalyzer implements RedundancyAnalyzer {
         }
 
         private HashSet done = new HashSet();
-        
-        private boolean allLibsAreRedundant(TestItemSelector selector, TestItem item, 
+
+        private boolean allLibsAreRedundant(TestItemSelector selector, TestItem item,
                 ApplicabilityFilter f1, ApplicabilityFilter f2) throws TestFileException {
             ArrayList dependencies = IR.getDependentLibs(item);
             if (done.contains(item.getID())) {

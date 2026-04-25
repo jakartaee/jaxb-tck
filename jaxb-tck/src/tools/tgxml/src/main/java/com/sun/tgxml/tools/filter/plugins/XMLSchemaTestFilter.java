@@ -38,15 +38,15 @@ import com.sun.tgxml.util.IR;
 /**
  * Class to be used for filtering XML Schema tests. All tests are filtered out
  * if a target spec name is 'JAXB_FUTURE' or if a value is '0.0'.
- * 
+ *
  * @author Evgueni M. Astigueevitch, Evgueni Rouban
  * @version 1.11
  */
 public class XMLSchemaTestFilter extends FilterFactory {
 
-	public FilterExpression cfgRead(String configuration) {
-		return createAND(new TargetSpecFilterNode(), new TestTypeFilterNode());
-	}
+    public FilterExpression cfgRead(String configuration) {
+        return createAND(new TargetSpecFilterNode(), new TestTypeFilterNode());
+    }
 }
 
 /**
@@ -54,139 +54,139 @@ public class XMLSchemaTestFilter extends FilterFactory {
  *   - XMLSchemaTest
  */
 class TestTypeFilterNode extends NodeTRUE {
-	/**
-	 * accepts only acceptable TestGroup items.
-	 */
-	public boolean accept(TestGroup tg) {
+    /**
+     * accepts only acceptable TestGroup items.
+     */
+    public boolean accept(TestGroup tg) {
             String testType = IR.getAttrElem(TargetSpecFilterNode.ATTR_TEST_TYPE, tg);
             if (testType != null && testType.equals("XMLSchemaTest")) {
                 return false;
             }
             return true;
-	}
-    
+    }
+
 }
 
 class TargetSpecFilterNode extends NodeTRUE {
 
-	public static final String JAXB_NOT_REQUIRED = "JAXB_NOT_REQUIRED";
+    public static final String JAXB_NOT_REQUIRED = "JAXB_NOT_REQUIRED";
 
-	public static final String JAXB_FUTURE = "JAXB_FUTURE";
+    public static final String JAXB_FUTURE = "JAXB_FUTURE";
 
-	public static final String JAXB = "JAXB";
+    public static final String JAXB = "JAXB";
 
-	public static final String ATTR_TEST_TYPE = "testType";
+    public static final String ATTR_TEST_TYPE = "testType";
 
-	public static final String TEST_TYPE_XML_SCHEMA_TEST = "JAXBXMLSchemaTest";
+    public static final String TEST_TYPE_XML_SCHEMA_TEST = "JAXBXMLSchemaTest";
 
-	public static TargetSpec buildSpec;
-	
-	static {
-		String version = BuildProperties.getString("spec.jaxb.version");
-		try {
-			buildSpec = AttributesFactory.createTargetSpec(JAXB,
-					version);
-		} catch (TestFileException e) {
-			// seems nowhere should be thrown in execution chain
-			e.printStackTrace();
-		}
-	}
-	
-	public TargetSpecFilterNode() {
-	}
+    public static TargetSpec buildSpec;
 
-	static TargetSpec findSpec(TestItem ti, String specName) {
-		if (ti != null) {
-			Attributes attrs = ti.getAttributes();
-			if (attrs != null) {
-				ArrayList specs = attrs.getTargetSpecs();
+    static {
+        String version = BuildProperties.getString("spec.jaxb.version");
+        try {
+            buildSpec = AttributesFactory.createTargetSpec(JAXB,
+                    version);
+        } catch (TestFileException e) {
+            // seems nowhere should be thrown in execution chain
+            e.printStackTrace();
+        }
+    }
 
-				for (int j = specs.size() - 1; j >= 0; j--) {
-					TargetSpec s = (TargetSpec) specs.get(j);
-					String id = s.getID();
-					if (id != null && specName.equals(id.toUpperCase()))
-						return s;
-				}
-			}
-		}
-		return null;
-	}
+    public TargetSpecFilterNode() {
+    }
 
-	/**
-	 * determines if the target spec is acceptable, i.e. its minor or major is
-	 * not zero.
-	 */
-	static boolean acceptableVersion(TargetSpec s) {
-		return buildSpec.inSpec(s);
-	}
+    static TargetSpec findSpec(TestItem ti, String specName) {
+        if (ti != null) {
+            Attributes attrs = ti.getAttributes();
+            if (attrs != null) {
+                ArrayList specs = attrs.getTargetSpecs();
 
-	/**
-	 */
-	public static boolean isExcludedWithTestBug(TestItem ti) {
-		String exLine = IR.getAttrElem(ExcludeListUtils.ExcludedAttrElemName,
-				ti);
-		if (exLine != null) {
-			return true;//exLine.indexOf("test_bug") != -1;
-		} else {
-			return false;
-		}
-	}
+                for (int j = specs.size() - 1; j >= 0; j--) {
+                    TargetSpec s = (TargetSpec) specs.get(j);
+                    String id = s.getID();
+                    if (id != null && specName.equals(id.toUpperCase()))
+                        return s;
+                }
+            }
+        }
+        return null;
+    }
 
-	/**
-	 * determines if the TestItem is acceptable, i.e. if it has acceptable JAXB
-	 * target spec and has no JAXB_FUTURE target spec.
-	 */
-	static boolean acceptItem(TestItem ti) {
+    /**
+     * determines if the target spec is acceptable, i.e. its minor or major is
+     * not zero.
+     */
+    static boolean acceptableVersion(TargetSpec s) {
+        return buildSpec.inSpec(s);
+    }
 
-		if (isExcludedWithTestBug(ti)) {
-			return false;
-		}
+    /**
+     */
+    public static boolean isExcludedWithTestBug(TestItem ti) {
+        String exLine = IR.getAttrElem(ExcludeListUtils.ExcludedAttrElemName,
+                ti);
+        if (exLine != null) {
+            return true;//exLine.indexOf("test_bug") != -1;
+        } else {
+            return false;
+        }
+    }
 
-		if (null != findSpec(ti, JAXB_FUTURE)) {
-			return false;
-		}
+    /**
+     * determines if the TestItem is acceptable, i.e. if it has acceptable JAXB
+     * target spec and has no JAXB_FUTURE target spec.
+     */
+    static boolean acceptItem(TestItem ti) {
 
-		TargetSpec s = findSpec(ti, JAXB);
-		return (s == null) ? true : acceptableVersion(s);
-	}
+        if (isExcludedWithTestBug(ti)) {
+            return false;
+        }
 
-	/**
-	 * accepts only acceptable TestGroup items.
-	 */
-	public boolean accept(TestGroup tg) {
-		return acceptItem(tg);
-	}
+        if (null != findSpec(ti, JAXB_FUTURE)) {
+            return false;
+        }
 
-	/**
-	 * accepts only acceptable TestCase items except for the XMLSchemaTest test
-	 * groups: in the JAXB_NOT_REQUIRED test group the only testcase needed is
-	 * schema one, because the schema becomes negative for the default operation
-	 * mode; such tests will be generated with keywords jaxb_not_required,
-	 * schema, negative; the shcema test is represented by a testCase with ID
-	 * equal to the group ID.
-	 */
-	public boolean accept(TestCase tc, TestGroup tg) {
-		if (acceptItem(tc)) {
-			String testType = IR.getAttrElem(ATTR_TEST_TYPE, tg);
-			if (testType != null && testType.equals(TEST_TYPE_XML_SCHEMA_TEST)) {
-				if (null != findSpec(tg, JAXB_NOT_REQUIRED)) {
-					try {
-						return tc.getID().equals(tg.getID());
-					} catch (TestFileException tfe) {
-						return false;
-					}
-				}
-			}
-			return true;
-		}
-		return false;
-	}
+        TargetSpec s = findSpec(ti, JAXB);
+        return (s == null) ? true : acceptableVersion(s);
+    }
 
-	public FilterExpression getRelevant(SupportClass sClass) {
-		return null;
-	}
+    /**
+     * accepts only acceptable TestGroup items.
+     */
+    public boolean accept(TestGroup tg) {
+        return acceptItem(tg);
+    }
 
-	public FilterExpression getRelevant(Library lib) {
-		return null;
-	}
+    /**
+     * accepts only acceptable TestCase items except for the XMLSchemaTest test
+     * groups: in the JAXB_NOT_REQUIRED test group the only testcase needed is
+     * schema one, because the schema becomes negative for the default operation
+     * mode; such tests will be generated with keywords jaxb_not_required,
+     * schema, negative; the shcema test is represented by a testCase with ID
+     * equal to the group ID.
+     */
+    public boolean accept(TestCase tc, TestGroup tg) {
+        if (acceptItem(tc)) {
+            String testType = IR.getAttrElem(ATTR_TEST_TYPE, tg);
+            if (testType != null && testType.equals(TEST_TYPE_XML_SCHEMA_TEST)) {
+                if (null != findSpec(tg, JAXB_NOT_REQUIRED)) {
+                    try {
+                        return tc.getID().equals(tg.getID());
+                    } catch (TestFileException tfe) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public FilterExpression getRelevant(SupportClass sClass) {
+        return null;
+    }
+
+    public FilterExpression getRelevant(Library lib) {
+        return null;
+    }
 }

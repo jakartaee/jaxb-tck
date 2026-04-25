@@ -29,7 +29,7 @@ import com.sun.javatest.util.StringArray;
  * A Script to compile/rmic/execute an RMI test.
  *
  * @author Jonathan J Gibbons
- * @version @(#)RmicTestScript.java	1.21 02/01/03
+ * @version @(#)RmicTestScript.java 1.21 02/01/03
  */
 public class RmicTestScript extends Script
 {
@@ -54,79 +54,79 @@ public class RmicTestScript extends Script
      *
      */
     public Status run(String[] args, TestDescription td, TestEnvironment env) {
-	boolean expectFail = false;
-	boolean compile = false;
-	boolean compileIndividually = false;
-	boolean execute = false;
+    boolean expectFail = false;
+    boolean compile = false;
+    boolean compileIndividually = false;
+    boolean execute = false;
 
-	for (int i = 0; i < args.length; i++) {
-	    String arg = args[i];
-	    if (arg.equals("-compile") || arg.equals("-compileTogether") )
-		compile = true;
-	    else if (arg.equals("-compileIndividually"))
-		compile = compileIndividually = true;
-	    else if (arg.equals("-execute"))
-		execute = true;
-	    else if (arg.equals("-expectFail"))
-		expectFail = true;
-	    else
-		return Status.failed("bad arg for script: `" + arg + "'");
-	}
+    for (int i = 0; i < args.length; i++) {
+        String arg = args[i];
+        if (arg.equals("-compile") || arg.equals("-compileTogether") )
+        compile = true;
+        else if (arg.equals("-compileIndividually"))
+        compile = compileIndividually = true;
+        else if (arg.equals("-execute"))
+        execute = true;
+        else if (arg.equals("-expectFail"))
+        expectFail = true;
+        else
+        return Status.failed("bad arg for script: `" + arg + "'");
+    }
 
-	if (compile) {
-	    File[] srcs = td.getSourceFiles();
+    if (compile) {
+        File[] srcs = td.getSourceFiles();
 
-	    Status compileStatus;
+        Status compileStatus;
 
-	    if (compileIndividually)
-		compileStatus = compileIndividually(srcs);
-	    else
-		compileStatus = compileTogether(srcs);
+        if (compileIndividually)
+        compileStatus = compileIndividually(srcs);
+        else
+        compileStatus = compileTogether(srcs);
 
-	    if (compileStatus.getType() == Status.PASSED) {
-		String rmiClasses = td.getParameter("rmicClasses");
-		// backwards compatability
-		if (rmiClasses == null)
-		    rmiClasses = td.getParameter("rmicClass");
-		if (rmiClasses == null)
-		    return fail_noRmicClasses;
-		compileStatus = rmicompile(StringArray.split(rmiClasses));
-	    }
+        if (compileStatus.getType() == Status.PASSED) {
+        String rmiClasses = td.getParameter("rmicClasses");
+        // backwards compatability
+        if (rmiClasses == null)
+            rmiClasses = td.getParameter("rmicClass");
+        if (rmiClasses == null)
+            return fail_noRmicClasses;
+        compileStatus = rmicompile(StringArray.split(rmiClasses));
+        }
 
 
-	    // if we're not going to execute the test, this is the end of the task
-	    if (!execute) {
-		if (expectFail) {
-		    if (compileStatus.getType() == Status.FAILED) {
-			return pass_compFailExp.augment(compileStatus);
-		    } else
-			return fail_compSuccUnexp.augment(compileStatus);
-		} else
-		    return compileStatus;
-	    } else {
-		// if we want to execute the test, but the compilation failed, we can't go on
-		if (compileStatus.getType() == Status.FAILED)
-		    return fail_compFailUnexp.augment(compileStatus);
-	    }
-	}
+        // if we're not going to execute the test, this is the end of the task
+        if (!execute) {
+        if (expectFail) {
+            if (compileStatus.getType() == Status.FAILED) {
+            return pass_compFailExp.augment(compileStatus);
+            } else
+            return fail_compSuccUnexp.augment(compileStatus);
+        } else
+            return compileStatus;
+        } else {
+        // if we want to execute the test, but the compilation failed, we can't go on
+        if (compileStatus.getType() == Status.FAILED)
+            return fail_compFailUnexp.augment(compileStatus);
+        }
+    }
 
-	if (execute) {
-	    String executeClass = td.getParameter("executeClass");
-	    if (executeClass == null)
-		return error_noExecuteClass;
+    if (execute) {
+        String executeClass = td.getParameter("executeClass");
+        if (executeClass == null)
+        return error_noExecuteClass;
 
-	    Status executeStatus = execute(executeClass, td.getParameter("executeArgs"));
+        Status executeStatus = execute(executeClass, td.getParameter("executeArgs"));
 
-	    if (expectFail) {
-		if (executeStatus.getType() == Status.FAILED) 
-		    return pass_execFailExp.augment(executeStatus);
-		else
-		    return fail_execSuccUnexp.augment(executeStatus);
-	    } else
-		return executeStatus;
-	}
+        if (expectFail) {
+        if (executeStatus.getType() == Status.FAILED)
+            return pass_execFailExp.augment(executeStatus);
+        else
+            return fail_execSuccUnexp.augment(executeStatus);
+        } else
+        return executeStatus;
+    }
 
-	return error_noActionSpecified;
+    return error_noActionSpecified;
     }
 
 
@@ -155,9 +155,9 @@ public class RmicTestScript extends Script
             return Status.failed("problem finding testClassDir");
         }
 
-	env.put("testRmicClasses", classes);
-	// backwards compatability
-	env.put("testRmicClass", classes);
+    env.put("testRmicClasses", classes);
+    // backwards compatability
+    env.put("testRmicClass", classes);
         return invokeCommand("rmic");
     }
 

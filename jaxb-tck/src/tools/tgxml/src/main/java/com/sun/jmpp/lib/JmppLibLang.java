@@ -21,27 +21,27 @@ package com.sun.jmpp.lib;
  * Class to be extend for test generation in section javasoft.sqe.tests.lang.
  *
  * @author Oleg V. Ulyankin
- * @version @(#)JmppLibLang.java	1.10 02/01/15
+ * @version @(#)JmppLibLang.java    1.10 02/01/15
  */
 
 public class JmppLibLang extends JmppLibTest {
 
-/**  
+/**
  *   Deprecated variables for keywords. Please, use ones defined in JmppLibTest.
  */
-	public static final String negativeCompilationKeywords="compile negative javaCompiler";
-	public static final String negativeSerialKeywords="compile serial negative javaCompiler";
+    public static final String negativeCompilationKeywords="compile negative javaCompiler";
+    public static final String negativeSerialKeywords="compile serial negative javaCompiler";
 
-	public static final String positiveExecutionKeywords="compile execute positive simple javaCompiler";
-	public static final String positiveSerialKeywords="compile serial execute positive simple javaCompiler";
-	
-	{
-		packageHead+="lang";
-	}
+    public static final String positiveExecutionKeywords="compile execute positive simple javaCompiler";
+    public static final String positiveSerialKeywords="compile serial execute positive simple javaCompiler";
 
-	public static void main(String[] argv) {
-		libMain(argv, new JmppLibLang());
-	}
+    {
+        packageHead+="lang";
+    }
+
+    public static void main(String[] argv) {
+        libMain(argv, new JmppLibLang());
+    }
 
 /**
  * Overriden JmppLibTest's method which initializes tdGenerator
@@ -54,11 +54,11 @@ public class JmppLibLang extends JmppLibTest {
 /**
  *   For backward compatibility.
  */
-	public void makeBody()
-	{}
-	public void makeTest()
-	{ if (packageName != null && packageName.length() > 0) L("package "+packageName+";\n"); makeBody(); }
-	public void newSource(String packageName, String fileName) 
-	{ newSource(true, fileName, defaultExtension); if (packageName != null && packageName.length() > 0) L("package "+packageName+";\n"); }
+    public void makeBody()
+    {}
+    public void makeTest()
+    { if (packageName != null && packageName.length() > 0) L("package "+packageName+";\n"); makeBody(); }
+    public void newSource(String packageName, String fileName)
+    { newSource(true, fileName, defaultExtension); if (packageName != null && packageName.length() > 0) L("package "+packageName+";\n"); }
 }
 

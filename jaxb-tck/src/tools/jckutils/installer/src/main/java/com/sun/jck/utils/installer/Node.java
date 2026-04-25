@@ -24,54 +24,54 @@ class Node {
 
     private Node() {
     }
-   
+
     public Node(String rootPath, File file) throws IOException, IllegalArgumentException {
-	m_rootPath = rootPath;
-	m_rootDirName = new File(rootPath).getName();
-	m_fileAbsolutePath = file.getAbsolutePath();
-	m_fileCanonicalPath = file.getCanonicalPath();
+    m_rootPath = rootPath;
+    m_rootDirName = new File(rootPath).getName();
+    m_fileAbsolutePath = file.getAbsolutePath();
+    m_fileCanonicalPath = file.getCanonicalPath();
 
-	if (!m_rootPath.endsWith(m_fs))
-	    m_rootPath += m_fs;
+    if (!m_rootPath.endsWith(m_fs))
+        m_rootPath += m_fs;
 
-	if (!new File(m_rootPath).isDirectory())
-	    throw new IllegalArgumentException("The root path value is not a directory");
+    if (!new File(m_rootPath).isDirectory())
+        throw new IllegalArgumentException("The root path value is not a directory");
 
-	if (file.isDirectory())
-	    throw new IllegalArgumentException(file.getCanonicalPath() + " is not a file.");
+    if (file.isDirectory())
+        throw new IllegalArgumentException(file.getCanonicalPath() + " is not a file.");
 
-	if (file.getAbsolutePath().indexOf(m_rootPath) != 0) 
-	    throw new IllegalStateException(m_fileAbsolutePath + " does not appear to be a child of " +
-					    m_rootPath);
+    if (file.getAbsolutePath().indexOf(m_rootPath) != 0)
+        throw new IllegalStateException(m_fileAbsolutePath + " does not appear to be a child of " +
+                        m_rootPath);
     }
 
     public String getRootPath() {
-	return m_rootPath;
+    return m_rootPath;
     }
 
     public File getFile() {
-	return new File(m_fileAbsolutePath);
+    return new File(m_fileAbsolutePath);
     }
 
     public String getAbsolutePath() {
-	return m_fileAbsolutePath;
+    return m_fileAbsolutePath;
     }
 
     public String getCanonicalPath() throws IOException{
-	return m_fileCanonicalPath;
+    return m_fileCanonicalPath;
     }
 
     public boolean equals(Node comparator) throws IOException {
-	if (m_fileCanonicalPath.equals(comparator.getCanonicalPath()))
-	    return true;
-	else
-	    return false;
+    if (m_fileCanonicalPath.equals(comparator.getCanonicalPath()))
+        return true;
+    else
+        return false;
     }
 
     public String getRelativePath() throws IllegalStateException {
 
-	return m_rootDirName + m_fs + m_fileAbsolutePath.substring(m_rootPath.length());
-	
+    return m_rootDirName + m_fs + m_fileAbsolutePath.substring(m_rootPath.length());
+
     }
 
 

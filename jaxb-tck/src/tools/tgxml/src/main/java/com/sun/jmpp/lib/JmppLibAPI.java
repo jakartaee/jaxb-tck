@@ -259,7 +259,7 @@ public class JmppLibAPI extends JmppLib {
     }
 
     {
-	CLASS_SUFF = "Tests";		// Lib specific suffix for generated file/class names
+    CLASS_SUFF = "Tests";       // Lib specific suffix for generated file/class names
     }
 
     /**
@@ -273,12 +273,12 @@ public class JmppLibAPI extends JmppLib {
      * (if sourceNameIsRelative is set to true then the source maybe generated
      * into the dirName's subdirectory)
      */
-	protected String dirName;
+    protected String dirName;
 
     /**
      * Package head, that will be used to set up package of the test.
      */
-	public String packageHead = "";
+    public String packageHead = "";
 
     /**
      * The constant indicating that current testcase is part of equivalence class
@@ -921,7 +921,7 @@ public class JmppLibAPI extends JmppLib {
     /**
      * Contains name of currently generated source
      */
-	protected String currentFileName;
+    protected String currentFileName;
 
     /**
      * Indicates whether testcreate() methdod has been called
@@ -929,13 +929,13 @@ public class JmppLibAPI extends JmppLib {
     private boolean testcreateCalled = false;
 
     private String htmlCopyrightNotice = "";
-    
+
 
     /**
      * The main method to be implemented. Insert in this method all you want to
      * insert to your main java source.
      */
-	public void makeTest() {}
+    public void makeTest() {}
 
     /**
      * This is the entry point for any jmpp library. It initializes jmmp file
@@ -974,7 +974,7 @@ public class JmppLibAPI extends JmppLib {
         out.println("package "+templatePackage+";\n");
         out.println("public class " + shortClassName + " extends "
                 + getClass().getName()+" {");
-	}
+    }
 
     /**
      * Generates 'epilog' of the intermediate program, i.e.
@@ -986,7 +986,7 @@ public class JmppLibAPI extends JmppLib {
     protected void generateEpilog(PrintWriter out, String shortClassName) {
         generateMain(out, shortClassName);
         out.println("}");
-	}
+    }
 
     /**
      * Creates directory with the name of the test (if it doesn't exist) and sets
@@ -999,12 +999,12 @@ public class JmppLibAPI extends JmppLib {
      * @param extension extension to be used with the new output file, e.g. `c`, `html`, etc.
      * @param dirName name of the directory to set the output to.
      */
-	protected void setOutput(String fileName,
+    protected void setOutput(String fileName,
             String extension, String dirName) {
-		super.setOutput(fileName);
-		this.currentFileName = fileName+"."+extension;
-		this.dirName = dirName;
-	}
+        super.setOutput(fileName);
+        this.currentFileName = fileName+"."+extension;
+        this.dirName = dirName;
+    }
 
     /**
      * Loads the default properties for the library. If
@@ -1363,15 +1363,15 @@ public class JmppLibAPI extends JmppLib {
         StringTokenizer tok = new StringTokenizer(crn, "\n");
 
         while(tok.hasMoreTokens()) {
-	   String nextTok = tok.nextToken();
+       String nextTok = tok.nextToken();
            if ("%separate%".equals(nextTok.trim())) {
-	       if (tok.hasMoreTokens()) {
+           if (tok.hasMoreTokens()) {
                    res += " */\n\n";
                    res += "/*\n";
-	       }
+           }
            } else {
                res += " * " + nextTok + "\n";
-           }	   
+           }
         }
         res += " */\n";
         return res;
@@ -1506,7 +1506,7 @@ public class JmppLibAPI extends JmppLib {
      * of the variable copyrights.
      * @return Copyright string stored in copyrights variable
      */
-     protected String getCopyrights(){     
+     protected String getCopyrights(){
          return copyrights;
      }
 
@@ -1844,7 +1844,7 @@ public class JmppLibAPI extends JmppLib {
             method_key = (String)methodsArray[i];
             method_obj = (Method)methodsHashTable.get(method_key);
             if (method_obj != null){
-    	        L("  <LI><A HREF=\"#" + method_obj.getSignature() + "\"><BIG><CODE>" + method_obj.getName() + "</CODE></BIG></A>");
+                L("  <LI><A HREF=\"#" + method_obj.getSignature() + "\"><BIG><CODE>" + method_obj.getName() + "</CODE></BIG></A>");
             }
         }
         L("</UL>");
@@ -1948,7 +1948,7 @@ public class JmppLibAPI extends JmppLib {
     protected void addTestcaseToJavaFile(TestcaseElement tc){
         StringBuffer savedBuffer = outBuffer;
         outBuffer = javaTestCasesBuffer;
-        
+
         // do not highlighting in case of assertion testing
         String values_str = (testTechnique != ASSERTION_TESTING) ?
                 substituteStr(highlightParams(trim(values)), "\n", "\n     * "):
@@ -2040,7 +2040,7 @@ public class JmppLibAPI extends JmppLib {
         }
         return output.toString();
     }
-  
+
    /**
     * Highlights javadoc comments that will be put
     * for every testcase in test class java source file. Namely, if the input
@@ -2512,7 +2512,7 @@ public class JmppLibAPI extends JmppLib {
     * @exception LibAPIException if necessary variables haven't been set
     *            correctly, or testcreate() hasn't been called before.
     */
-    
+
 
     protected void checkVars(int varsToCheck){
         if (!testcreateCalled) {
@@ -2611,8 +2611,8 @@ public class JmppLibAPI extends JmppLib {
                 executeArgs = "";
             }
         }
-            
-        
+
+
         if (errorMsg.compareTo("") != 0){
             throw new LibAPIException(this, (varsToCheck == CHECK_VARS_JAVACLOSE) ?
                     LibAPIException.FILE_LEVEL : LibAPIException.TESTCASE_LEVEL,
@@ -2620,7 +2620,7 @@ public class JmppLibAPI extends JmppLib {
         }
         return;
     }
-    
+
 
     /**
      * Sets file level variables to the default values:
@@ -2946,19 +2946,19 @@ public class JmppLibAPI extends JmppLib {
     /**
      * Installs specified in <code>rcfiles</code> variable files from
      * current directory to TCKBUILDDIR/classes/testpackage/testclass directory.
-     * It checks whether the system property jck.destination.dir set by 
-     * -Djck.destination.dir="..." in java start command line is specified. 
+     * It checks whether the system property jck.destination.dir set by
+     * -Djck.destination.dir="..." in java start command line is specified.
      * <br>
-     * Use of legacy naming convention for resouce files in workspace (.rc) is 
-     * still supported but no longer required as of btools 1.3. If a file without 
-     * the legacy extension is found, then it is used. Otherwise the btools will 
-     * append the extension to the resouce files' name when attempting to locate 
-     * the source of the resource file.  If the legacy format is used, the 
-     * extenstion will be stripped of the name the generated resource file. 
-     * <br> 
-     * Since one can specify resource file with a subdirectory the file will be 
-     * copied into TCKBUILDDIR/classes/testpackage/testclass directory, the same 
-     * subdirectory. 
+     * Use of legacy naming convention for resouce files in workspace (.rc) is
+     * still supported but no longer required as of btools 1.3. If a file without
+     * the legacy extension is found, then it is used. Otherwise the btools will
+     * append the extension to the resouce files' name when attempting to locate
+     * the source of the resource file.  If the legacy format is used, the
+     * extenstion will be stripped of the name the generated resource file.
+     * <br>
+     * Since one can specify resource file with a subdirectory the file will be
+     * copied into TCKBUILDDIR/classes/testpackage/testclass directory, the same
+     * subdirectory.
      * @exception LibAPIException in case of any problems installing rc files.
      */
      protected void installRCFiles(){
@@ -2994,7 +2994,7 @@ public class JmppLibAPI extends JmppLib {
                  file2copy = rscFileLegacyFormat;
              }
              if (!file2copy.exists()){
-                 throw new LibAPIException("resource file to copy doesn't exist. Can not find " + rscFile + 
+                 throw new LibAPIException("resource file to copy doesn't exist. Can not find " + rscFile +
                          " or " + rscFileLegacyFormat);
              }
              checkFileNameLength(file2copy);
@@ -3161,7 +3161,7 @@ public class JmppLibAPI extends JmppLib {
     public static void libMain(String[] argv, JmppLib p) {
         try {
             try {
-        	    p.parseOptions(argv);
+                p.parseOptions(argv);
             } catch (com.sun.jmpp.JmppException ex) {
                 System.err.println(ex);
                 return;
@@ -3184,7 +3184,7 @@ public class JmppLibAPI extends JmppLib {
      */
     public Object getWizardDescriptor(){
         final String wizardClassName = "com.sun.tdk.editor.share.wizard.api.APIWizardDescriptor";
-	if (WizDescriptor == null)
+    if (WizDescriptor == null)
         try {
             WizDescriptor = Class.forName(wizardClassName).newInstance();
         } catch ( Exception e ) {
@@ -3569,7 +3569,7 @@ public class JmppLibAPI extends JmppLib {
     }
 
     public Vector parseMethodParamsNames(String method_name, String test_class) throws MalformedValueException {
-    	 //replace chars
+         //replace chars
         StringBuffer bMethod = new StringBuffer(method_name);
         //replace space and comma in method_name
         boolean replaced = replaceInTag(bMethod);
@@ -3648,7 +3648,7 @@ public class JmppLibAPI extends JmppLib {
             ++i;
         }
         signature += ')';
-	//restore space and comma in method signature
+    //restore space and comma in method signature
         if (replaced) {
             signature = restoreInTag(new StringBuffer(signature));
         }
@@ -3759,7 +3759,7 @@ public class JmppLibAPI extends JmppLib {
             default: return "unknown type";
         }
     }
-    
+
      /**
      * This method replaces characters between &lt; and &gt;. Comma is replaced by ~, space by ^.
      * @param str Source string.
@@ -3801,7 +3801,7 @@ public class JmppLibAPI extends JmppLib {
         }
         return str.toString();
     }
-    
+
 }// the end of class Method;
 
 

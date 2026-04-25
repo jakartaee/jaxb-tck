@@ -26,38 +26,38 @@ import com.sun.tgxml.util.IR;
 
 
 /**
- *  
+ *
  */
 public class ExcludeListUtils {
 
 
-    /** 
-     *  The name of Excluded AttrElem 
+    /**
+     *  The name of Excluded AttrElem
      */
     public final static String ExcludedAttrElemName = "Excluded";
 
     public final static String TestDescriptionURLAttrElemName = "TestDescriptionURL";
     public final static String TestCaseNameAttrElemName = "TestCaseName";
 
-	/** 
-	 * check does the TestItem have "Excluded" AttrElem
-	 */
+    /**
+     * check does the TestItem have "Excluded" AttrElem
+     */
     public static boolean isMarkedExcluded (TestItem t) {
         return (IR.getAttrElem(ExcludedAttrElemName, t) != null);
-	}
+    }
 
 
-   /** 
-     *  Adds the "Exclude" AttrElem 
+   /**
+     *  Adds the "Exclude" AttrElem
      */
-    protected static void addExcludedElem(TestItem ti, ExcludeEntry e) 
-    							throws IncorrectAttributesException {
+    protected static void addExcludedElem(TestItem ti, ExcludeEntry e)
+                                throws IncorrectAttributesException {
 
         StringBuffer buf = new StringBuffer();
         addItem(buf, e.getBugIDs().toString());
         addItem(buf, e.getKeywords().toString());
         addItem(buf, e.getComments());
-		IR.setAttrElem(ti, ExcludedAttrElemName, buf.toString());
+        IR.setAttrElem(ti, ExcludedAttrElemName, buf.toString());
     }
 
     private static void addItem(StringBuffer buf, String item) {
@@ -71,29 +71,29 @@ public class ExcludeListUtils {
     }
 
 
-    /** 
+    /**
      *  The method always returns some string for ID of the TestItem
      */
     public static String getID(TestItem ti) {
-		try {
-			return ti.getID();
-		} catch (Exception e) {
-			return "<not set>";
-		}
+        try {
+            return ti.getID();
+        } catch (Exception e) {
+            return "<not set>";
+        }
     }
 
-    /** 
+    /**
      *   Determines the relative directory of the given test item.
      */
     public static String getSourceDir(TestItem ti) throws IncorrectAttributesException {
-        try {    
+        try {
             String path = IR.getAttrElem(IR.relSourcePathAttrElemName, ti);
             if (path == null) {
                    throw new IncorrectAttributesException(LibResHandler.getResStr("elgen.error.no_rel_sourcepath", ti.getID()));
             } else {
                 File f = new File(path);
                 path = f.getParent();
-                path = (path == null ? null : path.replace(File.separatorChar, '/'));                
+                path = (path == null ? null : path.replace(File.separatorChar, '/'));
             }
             return path;
         } catch (TestFileException e) {
@@ -101,5 +101,5 @@ public class ExcludeListUtils {
         }
     }
 
-	
+
 }

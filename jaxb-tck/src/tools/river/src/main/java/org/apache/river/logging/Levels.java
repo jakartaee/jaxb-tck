@@ -98,7 +98,7 @@ public class Levels {
     */
     private static final class ClassReplacingObjectOutputStream extends ObjectOutputStream {
         private final ObjectStreamClass from;
-        private final ObjectStreamClass to; 	
+        private final ObjectStreamClass to;
         ClassReplacingObjectOutputStream(OutputStream out, Class from, Class to) throws IOException {
             super(out);
             this.from = ObjectStreamClass.lookup(from);
@@ -117,15 +117,15 @@ public class Levels {
     * Creates an instance of the Level class. This method works around the
     * fact that there is no public constructor for the Level class by
     * constructing the serialized form for an instance with the specified
-    * field values and deserializing it. 
-    * 
-    * If deserialization fails, it creates a Level with a numerical name that 
+    * field values and deserializing it.
+    *
+    * If deserialization fails, it creates a Level with a numerical name that
     * can be de-serialised by a remote client that doesn't have
     * org.apache.river.logging.Levels bytecode.
-    * 
+    *
     * Local logging code still enjoys the benefit of a meaningful name even
     * when deserialization fails.
-    * 
+    *
     * See River-416 for details, the serial form of Levels was broken in Java 1.6.0_41.
     */
     private static Level createLevel(String name, int value, String resourceBundleName) {
@@ -139,7 +139,7 @@ public class Levels {
             result = (Level) in.readObject();
             in.close();
             // If this suceeds, Level.readResolve has added the new Level to its internal List.
-            
+
         } catch (ClassNotFoundException ex) {
             // Ignore :)
         } catch (IOException e) {

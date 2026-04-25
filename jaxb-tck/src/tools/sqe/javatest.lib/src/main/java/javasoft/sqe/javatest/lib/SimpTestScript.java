@@ -28,7 +28,7 @@ import com.sun.javatest.TestEnvironment;
  * A Script to compile/execute a test using the "simple" invocation protocol.
  *
  * @author Jonathan J Gibbons
- * @version @(#)SimpTestScript.java	1.17 02/01/03
+ * @version @(#)SimpTestScript.java 1.17 02/01/03
  */
 public class SimpTestScript extends Script
 {
@@ -62,92 +62,92 @@ public class SimpTestScript extends Script
      *
      */
     public Status run(String[] args, TestDescription td, TestEnvironment env) {
-	boolean expectFail = false;
-	boolean compile = false;
-	boolean compileIndividually = false;
-	boolean execute = false;
+    boolean expectFail = false;
+    boolean compile = false;
+    boolean compileIndividually = false;
+    boolean execute = false;
 
-	for (int i = 0; i < args.length; i++) {
-	    String arg = args[i];
-	    if (arg.equals("-compile") || arg.equals("-compileTogether") )
-		compile = true;
-	    else if (arg.equals("-compileIndividually"))
-		compile = compileIndividually = true;
-	    else if (arg.equals("-execute"))
-		execute = true;
-	    else if (arg.equals("-expectFail"))
-		expectFail = true;
-	    else if (arg.equals("-useWrapper"))
-		useWrapper = true;
-	    else if (arg.equals("-executeSimple"))
-		execute = executeSimple = true;
-	    else
-		return Status.failed("bad arg for script: `" + arg + "'");
-	}
+    for (int i = 0; i < args.length; i++) {
+        String arg = args[i];
+        if (arg.equals("-compile") || arg.equals("-compileTogether") )
+        compile = true;
+        else if (arg.equals("-compileIndividually"))
+        compile = compileIndividually = true;
+        else if (arg.equals("-execute"))
+        execute = true;
+        else if (arg.equals("-expectFail"))
+        expectFail = true;
+        else if (arg.equals("-useWrapper"))
+        useWrapper = true;
+        else if (arg.equals("-executeSimple"))
+        execute = executeSimple = true;
+        else
+        return Status.failed("bad arg for script: `" + arg + "'");
+    }
 
-	if (compile) {
-	    File[] srcs = td.getSourceFiles();
+    if (compile) {
+        File[] srcs = td.getSourceFiles();
 
-	    Status compileStatus;
-	    if (compileIndividually)
-		compileStatus = compileIndividually(srcs);
-	    else
-		compileStatus = compileTogether(srcs);
+        Status compileStatus;
+        if (compileIndividually)
+        compileStatus = compileIndividually(srcs);
+        else
+        compileStatus = compileTogether(srcs);
 
-	    // if compilation so far is OK, and if a wrapper class is required, compile one
-	    if ((compileStatus.getType() == Status.PASSED) && useWrapper) {
-		String c = td.getParameter("executeClass");
-		if (c == null)
-		    return error_noExecuteClass;
-		int lastDot = c.lastIndexOf('.');
-		String w = (lastDot == -1 ? c : c.substring(lastDot+1)) + "t.java";
-		File wf = new File(td.getDir(), w);
-		compileStatus = compileOne(wf);
-	    }
+        // if compilation so far is OK, and if a wrapper class is required, compile one
+        if ((compileStatus.getType() == Status.PASSED) && useWrapper) {
+        String c = td.getParameter("executeClass");
+        if (c == null)
+            return error_noExecuteClass;
+        int lastDot = c.lastIndexOf('.');
+        String w = (lastDot == -1 ? c : c.substring(lastDot+1)) + "t.java";
+        File wf = new File(td.getDir(), w);
+        compileStatus = compileOne(wf);
+        }
 
-	    // if we're not going to execute the test, this is the end of the task
-	    if (!execute) {
-		if (expectFail) {
-		    if (compileStatus.getType() == Status.FAILED) {
-			return pass_compFailExp.augment(compileStatus);
-		    } else
-			return fail_compSuccUnexp.augment(compileStatus);
-		} else
-		    return compileStatus;
-	    } else {
-		// if we want to execute the test, but the compilation failed, we can't go on
-		if (compileStatus.getType() == Status.FAILED)
-		    return fail_compFailUnexp.augment(compileStatus);
-	    }
-	}
+        // if we're not going to execute the test, this is the end of the task
+        if (!execute) {
+        if (expectFail) {
+            if (compileStatus.getType() == Status.FAILED) {
+            return pass_compFailExp.augment(compileStatus);
+            } else
+            return fail_compSuccUnexp.augment(compileStatus);
+        } else
+            return compileStatus;
+        } else {
+        // if we want to execute the test, but the compilation failed, we can't go on
+        if (compileStatus.getType() == Status.FAILED)
+            return fail_compFailUnexp.augment(compileStatus);
+        }
+    }
 
-	if (execute) {
-	    String executeClass = td.getParameter("executeClass");
-	    if (executeClass == null)
-		return error_noExecuteClass;
+    if (execute) {
+        String executeClass = td.getParameter("executeClass");
+        if (executeClass == null)
+        return error_noExecuteClass;
 
-	    if (useWrapper)
-		executeClass += "t";  // standard suffix for wrapper class
+        if (useWrapper)
+        executeClass += "t";  // standard suffix for wrapper class
 
-	    Status executeStatus = execute(executeClass, td.getParameter("executeArgs"));
+        Status executeStatus = execute(executeClass, td.getParameter("executeArgs"));
 
-	    if (expectFail) {
-		if (executeStatus.getType() == Status.FAILED) {
-		    return pass_execFailExp.augment(executeStatus);
-		} else
-		    return fail_execSuccUnexp.augment(executeStatus);
-	    } else
-		return executeStatus;
-	}
+        if (expectFail) {
+        if (executeStatus.getType() == Status.FAILED) {
+            return pass_execFailExp.augment(executeStatus);
+        } else
+            return fail_execSuccUnexp.augment(executeStatus);
+        } else
+        return executeStatus;
+    }
 
-	return error_noActionSpecified;
+    return error_noActionSpecified;
     }
 
     protected Status execute(String executeClass, String[] executeArgs) {
-	env.put("testExecuteClass", executeClass);
-	env.put("testExecuteArgs", executeArgs);
-	String key = (executeSimple ? "executeSimple" : "execute");
-	return invokeCommand(key);
+    env.put("testExecuteClass", executeClass);
+    env.put("testExecuteArgs", executeArgs);
+    String key = (executeSimple ? "executeSimple" : "execute");
+    return invokeCommand(key);
     }
 
     private boolean executeSimple;

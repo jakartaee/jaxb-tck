@@ -23,12 +23,12 @@ import com.sun.tgxml.tjtf.api.common.NameValuePair;
 // </importgen>
 
 /**
- * TargetSpecElem - 
+ * TargetSpecElem -
  *
- * <b>TargetSpecElem</b>  is an (extension) element that provides additional (fine-grained) 
+ * <b>TargetSpecElem</b>  is an (extension) element that provides additional (fine-grained)
  * spec information about what elements of a specification that a test uses
- * TargetSpecElem is a 'name' and 'value' pair that is a requirement of a repository. 
- * 'name' and 'value' attributes are generic strings. 
+ * TargetSpecElem is a 'name' and 'value' pair that is a requirement of a repository.
+ * 'name' and 'value' attributes are generic strings.
  *
  * @version   1.1, 10/28/2002
  * @author  Kevin T. Looney
@@ -49,14 +49,14 @@ public interface TargetSpecElem extends NameValuePair {
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
   /**
     *   Determine if two Repository SpecificAttribute's are equal.

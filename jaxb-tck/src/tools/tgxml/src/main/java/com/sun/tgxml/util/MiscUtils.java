@@ -33,30 +33,30 @@ import java.util.StringTokenizer;
  *  Miscellaneous utils
  */
 public class MiscUtils {
-    /** 
+    /**
      *   Tries to create directory with specified path
      *
      */
     public static boolean mkdirs(String dir) {
-	return mkdirs(new File(dir));
+    return mkdirs(new File(dir));
     }
 
-    /** 
+    /**
      *   Tries to create directory with path specified by File object
      *
      */
     public static boolean mkdirs(File dir) {
-	if (dir.exists())
-	    return dir.isDirectory();
+    if (dir.exists())
+        return dir.isDirectory();
 
-	File f = dir.isAbsolute()? dir
-				 : dir.getAbsoluteFile();
+    File f = dir.isAbsolute()? dir
+                 : dir.getAbsoluteFile();
 
-	File p = f.getParentFile();
-	if (!mkdirs(p))
-	    return false;
+    File p = f.getParentFile();
+    if (!mkdirs(p))
+        return false;
 
-	return f.mkdir() || f.isDirectory() ;
+    return f.mkdir() || f.isDirectory() ;
     }
 
     /**
@@ -64,7 +64,7 @@ public class MiscUtils {
      * This method creates parent directory for the file if needed.
      * @param fileName name of file to write to
      */
-    public static OutputStream createOutputStream(String fileName) 
+    public static OutputStream createOutputStream(String fileName)
             throws IOException {
 
         File file = new File(fileName);
@@ -166,7 +166,7 @@ public class MiscUtils {
      *
      * @param file the file
      * @return the bytes read
-     * @throws IOException 
+     * @throws IOException
      *     in case of I/O errors when reading the file
      */
     public static byte[] readBinaryFile(File file) throws IOException {
@@ -203,7 +203,7 @@ public class MiscUtils {
      *
      * @param file the file
      * @param data the bytes
-     * @throws IOException 
+     * @throws IOException
      *     in case of I/O errors when writing the file
      */
     public static void writeBinaryFile(File file, byte[] data) throws IOException {
@@ -233,7 +233,7 @@ public class MiscUtils {
      *     source file
      * @param dst
      *     defines the destination
-     * @throws IOException 
+     * @throws IOException
      *     in case of I/O errors when reading/writing files
      */
     public static void copyFile(File src, File dst) throws IOException {
@@ -370,19 +370,19 @@ public class MiscUtils {
         String ext = getFileExtension(f);
         return (find(TEXT_EXTS, ext) >= 0);
     }
-    
+
     public static String getParentPackage( String pkg ) {
         String res = "";
-	if (pkg == null) {
-	    return res;
-	}
+    if (pkg == null) {
+        return res;
+    }
         int lastDotLoc = pkg.lastIndexOf(".");
         if ( lastDotLoc == -1 ) {
             return res;
         }
-        
+
         return pkg.substring(0,lastDotLoc);
     }
-    
+
 
 }

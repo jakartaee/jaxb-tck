@@ -25,10 +25,10 @@ import com.sun.tgxml.tjtf.api.tests.TestItem;
 
 
 /**
- * This class is designed as an utility to collect AttrElem values of the 
+ * This class is designed as an utility to collect AttrElem values of the
  * specified names. Initially when new instance is created each name maps
- * an empty list. After the calls of <code>processTestItem()</code> 
- * Each name will map a list of values of AttrElems with such name of 
+ * an empty list. After the calls of <code>processTestItem()</code>
+ * Each name will map a list of values of AttrElems with such name of
  * all passed TestItems.
  */
 public class AttrElemsCollector {
@@ -47,7 +47,7 @@ public class AttrElemsCollector {
 
     /**
      * Looks through AttrElems of the passed TestItem and
-     * collects values of the specified names. 
+     * collects values of the specified names.
      */
     public void processTestItem(TestItem ti) {
         if (names == null || ti == null)
@@ -55,7 +55,7 @@ public class AttrElemsCollector {
 
         for (Iterator it = names.iterator(); it.hasNext();) {
             String name = (String)(it.next());
-            ArrayList newFound = IR.getAllAttrElems(name, ti);            
+            ArrayList newFound = IR.getAllAttrElems(name, ti);
             if (newFound != null) {
                 for (Iterator it2 = newFound.iterator(); it2.hasNext();) {
                     addValue(name, (String)(it2.next()));
@@ -66,21 +66,21 @@ public class AttrElemsCollector {
     }
 
     /**
-     * Sets new list of AttrElem names whose values should be collected 
+     * Sets new list of AttrElem names whose values should be collected
      */
     public void setNameList(ArrayList newList) {
         names = newList;
     }
 
     /**
-     * Returns list of AttrElem names whose values should be collected 
+     * Returns list of AttrElem names whose values should be collected
      */
     public ArrayList getNameList() {
         return names;
     }
 
     /**
-     * Adds new name to the name list. 
+     * Adds new name to the name list.
      */
     public void addName(String n) {
         if (names == null) {
@@ -92,7 +92,7 @@ public class AttrElemsCollector {
     }
 
     /**
-     * Removes name from the name list. 
+     * Removes name from the name list.
      */
     public void removeName(String n) {
         if (names != null) {
@@ -102,7 +102,7 @@ public class AttrElemsCollector {
 
     /**
      * Adds new value to the collection for the name.
-     */ 
+     */
     public void addValue(String name, String value) {
         ArrayList list = (ArrayList)map.get(name);
         if (list == null) {
@@ -114,14 +114,14 @@ public class AttrElemsCollector {
 
     /**
      * Returns the value list collected for the name.
-     */ 
+     */
     public ArrayList getValues(String name) {
         return (ArrayList)map.get(name);
     }
 
     /**
      * Clears the value collection for the name.
-     */ 
+     */
     public void clearValues(String name) {
         map.put(name, null);
     }
@@ -137,7 +137,7 @@ public class AttrElemsCollector {
 
     /**
      * Returns map where keys are names and where name maps
-     * either an ArrayList of collected values or null 
+     * either an ArrayList of collected values or null
      * if no AttrElem with such name is found.
      */
     public HashMap getMap() {

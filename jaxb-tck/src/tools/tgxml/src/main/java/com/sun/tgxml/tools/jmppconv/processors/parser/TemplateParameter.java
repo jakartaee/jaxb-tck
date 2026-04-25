@@ -44,7 +44,7 @@ public class TemplateParameter {
         private int sortKey;
         private int weight;
         private char symbol;
-        
+
 
         /**
          * Constructor.
@@ -203,8 +203,8 @@ public class TemplateParameter {
     /**
      * Constructor
      *
-     * @param name   parameter name 
-     * @param values set of possible values of this parameter 
+     * @param name   parameter name
+     * @param values set of possible values of this parameter
      */
     public TemplateParameter(String name, Value[] values) {
         this(name, values, true, 0, 0);

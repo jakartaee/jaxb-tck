@@ -24,7 +24,7 @@ import com.sun.tgxml.tjtf.api.data.InlineData;
 // </importgen>
 
 /**
- * InlineData - 
+ * InlineData -
  *
  * <b>InlineData</b> describes the data that a test needs to be able to
  * execute.
@@ -32,7 +32,7 @@ import com.sun.tgxml.tjtf.api.data.InlineData;
  * <b>InlineData</b> contains either a URL to a data file, or inline text
  * that represents data.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -59,34 +59,34 @@ public class InlineDataImpl extends DataImpl implements InlineData {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
-    
+
     public InlineDataImpl() {
-	super();
-	init();
+    super();
+    init();
     }
-    
+
     public InlineDataImpl(String data) {
-	super();
-	init();
-	setData(data);
+    super();
+    init();
+    setData(data);
     }
-    
+
     public InlineDataImpl(String data, String filename, DataType dataType) {
-	super(dataType);
-	init();
-	setData(data);
-	setTargetName(filename);
+    super(dataType);
+    init();
+    setData(data);
+    setTargetName(filename);
     }
 
 
     private void init() {
-	m_targetName = null;
-	m_data = null;
+    m_targetName = null;
+    m_data = null;
     }
 
     //------------------------------------------------------------------------------
@@ -105,9 +105,9 @@ public class InlineDataImpl extends DataImpl implements InlineData {
     * @see #setData
     */
     public String getData() {
-	return m_data;
+    return m_data;
     }
-     
+
    /**
     *   Set the inline-data associated with this data element.
     *  <p>
@@ -118,7 +118,7 @@ public class InlineDataImpl extends DataImpl implements InlineData {
     * @see #getData
     */
     public void setData(String data) {
-	m_data = data;
+    m_data = data;
     }
 
 
@@ -129,10 +129,10 @@ public class InlineDataImpl extends DataImpl implements InlineData {
     * @see #setTargetName
     */
     public String getTargetName() {
-	return m_targetName;
+    return m_targetName;
     }
 
-     
+
   /**
     *   Set the Filename for the exportable.
     *  <p>
@@ -140,16 +140,16 @@ public class InlineDataImpl extends DataImpl implements InlineData {
     * @see #getTargetFilename
     */
     public void setTargetName(String filename) {
-	m_targetName = filename;
+    m_targetName = filename;
     }
 
-     
+
   /**
     *   Is this item exportable (predicate).
     *  <p>
     */
     public boolean isExport() {
-	return (m_targetName != null && ! m_targetName.equals("") && getType() != null);
+    return (m_targetName != null && ! m_targetName.equals("") && getType() != null);
     }
 
 

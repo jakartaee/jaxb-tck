@@ -25,11 +25,11 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TargetSpec - 
+ * TargetSpec -
  *
- * <b>TargetSpec</b> describes the specification that a TestGroup, TestCase, 
+ * <b>TargetSpec</b> describes the specification that a TestGroup, TestCase,
  *  or Library depends on. TargetSpec describes a spec ID
- *  and version, encoded to describe ranges of specs. 
+ *  and version, encoded to describe ranges of specs.
  * <p>
  * A version is encoded using a <b><em>Major</em></b>, <b><em>Minor</em></b> and <b><em>Maint</em></b>
  * version integers, and <b><em>Upper</em></b> and <b><em>Lower</em></b> boolean modifiers.
@@ -44,14 +44,14 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  *  For version 1.1, TargetSpec now can contain TargetSpecElems to describe
  *  a finer grain of spec dependencies.
  *
- * @version 	1.1, 10/28/2002
+ * @version     1.1, 10/28/2002
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    TargetSpec 
+ *    TargetSpec
  * ============================================================================================
  */
 
@@ -69,7 +69,7 @@ public  interface TargetSpec   {
      *    Methods
      * ============================================================================================
      */
-   
+
  /**
     *   Determine that a given version string would parse.
     *  <p>
@@ -96,9 +96,9 @@ public  interface TargetSpec   {
     * @see #setTargetSpecElems
     */
     public ArrayList getTargetSpecElems();
-     
 
-     
+
+
   /**
     *   Set the (ArrayList) list of TargetSpecElems that this TargetSpec owns.
     *  <p>
@@ -110,7 +110,7 @@ public  interface TargetSpec   {
     public void setTargetSpecElems(ArrayList specelems);
 
 
- 
+
 
   /**
     *   Get the version (constructed as a string).
@@ -120,7 +120,7 @@ public  interface TargetSpec   {
     */
     public String getVersion();
 
- 
+
   /**
     *   Set the version.
     *  <p>
@@ -130,7 +130,7 @@ public  interface TargetSpec   {
     * @see #isValid
     */
     public void setVersion(String version) throws TestFileException;
- 
+
 
   /**
     *   Get the name associated with this TargetSpec.
@@ -141,7 +141,7 @@ public  interface TargetSpec   {
     * @see #setID
     */
     public String getID();
-     
+
    /**
     *   Set the ID associated with this data.
     *  <p>
@@ -162,7 +162,7 @@ public  interface TargetSpec   {
     * @see #setMajor
     */
     public int getMajor();
-     
+
    /**
     *   Set the Major version value.
     *  <p>
@@ -178,7 +178,7 @@ public  interface TargetSpec   {
     * @see #setMinor
     */
     public int getMinor();
-     
+
    /**
     *   Set the Minor version value.
     *  <p>
@@ -195,7 +195,7 @@ public  interface TargetSpec   {
     * @see #setMaint
     */
     public int getMaint();
-     
+
    /**
     *   Set the Minor version value.
     *  <p>
@@ -208,18 +208,18 @@ public  interface TargetSpec   {
   /**
     *   predicate - has the "upper" modifier set.
     *  <p>
-    *  When the upper modifier is set, the SpecTarget 
+    *  When the upper modifier is set, the SpecTarget
     *  applies to all versions greater than the major.minor version.
     * <p>
     * @return     true if the upper modifier is set.
     * @see #setUpperModifier
     */
     public boolean isUpperModifierSet();
-     
+
    /**
     *   Set the "upper" modifier set.
     *  <p>
-    *  When the upper modifier is set, the SpecTarget 
+    *  When the upper modifier is set, the SpecTarget
     *  applies to all versions greater than the major.minor version.
     * <p>
     * @param     upper The (boolean) upper modifier value.
@@ -231,18 +231,18 @@ public  interface TargetSpec   {
   /**
     *   predicate - has the "lower" modifier set.
     *  <p>
-    *  When the lower modifier is set, the SpecTarget 
+    *  When the lower modifier is set, the SpecTarget
     *  applies to all versions greater than the major.minor version.
     * <p>
     * @return     true if the lower modifier is set.
     * @see #setLowerModifier
     */
     public boolean isLowerModifierSet();
-     
+
    /**
     *   Set the "lower" modifier set.
     *  <p>
-    *  When the lower modifier is set, the SpecTarget 
+    *  When the lower modifier is set, the SpecTarget
     *  applies to all versions greater than the major.minor version.
     * <p>
     * @param     lower The (boolean) lower modifier value.
@@ -254,8 +254,8 @@ public  interface TargetSpec   {
     //------------------------------------------------------------------------------
     //  predicates
     //------------------------------------------------------------------------------
-  
-     
+
+
    /**
     *   predicate - return true if the given spec version is within the TargetSpec range.
     *  <p>
@@ -267,7 +267,7 @@ public  interface TargetSpec   {
     * @return    true if the (major.minor, maint) version is within this spec.
     */
     public boolean inSpec(int major, int minor, int maint);
-    
+
    /**
     *   predicate - return true if the given spec version is within the TargetSpec range.
     *  <p>
@@ -278,8 +278,8 @@ public  interface TargetSpec   {
     * @return    true if the (major.minor) version is within this spec.
     */
     public boolean inSpec(int major, int minor);
-    
-     
+
+
    /**
     *   predicate - return true if the given TargetSpec is within the TargetSpec range.
     *  <p>

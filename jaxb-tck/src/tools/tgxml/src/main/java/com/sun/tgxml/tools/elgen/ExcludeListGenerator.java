@@ -30,10 +30,10 @@ import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 import com.sun.tgxml.tjtf.tools.options.StringOption;
 
 public class ExcludeListGenerator extends ToolBase {
-   
+
 
    private static final String CtStr_ToolName = "ExcludeListGenerator";
-  
+
   /**
     *  Program entry
     *
@@ -43,45 +43,45 @@ public class ExcludeListGenerator extends ToolBase {
         ExcludeListGenerator c = new ExcludeListGenerator(System.out, System.err);
         System.exit(c.run(args));
     }
-    
 
-    /* 
+
+    /*
      * -----------------------------------------------------------
      * -----------------------------------------------------------
      *    Public Methods (outside world can call these)
      * -----------------------------------------------------------
      * -----------------------------------------------------------
-     */ 
-    
+     */
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public ExcludeListGenerator( PrintStream out, PrintStream err) {
-	super(out, err, CtStr_ToolName);
+    super(out, err, CtStr_ToolName);
     }
 
- 
 
-   /* 
+
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    StringOption resultOption = new StringOption("-resultExcludeList", 
+    StringOption resultOption = new StringOption("-resultExcludeList",
          "  -resultExcludeList <filename> output file name",
          OBLIGATORY);
 
-    StringOption filterOption = new StringOption("-filter", 
+    StringOption filterOption = new StringOption("-filter",
          "  -filter <expression> keyword expression");
 
-    StringOption converterOption = new StringOption("-converter", 
+    StringOption converterOption = new StringOption("-converter",
          "  -converter <classname> the converter class name");
 
 
@@ -98,23 +98,23 @@ public class ExcludeListGenerator extends ToolBase {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
-    public void applyOptionsValues() throws ParseArgumentException {	   
+    public void applyOptionsValues() throws ParseArgumentException {
 
-        if (filterOption.isSet()) 
+        if (filterOption.isSet())
             setFilter(filterOption.getStringValue());
 
         try {
             setOutput(resultOption.getStringValue());
         } catch (IOException e) {
-	    throw new ParseArgumentException(
+        throw new ParseArgumentException(
                 LibResHandler.getResStr("file.error.ioerror",
                 resultOption.getStringValue()));
-        }            
+        }
 
-        if (converterOption.isSet()) 
+        if (converterOption.isSet())
             setConverter(converterOption.getStringValue());
 
 
@@ -130,7 +130,7 @@ public class ExcludeListGenerator extends ToolBase {
         super.applyOptionsValues();
     }
 
-    /** 
+    /**
      * Sets OperandsValidator that validates that only one operand
      * is passed, operand ends with ".jtx" does not start with "-"
      */
@@ -139,72 +139,72 @@ public class ExcludeListGenerator extends ToolBase {
             "Operands: ",
             "  <fileName>.jtx"
         };
-        operandsValidator = new DefaultOperandsValidator(1, 1, 
+        operandsValidator = new DefaultOperandsValidator(1, 1,
             "-", ".jtx", operandsUsageLines);
     }
-    
+
     /**
      * Sets elgen usage header
      */
     protected void setToolUsageHeader() {
-        toolUsageHeader = 
-            "Usage: " + getProgramName() + " [<options>] <fileName>.jtx\n" + 
+        toolUsageHeader =
+            "Usage: " + getProgramName() + " [<options>] <fileName>.jtx\n" +
             "where options include:";
     }
 
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
     *
     * ----------------------------------------------------------------------
     */
 
     public void startTool() {
-		try {
-			generate();
-		} catch (TestFileException e) {
+        try {
+            generate();
+        } catch (TestFileException e) {
             reportErrorMsg(e.getMessage());
-			setResultCode(ctInt_ErrorCode_Error);
+            setResultCode(ctInt_ErrorCode_Error);
         }
     }
 
 
-	File result = null;
-	ExcludeList excludeList = null;
-	Vector links = new Vector();
-	KeywordExpression expr = null;
+    File result = null;
+    ExcludeList excludeList = null;
+    Vector links = new Vector();
+    KeywordExpression expr = null;
     ExcludeListConverter converter = new JavaTestELConverter();
 
-	public void setFilter(String filter) {
-		expr = new KeywordExpression(filter);
-	}
+    public void setFilter(String filter) {
+        expr = new KeywordExpression(filter);
+    }
 
 
-	public void setExcludeList(String el) throws IOException {
-		excludeList = new ExcludeList(el);
-	}
+    public void setExcludeList(String el) throws IOException {
+        excludeList = new ExcludeList(el);
+    }
 
-	public void setOutput(String file) throws IOException {
-			result = new File(file);
-	}
+    public void setOutput(String file) throws IOException {
+            result = new File(file);
+    }
 
-	public void setConverter(String className) {
-	}
+    public void setConverter(String className) {
+    }
 
-	/**
-  
+    /**
+
    */
-	public void generate()  throws TestFileException {
-		try {
+    public void generate()  throws TestFileException {
+        try {
             if(expr != null) {
                 excludeList = expr.apply(excludeList);
-            }			
-			converter.convert(excludeList, result);
-		} catch (IOException e) {
-			reportErrorMsg(LibResHandler.getResStr("file.error.ioerror", "result file"));
-		}
-	}
+            }
+            converter.convert(excludeList, result);
+        } catch (IOException e) {
+            reportErrorMsg(LibResHandler.getResStr("file.error.ioerror", "result file"));
+        }
+    }
 
 
 }

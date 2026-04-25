@@ -21,12 +21,12 @@ package com.sun.tgxml.tjtf.api.exceptions;
 // </importgen>
 
 /**
- * TestFileException - 
+ * TestFileException -
  *
  * <b>TestFileException</b> is the basic Exception class for the TestDescription library.
  * All throwable exceptions from the library derive from this exception.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -45,7 +45,7 @@ public  class TestFileException  extends Exception {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -57,8 +57,8 @@ public  class TestFileException  extends Exception {
      * @param message  a an exception message string.
      */
     public TestFileException (String message) {
-	super(message);
+    super(message);
     }
 }
-     
+
 

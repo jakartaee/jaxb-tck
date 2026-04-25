@@ -34,7 +34,7 @@ import com.sun.tgxml.tools.indexgen.api.TestSuite;
 import com.sun.tgxml.util.IR;
 
 public class JCKIndexGen extends DefaultHtmlGenerator {
-   
+
 
    static final String SM_BY_TITLE = "byTitle";
    static final String SM_BY_FILE_NAME = "byFileName";
@@ -42,7 +42,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
    static final String SM_BY_PROPERTY = "byProperty";
 
    private static final String CtStr_ToolName = "JCKIndexGen";
-  
+
    protected String copyrightLink = null;
   /**
     *  Program entry
@@ -53,16 +53,16 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
         JCKIndexGen c = new JCKIndexGen(System.out, System.err);
         System.exit(c.run(args));
     }
-    
-    
+
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the JCKIndexGen tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public JCKIndexGen( PrintStream out, PrintStream err) {
         super(out, err, CtStr_ToolName);
@@ -74,7 +74,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
     private String id = null;
     private boolean isTable = false;
 
-    public Vector create(File resultHTML,  TestSuite doc, Vector links)  
+    public Vector create(File resultHTML,  TestSuite doc, Vector links)
             throws TestFileException {
         descr = doc.getDescription();
         String format = doc.getContentsFormat();
@@ -95,12 +95,12 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
              title = id;
         }
         return super.create(resultHTML, doc, links);
-    }     
-    
+    }
+
    /**
-    * Returns the value of "Title" element of the given xmlFile with 
-    * all html tags removed. 
-    */    
+    * Returns the value of "Title" element of the given xmlFile with
+    * all html tags removed.
+    */
     protected String createTitle(TestSuite xmlFile) throws TestFileException {
         return title == null ? "" : removeTags(title);
     }
@@ -109,7 +109,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
      * Removes html tags from the given line
      */
     protected String removeTags(String line) {
-        if (line == null) 
+        if (line == null)
              return null;
 
         StringBuffer result = new StringBuffer();
@@ -119,7 +119,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
             int eTag = line.indexOf('>', sTag);
             if (eTag < 0) {
                 sTag = -1;
-            } else {            
+            } else {
                 result.append(line.substring(begin, sTag));
                 begin = eTag + 1;
                 sTag = line.indexOf('<', begin);
@@ -130,8 +130,8 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
     }
 
    /**
-    * Returns the JCK specific descrption. 
-    */    
+    * Returns the JCK specific descrption.
+    */
     protected String createDescription(TestSuite xmlFile)
              throws TestFileException {
 
@@ -145,7 +145,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
         StringBuffer sb = new StringBuffer();
         sb.append("<b><big>");
         if (isTable) {
-            sb.append("ASSERTION ");        
+            sb.append("ASSERTION ");
             if (id != null) {
                 sb.append(id);
             }
@@ -161,7 +161,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
     * Returns links to the tests in the list format, where list
     * is sorted by title.
     */
-    protected String createLinkList(TestSuite xmlFile, Vector links)  
+    protected String createLinkList(TestSuite xmlFile, Vector links)
             throws TestFileException {
 
          return super.createLinkList(xmlFile, sortLinks(xmlFile, links));
@@ -200,7 +200,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
                  String s2 = ((DefaultHtmlFile)o2).getFile().toString();
                  return s1.compareTo(s2);
              }
-             public boolean equals(Object obj) { 
+             public boolean equals(Object obj) {
                  return (this == obj);
              }
          };
@@ -242,7 +242,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
                      return -1;
                  }
              }
-             public boolean equals(Object obj) { 
+             public boolean equals(Object obj) {
                  return (this == obj);
              }
          };
@@ -259,7 +259,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
                  String s2 = f2.getTitle() + f2.getFile();
                  return s1.compareTo(s2);
              }
-             public boolean equals(Object obj) { 
+             public boolean equals(Object obj) {
                  return (this == obj);
              }
          };
@@ -300,7 +300,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
     }
 
    /**
-    * Returns html string that contains reference to the given 
+    * Returns html string that contains reference to the given
     * DefaultHtmlFile.
     */
     protected String createReference(Object link)  throws TestFileException {
@@ -325,7 +325,7 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
                 sb.append(" ");
             }
         }
-        return "<a href=\"" + href + "\">" + sb.toString() + "</a> - " 
+        return "<a href=\"" + href + "\">" + sb.toString() + "</a> - "
                 + f.getTitle();
     }
 
@@ -344,13 +344,13 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
         return copyrightLink;
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    StringOption copyrighOption = new StringOption("-copyrightLink", 
+    StringOption copyrighOption = new StringOption("-copyrightLink",
          "  -copyrightLink <link>   link to the copyrigth file",
          OPTIONAL);
 
@@ -363,13 +363,13 @@ public class JCKIndexGen extends DefaultHtmlGenerator {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
     public void applyOptionsValues() throws ParseArgumentException {
         if (copyrighOption.isSet()) {
             copyrightLink = copyrighOption.getStringValue();
-        }       
+        }
         super.applyOptionsValues();
     }
 

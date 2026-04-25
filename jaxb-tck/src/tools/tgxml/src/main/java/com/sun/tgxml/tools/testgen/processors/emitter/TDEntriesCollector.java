@@ -31,7 +31,7 @@ import com.sun.tgxml.util.AttrElemsCollector;
  */
 public class TDEntriesCollector extends AttrElemsCollector {
 
-    public static final String TD_ENTRIES_PROP_NAME = 
+    public static final String TD_ENTRIES_PROP_NAME =
             "testgen.html.TestDescriptionExtensions";
 
 
@@ -58,7 +58,7 @@ public class TDEntriesCollector extends AttrElemsCollector {
      * @param noDupValues names for which no duplicate values are allowed
      * @param singleEntry names for which multiple TD entries are not allowed
      */
-    public TDEntriesCollector(ArrayList entryNames, ArrayList noDupValues, 
+    public TDEntriesCollector(ArrayList entryNames, ArrayList noDupValues,
              ArrayList singleEntry) {
 
         super(entryNames);
@@ -68,7 +68,7 @@ public class TDEntriesCollector extends AttrElemsCollector {
 
 
     /**
-     * Detects list of tck specific TestDescription entries from 
+     * Detects list of tck specific TestDescription entries from
      * BuildProperties.
      */
     public static ArrayList detectTCKSepcificTDEntries() {
@@ -103,7 +103,7 @@ public class TDEntriesCollector extends AttrElemsCollector {
     }
 
     /**
-     * Adds field to the entry name list for which no duplicate values 
+     * Adds field to the entry name list for which no duplicate values
      * are allowed.
      */
     public void addNoDuplicateValues(String field) {
@@ -114,7 +114,7 @@ public class TDEntriesCollector extends AttrElemsCollector {
             noDupValues.add(field);
         }
     }
-    
+
 
     /**
      * Sets entry names for which multiple TD entries are not allowed.
@@ -122,7 +122,7 @@ public class TDEntriesCollector extends AttrElemsCollector {
     public void setSingleEntry(ArrayList entries) {
         this.singleEntry = entries;
     }
-    
+
 
     /**
      * Returns entry names for which multiple TD entries are not allowed.
@@ -132,7 +132,7 @@ public class TDEntriesCollector extends AttrElemsCollector {
     }
 
     /**
-     * Adds field to the entry name list for which multiple TD entries 
+     * Adds field to the entry name list for which multiple TD entries
      * are not allowed.
      */
     public void addSingleEntry(String field) {
@@ -184,7 +184,7 @@ public class TDEntriesCollector extends AttrElemsCollector {
             } else {
                 return (String[])values.toArray(new String[0]);
             }
-        } 
+        }
         return null;
     }
 

@@ -65,7 +65,7 @@ public class Pattern implements MacroParserImpls {
          *     the pattern which matched
          * @param beg_pos
          *     start position of the matched substring in the text
-         * @param end_pos 
+         * @param end_pos
          *     end position of the matched substring in the text
          */
         Match(Pattern pattern, int beg_pos, int end_pos) {
@@ -101,7 +101,7 @@ public class Pattern implements MacroParserImpls {
          *
          * @param macro_name
          *     macro name
-         * @return 
+         * @return
          *     macro value or <code>null</code> if macro with this
          *     name was not found
          */
@@ -157,9 +157,9 @@ public class Pattern implements MacroParserImpls {
     /**
      * Constructor.
      *
-     * @param text 
+     * @param text
      *     pattern text
-     * @throws Fault 
+     * @throws Fault
      *     if the text contains unknown macro names
      */
     public Pattern(String text) throws Fault {
@@ -248,7 +248,7 @@ public class Pattern implements MacroParserImpls {
      *
      * @param macro_name
      *     macro name
-     * @return 
+     * @return
      *     macro value or <code>null</code> if macro with this
      *     name was not found or has not been expanded yet
      */
@@ -305,7 +305,7 @@ public class Pattern implements MacroParserImpls {
      * to the supplied array of &lt;macro name, macro value&gt; pairs.
      *
      * @param name_val_pairs the array of pairs
-     * @return 
+     * @return
      *     the number of macros expanded.
      */
     public int expandMacros(String[][] name_val_pairs) {
@@ -358,7 +358,7 @@ public class Pattern implements MacroParserImpls {
 
     /**
      * @param macro_name macro name
-     * @return 
+     * @return
      *     macro object corresponding to the 0'th occurance of the
      *     macro name in the pattern text or <code>null</code>
      */
@@ -368,7 +368,7 @@ public class Pattern implements MacroParserImpls {
 
     /**
      * @param macro_name  macro name
-     * @return 
+     * @return
      *     macro objects corresponding to all occurances of the
      *     macro name in the pattern text.
      */
@@ -543,7 +543,7 @@ public class Pattern implements MacroParserImpls {
      *
      * @param beg  the index of the starting macro name designator character
      *     ({@link #MACRO_CHAR}) in the text
-     * @param end 
+     * @param end
      *     the index of the ending macro name designator character
      *     ({@link #MACRO_CHAR}) in the text
      * @param text the text

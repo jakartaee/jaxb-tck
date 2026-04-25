@@ -75,11 +75,11 @@ public class LibAPIException extends com.sun.jmpp.JmppException {
         this.level = level;
         this.libAPI = libAPI;
     }
-    
+
     /**
      * Returns the detailed message with a preprocessing error description.
      * If exception has been thrown on directory level then just
-     * <code>message</code> will be returned. For file level, the conmtents of 
+     * <code>message</code> will be returned. For file level, the conmtents of
      * JmppLibAPI <code>file</code> and <code>filetitle</code> variables will be
      * included in message as well. For testcase level, the contents of
      * <code>file</code>, <code>testCaseID</code>, <code>method</code>  and
@@ -88,28 +88,28 @@ public class LibAPIException extends com.sun.jmpp.JmppException {
      * @see #LibAPIException(JmppLibAPI libAPI, int level, String reason)
      */
     public String getMessage() {
-    
+
         String message = super.getMessage();
         if (libAPI == null) {
             return message;
-        }        
-            
-        switch (level) {        
-            case 1:   
+        }
+
+        switch (level) {
+            case 1:
                return "\n     file : " + libAPI.file + "\n" +
                         "filetitle : " + libAPI.filetitle + "\n"  +
-                        "   Reason : " + message;   
-            case 2:  
+                        "   Reason : " + message;
+            case 2:
                return "\n      file : " + libAPI.file + "\n" +
-                        "testCaseID : " + libAPI.testCaseID + "\n" + 
-                        "    method : " + libAPI.method + "\n" +  
-                        "    values : " + libAPI.values + "\n" +                            
-                        "    Reason : " + message;   
+                        "testCaseID : " + libAPI.testCaseID + "\n" +
+                        "    method : " + libAPI.method + "\n" +
+                        "    values : " + libAPI.values + "\n" +
+                        "    Reason : " + message;
             default:
-               return message;  
-        
+               return message;
+
         }
-    
+
     }
-    
+
 }

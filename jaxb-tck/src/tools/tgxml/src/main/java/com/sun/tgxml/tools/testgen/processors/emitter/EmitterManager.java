@@ -69,7 +69,7 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
      * a link to copyright file is stored
      */
     protected static final String JMPP_COPYRIGHT_LINK_PROP = "jmpp.tck.copyright";
-    
+
     /**
      * Specify name of testgen property used by emitters to detect
      * a link to copyright file is stored
@@ -78,11 +78,11 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
 
 
     protected Shell m_shell;
-    protected ExcludeListCollector m_elCollector; 
+    protected ExcludeListCollector m_elCollector;
     protected Properties emitterProperties = null;
     protected CodeCopyGenerator copier = new CodeCopyGenerator();
 
-	public static final String GEN_TYPE_PROPERTY = "GenType";
+    public static final String GEN_TYPE_PROPERTY = "GenType";
 
 
     /**
@@ -93,9 +93,9 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
      * <ul>
      *   <li> looks through passed TestGroups, Libraries to detect which
      *        generators should be used to emit TestGroups, Libraries.
-     *   <li> invokes all required TestGroup generators with a set of 
+     *   <li> invokes all required TestGroup generators with a set of
      *        TestGroups and all passed TestSuites.
-     *   <li> invokes all required Library generators with a set of 
+     *   <li> invokes all required Library generators with a set of
      *        Libraries.
      *   <li> copies external resources for all  IRObjects
      * </ul>
@@ -104,13 +104,13 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
      * this method:
      * <ul>
      *   <li> creates a key for the TestGroup or Library
-     *   <li> lools through BuildProperties to find properties starting 
+     *   <li> lools through BuildProperties to find properties starting
      *        with "testgen.emitter."
      *   <li> finds the best property (from the found ones) for the created key
      *   <li> the value of the best property is a generator class name
      * </ul>
      */
-    
+
     public void generate(IRObj[] trees) throws TestFileException, IOException {
         if (trees == null) return;
 
@@ -128,15 +128,15 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
         trees = irProcessor.process(trees);
 
         // list of passed TestSuite id
-        ArrayList testSuites = new ArrayList();            
-   
-        // hash : generator <--> TestGroupList 
+        ArrayList testSuites = new ArrayList();
+
+        // hash : generator <--> TestGroupList
         Hashtable generatorsScope = new Hashtable();
 
-        // hash : generator <--> LibraryList 
+        // hash : generator <--> LibraryList
         Hashtable libraryScope = new Hashtable();
-		
-		//hash: generator -> set of tdFile. for html conflict mode
+
+        //hash: generator -> set of tdFile. for html conflict mode
         Hashtable tdFileScope = new Hashtable();
 
         for (int i=0; i<trees.length; i++) {
@@ -182,8 +182,8 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
                     tgList.add(tg);
                     generatorsScope.put(gen, tgList);
                 }
-				
-				String tdFile = getTdFile(tg, gen);
+
+                String tdFile = getTdFile(tg, gen);
 
                 /* put tdFile into the tdFileScope list of appropriate generator */
                 if (tdFileScope.containsKey(gen)) {
@@ -195,13 +195,13 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
                     tdFileScope.put(gen, tdSet);
                 }
 
-		
+
             } else {
                 throw new TestFileException(
                     LibResHandler.getResStr("testgen.error.unknownIR", null));
             }
         }
-		
+
         /* Sort genrators. HtmlConflictModeInsert must be first element in the generator list*/
         ArrayList sortedGenerators = new ArrayList(generatorsScope.keySet());
         Collections.sort(sortedGenerators, new Comparator() {
@@ -209,7 +209,7 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
                 return o instanceof HtmlConflictModeInsert ? -1 : 1;
             }
         });
-		
+
         /* set html conflict mode properties */
         HashSet conflictFiles = getHtmlConflictFiles(sortedGenerators, tdFileScope);
 
@@ -218,9 +218,9 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
             Generator gen = (Generator) sortedGenerators.get(i);
             gen.setExcludeListCollector(this);
             gen.setProperties(emitterProperties);
-			if (gen instanceof HtmlConflictModeIntf)
-				//set conflict fiels. 
-				((HtmlConflictModeIntf)gen).setConflictFiles(conflictFiles);
+            if (gen instanceof HtmlConflictModeIntf)
+                //set conflict fiels.
+                ((HtmlConflictModeIntf)gen).setConflictFiles(conflictFiles);
             /* calculate all generator arguments: TestGroups and TestSuites */
             IRObj[] trs = generatorArguments(
                 (ArrayList)generatorsScope.get(gen),  // list of TestGroups
@@ -245,12 +245,12 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
     /**
      * throws TestFileException if list.size() > size
      */
-    protected void checkListSize(ArrayList list, int size, String errMessage) 
+    protected void checkListSize(ArrayList list, int size, String errMessage)
             throws TestFileException {
         if (list.size() > size) {
             StringBuffer sb = new StringBuffer();
             sb.append(list.get(0).toString());
-            for (int i = 1; i < list.size(); i++) { 
+            for (int i = 1; i < list.size(); i++) {
                 sb.append(", " + list.get(i));
             }
             throw new TestFileException(errMessage + sb.toString());
@@ -264,17 +264,17 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
      */
     protected IRObj[] generatorArguments(
         ArrayList tgList, ArrayList suitesList) {
-        
+
         ArrayList args = new ArrayList(tgList.size() + suitesList.size());
         args.addAll(tgList);
         args.addAll(suitesList);
         return (IRObj[])args.toArray(new IRObj[0]);
     }
 
-    
+
     /**
      * returns type of passed IRObj
-     */    
+     */
     protected int detectIRType(IRObj value) {
         int type = UNKNOWN;
         if (value instanceof Library) {
@@ -286,21 +286,21 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
         }
         return type;
     }
-            
+
     public void generate(IRObj tree) throws TestFileException, IOException{
         IRObj[] trees = {tree};
         generate(trees);
     }
-    
-    
+
+
     public void setExcludeListCollector(ExcludeListCollector collector){
         m_elCollector = collector;
     }
-    
+
     public void setProperties(Properties props) {
         emitterProperties = props;
     }
-    
+
     public Shell getShell() throws TestFileException {
         return m_shell;
     }
@@ -308,14 +308,14 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
     public void setShell(Shell shell) {
         m_shell = shell;
     }
-        
+
     public boolean addEntry(TestCase tc) throws IncorrectAttributesException, IOException {
         if (m_elCollector != null) {
             return m_elCollector.addEntry(tc);
         }
         return true;
     }
-    
+
     public boolean addEntry(TestGroup tg) throws IncorrectAttributesException, IOException  {
         if (m_elCollector != null) {
             m_elCollector.addEntry(tg);
@@ -328,7 +328,7 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
             m_elCollector.setExcludeListFileName(fileName);
         }
     }
-    
+
     public String getExcludeListFileName() {
         if (m_elCollector != null) {
             return m_elCollector.getExcludeListFileName();
@@ -336,11 +336,11 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
             return null;
         }
     }
-	
-	/**
-	* Generate test descrioption file name from 
-	*/
-	protected String getTdFile(TestGroup tg, Generator gen) throws TestFileException {
+
+    /**
+    * Generate test descrioption file name from
+    */
+    protected String getTdFile(TestGroup tg, Generator gen) throws TestFileException {
         String tdFile = LibUtils.getTDFile(tg.getTGAttributes());
         if (tdFile != null && !tdFile.trim().equals("")) {
             tdFile = tdFile.trim();
@@ -353,40 +353,40 @@ public class EmitterManager extends StandardOptionHandler implements ExcludeList
         }
         return tdFile;
     }
-	
-	/**
-	* Generate set of conflict html files. Retruns null If no files are found.
-	*/	
-	protected HashSet getHtmlConflictFiles(ArrayList sortedGenerators, Hashtable tdFileScope) {
+
+    /**
+    * Generate set of conflict html files. Retruns null If no files are found.
+    */
+    protected HashSet getHtmlConflictFiles(ArrayList sortedGenerators, Hashtable tdFileScope) {
         //for conflict mode mtWriter must be instance of MultiTestWriter and HtmlConflictModeIntf
         if (sortedGenerators.size() == 2 &&
-			sortedGenerators.get(0) instanceof HtmlConflictModeInsert &&
+            sortedGenerators.get(0) instanceof HtmlConflictModeInsert &&
             sortedGenerators.get(1) instanceof HtmlConflictModeReplace) {
             HashSet tdSet0 = (HashSet) tdFileScope.get(sortedGenerators.get(0));
             HashSet tdSet1 = (HashSet) tdFileScope.get(sortedGenerators.get(1));
             if ((tdSet0 != null) && (tdSet1 != null)) {
-             	//intersection of 2 sets
-            	tdSet0.retainAll(tdSet1);
+                //intersection of 2 sets
+                tdSet0.retainAll(tdSet1);
                 //now tdSet0 contains tgFiles which exsist in tdSet0 and tdSet1
-                if (!tdSet0.isEmpty()) 
-					return  new HashSet(tdSet0);
+                if (!tdSet0.isEmpty())
+                    return  new HashSet(tdSet0);
             }
-		}
-		return null;		
-	}
-         
-	/**
-	* Interface for html conflict mode
-	*/    
-    public interface HtmlConflictModeIntf {
-		public static String AFTER_TOPLIST = "<DIV ID=\"AFTER_TOPLIST\"/>";
-		public static String AFTER_TABLE = "<DIV ID=\"AFTER_TABLE\"/>";
-	
-    	public void setConflictFiles(HashSet files);
-		public boolean isInConflictMode(String file);		
+        }
+        return null;
     }
-    
+
+    /**
+    * Interface for html conflict mode
+    */
+    public interface HtmlConflictModeIntf {
+        public static String AFTER_TOPLIST = "<DIV ID=\"AFTER_TOPLIST\"/>";
+        public static String AFTER_TABLE = "<DIV ID=\"AFTER_TABLE\"/>";
+
+        public void setConflictFiles(HashSet files);
+        public boolean isInConflictMode(String file);
+    }
+
     public interface HtmlConflictModeInsert extends HtmlConflictModeIntf {};
     public interface HtmlConflictModeReplace extends HtmlConflictModeIntf {};
-                    
+
 }

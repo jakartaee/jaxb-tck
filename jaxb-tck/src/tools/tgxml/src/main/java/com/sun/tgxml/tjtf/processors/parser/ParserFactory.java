@@ -32,12 +32,12 @@ import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
 // </importgen>
 
 /**
- * ParserFactory - 
+ * ParserFactory -
  *
- * <b>ParserFactory</b> is a static factory class for creating Parser implementations. 
+ * <b>ParserFactory</b> is a static factory class for creating Parser implementations.
  *<p>
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -56,7 +56,7 @@ public  class ParserFactory {
      *    constructors
      * ============================================================================================
      */
-    
+
     private ParserFactory () {
 
     }
@@ -66,14 +66,14 @@ public  class ParserFactory {
      *    Member Fields
      * ============================================================================================
      */
-    
-    
+
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Factories
@@ -89,18 +89,18 @@ public  class ParserFactory {
     * @see com.sun.tgxml.tjtf.processors.parser.XMLParser
     */
     static public XMLParser  createDefaultXMLParser() throws TestFileException, IOException  {
-	try {
-	    XMLParserImpl parser = (XMLParserImpl) createXMLParser();
-	    TagHandlerTable table = TagHandlerFactory.getDefaultHandlerTable();
-	    TagHandlerFactory.setParserSupport(table, parser.getParserHandlerSupport());
-	    parser.setupParser(table);
+    try {
+        XMLParserImpl parser = (XMLParserImpl) createXMLParser();
+        TagHandlerTable table = TagHandlerFactory.getDefaultHandlerTable();
+        TagHandlerFactory.setParserSupport(table, parser.getParserHandlerSupport());
+        parser.setupParser(table);
 
-	    return parser;
-	} catch (SAXException e) {
-	    throw new EmbeddedTFException(e);
-	}
+        return parser;
+    } catch (SAXException e) {
+        throw new EmbeddedTFException(e);
     }
-     
+    }
+
 
   /**
     *   Create an (vanilla) XMLParser object.
@@ -111,10 +111,10 @@ public  class ParserFactory {
     * @see com.sun.tgxml.tjtf.processors.parser.XMLParser
     */
     static public XMLParser  createXMLParser() {
-	XMLParserImpl parser = new XMLParserImpl();
-	return parser;
+    XMLParserImpl parser = new XMLParserImpl();
+    return parser;
     }
-     
+
 
 
   /**
@@ -130,15 +130,15 @@ public  class ParserFactory {
     * @see com.sun.tgxml.tjtf.processors.parser.XMLParser
     */
     static public XMLParser  createXMLParser(URL dtd, TagHandlerTable table)  throws TestFileException, IOException  {
-	try {
-	    XMLParserImpl parser = (XMLParserImpl) createXMLParser();
-	    TagHandlerFactory.setParserSupport(table, parser.getParserHandlerSupport());
-	    parser.setupParser(table);
-	    
-	    return parser;
-	} catch (SAXException e) {
-	    throw new EmbeddedTFException(e);
-	}
+    try {
+        XMLParserImpl parser = (XMLParserImpl) createXMLParser();
+        TagHandlerFactory.setParserSupport(table, parser.getParserHandlerSupport());
+        parser.setupParser(table);
+
+        return parser;
+    } catch (SAXException e) {
+        throw new EmbeddedTFException(e);
+    }
     }
 
 }

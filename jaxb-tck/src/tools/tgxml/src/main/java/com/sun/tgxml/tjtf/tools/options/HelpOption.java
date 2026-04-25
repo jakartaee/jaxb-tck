@@ -26,8 +26,8 @@ import java.util.ArrayList;
  *  HelpOptionException will be thrown from <tt>parse(ArrayList list)</tt>
  *  method
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -43,7 +43,7 @@ public class HelpOption extends FlagOption {
     }
 
     /**
-     * Creates option with one specified switch and usageInfo 
+     * Creates option with one specified switch and usageInfo
      *
      * @throws IllegalArgumentException if usageInfo is null, or sw is null
      */
@@ -56,8 +56,8 @@ public class HelpOption extends FlagOption {
      *
      * @throws IllegalArgumentException if usageInfo is null, or array of
      * switches is empty or contains null.
-     */    
-    public HelpOption(String[] switches, String usageInfo, 
+     */
+    public HelpOption(String[] switches, String usageInfo,
             boolean isObligatory) {
         super(switches, usageInfo, isObligatory);
     }

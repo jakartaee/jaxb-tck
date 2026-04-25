@@ -21,7 +21,7 @@ package com.sun.tgxml.tjtf.api.data;
 // </importgen>
 
 /**
- * Data - 
+ * Data -
  *
  * <b>Data</b> describes the data that a test needs to be able to
  * execute.
@@ -29,7 +29,7 @@ package com.sun.tgxml.tjtf.api.data;
  * <b>Data</b> contains either a URL to a data file, or inline text
  * that represents data.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -48,7 +48,7 @@ public  interface Data  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -64,7 +64,7 @@ public  interface Data  {
     * @see #setType
     */
     public DataType getType();
-     
+
    /**
     *   Set the data type (resource or iodata).
     *  <p>

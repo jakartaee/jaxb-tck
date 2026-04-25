@@ -30,50 +30,50 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 
 
-/** 
- * AttrElem_TH - The tag-handler for a AttrElem tag. 
- * 
- * 
+/**
+ * AttrElem_TH - The tag-handler for a AttrElem tag.
+ *
+ *
  * @version 1.1
  * @author Andrey Chernyshev
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    AttrElem_TH 
- * ============================================================================================ 
- */ 
+ */
+
+
+/*
+ * ============================================================================================
+ *    AttrElem_TH
+ * ============================================================================================
+ */
 public class AttrElem_TH extends  NameValueTagHandler {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   AttrElem_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   AttrElem_TH constructor -
+    *       Initialize our internal fields.
+    */
     public AttrElem_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     /**
@@ -94,40 +94,40 @@ public class AttrElem_TH extends  NameValueTagHandler {
     * @see #endTag
     */
     public void endTag(String name, String value) throws SAXException {
-	    try {
-	        super.endTag(name, value);
+        try {
+            super.endTag(name, value);
 
-	        Stack elementStack = m_ParserHandler.getStack();
-	        Object element = elementStack.peek();
+            Stack elementStack = m_ParserHandler.getStack();
+            Object element = elementStack.peek();
 
-	        if (element == null) {
-        	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-            }     
+            if (element == null) {
+                m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+            }
 
-	        if (!(element instanceof TestSuite)) {
-    		    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(), 
-							    TestSuiteTagsImpl.ctStr_tag_testsuite));
-	        }
+            if (!(element instanceof TestSuite)) {
+                m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(),
+                                TestSuiteTagsImpl.ctStr_tag_testsuite));
+            }
 
-	        //  Nothing is pushed onto the stack
+            //  Nothing is pushed onto the stack
             TestSuite doc = (TestSuite) element;
-	        ArrayList attrElems =  doc.getAttrElems();
-	        if (attrElems == null) {
-    		    attrElems = new ArrayList();
-	        }
-	        attrElems.add(AttributesFactory.createAttrElem(name, value));
+            ArrayList attrElems =  doc.getAttrElems();
+            if (attrElems == null) {
+                attrElems = new ArrayList();
+            }
+            attrElems.add(AttributesFactory.createAttrElem(name, value));
             doc.setAttrElems(attrElems);
-	    } catch (TestFileException e) {
-	        m_ParserHandler.throwError(e.getMessage());
-	    }
-          
+        } catch (TestFileException e) {
+            m_ParserHandler.throwError(e.getMessage());
+        }
+
     }
 
- 
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
 
     //  NameValueTagHandler handles emit code
 }

@@ -73,7 +73,7 @@ public class JAXBTest extends JAXBTestBase {
      * If the flag set, the jbx validation is expected.
      */
     protected boolean isBeanTest = false;
-    
+
     /**
      * Name of file with serialized content
      */
@@ -88,7 +88,7 @@ public class JAXBTest extends JAXBTestBase {
     protected Unmarshaller u  = null;
     protected Marshaller   m  = null;
 
-    
+
     /**
      * Decode the following arguments (n addition to ones of the base class):<br>
      * -invalid (-i) - the document is invalid<br>
@@ -145,14 +145,14 @@ public class JAXBTest extends JAXBTestBase {
             }
         } catch (TestFailureException tfe) {
             throw new MultiTest.SetupException(tfe.getMessage());
-        } 
+        }
         // 1. JAXB Context
         try {
           jc = getJAXBContext();
         } catch (JAXBException je) {
           String msg=je.getMessage();
           je.printStackTrace(ref);
-          throw new MultiTest.SetupException("Getting a new instance of JAXB context failed\n" 
+          throw new MultiTest.SetupException("Getting a new instance of JAXB context failed\n"
               + (msg != null ? " with the message \"" + msg + "\" " : ""));
         }
         //2. Unmarshaller.
@@ -161,7 +161,7 @@ public class JAXBTest extends JAXBTestBase {
           } catch (JAXBException je) {
             String msg=je.getMessage();
             je.printStackTrace(ref);
-            throw new MultiTest.SetupException("Creating an Unmarshaller object failed\n" 
+            throw new MultiTest.SetupException("Creating an Unmarshaller object failed\n"
                 + (msg != null ? " with the message \"" + msg + "\" " : ""));
           }
         //3. Marshaller.
@@ -170,10 +170,10 @@ public class JAXBTest extends JAXBTestBase {
         } catch (JAXBException je) {
           String msg=je.getMessage();
           je.printStackTrace(ref);
-          throw new MultiTest.SetupException("Creating an Marshaller object failed\n" 
+          throw new MultiTest.SetupException("Creating an Marshaller object failed\n"
               + (msg != null ? " with the message \"" + msg + "\" " : ""));
         }
-        
+
     }
 
     protected Status adjust(Status status) {
@@ -195,7 +195,7 @@ public class JAXBTest extends JAXBTestBase {
     public Status unmarshal() {
         ErrorCollector eh = new ErrorCollector();
         try {
-          
+
             u.setEventHandler(eh);
             u.setSchema(schema);
             u.unmarshal(documentURL);
@@ -209,21 +209,21 @@ public class JAXBTest extends JAXBTestBase {
         } catch (JAXBException jaxbe) {
             jaxbe.printStackTrace(ref);
             if (!eh.hasEvents()) {
-                return Status.failed("No error events are handled but " + 
-                                     jaxbe +  
+                return Status.failed("No error events are handled but " +
+                                     jaxbe +
                                      " is thrown");
             }
             return adjust(Status.failed(eh.getFirstEventString()));
         } catch(RuntimeException re) {
             String msg = re.getMessage();
             return adjust(Status.failed("Runtime Exception of type: " +
-                                        re.getClass().getName() + 
+                                        re.getClass().getName() +
                                         msg != null ? " with message: " + msg : ""));
         } finally {
             eh.printEvents(ref);
         }
     }
- 
+
     /**
      * The third test case: marshaling documents. In the simplest case the test
      * just invokes marshaling for valid doc and checks that no errors are
@@ -267,7 +267,7 @@ public class JAXBTest extends JAXBTestBase {
         if (isInvalid) {
             return Status.passed("This testcase is not applicable to invalid documents.");
         }
-        
+
         if(!isBeanTest) {
             return Status.passed("Passed without testing. " +
                                   "This testcase is not applicable to such kind of tests");
@@ -278,8 +278,8 @@ public class JAXBTest extends JAXBTestBase {
             File pcontent = new File(pcontentURL.getFile());
             if (!pcontent.exists()) {
                 return Status.failed("The content comparison failed.\n" +
-                                      "The \"golden\" content file " + 
-                                      pcontentURL + 
+                                      "The \"golden\" content file " +
+                                      pcontentURL +
                                       " doesn't exists.");
             }
             Object docPersistent = deserealizeBean(pcontent);
@@ -304,9 +304,9 @@ public class JAXBTest extends JAXBTestBase {
         } catch (Exception ex) {
           String msg=ex.getMessage();
           ex.printStackTrace(ref);
-          throw new TestFailureException("Deserializing a bean object failed\n" 
+          throw new TestFailureException("Deserializing a bean object failed\n"
               + (msg != null ? " with the message \"" + msg + "\" " : ""));
-        }          
+        }
         return obj;
     }
 }

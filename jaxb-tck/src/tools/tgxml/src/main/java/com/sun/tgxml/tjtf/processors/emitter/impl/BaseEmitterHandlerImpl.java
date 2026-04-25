@@ -29,21 +29,21 @@ import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.tools.Shell;
 
-/** 
- * BaseEmitterHandlerImpl.java - The Handlers that the SAXparser uses to parse XML SpecFiles into. 
- * a parse tree of ClassInfos. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    BaseEmitterHandlerImpl 
- * ============================================================================================ 
- */ 
+/**
+ * BaseEmitterHandlerImpl.java - The Handlers that the SAXparser uses to parse XML SpecFiles into.
+ * a parse tree of ClassInfos.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    BaseEmitterHandlerImpl
+ * ============================================================================================
+ */
 public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
 
     static private boolean           DEBUG = false;
@@ -73,24 +73,24 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     protected static final String  str_Beg_CDATA = "<![CDATA[";
     protected static final String  str_End_CDATA = "]]>";
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    constructors 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
- 
-   /** 
-    *   PlatformEmitter constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    constructors
+    * --------------------------------------------------------------------------------------------
+    */
+
+   /**
+    *   PlatformEmitter constructor -
+    *       Initialize our internal fields.
+    */
     public BaseEmitterHandlerImpl() {
-	init();
-	reset();
+    init();
+    reset();
     }
 
 
@@ -101,7 +101,7 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     * @param shellClass The shell that owns this parser.
     */
     public void setShell(Shell shellClass) {
-	m_shell = shellClass;
+    m_shell = shellClass;
     }
 
   /**
@@ -110,7 +110,7 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     * @returns The shell that owns this parser.
     */
     public Shell getShell() {
-	return m_shell;
+    return m_shell;
     }
 
 
@@ -120,130 +120,130 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     * @param msg The smessage to log.
     */
     public void log(String msg) throws TestFileException {
-	m_shell.log(msg);
+    m_shell.log(msg);
     }
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    EmitterHandlerSupport Interface implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    EmitterHandlerSupport Interface implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void emitHeadBeginTag(String tdTagType) throws TestFileException, IOException {
-	PrintStream ps = getStream();
-	ps.print(str_BeginDel);
-	ps.print(tdTagType);
+    PrintStream ps = getStream();
+    ps.print(str_BeginDel);
+    ps.print(tdTagType);
     }
 
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void emitHeadEndTag() throws TestFileException, IOException {
-	PrintStream ps = getStream();
-	ps.print(str_EndDel);
+    PrintStream ps = getStream();
+    ps.print(str_EndDel);
     }
-          
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void emitTailTag(String tdTagType) throws TestFileException, IOException {
-	PrintStream ps = getStream();
-	ps.print(str_EndTagBegDel);
-	ps.print(tdTagType);
-	ps.print(str_EndDel);
+    PrintStream ps = getStream();
+    ps.print(str_EndTagBegDel);
+    ps.print(tdTagType);
+    ps.print(str_EndDel);
     }
- 
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void emitSingletonBeginTag(String tdTagType) throws TestFileException, IOException {
-	PrintStream ps = getStream();
-	ps.print(str_BeginDel);
-	ps.print(tdTagType);
+    PrintStream ps = getStream();
+    ps.print(str_BeginDel);
+    ps.print(tdTagType);
     }
 
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void emitSingletonEndTag() throws TestFileException, IOException {
-	PrintStream ps = getStream();
-	ps.print(str_EndSingltn);
+    PrintStream ps = getStream();
+    ps.print(str_EndSingltn);
     }
 
-   /** 
-    *   test XML emitter string - if  there are any XML pre-defined entities. 
-    */ 
+   /**
+    *   test XML emitter string - if  there are any XML pre-defined entities.
+    */
     private boolean containsXMLPredefinedEntities(String text)  {
-	boolean returnval = false;
+    boolean returnval = false;
 
-	if (text == null || text.equals(""))
-	    return false;
+    if (text == null || text.equals(""))
+        return false;
 
-	if (text.indexOf("<") >= 0)
-	    return true;
+    if (text.indexOf("<") >= 0)
+        return true;
 
-	if (text.indexOf(">") >= 0)
-	    return true;
+    if (text.indexOf(">") >= 0)
+        return true;
 
-	if (text.indexOf("&") >= 0)
-	    return true;
+    if (text.indexOf("&") >= 0)
+        return true;
 
-	return false;
+    return false;
     }
 
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void emitText(String text) throws TestFileException, IOException {
-	PrintStream ps = getStream();
-       
-	// Wrap source code within CDATA blocks if required.
-	if (containsXMLPredefinedEntities(text)) {
-	    ps.print(str_Beg_CDATA);
-	    ps.print(text);
-	    ps.print(str_End_CDATA);
-	} else {
-	    ps.print(text);
-	}
+    PrintStream ps = getStream();
+
+    // Wrap source code within CDATA blocks if required.
+    if (containsXMLPredefinedEntities(text)) {
+        ps.print(str_Beg_CDATA);
+        ps.print(text);
+        ps.print(str_End_CDATA);
+    } else {
+        ps.print(text);
+    }
     }
 
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void emitAttribute(String name, String value) throws TestFileException, IOException {
-	PrintStream ps = getStream();
+    PrintStream ps = getStream();
 
-	ps.print(str_Space);
-	ps.print(name);
-	ps.print(str_BegAttr);
-	ps.print(value);
-	ps.print(str_EndAttr);
+    ps.print(str_Space);
+    ps.print(name);
+    ps.print(str_BegAttr);
+    ps.print(value);
+    ps.print(str_EndAttr);
     }
-          
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void incrementIndentation() {
-	m_IndentLevel++;
+    m_IndentLevel++;
     }
 
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void decrementIndentation() {
-	if (m_IndentLevel > 0)
-	    m_IndentLevel--;
+    if (m_IndentLevel > 0)
+        m_IndentLevel--;
     }
 
 
-   /** 
-    *   The handler dispatches a tag to emit. 
-    */ 
+   /**
+    *   The handler dispatches a tag to emit.
+    */
     public void newline() throws TestFileException, IOException {
-	PrintStream ps = getStream();
-	ps.println();
+    PrintStream ps = getStream();
+    ps.println();
     }
 
 
@@ -251,7 +251,7 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     *  Set the debug flag.
     */
     public boolean getDebug ()    {
-	return 	DEBUG;
+    return  DEBUG;
     }
 
 
@@ -259,30 +259,30 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     *  Hashes the correct TagHandler.
     */
     public void emit(String tdTagType, Object tdObj) throws TestFileException, IOException {
-	    EmitterTagHandler TH = (EmitterTagHandler) m_handlerTable.get(tdTagType);
-	    if (TH == null)
-		throw new TestFileException(LibResHandler.getResStr("emitter.error.taghandlertable.undefTag", tdTagType));
-	    TH.emit(tdObj);
+        EmitterTagHandler TH = (EmitterTagHandler) m_handlerTable.get(tdTagType);
+        if (TH == null)
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.taghandlertable.undefTag", tdTagType));
+        TH.emit(tdObj);
     }
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    utility methods 
-    * -------------------------------------------------------------------------------------------- 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    utility methods
+    * --------------------------------------------------------------------------------------------
     */
 
 
-   /** 
-    *  initially set up the parser. 
-    */ 
+   /**
+    *  initially set up the parser.
+    */
     public void init() {
-	reset();
+    reset();
     }
 
-   /** 
-    *  reset the internal fields for reusing the parser. 
-    */ 
+   /**
+    *  reset the internal fields for reusing the parser.
+    */
     public void reset() {
     }
 
@@ -292,14 +292,14 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     *  Set handler table.
     */
     public void setHandlerTable (TagHandlerTable handlerTable)    {
-	m_handlerTable = handlerTable;
+    m_handlerTable = handlerTable;
     }
 
   /**
     *  Get the handler table.
     */
     public TagHandlerTable getHandlerTable()    {
-	return 	m_handlerTable;
+    return  m_handlerTable;
     }
 
 
@@ -308,10 +308,10 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     *  Set handler table.
     */
     public void setStream (OutputStream stream)    {
-	if (stream == null)
-	    m_OutputStream = null;
-	else
-	    m_OutputStream = new PrintStream(stream);
+    if (stream == null)
+        m_OutputStream = null;
+    else
+        m_OutputStream = new PrintStream(stream);
     }
 
   /**
@@ -319,10 +319,10 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     */
     public PrintStream getStream() throws TestFileException   {
 
-	if (m_OutputStream == null)
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.outstream.null"));
+    if (m_OutputStream == null)
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.outstream.null"));
 
-	return 	m_OutputStream;
+    return  m_OutputStream;
     }
 
 
@@ -330,7 +330,7 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     *  Set the debug flag.
     */
     public void setDebug (boolean debug)    {
-	DEBUG = debug;
+    DEBUG = debug;
     }
 
 
@@ -338,14 +338,14 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     *  Returns the fully qualified name of the package.
     */
     public void startDocument (XMLObj root) throws TestFileException, IOException {
-	String rootTagName = getHandlerTable().getRootTag(root);
-	String docName = getHandlerTable().getDocName();
+    String rootTagName = getHandlerTable().getRootTag(root);
+    String docName = getHandlerTable().getDocName();
 
-	if (rootTagName == null || rootTagName.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.generic.notroot", root.getClass().getName()));
+    if (rootTagName == null || rootTagName.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.generic.notroot", root.getClass().getName()));
 
-	startDocumentHeader(rootTagName, docName);
-	emit(rootTagName, root);
+    startDocumentHeader(rootTagName, docName);
+    emit(rootTagName, root);
     }
 
 
@@ -353,11 +353,11 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
     *  Returns the fully qualified name of the package.
     */
     public void startDocumentHeader (String docRoot, String dtdName) throws TestFileException, IOException {
-	PrintStream ps = getStream();
+    PrintStream ps = getStream();
 
-	ps.println("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
-	ps.println("<!DOCTYPE " + docRoot + " SYSTEM \"" + dtdName + "\">");
-	ps.println();
+    ps.println("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
+    ps.println("<!DOCTYPE " + docRoot + " SYSTEM \"" + dtdName + "\">");
+    ps.println();
     }
 
 
@@ -370,21 +370,21 @@ public final class BaseEmitterHandlerImpl implements EmitterHandlerSupport {
 
 
 
-   /** 
-    *  initially set up the parser. 
-    */ 
+   /**
+    *  initially set up the parser.
+    */
     public void indent() throws TestFileException, IOException {
-	int tabAmount = ctInt_Tab * m_IndentLevel;
+    int tabAmount = ctInt_Tab * m_IndentLevel;
 
-	if (tabAmount > 0) {
-	    PrintStream ps = getStream();
-	    StringBuffer sb = new StringBuffer();
-	    
-	    for (int i = tabAmount; i > 0; i--) 
-		sb.append(str_Space);
-	    
-	    ps.print(sb.toString());
-	}
+    if (tabAmount > 0) {
+        PrintStream ps = getStream();
+        StringBuffer sb = new StringBuffer();
+
+        for (int i = tabAmount; i > 0; i--)
+        sb.append(str_Space);
+
+        ps.print(sb.toString());
+    }
     }
 
 

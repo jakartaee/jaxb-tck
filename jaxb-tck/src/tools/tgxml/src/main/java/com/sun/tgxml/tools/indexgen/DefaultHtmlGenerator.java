@@ -43,11 +43,11 @@ public class DefaultHtmlGenerator
     extends ToolBase
     implements HtmlGenerator, CopyrightManager.Constants
 {
-   
+
    private static final String CtStr_ToolName = "HtmlGenerator";
-   protected String copyright;   
+   protected String copyright;
     private String scInfo;
-  
+
 
   /**
     *  Program entry
@@ -58,24 +58,24 @@ public class DefaultHtmlGenerator
         DefaultHtmlGenerator c = new DefaultHtmlGenerator(System.out, System.err);
         System.exit(c.run(args));
     }
-    
 
-    /* 
+
+    /*
      * -----------------------------------------------------------
      * -----------------------------------------------------------
      *    Public Methods (outside world can call these)
      * -----------------------------------------------------------
      * -----------------------------------------------------------
-     */ 
-    
+     */
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public DefaultHtmlGenerator( PrintStream out, PrintStream err) {
         this(out, err, CtStr_ToolName);
@@ -99,13 +99,13 @@ public class DefaultHtmlGenerator
         }
         for (Enumeration e =links.elements() ; e.hasMoreElements() ;) {
              System.out.println(((DefaultHtmlFile)e.nextElement()).getFile());
-        }        
+        }
     }
 
 
     File result;
     File source;
- 
+
     String resultDirectory = null;
     String backwardLink = null;
     Vector links = new Vector();
@@ -116,7 +116,7 @@ public class DefaultHtmlGenerator
     * Inserts links into generating html either as a list or as a table.
     * (The decision is based on contents format attribute)
     */
-    public Vector create(File resultHTML,  TestSuite doc, Vector links)  
+    public Vector create(File resultHTML,  TestSuite doc, Vector links)
             throws TestFileException {
         result = resultHTML;
         File resultDirFile = result.getParentFile();
@@ -162,9 +162,9 @@ public class DefaultHtmlGenerator
         }
         contents.append("\n</body>\n");
         contents.append("</html>\n");
-        
+
         saveResult (resultHTML, contents.toString());
-        
+
         //links.add(new DefaultHtmlFile(resultHTML, createTitle(doc)));
         try {
             links.add(createLink(resultHTML));
@@ -175,7 +175,7 @@ public class DefaultHtmlGenerator
         return links;
     }
 
-    protected void saveResult(File resultHTML, String contents) 
+    protected void saveResult(File resultHTML, String contents)
             throws TestFileException {
         try {
             FileWriter f = new FileWriter(resultHTML);
@@ -209,9 +209,9 @@ public class DefaultHtmlGenerator
     protected TestSuite parseXML(File xmlFile) throws TestFileException {
         try {
             setScInfo(parseScInfo(xmlFile));
-            XMLParser parser = 
+            XMLParser parser =
                 (XMLParser)TestSuiteParserFactory.createTestSuiteParser();
- 
+
             return (TestSuite)parser.parse(xmlFile);
 
         } catch (Exception e) {
@@ -223,7 +223,7 @@ public class DefaultHtmlGenerator
    /**
     * Returns the value of "Title" element of the given xmlFile. If
     * "Title" is not set returns an empty string
-    */    
+    */
     protected String createTitle(TestSuite xmlFile) throws TestFileException {
         String title = xmlFile.getTitle();
         return title == null ? "" : title;
@@ -232,7 +232,7 @@ public class DefaultHtmlGenerator
    /**
     * Returns the value of "Description" element of the given xmlFile. If
     * "Description" is not set returns an empty string
-    */    
+    */
     protected String createDescription(TestSuite xmlFile)
             throws TestFileException {
         String desrc = xmlFile.getDescription();
@@ -241,14 +241,14 @@ public class DefaultHtmlGenerator
 
    /**
     * Returns links to the tests. This method checks
-    * the value of "Contents" element of the given xmlFile and 
+    * the value of "Contents" element of the given xmlFile and
     * invokes either createLinkList() or createLinkTable() method.
-    */    
+    */
     protected String createTestLinks(TestSuite xmlFile, Vector links)
              throws TestFileException {
         String format = xmlFile.getContentsFormat();
 
-        if (links.size() == 0 || format == null) 
+        if (links.size() == 0 || format == null)
             return "<p>\n";
 
         if (format.equals(TestSuite.LIST_FORMAT)) {
@@ -259,12 +259,12 @@ public class DefaultHtmlGenerator
             // unknown Contents Format (should never occur)
             return "<p>\n";
         }
-    } 
+    }
 
    /**
     * Returns links to the tests in the list format
     */
-    protected String createLinkList(TestSuite xmlFile, Vector links)  
+    protected String createLinkList(TestSuite xmlFile, Vector links)
             throws TestFileException {
 
         StringBuffer sb = new StringBuffer();
@@ -279,7 +279,7 @@ public class DefaultHtmlGenerator
     }
 
    /**
-    * Returns links to the tests in the table format with only 
+    * Returns links to the tests in the table format with only
     * one column "Test". Subclasses may override this method
     * to implement the different table format.
     */
@@ -308,7 +308,7 @@ public class DefaultHtmlGenerator
     }
 
    /**
-    * Returns html string that contains reference to the given 
+    * Returns html string that contains reference to the given
     * DefaultHtmlFile.
     */
     protected String createReference(Object link)  throws TestFileException {
@@ -351,7 +351,7 @@ public class DefaultHtmlGenerator
    /**
     * Returns the value of "Comments" element of the given xmlFile. If
     * "Comments" is not set returns an empty string
-    */    
+    */
     protected String createComments(TestSuite xmlFile) {
         String comm = xmlFile.getComments();
         return comm == null ? "" : "\n<h3>COMMENTS</h3>\n" + comm;
@@ -361,7 +361,7 @@ public class DefaultHtmlGenerator
     * Returns html string that contains reference to the backward link.
     */
     protected String createBackwardLink(String link) {
-        if (link == null) 
+        if (link == null)
             return "";
         return "<a href=\"" + link + "\">to upper index</a>";
     }
@@ -381,18 +381,18 @@ public class DefaultHtmlGenerator
                 result = "../"  + nameTok;
             }
         }
-        if(toTokenizer.hasMoreTokens()) { 
+        if(toTokenizer.hasMoreTokens()) {
             if(result==null) {
                 toTokenizer.nextToken();
                 result="..";
             }
-                
+
             for (int i = 0; i < toTokenizer.countTokens(); i++) {
                 result = "../" + result;
             }
         }
 
-        if(nameTokenizer.hasMoreTokens()) { 
+        if(nameTokenizer.hasMoreTokens()) {
             if(result==null) {
                 result=nameTokenizer.nextToken();
             }
@@ -414,7 +414,7 @@ public class DefaultHtmlGenerator
             new String[][] {
                 { MACRO_SC_INFO,       getScInfo()        },
                 { MACRO_FULL_CRN_LINK, getCopyrightLink() }
-    }   
+    }
         );
         return crn;
     }
@@ -426,7 +426,7 @@ public class DefaultHtmlGenerator
     public String getDefaultCopyright() {
         return CopyrightUtil.expandCopyrightMacro(copyright, getCopyrightLink());
     }
-   
+
     /**
      * This default implementation returns an empty String.
      * Override in subclasses to return correct link.
@@ -446,21 +446,21 @@ public class DefaultHtmlGenerator
     }
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    StringOption contentsOption = new StringOption("-contents", 
+    StringOption contentsOption = new StringOption("-contents",
          "  -contents <source.doc.xml> source .doc.xml file (obligatory)",
          OBLIGATORY);
 
-    StringOption fileNameOption = new StringOption("-fileName", 
+    StringOption fileNameOption = new StringOption("-fileName",
          "  -fileName <filename>    output file name (obligatory)",
          OBLIGATORY);
 
-    StringOption backwardOption = new StringOption("-backward", 
+    StringOption backwardOption = new StringOption("-backward",
          "  -backward <link>        backward link ",
          OPTIONAL);
 
@@ -477,7 +477,7 @@ public class DefaultHtmlGenerator
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
     public void applyOptionsValues() throws ParseArgumentException {
@@ -501,16 +501,16 @@ public class DefaultHtmlGenerator
         }
 
         for (int i = 0; i < operands.length; i++) {
-            try {        
+            try {
                 links.add(createLink(new File(operands[i])));
             } catch (IOException e) {
                 throw new ParseArgumentException(LibResHandler.getResStr("file.error.ioerror", operands[i]));
             }
         }
-        super.applyOptionsValues();       
+        super.applyOptionsValues();
     }
 
-    /** 
+    /**
      * Sets OperandsValidator thats validates that at least one operand
      * is passed, operands end with ".html" and operands do not start with "-"
      */
@@ -519,16 +519,16 @@ public class DefaultHtmlGenerator
             "Operands: ",
             "  [file1.html file2.htlm ...] "
         };
-        operandsValidator = new DefaultOperandsValidator(0, Integer.MAX_VALUE, 
+        operandsValidator = new DefaultOperandsValidator(0, Integer.MAX_VALUE,
             "-", ".html", operandsUsageLines);
     }
-    
+
     /**
      * Sets indexgen usage header
      */
     protected void setToolUsageHeader() {
-        toolUsageHeader = 
-            "Usage: " + getProgramName() + " [<options>] [file1.html file2.htlm ...]\n" + 
+        toolUsageHeader =
+            "Usage: " + getProgramName() + " [<options>] [file1.html file2.htlm ...]\n" +
             "where options include:";
     }
 

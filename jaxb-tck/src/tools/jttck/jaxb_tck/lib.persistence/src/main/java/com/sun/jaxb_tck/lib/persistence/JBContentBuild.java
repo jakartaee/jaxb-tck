@@ -108,8 +108,8 @@ public class JBContentBuild implements Test {
         try {
             Object jaxbTree = getJaxbTree();
             JaxbTreeSerializer serializer = PersistenceFactory.getInstance().createJaxbTreeSerializer();
-            serializer.serialize(jaxbTree, 
-                                 new BufferedOutputStream(new FileOutputStream( (new File(testDirPath,pconName)).getCanonicalPath() ) ), 
+            serializer.serialize(jaxbTree,
+                                 new BufferedOutputStream(new FileOutputStream( (new File(testDirPath,pconName)).getCanonicalPath() ) ),
                                  testClassLoader);
         } catch (Exception e) {
             throw new RuntimeException(e);

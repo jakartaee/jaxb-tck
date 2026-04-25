@@ -20,31 +20,31 @@ package com.sun.tgxml.tjtf.processors;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.processors.validator.IRValidator;
 
-/** 
+/**
  * ValidatingProcessor describes the topmost interface for a processor that
- * a shell may own. 
+ * a shell may own.
  * <p>
  * All processors are OptionHandlers, and they can participate
  * in command-line argument delegation.
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ValidatingProcessor 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ValidatingProcessor
+ * ============================================================================================
+ */
 public interface ValidatingProcessor extends Processor {
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
   /**
     *  Get the registered validator from a processor.

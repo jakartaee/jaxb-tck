@@ -58,43 +58,43 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
 
     @Override
     public void visit(int version, int access, String name, String signature,
-		      String superName, String[] interfaces)
+              String superName, String[] interfaces)
     {
-	if (signature == null) {
-	    addNameInternal(superName);
-	    addNames(interfaces);
-	} else {
-	    addSignature(signature);
-	}
+    if (signature == null) {
+        addNameInternal(superName);
+        addNames(interfaces);
+    } else {
+        addSignature(signature);
+    }
         super.visit(version, access, name, signature, superName, interfaces);
     }
-    
+
     @Override
     public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-	addDesc(desc);
-	AnnotationVisitor ann = super.visitAnnotation(desc, visible);
+    addDesc(desc);
+    AnnotationVisitor ann = super.visitAnnotation(desc, visible);
         if (ann != null) return new AnnotationVisit(Opcodes.ASM9, ann);
         return null;
     }
 
     @Override
     public FieldVisitor visitField(int access, String name, String desc,
-				   String signature, Object value)
+                   String signature, Object value)
     {
-	if (signature == null) {
-	    addDesc(desc);
-	} else {
-	    addTypeSignature(signature);
-	}
-	if (value instanceof Type) {
+    if (signature == null) {
+        addDesc(desc);
+    } else {
+        addTypeSignature(signature);
+    }
+    if (value instanceof Type) {
             addType((Type) value);
         }
-	return super.visitField(access, name, desc, signature, value);
+    return super.visitField(access, name, desc, signature, value);
     }
-    
+
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc,
-				     String signature, String[] exceptions)
+                     String signature, String[] exceptions)
     {
         if (signature == null) {
             addMethodDesc(desc);
@@ -107,12 +107,12 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
 
     @Override
     public void visitInnerClass(String name, String outerName,
-				String innerName, int access)
+                String innerName, int access)
     {
-	/* XXX: Do we need to consider inner classes?
+    /* XXX: Do we need to consider inner classes?
          * Yes the old ClassDep tool includes them */
         addNameInternal(outerName);
-	addNameInternal(name);
+    addNameInternal(name);
         super.visitInnerClass(name, outerName, innerName, access);
     }
 
@@ -120,18 +120,18 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
 
     private  void addNameInternal(String name) {
         if (name != null) {
-	    addName(name.replace('/', '.'));
-	}
+        addName(name.replace('/', '.'));
+    }
     }
 
     private void addNames(String[] names) {
-	if (names != null) {
+    if (names != null) {
             int l = names.length;
-	    for (int i = 0; i < l; i++) {
+        for (int i = 0; i < l; i++) {
                 String name = names[i];
-		addNameInternal(name);
-	    }
-	}
+        addNameInternal(name);
+        }
+    }
     }
 
     private void addDesc(String desc) {
@@ -142,9 +142,9 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
         addType(Type.getReturnType(desc));
         Type [] type = Type.getArgumentTypes(desc);
         int l = type.length;
-	for (int i = 0; i < l; i++) {            
+    for (int i = 0; i < l; i++) {
             addType(type[i]);
-	}
+    }
     }
 
     private void addType(Type t) {
@@ -159,13 +159,13 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
     }
 
     private void addSignature(String signature) {
-	new SignatureReader(signature).accept(new SignatureVisit(Opcodes.ASM9));
+    new SignatureReader(signature).accept(new SignatureVisit(Opcodes.ASM9));
     }
 
     private void addTypeSignature(String signature) {
-	new SignatureReader(signature).acceptType(new SignatureVisit(Opcodes.ASM9));
+    new SignatureReader(signature).acceptType(new SignatureVisit(Opcodes.ASM9));
     }
-    
+
     /**
      * Annotations
      */
@@ -174,7 +174,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
         public AnnotationVisit(int i, AnnotationVisitor av) {
             super(i, av);
         }
-        
+
         @Override
         public void visit(String name, Object value) {
             if (value instanceof Type) {
@@ -188,7 +188,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
             addDesc(desc);
             super.visitEnum(name,desc,value);
         }
-        
+
         @Override
         public AnnotationVisitor visitAnnotation(String name, String desc) {
             addDesc(desc);
@@ -196,9 +196,9 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
             if (ann != null) return new AnnotationVisit( Opcodes.ASM9, ann);
             return null;
         }
-        
+
     }
-    
+
     /**
      * MethodVisit delegates to encapsulated MethodVisitor as well as
      * recording dependencies.
@@ -208,7 +208,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
         public MethodVisit(int i, MethodVisitor mv) {
             super(i, mv);
         }
-        
+
         @Override
         public AnnotationVisitor visitParameterAnnotation(int parameter,
                                                   String desc,
@@ -249,9 +249,9 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
              * Also when the owner is an array, containing Objects and
              * the method name is clone(), (I think it's got something to do
              * with cloning array's, this must be a new java 5 language feature
-             * I tested 1.4 code without this ever occurring)      
+             * I tested 1.4 code without this ever occurring)
              * we can't get the Object's type
-             * using Type.getType(owner) due to the nature of 
+             * using Type.getType(owner) due to the nature of
              * the ASM Core API requiring bytecode be read sequentially.
              * This only occurs with clone() which returns java.lang.Object
              */
@@ -259,7 +259,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
             while (match.find()){
                 String object = match.group(1);
                 addNameInternal(object);
-            } 
+            }
             addMethodDesc(desc);
             super.visitMethodInsn(opcode, owner, name, desc, itf);
         }
@@ -296,7 +296,7 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
             super.visitTryCatchBlock(start, end, handler, type);
         }
     }
-    
+
     /**
      * Signatures
      */
@@ -305,25 +305,25 @@ abstract class AbstractDependencyVisitor extends ClassVisitor {
         public SignatureVisit(int i) {
             super(i);
         }
-        
+
         @Override
         public void visitTypeVariable(String name) {
             /* XXX: Need to do something? */
             //System.out.println(name);
             super.visitTypeVariable(name);
         }
-        
+
         @Override
-        public void visitClassType(String name) { 
+        public void visitClassType(String name) {
             addNameInternal(name);
             super.visitClassType(name);
         }
-        
+
         @Override
         public void visitInnerClassType(String name) {
             // This is not a fully qualified class name, ignore.
             super.visitInnerClassType(name);
         }
-        
+
     }
 }

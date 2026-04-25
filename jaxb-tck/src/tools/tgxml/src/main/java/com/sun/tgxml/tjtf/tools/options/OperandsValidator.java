@@ -26,20 +26,20 @@ import java.util.ArrayList;
  * validation.
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 public interface OperandsValidator {
-   
+
     /**
-     * validates operands 
+     * validates operands
      * @throws ParseArgumentException if operands format is incorrect
      */
     public void validate(ArrayList operands) throws ParseArgumentException;
 
     /**
-     * Returns lines with operands descriptions 
+     * Returns lines with operands descriptions
      */
     public String[] getOperandsUsageLines();
 }

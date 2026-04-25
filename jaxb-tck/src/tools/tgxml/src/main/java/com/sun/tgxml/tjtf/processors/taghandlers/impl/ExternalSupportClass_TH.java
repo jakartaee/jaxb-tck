@@ -33,48 +33,48 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * ExternalSupportClass_TH - The tag-handler for a ExternalSupportClass tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ExternalSupportClass_TH 
- * ============================================================================================ 
- */ 
+/**
+ * ExternalSupportClass_TH - The tag-handler for a ExternalSupportClass tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ExternalSupportClass_TH
+ * ============================================================================================
+ */
 public class ExternalSupportClass_TH extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   ExternalSupportClass_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   ExternalSupportClass_TH constructor -
+    *       Initialize our internal fields.
+    */
     public ExternalSupportClass_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ public class ExternalSupportClass_TH extends TagHandlerImpl  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_externalsupportclass;
+    return TagsImpl.ctStr_tag_externalsupportclass;
     }
 
     //------------------------------------------------------------------------------
@@ -98,61 +98,61 @@ public class ExternalSupportClass_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	try {
-	    String lang = ConstantsImpl.ctStr_attr_langtype_enum_java; // default value
-	    String sourcename = null;
-	    String ID = null;
-	    if (attrs != null) {
-		for (int i = 0; i < attrs.getLength (); i++) {
-		    // Get the langtype
-		    if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_classid)) {
-			ID = attrs.getValue (i);
-			// validateClassID(lang);
-		    }  else if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_sourcename)) {
-			sourcename = attrs.getValue (i);
-			// validateSourceName(lang);
-		    } else  if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_sourcelang)) {
-			lang = attrs.getValue (i);
-			// validateLangType(lang);
-		    }
+    super.startTag(attrs);
+    try {
+        String lang = ConstantsImpl.ctStr_attr_langtype_enum_java; // default value
+        String sourcename = null;
+        String ID = null;
+        if (attrs != null) {
+        for (int i = 0; i < attrs.getLength (); i++) {
+            // Get the langtype
+            if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_classid)) {
+            ID = attrs.getValue (i);
+            // validateClassID(lang);
+            }  else if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_sourcename)) {
+            sourcename = attrs.getValue (i);
+            // validateSourceName(lang);
+            } else  if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_sourcelang)) {
+            lang = attrs.getValue (i);
+            // validateLangType(lang);
+            }
 
-		    // unknown attribute
-		    else 
-			// Unknown spec attribute
-			m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownSpecAttr", attrs.getQName (i)));
-		}
+            // unknown attribute
+            else
+            // Unknown spec attribute
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownSpecAttr", attrs.getQName (i)));
+        }
 
-		Stack testItemStack = getParserHandler().getStack();
-		Object tco = testItemStack.peek();
-		if (! (tco instanceof CodeSet))
-		    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
+        Stack testItemStack = getParserHandler().getStack();
+        Object tco = testItemStack.peek();
+        if (! (tco instanceof CodeSet))
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
 
-		CodeSet cs = (CodeSet) tco;
-		ArrayList supportClasses = cs.getSupportClasses();
-		if (supportClasses == null) {
-		    supportClasses = new ArrayList();
-		    cs.setSupportClasses(supportClasses);
-		}
+        CodeSet cs = (CodeSet) tco;
+        ArrayList supportClasses = cs.getSupportClasses();
+        if (supportClasses == null) {
+            supportClasses = new ArrayList();
+            cs.setSupportClasses(supportClasses);
+        }
 
-		ExternalSupportClass  esc = CodeFactory.createExternalSupportClass();
-		esc.setSourceLang(lang);
-		if (sourcename != null)
-		    esc.setSourceName(sourcename);
+        ExternalSupportClass  esc = CodeFactory.createExternalSupportClass();
+        esc.setSourceLang(lang);
+        if (sourcename != null)
+            esc.setSourceName(sourcename);
 
-		if (ID != null && ! ID.equals(""))						
-		    esc.setClassID(ID);
-		supportClasses.add(esc);
+        if (ID != null && ! ID.equals(""))
+            esc.setClassID(ID);
+        supportClasses.add(esc);
 
-		// push the TestCase to the top of the stack
-		testItemStack.push(esc);
+        // push the TestCase to the top of the stack
+        testItemStack.push(esc);
 
-	    }
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	} 
+        }
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-     
+    }
+
 
   /**
     *   End handling a given XML tag.
@@ -160,68 +160,68 @@ public class ExternalSupportClass_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void endTag() throws SAXException {
-	super.endTag();
-	try {
-	    Stack testItemStack = getParserHandler().getStack();
+    super.endTag();
+    try {
+        Stack testItemStack = getParserHandler().getStack();
 
-	    Object testitem = testItemStack.pop();
+        Object testitem = testItemStack.pop();
 
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if (! (testitem instanceof ExternalSupportClass))
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
+        if (! (testitem instanceof ExternalSupportClass))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
 
-	} catch (EmptyStackException e) {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
-	}
+    } catch (EmptyStackException e) {
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
     }
- 
+    }
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-          
+
   /**
     *   emit a tags attributes (general function).
     *  <p>
     * @see #endTag
     */
     public void emitAttributes(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof ExternalSupportClass))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"ExternalSupportClass", tdObject.getClass().getName()));
+    if (! (tdObject instanceof ExternalSupportClass))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "ExternalSupportClass", tdObject.getClass().getName()));
 
-	ExternalSupportClass sc = (ExternalSupportClass) tdObject;
+    ExternalSupportClass sc = (ExternalSupportClass) tdObject;
 
-	String classID = sc.getClassID();
-	if (classID != null && ! classID.equals(""))
-	    m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_classid, classID);
+    String classID = sc.getClassID();
+    if (classID != null && ! classID.equals(""))
+        m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_classid, classID);
 
-	String sourcename = sc.getSourceName();
-	m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_sourcename, sourcename);
+    String sourcename = sc.getSourceName();
+    m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_sourcename, sourcename);
 
-	String lang = sc.getSourceLang();
-	if (lang != null && ! lang.equals("")) {
-	    // Don't output the lang if it is equal to the default (java)
-	    if (lang != ConstantsImpl.ctStr_attr_langtype_enum_java) 
-		m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_sourcelang, lang);
-	}
+    String lang = sc.getSourceLang();
+    if (lang != null && ! lang.equals("")) {
+        // Don't output the lang if it is equal to the default (java)
+        if (lang != ConstantsImpl.ctStr_attr_langtype_enum_java)
+        m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_sourcelang, lang);
+    }
 
     }
 
-          
-          
+
+
   /**
     *   emit a tags components.
     *  <p>
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof ExternalSupportClass))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"ExternalSupportClass", tdObject.getClass().getName()));
+    if (! (tdObject instanceof ExternalSupportClass))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "ExternalSupportClass", tdObject.getClass().getName()));
 
-	ExternalSupportClass sc = (ExternalSupportClass) tdObject;
+    ExternalSupportClass sc = (ExternalSupportClass) tdObject;
 
     }
-	
+
 }

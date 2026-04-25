@@ -25,11 +25,11 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.taskdefs.Copy;
 
 /**
- * The parsing code in <code>libXmlFromFile</code> and 
+ * The parsing code in <code>libXmlFromFile</code> and
  * <code>multiReposFiles</code> methods were just copied from
  * <code>com.sun.tgxml.tools.filter.ExternalLibFilter</code>
  * @see com.sun.tgxml.tools.filter.ExternalLibFilter
- */ 
+ */
 public class CopyLibs extends org.apache.tools.ant.Task {
 
     private String fn = null;
@@ -47,7 +47,7 @@ public class CopyLibs extends org.apache.tools.ant.Task {
             copy.setProject(getProject());
             for (int i = 0; i < files.length; i++) {
                 copy.setFile(files[i]);
-                copy.setTofile(new File(destination + "libs" + "/" 
+                copy.setTofile(new File(destination + "libs" + "/"
                         + new File(repositories[i]).getName() + "/" + relativePaths[i]));
                 copy.execute();
             }
@@ -67,7 +67,7 @@ public class CopyLibs extends org.apache.tools.ant.Task {
             this.repository = repository + '/';
         }
     }
-    
+
     public void setDestination(String destination) {
         if (destination.charAt(destination.length() - 1) == '/') {
             this.destination = destination;
@@ -79,7 +79,7 @@ public class CopyLibs extends org.apache.tools.ant.Task {
     /**
      * Parses libXmlListFile file that contains list of .lib.xml files.
      * Returns array list of xml file names from the file.
-     * @throws BuildException when one of lib.xml file either not found 
+     * @throws BuildException when one of lib.xml file either not found
      *         or have not .lib.xml suffix
      * @throws java.io.IOException if there is some type of IO problem with reading
      *         libXmlListFile
@@ -102,7 +102,7 @@ public class CopyLibs extends org.apache.tools.ant.Task {
         for (int i = 0; i < xmls.length; i++) {
             String name = (String) names.get(i);
             int index = name.indexOf(':');
-            
+
             // Singlerepose entry in multyrepose mode
             // available if repository is specified (from the ant build)
             if (index < 0 && name.startsWith(repository)) {

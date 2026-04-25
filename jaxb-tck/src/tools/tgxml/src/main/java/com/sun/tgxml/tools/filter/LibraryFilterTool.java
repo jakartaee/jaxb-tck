@@ -31,7 +31,7 @@ import com.sun.tgxml.tjtf.tools.options.StringOption;
 /**
  * Build shell-tool. Accepts command-line arguments and instantiates
  * Filter and LibraryDepExtractor components.
- * Creates array of Library implementation IRs for input Library ID, 
+ * Creates array of Library implementation IRs for input Library ID,
  * pass it through the all processing components
  * and emits selected and cleaned Library to UTD XML file.
  *
@@ -41,13 +41,13 @@ import com.sun.tgxml.tjtf.tools.options.StringOption;
 public class LibraryFilterTool extends XMLValToolBase {
 
     String libMap2FileName,
-	   libID, libIDMapping, libListFileName, libListOutFileName;
+       libID, libIDMapping, libListFileName, libListOutFileName;
 
     protected LibFilterConveyer lfConveyer;
 
     LibraryFilterTool(PrintStream out, PrintStream err) {
-	super(out, err, "LibraryFilterTool");
-	lfConveyer = new LibFilterConveyer(err);
+    super(out, err, "LibraryFilterTool");
+    lfConveyer = new LibFilterConveyer(err);
     }
 
     public static void main(String args[]) {
@@ -56,9 +56,9 @@ public class LibraryFilterTool extends XMLValToolBase {
     }
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
@@ -66,19 +66,19 @@ public class LibraryFilterTool extends XMLValToolBase {
         LibResHandler.getResStr("filter.libmap2File.desc"),
         OPTIONAL);
 
-    protected StringOption libIDOption = new StringOption(LibResHandler.getResStr("filter.libID.mnem"), 
+    protected StringOption libIDOption = new StringOption(LibResHandler.getResStr("filter.libID.mnem"),
         LibResHandler.getResStr("filter.libID.desc"),
         OBLIGATORY);
 
-    protected StringOption libIDMappingOption = new StringOption(LibResHandler.getResStr("filter.libmap.mnem"), 
+    protected StringOption libIDMappingOption = new StringOption(LibResHandler.getResStr("filter.libmap.mnem"),
         LibResHandler.getResStr("filter.libmap.desc"),
         OBLIGATORY);
 
-    protected StringOption liblistOption = new StringOption(LibResHandler.getResStr("filter.liblist.mnem"), 
+    protected StringOption liblistOption = new StringOption(LibResHandler.getResStr("filter.liblist.mnem"),
         LibResHandler.getResStr("filter.liblist.desc"),
         OPTIONAL);
 
-    protected StringOption liblistOutOption = new StringOption(LibResHandler.getResStr("filter.liblistOut.mnem"), 
+    protected StringOption liblistOutOption = new StringOption(LibResHandler.getResStr("filter.liblistOut.mnem"),
         LibResHandler.getResStr("filter.liblistOut.desc"),
         OPTIONAL);
 
@@ -88,7 +88,7 @@ public class LibraryFilterTool extends XMLValToolBase {
      */
     public void registerOptions() {
 
-        // do not register fileOption 
+        // do not register fileOption
         fileOption.setObligatory(OPTIONAL);
 
         super.registerOptions();
@@ -101,7 +101,7 @@ public class LibraryFilterTool extends XMLValToolBase {
    }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      */
     public void applyOptionsValues() throws ParseArgumentException {
         if (libmap2FileOption.isSet()) {
@@ -119,25 +119,25 @@ public class LibraryFilterTool extends XMLValToolBase {
         super.applyOptionsValues();
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
     *
     * ----------------------------------------------------------------------
     */
 
-    /** 
+    /**
      * Selects and parses input files, filter the Library array, and emit the cleaned tree.
-     * 
+     *
      * @throws TestFileException If there is a problem with the IR parse tree.
      * @throws IOException if there is an IO problem.
      */
     public void executeTool() throws TestFileException, IOException {
-	lfConveyer.setLibListFileName(libListFileName);
-	lfConveyer.setLibListOutFileName(libListOutFileName);
-	lfConveyer.setup();
-	Library selectedLibrary = lfConveyer.process(libID, m_parser, libIDMapping);
-	lfConveyer.finish();
-	lfConveyer.setLibMap2FileName(libMap2FileName);
+    lfConveyer.setLibListFileName(libListFileName);
+    lfConveyer.setLibListOutFileName(libListOutFileName);
+    lfConveyer.setup();
+    Library selectedLibrary = lfConveyer.process(libID, m_parser, libIDMapping);
+    lfConveyer.finish();
+    lfConveyer.setLibMap2FileName(libMap2FileName);
         if (selectedLibrary != null) {
             lfConveyer.outputResult(selectedLibrary, (XMLEmitter)m_emitter);
         }

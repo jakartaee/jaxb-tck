@@ -23,27 +23,27 @@ import com.sun.tgxml.tools.filter.redundancy.TestItemSelectionListener;
 import com.sun.tgxml.util.IR;
 
 /**
- * The class logs dependent external libraries to the file. 
+ * The class logs dependent external libraries to the file.
  * The file is appended only and all existing information is unchanged.
- * This implementation is multi-process safe and allow to log iformation 
+ * This implementation is multi-process safe and allow to log iformation
  * from different processes simultinously.<p>
  * The libraries are logged in Properties format:<br>
- * <code>&lt;library ID&gt;=&lt;library variant file&gt;</code> 
+ * <code>&lt;library ID&gt;=&lt;library variant file&gt;</code>
  */
 public class ExternalLibraryLogger extends TestItemSelectionListener.EmptyListener {
     private SynchronizedFileAppender appender;
     protected StringBuffer buff = new StringBuffer();
-    
+
     /**
-     * creates the instance with the given argument list. The fist mandatory 
-     * argument defines name of the output file. 
+     * creates the instance with the given argument list. The fist mandatory
+     * argument defines name of the output file.
      * The rest of arguments are ignored.
      * @param args argument list.
      */
     public ExternalLibraryLogger(String[] args) {
         this(args[0]);
     }
-    
+
     /**
      * creates the instance with the given file name.
      * @param fileName

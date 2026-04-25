@@ -27,8 +27,8 @@ import com.sun.tgxml.tjtf.tools.options.util.ParsedOption;
  *  This is an implementation of option with one string argument.<p>
  *  Use <tt>getStringValue()</tt> to retrieve value of parsed option.
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -44,7 +44,7 @@ public class StringOption extends BasicOption {
     }
 
     /**
-     * Creates option with one specified switch and usageInfo 
+     * Creates option with one specified switch and usageInfo
      *
      * @throws IllegalArgumentException if usageInfo is null, or sw is null
      */
@@ -57,8 +57,8 @@ public class StringOption extends BasicOption {
      *
      * @throws IllegalArgumentException if usageInfo is null, or array of
      * switches is empty or contains null.
-     */    
-    public StringOption(String[] switches, String usageInfo, 
+     */
+    public StringOption(String[] switches, String usageInfo,
             boolean isObligatory) {
         super(switches, usageInfo, isObligatory);
     }
@@ -66,7 +66,7 @@ public class StringOption extends BasicOption {
 
     /**
      * Returns ArgReader that expects one argument
-     */ 
+     */
     public ArgReader getArgReader() {
         return new ArgReader(1, 1, getArgChecker());
     }

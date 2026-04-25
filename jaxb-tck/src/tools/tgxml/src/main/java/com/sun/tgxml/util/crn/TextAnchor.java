@@ -131,7 +131,7 @@ public class TextAnchor implements CRNConstants {
      *
      * @param text
      *     the text
-     * @return 
+     * @return
      *     a {@link Pattern.Match} object filled with necessary info about
      *     the match coordinates, macros, etc, or <code>null</code>
      *     if matching failed
@@ -146,13 +146,13 @@ public class TextAnchor implements CRNConstants {
      * handle a situation with "joint" macros, for example:<br>
      * ...<code>$MACRO1$$MACRO2$</code>...
      *
-     * @param text 
+     * @param text
      *     the text
      * @param start_pos
      *     start position of the piece in the text
-     * @param len 
+     * @param len
      *     the length of the piece in characters
-     * @return 
+     * @return
      *     a {@link Pattern.Match} object filled with necessary info about
      *     the match coordinates, macros, etc, or <code>null</code>
      *     if matching failed

@@ -18,7 +18,7 @@
 package javasoft.sqe.javatest.lib;
 
 /**
- * ExecJCKTestSameJVMCmd executes a JCK test in the same Java Virtual 
+ * ExecJCKTestSameJVMCmd executes a JCK test in the same Java Virtual
  * Machine as the caller of this class.
  *
  * <p> JCK tests may be "standard" tests, which implement the Test interface,
@@ -26,11 +26,11 @@ package javasoft.sqe.javatest.lib;
  * or they may be a "simple" which implements a standard simple method
  * which an integer return code.
  *
- * <p> It can use either a private class loader or the system class loader. 
- * A private class loader will be created if the -loadDir option is given; 
+ * <p> It can use either a private class loader or the system class loader.
+ * A private class loader will be created if the -loadDir option is given;
  * otherwise the system class loader will be used.  A private class
- * loader minimises the interference between tests, but you may be 
- * restricted from using private class loaders if you are running the 
+ * loader minimises the interference between tests, but you may be
+ * restricted from using private class loaders if you are running the
  * harness inside a web browser.
  *
  * @see com.sun.jck.lib.ExecJCKTestSameJVMCmd

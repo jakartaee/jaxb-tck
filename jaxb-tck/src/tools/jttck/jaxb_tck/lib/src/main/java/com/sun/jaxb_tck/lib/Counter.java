@@ -20,24 +20,24 @@ package com.sun.jaxb_tck.lib;
 
 /**
  * Class to count an execution of JaxbTckScript.
- * 
+ *
  * @author   Evgueni M. Astigueevitch
  * @version  1.3
  */
 public class Counter {
     private int n;
-    
+
     public Counter() {
     }
-    
+
     public synchronized void inc() {
         n++;
     }
-    
+
     public int getValue() {
         return n;
     }
-    
+
     public synchronized void reset() {
         n = 0;
     }

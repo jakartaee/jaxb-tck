@@ -29,16 +29,16 @@ import com.sun.tgxml.tjtf.tools.options.util.SwitchChecker;
 
 
 /**
- *  This is the base class for prefix options. Each option 
+ *  This is the base class for prefix options. Each option
  *  is responsible for extracing itself from a command line.
- *  To implement parsing subclasses need provide implementaistions only for 
+ *  To implement parsing subclasses need provide implementaistions only for
  *  the following method:<p>
  *  <tt>processSwitches()</tt><p>
- *  Subclasses should also provide get methods for retrieving value of 
+ *  Subclasses should also provide get methods for retrieving value of
  *  the option
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -54,7 +54,7 @@ public class PrefixOption extends StandardOption {
      */
     protected ArrayList found = null;
 
-    
+
     /**
      * Creates option with one specified switch prefix and usageInfo
      *
@@ -69,15 +69,15 @@ public class PrefixOption extends StandardOption {
      *
      * @throws IllegalArgumentException if usageInfo is null, or array of
      * switch prefixes is empty or contains null.
-     */    
+     */
     public PrefixOption(String[] swPrfixes, String usageInfo) {
-        if (usageInfo == null) 
+        if (usageInfo == null)
              throw new IllegalArgumentException("usageInfo should not be null");
-        if (swPrfixes == null || swPrfixes.length == 0) 
+        if (swPrfixes == null || swPrfixes.length == 0)
              throw new IllegalArgumentException("swPrfixes should not be empty");
 
         keys = new Vector(swPrfixes.length);
-        for (int i = 0; i < swPrfixes.length; i++) 
+        for (int i = 0; i < swPrfixes.length; i++)
             addSwitchPrefix(swPrfixes[i]);
 
         setUsageInfo(usageInfo);
@@ -88,7 +88,7 @@ public class PrefixOption extends StandardOption {
      * Add option switch prefix to the set of specified switch prefixes
      *
      * @throws IllegalArgumentException if <code>sw</code> is null
-     */ 
+     */
     public void addSwitchPrefix(String sw) {
         if (sw == null)
             throw new IllegalArgumentException("switch prefix cannot be null");
@@ -98,15 +98,15 @@ public class PrefixOption extends StandardOption {
 
     /**
      * Returns OptionReader used to extact option with arguments from the list
-     */ 
+     */
     public OptionReader getOptionReader() {
          return new OptionReader(getSwitchChecker(), null);
     }
 
     /**
-     * Returns SwitchChecker checking that an element starts with one 
+     * Returns SwitchChecker checking that an element starts with one
      * of specified option switch prefixes
-     */ 
+     */
     public SwitchChecker getSwitchChecker() {
         return new PrefixOptionChecker(keys);
     }
@@ -114,14 +114,14 @@ public class PrefixOption extends StandardOption {
     /**
      * Calculates values for all found keys
      */
-    public final void calculateValue(ArrayList values) 
+    public final void calculateValue(ArrayList values)
             throws ParseArgumentException {
         found = new ArrayList(values.size());
         Iterator list = values.iterator();
         while (list.hasNext())
             found.add(((ParsedOption)list.next()).getSwitch());
         processSwitches();
-        
+
     }
 
     /**
@@ -134,9 +134,9 @@ public class PrefixOption extends StandardOption {
     protected void processSwitches() throws ParseArgumentException {
     }
 
-    /** 
+    /**
      * remove option prefix from the string
-     * <pre> Example: 
+     * <pre> Example:
      *     if option has several prefixes: "-P", "-Parser"
      *     the longer of possible prefixes will be removed:
      * removePrefix("-PX=1") will return "X=1"
@@ -149,14 +149,14 @@ public class PrefixOption extends StandardOption {
         Enumeration list = keys.elements();
         while (list.hasMoreElements()) {
             String p = (String)list.nextElement();
-            if (sw.startsWith(p) && p.length() > prefix.length()) 
+            if (sw.startsWith(p) && p.length() > prefix.length())
                 prefix = p;
         }
         return sw.substring(prefix.length());
     }
 
 
-    /** 
+    /**
      * Returns name of the option (the first specified option switch prefix)
      */
     public String toString() {

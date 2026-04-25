@@ -32,35 +32,35 @@ import com.sun.tgxml.tjtf.api.tests.TestGroup;
 public class NodeTRUE implements FilterExpression {
 
     public boolean accept(TestGroup tg) {
-	return true;
+    return true;
     }
 
     public boolean accept(Library lib) {
-	return true;
+    return true;
     }
 
     public boolean accept(TestCase tc, TestGroup tg) {
-	return true;
+    return true;
     }
 
     public boolean accept(SupportClass cls, CodeSet cs) {
-	return true;
+    return true;
     }
 
 
     public FilterExpression getRelevant(TestGroup tg) {
-	return this;
+    return this;
     }
 
     public FilterExpression getRelevant(Library lib) {
-	return this;
+    return this;
     }
 
     public FilterExpression getRelevant(TestCase tc) {
-	return this;
+    return this;
     }
 
     public FilterExpression getRelevant(SupportClass cls) {
-	return this;
+    return this;
     }
 }

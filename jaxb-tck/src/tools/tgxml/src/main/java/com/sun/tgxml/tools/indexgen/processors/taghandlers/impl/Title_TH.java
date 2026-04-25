@@ -28,50 +28,50 @@ import com.sun.tgxml.tjtf.processors.taghandlers.impl.TextStreamTagHandler;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 
-/** 
- * Title_TH - The tag-handler for a Lib tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Title_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Title_TH - The tag-handler for a Lib tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Title_TH
+ * ============================================================================================
+ */
 public class Title_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Title_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Title_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Title_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ public class Title_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TestSuiteTagsImpl.ctStr_tag_title;
+    return TestSuiteTagsImpl.ctStr_tag_title;
     }
 
     //------------------------------------------------------------------------------
@@ -96,35 +96,35 @@ public class Title_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	try {
-	    super.endTag(text);
-	    Stack testItemStack = getParserHandler().getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		getParserHandler().throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    if (! (testitem instanceof TestSuite)  )
-		getParserHandler().throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(),
-							TestSuiteTagsImpl.ctStr_tag_testsuite));
-	    
-	    //  Nothing is pushed onto the stack
-	    TestSuite doc = (TestSuite) testitem;
-	    
-	    // validated the dependency name
-	    // validateTitle(text);
-	    doc.setTitle(text);
-	} catch (TestFileException e) {
-	    getParserHandler().throwError(e.getMessage());
-	} 
+    try {
+        super.endTag(text);
+        Stack testItemStack = getParserHandler().getStack();
+        Object testitem = testItemStack.peek();
+
+        if (testitem == null)
+        getParserHandler().throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        if (! (testitem instanceof TestSuite)  )
+        getParserHandler().throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(),
+                            TestSuiteTagsImpl.ctStr_tag_testsuite));
+
+        //  Nothing is pushed onto the stack
+        TestSuite doc = (TestSuite) testitem;
+
+        // validated the dependency name
+        // validateTitle(text);
+        doc.setTitle(text);
+    } catch (TestFileException e) {
+        getParserHandler().throwError(e.getMessage());
     }
-	
-          
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -132,15 +132,15 @@ public class Title_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	EmitterHandlerSupport eh = getEmitterHandler();
+    EmitterHandlerSupport eh = getEmitterHandler();
 
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String title = (String) tdObject;
+    String title = (String) tdObject;
 
-	eh.emitText(title);
+    eh.emitText(title);
 
     }
 

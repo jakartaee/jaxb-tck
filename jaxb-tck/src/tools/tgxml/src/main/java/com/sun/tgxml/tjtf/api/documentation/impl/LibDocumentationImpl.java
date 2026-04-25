@@ -26,14 +26,14 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * LibDocumentation - 
+ * LibDocumentation -
  *
  * <b>LibDocumentation</b> is the basic interface for describing a JavaTest test description
  * associated with a Library.
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -52,14 +52,14 @@ public  class LibDocumentationImpl extends DocumentationImpl implements LibDocum
      *    Fields
      * ============================================================================================
      */
-   
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -68,9 +68,9 @@ public  class LibDocumentationImpl extends DocumentationImpl implements LibDocum
     }
 
     public LibDocumentationImpl(String title, String description, ArrayList authors) {
-	super(title, description, authors);
+    super(title, description, authors);
     }
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -92,14 +92,14 @@ public  class LibDocumentationImpl extends DocumentationImpl implements LibDocum
     * @see #setTitle
     */
     public String getTitle()  throws TestFileException {
-	String title = super.getTitle();
+    String title = super.getTitle();
 
-	if (title == null || title.equals(""))
-	    throw new TestFileException("Null title.");
+    if (title == null || title.equals(""))
+        throw new TestFileException("Null title.");
 
-	return title;
+    return title;
     }
-     
+
    /**
     *   Set the title associated with this documentation.
     *  <p>
@@ -114,10 +114,10 @@ public  class LibDocumentationImpl extends DocumentationImpl implements LibDocum
     * @see #getTitle
     */
     public void setTitle(String title)  throws TestFileException {
-	if (title == null || title.equals(""))
-	    throw new TestFileException("Null title.");
+    if (title == null || title.equals(""))
+        throw new TestFileException("Null title.");
 
-	super.setTitle(title);
+    super.setTitle(title);
     }
 
 

@@ -38,8 +38,8 @@ import com.sun.tgxml.tools.indexgen.api.TestSuite;
  * </ul>
  * for each passed IRObj and collects non-null result.
  *
- * @version 	1.0, 21/01/2004
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 21/01/2004
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -56,7 +56,7 @@ public class One2OneProcessor extends BasicIRProcessor {
     /**
      * Processes passed array of IRObj
      * @param irs  IRObj array to be processed
-     * @return     result of processing passed array 
+     * @return     result of processing passed array
      * @exception  TestFileException  - if there is some processing problem.
      */
     public IRObj[] process(IRObj[] irs) throws TestFileException {
@@ -64,11 +64,11 @@ public class One2OneProcessor extends BasicIRProcessor {
         for (int i = 0; i < irs.length; i++) {
             IRObj obj1 = irs[i];
             IRObj obj2 = null;
-            if (obj1 instanceof TestGroup) { 
+            if (obj1 instanceof TestGroup) {
                 obj2 = process((TestGroup)obj1);
-            } else if (obj1 instanceof TestSuite) { 
+            } else if (obj1 instanceof TestSuite) {
                 obj2 = process((TestSuite)obj1);
-            } else if (obj1 instanceof Library) { 
+            } else if (obj1 instanceof Library) {
                 obj2 = process((Library)obj1);
             } else {
                throw new TestFileException("unknown IRObj: " + obj1);
@@ -84,25 +84,25 @@ public class One2OneProcessor extends BasicIRProcessor {
      * Returns passed Library as is.
      * Subclasses may override this method to provide library processing.
      */
-    public Library process(Library lib) throws TestFileException { 
-        return lib; 
+    public Library process(Library lib) throws TestFileException {
+        return lib;
     }
 
     /**
      * Returns passed TestGroup as is.
      * Subclasses may override this method to provide TestGroup processing.
      */
-    public TestGroup process(TestGroup tg) throws TestFileException { 
-        return tg; 
+    public TestGroup process(TestGroup tg) throws TestFileException {
+        return tg;
     }
 
     /**
      * Returns passed TestSuite as is.
      * Subclasses may override this method to provide TestSuite processing.
      */
-    public TestSuite process(TestSuite ts) throws TestFileException { 
+    public TestSuite process(TestSuite ts) throws TestFileException {
         return ts;
     }
 
 }
-        
+

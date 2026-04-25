@@ -22,13 +22,13 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * LibraryDependency - 
+ * LibraryDependency -
  *
  * <b>LibraryDependency</b> is the interface for a code dependency on a Library.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -53,7 +53,7 @@ public  interface LibraryDependency extends CodeDependency {
      *    Methods
      * ============================================================================================
      */
-   
+
   /**
     *   Get the Id for the library.
     *  <p>
@@ -62,7 +62,7 @@ public  interface LibraryDependency extends CodeDependency {
     * @see #setID
     */
     public String getID() throws TestFileException;
-     
+
   /**
     *   Set the Id for the library.
     *  <p>

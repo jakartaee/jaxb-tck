@@ -32,50 +32,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * ExternalData_TH - The tag-handler for a Lib tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ExternalData_TH 
- * ============================================================================================ 
- */ 
+/**
+ * ExternalData_TH - The tag-handler for a Lib tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ExternalData_TH
+ * ============================================================================================
+ */
 public class ExternalData_TH extends SingletonTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   ExternalData_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   ExternalData_TH constructor -
+    *       Initialize our internal fields.
+    */
     public ExternalData_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ public class ExternalData_TH extends SingletonTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_externaldata;
+    return TagsImpl.ctStr_tag_externaldata;
     }
 
     //------------------------------------------------------------------------------
@@ -99,100 +99,100 @@ public class ExternalData_TH extends SingletonTagHandler  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	try {
-	    String sourcename = null;
-	    String type = null;
-	    if (attrs != null) {
-		for (int i = 0; i < attrs.getLength (); i++) {
-		    // Get the sourcename
-		    if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_sourcename)) {
-			sourcename = attrs.getValue (i);
-			// validateSourceName(sourcename);
-		    }
-		    // Get the type
-		    else if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_type)) {
-			type = attrs.getValue (i);
-			// validateType(type);
-		    }
+    super.startTag(attrs);
+    try {
+        String sourcename = null;
+        String type = null;
+        if (attrs != null) {
+        for (int i = 0; i < attrs.getLength (); i++) {
+            // Get the sourcename
+            if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_sourcename)) {
+            sourcename = attrs.getValue (i);
+            // validateSourceName(sourcename);
+            }
+            // Get the type
+            else if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_type)) {
+            type = attrs.getValue (i);
+            // validateType(type);
+            }
 
-		    // unknown attribute
-		    else 
-			// Unknown spec attribute
-			m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownSpecAttr", attrs.getQName (i)));
-		}
+            // unknown attribute
+            else
+            // Unknown spec attribute
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownSpecAttr", attrs.getQName (i)));
+        }
 
-		Stack testItemStack = getParserHandler().getStack();
-		Object tco = testItemStack.peek();
-		if (! (tco instanceof CodeSet))
-		    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
+        Stack testItemStack = getParserHandler().getStack();
+        Object tco = testItemStack.peek();
+        if (! (tco instanceof CodeSet))
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
 
-		CodeSet cs = (CodeSet) tco;
-		ArrayList datalist = cs.getData();
-		if (datalist == null) {
-		    datalist = new ArrayList();
-		    cs.setData(datalist);
-		}
+        CodeSet cs = (CodeSet) tco;
+        ArrayList datalist = cs.getData();
+        if (datalist == null) {
+            datalist = new ArrayList();
+            cs.setData(datalist);
+        }
 
-		ExternalData m_ExternalData = DataFactory.createExternalData();
-		if (sourcename != null)
-		    m_ExternalData.setSourceName(sourcename);
-		
-		
-		// set the data type if it is specified
-		if (type != null) { 
-		    
-		    if (! (type.equals(TagsImpl.ctStr_attr_extdata_enum_resource) || 
-			   type.equals(TagsImpl.ctStr_attr_extdata_enum_iodata)))
-			    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.attribute.enum.illval",
-									     TagsImpl.ctStr_attr_type, type));
+        ExternalData m_ExternalData = DataFactory.createExternalData();
+        if (sourcename != null)
+            m_ExternalData.setSourceName(sourcename);
 
-		    DataType dt = DataFactory.createDataType(type);
-		    m_ExternalData.setType(dt);
-		}
-		
-		datalist.add(m_ExternalData);
-		
-	    }
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+
+        // set the data type if it is specified
+        if (type != null) {
+
+            if (! (type.equals(TagsImpl.ctStr_attr_extdata_enum_resource) ||
+               type.equals(TagsImpl.ctStr_attr_extdata_enum_iodata)))
+                m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.attribute.enum.illval",
+                                         TagsImpl.ctStr_attr_type, type));
+
+            DataType dt = DataFactory.createDataType(type);
+            m_ExternalData.setType(dt);
+        }
+
+        datalist.add(m_ExternalData);
+
+        }
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-     
- 
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-          
+
   /**
     *   emit a tags attributes (general function).
     *  <p>
     * @see #endTag
     */
     public void emitAttributes(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof ExternalData))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"ExternalData", tdObject.getClass().getName()));
+    if (! (tdObject instanceof ExternalData))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "ExternalData", tdObject.getClass().getName()));
 
-	ExternalData data = (ExternalData) tdObject;
+    ExternalData data = (ExternalData) tdObject;
 
-	String sourcename = data.getSourceName();
-	m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_sourcename, sourcename);
+    String sourcename = data.getSourceName();
+    m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_sourcename, sourcename);
 
-	DataType dt = data.getType();
+    DataType dt = data.getType();
 
-	if (dt != null) {
-	    if (dt.isResource()) {
-		m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_type, TagsImpl.ctStr_attr_extdata_enum_resource);
-	    } else if (dt.isIOData()) {
-		m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_type, TagsImpl.ctStr_attr_extdata_enum_iodata);
-	    }
-	}
-
-	
+    if (dt != null) {
+        if (dt.isResource()) {
+        m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_type, TagsImpl.ctStr_attr_extdata_enum_resource);
+        } else if (dt.isIOData()) {
+        m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_type, TagsImpl.ctStr_attr_extdata_enum_iodata);
+        }
     }
 
 
-     
+    }
+
+
+
 
 }
