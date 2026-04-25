@@ -29,7 +29,7 @@
     </parent>
 
     <artifactId>sqe</artifactId>
-    <name>sqe (parent}</name>
+    <name>sqe (parent)</name>
     <description>sqe (parent}</description>
     <packaging>pom</packaging>
 
@@ -41,14 +41,4 @@
         <module>jck.lib</module>
         <module>jckutils.lib</module>
     </modules>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>jakarta.xml.bind</groupId>
-                <artifactId>sqe-harness</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>

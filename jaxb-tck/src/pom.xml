@@ -143,6 +143,11 @@
             </dependency>
             <dependency>
                 <groupId>jakarta.xml.bind</groupId>
+                <artifactId>sqe-harness</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
                 <artifactId>sqe-jck.lib</artifactId>
                 <version>${project.version}</version>
             </dependency>

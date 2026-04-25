@@ -32,17 +32,10 @@
     <name>JCK Utils (JCK FileCheck)</name>
     <description>JCK Utils (JCK FileCheck)</description>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/TestOrderedList*</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>sqe-harness</artifactId>
+        </dependency>
+    </dependencies>
 </project>
