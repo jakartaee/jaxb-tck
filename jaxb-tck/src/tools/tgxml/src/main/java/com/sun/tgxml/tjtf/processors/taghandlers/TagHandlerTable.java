@@ -31,26 +31,26 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
  * TagHandlerTable - The tag-handler table is a collection
  * of TagHandler objects.  The table manages them on behalf
  * of a processor (such as a parser or emitter).
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TagHandlerTable 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TagHandlerTable
+ * ============================================================================================
+ */
 public class TagHandlerTable   {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
     /**  The (internal) collection of tag-handlers. */
     private TreeMap m_table;
@@ -66,24 +66,24 @@ public class TagHandlerTable   {
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TagHandlerTable constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TagHandlerTable constructor -
+    *       Initialize our internal fields.
+    */
     public TagHandlerTable() {
-	m_table = new TreeMap();
-	m_roots = new Hashtable();
+    m_table = new TreeMap();
+    m_roots = new Hashtable();
     }
 
 
@@ -91,7 +91,7 @@ public class TagHandlerTable   {
     //  Table maintenance
     //------------------------------------------------------------------------------
 
-   /** 
+   /**
     *   Add a root-association to the Table.
     * <p>
     *   A root-handler is an association between a specific
@@ -104,93 +104,93 @@ public class TagHandlerTable   {
     *    addRootHandler(Library.class, "Library");
     * <p>
     *   @param rootClass
-    *   @param handlerTag 
+    *   @param handlerTag
     *   @see #getDocName()
-    */ 
+    */
     public void addRootAssociation(Class rootClass, String handlerTag) throws TestFileException {
-	if (rootClass == null)
-	    throw new TestFileException(LibResHandler.getResStr("tht.error.rootclass.null"));
+    if (rootClass == null)
+        throw new TestFileException(LibResHandler.getResStr("tht.error.rootclass.null"));
 
-	if (handlerTag == null || handlerTag.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("tht.error.roottag.null"));
+    if (handlerTag == null || handlerTag.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("tht.error.roottag.null"));
 
-	m_roots.put(rootClass, handlerTag);
+    m_roots.put(rootClass, handlerTag);
     }
 
 
-   /** 
+   /**
     *   Get the tag associated with the root object
     * <p>
     *   @param root The root object.
     *   @return The string containing the name of the tag-handler for that root.
     *   @throws TestFileException if the root is null.
-    */ 
+    */
     public String getRootTag(XMLObj root) throws TestFileException {
-	if (root == null)
-	    throw new TestFileException(LibResHandler.getResStr("tht.error.root.null"));
+    if (root == null)
+        throw new TestFileException(LibResHandler.getResStr("tht.error.root.null"));
 
 
-	Iterator it = m_roots.entrySet().iterator();
-	while (it.hasNext()) {
-	    Map.Entry entry = (Map.Entry) it.next();
-	    Class cl = (Class) entry.getKey();
-	    if (cl.isInstance(root)) 
-		return (String) entry.getValue();
-	}
+    Iterator it = m_roots.entrySet().iterator();
+    while (it.hasNext()) {
+        Map.Entry entry = (Map.Entry) it.next();
+        Class cl = (Class) entry.getKey();
+        if (cl.isInstance(root))
+        return (String) entry.getValue();
+    }
 
-	return null;
+    return null;
     }
 
 
-   /** 
+   /**
     *   Set the name of an (XML) document that this table handles.
     * <p>
     *   @param docname The name of the (XML) document.
     *   @see #getDocName
-    */ 
+    */
     public void setDocName(String docname) {
-	m_docName = docname;
+    m_docName = docname;
     }
 
 
 
-   /** 
+   /**
     *   Set the name of an (XML) document that this table handles.
     * <p>
     *   @return The name of the (XML) document.
     * @throws TestFileException if the docname has not been set.
     *   @see #setDocName
-    */ 
+    */
     public String getDocName() throws TestFileException {
-	if (m_docName == null || m_docName.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("tht.error.docname.null"));
-	return m_docName;
+    if (m_docName == null || m_docName.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("tht.error.docname.null"));
+    return m_docName;
     }
 
 
-   /** 
+   /**
     *   Set the location (URI) of an (XML) document that this table handles.
     * <p>
     *   @param docURI The location of the (XML) document.
     *   @see #getDocURI
-    */ 
+    */
     public void setDocURI(String docURI) {
-	m_docURI = docURI;
+    m_docURI = docURI;
     }
 
 
 
-   /** 
+   /**
     *   Set the name of an (XML) document that this table handles.
     * <p>
     *   @return The name of the (XML) document.
     * @throws TestFileException if the docname has not been set.
     *   @see #setDocName
-    */ 
+    */
     public String getDocURI() throws TestFileException {
-	if (m_docURI == null || m_docURI.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("tht.error.docuri.null"));
-	return m_docURI;
+    if (m_docURI == null || m_docURI.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("tht.error.docuri.null"));
+    return m_docURI;
     }
 
     //------------------------------------------------------------------------------
@@ -205,19 +205,19 @@ public class TagHandlerTable   {
     * @see #get
     */
     public void put(TagHandler th) throws TestFileException {
-	if (th == null) {
-	    throw new TestFileException(LibResHandler.getResStr("parser.error.taghandlertable.nullentry"));
-	}
+    if (th == null) {
+        throw new TestFileException(LibResHandler.getResStr("parser.error.taghandlertable.nullentry"));
+    }
 
-	String tagName = th.getTagName();
-	if (tagName == null || tagName.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("parser.error.taghandlertable.nullname"));
+    String tagName = th.getTagName();
+    if (tagName == null || tagName.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("parser.error.taghandlertable.nullname"));
 
-	TagHandler current = (TagHandler) m_table.get(tagName);
-	if (current != null)
-	    throw new TestFileException(LibResHandler.getResStr("parser.error.taghandlertable.dupentry", tagName));
+    TagHandler current = (TagHandler) m_table.get(tagName);
+    if (current != null)
+        throw new TestFileException(LibResHandler.getResStr("parser.error.taghandlertable.dupentry", tagName));
 
-	m_table.put(tagName, th);
+    m_table.put(tagName, th);
     }
 
 
@@ -231,14 +231,14 @@ public class TagHandlerTable   {
     * @see #put
     */
     public TagHandler get(String tagName) throws TestFileException {
-	if (tagName == null || tagName.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("parser.error.taghandlertable.nullfetch"));
+    if (tagName == null || tagName.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("parser.error.taghandlertable.nullfetch"));
 
-	return (TagHandler)m_table.get(tagName);
+    return (TagHandler)m_table.get(tagName);
     }
 
 
-         
+
   /**
     *   Get a TagHandler with the given name.
     *  <p>
@@ -246,7 +246,7 @@ public class TagHandlerTable   {
     * @see #put
     */
     public Iterator iterator() {
-	return m_table.values().iterator();
+    return m_table.values().iterator();
     }
 
 }

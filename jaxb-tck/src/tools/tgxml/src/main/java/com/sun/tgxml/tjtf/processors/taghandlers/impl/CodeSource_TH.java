@@ -29,50 +29,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * CodeSource_TH - The tag-handler for a CodeSource tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    CodeSource_TH 
- * ============================================================================================ 
- */ 
+/**
+ * CodeSource_TH - The tag-handler for a CodeSource tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    CodeSource_TH
+ * ============================================================================================
+ */
 public class CodeSource_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   CodeSource_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   CodeSource_TH constructor -
+    *       Initialize our internal fields.
+    */
     public CodeSource_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ public class CodeSource_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_codesource;
+    return TagsImpl.ctStr_tag_codesource;
     }
 
     //------------------------------------------------------------------------------
@@ -96,36 +96,36 @@ public class CodeSource_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
-	
-	if (testitem == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	
-	if (! (testitem instanceof InlineSupportClass))
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), 
-							     TagsImpl.ctStr_tag_inlinesupportclass));
-	
-	InlineSupportClass isc = (InlineSupportClass) testitem;
-	// validated the source
-	//   If the tag is parsed in, it can not have null text.
-	if (text == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	
-	StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
-	if (! tknzr.hasMoreTokens())
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	
-	isc.setSource(text);
+    super.endTag(text);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
+
+    if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+    if (! (testitem instanceof InlineSupportClass))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(),
+                                 TagsImpl.ctStr_tag_inlinesupportclass));
+
+    InlineSupportClass isc = (InlineSupportClass) testitem;
+    // validated the source
+    //   If the tag is parsed in, it can not have null text.
+    if (text == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+
+    StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
+    if (! tknzr.hasMoreTokens())
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+
+    isc.setSource(text);
     }
-     
- 
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -133,21 +133,21 @@ public class CodeSource_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String source = (String) tdObject;
-	// validated the source
-	//   If the tag is parsed in, it can not have null text.
-	if (source == null)
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
-	
-	StringTokenizer tknzr = new StringTokenizer(source, " \t\n\r");
-	if (! tknzr.hasMoreTokens())
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
+    String source = (String) tdObject;
+    // validated the source
+    //   If the tag is parsed in, it can not have null text.
+    if (source == null)
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
 
-	m_EmitterHandler.emitText(source);
+    StringTokenizer tknzr = new StringTokenizer(source, " \t\n\r");
+    if (! tknzr.hasMoreTokens())
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
+
+    m_EmitterHandler.emitText(source);
     }
 
 }

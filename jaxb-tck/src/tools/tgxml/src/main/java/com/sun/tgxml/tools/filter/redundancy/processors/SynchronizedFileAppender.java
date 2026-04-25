@@ -42,15 +42,15 @@ public class SynchronizedFileAppender {
     private String fileName;
     private String lockName;
     private Appender writer;
-    
+
     private Random rand = new Random(System.currentTimeMillis());
     private List queue = new LinkedList();
-    
+
     private static String id;
 
     static {
         /*
-         * It is required because the Appender is daemon and VM can exit during file writing. 
+         * It is required because the Appender is daemon and VM can exit during file writing.
          */
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
@@ -79,9 +79,9 @@ public class SynchronizedFileAppender {
                 throw new RuntimeException("Can not synchronize files.");
             }
         }));
-        
+
     }
-    
+
     private static HashMap instances = new HashMap();
 
     /**
@@ -96,7 +96,7 @@ public class SynchronizedFileAppender {
         }
         return retVal;
     }
-    
+
     private SynchronizedFileAppender(String name) {
         this.fileName = name;
         this.lockName = name + ".lock";
@@ -107,7 +107,7 @@ public class SynchronizedFileAppender {
     }
 
     /**
-     * appends the file by the given String. The method does not do real appending. 
+     * appends the file by the given String. The method does not do real appending.
      * It requests a separate Thread to lock and synchronize a file.
      * @param data String object to be appended to the file.
      */
@@ -117,15 +117,15 @@ public class SynchronizedFileAppender {
             queue.notifyAll();
         }
     }
-    
+
     private class Appender implements Runnable {
         int max_count;
         boolean isFileLocked = false;
-        
+
         public Appender(int max_count) {
             this.max_count = max_count;
         }
-        
+
         public synchronized void run() {
             while (true) {
                 runSynchronously(this.max_count);
@@ -139,7 +139,7 @@ public class SynchronizedFileAppender {
                 }
             }
         }
-        
+
         public void runSynchronously(int max_count) {
             if (queue.isEmpty()) {
                 return;

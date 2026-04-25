@@ -44,7 +44,7 @@ import com.sun.tgxml.tjtf.api.tests.TestRoot;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/**  
+/**
  * Class for generation a test description basing on JmppLibTest variable set.
  * The descriptions are generated as IR objects.
  */
@@ -59,7 +59,7 @@ class XmlSchemaIRTDGenerator extends IRTDGenerator {
    public static final boolean INVALID_SCHEMA = false;
    public static final boolean VALID_XML_DOC = true;
    public static final boolean INVALID_XML_DOC = false;
-   
+
     public void makeTD(JmppLibTest lib){
         try {
             if (((JmppLibXMLSchema)lib).singleSchema) {
@@ -94,7 +94,7 @@ class XmlSchemaIRTDGenerator extends IRTDGenerator {
     public void processSimpleSchema(JmppLibXMLSchema lib) throws TestFileException {
         TestGroup tg = createTG(null, lib);
         storeRoot(tg);
-    }    
+    }
 
     public void processBiSchema(JmppLibXMLSchema lib) throws TestFileException {
         ArrayList tgs = createBiSchemaTGs(lib);
@@ -103,19 +103,19 @@ class XmlSchemaIRTDGenerator extends IRTDGenerator {
         }
         return;
     }
-    
+
     public TestGroup createTG(TestGroup tg, JmppLibXMLSchema lib) throws TestFileException {
         if (tg == null){
             if (lib.isValidSchema == true) {
                 tg = _createTG(lib, (lib.singleSchema ? lib.sharedName() : lib.test), VALID_SCHEMA);
                 tg.addTestCase(createSchemaTC(VALID_SCHEMA, lib, tg));
-	    } else {
+        } else {
                 tg = _createTG(lib, (lib.singleSchema ? lib.sharedName() : lib.test), INVALID_SCHEMA);
-	        tg.addTestCase(createSchemaTC(INVALID_SCHEMA, lib, tg));
-	        return tg;
-	    }
+            tg.addTestCase(createSchemaTC(INVALID_SCHEMA, lib, tg));
+            return tg;
+        }
         } else if (lib.isValidSchema == false) {
-	    return tg;
+        return tg;
         }
         if (lib.createPositiveCase){
              tg.addTestCase(createTC(VALID_XML_DOC, lib, tg));
@@ -128,17 +128,17 @@ class XmlSchemaIRTDGenerator extends IRTDGenerator {
 
     public ArrayList createBiSchemaTGs(JmppLibXMLSchema lib)  throws TestFileException  {
         ArrayList al = new ArrayList();
-	if (lib.createPositiveCase){
-	    TestGroup tg = _createTG(lib, lib.test + "_p", VALID_SCHEMA);
-	    tg.addTestCase(createSchemaTC(VALID_SCHEMA, lib, tg));
+    if (lib.createPositiveCase){
+        TestGroup tg = _createTG(lib, lib.test + "_p", VALID_SCHEMA);
+        tg.addTestCase(createSchemaTC(VALID_SCHEMA, lib, tg));
             tg.addTestCase(createTC(VALID_XML_DOC, lib, tg));
             al.add(tg);
-	}
-	if (lib.createNegativeCase){
-	    TestGroup tg = _createTG(lib, lib.test + "_n", INVALID_SCHEMA);
+    }
+    if (lib.createNegativeCase){
+        TestGroup tg = _createTG(lib, lib.test + "_n", INVALID_SCHEMA);
             tg.addTestCase(createSchemaTC(INVALID_SCHEMA, lib, tg));
             al.add(tg);
-	}
+    }
         return al;
     }
 
@@ -273,7 +273,7 @@ class XmlSchemaIRTDGenerator extends IRTDGenerator {
         tc.setTestGroup(tg);
         return tc;
     }
-    
+
     public ArrayList createTCAttrElems(boolean validity, JmppLibXMLSchema lib) throws TestFileException {
         ArrayList attrElems = new ArrayList();
         AttrElem valid = AttributesFactory.createAttrElem
@@ -298,8 +298,8 @@ class XmlSchemaIRTDGenerator extends IRTDGenerator {
     }
 
     protected ArrayList createData(boolean positive, JmppLibXMLSchema lib) throws TestFileException {
-    	String sfx = positive ? "_p" : "_n";
-	String xml = (lib.biDoc ? sfx : "")  +".xml";
+        String sfx = positive ? "_p" : "_n";
+    String xml = (lib.biDoc ? sfx : "")  +".xml";
         ArrayList data = new ArrayList();
         Data d = DataFactory.createExternalData(lib.test + xml);
         d.setType(DataFactory.createDataType("iodata"));
@@ -311,7 +311,7 @@ class XmlSchemaIRTDGenerator extends IRTDGenerator {
         return lib.getOutputDir() + File.separatorChar + ((JmppLibXMLSchema)lib).sharedName();
     }
 
-    //Code duplicated from IRTDGenerator class to avoid simple bug in case of empty 
+    //Code duplicated from IRTDGenerator class to avoid simple bug in case of empty
     //targetSpec entity, i.e. ", ID:version...".
     protected ArrayList createTargetSpecs(JmppLibXMLSchema lib, String ts) throws TestFileException {
         ArrayList targetSpecs = new ArrayList();

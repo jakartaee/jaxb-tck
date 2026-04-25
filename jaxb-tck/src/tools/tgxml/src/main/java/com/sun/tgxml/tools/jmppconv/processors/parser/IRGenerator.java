@@ -23,14 +23,14 @@ import java.util.Hashtable;
 
 import com.sun.jmpp.JmppException;
 
-public interface IRGenerator 
+public interface IRGenerator
 {
-   
+
    /**
     * Creates test description java objects
     */
    public ArrayList generate(File inputFile) throws JmppException;
-   
+
    /**
     *
     */

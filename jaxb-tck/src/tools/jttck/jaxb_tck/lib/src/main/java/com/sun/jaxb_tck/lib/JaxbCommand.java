@@ -75,7 +75,7 @@ public class JaxbCommand extends Command {
 
         try {
             rc = toolIndex == 0 ? new Xjc(args).execute(outStream, errStream):
-            					            new Jxc(args).execute(outStream, errStream);
+                                            new Jxc(args).execute(outStream, errStream);
             return (rc == 0 ? PASSED[toolIndex] : FAILED[toolIndex]);
         } catch (Invoker.ArgumentException ae) {
             return Status.error(ae.getMessage());
@@ -85,10 +85,10 @@ public class JaxbCommand extends Command {
           ie.printStackTrace(errStream);
           return Status.failed("Test interupted. Increase the time limit in the time factor field.");
         } catch (Exception ex) {
-        	ex.printStackTrace(errStream);
-        	String msg = ex.getMessage();
-        	if(msg == null)
-        		msg = "Unexpected exception was thrown " + ex.toString();
+            ex.printStackTrace(errStream);
+            String msg = ex.getMessage();
+            if(msg == null)
+                msg = "Unexpected exception was thrown " + ex.toString();
             return Status.failed(msg);
         } finally {
             errStream.flush();

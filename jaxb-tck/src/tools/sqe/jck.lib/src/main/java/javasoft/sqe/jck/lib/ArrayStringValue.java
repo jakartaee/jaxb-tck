@@ -18,16 +18,16 @@
 package javasoft.sqe.jck.lib;
 
 public class ArrayStringValue {
-	
-	public static class Argument extends MultiTestExt.ArgumentValue<String[]> {
-		public int parseValue(String[] argv) {
-			int l =argv.length;
-			if(l < 1)
-			      throw new InvalidValue("arguments array is empty");
+
+    public static class Argument extends MultiTestExt.ArgumentValue<String[]> {
+        public int parseValue(String[] argv) {
+            int l =argv.length;
+            if(l < 1)
+                  throw new InvalidValue("arguments array is empty");
             set(argv);
-			return l;
-		}
-	}
+            return l;
+        }
+    }
 
     public static class Parameter extends MultiTestExt.ParameterValue<String[]> {
         public Parameter(String name) {

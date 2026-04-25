@@ -22,7 +22,7 @@ import com.sun.tgxml.tools.filter.processors.FilteringException;
 
 /**
  * A class that filters library by its attribute set.
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */
@@ -41,7 +41,7 @@ public interface LibAttributesFilter {
      * @param  libBundle  a bundle of libraries to be filtered
      * @return an bundle of stripped libraries.
      * @exception FilteringException if passed libraries cannot be filtered
-     * 
+     *
      */
     public VariantsMap filter(VariantsMap libBundle) throws FilteringException;
 
@@ -49,7 +49,7 @@ public interface LibAttributesFilter {
      * Provides attribute filtering of passed library.
      * Methods returns null if library attributes does not satisfy
      * the selection criteria.
-     * Otherwise it returns stripped Library (removes irrelevant 
+     * Otherwise it returns stripped Library (removes irrelevant
      * support classes from Library CodeSet).
      *
      * @param  lib  a library to be filtered

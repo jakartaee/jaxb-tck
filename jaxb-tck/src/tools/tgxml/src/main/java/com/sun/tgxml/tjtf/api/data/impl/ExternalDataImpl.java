@@ -24,7 +24,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * ExternalDataImpl - 
+ * ExternalDataImpl -
  *
  * <b>ExternalDataImpl</b> describes the data that a test needs to be able to
  * execute.
@@ -32,7 +32,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  * <b>ExternalData</b> contains either a URL to a data file, or inline text
  * that represents data.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -58,18 +58,18 @@ public  class ExternalDataImpl extends DataImpl implements ExternalData  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
-    
+
     public ExternalDataImpl() {
 
     }
 
     public ExternalDataImpl(String fileName) {
-	m_sourceName = fileName;
+    m_sourceName = fileName;
     }
 
     //------------------------------------------------------------------------------
@@ -88,12 +88,12 @@ public  class ExternalDataImpl extends DataImpl implements ExternalData  {
     * @see #setSourceName
     */
     public String getSourceName() throws TestFileException {
-	if (m_sourceName == null)
-	    throw new TestFileException("Null filename.");
+    if (m_sourceName == null)
+        throw new TestFileException("Null filename.");
 
-	return m_sourceName;
+    return m_sourceName;
     }
-     
+
    /**
     *   Set the filename associated with this data.
     *  <p>
@@ -105,9 +105,9 @@ public  class ExternalDataImpl extends DataImpl implements ExternalData  {
     * @see #getSourceName
     */
     public void setSourceName(String filename)  throws TestFileException {
-	if (filename == null)
-	    throw new TestFileException("Null filename.");
-	m_sourceName = filename;
+    if (filename == null)
+        throw new TestFileException("Null filename.");
+    m_sourceName = filename;
     }
 
 

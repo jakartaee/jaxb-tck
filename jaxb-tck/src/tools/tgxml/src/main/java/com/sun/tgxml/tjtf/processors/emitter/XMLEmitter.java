@@ -24,28 +24,28 @@ import java.io.OutputStream;
 import com.sun.tgxml.tjtf.api.XMLObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
-/** 
- * TestFileParser - The basic engine for ClassDiag. 
- *  Visual versions of ClassDiag should override this class. 
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    XMLEmitter 
- * ============================================================================================ 
- */ 
+/**
+ * TestFileParser - The basic engine for ClassDiag.
+ *  Visual versions of ClassDiag should override this class.
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    XMLEmitter
+ * ============================================================================================
+ */
 public interface XMLEmitter extends IREmitter {
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
   /**
     *  Emit the XML File (as a File).

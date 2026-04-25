@@ -24,10 +24,10 @@ import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
 // </importgen>
 
 /**
- * Library - 
+ * Library -
  *
  * <b>Library</b> is a (root) entity that describes a library of functionality (classes, auxiliary classes, etc)
- * that a code entity may depend on.  
+ * that a code entity may depend on.
  * <p>
  * A <b>TestGroup</b> or <b>TestCase</b>s <b>CodeSet</b> may specify a direct dependency on
  * a  <b>Library</b>.
@@ -47,7 +47,7 @@ import com.sun.tgxml.tjtf.api.documentation.LibDocumentation;
  * <p>
  *
  * @see com.sun.tgxml.tjtf.api.code.LibraryDependency
- * @version 	1.1, 10/23/02
+ * @version     1.1, 10/23/02
  * @author  Kevin T. Looney
  */
 
@@ -73,7 +73,7 @@ public  interface Library extends TestRoot, VariableTestItem {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -87,7 +87,7 @@ public  interface Library extends TestRoot, VariableTestItem {
     * @see #setLibDocumentation
     */
     public LibDocumentation getLibDocumentation();
-     
+
   /**
     *   Set the Documentation associated with this Library.
     *  <p>
@@ -108,7 +108,7 @@ public  interface Library extends TestRoot, VariableTestItem {
     * @see #setLibAttributes
     */
     public LibAttributes getLibAttributes();
-     
+
   /**
     *   Set the Attributes associated with this Library.
     *  <p>
@@ -121,13 +121,13 @@ public  interface Library extends TestRoot, VariableTestItem {
   /**
     *  Returns true if library is Inline.
     *  For InlineLibrary instances it always returns true.
-    *  For external libraries the value of inline flag associated with 
+    *  For external libraries the value of inline flag associated with
     *  this Library (false by default).
     *
     * @see #setInline
     */
     public boolean isInline();
-     
+
   /**
     *  Sets the inline flag associated with this Library.
     *  (For InlineLibrary instances does nothing)

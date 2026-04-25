@@ -33,7 +33,7 @@ import com.sun.tgxml.tjtf.api.tests.TestGroup;
 public interface FilterExpression {
 
     /**
-     * Evaluates expression against TestGroup object and determines 
+     * Evaluates expression against TestGroup object and determines
      * if the whole TestGroup satisfies the expression represented by the node.
      *
      * @param      tGroup TestGroup object to be checked.
@@ -42,7 +42,7 @@ public interface FilterExpression {
     public boolean accept(TestGroup tGroup);
 
     /**
-     * Evaluates expression against Library object and determines 
+     * Evaluates expression against Library object and determines
      * if this Library implementation satisfies the expression represented by the node.
      *
      * @param      lib Library object to be checked.
@@ -51,7 +51,7 @@ public interface FilterExpression {
     public boolean accept(Library lib);
 
     /**
-     * Evaluates expression against TestCase object and determines 
+     * Evaluates expression against TestCase object and determines
      * if this TestCase satisfies the expression represented by the node.
      *
      * @param      tCase  TestCase object to be checked.
@@ -61,7 +61,7 @@ public interface FilterExpression {
     public boolean accept(TestCase tCase, TestGroup tGroup);
 
     /**
-     * Evaluates expression against SupportClass object and determines 
+     * Evaluates expression against SupportClass object and determines
      * if this SupportClass satisfies the expression represented by the node.
      *
      * @param      sClass  SupportClass object to be checked.
@@ -72,8 +72,8 @@ public interface FilterExpression {
 
 
     /**
-     * Produces, if needed, expression tree reduced for the TestGroup target object type. 
-     * Source expression tree is represented by this node. 
+     * Produces, if needed, expression tree reduced for the TestGroup target object type.
+     * Source expression tree is represented by this node.
      *
      * @param      tGroup    value of the parameter is not processed.
      * @return     reference to the root of tree reperesenting the reduced expression.
@@ -81,8 +81,8 @@ public interface FilterExpression {
     public FilterExpression getRelevant(TestGroup tGroup);
 
     /**
-     * Produces, if needed, expression tree reduced for the Library target object type. 
-     * Source expression tree is represented by this node. 
+     * Produces, if needed, expression tree reduced for the Library target object type.
+     * Source expression tree is represented by this node.
      *
      * @param      lib    value of the parameter is not processed.
      * @return     reference to the root of tree reperesenting the reduced expression.
@@ -90,8 +90,8 @@ public interface FilterExpression {
     public FilterExpression getRelevant(Library lib);
 
     /**
-     * Produces, if needed, expression tree reduced for the TestCase target object type. 
-     * Source expression tree is represented by this node. 
+     * Produces, if needed, expression tree reduced for the TestCase target object type.
+     * Source expression tree is represented by this node.
      *
      * @param      tCase    value of the parameter is not processed.
      * @return     reference to the root of tree reperesenting the reduced expression.
@@ -99,8 +99,8 @@ public interface FilterExpression {
     public FilterExpression getRelevant(TestCase tCase);
 
     /**
-     * Produces, if needed, expression tree reduced for the SupportClass target object type. 
-     * Source expression tree is represented by this node. 
+     * Produces, if needed, expression tree reduced for the SupportClass target object type.
+     * Source expression tree is represented by this node.
      *
      * @param      sClass    value of the parameter is not processed.
      * @return     reference to the root of tree reperesenting the reduced expression.

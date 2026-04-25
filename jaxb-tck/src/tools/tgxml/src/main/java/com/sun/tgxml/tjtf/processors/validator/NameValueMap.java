@@ -20,89 +20,89 @@ package com.sun.tgxml.tjtf.processors.validator;
 import java.util.Iterator;
 
 
-/** 
- * NameValueMap - Name-Value mapping. 
+/**
+ * NameValueMap - Name-Value mapping.
  * <p>
  * A NameValueMap is a concrete implementation of an EnumMap, that
  * associates a Mapping to a Name-entry in the enumeration.
  * <p>
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    NameValueMap 
- * ============================================================================================ 
- */ 
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    NameValueMap
+ * ============================================================================================
+ */
 public class NameValueMap extends EnumMap {
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
-   /** 
-    *   NameMapImpl constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
+   /**
+    *   NameMapImpl constructor -
+    *       Initialize our internal fields.
+    */
     public NameValueMap(String name) {
-	super(name);
+    super(name);
     }
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    ExtensionMap implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    ExtensionMap implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
 
- 
-   /** 
-    *   Add a Mapping entry into this enumeration-set. 
+
+   /**
+    *   Add a Mapping entry into this enumeration-set.
     *  The name is already stored in the mapping.
     * <p>
     * @param map The mapping to be added.
-    */ 
+    */
     public void addEntry(Mapping map) {
-	m_hash.put(map.getName(), map);
+    m_hash.put(map.getName(), map);
     }
 
- 
-   /** 
+
+   /**
     *  Validate a Name and value.  This form of
     *  validation looks for a Mapping in the enumeration
     *  with the given name.  If the mapping exists, the
     *  given value is validated by that mapping.
-    * <p> 
+    * <p>
     * @param name The potential name of a Mapping entry.
     * @param val  A potential value the Mapping can validate.
     * @return true If the value validates, or if the map doesn't care.
-    */ 
+    */
     public boolean validate(String name, String val) {
 
-	if (m_hash.containsKey(name)) {
-	    Mapping map = (Mapping) m_hash.get(name);
-	    return map.validate(val);
-	} else {
-	    return m_validateIfMissing;
-	}
+    if (m_hash.containsKey(name)) {
+        Mapping map = (Mapping) m_hash.get(name);
+        return map.validate(val);
+    } else {
+        return m_validateIfMissing;
+    }
     }
 
- 
-   /** 
-    *   Fetch a mapping of a given name in the enumeration set. 
+
+   /**
+    *   Fetch a mapping of a given name in the enumeration set.
     * <p>
     * @param name The name of a potential mapping.
     * @return A mapping, or null.
-    */ 
+    */
     public Mapping getMapping(String name) {
 
-	if (m_hash.containsKey(name))
-	    return (Mapping) m_hash.get(name);
-	else
-	    return null;
+    if (m_hash.containsKey(name))
+        return (Mapping) m_hash.get(name);
+    else
+        return null;
     }
 
 
@@ -112,12 +112,12 @@ public class NameValueMap extends EnumMap {
     * @param debug The value the flag will be set to.
     */
     public void setDebug(boolean debug) {
-	super.setDebug(debug);
-	Iterator it = m_hash.values().iterator();
-	while (it.hasNext()) {
-	    Mapping map = (Mapping) it.next();
-	    map.setDebug(debug);
-	}
+    super.setDebug(debug);
+    Iterator it = m_hash.values().iterator();
+    while (it.hasNext()) {
+        Mapping map = (Mapping) it.next();
+        map.setDebug(debug);
+    }
     }
 
 }

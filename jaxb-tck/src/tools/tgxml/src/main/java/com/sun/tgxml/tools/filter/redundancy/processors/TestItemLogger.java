@@ -27,25 +27,25 @@ import com.sun.tgxml.tools.filter.redundancy.TestItemSelectionListener;
 
 
 /**
- * The class logs all selected TestItems to the file. 
+ * The class logs all selected TestItems to the file.
  * The file is appended only and all existing information is unchanged.
- * This implementation is multi-process safe and allow to log iformation 
+ * This implementation is multi-process safe and allow to log iformation
  * from different processes simultinously.<p>
- * The TestItems are logged in format of the generation exclude list and 
+ * The TestItems are logged in format of the generation exclude list and
  * can be used for new test filter later.
  */
 public class TestItemLogger extends ExternalLibraryLogger {
-    
+
     /**
      * creates the instance with the given file name.
      */
     public TestItemLogger(String name) {
         super(name);
     }
-    
+
     /**
-     * creates the instance with the given argument list. The fist mandatory 
-     * argument defines name of the output file. 
+     * creates the instance with the given argument list. The fist mandatory
+     * argument defines name of the output file.
      * The rest of arguments are ignored.
      * @param args argument list.
      */

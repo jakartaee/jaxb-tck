@@ -27,14 +27,14 @@ import com.sun.tgxml.tjtf.tools.options.resources.ErrorMessages;
  *  <p> where: <code>-P</code> - prefix of the option
  *  Use <tt>getValue(String key)</tt> to retrieve value of key.
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public class PropertyOption extends PrefixOption {
 
-    private String patt_propertyFormatError = 
+    private String patt_propertyFormatError =
             ErrorMessages.getPattern("option.ArgumentFormat.Property");
 
     /**
@@ -52,7 +52,7 @@ public class PropertyOption extends PrefixOption {
      *
      * @throws IllegalArgumentException if usageInfo is null, or array of
      * switches is empty or contains null.
-     */    
+     */
     public PropertyOption(String[] swPrefixes, String usageInfo) {
         super(swPrefixes, usageInfo);
     }
@@ -66,12 +66,12 @@ public class PropertyOption extends PrefixOption {
         for (int i = 0; i < sw.length; i++ ) {
             String keyValue = removePrefix(sw[i]);
             int ind = keyValue.indexOf('=');
-            if (ind < 0) 
+            if (ind < 0)
                 throw new ArgumentFormatException(ErrorMessages.getMessage(
                      patt_propertyFormatError, sw));
             properties.put(keyValue.substring(0, ind), keyValue.substring(ind+1));
         }
-        
+
     }
 
     /**
@@ -114,7 +114,7 @@ public class PropertyOption extends PrefixOption {
     /**
      * Sets error message pattern will be printed if option is not in
      * property option format.
-     * <p>Example of pattern : 
+     * <p>Example of pattern :
      * <pre>
      *     Illegal property option format <prefix><key>=<value>: "{0}"
      * </pre>

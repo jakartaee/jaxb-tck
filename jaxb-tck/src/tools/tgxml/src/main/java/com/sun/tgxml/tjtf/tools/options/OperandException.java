@@ -19,13 +19,13 @@ package com.sun.tgxml.tjtf.tools.options;
 
 
 /**
- * OperandException - 
+ * OperandException -
  *
  * Signals that illegal operands are passed
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -38,8 +38,8 @@ public class OperandException extends ParseArgumentException {
      * @param message  a an exception message string.
      */
     public OperandException (String message) {
-	super(message);
+    super(message);
     }
 }
-     
+
 

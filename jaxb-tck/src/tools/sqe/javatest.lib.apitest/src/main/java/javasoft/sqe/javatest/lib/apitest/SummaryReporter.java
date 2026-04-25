@@ -28,7 +28,7 @@ import javasoft.sqe.javatest.Status;
  * <P>
  * SummaryReporter is an implementation of the Reporter interface that
  * prints the summary of the test only. Unlike the PrintReporter that
- * prints detailed information about each test point failure, the 
+ * prints detailed information about each test point failure, the
  * Summary reporter just prints the overall test summary that includes
  * the total number of tests, the total number of tests that passed,
  * the total number of tests that failed, the method/constructor under
@@ -107,7 +107,7 @@ public class SummaryReporter implements Reporter {
    */
   public void reportTestResult (Object res, Status s) {
     if (s.getType() == Status.PASSED) {
-      pass += 1; 
+      pass += 1;
     } else {
       fail += 1;
     }
@@ -134,7 +134,7 @@ public class SummaryReporter implements Reporter {
    */
   public void reportTestData (Object objectUnderTest, Object[] exeParameters, int[] exeSignature) {
   }
- 
+
 
   /**
    * <P>
@@ -145,11 +145,11 @@ public class SummaryReporter implements Reporter {
    */
   public void reportTestDone (Status overallStatus) {
     String status = new String();
-    if (overallStatus.getType() == Status.PASSED) 
+    if (overallStatus.getType() == Status.PASSED)
       status = "Passed.";
-    else 
+    else
       status = "Failed.";
-    ref.println ("--------------------------------------------------------------------");   
+    ref.println ("--------------------------------------------------------------------");
     ref.println ("               Overall AssertionTest Result Summary                 ");
     ref.println ("--------------------------------------------------------------------");
     if (method != null) {
@@ -164,9 +164,9 @@ public class SummaryReporter implements Reporter {
     ref.println (" Total Tests Passed         : " + pass);
     ref.println (" Total Tests Failed         : " + fail);
     ref.println ("--------------------------------------------------------------------");
-    ref.flush(); 
+    ref.flush();
   }
- 
+
   /*------------------------- Private Memebers of this class --------------------------*/
   private PrintWriter ref;
   private PrintWriter log;

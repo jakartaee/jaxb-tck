@@ -23,17 +23,17 @@ import java.util.Vector;
  * SwitchChecker - abstract class for checking that element is an option switch.
  * Subclasses should implement the algorithm of checking
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public abstract class SwitchChecker extends Checker {
 
-    String[] keys = null;   
+    String[] keys = null;
 
     /**
-     * Creates SwitchChecker instance. 
+     * Creates SwitchChecker instance.
      * @param keys  array of keys used to check elements.
      * @throws  IllegalArgumentException is keys is null or empty
      */
@@ -44,7 +44,7 @@ public abstract class SwitchChecker extends Checker {
     }
 
     /**
-     * Creates SwitchChecker instance. 
+     * Creates SwitchChecker instance.
      * @param keys  array of keys used to check elements.
      * @throws  IllegalArgumentException is keys is null or empty
      */

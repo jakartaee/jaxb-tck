@@ -29,7 +29,7 @@ import java.util.Vector;
 
 import com.sun.tgxml.tjtf.tools.BuildProperties;
 
-/**  
+/**
  * Jmpp library for test generation in the api/xml/Schema area, Unicode specific.
  *
  * @author Oleg V. Oleinik
@@ -40,7 +40,7 @@ public class JmppLibXMLSchemaUnicode extends com.sun.tgxml.tools.jmppconv.proces
 
     public static final String JMPP_EXTERNAL_CLASSES = "jmpp.external.classes";
     public String encoding = null;
-       
+
     public String getEncoding(){
         return encoding;
     }
@@ -57,7 +57,7 @@ public class JmppLibXMLSchemaUnicode extends com.sun.tgxml.tools.jmppconv.proces
             if (createDirs && dirName!=null && dirName.length()>0)
                 dir2Create += File.separator+dirName;
             File outputFile = new File(dir2Create+File.separator+currentFileName);
-            BufferedWriter bw = (encoding == null || "".equals(encoding)) ? 
+            BufferedWriter bw = (encoding == null || "".equals(encoding)) ?
                   new BufferedWriter(new FileWriter(outputFile)) :
                   new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile), getEncoding()));
             setEncoding(null);
@@ -69,7 +69,7 @@ public class JmppLibXMLSchemaUnicode extends com.sun.tgxml.tools.jmppconv.proces
         out.println(generateTemplateImports());
         out.println("public class "+intermediateClassName+" extends "+getClass().getName()+" {");
     }
-	
+
     public String generateTemplateImports(){
         Vector externalClasses = getExternalClasses();
         String str = "";

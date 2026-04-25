@@ -44,12 +44,12 @@ import com.sun.tgxml.util.IR;
 
 
 /**
- * Emitter for java-to-schema tests with generating schemas at runtime. 
- * Java-to-schema tests consist of java file and set of xml files. Each xml file is 
+ * Emitter for java-to-schema tests with generating schemas at runtime.
+ * Java-to-schema tests consist of java file and set of xml files. Each xml file is
  * considered as a separate TestCase.
  */
 public class J2XRuntimeEmitter extends J2XTestEmitter {
-    
+
     public static final String KWD_RTGEN = "rtgen";
     public static final String KWD_EMPTY_OUT = "empty_output";
     public static final String KWD_SCHEMAGEN_REQUIRED = "java_to_schema";
@@ -60,7 +60,7 @@ public class J2XRuntimeEmitter extends J2XTestEmitter {
     protected boolean isNegativeGen;
     protected boolean isEmptyOut; // KWD_EMPTY_OUT = "empty_output"
     protected Iterable<String> classNames;
-    
+
     /**
      * execute args always contain
      *   -srcdir -- directory name with precompiled java sources for the test
@@ -72,11 +72,11 @@ public class J2XRuntimeEmitter extends J2XTestEmitter {
         if (isNegativeGen) {
             buffer.append(" -neggen ");
         }
-        
+
         if ( isEmptyOut ) {
             buffer.append(" -" + KWD_EMPTY_OUT + " ");
         }
-        
+
         if (classNames != null) {
             for (String className : classNames) {
                 buffer.append(" -class ");
@@ -97,16 +97,16 @@ public class J2XRuntimeEmitter extends J2XTestEmitter {
         keywords.add(KWD_RTGEN);
         tgAttr.setKeywords(keywords);
         tg.setTGAttributes(tgAttr);
-        
+
         isNegativeGen = keywords.contains(KWD_NEGATIVE);
-        isEmptyOut = keywords.contains(KWD_EMPTY_OUT); 
-        
+        isEmptyOut = keywords.contains(KWD_EMPTY_OUT);
+
         keywords.remove(KWD_NEGATIVE);
-        //Leonid Kuskov(lk157052): 
-        //Since schema(s) were already compiled during precompile stage 
-        //schemagen is not needed. 
+        //Leonid Kuskov(lk157052):
+        //Since schema(s) were already compiled during precompile stage
+        //schemagen is not needed.
         keywords.remove(KWD_SCHEMAGEN_REQUIRED);
-        
+
         TestGroup[] testGroups = super.splitTestGroup(tg, tg2tc);
         try {
             ArrayList<String> javaList = new ArrayList<String>();
@@ -120,7 +120,7 @@ public class J2XRuntimeEmitter extends J2XTestEmitter {
         }
         return testGroups;
     }
-    
+
     private Iterable<String> getCompilerOptions() {
         ArrayList<String> opts = new ArrayList<String>();
         opts.add("-sourcepath");
@@ -128,7 +128,7 @@ public class J2XRuntimeEmitter extends J2XTestEmitter {
         //opts.add("-proc:only");
         return opts;
     }
-    
+
     private void _doCompile() throws IOException {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
@@ -153,7 +153,7 @@ public class J2XRuntimeEmitter extends J2XTestEmitter {
             task.setProcessors(processors);
             Boolean result = task.call();
             classNames = processor.getClassNames();
-            
+
             if (result != Boolean.TRUE) {
                 StringBuffer compMessage = new StringBuffer();
                 for (Diagnostic diagnostic : diagnostics.getDiagnostics()) {
@@ -164,8 +164,8 @@ public class J2XRuntimeEmitter extends J2XTestEmitter {
                 RuntimeException compFailure = new RuntimeException(compMessage.toString());
                 throw compFailure;
             }
-            
-        }        
+
+        }
     }
-    
+
 }

@@ -25,14 +25,14 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * RequiredResource - 
+ * RequiredResource -
  *
  * <b>RequiredResource</b>  is the name value pair for
  * an attribute that may be defined in a given repository.  These
  * resources tend to be physical requirements that a repository must have
  * to build or run.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -51,14 +51,14 @@ public class RequiredResourceImpl extends NameValuePairImpl implements RequiredR
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -73,7 +73,7 @@ public class RequiredResourceImpl extends NameValuePairImpl implements RequiredR
     * @see com.sun.tgxml.tjtf.api.common.NameValuePair
     */
     public RequiredResourceImpl(String name, String value) throws TestFileException {
-	super(name, value);
+    super(name, value);
     }
 
 
@@ -87,8 +87,8 @@ public class RequiredResourceImpl extends NameValuePairImpl implements RequiredR
     * @return     true if the RequiredResources are equal
     */
     public boolean equals(RequiredResource other) {
-	return (getName().equals(other.getName()) && getValue().equals(other.getValue())); 
+    return (getName().equals(other.getName()) && getValue().equals(other.getValue()));
     }
-     
 
-}     
+
+}

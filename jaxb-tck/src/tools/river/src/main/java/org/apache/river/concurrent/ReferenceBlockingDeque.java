@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,15 +27,15 @@ import java.util.concurrent.TimeUnit;
  */
 class ReferenceBlockingDeque<T> extends ReferenceDeque<T> implements BlockingDeque<T>{
     private static final long serialVersionUID = 1L;
-    
+
     private final BlockingDeque<Referrer<T>> deque;
-    
+
     ReferenceBlockingDeque(BlockingDeque<Referrer<T>> deque, Ref type, boolean gcThreads, long gcCycle){
         super(deque, type, gcThreads, gcCycle);
         this.deque = deque;
     }
-    
-    private void readObject(ObjectInputStream stream) 
+
+    private void readObject(ObjectInputStream stream)
             throws InvalidObjectException{
         throw new InvalidObjectException("Builder required");
     }

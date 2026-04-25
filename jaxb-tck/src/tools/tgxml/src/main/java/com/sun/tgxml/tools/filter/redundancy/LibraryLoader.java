@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 
 /**
- * The basic interface of Library Loaders. Instances may implement loading 
+ * The basic interface of Library Loaders. Instances may implement loading
  * in the different ways.
  */
 public interface LibraryLoader {

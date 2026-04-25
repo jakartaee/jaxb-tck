@@ -42,7 +42,7 @@ public class TestGenFilter extends TestGen {
      * ========================================================================
      */
     private static final String CtStr_ToolName = "TestGenFilter";
-    
+
     protected TestFilterConveyer tfConveyer;
     private String m_outputDir = ".";
 
@@ -51,7 +51,7 @@ public class TestGenFilter extends TestGen {
      *    Methods
      * =========================================================================
      */
-    
+
     /**
      * Program entry
      *
@@ -59,32 +59,32 @@ public class TestGenFilter extends TestGen {
      * @param args The command line arguments to  this tool.
      */
     public static void main(String args[]) {
-			//System.err.println(">>>> Start main()");
+            //System.err.println(">>>> Start main()");
         TestGenFilter c = new TestGenFilter(System.out, System.err);
         System.exit(c.run(args));
     }
-    
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public TestGenFilter( PrintStream out, PrintStream err) {
-	super(out, err);
+    super(out, err);
         setProgramName(CtStr_ToolName);
-			//System.err.println(">>>> super ctor ends");
-	tfConveyer = new TestFilterConveyer(err);
-	
+            //System.err.println(">>>> super ctor ends");
+    tfConveyer = new TestFilterConveyer(err);
+
     }
-    
-       
-   /* 
+
+
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
@@ -92,14 +92,14 @@ public class TestGenFilter extends TestGen {
     /**
      * Registers conveyer options
      */
-    public void registerOptions() {         
+    public void registerOptions() {
         super.registerOptions();
         decoder.addOptionHandler(tfConveyer);
 
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
     public void applyOptionsValues() throws ParseArgumentException {
@@ -111,16 +111,16 @@ public class TestGenFilter extends TestGen {
     }
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    
+    *
     * ----------------------------------------------------------------------
     */
 
 
 
-    /** 
-     *  
+    /**
+     *
      * Sub-classes override this method when they wish to process any arguments
      * before running the "executeTool" method. (Called by startTool()).
      * <p>
@@ -128,14 +128,14 @@ public class TestGenFilter extends TestGen {
      * @throws IOException if there is some type of IO problem.
      */
     public void processArgs() throws TestFileException, IOException {
-	log(">>>> super.processArgs() ");
-	super.processArgs();
-	log(">>>> tfConveyer.setup() ");
-	tfConveyer.setup();
-	log(">>>> tfConveyer.setup() ends ");
+    log(">>>> super.processArgs() ");
+    super.processArgs();
+    log(">>>> tfConveyer.setup() ");
+    tfConveyer.setup();
+    log(">>>> tfConveyer.setup() ends ");
     }
 
-    /** 
+    /**
      *  Parse inputs, process the IR, emit outputs.
      * <p>
      *  Tools should override this, this function determines
@@ -147,51 +147,51 @@ public class TestGenFilter extends TestGen {
      * @throws IOException if there is some type of IO problem.
      */
     public void executeTool() throws TestFileException, IOException {
-	log(">>>> executeTool() starts ");
-	File[] files = getInputFiles();
-	log(">>>> Found "+ files.length +" files ");
+    log(">>>> executeTool() starts ");
+    File[] files = getInputFiles();
+    log(">>>> Found "+ files.length +" files ");
 
-	IRObj[] trees = m_parser.parse(files);
-	log(">>>> Parsed "+ trees.length +" trees ");
+    IRObj[] trees = m_parser.parse(files);
+    log(">>>> Parsed "+ trees.length +" trees ");
 
-	boolean toEmit = false;
+    boolean toEmit = false;
 
-	int len = trees.length;
-	for (int j=len-1; j>=0; j-- ) {
-	    if (trees[j] instanceof TestGroup) {
-		log(">>>> Start filtering "+ IR.getID((TestGroup)trees[j]));
-		if (tfConveyer.process((TestGroup)trees[j]) == null) {
-		    log(">>>> Filtered out "+ IR.getID((TestGroup)trees[j]));
-		    trees[j] = null;
-		    len--;
-		} else {
-		    toEmit = true;
-		}
-	    }
-	}
-	log(">>>> Remained: "+ len +" trees ; emit : " + toEmit);
+    int len = trees.length;
+    for (int j=len-1; j>=0; j-- ) {
+        if (trees[j] instanceof TestGroup) {
+        log(">>>> Start filtering "+ IR.getID((TestGroup)trees[j]));
+        if (tfConveyer.process((TestGroup)trees[j]) == null) {
+            log(">>>> Filtered out "+ IR.getID((TestGroup)trees[j]));
+            trees[j] = null;
+            len--;
+        } else {
+            toEmit = true;
+        }
+        }
+    }
+    log(">>>> Remained: "+ len +" trees ; emit : " + toEmit);
 
-	if (!toEmit)
-	    return;
+    if (!toEmit)
+        return;
 
-	if (len < trees.length) {
-	    IRObj[] filtered = new IRObj[len];
-	    for (int j=trees.length-1; j>=0; j-- ) {
-		if (trees[j] != null)
-		    filtered[--len] = trees[j];
-	    }
-	    trees = filtered;
-	}
+    if (len < trees.length) {
+        IRObj[] filtered = new IRObj[len];
+        for (int j=trees.length-1; j>=0; j-- ) {
+        if (trees[j] != null)
+            filtered[--len] = trees[j];
+        }
+        trees = filtered;
+    }
 
-	if (!MiscUtils.mkdirs(m_outputDir)) {
-	    reportErrorMsg(LibResHandler.getResStr("filter.error.testfilter.dirCreateError", m_outputDir));
-	    return;
+    if (!MiscUtils.mkdirs(m_outputDir)) {
+        reportErrorMsg(LibResHandler.getResStr("filter.error.testfilter.dirCreateError", m_outputDir));
+        return;
         }
 
-	log(">>>> Emitting "+ trees.length +" trees ");
-	m_generator.generate(trees);
-	log(">>>> Emitting finishes ");
+    log(">>>> Emitting "+ trees.length +" trees ");
+    m_generator.generate(trees);
+    log(">>>> Emitting finishes ");
     }
-    
+
 }
 

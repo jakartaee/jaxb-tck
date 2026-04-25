@@ -23,7 +23,7 @@ import java.io.IOException;
  * An interface that contains methods for read/write LibMap in/from file.
  * This interface allows to isolate usage of LibMap class from the way
  * of it storage on disk.
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */

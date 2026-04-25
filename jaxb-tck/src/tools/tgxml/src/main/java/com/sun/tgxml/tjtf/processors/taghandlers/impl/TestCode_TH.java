@@ -33,48 +33,48 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * TestCode_TH - The tag-handler for a TestCode tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TestCode_TH 
- * ============================================================================================ 
- */ 
+/**
+ * TestCode_TH - The tag-handler for a TestCode tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TestCode_TH
+ * ============================================================================================
+ */
 public class TestCode_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TestCode_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TestCode_TH constructor -
+    *       Initialize our internal fields.
+    */
     public TestCode_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ public class TestCode_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_testcode;
+    return TagsImpl.ctStr_tag_testcode;
     }
 
     //------------------------------------------------------------------------------
@@ -98,42 +98,42 @@ public class TestCode_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	try {
-	    String lang = "";
-	    if (attrs != null) {
-		for (int i = 0; i < attrs.getLength (); i++) {
-		    // Get the langtype
-		    if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_sourcelang)) {
-			lang = attrs.getValue (i);
-			// do something with the lang
-			// validateLangType(lang);
-		    }
-		    // unknown attribute
-		    else 
-			// Unknown spec attribute
-			m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownSpecAttr", attrs.getQName (i)));
-		}
+    super.startTag(attrs);
+    try {
+        String lang = "";
+        if (attrs != null) {
+        for (int i = 0; i < attrs.getLength (); i++) {
+            // Get the langtype
+            if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_sourcelang)) {
+            lang = attrs.getValue (i);
+            // do something with the lang
+            // validateLangType(lang);
+            }
+            // unknown attribute
+            else
+            // Unknown spec attribute
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownSpecAttr", attrs.getQName (i)));
+        }
 
-		Stack testItemStack = getParserHandler().getStack();
-		Object tca = testItemStack.peek();
-		if (! (tca instanceof TestCase))
-		    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.codeset.invcontext"));
+        Stack testItemStack = getParserHandler().getStack();
+        Object tca = testItemStack.peek();
+        if (! (tca instanceof TestCase))
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.codeset.invcontext"));
 
-		TestCase tc = (TestCase) tca;
-		TestCode tcode = CodeFactory.createTestCode();
-		tc.setTestCode(tcode);
-		tcode.setSourceLang(lang);
+        TestCase tc = (TestCase) tca;
+        TestCode tcode = CodeFactory.createTestCode();
+        tc.setTestCode(tcode);
+        tcode.setSourceLang(lang);
 
-		// push the TestCase to the top of the stack
-		testItemStack.push(tcode);
+        // push the TestCase to the top of the stack
+        testItemStack.push(tcode);
 
-	    }
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+        }
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-     
+    }
+
 
   /**
     *   End handling a given XML tag.
@@ -141,65 +141,65 @@ public class TestCode_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
+    super.endTag(text);
 
-	try {
-	    Stack testItemStack = m_ParserHandler.getStack();
+    try {
+        Stack testItemStack = m_ParserHandler.getStack();
 
-	    Object testitem = testItemStack.pop();
+        Object testitem = testItemStack.pop();
 
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if (! (testitem instanceof TestCode))
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
+        if (! (testitem instanceof TestCode))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
 
-	    TestCode tc = (TestCode) testitem;
+        TestCode tc = (TestCode) testitem;
 
-	    // validated the code
-	    //   If the tag is parsed in, it can not have null text.
-	    if (text == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	    
-	    StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
-	    if (! tknzr.hasMoreTokens())
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	    tc.setSource(text);
+        // validated the code
+        //   If the tag is parsed in, it can not have null text.
+        if (text == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
 
-	} catch (EmptyStackException e) {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
-	}
+        StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
+        if (! tknzr.hasMoreTokens())
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+        tc.setSource(text);
+
+    } catch (EmptyStackException e) {
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
+    }
 
     }
-     
 
- 
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
   /**
     *   emit a tags attributes (general function).
     *  <p>
     * @see #endTag
     */
     public void emitAttributes(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof TestCode))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"TestCode", tdObject.getClass().getName()));
+    if (! (tdObject instanceof TestCode))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "TestCode", tdObject.getClass().getName()));
 
-	TestCode tc = (TestCode) tdObject;
+    TestCode tc = (TestCode) tdObject;
 
-	String lang = tc.getSourceLang();
-	if (lang != null && ! lang.equals("")) {
-	    // Don't output the lang if it is equal to the default (java)
-	    if (lang != ConstantsImpl.ctStr_attr_langtype_enum_java) 
-		m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_sourcelang, lang);
-	}
+    String lang = tc.getSourceLang();
+    if (lang != null && ! lang.equals("")) {
+        // Don't output the lang if it is equal to the default (java)
+        if (lang != ConstantsImpl.ctStr_attr_langtype_enum_java)
+        m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_sourcelang, lang);
+    }
 
     }
 
-         
+
 
   /**
     *   emit the Ref text.
@@ -207,21 +207,21 @@ public class TestCode_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof TestCode))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"TestCode", tdObject.getClass().getName()));
+    if (! (tdObject instanceof TestCode))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "TestCode", tdObject.getClass().getName()));
 
-	TestCode tc = (TestCode) tdObject;
-	String source = tc.getSource();
-	//   If the tag is parsed in, it can not have null text.
-	if (source == null)
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
-	
-	StringTokenizer tknzr = new StringTokenizer(source, " \t\n\r");
-	if (! tknzr.hasMoreTokens())
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
-       
-	m_EmitterHandler.emitText(source);
+    TestCode tc = (TestCode) tdObject;
+    String source = tc.getSource();
+    //   If the tag is parsed in, it can not have null text.
+    if (source == null)
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
+
+    StringTokenizer tknzr = new StringTokenizer(source, " \t\n\r");
+    if (! tknzr.hasMoreTokens())
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
+
+    m_EmitterHandler.emitText(source);
     }
 
 

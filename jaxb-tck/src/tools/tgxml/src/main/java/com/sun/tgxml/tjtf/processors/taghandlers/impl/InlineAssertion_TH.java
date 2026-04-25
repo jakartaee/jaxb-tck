@@ -32,50 +32,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * InlineAssertion_TH - The tag-handler for a InlineAssertion tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    InlineAssertion_TH 
- * ============================================================================================ 
- */ 
+/**
+ * InlineAssertion_TH - The tag-handler for a InlineAssertion tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    InlineAssertion_TH
+ * ============================================================================================
+ */
 public class InlineAssertion_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   InlineAssertion_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   InlineAssertion_TH constructor -
+    *       Initialize our internal fields.
+    */
     public InlineAssertion_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ public class InlineAssertion_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_inlineassertion;
+    return TagsImpl.ctStr_tag_inlineassertion;
     }
 
     //------------------------------------------------------------------------------
@@ -100,72 +100,72 @@ public class InlineAssertion_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	try {
-	    super.endTag(text);
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    ArrayList assertions = null;
-	    
-	    if (testitem instanceof TestCaseSpec) {
-		//  Nothing is pushed onto the stack
-		TestCaseSpec tcs = (TestCaseSpec) testitem;
-	    
-		assertions = tcs.getAssertions();
-		if (assertions == null) {
-		    assertions = new ArrayList();
-		    tcs.setAssertions(assertions);
-		}
-		
-	    } else if (testitem instanceof TestGroupDocumentation) {
-		//  Nothing is pushed onto the stack
-		TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
-	    
-		assertions = tgd.getAssertions();
-		if (assertions == null) {
-		    assertions = new ArrayList();
-		    tgd.setAssertions(assertions);
-		}
-		
-	    } else
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext2", getTagName(), 
-								 TagsImpl.ctStr_tag_testcasespec,
-								 TagsImpl.ctStr_tag_testgroupdocumentation));
+    try {
+        super.endTag(text);
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
 
-	    InlineAssertion ia = DocumentationFactory.createInlineAssertion();
-	    
-	    // validated the import name
-	    // validateInlineAssertion(text);
-	    ia.setValue(text);
-	    assertions.add(ia);
-	    
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        ArrayList assertions = null;
+
+        if (testitem instanceof TestCaseSpec) {
+        //  Nothing is pushed onto the stack
+        TestCaseSpec tcs = (TestCaseSpec) testitem;
+
+        assertions = tcs.getAssertions();
+        if (assertions == null) {
+            assertions = new ArrayList();
+            tcs.setAssertions(assertions);
+        }
+
+        } else if (testitem instanceof TestGroupDocumentation) {
+        //  Nothing is pushed onto the stack
+        TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
+
+        assertions = tgd.getAssertions();
+        if (assertions == null) {
+            assertions = new ArrayList();
+            tgd.setAssertions(assertions);
+        }
+
+        } else
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext2", getTagName(),
+                                 TagsImpl.ctStr_tag_testcasespec,
+                                 TagsImpl.ctStr_tag_testgroupdocumentation));
+
+        InlineAssertion ia = DocumentationFactory.createInlineAssertion();
+
+        // validated the import name
+        // validateInlineAssertion(text);
+        ia.setValue(text);
+        assertions.add(ia);
+
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-     
- 
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
   /**
     *   emit the Ref text.
     *  <p>
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof InlineAssertion))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"InlineAssertion", tdObject.getClass().getName()));
+    if (! (tdObject instanceof InlineAssertion))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "InlineAssertion", tdObject.getClass().getName()));
 
-	InlineAssertion ia = (InlineAssertion) tdObject;
+    InlineAssertion ia = (InlineAssertion) tdObject;
 
-	m_EmitterHandler.emitText(ia.getValue());
+    m_EmitterHandler.emitText(ia.getValue());
 
     }
 

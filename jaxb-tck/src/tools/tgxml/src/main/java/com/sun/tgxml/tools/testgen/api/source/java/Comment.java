@@ -23,44 +23,44 @@ public class Comment {
     public static int JAVADOC = 1;
     public static int PLAIN = 2;
     public static int INLINE = 3;
-    
+
     String indent = "";
     String content = "";
     String fill;
-    
+
     int type = Comment.JAVADOC;
-    
+
     public void setContent(String value) {
         content = value;
     }
-    
+
     public void addContent(String value) {
         content += "\n \n" + value;
     }
-    
+
     public void setIndent(int value) {
         indent = "";
         for (int i = 0; i<value; i++) indent+=" ";
     }
-    
+
     protected String getIndent() {
         return indent;
     }
-    
+
     protected String getFill() {
         if (fill != null) {
             return fill;
         } else return type == Comment.INLINE?"// ":" * ";
     }
-    
+
     protected String getStartTag() {
         return type == Comment.JAVADOC?"/**\n":type == Comment.PLAIN?"/*\n":"\n";
     }
-    
+
     protected String getEndTag() {
         return type == Comment.INLINE ? "":" */\n";
     }
-    
+
     public String toString() {
         String result = "";
         if (content != null
@@ -74,7 +74,7 @@ public class Comment {
         }
         return result;
     }
-    
+
     public void setType(int value) {
         if (value>0 && value<4) {
             type = value;

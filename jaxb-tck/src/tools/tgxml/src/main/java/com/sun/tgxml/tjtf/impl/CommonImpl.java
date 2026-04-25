@@ -26,14 +26,14 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * CommonImpl - 
+ * CommonImpl -
  *
  * <b>CommonImpl</b> contains some static helper functions.
  * <p>
  *
  *
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -51,13 +51,13 @@ public  class CommonImpl  {
     *    Member Fields
     * ============================================================================================
     */
-    
+
    /*
     * ============================================================================================
     *    Methods
     * ============================================================================================
     */
-    
+
     private CommonImpl() {}
 
 
@@ -66,21 +66,21 @@ public  class CommonImpl  {
     //---------------------------------------------------------------------------------
 
     public static String getSingleToken(String str) throws TestFileException {
-	if (str == null || str.equals(""))
-	    return null;
+    if (str == null || str.equals(""))
+        return null;
 
-	String token = "";
+    String token = "";
 
-	// clear any space before
-	StringTokenizer parser = new StringTokenizer(str, " \t\n\r");
-	if (! parser.hasMoreTokens())
-	    return null;
-	token = parser.nextToken();
-	
-	if (parser.hasMoreTokens())
-	    throw new TestFileException(LibResHandler.getResStr("parser.error.token.extra", str));
+    // clear any space before
+    StringTokenizer parser = new StringTokenizer(str, " \t\n\r");
+    if (! parser.hasMoreTokens())
+        return null;
+    token = parser.nextToken();
 
-	return token;
+    if (parser.hasMoreTokens())
+        throw new TestFileException(LibResHandler.getResStr("parser.error.token.extra", str));
+
+    return token;
     }
 
 

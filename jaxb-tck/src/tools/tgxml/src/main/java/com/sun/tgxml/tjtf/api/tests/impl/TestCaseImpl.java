@@ -29,10 +29,10 @@ import com.sun.tgxml.tjtf.api.tests.TestGroup;
 // </importgen>
 
 /**
- * TestCase - 
+ * TestCase -
  *
- * <b>TestCase</b> is the entity that describes an atomic test. 
- * <b>TestCase</b>s are owned by <b>TestGroup</b>s.  
+ * <b>TestCase</b> is the entity that describes an atomic test.
+ * <b>TestCase</b>s are owned by <b>TestGroup</b>s.
  * <p>
  * <b>TestCase</b>s derive from <b>TestSourceItem</b>,
  * and contain a <b>TestGroup</b> as their parent. These properties describe
@@ -45,7 +45,7 @@ import com.sun.tgxml.tjtf.api.tests.TestGroup;
  *  </ul> <br>
  * <p>
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -66,7 +66,7 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
      *    Fields
      * ============================================================================================
      */
-   
+
     private TestCode          m_testcode;
     private TestGroup         m_group;
     private TestVariantImpl   m_TestVar;
@@ -78,39 +78,39 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public TestCaseImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
-    public TestCaseImpl(String ID, TestCaseDocumentation documentation, TestCaseAttributes attributes, 
-			 CodeSet codeset, TestCode testcode, TestGroup group ) {
-	super(ID, documentation, attributes, codeset);
-	m_testcode = testcode;
-	m_group = group;
+    public TestCaseImpl(String ID, TestCaseDocumentation documentation, TestCaseAttributes attributes,
+             CodeSet codeset, TestCode testcode, TestGroup group ) {
+    super(ID, documentation, attributes, codeset);
+    m_testcode = testcode;
+    m_group = group;
     }
 
-    public TestCaseImpl(String ID, String VarID, TestCaseDocumentation documentation, TestCaseAttributes attributes, 
-			 CodeSet codeset, TestCode testcode, TestGroup group )
+    public TestCaseImpl(String ID, String VarID, TestCaseDocumentation documentation, TestCaseAttributes attributes,
+             CodeSet codeset, TestCode testcode, TestGroup group )
             throws TestFileException {
-	super(ID, documentation, attributes, codeset);
-	m_TestVar = new TestVariantImpl(VarID);
-	m_testcode = testcode;
-	m_group = group;
+    super(ID, documentation, attributes, codeset);
+    m_TestVar = new TestVariantImpl(VarID);
+    m_testcode = testcode;
+    m_group = group;
     }
 
     private void init() {
-	m_TestVar = new TestVariantImpl();
-	m_testcode = null;
-	m_group = null;
+    m_TestVar = new TestVariantImpl();
+    m_testcode = null;
+    m_group = null;
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -127,7 +127,7 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
         return m_TestVar.getVarID();
     }
 
-     
+
   /**
     * Sets the variant identifier associated with the TestCase or Library.
     * <p>
@@ -145,7 +145,7 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
    /**
     * Sets VarOrder for the variant
     * @params value the string is of the form: "x[.y]",
-    *         where x,y are positive integers 
+    *         where x,y are positive integers
     *         and the value x.y represents a positive decimal value between
     *         00.00 and 99.99.
     * @throws TestFileException if the passed value is in illegal format
@@ -201,9 +201,9 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
     * @see #setTCDocumentation
     */
     public TestCaseDocumentation getTCDocumentation() {
-	return (TestCaseDocumentation) getDocumentation();
+    return (TestCaseDocumentation) getDocumentation();
     }
-     
+
   /**
     *   Set the Documentation associated with this TestItem.
     *  <p>
@@ -212,7 +212,7 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
     * @see #getTCDocumentation
     */
     public void setTCDocumentation(TestCaseDocumentation doc) {
-	_setDocumentation(doc);
+    _setDocumentation(doc);
     }
 
 
@@ -226,9 +226,9 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
     * @see #setTCAttributes
     */
     public TestCaseAttributes getTCAttributes() {
-	return (TestCaseAttributes) getAttributes();
-    } 
-     
+    return (TestCaseAttributes) getAttributes();
+    }
+
   /**
     *   Set the Attributes associated with this TestItem.
     *  <p>
@@ -237,7 +237,7 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
     * @see #getTCAttributes
     */
     public void setTCAttributes(TestCaseAttributes attrs) {
-	_setAttributes(attrs);
+    _setAttributes(attrs);
     }
 
 
@@ -251,11 +251,11 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
     * @see #setTestCode
     */
     public TestCode getTestCode() {
-	return m_testcode;
+    return m_testcode;
     }
-     
 
-     
+
+
   /**
     *   Set the (TestCode) code that this TestCase owns.
     *  <p>
@@ -264,10 +264,10 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
     * @see #getTestCode
     */
     public void setTestCode(TestCode testcode) {
-	m_testcode = testcode;
+    m_testcode = testcode;
     }
 
-     
+
 
 
  /**
@@ -278,11 +278,11 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
     * @see #setTestGroup
     */
     public TestGroup getTestGroup() {
-	return m_group;
+    return m_group;
     }
-     
 
-     
+
+
   /**
     *   Set the (TestGroup) parent of this TestCase.
     *  <p>
@@ -291,7 +291,7 @@ public  class TestCaseImpl extends TestItemImpl implements TestCase  {
     * @see #getTestGroup
     */
     public void setTestGroup(TestGroup group) {
-	m_group = group;
+    m_group = group;
     }
 
 

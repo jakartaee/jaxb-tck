@@ -19,22 +19,22 @@ package com.sun.tgxml.tools.testgen.api;
 
 
 public interface HtmlTestIR {
-    
+
     /**
-     * Sets requirenment of the html anchor generation 
+     * Sets requirenment of the html anchor generation
      *
-     * @param isNeeded if true the html anchor will be always inserted, 
+     * @param isNeeded if true the html anchor will be always inserted,
      *        if false the anchor will be inserted only in case
-     *        when TestDescription contains two or more testcases 
+     *        when TestDescription contains two or more testcases
      *        or html file contains two or more TestDescriptions.
-     *      
+     *
      */
     public void setAnchorRequired(boolean isNeeded);
 
     /**
-     * @return true if the html anchor will be always inserted 
+     * @return true if the html anchor will be always inserted
      *        false if the anchor will be inserted only in case
-     *        when TestDescription contains two or more testcases 
+     *        when TestDescription contains two or more testcases
      *        or html file contains two or more TestDescriptions.
      */
     public boolean isAnchorRequired();

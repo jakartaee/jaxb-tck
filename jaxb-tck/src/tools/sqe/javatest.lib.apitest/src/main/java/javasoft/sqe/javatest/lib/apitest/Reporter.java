@@ -27,11 +27,11 @@ import javasoft.sqe.javatest.Status;
 /**
  * <P>
  * This interface represents the methods required by any Reporter
- * object. The default Reporter object called ReportGenerator 
+ * object. The default Reporter object called ReportGenerator
  * implements this interface. However, a test developer can write
  * his/her own report generator class by implementing this interface.
  * <P>
- * 
+ *
  * @author Rampalli Narasimhan, Jonathan Gibbons, Kevin A Smith
  */
 
@@ -58,7 +58,7 @@ public interface Reporter {
    * @param dataFactories the data used in this test case.
    */
    void reportTestStart (Method methodName, Factory[] dataFactories);
- 
+
  /**
    * <P>
    * This method reports the start of a test by printing the Constructor name and

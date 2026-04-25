@@ -26,7 +26,7 @@ import com.sun.tgxml.tjtf.api.tests.TestGroup;
  * @author   Ilya V. Neverov
  */
 public interface TestFilter {
-    /** 
+    /**
      * Removes irrelevant testcases and classes
      *
      * @param      testGroup   TestGroup object to be processed. It is modified while the

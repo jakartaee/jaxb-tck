@@ -24,8 +24,8 @@ import java.util.ArrayList;
  *  ExternalCompoundOption passes parsed arguments to the specified extenal
  *  handler
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -37,7 +37,7 @@ public class ExternalCompoundOption extends CompoundOption {
     /**
      * Creates CompoundOption with a specified external OptionHandler
      *
-     * @throws IllegalArgumentException if set of options is empty  
+     * @throws IllegalArgumentException if set of options is empty
      *         or handler is null
      */
     public ExternalCompoundOption(Option[] options, OptionHandler oHandler) {
@@ -67,10 +67,10 @@ public class ExternalCompoundOption extends CompoundOption {
                     sb.append(", ");
                     sb.append((String)copy.get(i));
                 }
-                throw new ParseArgumentException(optionHandler 
+                throw new ParseArgumentException(optionHandler
                     + " cannot process arguments: " + sb.toString());
             }
-        }        
+        }
 
         return unparsed;
     }

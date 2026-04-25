@@ -27,11 +27,11 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TestGroup - 
+ * TestGroup -
  *
- * <b>TestGroup</b> is the entity that describes a grouping of <b>TestCase</b>s. 
+ * <b>TestGroup</b> is the entity that describes a grouping of <b>TestCase</b>s.
  * <p>
- * <b>TestGroup</b> is a root-node for an Test. A <b>TestGroup</b> can contain 1 
+ * <b>TestGroup</b> is a root-node for an Test. A <b>TestGroup</b> can contain 1
  * or more <b>TestCase</b>s, or contains enough information for some
  * processor to generate 1 or more TestCases.
  * <p>
@@ -51,7 +51,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  *  </ul> <br>
  * <p>
  *
- * @version 	1.1, 10/23/02
+ * @version     1.1, 10/23/02
  * @author  Kevin T. Looney
  */
 
@@ -77,7 +77,7 @@ public  interface TestGroup extends TestRoot, TestItem {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -92,7 +92,7 @@ public  interface TestGroup extends TestRoot, TestItem {
     * @see #setTGDocumentation
     */
     public TestGroupDocumentation getTGDocumentation();
-     
+
   /**
     *   Set the Documentation associated with this TestItem.
     *  <p>
@@ -113,7 +113,7 @@ public  interface TestGroup extends TestRoot, TestItem {
     * @see #setTGAttributes
     */
     public TestGroupAttributes getTGAttributes();
-     
+
   /**
     *   Set the Attributes associated with this TestItem.
     *  <p>
@@ -136,9 +136,9 @@ public  interface TestGroup extends TestRoot, TestItem {
     * @see #setLibraries
     */
     public ArrayList getLibraries();
-     
 
-     
+
+
   /**
     *   Set the (ArrayList) list of Libraries that this TestGroup owns.
     *  <p>
@@ -152,7 +152,7 @@ public  interface TestGroup extends TestRoot, TestItem {
 
 
   /**
-    *   Adds the Library to this TestGroup.   
+    *   Adds the Library to this TestGroup.
     *  <p>
     * @throws TestFileException if a library with the same ID and VarID exists;
     * @see com.sun.tgxml.tjtf.api.tests.Library
@@ -184,7 +184,7 @@ public  interface TestGroup extends TestRoot, TestItem {
     */
     public Library getLibrary(String ID, String VarID) throws TestFileException;
 
-     
+
 
   /**
 
@@ -196,9 +196,9 @@ public  interface TestGroup extends TestRoot, TestItem {
     * @see #setTestCases
     */
     public ArrayList getTestCases();
-     
 
-     
+
+
   /**
     *   Set the (ArrayList) list of TestCases that this TestGroup owns.
     *  Each of testcases in the ArrayList is updated with the new owner TestGroup.
@@ -213,7 +213,7 @@ public  interface TestGroup extends TestRoot, TestItem {
 
 
   /**
-    *   Adds the TestCase to this TestGroup.   
+    *   Adds the TestCase to this TestGroup.
     *  <p>
     * @throws TestFileException if a library with the same ID and VarID exists;
     * @see com.sun.tgxml.tjtf.api.tests.TestCase
@@ -244,7 +244,7 @@ public  interface TestGroup extends TestRoot, TestItem {
     */
     public TestCase getTestCase(String ID, String VarID) throws TestFileException;
 
-     
+
   /**
     *   Get the (ArrayList) list of TestCase IDs that this TestGroup owns.
     *  <p>

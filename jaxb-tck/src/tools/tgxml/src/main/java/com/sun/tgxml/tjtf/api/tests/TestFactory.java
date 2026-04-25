@@ -41,12 +41,12 @@ import com.sun.tgxml.tjtf.api.tests.impl.TestGroupImpl;
 // </importgen>
 
 /**
- * TestFactory - 
+ * TestFactory -
  *
- * <b>TestFactory</b> is a static factory class for creating Test objects (TestGroup, TestCase, Library). 
+ * <b>TestFactory</b> is a static factory class for creating Test objects (TestGroup, TestCase, Library).
  *<p>
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -65,7 +65,7 @@ public  class TestFactory {
      *    constructors
      * ============================================================================================
      */
-    
+
     private TestFactory () {
 
     }
@@ -75,14 +75,14 @@ public  class TestFactory {
      *    Member Fields
      * ============================================================================================
      */
-    
-    
+
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Factories
@@ -100,15 +100,15 @@ public  class TestFactory {
     * @see com.sun.tgxml.tjtf.api.tests.Library
     */
     static public TestRoot  cloneTestRoot (TestRoot origRoot )  throws TestFileException {
-	if (origRoot == null)
-	    return null;
+    if (origRoot == null)
+        return null;
 
-	if (origRoot instanceof TestGroup)
-	    return cloneTestGroup((TestGroup) origRoot);
-	else if (origRoot instanceof Library)
-	    return cloneLibrary((Library) origRoot);
+    if (origRoot instanceof TestGroup)
+        return cloneTestGroup((TestGroup) origRoot);
+    else if (origRoot instanceof Library)
+        return cloneLibrary((Library) origRoot);
 
-	return null;
+    return null;
     }
 
 
@@ -119,9 +119,9 @@ public  class TestFactory {
     * @see com.sun.tgxml.tjtf.api.tests.TestGroup
     */
     static public TestGroup  createTestGroup() {
-	return new TestGroupImpl();
+    return new TestGroupImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) TestGroup object.
@@ -135,18 +135,18 @@ public  class TestFactory {
     * @throws TestFileException if a parameter is invalid.
     * @see com.sun.tgxml.tjtf.api.tests.TestGroup
     */
-    static public TestGroup  createTestGroup (String ID, TestGroupDocumentation documentation, TestGroupAttributes attributes, 
-					      CodeSet codeset, ArrayList testCases )  throws TestFileException {
-	TestGroup tg = createTestGroup();
-	tg.setID(ID);
-	tg.setTGDocumentation(documentation);
-	tg.setTGAttributes(attributes);
-	tg.setCodeSet(codeset);
-	tg.setTestCases(testCases);
+    static public TestGroup  createTestGroup (String ID, TestGroupDocumentation documentation, TestGroupAttributes attributes,
+                          CodeSet codeset, ArrayList testCases )  throws TestFileException {
+    TestGroup tg = createTestGroup();
+    tg.setID(ID);
+    tg.setTGDocumentation(documentation);
+    tg.setTGAttributes(attributes);
+    tg.setCodeSet(codeset);
+    tg.setTestCases(testCases);
 
-	return tg;
+    return tg;
     }
-     
+
 
 
 
@@ -160,51 +160,51 @@ public  class TestFactory {
     * @see com.sun.tgxml.tjtf.api.tests.TestGroup
     */
     static public TestGroup  cloneTestGroup (TestGroup origTG )  throws TestFileException {
-	if (origTG == null)
-	    return null;
+    if (origTG == null)
+        return null;
 
-	TestGroup clonetg = createTestGroup();
+    TestGroup clonetg = createTestGroup();
 
-	// let sub-classes override their clone fields
-	cloneOverrideTestGroup(origTG, clonetg);
+    // let sub-classes override their clone fields
+    cloneOverrideTestGroup(origTG, clonetg);
 
-	clonetg.setID(origTG.getID());
-	clonetg.setTGDocumentation(DocumentationFactory.cloneTestGroupDocumentation(origTG.getTGDocumentation()));
-	clonetg.setTGAttributes(AttributesFactory.cloneTestGroupAttributes(origTG.getTGAttributes()));
-	clonetg.setCodeSet(CodeFactory.cloneCodeSet(origTG.getCodeSet()));
+    clonetg.setID(origTG.getID());
+    clonetg.setTGDocumentation(DocumentationFactory.cloneTestGroupDocumentation(origTG.getTGDocumentation()));
+    clonetg.setTGAttributes(AttributesFactory.cloneTestGroupAttributes(origTG.getTGAttributes()));
+    clonetg.setCodeSet(CodeFactory.cloneCodeSet(origTG.getCodeSet()));
 
-	ArrayList origLibs = origTG.getLibraries();
-	if (origLibs != null) {
-	    ArrayList cloneLibs = new ArrayList();
+    ArrayList origLibs = origTG.getLibraries();
+    if (origLibs != null) {
+        ArrayList cloneLibs = new ArrayList();
 
-	    Iterator it = origLibs.iterator();
-	    while (it.hasNext()) {
-		Library origLib = (Library) it.next();
-		Library cloneLib = cloneLibrary(origLib);
-		// cloneLib.setTestGroup(clonetg);
-		cloneLibs.add(cloneLib);
-	    }
-	    clonetg.setLibraries(cloneLibs);
-	}
-
-
-	ArrayList origTestCases = origTG.getTestCases();
-	if (origTestCases != null) {
-	    ArrayList cloneTestCases = new ArrayList();
-
-	    Iterator it = origTestCases.iterator();
-	    while (it.hasNext()) {
-		TestCase origTC = (TestCase) it.next();
-		TestCase cloneTC = cloneTestCase(origTC);
-		cloneTC.setTestGroup(clonetg);
-		cloneTestCases.add(cloneTC);
-	    }
-	    clonetg.setTestCases(cloneTestCases);
-	}
-
-	return clonetg;
+        Iterator it = origLibs.iterator();
+        while (it.hasNext()) {
+        Library origLib = (Library) it.next();
+        Library cloneLib = cloneLibrary(origLib);
+        // cloneLib.setTestGroup(clonetg);
+        cloneLibs.add(cloneLib);
+        }
+        clonetg.setLibraries(cloneLibs);
     }
-     
+
+
+    ArrayList origTestCases = origTG.getTestCases();
+    if (origTestCases != null) {
+        ArrayList cloneTestCases = new ArrayList();
+
+        Iterator it = origTestCases.iterator();
+        while (it.hasNext()) {
+        TestCase origTC = (TestCase) it.next();
+        TestCase cloneTC = cloneTestCase(origTC);
+        cloneTC.setTestGroup(clonetg);
+        cloneTestCases.add(cloneTC);
+        }
+        clonetg.setTestCases(cloneTestCases);
+    }
+
+    return clonetg;
+    }
+
 
   /**
     *   Override this method for sub-classes to clone their fields.
@@ -227,9 +227,9 @@ public  class TestFactory {
     * @see com.sun.tgxml.tjtf.api.tests.TestCase
     */
     static public TestCase  createTestCase() {
-	return new TestCaseImpl();
+    return new TestCaseImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) TestCase object.
@@ -244,17 +244,17 @@ public  class TestFactory {
     * @throws TestFileException if a parameter is invalid.
     * @see com.sun.tgxml.tjtf.api.tests.TestCase
     */
-    static public TestCase  createTestCase (String ID, TestCaseDocumentation documentation, TestCaseAttributes attributes, 
-					      CodeSet codeset, TestCode testcode, TestGroup testgroup )  throws TestFileException {
-	TestCase tc = createTestCase();
-	tc.setID(ID);
-	tc.setTCDocumentation(documentation);
-	tc.setTCAttributes(attributes);
-	tc.setCodeSet(codeset);
-	tc.setTestCode(testcode);
-	tc.setTestGroup(testgroup);
+    static public TestCase  createTestCase (String ID, TestCaseDocumentation documentation, TestCaseAttributes attributes,
+                          CodeSet codeset, TestCode testcode, TestGroup testgroup )  throws TestFileException {
+    TestCase tc = createTestCase();
+    tc.setID(ID);
+    tc.setTCDocumentation(documentation);
+    tc.setTCAttributes(attributes);
+    tc.setCodeSet(codeset);
+    tc.setTestCode(testcode);
+    tc.setTestGroup(testgroup);
 
-	return tc;
+    return tc;
     }
 
   /**
@@ -270,15 +270,15 @@ public  class TestFactory {
     * @throws TestFileException if a parameter is invalid.
     * @see com.sun.tgxml.tjtf.api.tests.TestCase
     */
-    static public TestCase  createTestCase (String ID, String VarID, TestCaseDocumentation documentation, TestCaseAttributes attributes, 
-					      CodeSet codeset, TestCode testcode, TestGroup testgroup )  throws TestFileException {
-	TestCase tc = createTestCase(ID, documentation, attributes, codeset, testcode, testgroup);
-	tc.setVarID(VarID);
+    static public TestCase  createTestCase (String ID, String VarID, TestCaseDocumentation documentation, TestCaseAttributes attributes,
+                          CodeSet codeset, TestCode testcode, TestGroup testgroup )  throws TestFileException {
+    TestCase tc = createTestCase(ID, documentation, attributes, codeset, testcode, testgroup);
+    tc.setVarID(VarID);
 
-	return tc;
+    return tc;
     }
-     
-     
+
+
 
   /**
     *   Create an (clone) TestCase object.
@@ -289,24 +289,24 @@ public  class TestFactory {
     * @see com.sun.tgxml.tjtf.api.tests.TestCase
     */
     static public TestCase  cloneTestCase (TestCase origTC )  throws TestFileException {
-	if (origTC == null)
-	    return null;
+    if (origTC == null)
+        return null;
 
-	TestCase clonetc = createTestCase();
+    TestCase clonetc = createTestCase();
 
-	// let sub-classes override their clone fields
-	cloneOverrideTestCase(origTC, clonetc);
+    // let sub-classes override their clone fields
+    cloneOverrideTestCase(origTC, clonetc);
 
-	clonetc.setID(origTC.getID());
-	clonetc.setVarID(origTC.getVarID());
-	clonetc.setTCDocumentation(DocumentationFactory.cloneTestCaseDocumentation(origTC.getTCDocumentation()));
-	clonetc.setTCAttributes(AttributesFactory.cloneTestCaseAttributes(origTC.getTCAttributes()));
-	clonetc.setCodeSet(CodeFactory.cloneCodeSet(origTC.getCodeSet()));
-	clonetc.setTestCode(CodeFactory.cloneTestCode(origTC.getTestCode()));
+    clonetc.setID(origTC.getID());
+    clonetc.setVarID(origTC.getVarID());
+    clonetc.setTCDocumentation(DocumentationFactory.cloneTestCaseDocumentation(origTC.getTCDocumentation()));
+    clonetc.setTCAttributes(AttributesFactory.cloneTestCaseAttributes(origTC.getTCAttributes()));
+    clonetc.setCodeSet(CodeFactory.cloneCodeSet(origTC.getCodeSet()));
+    clonetc.setTestCode(CodeFactory.cloneTestCode(origTC.getTestCode()));
 
-	return clonetc;
+    return clonetc;
     }
-     
+
   /**
     *   Override this method for sub-classes to clone their fields.
     *  <p>
@@ -327,9 +327,9 @@ public  class TestFactory {
     * @see com.sun.tgxml.tjtf.api.tests.Library
     */
     static public Library  createLibrary() {
-	return new LibraryImpl();
+    return new LibraryImpl();
     }
-     
+
   /**
     *   Create an (uninitialized) InlineLibrary object.
     *  <p>
@@ -337,46 +337,8 @@ public  class TestFactory {
     * @see com.sun.tgxml.tjtf.api.tests.InlineLibrary
     */
     static public InlineLibrary  createInlineLibrary() {
-	return new InlineLibraryImpl();
+    return new InlineLibraryImpl();
     }
-     
-
-  /**
-    *   Create an (cannon) Library object.
-    *  <p>
-    * @param ID The Library's ID
-    * @param documentation The Library's documentation
-    * @param attributes The Library's attributes
-    * @param codeset The Library's CodeSet
-    * @return   a new Library.
-    * @throws TestFileException if a parameter is invalid.
-    * @see com.sun.tgxml.tjtf.api.tests.Library
-    */
-    static public Library  createLibrary (String ID, LibDocumentation documentation, LibAttributes attributes, 
-					      CodeSet codeset ) throws TestFileException {
-	Library lib = createLibrary();
-        initLibrary(lib, ID, documentation, attributes, codeset);
-	return lib;
-    }
-     
-  /**
-    *   Create an (cannon) InlineLibrary object.
-    *  <p>
-    * @param ID The Library's ID
-    * @param documentation The Library's documentation
-    * @param attributes The Library's attributes
-    * @param codeset The Library's CodeSet
-    * @return   a new Library.
-    * @throws TestFileException if a parameter is invalid.
-    * @see com.sun.tgxml.tjtf.api.tests.InlineLibrary
-    */
-    static public InlineLibrary  createInlineLibrary (String ID, LibDocumentation documentation, LibAttributes attributes, 
-					      CodeSet codeset ) throws TestFileException {
-	InlineLibrary lib = createInlineLibrary();
-        initLibrary(lib, ID, documentation, attributes, codeset);
-	return lib;
-    }
-     
 
 
   /**
@@ -390,14 +352,12 @@ public  class TestFactory {
     * @throws TestFileException if a parameter is invalid.
     * @see com.sun.tgxml.tjtf.api.tests.Library
     */
-    static public Library  createLibrary (String ID, String VarID, LibDocumentation documentation, LibAttributes attributes, 
-					      CodeSet codeset ) throws TestFileException {
-	Library lib = createLibrary(ID, documentation, attributes, codeset);
-	lib.setVarID(VarID);
-
-	return lib;
+    static public Library  createLibrary (String ID, LibDocumentation documentation, LibAttributes attributes,
+                          CodeSet codeset ) throws TestFileException {
+    Library lib = createLibrary();
+        initLibrary(lib, ID, documentation, attributes, codeset);
+    return lib;
     }
-     
 
   /**
     *   Create an (cannon) InlineLibrary object.
@@ -410,14 +370,54 @@ public  class TestFactory {
     * @throws TestFileException if a parameter is invalid.
     * @see com.sun.tgxml.tjtf.api.tests.InlineLibrary
     */
-    static public InlineLibrary  createInlineLibrary (String ID, String VarID, LibDocumentation documentation, LibAttributes attributes, 
-					      CodeSet codeset ) throws TestFileException {
-	InlineLibrary lib = createInlineLibrary(ID, documentation, attributes, codeset);
-	lib.setVarID(VarID);
-
-	return lib;
+    static public InlineLibrary  createInlineLibrary (String ID, LibDocumentation documentation, LibAttributes attributes,
+                          CodeSet codeset ) throws TestFileException {
+    InlineLibrary lib = createInlineLibrary();
+        initLibrary(lib, ID, documentation, attributes, codeset);
+    return lib;
     }
-     
+
+
+
+  /**
+    *   Create an (cannon) Library object.
+    *  <p>
+    * @param ID The Library's ID
+    * @param documentation The Library's documentation
+    * @param attributes The Library's attributes
+    * @param codeset The Library's CodeSet
+    * @return   a new Library.
+    * @throws TestFileException if a parameter is invalid.
+    * @see com.sun.tgxml.tjtf.api.tests.Library
+    */
+    static public Library  createLibrary (String ID, String VarID, LibDocumentation documentation, LibAttributes attributes,
+                          CodeSet codeset ) throws TestFileException {
+    Library lib = createLibrary(ID, documentation, attributes, codeset);
+    lib.setVarID(VarID);
+
+    return lib;
+    }
+
+
+  /**
+    *   Create an (cannon) InlineLibrary object.
+    *  <p>
+    * @param ID The Library's ID
+    * @param documentation The Library's documentation
+    * @param attributes The Library's attributes
+    * @param codeset The Library's CodeSet
+    * @return   a new Library.
+    * @throws TestFileException if a parameter is invalid.
+    * @see com.sun.tgxml.tjtf.api.tests.InlineLibrary
+    */
+    static public InlineLibrary  createInlineLibrary (String ID, String VarID, LibDocumentation documentation, LibAttributes attributes,
+                          CodeSet codeset ) throws TestFileException {
+    InlineLibrary lib = createInlineLibrary(ID, documentation, attributes, codeset);
+    lib.setVarID(VarID);
+
+    return lib;
+    }
+
   /**
     *   Create an (cannon) InlineLibrary object.
     *  <p>
@@ -426,18 +426,18 @@ public  class TestFactory {
     * @throws TestFileException if a parameter is invalid.
     * @see com.sun.tgxml.tjtf.api.tests.InlineLibrary
     */
-    static public InlineLibrary  createInlineLibrary (Library extLib) 
+    static public InlineLibrary  createInlineLibrary (Library extLib)
             throws TestFileException {
-	InlineLibrary lib = createInlineLibrary(
-           extLib.getID(), 
-           extLib.getLibDocumentation(), 
-           extLib.getLibAttributes(), 
+    InlineLibrary lib = createInlineLibrary(
+           extLib.getID(),
+           extLib.getLibDocumentation(),
+           extLib.getLibAttributes(),
            extLib.getCodeSet());
 
-	lib.setVarID(extLib.getVarID());
-	return lib;
+    lib.setVarID(extLib.getVarID());
+    return lib;
     }
-     
+
 
 
   /**
@@ -449,10 +449,10 @@ public  class TestFactory {
     * @see com.sun.tgxml.tjtf.api.tests.Library
     */
     static public Library  cloneLibrary (Library origLib ) throws TestFileException {
-	if (origLib == null)
-	    return null;
+    if (origLib == null)
+        return null;
 
-	Library cloneLib = null;
+    Library cloneLib = null;
         if (origLib instanceof InlineLibrary) {
             InlineLibrary inlineLib = createInlineLibrary();
             inlineLib.setTestGroup(((InlineLibrary)origLib).getTestGroup());
@@ -461,15 +461,15 @@ public  class TestFactory {
             cloneLib = createLibrary();
         }
 
-	// let sub-classes override their clone fields
-	cloneOverrideLib(origLib, cloneLib);
-	cloneLib.setID(origLib.getID());
-	cloneLib.setVarID(origLib.getVarID());
-	cloneLib.setLibDocumentation(DocumentationFactory.cloneLibDocumentation(origLib.getLibDocumentation()));
-	cloneLib.setLibAttributes(AttributesFactory.cloneLibAttributes(origLib.getLibAttributes()));
-	cloneLib.setCodeSet(CodeFactory.cloneCodeSet(origLib.getCodeSet()));
+    // let sub-classes override their clone fields
+    cloneOverrideLib(origLib, cloneLib);
+    cloneLib.setID(origLib.getID());
+    cloneLib.setVarID(origLib.getVarID());
+    cloneLib.setLibDocumentation(DocumentationFactory.cloneLibDocumentation(origLib.getLibDocumentation()));
+    cloneLib.setLibAttributes(AttributesFactory.cloneLibAttributes(origLib.getLibAttributes()));
+    cloneLib.setCodeSet(CodeFactory.cloneCodeSet(origLib.getCodeSet()));
 
-	return cloneLib;
+    return cloneLib;
     }
 
   /**
@@ -484,15 +484,15 @@ public  class TestFactory {
 
     }
 
-    static  void  initLibrary (Library lib, 
-            String ID, LibDocumentation documentation, 
-            LibAttributes attributes, CodeSet codeset ) 
-                throws TestFileException 
+    static  void  initLibrary (Library lib,
+            String ID, LibDocumentation documentation,
+            LibAttributes attributes, CodeSet codeset )
+                throws TestFileException
     {
-	lib.setID(ID);
-	lib.setLibDocumentation(documentation);
-	lib.setLibAttributes(attributes);
-	lib.setCodeSet(codeset);
+    lib.setID(ID);
+    lib.setLibDocumentation(documentation);
+    lib.setLibAttributes(attributes);
+    lib.setCodeSet(codeset);
 
     }
 

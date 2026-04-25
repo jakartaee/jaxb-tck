@@ -55,10 +55,10 @@ public class FilterUtil  {
      * @return the instance of class specified by build property
      * or "com.sun.tgxml.tools.filter.libutil.DefaultLibFilterFactrory"
      * by default.
-     * 
+     *
      * @exception TestFileException if cannot create LibFilterFactrory
      */
-    public static LibFilterFactrory createLibFilterFactrory(String toolname) 
+    public static LibFilterFactrory createLibFilterFactrory(String toolname)
             throws TestFileException {
 
         String factoryClassName = BuildProperties.getPrefixString(
@@ -78,14 +78,14 @@ public class FilterUtil  {
 
     /**
      * Return selection info about external libraries.
-     * 
+     *
      * @param factory LibFilterFactrory that provides LibMapFile instance
      * @param filename the name of libmap file containing selection info.
      *
      * @exception TestFileException if libmap file cannot be parsed.
      */
     public static LibSelectionInfo extenalSelectionInfo
-            (LibFilterFactrory factory, String filename) 
+            (LibFilterFactrory factory, String filename)
             throws TestFileException {
         if (filename == null)
             return new LibsInfo();
@@ -121,7 +121,7 @@ public class FilterUtil  {
             }
         } else {
             throw new FilteringException(
-                "cannot select variant of " + IR.getID((TestItem)var1) + 
+                "cannot select variant of " + IR.getID((TestItem)var1) +
                 " between '" + v1 + "' and '" + v2 + "'");
         }
     }
@@ -145,7 +145,7 @@ public class FilterUtil  {
 
         VariantsMap varMap = new VariantsMap(bundle);
         // filter libraries by attributes
-        LibAttributesFilter attrFilter = 
+        LibAttributesFilter attrFilter =
                 factory.createLibAttributesFilter(pluginName);
         VariantsMap strippedMap = attrFilter.filter(varMap);
 
@@ -159,7 +159,7 @@ public class FilterUtil  {
     /**
      *  strips support classes for CodeSet of any TestItem
      */
-    public static void stripCodeSet(TestItem ti, FilterExpression SCtree) 
+    public static void stripCodeSet(TestItem ti, FilterExpression SCtree)
             throws FilteringException {
         CodeSet cs = ti.getCodeSet();
         if ( cs == null )
@@ -181,7 +181,7 @@ public class FilterUtil  {
             if (id==null)
                 continue;
             if (IDset.contains(id)) {
-                throw new FilteringException("Duplicated SupportClass :" + id + 
+                throw new FilteringException("Duplicated SupportClass :" + id +
                    " for TestItem :" + IR.getID(ti));
             }
             IDset.add(id);

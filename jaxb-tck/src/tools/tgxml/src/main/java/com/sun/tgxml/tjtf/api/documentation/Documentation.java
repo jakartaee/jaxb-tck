@@ -25,7 +25,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * Documentation - 
+ * Documentation -
  *
  * <b>Documentation</b> is the basic interface for describing documentation
  * associated with a test.
@@ -38,12 +38,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  *  </ul> <br>
  *
  * <p>
- * A <b>documentation</b> is registered with a <b>TestGroup</b>, <b>Library</b>, and <b>TestCase</b> 
- *  elements.  
- * <p> 
+ * A <b>documentation</b> is registered with a <b>TestGroup</b>, <b>Library</b>, and <b>TestCase</b>
+ *  elements.
+ * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -62,7 +62,7 @@ public  interface Documentation  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -82,7 +82,7 @@ public  interface Documentation  {
     * @see #setTitle
     */
     public String getTitle()  throws TestFileException;
-     
+
    /**
     *   Set the title associated with this documentation.
     *  <p>
@@ -109,7 +109,7 @@ public  interface Documentation  {
     * @see #setDescription
     */
     public String getDescription();
-     
+
    /**
     *   Set the description associated with this documentation.
     *  <p>
@@ -136,7 +136,7 @@ public  interface Documentation  {
     */
     public ArrayList getAuthors();
 
-     
+
  /**
     *   Set the authors associated with this documentation.
     *  <p>

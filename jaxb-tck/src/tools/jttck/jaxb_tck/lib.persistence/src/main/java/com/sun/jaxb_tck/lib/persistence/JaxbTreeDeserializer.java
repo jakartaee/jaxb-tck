@@ -21,16 +21,16 @@ import java.io.InputStream;
 
 /**
  * The JAXB tree instantiation interface. The JAXB tree is read from input stream
- * and instantiated using mechanism that is different from standard JAXB 
+ * and instantiated using mechanism that is different from standard JAXB
  * unamrshalling.
- *  
+ *
  * @author Vladimir Sosnin
  *
  */
 public interface JaxbTreeDeserializer {
     /**
      * Try to instantiate JAXB tree.
-     * 
+     *
      * @param input - serialized JAXB tree.
      * @param cl - ClassLoader holding classes used in JAXB tree.
      * @return JAXB tree

@@ -24,8 +24,8 @@ import com.sun.tgxml.tjtf.IRObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
 
-/** 
- * IRParser is the top-most contract that a Parser must handle. 
+/**
+ * IRParser is the top-most contract that a Parser must handle.
  * <p>
  *  An implementation of an IRParser parses a (single-format) specific
  *  stream of information into an IRObj tree.
@@ -33,26 +33,26 @@ import com.sun.tgxml.tjtf.processors.ValidatingProcessor;
  *  Tools that need to parse multiple forms of information should have
  *  a shell that contains an implementation of IRParser for each different
  * form of info (i.e. an XMLTDParser (TD), an XMLTDParser (TestSuite), etc.)
- * 
- * 
- * @version 	1.0, 10/02/01 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    IRParser 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 10/02/01
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    IRParser
+ * ============================================================================================
+ */
 public interface IRParser extends ValidatingProcessor {
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
 
   /**
@@ -60,7 +60,7 @@ public interface IRParser extends ValidatingProcessor {
     * <p>
     *  The parser implementation determines the number of files accepted and
     *  the number of IRObj trees returned.  For Example, an XMLTD Parser may
-    *  return one IRObj tree for every one file parsed.  A JMPP parser may 
+    *  return one IRObj tree for every one file parsed.  A JMPP parser may
     *  return many IRObj trees for every one file parsed.
     * <p>
     * @param files The input-files to be parsed.

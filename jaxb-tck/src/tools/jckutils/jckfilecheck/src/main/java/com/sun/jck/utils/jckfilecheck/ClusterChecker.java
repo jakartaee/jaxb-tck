@@ -41,51 +41,51 @@ public class ClusterChecker implements Checker {
     private int[] clusterMegabytes;
 
     public ClusterChecker(File outDir, int[] clusterSizes) {
-	outFileName = new File(outDir, "cluschek.html");
-	this.clusterSizes = clusterSizes;
+    outFileName = new File(outDir, "cluschek.html");
+    this.clusterSizes = clusterSizes;
     }
 
     public File getOutputFile() {
-	return outFileName;
+    return outFileName;
     }
 
     public String getName() {
-	return "Cluster Checker";
+    return "Cluster Checker";
     }
 
     public void run(OrderedList fileList) throws IOException {
-	this.fileList = fileList;
-	calculateClusters();
-	HTMLReportGenerator rep = new HTMLReportGenerator(outFileName);
-	rep.generateClusterCheckerReport(clusterSizes, clusterCounts, clusterMegabytes);
+    this.fileList = fileList;
+    calculateClusters();
+    HTMLReportGenerator rep = new HTMLReportGenerator(outFileName);
+    rep.generateClusterCheckerReport(clusterSizes, clusterCounts, clusterMegabytes);
     }
 
     private void calculateClusters() {
-	Enumeration fileListIter = fileList.getIterator();
-	DirectoryEntry entry;
-	long fileSize;
-	clusterCounts = new int[clusterSizes.length];
-	clusterMegabytes  = new int[clusterSizes.length];
-	for (int i = 0; i < clusterSizes.length; ++i) {
-	    // clusterSize    : size of a cluster
-	    // noOfClusters   : number of clusters
-	    // totalSpace     : Amount of total Space in MB
-	    int clusterSize = clusterSizes[i];
-	    int count = 0;
-	    int megabytes = 0;
-	    fileListIter = fileList.getIterator();
-	    while (fileListIter.hasMoreElements()) {
-		entry = (DirectoryEntry) fileListIter.nextElement();
-		fileSize = entry.getSize();
-		count += fileSize/clusterSize;
-		if ((fileSize % clusterSize) > 0)
-		    ++ count;
-	    }
-	    megabytes = (int)(((long)count * clusterSize) / (1024*1024));
-	    clusterCounts[i] = count;
-	    clusterMegabytes[i] = megabytes;
-	}
+    Enumeration fileListIter = fileList.getIterator();
+    DirectoryEntry entry;
+    long fileSize;
+    clusterCounts = new int[clusterSizes.length];
+    clusterMegabytes  = new int[clusterSizes.length];
+    for (int i = 0; i < clusterSizes.length; ++i) {
+        // clusterSize    : size of a cluster
+        // noOfClusters   : number of clusters
+        // totalSpace     : Amount of total Space in MB
+        int clusterSize = clusterSizes[i];
+        int count = 0;
+        int megabytes = 0;
+        fileListIter = fileList.getIterator();
+        while (fileListIter.hasMoreElements()) {
+        entry = (DirectoryEntry) fileListIter.nextElement();
+        fileSize = entry.getSize();
+        count += fileSize/clusterSize;
+        if ((fileSize % clusterSize) > 0)
+            ++ count;
+        }
+        megabytes = (int)(((long)count * clusterSize) / (1024*1024));
+        clusterCounts[i] = count;
+        clusterMegabytes[i] = megabytes;
+    }
     }
 }
-    
+
 

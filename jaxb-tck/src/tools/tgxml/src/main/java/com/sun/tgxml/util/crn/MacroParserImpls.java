@@ -201,7 +201,7 @@ public interface MacroParserImpls {
             return "scInfoParser";
         }
     };
- 
+
     /**
      * Parses arbitrary text till the end of line.
      */
@@ -314,7 +314,7 @@ public interface MacroParserImpls {
         public VariantValueParser(MacroParser[] parsers) {
             this.parsers = new ArrayList();
 
-            for (int i = 0; i < parsers.length; i++) { 
+            for (int i = 0; i < parsers.length; i++) {
                 this.parsers.add(parsers[i]);
             }
         }
@@ -416,7 +416,7 @@ public interface MacroParserImpls {
             setMatchCountRange(min, max);
             this.parsers = new ArrayList();
 
-            for (int i = 0; i < parsers.length; i++) { 
+            for (int i = 0; i < parsers.length; i++) {
                 this.parsers.add(parsers[i]);
             }
         }
@@ -562,7 +562,7 @@ class AuthorScanner {
 
         if (eof_allowed && lastToken == END_TAG) {
             throw new Fault();
-        } 
+        }
         return lastToken;
     }
 
@@ -686,7 +686,7 @@ class MacroParseAlgorithms {
     }
 
     static int parseW(String s, int start_pos) {
-        // example: '@(#)jckjni.h	1.14'
+        // example: '@(#)jckjni.h   1.14'
         int ind = parseZ(s, start_pos);
 
         if (ind < 0) {
@@ -718,7 +718,7 @@ class MacroParseAlgorithms {
         }
         for (int i = 0; i < DELIM_COUNT; i++) {
             String num = s.substring(cur, cur + NUM_LEN);
-            
+
             if (!allAsciiDigits(num)) {
                 return -1;
             }

@@ -52,7 +52,7 @@ import com.sun.tgxml.tools.testgen.processors.emitter.XMLSchemaTestEmitter;
 import com.sun.tgxml.util.IR;
 
 public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
-    
+
     final static ArrayList<CodeDependency> dependencies = new ArrayList<CodeDependency>();
     static {
         try {
@@ -63,7 +63,7 @@ public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
             ex.printStackTrace();
         }
     }
-    
+
     public XMLSchemaTestsIRProcessor( Properties props ) {
         super( props );
     }
@@ -85,7 +85,7 @@ public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
         }
         return irs;
     }
-    
+
     protected boolean isXMLSchemaTest( TestGroup tg ) {
         TestGroupAttributes attrs = tg.getTGAttributes();
         if( attrs != null ){
@@ -96,21 +96,21 @@ public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
         }
         return false;
     }
-    
-    protected TestCase createCheckingValidationTestcase( List<String> schemas, 
-    		                                             String xmlFileName ) 
+
+    protected TestCase createCheckingValidationTestcase( List<String> schemas,
+                                                         String xmlFileName )
                             throws TestFileException {
         TestCase tc = new TestCaseImpl();
         tc.setID( new File( xmlFileName ).getName() );
         CodeSet cs = new CodeSetImpl();
-        
+
         ArrayList<ExternalSupportClass> escl = new ArrayList<ExternalSupportClass>();
         for (String schema : schemas) {
-			ExternalSupportClass esc = new ExternalSupportClassImpl();
-			esc.setSourceName(schema);
-			escl.add(esc);
-		}
-        
+            ExternalSupportClass esc = new ExternalSupportClassImpl();
+            esc.setSourceName(schema);
+            escl.add(esc);
+        }
+
         cs.setSupportClasses( escl );
         ArrayList<ExternalData> edl = new ArrayList<ExternalData>();
         ExternalData ed = new ExternalDataImpl();
@@ -121,24 +121,24 @@ public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
         tc.setCodeSet(cs);
         return tc;
     }
-    
+
     private String getTestCaseName(List<String> schemas) {
-    	for(String fn : schemas ) {
-    		if(fn.endsWith(".xsd"))
-    			return new File( fn ).getName();
-    	}
-    	return null;
+        for(String fn : schemas ) {
+            if(fn.endsWith(".xsd"))
+                return new File( fn ).getName();
+        }
+        return null;
     }
-    
+
     protected List<TestGroup> generateCheckingValidationTest( TestGroup tg ) throws TestFileException {
         List<TestGroup> result = new ArrayList<TestGroup>();
         String relPath = IR.getAttrElem(IR.relSourcePathAttrElemName, tg);
         String outDir = IR.getAttrElem("OutputDir", tg);
         List<String> schemas = XMLSchemaTestEmitter.findExternalFileNames(tg.getCodeSet(), XMLSchemaTestEmitter.ALLOWED_SCHEMA_EXTESIONS);
         String testCaseName = getTestCaseName(schemas);
-        
+
         if( testCaseName != null && tg.getTestCases() != null ){
-        	
+
             // look for testcase with 'xml' file as a external data
             ir_creation: for( TestCase tc : (List<TestCase>)tg.getTestCases() ){
                 // extract 'validity' value
@@ -149,7 +149,7 @@ public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
                     for( Object data : tc.getCodeSet().getData() ){
                         if( data instanceof ExternalData ){
                             String fileName = ((ExternalData)data).getSourceName();
-                            if( fileName.endsWith(".xml") && 
+                            if( fileName.endsWith(".xml") &&
                                     ((ExternalData)data).getType().isIOData() ){
                                 // xml file is found
                                 // create TestGroup
@@ -192,10 +192,10 @@ public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
                 }
             }
         }
-        
+
         return result;
     }
-    
+
     public boolean isExcluded(TestItem testItem) throws TestFileException {
         try {
             String jtxFileName = BuildProperties.getString(BundleTestGenFilter.EXLIST_SYSPROP);
@@ -207,5 +207,5 @@ public class XMLSchemaTestsIRProcessor extends BasicIRProcessor {
             throw new TestFileException(ex.getMessage());
         }
     }
-    
+
 }

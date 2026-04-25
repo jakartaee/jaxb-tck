@@ -62,18 +62,18 @@ import com.sun.tgxml.util.IR;
 import com.sun.tgxml.util.MiscUtils;
 
 public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerator {
-    
+
     Hashtable methodsHashtable = null;
     String storedRCfiles = "";
     TestGroup currentTGroup;
     TestCase currentTCase;
     ArrayList currentTCSpecs;
-    
+
     ArrayList testCases;
     ArrayList testRoots;
-    
+
     private AttrElem outputDirAttrElem = null;
-    
+
     /**
      * Generates the set of TestRoot objects
      */
@@ -81,9 +81,9 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         inFile = inputFile;
         templatePackage = IRTDGenerator.getTemplatePackageName(inputFile);
         inName = inputFile.getName();
-		if(inputFile.getParent() != null) {
-			inDir = inputFile.getParent() + File.separator;
-		}
+        if(inputFile.getParent() != null) {
+            inDir = inputFile.getParent() + File.separator;
+        }
 
         try {
             generate();
@@ -91,10 +91,10 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             e.printStackTrace();
             throw new LibAPIException(e.getMessage());
         }
-        
+
         return ((JmppLibAPI)stepTwoLib).getRoots();
     }
-    
+
     public void makeOut(){
         //loadDefaults();
         //outBuffer = new StringBuffer();
@@ -102,11 +102,11 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         //testclose();
         //outBuffer = null;
     }
-    
+
     public ArrayList getRoots() {
         return testRoots;
     }
-        
+
     protected void runXLib(Class generatorClass) throws Exception {
         stepTwoLib = (JmppLibAPI)generatorClass.newInstance();
         passDataTo(stepTwoLib);
@@ -121,11 +121,11 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
      protected String getTCKDstDirVarName(){
          return "tck.classes.dir";
      }
-    
-   
+
+
     public void store() {
         checkVars(CHECK_VARS_STORE);
-        
+
         //create testcase element
         ////
         if (currentTCase == null) {
@@ -136,7 +136,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 throw new LibAPIException(e.getMessage());
             }
 
-            TestCaseDocumentation tcDocumentation = 
+            TestCaseDocumentation tcDocumentation =
                     DocumentationFactory.createTestCaseDocumentation();
             currentTCSpecs = new ArrayList();
             tcDocumentation.setTestCaseSpecs(currentTCSpecs);
@@ -145,7 +145,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         //create testcase spec
         ////
         TestCaseSpec tcSpec = createTestCaseSpec(testTechnique,
-                method, 
+                method,
                 values,
                 precondition,
                 expected,
@@ -154,24 +154,24 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         tcDocumentation.getTestCaseSpecs().add(tcSpec);
         nullTestcaseVars(CHECK_VARS_STORE);
     }
-    
-    
+
+
     /**
      * Creates test case specification element using
-     * <code>method</code>, <code>values</code>, <code>precondition</code>, 
+     * <code>method</code>, <code>values</code>, <code>precondition</code>,
      * <code>expected</code> and <code>testTechnique</code> variable values.
      */
     protected TestCaseSpec createTestCaseSpec(int testTechnique,
-                                                String method_sig, 
+                                                String method_sig,
                                                 String values,
                                                 String precondition,
                                                 String expected,
                                                 String testedclass) {
         TestCaseSpec spec = DocumentationFactory.createTestCaseSpec();
-        
-        
+
+
         try {
-        
+
             //process method signature;
             ////
             Method method = createMethod(method_sig, testedclass);
@@ -179,9 +179,9 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 spec.setMemberSig(method.getSignature());
             }
             if (testTechnique != JmppLibAPI.ASSERTION_TESTING) {
-				//process test technique
-				////
-				spec.setTestTechnique(new LibAPITestTechnique(testTechnique));
+                //process test technique
+                ////
+                spec.setTestTechnique(new LibAPITestTechnique(testTechnique));
 
                 ArrayList inputts = createInputs(method, values);
                 if(inputts != null) {
@@ -199,29 +199,29 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                     spec.setAssertions(assertion);
                 }
             }
-            
+
             //process preconditions
             ////
             ArrayList preconditions = createPreconditions(precondition);
             if (preconditions != null) {
                 spec.setPreconditions(preconditions);
             }
-        
+
             //process expected result
             ////
             ArrayList expectedVal = createExpectedResultSideEffect(expected);
             if (expectedVal != null) {
                 spec.setExpectedResultSideEffects(expectedVal);
             }
-            
+
         } catch (Exception e) {
-			e.printStackTrace();
+            e.printStackTrace();
             throw new LibAPIException(e.getMessage());
         }
-       
+
         return spec;
     }
-        
+
     public void gen() {
         checkVars(CHECK_VARS_GEN);
         addAuthor();
@@ -233,7 +233,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             tcCode = CodeFactory.createTestCode(Code.ctStr_langType_java, trimCode);
             currentTCase.setTestCode(tcCode);
 
-            ArrayList tcTargetSpecs = 
+            ArrayList tcTargetSpecs =
                     IRTDGenerator.convertTargetSpecList(testcaseTargetSpecs);
             ArrayList tcRequiredResources = IRTDGenerator.
                     convertRequiredResources(getTestcaseRequiredResources());
@@ -256,7 +256,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         currentTCase = null;
         nullTestcaseVars();
     }
-   
+
     protected ArrayList createInputs(Method method, String values) {
         Hashtable resValues = parseValues(values);
         Enumeration en = resValues.keys();
@@ -265,36 +265,36 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             Object key = en.nextElement();
             if(method.getParams() != null && method.getParams().contains(key)) {
                 try {
-                    Input input = DocumentationFactory.createInput(key.toString(), 
+                    Input input = DocumentationFactory.createInput(key.toString(),
                             resValues.get(key).toString());
                     inputs.add(input);
                 } catch (Exception e) {
                     throw new LibAPIException(e.getMessage());
                 }
-            } 
+            }
         }
-        
+
         return inputs.isEmpty()?null:inputs;
     }
-    
 
-	protected ExpectedResultValue createExpectedResultValue(Method method, String values) {
-		ExpectedResultValue output = null;
-		if (method.type != null 
-			    && !method.type.trim().equals("void")
-			    && !method.isField) {
-			Hashtable resValues = parseValues(values);
 
-			if (resValues.containsKey("output")) {
+    protected ExpectedResultValue createExpectedResultValue(Method method, String values) {
+        ExpectedResultValue output = null;
+        if (method.type != null
+                && !method.type.trim().equals("void")
+                && !method.isField) {
+            Hashtable resValues = parseValues(values);
+
+            if (resValues.containsKey("output")) {
                 try {
-					output = DocumentationFactory.createExpectedResultValue((String)resValues.get("output"));
+                    output = DocumentationFactory.createExpectedResultValue((String)resValues.get("output"));
                } catch (Exception e) {
                     throw new LibAPIException(e.getMessage());
-			   }
-			}
-		}
-		return output;	
-	}
+               }
+            }
+        }
+        return output;
+    }
 
     protected ArrayList createAssertions(String value) {
         if (stringContentsCheck(value)) {
@@ -309,7 +309,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             return null;
         }
     }
-    
+
     protected ArrayList createPreconditions(String value) {
         if (stringContentsCheck(value)) {
             ArrayList preconditions = new ArrayList();
@@ -319,14 +319,14 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             return null;
         }
     }
-    
+
     protected ArrayList createExpectedResultSideEffect(String value) {
         ArrayList expected = new ArrayList();
         if (stringContentsCheck(value)) {
             ExpectedResultSideEffect result = null;
             try {
                 result = DocumentationFactory.createExpectedResultSideEffect(value.trim());
-				expected.add(result);
+                expected.add(result);
 
             } catch (Exception e) {
                 throw new LibAPIException(e.getMessage());
@@ -336,7 +336,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             return null;
         }
     }
-    
+
     protected Method createMethod(String method, String testedClass) {
         String key = strRemovedBlankSpaces(method);
         Method result = null;
@@ -358,11 +358,11 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         }
         return result;
     }
-    
+
     /**
-     * Parses <code>values</code> public variable value in order 
-     * to construct a hashtable with method parameter names as keys and their 
-     * delimited with ":" values as values. 
+     * Parses <code>values</code> public variable value in order
+     * to construct a hashtable with method parameter names as keys and their
+     * delimited with ":" values as values.
      */
     protected Hashtable parseValues(String value) {
        Hashtable values = new Hashtable();
@@ -380,26 +380,26 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
            }
        }
        return values;
-    }   
-    
+    }
+
     public void testcreate() {
         super.testcreate();
 
-        // output dir 
-        if (outputDir != null && !outputDir.equals("")) {   
+        // output dir
+        if (outputDir != null && !outputDir.equals("")) {
             outputDir += File.separator + getShortTestClassName();
         }
-        
+
         outputDirAttrElem = AttributesFactory.createAttrElem();
-    	try {
-	        outputDirAttrElem.setName("OutputDir");
-    	} catch (TestFileException e) {
-	        // this should never happen
-    	}
-        outputDirAttrElem.setValue((outputDir!=null) ? outputDir : "");        
-        
+        try {
+            outputDirAttrElem.setName("OutputDir");
+        } catch (TestFileException e) {
+            // this should never happen
+        }
+        outputDirAttrElem.setValue((outputDir!=null) ? outputDir : "");
+
         testRoots = new ArrayList();
-        
+
         // TestSuite
         TestSuite ts = new TestSuiteImpl();
         ts.setID(htmlindex);
@@ -409,12 +409,12 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         try {
             ts.setTitle("Tests for " + testclass);
         } catch (TestFileException e) {
-        }    
-        
+        }
+
         ts.setDescription(index);
         testRoots.add(ts);
     }
-    
+
     public void javaclose() {
         checkVars(CHECK_VARS_JAVACLOSE);
         currentTGroup = TestFactory.createTestGroup();
@@ -427,27 +427,27 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         if (testCases == null) {
             throw new LibAPIException("No test cases for current test root");
         }
-        
-        
+
+
         //process classinclude/uses variables
         ////
-        ArrayList supportClasses = 
+        ArrayList supportClasses =
                 createSupportClasses(uses, classinclude);
-            
+
         //process codeinclue variable
         ////
         SupportCode supportCode =
                 createSupportCode(codeinclude);
-        
+
         //process imports variable
         ////
         ArrayList testCodeImports = createImports(imports);
         testCodeImports.addAll(createImports(getImportForTestClass(testpackage, testclass)));
-        
-        ArrayList testCodeDependencies = 
+
+        ArrayList testCodeDependencies =
                 createDependencies(dependencies, baseClass);
-        
-        // Check that imports do not duplicate dependencies, 
+
+        // Check that imports do not duplicate dependencies,
         // remove duplicates if any
         if ((testCodeImports != null) && (testCodeDependencies!=null))  {
             for (int i=0; i<testCodeImports.size(); i++){
@@ -467,47 +467,47 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                     }
                 }
             }
-        }    
-        
+        }
+
         ArrayList testCodeIOData = createIOData(rcfiles, iodata);
-        
+
         CodeSet codeSet = createCodeSet(testCodeDependencies,
                                         testCodeImports,
                                         baseClass,
                                         supportCode,
                                         supportClasses,
                                         testCodeIOData);
-        
+
         currentTGroup.setCodeSet(codeSet);
-        
+
         //process test group documentation
         ////
         TestGroupDocumentation tgDocumentation =
-            createTestGroupDocumentation(filetitle, 
-                                         getAuthor(file), 
+            createTestGroupDocumentation(filetitle,
+                                         getAuthor(file),
                                          testpackage,
                                          testclass);
-        
+
         currentTGroup.setTGDocumentation(tgDocumentation);
-        
+
         //process test group attributes
         ////
-       
+
         if (keywords == null) {
             keywords = "";
-        }          
+        }
         if (getDefaultKeywords() != null) {
             keywords = ((rmicClass == null) ? getDefaultRmicKeywords() : getDefaultKeywords()) + " " + keywords;
         }
-        
-        TestGroupAttributes tgAttributes = 
+
+        TestGroupAttributes tgAttributes =
             createTestGroupAttributes(rcfiles,
-                                         keywords, 
+                                         keywords,
                                          executeArgs,
                                          remote,
                                          rmicClass,
                                          selectIf,
-					                     context, 
+                                         context,
                                          outputDir,
                                          testGroupTargetSpecs,
                                          getTestGroupAttrElems(),
@@ -515,24 +515,24 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         if (tgAttributes != null) {
             currentTGroup.setTGAttributes(tgAttributes);
         }
-            
+
         currentTGroup.setTestCases(testCases);
         testCases = null;
         testRoots.add(currentTGroup);
         currentTGroup = null;
         nullTestcaseVars();
         nullFileVariables();
-        
+
     }
-    
-    
+
+
     /**
      * creates TestGroupAttributes entity based on <code>rcfiles</code>,
      * <code>keywords</code>, <code>executeArgs</code>, <code>remote</code>,
      * <code>rmicClass</code> and <code>selectIf</code> variables values
      */
     protected TestGroupAttributes createTestGroupAttributes(String rcfiles,
-                                         String keywords, 
+                                         String keywords,
                                          String executeArgs,
                                          String remote,
                                          String rmicClass,
@@ -542,9 +542,9 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                                          ArrayList testGroupTargetSpecs,
                                          ArrayList testGroupAttrElems,
                                          Enumeration tgRequiredResources) {
-        
+
         TestGroupAttributes result = null;
-        
+
         ArrayList resKeywordsList = null;
         String    resExecuteArgs  = null;
         ArrayList resRemotesList  = null;
@@ -579,11 +579,11 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
 
         // tdFile
         IR.setAttrElem(attrElems, "tdFile", htmlindex);
-        
-        // output dir 
+
+        // output dir
         attrElems.add(outputDirAttrElem);
 
-        
+
         if(stringContentsCheck(keywords)) {
             resKeywordsList = new ArrayList();
             StringTokenizer st = new StringTokenizer(keywords);
@@ -591,11 +591,11 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 resKeywordsList.add(st.nextToken().trim());
             }
         }
-        
+
         if(stringContentsCheck(executeArgs)) {
             resExecuteArgs = executeArgs.trim();
         }
-        
+
         if(stringContentsCheck(remote)) {
             resRemotesList = new ArrayList();
             StringTokenizer st = new StringTokenizer(remote, "\n");
@@ -603,15 +603,15 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 resRemotesList.add(st.nextToken().trim());
             }
         }
-        
+
         if(stringContentsCheck(rmicClass)) {
             resRMICClasses = rmicClass.trim();
         }
-        
+
         if(stringContentsCheck(context)) {
             resContext = context.trim();
         }
- 
+
         if(stringContentsCheck(selectIf)) {
             resSelectIfs = new ArrayList();
             StringTokenizer st = new StringTokenizer(selectIf, "\n");
@@ -620,11 +620,11 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             }
         }
 
-        resTargetSpecs = 
+        resTargetSpecs =
                 IRTDGenerator.convertTargetSpecList(testGroupTargetSpecs);
-        reqResources = 
+        reqResources =
                 IRTDGenerator.convertRequiredResources(tgRequiredResources);
-        tgAttrElems = 
+        tgAttrElems =
                 IRTDGenerator.convertAttrElems(testGroupAttrElems);
         if (tgAttrElems != null)
              attrElems.addAll(tgAttrElems);
@@ -651,34 +651,34 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         }
         return result;
     }
-            
+
 
     /**
      * creates TestGroupDocumentation entity based on <code>filetitle</code>,
      * <code>author</code>, <code>testpackage</code>, <code>testclass</code>
      * variables
      */
-    protected TestGroupDocumentation createTestGroupDocumentation(String fileTitle, 
+    protected TestGroupDocumentation createTestGroupDocumentation(String fileTitle,
                                          String authors,
                                          String testpackage,
                                          String testclass) {
         TestGroupDocumentation result = DocumentationFactory.createTestGroupDocumentation();
         if (stringContentsCheck(fileTitle)) {
-            try {   
+            try {
                 result.setTitle(fileTitle);
             } catch (Exception e) {
                 throw new LibAPIException(e.getMessage());
             }
         }
-        
+
         if (stringContentsCheck(testpackage)) {
              result.setTestedPackage(testpackage);
         }
-        
+
         if (stringContentsCheck(testclass)) {
             result.setTestedClass(testclass);
         }
-        
+
         if (stringContentsCheck(authors)) {
             ArrayList authorList = new ArrayList();
             StringTokenizer st = new StringTokenizer(authors, ",");
@@ -687,10 +687,10 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             }
             result.setAuthors(authorList);
         }
-        
+
         return result;
     }
-                
+
     /**
      * Creates code set entry for current test group based on
      */
@@ -708,7 +708,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             e.printStackTrace();
             throw new LibAPIException(e.getMessage());
         }
-        
+
         return result;
     }
     /**
@@ -743,7 +743,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 }
             }
         }
-        
+
         if(stringContentsCheck(classinclude)) {
             InlineSupportClass isc = CodeFactory.createInlineSupportClass();
             isc.setSourceLang(Code.ctStr_langType_java);
@@ -752,7 +752,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         }
         return result.isEmpty()?null:result;
     }
-    
+
     /**
      * creates SupportCode entity based on th <code>codeinclude</code> variable
      */
@@ -760,7 +760,7 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         SupportCode result = null;
         if (stringContentsCheck(codeInclude)) {
             try {
-                result = CodeFactory.createSupportCode(Code.ctStr_langType_java, 
+                result = CodeFactory.createSupportCode(Code.ctStr_langType_java,
                                                                     codeInclude);
             } catch (Exception e) {
                 throw new LibAPIException(e.getMessage());
@@ -768,19 +768,19 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         }
         return result;
     }
-    
+
     /**
      * Creates imports entry based on the imports variable
      */
     protected ArrayList createImports(String imports) {
         ArrayList result = new ArrayList();
-        if (stringContentsCheck(imports)) {            
+        if (stringContentsCheck(imports)) {
             StringTokenizer st = new StringTokenizer(imports, ";");
             while(st.hasMoreTokens()) {
-				String str = st.nextToken();
+                String str = st.nextToken();
                 if (str != null && str.indexOf("import") >= 0) {
-			        // remove "import" string
-			        str=str.substring(str.indexOf("import")+6).trim();
+                    // remove "import" string
+                    str=str.substring(str.indexOf("import")+6).trim();
                     if (str.startsWith("javasoft.sqe.tests.api." + getTestPackageName(testpackage, testclass)) ||
                             !(str.startsWith("javasoft.sqe.jck.lib")
                                         || str.startsWith("javasoft.sqe.tests.api"))) {
@@ -789,17 +789,17 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 }
             }
         }
-        
+
         return result;
     }
 
     /**
-     * Creates dependencies. BaseClass is automatically added since this is 
+     * Creates dependencies. BaseClass is automatically added since this is
      * dependence.
      */
     protected ArrayList createDependencies(String dependencies, String baseClass) {
-        ArrayList result = new ArrayList(); 
-        try {       
+        ArrayList result = new ArrayList();
+        try {
             if (stringContentsCheck(baseClass)) {
                 int index = baseClass.lastIndexOf(".");
                 if (index > -1) {
@@ -807,14 +807,14 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                     if (baseClass.endsWith(".")) {
                         throw new LibAPIException("Invalid base class : " + baseClass);
                     }
-                    baseClass = baseClass.substring(index + 1, baseClass.length() - 1);                        
+                    baseClass = baseClass.substring(index + 1, baseClass.length() - 1);
                 }
                 if (baseClass.equals("XmlMultiTest")) {
                     result.add(CodeFactory.createLibraryDependency("xml.XmlMultiTest"));
                 } else if (!baseClass.equals("MultiTest")) {
                     result.add(CodeFactory.createLibraryDependency(baseClass));
                 }
-            } 
+            }
 
             if (stringContentsCheck(dependencies)) {
                 StringTokenizer st = new StringTokenizer(dependencies, " ");
@@ -824,26 +824,26 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                         result.add(CodeFactory.createLibraryDependency(lib));
                     }
                 }
-            }        
+            }
         } catch (TestFileException e) {
             e.printStackTrace();
             throw new LibAPIException(e.getMessage());
-        }            
+        }
         return result.isEmpty() ? null : result;
     }
 
     /**
-     * Creates iodatas. 
+     * Creates iodatas.
      */
-    protected ArrayList createIOData(String rcfiles, String iodata) {    
+    protected ArrayList createIOData(String rcfiles, String iodata) {
         ArrayList result = null;
-        
+
         if (rcfiles == null) rcfiles = "";
         if (stringContentsCheck(rcfiles + storedRCfiles)) {
             result = new ArrayList();
-            result.addAll(processRCFiles(rcfiles + storedRCfiles));            
+            result.addAll(processRCFiles(rcfiles + storedRCfiles));
         }
-                
+
         if (stringContentsCheck(iodata)) {
             if (result == null)
                 result = new ArrayList();
@@ -864,21 +864,21 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 }
                 try {
                     ExternalData ed = DataFactory.createExternalData(dataName);
-                    ed.setType(DataFactory.createDataType("iodata")); 
+                    ed.setType(DataFactory.createDataType("iodata"));
                     result.add(ed);
                 } catch (TestFileException e) {
                     e.printStackTrace();
                     throw new LibAPIException(e.getMessage());
-                }     
+                }
             }
-        }        
+        }
         return result;
     }
 
-    
+
     /**
      * Retrieves <code>-o</code> option and saves this value into
-     * <code>outputDir</code> variable. This value will be used 
+     * <code>outputDir</code> variable. This value will be used
      * to put into TestRoot <code>outputDir</code> attr element at
      * <code>javaclose</code> call;
      */
@@ -888,21 +888,21 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         } else {
             super.outputDir = "";
         }
-        
+
         if (hash.get("-w") != null) {
             setWorkDir(hash.get("-w").toString().trim());
         }
     }
-    
+
     protected void installRCFiles(){
         storedRCfiles = stringContentsCheck(rcfiles)?" " + rcfiles:"";
     }
-    
+
     protected ArrayList processRCFiles(String rcFiles){
         StringTokenizer st = new StringTokenizer(rcFiles);
         ArrayList result = new ArrayList();
         while (st.hasMoreTokens()){
-    	    String rcFileName = st.nextToken().trim();
+            String rcFileName = st.nextToken().trim();
             //Add atribute
             ////
             ExternalData data = DataFactory.createExternalData();
@@ -935,19 +935,19 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         }
         return result.isEmpty()?null:result;
     }
-    
+
     //utility methods
     ////
     private static boolean stringContentsCheck(String value) {
         return value != null && !value.trim().equals("");
     }
-    
+
     private File getDestinationDir(File source) {
         String inFilePath = source.getAbsolutePath();
         File tmpInFile = new File(inFile.getAbsolutePath());
-        
+
         String currentPath = tmpInFile.getParentFile().getAbsolutePath();
-        
+
         if (inFilePath.startsWith(currentPath)) {
             File outputDirFile = new File(outputDir);
             File destFile = new File(outputDir, inFilePath.substring(currentPath.length()));
@@ -957,8 +957,8 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         }
     }
 
-    
-    private static void copy(File source, File destDir) 
+
+    private static void copy(File source, File destDir)
             throws FileNotFoundException, IOException {
         File destination = null;
         if (MiscUtils.mkdirs(destDir)
@@ -975,24 +975,24 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             out.close();
         }
     }
-	private static String trimBraces(String code) {
-		String result = code.trim();
-		if(result.startsWith("{")) {
-			result = result.substring(1);
-		}
+    private static String trimBraces(String code) {
+        String result = code.trim();
+        if(result.startsWith("{")) {
+            result = result.substring(1);
+        }
 
-		if(result.endsWith("}")) {
-			result = result.substring(0,result.length() - 1);
-		}
-		return result;
+        if(result.endsWith("}")) {
+            result = result.substring(0,result.length() - 1);
+        }
+        return result;
 
-	}
-        
+    }
+
 
 
     //=====================internal classes===================================
     ////
-    
+
     public class Method {
         Vector modifiers = new Vector();
         String type = null;
@@ -1002,41 +1002,41 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
         String signature = null;
         Vector params = null;
         String testedClass = null;
-        
-    	/**
+
+        /**
          * Constructor
          */
-        
+
         public Method(String signature, String testedClass){
-        	this.signature   = signature;
-    		this.testedClass = testedClass;
-    		
-    	}
-        
+            this.signature   = signature;
+            this.testedClass = testedClass;
+
+        }
+
         public void init() throws Exception {
             String cashedToken;
             String currentToken;
-            
-    		//substring () contents
+
+            //substring () contents
             ////
-            
+
             int start = signature.indexOf('(');
             int end   = signature.indexOf(')');
-            
-            if(signature.lastIndexOf(')') != end 
+
+            if(signature.lastIndexOf(')') != end
                     || signature.lastIndexOf('(') != start
                     || start > end
                     || start*end < 0) {
                 throw new Exception("Incorrect method signature: " + signature);
             }
-            
+
             isField = start < 0;
-            
+
             if (!isField) {
                 String formalVals = signature.substring(start+1,end).trim();
                 params = parseFormalVals(formalVals);
             }
-            
+
             String shortSignature = signature.substring(0, isField?signature.length():start);
             StringTokenizer st = new StringTokenizer(shortSignature);
             if(st.countTokens() < 2) {
@@ -1057,8 +1057,8 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 }
             }
         }
-        
-        
+
+
         //parse formal parameters
         ////
         private Vector parseFormalVals(String value) {
@@ -1069,10 +1069,10 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                     result.add(lastToken(st.nextToken()));
                 }
             }
-            
+
             return result.isEmpty()?null:result;
         }
-    
+
         //returns last token
         ////
         private String lastToken(String value) {
@@ -1081,24 +1081,24 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
             while(st.hasMoreTokens()) result = st.nextToken();
             return result;
         }
-        
+
         public Vector getParams() {
             return params;
         }
-        
+
         public String getSignature() {
             return signature;
         }
-        
+
         public boolean isConstructor() {
             return isConstructor;
         }
-        
+
         public boolean isField() {
             return isField;
         }
     }
-    
+
     public class LibAPITestTechnique implements TestTechnique {
         int technique = JmppLibAPI.ASSERTION_TESTING;
         public LibAPITestTechnique(int technique) {
@@ -1107,15 +1107,15 @@ public class JmppLibAPI extends com.sun.jmpp.lib.JmppLibAPI implements IRGenerat
                 this.technique = technique;
             }
         }
-        
+
         public boolean isAssertion() {
             return technique == JmppLibAPI.ASSERTION_TESTING;
         }
-        
+
         public boolean isBoundary() {
             return technique == JmppLibAPI.BOUNDARY_VALUE_ANALYSIS;
         }
-        
+
         public boolean isEqClass() {
             return technique == JmppLibAPI.EQUIVALENCE_CLASS_PARTITIONING;
         }

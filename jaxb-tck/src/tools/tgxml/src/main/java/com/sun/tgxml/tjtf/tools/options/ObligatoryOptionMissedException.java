@@ -19,13 +19,13 @@ package com.sun.tgxml.tjtf.tools.options;
 
 
 /**
- * ObligatoryOptionMissedException - 
+ * ObligatoryOptionMissedException -
  *
  * Signals that obligatory option is missed from command line arguments list
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -38,8 +38,8 @@ public class ObligatoryOptionMissedException extends ParseArgumentException {
      * @param message  a an exception message string.
      */
     public ObligatoryOptionMissedException (String message) {
-	super(message);
+    super(message);
     }
 }
-     
+
 

@@ -22,12 +22,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * ExpectedResultException - 
+ * ExpectedResultException -
  *
  * <b>ExpectedResultException</b> is an exception that is expected as the outcome
  * of a test.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,7 +48,7 @@ public interface ExpectedResultException extends ExpectedResult {
      * ============================================================================================
      */
 
-   
+
     //------------------------------------------------------------------------------
     //  Operations
     //------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ public interface ExpectedResultException extends ExpectedResult {
     * @see #setException
     */
     public String getException();
-     
+
    /**
     *   Set the side-effect associated with this ExpectedResult.
     *  <p>

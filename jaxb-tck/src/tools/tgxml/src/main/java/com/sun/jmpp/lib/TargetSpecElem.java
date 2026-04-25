@@ -28,7 +28,7 @@ public interface TargetSpecElem {
     * Get the name associated with this pair.
     */
     public String getName();
-     
+
    /**
     * Set the name associated with this pair.
     */
@@ -39,7 +39,7 @@ public interface TargetSpecElem {
     * Get the value associated with this pair.
     */
     public String getValue();
-     
+
    /**
     * Set the value associated with this pair.
     */

@@ -127,7 +127,7 @@ public class Jex {
         if (NameOfClassToRun == null) {
             NameOfClassToRun = DEF_LIB_NAME;
         }
-    
+
         if (NameOfClassToRun.indexOf('.') < 0 && packPath == null)
             packPath = DEF_LIB_PCKG;
 
@@ -142,14 +142,14 @@ public class Jex {
         } else {
             try {
                 classToRun = Class.forName(NameOfClassToRun);
-            } catch (ClassNotFoundException e) {}   
+            } catch (ClassNotFoundException e) {}
         }
 
         if (classToRun == null) {
             error("generator library class " + NameOfClassToRun + " not found");
             System.exit(1);
         }
-        
+
         try {
             Method meth = classToRun.getMethod("main", new Class[] { String[].class });
             meth.invoke(classToRun, new Object[] { tail });

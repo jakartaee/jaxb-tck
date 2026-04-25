@@ -36,13 +36,13 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * CodeFactory - 
+ * CodeFactory -
  *
- * <b>CodeFactory</b> is a static factory class for creating code objects (CodeSet, 
- * InlineSupportClass, ExternalSupportClass, SupportCode, TestCode). 
+ * <b>CodeFactory</b> is a static factory class for creating code objects (CodeSet,
+ * InlineSupportClass, ExternalSupportClass, SupportCode, TestCode).
  *<p>
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -61,7 +61,7 @@ public  final class CodeFactory {
      *    constructors
      * ============================================================================================
      */
-    
+
     private CodeFactory () {
 
     }
@@ -71,14 +71,14 @@ public  final class CodeFactory {
      *    Member Fields
      * ============================================================================================
      */
-    
-    
+
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Factories
@@ -92,9 +92,9 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.CodeSet
     */
     static public CodeSet  createCodeSet() {
-	return new CodeSetImpl();
+    return new CodeSetImpl();
     }
-     
+
   /**
     *   Create an (cannon) CodeSet object.
     *  <p>
@@ -111,24 +111,24 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.CodeSet
     */
-    static public CodeSet  createCodeSet (ArrayList dependencies, ArrayList imports, String baseClassName, 
-		      ArrayList exports, SupportCode supportCode, ArrayList supportClasses, ArrayList data,
-		      String context, String executeArgs ) throws TestFileException {
-	CodeSet cs = createCodeSet();
-	cs.setDependencies(dependencies);
-	cs.setImports(imports);
-	cs.setBaseClass(baseClassName);
-	cs.setExports(exports);
-	cs.setSupportCode(supportCode);
-	cs.setSupportClasses(supportClasses);
-	cs.setData(data);
-	cs.setContext(context);
-	cs.setExecuteArgs(executeArgs);
+    static public CodeSet  createCodeSet (ArrayList dependencies, ArrayList imports, String baseClassName,
+              ArrayList exports, SupportCode supportCode, ArrayList supportClasses, ArrayList data,
+              String context, String executeArgs ) throws TestFileException {
+    CodeSet cs = createCodeSet();
+    cs.setDependencies(dependencies);
+    cs.setImports(imports);
+    cs.setBaseClass(baseClassName);
+    cs.setExports(exports);
+    cs.setSupportCode(supportCode);
+    cs.setSupportClasses(supportClasses);
+    cs.setData(data);
+    cs.setContext(context);
+    cs.setExecuteArgs(executeArgs);
 
-	return cs;
+    return cs;
     }
 
-     
+
 
   /**
     *   Create an (cannon) CodeSet object.
@@ -144,10 +144,10 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.CodeSet
     */
-    static public CodeSet  createCodeSet (ArrayList dependencies, ArrayList imports, String baseClassName, 
-		      ArrayList exports, SupportCode supportCode, ArrayList supportClasses, ArrayList data ) throws TestFileException {
+    static public CodeSet  createCodeSet (ArrayList dependencies, ArrayList imports, String baseClassName,
+              ArrayList exports, SupportCode supportCode, ArrayList supportClasses, ArrayList data ) throws TestFileException {
 
-        return createCodeSet(dependencies, imports, baseClassName, 
+        return createCodeSet(dependencies, imports, baseClassName,
                 exports, supportCode, supportClasses, data, null, null);
 
     }
@@ -165,12 +165,12 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.CodeSet
     */
-    static public CodeSet  createCodeSet (ArrayList dependencies, ArrayList imports, String baseClassName, 
-		      SupportCode supportCode, ArrayList supportClasses, ArrayList data ) throws TestFileException {
-        return createCodeSet(dependencies, imports, baseClassName, 
+    static public CodeSet  createCodeSet (ArrayList dependencies, ArrayList imports, String baseClassName,
+              SupportCode supportCode, ArrayList supportClasses, ArrayList data ) throws TestFileException {
+        return createCodeSet(dependencies, imports, baseClassName,
                 null, supportCode, supportClasses, data, null, null);
     }
-     
+
 
 
 
@@ -182,81 +182,81 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.CodeSet
     */
-    static public CodeSet  cloneCodeSet (CodeSet origCS ) 
-	throws TestFileException {
-	if (origCS == null)
-	    return null;
+    static public CodeSet  cloneCodeSet (CodeSet origCS )
+    throws TestFileException {
+    if (origCS == null)
+        return null;
 
-	CodeSet cloneCS = createCodeSet();
+    CodeSet cloneCS = createCodeSet();
 
-	// let sub-classes override their clone fields
-	cloneOverrideCodeSet(origCS, cloneCS);
+    // let sub-classes override their clone fields
+    cloneOverrideCodeSet(origCS, cloneCS);
 
-	ArrayList origDeps = origCS.getDependencies();
-	if (origDeps != null) {
-	    ArrayList cloneDeps = new ArrayList();
-	    Iterator it = origDeps.iterator();
-	    while (it.hasNext()) {
-		CodeDependency dep = (CodeDependency) it.next();
-		if (dep instanceof LibraryDependency)
-		    cloneDeps.add(cloneLibraryDependency((LibraryDependency) dep));
-	    }
-	    cloneCS.setDependencies(cloneDeps);
-	}
-
-
-	ArrayList origImports = origCS.getImports();
-	if (origImports != null) {
-	    ArrayList cloneImports = new ArrayList();
-	    Iterator it1 = origImports.iterator();
-	    while (it1.hasNext()) {
-		cloneImports.add((String)it1.next());
-	    }
-	    cloneCS.setImports(cloneImports);
-	}
-
-	cloneCS.setBaseClass(origCS.getBaseClass());
-	cloneCS.setSupportCode(cloneSupportCode(origCS.getSupportCode()));
-
-
-	ArrayList origSupCls = origCS.getSupportClasses();
-	if (origSupCls != null) {
-	    ArrayList cloneSupCls = new ArrayList();
-	    Iterator it2 = origSupCls.iterator();
-	    while (it2.hasNext()) {
-		SupportClass oSupCls = (SupportClass) it2.next();
-		SupportClass cSupCls = null;
-		if (oSupCls instanceof InlineSupportClass)
-		    cSupCls = cloneInlineSupportClass((InlineSupportClass)oSupCls);
-		else if (oSupCls instanceof ExternalSupportClass)
-		    cSupCls = cloneExternalSupportClass((ExternalSupportClass)oSupCls);
-
-		cloneSupCls.add(cSupCls);
-	    }
-	    cloneCS.setSupportClasses(cloneSupCls);
-	}
-
-
-	ArrayList origDats = origCS.getData();
-	if (origDats != null) {
-	    ArrayList cloneDats = new ArrayList();
-	    Iterator it3 = origDats.iterator();
-	    while (it3.hasNext()) {
-		Data oData = (Data) it3.next();
-		Data cData = null;
-		if (oData instanceof InlineData)
-		    cData = DataFactory.cloneInlineData((InlineData) oData);
-		else if (oData instanceof ExternalData)
-		    cData = DataFactory.cloneExternalData((ExternalData) oData);
-
-		cloneDats.add(cData);
-	    }
-	    cloneCS.setData(cloneDats);
-	}
-
-	return cloneCS;
+    ArrayList origDeps = origCS.getDependencies();
+    if (origDeps != null) {
+        ArrayList cloneDeps = new ArrayList();
+        Iterator it = origDeps.iterator();
+        while (it.hasNext()) {
+        CodeDependency dep = (CodeDependency) it.next();
+        if (dep instanceof LibraryDependency)
+            cloneDeps.add(cloneLibraryDependency((LibraryDependency) dep));
+        }
+        cloneCS.setDependencies(cloneDeps);
     }
-     
+
+
+    ArrayList origImports = origCS.getImports();
+    if (origImports != null) {
+        ArrayList cloneImports = new ArrayList();
+        Iterator it1 = origImports.iterator();
+        while (it1.hasNext()) {
+        cloneImports.add((String)it1.next());
+        }
+        cloneCS.setImports(cloneImports);
+    }
+
+    cloneCS.setBaseClass(origCS.getBaseClass());
+    cloneCS.setSupportCode(cloneSupportCode(origCS.getSupportCode()));
+
+
+    ArrayList origSupCls = origCS.getSupportClasses();
+    if (origSupCls != null) {
+        ArrayList cloneSupCls = new ArrayList();
+        Iterator it2 = origSupCls.iterator();
+        while (it2.hasNext()) {
+        SupportClass oSupCls = (SupportClass) it2.next();
+        SupportClass cSupCls = null;
+        if (oSupCls instanceof InlineSupportClass)
+            cSupCls = cloneInlineSupportClass((InlineSupportClass)oSupCls);
+        else if (oSupCls instanceof ExternalSupportClass)
+            cSupCls = cloneExternalSupportClass((ExternalSupportClass)oSupCls);
+
+        cloneSupCls.add(cSupCls);
+        }
+        cloneCS.setSupportClasses(cloneSupCls);
+    }
+
+
+    ArrayList origDats = origCS.getData();
+    if (origDats != null) {
+        ArrayList cloneDats = new ArrayList();
+        Iterator it3 = origDats.iterator();
+        while (it3.hasNext()) {
+        Data oData = (Data) it3.next();
+        Data cData = null;
+        if (oData instanceof InlineData)
+            cData = DataFactory.cloneInlineData((InlineData) oData);
+        else if (oData instanceof ExternalData)
+            cData = DataFactory.cloneExternalData((ExternalData) oData);
+
+        cloneDats.add(cData);
+        }
+        cloneCS.setData(cloneDats);
+    }
+
+    return cloneCS;
+    }
+
 
 
   /**
@@ -280,9 +280,9 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.InlineSupportClass
     */
     static public InlineSupportClass  createInlineSupportClass() {
-	return new InlineSupportClassImpl();
+    return new InlineSupportClassImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) InlineSupportClass object.
@@ -296,16 +296,16 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.InlineSupportClass
     */
     static public InlineSupportClass  createInlineSupportClass (String langtype, String source,
-								String classID, String targetName ) throws TestFileException {
-	InlineSupportClass isc = createInlineSupportClass();
-	isc.setSourceLang(langtype);
-	isc.setSource(source);
-	isc.setClassID(classID);
-	isc.setTargetName(targetName);
+                                String classID, String targetName ) throws TestFileException {
+    InlineSupportClass isc = createInlineSupportClass();
+    isc.setSourceLang(langtype);
+    isc.setSource(source);
+    isc.setClassID(classID);
+    isc.setTargetName(targetName);
 
-	return isc;
+    return isc;
     }
-     
+
 
 
   /**
@@ -316,25 +316,25 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.InlineSupportClass
     */
-    static public InlineSupportClass  cloneInlineSupportClass (InlineSupportClass origISC ) 
-	throws TestFileException {
-	if (origISC == null)
-	    return null;
+    static public InlineSupportClass  cloneInlineSupportClass (InlineSupportClass origISC )
+    throws TestFileException {
+    if (origISC == null)
+        return null;
 
-	InlineSupportClass cloneISC = createInlineSupportClass();
+    InlineSupportClass cloneISC = createInlineSupportClass();
 
-	// let sub-classes override their clone fields
-	cloneOverrideInlineSupportClass(origISC, cloneISC);
+    // let sub-classes override their clone fields
+    cloneOverrideInlineSupportClass(origISC, cloneISC);
 
-	cloneISC.setSourceLang(origISC.getSourceLang());
-	cloneISC.setTargetName(origISC.getTargetName());
-	cloneISC.setClassID(origISC.getClassID());
-	cloneISC.setSource(origISC.getSource());
+    cloneISC.setSourceLang(origISC.getSourceLang());
+    cloneISC.setTargetName(origISC.getTargetName());
+    cloneISC.setClassID(origISC.getClassID());
+    cloneISC.setSource(origISC.getSource());
 
 
-	return cloneISC;
+    return cloneISC;
     }
-     
+
 
 
   /**
@@ -360,9 +360,9 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.ExternalSupportClass
     */
     static public ExternalSupportClass  createExternalSupportClass() {
-	return new ExternalSupportClassImpl();
+    return new ExternalSupportClassImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) ExternalSupportClass object.
@@ -374,16 +374,16 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.ExternalSupportClass
     */
-    static public ExternalSupportClass createExternalSupportClass(String langtype, String classID, 
-								  String sourceName ) throws TestFileException {
-	ExternalSupportClass esc = createExternalSupportClass();
-	esc.setSourceLang(langtype);
-	esc.setSourceName(sourceName);
-	esc.setClassID(classID);
+    static public ExternalSupportClass createExternalSupportClass(String langtype, String classID,
+                                  String sourceName ) throws TestFileException {
+    ExternalSupportClass esc = createExternalSupportClass();
+    esc.setSourceLang(langtype);
+    esc.setSourceName(sourceName);
+    esc.setClassID(classID);
 
-	return esc;
+    return esc;
     }
-     
+
 
 
 
@@ -395,23 +395,23 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.ExternalSupportClass
     */
-    static public ExternalSupportClass  cloneExternalSupportClass (ExternalSupportClass origESC ) 
-	throws TestFileException {
-	if (origESC == null)
-	    return null;
+    static public ExternalSupportClass  cloneExternalSupportClass (ExternalSupportClass origESC )
+    throws TestFileException {
+    if (origESC == null)
+        return null;
 
-	ExternalSupportClass cloneESC = createExternalSupportClass();
+    ExternalSupportClass cloneESC = createExternalSupportClass();
 
-	// let sub-classes override their clone fields
-	cloneOverrideExternalSupportClass(origESC, cloneESC);
+    // let sub-classes override their clone fields
+    cloneOverrideExternalSupportClass(origESC, cloneESC);
 
-	cloneESC.setSourceLang(origESC.getSourceLang());
-	cloneESC.setSourceName(origESC.getSourceName());
-	cloneESC.setClassID(origESC.getClassID());
+    cloneESC.setSourceLang(origESC.getSourceLang());
+    cloneESC.setSourceName(origESC.getSourceName());
+    cloneESC.setClassID(origESC.getClassID());
 
-	return cloneESC;
+    return cloneESC;
     }
-     
+
 
 
   /**
@@ -436,9 +436,9 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.SupportCode
     */
     static public SupportCode  createSupportCode() {
-	return new SupportCodeImpl();
+    return new SupportCodeImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) SupportCode object.
@@ -450,13 +450,13 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.SupportCode
     */
     static public SupportCode  createSupportCode (String langtype, String source ) throws TestFileException {
-	SupportCode sc = createSupportCode();
-	sc.setSourceLang(langtype);
-	sc.setSource(source);
+    SupportCode sc = createSupportCode();
+    sc.setSourceLang(langtype);
+    sc.setSource(source);
 
-	return sc;
+    return sc;
     }
-     
+
 
 
 
@@ -468,22 +468,22 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.SupportCode
     */
-    static public SupportCode  cloneSupportCode (SupportCode origSC ) 
-	throws TestFileException {
-	if (origSC == null)
-	    return null;
+    static public SupportCode  cloneSupportCode (SupportCode origSC )
+    throws TestFileException {
+    if (origSC == null)
+        return null;
 
-	SupportCode cloneSC = createSupportCode();
+    SupportCode cloneSC = createSupportCode();
 
-	// let sub-classes override their clone fields
-	cloneOverrideSupportCode(origSC, cloneSC);
+    // let sub-classes override their clone fields
+    cloneOverrideSupportCode(origSC, cloneSC);
 
-	cloneSC.setSourceLang(origSC.getSourceLang());
-	cloneSC.setSource(origSC.getSource());
+    cloneSC.setSourceLang(origSC.getSourceLang());
+    cloneSC.setSource(origSC.getSource());
 
-	return cloneSC;
+    return cloneSC;
     }
-     
+
 
 
   /**
@@ -507,9 +507,9 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.TestCode
     */
     static public TestCode  createTestCode() {
-	return new TestCodeImpl();
+    return new TestCodeImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) TestCode object.
@@ -521,13 +521,13 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.TestCode
     */
     static public TestCode  createTestCode (String langtype, String source ) throws TestFileException {
-	TestCode tc = createTestCode();
-	tc.setSourceLang(langtype);
-	tc.setSource(source);
+    TestCode tc = createTestCode();
+    tc.setSourceLang(langtype);
+    tc.setSource(source);
 
-	return tc;
+    return tc;
     }
-     
+
 
 
   /**
@@ -538,22 +538,22 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.TestCode
     */
-    static public TestCode  cloneTestCode (TestCode origTC ) 
-	throws TestFileException {
-	if (origTC == null)
-	    return null;
+    static public TestCode  cloneTestCode (TestCode origTC )
+    throws TestFileException {
+    if (origTC == null)
+        return null;
 
-	TestCode cloneTC = createTestCode();
+    TestCode cloneTC = createTestCode();
 
-	// let sub-classes override their clone fields
-	cloneOverrideTestCode(origTC, cloneTC);
+    // let sub-classes override their clone fields
+    cloneOverrideTestCode(origTC, cloneTC);
 
-	cloneTC.setSourceLang(origTC.getSourceLang());
-	cloneTC.setSource(origTC.getSource());
+    cloneTC.setSourceLang(origTC.getSourceLang());
+    cloneTC.setSource(origTC.getSource());
 
-	return cloneTC;
+    return cloneTC;
     }
-     
+
 
 
   /**
@@ -576,9 +576,9 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.LibraryDependency
     */
     static public LibraryDependency  createLibraryDependency() {
-	return new LibraryDependencyImpl();
+    return new LibraryDependencyImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) LibraryDependency object.
@@ -589,12 +589,12 @@ public  final class CodeFactory {
     * @see com.sun.tgxml.tjtf.api.code.LibraryDependency
     */
     static public LibraryDependency  createLibraryDependency (String id ) throws TestFileException {
-	LibraryDependency libdep = createLibraryDependency();
-	libdep.setID(id);
+    LibraryDependency libdep = createLibraryDependency();
+    libdep.setID(id);
 
-	return libdep;
+    return libdep;
     }
-     
+
 
 
 
@@ -606,21 +606,21 @@ public  final class CodeFactory {
     * @throws TestFileException if there is a problem with one of the paramaters.
     * @see com.sun.tgxml.tjtf.api.code.LibraryDependency
     */
-    static public LibraryDependency  cloneLibraryDependency (LibraryDependency origLD ) 
-	throws TestFileException {
-	if (origLD == null)
-	    return null;
+    static public LibraryDependency  cloneLibraryDependency (LibraryDependency origLD )
+    throws TestFileException {
+    if (origLD == null)
+        return null;
 
-	LibraryDependency cloneLD = createLibraryDependency();
+    LibraryDependency cloneLD = createLibraryDependency();
 
-	// let sub-classes override their clone fields
-	cloneOverrideLibraryDependency(origLD, cloneLD);
+    // let sub-classes override their clone fields
+    cloneOverrideLibraryDependency(origLD, cloneLD);
 
-	cloneLD.setID(origLD.getID());
+    cloneLD.setID(origLD.getID());
 
-	return cloneLD;
+    return cloneLD;
     }
-     
+
 
 
   /**

@@ -27,15 +27,15 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 /**
  * The class is responsible for formatting and reporting of
  * messages.<p>
- * The differences are grouped by a type and sorted by a TestItem name. 
+ * The differences are grouped by a type and sorted by a TestItem name.
  * The groups are reported in the following order:
  * <ul>
  *     <li> Missing TestItems
  *     <li> New TestItems
- *     <li> TestItems with a changed variant names. The report output contains 
+ *     <li> TestItems with a changed variant names. The report output contains
  *          old and new variant name.
  *     <li> TestItems with a changed attributes. The report output contains old
- *          and new attributes name. 
+ *          and new attributes name.
  * </ul>
  */
 public class TestItemDiffReporter {
@@ -46,11 +46,11 @@ public class TestItemDiffReporter {
 
     /**
      * the method is invoked if a TestItem is missing in the new log file.
-     */ 
+     */
     protected void reportMissing(String key, Entry oldEntry) {
         this.lostItems.put(key, oldEntry.getFullName());
     }
-    
+
     /**
      * the method is invoked if a new TestItem is found in the new
      * log file and new TestItem reporting is turned on.
@@ -64,7 +64,7 @@ public class TestItemDiffReporter {
      * list and variant changes reporting is turned on.
      */
     protected void reportChangedVariant(String key, Entry oldEntry, Entry newEntry) {
-        this.changedVariants.put(key, key + ": Old Variant Name = '" + oldEntry.getVariant() 
+        this.changedVariants.put(key, key + ": Old Variant Name = '" + oldEntry.getVariant()
                                       + "' New Variant Name = '" + newEntry.getVariant() + "'");
     }
 
@@ -76,10 +76,10 @@ public class TestItemDiffReporter {
                                            Entry newEntry) {
         this.changedAttributes.put(key,
                                    key + ": Old Attributes = '"
-                                   + oldEntry.getAttributes() 
+                                   + oldEntry.getAttributes()
                                    + "' New Attributes = '"
                                    + newEntry.getAttributes() + "'");
-        
+
     }
 
     /**
@@ -87,7 +87,7 @@ public class TestItemDiffReporter {
      */
     protected void finalizeReport() throws TestFileException {
         StringBuffer summary = new StringBuffer();
-  
+
         logMessages("missing", lostItems, summary);
         logMessages("added", newItems, summary);
         logMessages("changedvariants", changedVariants, summary);
@@ -108,7 +108,7 @@ public class TestItemDiffReporter {
             }
             logMessage("\n\n");
             summary.append(LibResHandler.getResStr("testitemlogdiff.report."
-                                                   + type + ".summary", 
+                                                   + type + ".summary",
                                                    Integer.toString(map.size())));
         }
     }

@@ -33,7 +33,7 @@ import javasoft.sqe.jckutils.lib.JmppScript;
  * to obtain either JCK test or verifying program for that test.
  *
  * @author Dmitry I. Khukhro
- * @version @(#)FPMaker.java	1.20 04/03/09
+ * @version @(#)FPMaker.java    1.20 04/03/09
  */
 
 public class FPMaker implements JmppScript.JmppLibrary {
@@ -52,13 +52,13 @@ public class FPMaker implements JmppScript.JmppLibrary {
     private String workDir;
     private String testPackage;
 
-	private JmppScript script;
-	private PrintWriter log;
-	private String outDir;
-	private String inDir;
-	private String wDir;
-	private File inFile;
-	private Vector srcVector;
+    private JmppScript script;
+    private PrintWriter log;
+    private String outDir;
+    private String inDir;
+    private String wDir;
+    private File inFile;
+    private Vector srcVector;
 
 /**
  * test description generator
@@ -202,16 +202,16 @@ public class FPMaker implements JmppScript.JmppLibrary {
         srcVector = lib_test.getAllSources();
 
 /* ======== skip _est sources
-		for (int i = 0; i < srcVector.size(); i++) {
+        for (int i = 0; i < srcVector.size(); i++) {
             dest = (Vector)srcVector.elementAt(i);
             src = (Vector)estVect.elementAt(i);
             for (int j = src.size() - 1; j >= 0; j--) {
                 dest.insertElementAt(src.elementAt(j), 0);
             }
-// 1.2 version:	((Vector)srcVector.elementAt(i)).addAll(0, (Vector)estVect.elementAt(i));
-		}
+// 1.2 version: ((Vector)srcVector.elementAt(i)).addAll(0, (Vector)estVect.elementAt(i));
+        }
  ========*/
-	}
+    }
 
 
 /**
@@ -231,14 +231,14 @@ public class FPMaker implements JmppScript.JmppLibrary {
  */
     private void setParams(JmppLibFP lib) {
 
-	    if (underJavaTest()) {
-		    lib.setLog(log);
-		    lib.setOutputDir(outDir);
-		    lib.setInDir(inDir);
-		    lib.setWorkJavaDir(wDir);
-		    lib.setInFile(inFile);
-		} else {
-		    if (argsHash != null){
+        if (underJavaTest()) {
+            lib.setLog(log);
+            lib.setOutputDir(outDir);
+            lib.setInDir(inDir);
+            lib.setWorkJavaDir(wDir);
+            lib.setInFile(inFile);
+        } else {
+            if (argsHash != null){
                         lib.parseOptions(argsHash);
                     } else {
                         lib.parseOptions(argv);
@@ -258,24 +258,24 @@ public class FPMaker implements JmppScript.JmppLibrary {
  */
     private void generate(JmppLibFP lib, boolean first_time) {
 
-	    if (!first_time) {
-	        lib.runXLib();
-	        return;
-	    }
-	    if (!underJavaTest()) {
-	        lib.generate();
-	        return;
-	    }
+        if (!first_time) {
+            lib.runXLib();
+            return;
+        }
+        if (!underJavaTest()) {
+            lib.generate();
+            return;
+        }
         try {
             File srcGen = lib.transform(null);
-	        if (script.compileSingle(srcGen) != 0) {
-		        makeError("compilation of "+srcGen.getName()+" has failed.");
-		    }
-		    lib.runXLib();
-		} catch(Throwable e) {
-		    makeError(e);
-		}
-	}
+            if (script.compileSingle(srcGen) != 0) {
+                makeError("compilation of "+srcGen.getName()+" has failed.");
+            }
+            lib.runXLib();
+        } catch(Throwable e) {
+            makeError(e);
+        }
+    }
 
      protected boolean makeTemplateHTML(){
          return true;
@@ -292,13 +292,13 @@ public class FPMaker implements JmppScript.JmppLibrary {
         Vector test_names;
 
         lib.fpSources = new Vector();
-		for (int i = 0; i < srcVector.size(); i++) {
+        for (int i = 0; i < srcVector.size(); i++) {
             test_files = (Vector)srcVector.elementAt(i);
             test_names = new Vector();
-		    for (int j = 0; j < test_files.size(); j++) {
+            for (int j = 0; j < test_files.size(); j++) {
                 test_names.addElement(((File)test_files.elementAt(j)).getName());
-		    }
-		    lib.fpSources.addElement(test_names);
+            }
+            lib.fpSources.addElement(test_names);
         }
 
         lib.doHTML = true;
@@ -312,7 +312,7 @@ public class FPMaker implements JmppScript.JmppLibrary {
         lib.set_f_verify(false);
 
         generate(lib, ONCE_MORE);
-	}
+    }
 
 /**
  * The method initializes tdGenerator
@@ -363,62 +363,62 @@ public class FPMaker implements JmppScript.JmppLibrary {
         PrintStream genOut;
 
         try {    // for each generated test
-	        for (int i = 0; i < testVect.size(); i++) {
-		        mainClass = (String)nameVect.elementAt(i);
-		        testPackage = mainClass.substring(0, mainClass.lastIndexOf('.'));
-		        mainClass = mainClass.substring(mainClass.lastIndexOf('.') + 1);
+            for (int i = 0; i < testVect.size(); i++) {
+                mainClass = (String)nameVect.elementAt(i);
+                testPackage = mainClass.substring(0, mainClass.lastIndexOf('.'));
+                mainClass = mainClass.substring(mainClass.lastIndexOf('.') + 1);
                 headFile = mainFile((Vector)destVect.elementAt(i), mainClass);
                 outputDir = headFile.getParent();
 
                 headFile = mainFile((Vector)testVect.elementAt(i), mainClass + est_lib.TMP_SUFF);
-		        fileName = headFile.getName();
-		        shortName = fileName.substring(0, fileName.lastIndexOf('.'));
-								      //HOT_SUFF
-			    genFile = new File(outputDir, mainClass + est_lib.EST_SUFF + ".java");
-			    genOut = new PrintStream(new FileOutputStream(genFile));
-			    genOut.println(getSourceCopyrightNotice(est_lib, genFile.getName()));
-			    genOut.println("");
+                fileName = headFile.getName();
+                shortName = fileName.substring(0, fileName.lastIndexOf('.'));
+                                      //HOT_SUFF
+                genFile = new File(outputDir, mainClass + est_lib.EST_SUFF + ".java");
+                genOut = new PrintStream(new FileOutputStream(genFile));
+                genOut.println(getSourceCopyrightNotice(est_lib, genFile.getName()));
+                genOut.println("");
 
-			    genOut.println("package " + testPackage + ";\n");
-//			    genOut.println("import java.util.Vector;\n");
-			    genOut.println("import java.io.PrintStream;\n");
-								      //HOT_SUFF
-			    genOut.println("class " + mainClass + est_lib.EST_SUFF + " {\n");
-			    genOut.println("    private static int index = -1;\n");
-			    genOut.println("    static void run(String argv[], PrintStream out) {");
-			    genOut.println("	index = -1;");
-			    genOut.println("    }\n");
-			    genOut.println("    static String estimationId() {");
-			    genOut.println("	return \", case # \"+index;");
-			    genOut.println("    }\n");
-			    genOut.println("    static Object nextEstimation() {");
-			    genOut.println("	return hotEstim[++index];");
-			    genOut.println("    }\n");
+                genOut.println("package " + testPackage + ";\n");
+//              genOut.println("import java.util.Vector;\n");
+                genOut.println("import java.io.PrintStream;\n");
+                                      //HOT_SUFF
+                genOut.println("class " + mainClass + est_lib.EST_SUFF + " {\n");
+                genOut.println("    private static int index = -1;\n");
+                genOut.println("    static void run(String argv[], PrintStream out) {");
+                genOut.println("    index = -1;");
+                genOut.println("    }\n");
+                genOut.println("    static String estimationId() {");
+                genOut.println("    return \", case # \"+index;");
+                genOut.println("    }\n");
+                genOut.println("    static Object nextEstimation() {");
+                genOut.println("    return hotEstim[++index];");
+                genOut.println("    }\n");
 
-//			    genOut.println("public static Vector hotEstim = new Vector();\n");
-//			    genOut.println("static {");
-//			    genOut.println("    Vector estVect;\n");
+//              genOut.println("public static Vector hotEstim = new Vector();\n");
+//              genOut.println("static {");
+//              genOut.println("    Vector estVect;\n");
 
-			    compileGen(headFile, shortName);
+                compileGen(headFile, shortName);
 
-			    genOut.println("    private static Object[] hotEstim = {\n");
-//			    for (int j = 0; j < important.length; j++) {
-//			        genOut.println("estVect = new Vector();\n");
-			        int j = 1;		// Intel - Joe Darcy
-			        runGen(shortName, important[j], genOut);
+                genOut.println("    private static Object[] hotEstim = {\n");
+//              for (int j = 0; j < important.length; j++) {
+//                  genOut.println("estVect = new Vector();\n");
+                    int j = 1;      // Intel - Joe Darcy
+                    runGen(shortName, important[j], genOut);
 //                    genOut.println("\nhotEstim.addElement(estVect);");
-//			    }
-			    genOut.println("\n    };");	// hotEstim
-			    genOut.println("\n}");	// class *_hot
-			    genOut.close();
-		        ((Vector)srcVector.elementAt(i)).insertElementAt(genFile, 0);
-		    }
-	    } catch (java.lang.reflect.InvocationTargetException e) {
-			makeError("FPMaker: test method run has thrown an exception:\n" +
-			          e + "\nthis is an error in the test");
-		} catch (Throwable e) {
-			makeError(e);
-		}
+//              }
+                genOut.println("\n    };"); // hotEstim
+                genOut.println("\n}");  // class *_hot
+                genOut.close();
+                ((Vector)srcVector.elementAt(i)).insertElementAt(genFile, 0);
+            }
+        } catch (java.lang.reflect.InvocationTargetException e) {
+            makeError("FPMaker: test method run has thrown an exception:\n" +
+                      e + "\nthis is an error in the test");
+        } catch (Throwable e) {
+            makeError(e);
+        }
     }
 
     protected String getSourceCopyrightNotice(JmppLibFP est_lib){
@@ -450,15 +450,15 @@ public class FPMaker implements JmppScript.JmppLibrary {
 
         String fileName, shortName, ext;
 
-		for (int i = 0; i < fileVect.size(); i++) {
-		     fileName = ((File)fileVect.elementAt(i)).getName();
-		     ext = fileName.substring(fileName.lastIndexOf('.') + 1);
-		     shortName = fileName.substring(0, fileName.lastIndexOf('.'));
-		     if ( shortName.equals(mainClass) && ext.equals("java") ) {
-			     return (File)fileVect.elementAt(i);
-		     }
-		}
-		throw new Exception("no main file for "+mainClass+" class.");
+        for (int i = 0; i < fileVect.size(); i++) {
+             fileName = ((File)fileVect.elementAt(i)).getName();
+             ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+             shortName = fileName.substring(0, fileName.lastIndexOf('.'));
+             if ( shortName.equals(mainClass) && ext.equals("java") ) {
+                 return (File)fileVect.elementAt(i);
+             }
+        }
+        throw new Exception("no main file for "+mainClass+" class.");
     }
 
 
@@ -468,13 +468,13 @@ public class FPMaker implements JmppScript.JmppLibrary {
  *   @param genFile the generator source file.
  *   @param genName name of the generator source file without extension.
  */
-	private void compileGen(File genFile, String genName)
-	                    throws Throwable {
+    private void compileGen(File genFile, String genName)
+                        throws Throwable {
 
         if (underJavaTest()) {
-	        if (script.compileSingle(genFile) != 0) {
-		        makeError("compilation of "+genName+" has failed.");
-		    }
+            if (script.compileSingle(genFile) != 0) {
+                makeError("compilation of "+genName+" has failed.");
+            }
         } else {
             String ambientClassPath = System.getProperty("java.class.path");
             if (ambientClassPath == null) {
@@ -501,8 +501,8 @@ public class FPMaker implements JmppScript.JmppLibrary {
 
     public static final String JAVAC_THREAD_SAFE_PROPERTY_NAME = "javac.thread.safe";
 
-	private Object compileSuccessive(String[] argv) throws Throwable {
-	        Object ret;
+    private Object compileSuccessive(String[] argv) throws Throwable {
+            Object ret;
                 Class c = Class.forName(javacName);
                 synchronized (c){
                     Object o = c.newInstance();
@@ -514,8 +514,8 @@ public class FPMaker implements JmppScript.JmppLibrary {
                 return ret;
         }
 
-	private Object compileParallel(String[] argv) throws Throwable {
-	        Object ret;
+    private Object compileParallel(String[] argv) throws Throwable {
+            Object ret;
                 Class c = Class.forName(javacName);
                 Object o = c.newInstance();
                 Class[] arg_types = new Class[] { argv.getClass() };
@@ -535,11 +535,11 @@ public class FPMaker implements JmppScript.JmppLibrary {
  *   @param out stream for writing into output file.
  */
     private void runGen(String genName, String[] fmt_par, PrintStream out)
-								throws Throwable {
-	Class c          = Class.forName(testPackage+"."+genName);
+                                throws Throwable {
+    Class c          = Class.forName(testPackage+"."+genName);
         Method genRun    = c.getDeclaredMethod("run", new Class[] { fmt_par.getClass(),
-									out.getClass() }  );
-	genRun.invoke(null, new Object[]{fmt_par, out});
+                                    out.getClass() }  );
+    genRun.invoke(null, new Object[]{fmt_par, out});
     }
 
 
@@ -548,9 +548,9 @@ public class FPMaker implements JmppScript.JmppLibrary {
  *
  *   @param msg error message string.
  */
-	private void makeError(String msg) {
-		lib_test.generationError(log, "FPMaker: generation failed.\nReason: "+msg);
-	}
+    private void makeError(String msg) {
+        lib_test.generationError(log, "FPMaker: generation failed.\nReason: "+msg);
+    }
 
 
 /**
@@ -559,10 +559,10 @@ public class FPMaker implements JmppScript.JmppLibrary {
  *
  *   @param msg error message string.
  */
-	private void makeError(Throwable exc) {
+    private void makeError(Throwable exc) {
             exc.printStackTrace();
             lib_test.generationError(log, exc);
-	}
+    }
 
 
 /*
@@ -570,41 +570,41 @@ public class FPMaker implements JmppScript.JmppLibrary {
  * for running FP Jmpp tests under JavaTest.
  */
 
-	public void setScript(JmppScript scr) {
-	    script = scr;
-	}
-	public void setLog(PrintWriter pw) {
-	    log = pw;
-	}
-	public void setOutputDir(String s) {
-	    outDir = s;
-	}
-	public void setInDir(String s) {
-	    inDir = s;
-	}
-	public void setWorkJavaDir(String s) {
-	    wDir = s;
-	}
-	public void setInFile(File f) {
-	    inFile = f;
-	}
+    public void setScript(JmppScript scr) {
+        script = scr;
+    }
+    public void setLog(PrintWriter pw) {
+        log = pw;
+    }
+    public void setOutputDir(String s) {
+        outDir = s;
+    }
+    public void setInDir(String s) {
+        inDir = s;
+    }
+    public void setWorkJavaDir(String s) {
+        wDir = s;
+    }
+    public void setInFile(File f) {
+        inFile = f;
+    }
 
-	public String getTemplatePackage() {
-	    return lib_test.getTemplatePackage();
-	}
-	public Vector getAllKeywords() {
-	    return lib_test.getAllKeywords();
-	}
-	public Vector getAllTestNames() {
-	    return lib_test.getAllTestNames();
-	}
+    public String getTemplatePackage() {
+        return lib_test.getTemplatePackage();
+    }
+    public Vector getAllKeywords() {
+        return lib_test.getAllKeywords();
+    }
+    public Vector getAllTestNames() {
+        return lib_test.getAllTestNames();
+    }
 
-	public void makeOut() {};
-	public void closeOut() {};
+    public void makeOut() {};
+    public void closeOut() {};
 
-	public Vector getAllSources() {
-	    return srcVector;
-	}
+    public Vector getAllSources() {
+        return srcVector;
+    }
 
-	public void passDataTo(Object o) {}
+    public void passDataTo(Object o) {}
 }

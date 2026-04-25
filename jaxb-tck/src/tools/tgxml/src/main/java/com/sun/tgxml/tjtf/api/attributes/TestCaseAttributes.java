@@ -21,7 +21,7 @@ package com.sun.tgxml.tjtf.api.attributes;
 // </importgen>
 
 /**
- * TestCaseAttributes - 
+ * TestCaseAttributes -
  *
  * <b>TestCaseAttributes</b> is the typed-attribute interface for describing the attributes
  * associated with a TestCase.
@@ -29,7 +29,7 @@ package com.sun.tgxml.tjtf.api.attributes;
  * <b>TestCaseAttributes</b> contains everything from <b>TestAttributes</b>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,7 +48,7 @@ public  interface TestCaseAttributes extends TestAttributes  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters

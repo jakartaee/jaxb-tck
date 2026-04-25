@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,8 +23,8 @@ import java.util.SortedSet;
 /**
  * Referenced set supports sorting Object based on their natural ordering
  * or a Comparator, which must be wrapped in a ReferenceComparator.
- * 
- * @param <T> 
+ *
+ * @param <T>
  * @see Comparable
  * @see Comparator
  * @see ReferenceComparator
@@ -38,13 +38,13 @@ class ReferenceSortedSet<T> extends ReferenceSet<T> implements SortedSet<T> {
         super(set, type, gcThreads, gcCycle);
         this.set = set;
     }
-    
+
     ReferenceSortedSet(SortedSet<Referrer<T>> set, ReferenceQueuingFactory<T, Referrer<T>> rqf, Ref type){
         super(set, rqf, type);
         this.set = set;
     }
-    
-    private void readObject(ObjectInputStream stream) 
+
+    private void readObject(ObjectInputStream stream)
             throws InvalidObjectException{
         throw new InvalidObjectException("Builder required");
     }
@@ -91,5 +91,5 @@ class ReferenceSortedSet<T> extends ReferenceSet<T> implements SortedSet<T> {
         if ( t != null ) return t.get();
         return null;
     }
-    
+
 }

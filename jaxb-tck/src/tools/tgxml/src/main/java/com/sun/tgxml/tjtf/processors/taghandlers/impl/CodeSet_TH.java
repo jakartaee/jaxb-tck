@@ -39,47 +39,47 @@ import com.sun.tgxml.tjtf.api.tests.TestItem;
 import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
-/** 
- * CodeSet_TH - The tag-handler for a CodeSet tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    CodeSet_TH 
- * ============================================================================================ 
- */ 
+/**
+ * CodeSet_TH - The tag-handler for a CodeSet tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    CodeSet_TH
+ * ============================================================================================
+ */
 public class CodeSet_TH extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   CodeSet_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   CodeSet_TH constructor -
+    *       Initialize our internal fields.
+    */
     public CodeSet_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ public class CodeSet_TH extends TagHandlerImpl  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_codeset;
+    return TagsImpl.ctStr_tag_codeset;
     }
 
     //------------------------------------------------------------------------------
@@ -103,20 +103,20 @@ public class CodeSet_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	CodeSet cs = null;
+    CodeSet cs = null;
 
-	super.startTag(attrs);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
-	if (! (testitem instanceof TestItem)  )
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.testitem.invcontext", getTagName()));
+    super.startTag(attrs);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
+    if (! (testitem instanceof TestItem)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.testitem.invcontext", getTagName()));
 
-	cs = CodeFactory.createCodeSet();
-	TestItem ti = (TestItem) testitem;
-	ti.setCodeSet(cs);
-	testItemStack.push(cs);
+    cs = CodeFactory.createCodeSet();
+    TestItem ti = (TestItem) testitem;
+    ti.setCodeSet(cs);
+    testItemStack.push(cs);
     }
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -124,119 +124,119 @@ public class CodeSet_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void endTag() throws SAXException {
-	super.endTag();
-	try {
-	    Stack testItemStack = getParserHandler().getStack();
+    super.endTag();
+    try {
+        Stack testItemStack = getParserHandler().getStack();
 
-	    Object testitem = testItemStack.pop();
+        Object testitem = testItemStack.pop();
 
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if (! (testitem instanceof CodeSet))
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
+        if (! (testitem instanceof CodeSet))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
 
-	} catch (EmptyStackException e) {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
-	}
+    } catch (EmptyStackException e) {
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
+    }
 
     }
-     
-     
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-          
-          
+
+
+
   /**
     *   emit a tags components.
     *  <p>
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof CodeSet))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-								"CodeSet", tdObject.getClass().getName()));
+    if (! (tdObject instanceof CodeSet))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                                "CodeSet", tdObject.getClass().getName()));
 
-	CodeSet cs = (CodeSet) tdObject;
-
-
-	ArrayList dependencies = cs.getDependencies();
-	if (dependencies != null && dependencies.size() > 0)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_dependency, dependencies);
+    CodeSet cs = (CodeSet) tdObject;
 
 
-
-	ArrayList imports = cs.getImports();
-	if (imports != null) {
-	    Iterator it1 = imports.iterator();
-
-	    while (it1.hasNext()) {
-		m_EmitterHandler.emit(TagsImpl.ctStr_tag_import, it1.next());
-	    }
-	}
-
-	String executeargs = cs.getExecuteArgs();
-	if (executeargs != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_executeargs, executeargs);
-
-
-	String context = cs.getContext();
-	if (context != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_context, context);
-
-
-	String baseclass = cs.getBaseClass();
-	if (baseclass != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_baseclass, baseclass);
-
-
-	ArrayList exports = cs.getExports();
-	if (exports != null) {
-	    Iterator it1 = exports.iterator();
-
-	    while (it1.hasNext()) {
-		m_EmitterHandler.emit(TagsImpl.ctStr_tag_export, it1.next());
-	    }
-	}
-
-
-	SupportCode supportcode = cs.getSupportCode();
-	if (supportcode != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_supportcode, supportcode);
-
-
-	ArrayList supportclasses = cs.getSupportClasses();
-	if (supportclasses != null) {
-	    Iterator it2 = supportclasses.iterator();
-	    SupportClass sc = null;
-
-	    while (it2.hasNext()) {
-		sc = (SupportClass) it2.next();
-
-		if (sc instanceof ExternalSupportClass)
-		    m_EmitterHandler.emit(TagsImpl.ctStr_tag_externalsupportclass, sc);
-		else if (sc instanceof InlineSupportClass)
-		    m_EmitterHandler.emit(TagsImpl.ctStr_tag_inlinesupportclass, sc);
-	    }
-	}
+    ArrayList dependencies = cs.getDependencies();
+    if (dependencies != null && dependencies.size() > 0)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_dependency, dependencies);
 
 
 
-	ArrayList data = cs.getData();
-	if (data != null) {
-	    Iterator it3 = data.iterator();
-	    Data datum = null;
+    ArrayList imports = cs.getImports();
+    if (imports != null) {
+        Iterator it1 = imports.iterator();
 
-	    while (it3.hasNext()) {
-		datum = (Data) it3.next();
+        while (it1.hasNext()) {
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_import, it1.next());
+        }
+    }
 
-		if (datum instanceof ExternalData)
-		    m_EmitterHandler.emit(TagsImpl.ctStr_tag_externaldata, datum);
-		else if (datum instanceof InlineData)
-		    m_EmitterHandler.emit(TagsImpl.ctStr_tag_inlinedata, datum);
-	    }
-	}
+    String executeargs = cs.getExecuteArgs();
+    if (executeargs != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_executeargs, executeargs);
+
+
+    String context = cs.getContext();
+    if (context != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_context, context);
+
+
+    String baseclass = cs.getBaseClass();
+    if (baseclass != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_baseclass, baseclass);
+
+
+    ArrayList exports = cs.getExports();
+    if (exports != null) {
+        Iterator it1 = exports.iterator();
+
+        while (it1.hasNext()) {
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_export, it1.next());
+        }
+    }
+
+
+    SupportCode supportcode = cs.getSupportCode();
+    if (supportcode != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_supportcode, supportcode);
+
+
+    ArrayList supportclasses = cs.getSupportClasses();
+    if (supportclasses != null) {
+        Iterator it2 = supportclasses.iterator();
+        SupportClass sc = null;
+
+        while (it2.hasNext()) {
+        sc = (SupportClass) it2.next();
+
+        if (sc instanceof ExternalSupportClass)
+            m_EmitterHandler.emit(TagsImpl.ctStr_tag_externalsupportclass, sc);
+        else if (sc instanceof InlineSupportClass)
+            m_EmitterHandler.emit(TagsImpl.ctStr_tag_inlinesupportclass, sc);
+        }
+    }
+
+
+
+    ArrayList data = cs.getData();
+    if (data != null) {
+        Iterator it3 = data.iterator();
+        Data datum = null;
+
+        while (it3.hasNext()) {
+        datum = (Data) it3.next();
+
+        if (datum instanceof ExternalData)
+            m_EmitterHandler.emit(TagsImpl.ctStr_tag_externaldata, datum);
+        else if (datum instanceof InlineData)
+            m_EmitterHandler.emit(TagsImpl.ctStr_tag_inlinedata, datum);
+        }
+    }
 
 
     }

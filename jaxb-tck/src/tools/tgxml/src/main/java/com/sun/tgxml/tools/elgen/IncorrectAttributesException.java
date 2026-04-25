@@ -18,15 +18,15 @@
 package com.sun.tgxml.tools.elgen;
 
 /**
- *  
+ *
  */
 public class IncorrectAttributesException extends Exception {
 
-    /** 
-     *   
+    /**
+     *
      */
     public IncorrectAttributesException(String message) {
-	super(message);
+    super(message);
     }
 
 }

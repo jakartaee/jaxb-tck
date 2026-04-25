@@ -23,7 +23,7 @@ package com.sun.jmpp;
  * Jmpp library can request from TestGen (or some other Jmpp-based interactive
  * test development system):
  * <ul>
- * <li> <b>basic</b> when only test generation is supported 
+ * <li> <b>basic</b> when only test generation is supported
  * <li> <b>full </b> when the basic level plus jmpp source file creation wizard are
  *                   supported
  * </ul>

@@ -26,18 +26,18 @@ import com.sun.tgxml.tools.filter.processors.NodeTRUE;
 import com.sun.tgxml.tools.filter.processors.TestFilter;
 
 /**
- * It is wrapper for enhanced filtering scheme. It designed for the TestGroup 
- * filtering only. 
+ * It is wrapper for enhanced filtering scheme. It designed for the TestGroup
+ * filtering only.
  */
 public class Factory extends FilterFactory {
-    
-    
+
+
     public FilterExpression cfgRead(String configuration) throws FilteringException {
         return new NodeTRUE();
     }
 
     private static TestGroupFilter filter;
-    
+
     public synchronized TestFilter getTestFilter(String configuration,
                                                  ExcludeListFilter elf,
                                                  FilteredOutList fol)

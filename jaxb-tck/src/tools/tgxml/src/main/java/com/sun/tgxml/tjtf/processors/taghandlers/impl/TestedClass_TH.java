@@ -30,49 +30,49 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
 /**
- * TestedClass_TH - The tag-handler for a TestedClass tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TestedClass_TH 
- * ============================================================================================ 
- */ 
+ * TestedClass_TH - The tag-handler for a TestedClass tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TestedClass_TH
+ * ============================================================================================
+ */
 public class TestedClass_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TestedClass_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TestedClass_TH constructor -
+    *       Initialize our internal fields.
+    */
     public TestedClass_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,13 +83,13 @@ public class TestedClass_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_testedclass;
+    return TagsImpl.ctStr_tag_testedclass;
     }
 
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -97,40 +97,40 @@ public class TestedClass_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
+    super.endTag(text);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
 
-	if (testitem == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+    if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	if (! (testitem instanceof TestGroupDocumentation)  )
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testgroupdocumentation));
-	
-	//  Nothing is pushed onto the stack
-	TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
+    if (! (testitem instanceof TestGroupDocumentation)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testgroupdocumentation));
 
-	// validated the Tested class for well-formedness
+    //  Nothing is pushed onto the stack
+    TestGroupDocumentation tgd = (TestGroupDocumentation) testitem;
 
-	//   If the tag is parsed in, it can not have null text.
-	if (text == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+    // validated the Tested class for well-formedness
 
-	try {
-	    String tclass = CommonImpl.getSingleToken(text);
+    //   If the tag is parsed in, it can not have null text.
+    if (text == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
 
-	    tgd.setTestedClass(tclass);
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e);
-	}
+    try {
+        String tclass = CommonImpl.getSingleToken(text);
+
+        tgd.setTestedClass(tclass);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e);
     }
-     
-          
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -138,15 +138,15 @@ public class TestedClass_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-								"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                                "String", tdObject.getClass().getName()));
 
-	String testedclass = (String) tdObject;
+    String testedclass = (String) tdObject;
 
-	m_EmitterHandler.emitText(testedclass);
+    m_EmitterHandler.emitText(testedclass);
 
     }
-     
+
 
 }

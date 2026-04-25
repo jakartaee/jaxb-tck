@@ -19,13 +19,13 @@ package com.sun.tgxml.tjtf.tools.options;
 
 
 /**
- * HelpOptionException - 
+ * HelpOptionException -
  *
  * Signals that help option is passed
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -38,8 +38,8 @@ public class HelpOptionException extends ParseArgumentException {
      * @param message  a an exception message string.
      */
     public HelpOptionException (String message) {
-	super(message);
+    super(message);
     }
 }
-     
+
 

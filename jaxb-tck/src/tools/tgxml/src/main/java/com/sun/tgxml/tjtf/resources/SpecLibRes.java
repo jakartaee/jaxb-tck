@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package com.sun.tgxml.tjtf.resources; 
+package com.sun.tgxml.tjtf.resources;
 
 import java.util.ListResourceBundle;
 
@@ -106,7 +106,7 @@ public class SpecLibRes extends ListResourceBundle {
         {"parser.error.unknownTDAttr", "Attribute is unknown in this context: {0}."},
 
         {"parser.error.tc.nontg", "Tried to put TestCase into something other than a TestGroup."},
-       
+
         {"parser.error.header", "Parsing Errors: {0}    File: {1}{2}   (DTD: {3}){4}"},
         {"parser.error.syntax.linecol", "  Line: {0} (Col: {1}),{2}   Error: {3}{4}"},
         {"parser.error.syntax.line", "  Line: {0},{1}   Error: {2}{3}"},
@@ -330,11 +330,11 @@ public class SpecLibRes extends ListResourceBundle {
         {"tools.equiv.targetspec.versmod.uneq", "Unequal TargetSpec  (ID: \"{0}\") Version {0}:  1: {2} 2: {3}."},
 
         {"tools.equiv.type.uneq", "Unequal or unknown UTD objects:  1: \"{0\"} 2: \"{1}\"."},
-        
+
         // ---------------------------------------------------------------------------------
         //    testgen messages
         // ---------------------------------------------------------------------------------
-        
+
         {"testgen.error.codecopy", "Unable to copy file : {0}"},
         {"testgen.error.testcase.codenotfound", "No code found for testcase : {0}"},
         {"testgen.error.testcase.langnotsupported", "Source language {0} found in testcase {1} is not supported"},
@@ -363,7 +363,7 @@ public class SpecLibRes extends ListResourceBundle {
         {"testgen.error.resource.nullsrc_install", "Source file for resource file installation is null"},
         {"testgen.error.resource.nulldest_install", "Destination file for resource file installation is null"},
         {"testgen.error.resource.nulldata_install", "data parameter for resource file installation is null"},
-                
+
         // ---------------------------------------------------------------------------------
         //    jmppconv messages
         // ---------------------------------------------------------------------------------
@@ -391,7 +391,7 @@ public class SpecLibRes extends ListResourceBundle {
 
         {"elgen.error.no_rel_sourcepath", "No relarive source path specified for TestItem {0}"},
         {"elgen.error.invalid_rel_sourcepath", "Invalid relarive source path specified for TestItem {0} : {1}"},
-        
+
         // ---------------------------------------------------------------------------------
         //    filter messages
         // ---------------------------------------------------------------------------------
@@ -404,7 +404,7 @@ public class SpecLibRes extends ListResourceBundle {
         {"filter.error.testfilter.outputError", "Output error for the file : {0}, {1}"},
 
         {"filter.error.tfc.noErrorStream", "Not defined err print stream "
-							+ "for TestFilterConveyer constructor"},
+                            + "for TestFilterConveyer constructor"},
         {"filter.error.tfc.badExList", "Bad exclude list file :{0}\n{1}"},
         {"filter.error.tfc.badLibList", "Bad libId list file :{0}\n{1}"},
         {"filter.error.tfc.badPlugin", "Bad plugin :{0}\n{1}"},
@@ -426,11 +426,11 @@ public class SpecLibRes extends ListResourceBundle {
         {"filter.error.testfilter.excludedTCase",  "Check excluded TestCase: {0}"},
         {"filter.error.testfilter.duplicatedTCase", "Duplicated TestCase ID: {0}"},
         {"filter.error.libfilter.notSingleImpl", "Not single implementation of library : {0}"
-						+" remains after filtering" },
+                        +" remains after filtering" },
         {"filter.error.libfilter.duplicatedSClass", "Duplicated SupportClass :{0}"
-						+" for TestItem :{1}" },
+                        +" for TestItem :{1}" },
         {"filter.error.libfilter.noErrorStream", "Not defined err print stream "
-							+ "for LibFilterConveyer constructor"},
+                            + "for LibFilterConveyer constructor"},
         {"filter.error.libfilter.badDepLibList", "Bad libDep list file : {0}\n{1}"},
         {"filter.error.libfilter.badPlugin", "Bad plugin :{0}\n{1}"},
         {"filter.error.libfilter.noLibImpl", "Not found implementations for :{0}\n in {1}"},
@@ -498,9 +498,9 @@ public class SpecLibRes extends ListResourceBundle {
         {"testitemlogdiff.usage.header", "Usage: com.sun.tgxml.tools.filter.testitemdiff.TestItemListDiff -oldlist <file name> -newlist <file name> [<options>] "},
         {"testitemlogdiff.option.new.mnem", "-new_items"},
         {"testitemlogdiff.option.new", "  -new_items <on|off> turn on/off the reporting of a new TestItems "},
-        {"testitemlogdiff.option.variants.mnem", "-variants"}, 
+        {"testitemlogdiff.option.variants.mnem", "-variants"},
         {"testitemlogdiff.option.variants", "  -variants <on|off> turn on/off the reporting of a changed TestItem variant names "},
-        {"testitemlogdiff.option.attributes.mnem", "-attributes"}, 
+        {"testitemlogdiff.option.attributes.mnem", "-attributes"},
         {"testitemlogdiff.option.attributes", "  -attributes <on|off> turn on/off the reporting of a changed TestItem attributes names"},
 
         {"testitemlogdiff.option.oldlist.mnem", "-oldlist"},

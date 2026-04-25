@@ -23,7 +23,7 @@ import java.util.ArrayList;
 // </importgen>
 
 /**
- * Attributes - 
+ * Attributes -
  *
  * <b>Attributes</b> is the basic interface for describing the build and target attributes
  * that a test can have.
@@ -36,15 +36,15 @@ import java.util.ArrayList;
  *  </ul> <br>
  *
  * <p>
- * <b>Attributes</b> are registered with a <b>TestGroup</b>, <b>Library</b>, and <b>TestCase</b> 
- *  elements.  
- * <p> 
+ * <b>Attributes</b> are registered with a <b>TestGroup</b>, <b>Library</b>, and <b>TestCase</b>
+ *  elements.
+ * <p>
  * Each of the fields above have setter and getter methods that return information based
- * on the local description for that element.  
+ * on the local description for that element.
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -63,7 +63,7 @@ public  interface Attributes  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -82,7 +82,7 @@ public  interface Attributes  {
     * @see #setRequiredResources
     */
     public ArrayList getRequiredResources();
-     
+
    /**
     *   Set the required-resources associated with this entity.
     *  <p>
@@ -108,7 +108,7 @@ public  interface Attributes  {
     * @see #setAttrElems
     */
     public ArrayList getAttrElems();
-     
+
    /**
     *   Set the repository-specific attributes associated with this entity.
     *  <p>
@@ -135,7 +135,7 @@ public  interface Attributes  {
     * @see #setTargetSpecs
     */
     public ArrayList getTargetSpecs();
-     
+
    /**
     *   Set the specifications associated with this entity.
     *  <p>

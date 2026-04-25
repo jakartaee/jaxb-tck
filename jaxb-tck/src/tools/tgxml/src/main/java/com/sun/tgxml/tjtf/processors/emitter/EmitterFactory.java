@@ -26,12 +26,12 @@ import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
 // </importgen>
 
 /**
- * EmitterFactory - 
+ * EmitterFactory -
  *
- * <b>EmitterFactory</b> is a static factory class for creating XMLEmitters. 
+ * <b>EmitterFactory</b> is a static factory class for creating XMLEmitters.
  *<p>
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -50,7 +50,7 @@ public  class EmitterFactory {
      *    constructors
      * ============================================================================================
      */
-    
+
     private EmitterFactory () {
 
     }
@@ -60,14 +60,14 @@ public  class EmitterFactory {
      *    Member Fields
      * ============================================================================================
      */
-    
-    
+
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Factories
@@ -82,14 +82,14 @@ public  class EmitterFactory {
     * @see com.sun.tgxml.tjtf.processors.emitter.XMLEmitter
     */
     static public XMLEmitter  createDefaultXMLEmitter() throws TestFileException  {
-	XMLEmitterImpl emitter = (XMLEmitterImpl) createXMLEmitter();
-	TagHandlerTable table = TagHandlerFactory.getDefaultHandlerTable();
-	TagHandlerFactory.setEmitterSupport(table, emitter.getEmitterHandlerSupport());
-	emitter.setupEmitter(table);
+    XMLEmitterImpl emitter = (XMLEmitterImpl) createXMLEmitter();
+    TagHandlerTable table = TagHandlerFactory.getDefaultHandlerTable();
+    TagHandlerFactory.setEmitterSupport(table, emitter.getEmitterHandlerSupport());
+    emitter.setupEmitter(table);
 
-	return emitter;
+    return emitter;
     }
-     
+
 
   /**
     *   Create a XMLEmitter with an existing TagHandlerTable.
@@ -100,11 +100,11 @@ public  class EmitterFactory {
     * @see com.sun.tgxml.tjtf.processors.emitter.XMLEmitter
     */
     static public XMLEmitter  createXMLEmitter(TagHandlerTable table) throws TestFileException  {
-	XMLEmitterImpl emitter = (XMLEmitterImpl) createXMLEmitter();
-	TagHandlerFactory.setEmitterSupport(table, emitter.getEmitterHandlerSupport());
-	emitter.setupEmitter(table);
+    XMLEmitterImpl emitter = (XMLEmitterImpl) createXMLEmitter();
+    TagHandlerFactory.setEmitterSupport(table, emitter.getEmitterHandlerSupport());
+    emitter.setupEmitter(table);
 
-	return emitter;
+    return emitter;
     }
  /**
     *   Create a XMLEmitter with an existing TagHandlerTable.
@@ -114,12 +114,12 @@ public  class EmitterFactory {
     * @see com.sun.tgxml.tjtf.processors.emitter.XMLEmitter
     */
     static public XMLEmitter  createXMLEmitter() throws TestFileException  {
-	XMLEmitterImpl emitter = new XMLEmitterImpl();
+    XMLEmitterImpl emitter = new XMLEmitterImpl();
 
-	return emitter;
+    return emitter;
     }
-     
-     
+
+
 
 
 

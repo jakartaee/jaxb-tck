@@ -25,24 +25,24 @@ import com.sun.tgxml.tools.testgen.processors.ir.IRPFactorySpi;
 import com.sun.tgxml.tools.testgen.processors.ir.IRProcessor;
 
 /**
- * <b>RuntimeLibraryIRPFactorySpi</b> class that provides implementation of 
+ * <b>RuntimeLibraryIRPFactorySpi</b> class that provides implementation of
  * <code>IRPFactorySpi</code> interface.
  * <p>
  * The {@link com.sun.tgxml.tools.testgen.processors.ir.IRPFactory#IRP_FACTORY_SPI_PROP_NAME}
  * defines name of a build property used to specify <code>IRPFactorySpi</code> implementation.
  * <p>
- * @author      Maxim V. Sokolnikov 
+ * @author      Maxim V. Sokolnikov
  *
  */
 
 public class RuntimeLibraryIRPFactorySpi implements IRPFactorySpi {
 
-	private static ExternalLibraryMapCollector libMapCollector = new ExternalLibraryMapCollector();
-	
-	public static TestItemSelectionListener getListener() {
-		return libMapCollector;
-	}
-	
+    private static ExternalLibraryMapCollector libMapCollector = new ExternalLibraryMapCollector();
+
+    public static TestItemSelectionListener getListener() {
+        return libMapCollector;
+    }
+
     public IRProcessor getProcessor(Properties props) {
         return new RuntimeLibraryLinker(props, libMapCollector);
     }

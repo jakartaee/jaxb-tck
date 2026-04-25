@@ -26,15 +26,15 @@ import com.sun.tgxml.tjtf.tools.BuildProperties;
  * <b>IRPFactory</b> factory used by TestGen tool to gen an instance
  * of IRProcessor.
  * <p>
- * This class uses a provider-based architecture. To create a IRPFactory, 
+ * This class uses a provider-based architecture. To create a IRPFactory,
  * call one of the static getInstance methods.
  * <p>
- * Once a IRPFactory object has been created, IRProcessor can be 
- * constructed by calling the getIRProcessor() method and passing it 
- * a Property. 
+ * Once a IRPFactory object has been created, IRProcessor can be
+ * constructed by calling the getIRProcessor() method and passing it
+ * a Property.
  * <p>
- * @version 	1.0, 21/01/2004
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 21/01/2004
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -42,8 +42,8 @@ public final class IRPFactory {
 
     /**
      * Default build property name that specifies IRPFactorySpi class name
-     */ 
-    public static final String IRP_FACTORY_SPI_PROP_NAME = 
+     */
+    public static final String IRP_FACTORY_SPI_PROP_NAME =
         "IRPFactorySpiClassName";
 
     private static IRPFactory factory = null;
@@ -71,7 +71,7 @@ public final class IRPFactory {
     /**
      * Returns getInstance(IRP_FACTORY_SPI_PROP_NAME)
      * @see #getInstance(String tckPropertyName)
-     */ 
+     */
     public static IRPFactory getInstance() throws TestFileException {
        return getInstance(IRP_FACTORY_SPI_PROP_NAME);
     }
@@ -87,10 +87,10 @@ public final class IRPFactory {
      *
      * @param tckPropertyName build property name
      * @return factory instance
-     * @exception TestFileException if instance of IRPFactorySpi cannot 
+     * @exception TestFileException if instance of IRPFactorySpi cannot
      *            be created.
      *
-     */ 
+     */
     public static IRPFactory getInstance(String tckPropertyName)
             throws TestFileException {
         if (factory != null)
@@ -100,12 +100,12 @@ public final class IRPFactory {
     }
 
     /**
-     * Returns <code>spi.getProcessor(props)</code>, where 
-     * spi is IRPFactorySpi. 
-     */ 
+     * Returns <code>spi.getProcessor(props)</code>, where
+     * spi is IRPFactorySpi.
+     */
     public IRProcessor getProcessor(Properties props)
             throws TestFileException {
         return spi.getProcessor(props);
     }
 
-}   
+}

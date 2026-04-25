@@ -26,9 +26,9 @@ import com.sun.tgxml.tools.indexgen.api.TestSuite;
 
 
 /**
- * TestSuite - 
+ * TestSuite -
  *
- * <b>TestSuite</b> is a root element of doc.xml file 
+ * <b>TestSuite</b> is a root element of doc.xml file
  * <p>
  * <b>TestSuite</b> contains the following:<br><br>
  * <ul>
@@ -60,7 +60,7 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
      *    Fields
      * ============================================================================================
      */
-   
+
     private String          title;
     private String          description;
     private String          comments;
@@ -74,26 +74,26 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public TestSuiteImpl() {
-		init();
+        init();
     }
 
     public TestSuiteImpl(String Title, String Description, String Format, String Comments) {
-		title = Title;
-		description = Description;
-		format = Format;
-		comments = Comments;
+        title = Title;
+        description = Description;
+        format = Format;
+        comments = Comments;
     }
 
     private void init() {
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -112,28 +112,28 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #setTitle
     */
     public String getTitle()  throws TestFileException {
-		if(title == null) {
-			throw new TestFileException(LibResHandler.getResStr("indexgen.error.nulltitle"));
-		}
-		return title;
-	}
-     
+        if(title == null) {
+            throw new TestFileException(LibResHandler.getResStr("indexgen.error.nulltitle"));
+        }
+        return title;
+    }
+
    /**
     *   Set the title associated with this documentation.
     *  <p>
     *   This title must be a valid String
-    *   and not NULL. 
+    *   and not NULL.
     *  <p>
     * @param     title The title of the documentation.
     * @exception TestFileException if the title is NULL
     * @see #getTitle
     */
     public void setTitle(String title)  throws TestFileException{
-		if(title == null) {
-			throw new TestFileException(LibResHandler.getResStr("indexgen.error.nulltitle"));
-		}
-		this.title = title;
-	}
+        if(title == null) {
+            throw new TestFileException(LibResHandler.getResStr("indexgen.error.nulltitle"));
+        }
+        this.title = title;
+    }
 
 
 
@@ -147,8 +147,8 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #setDescription
     */
     public String getDescription(){
-		return description;
-	}
+        return description;
+    }
    /**
     *   Set the description associated with this documentation.
     *  <p>
@@ -158,16 +158,16 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #getDescription
     */
     public void setDescription(String description) {
-		this.description = description;
-	}
+        this.description = description;
+    }
 
 
   /**
     *   Get the content format of this documentation.
     *  <p>
-	* 
+    *
     *  <p>
-    *   There are two format <code>TestSuite.LIST_FORMAT </code> and 
+    *   There are two format <code>TestSuite.LIST_FORMAT </code> and
     * <code>TestSuite.TABLE_FORMAT </code>
     *  <p>
     * @return content format of this documentation.
@@ -176,15 +176,15 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #TABLE_FORMAT
     */
     public String getContentsFormat() {
-		return format;
+        return format;
 
-    } 
+    }
   /**
     *   Set the content format of this documentation.
     *  <p>
-	* 
+    *
     *  <p>
-    *   There are to format <code>TestSuite.LIST_FORMAT </code> and 
+    *   There are to format <code>TestSuite.LIST_FORMAT </code> and
     * <code>TestSuite.TABLE_FORMAT </code>
     *  <p>
     * @exception TestFileException if the format is not a LIST_FORMAT or TABLE_FORMAT
@@ -192,12 +192,12 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #LIST_FORMAT
     * @see #TABLE_FORMAT
     */
-	public void setContentsFormat(String format) throws TestFileException {
-		if (!TABLE_FORMAT.equals(format) && !LIST_FORMAT.equals(format)) {
-			throw new TestFileException(LibResHandler.getResStr("indexgen.error.contentformat"));
-		}
-		this.format = format;
-	}
+    public void setContentsFormat(String format) throws TestFileException {
+        if (!TABLE_FORMAT.equals(format) && !LIST_FORMAT.equals(format)) {
+            throw new TestFileException(LibResHandler.getResStr("indexgen.error.contentformat"));
+        }
+        this.format = format;
+    }
 
 
 
@@ -210,8 +210,8 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #setComments
     */
     public String getComments() {
-		return comments;
-	}
+        return comments;
+    }
    /**
     *   Set the comments associated with this documentation.
     *  <p>
@@ -221,11 +221,11 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #getComments
     */
     public void setComments(String comments) {
-		this.comments = comments;
-	}
+        this.comments = comments;
+    }
 
    /**
-	*   Get the ID of the documentation.
+    *   Get the ID of the documentation.
     *  <p>
     *   This ID may be a valid String or Null.
     *  <p>
@@ -233,8 +233,8 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #setID
     */
     public String getID(){
-		return id;
-	}
+        return id;
+    }
    /**
     *   Set the ID of this documentation.
     *  <p>
@@ -244,8 +244,8 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     * @see #getID
     */
     public void setID(String id){
-		this.id = id;
-	}
+        this.id = id;
+    }
 
   /**
     *   Get the repository-specific attributes associated with this entity.
@@ -257,7 +257,7 @@ public  class TestSuiteImpl extends TestItemImpl implements TestSuite {
     public ArrayList getAttrElems() {
         return attrElems;
     }
-     
+
    /**
     *   Set the repository-specific attributes associated with this entity.
     *  <p>

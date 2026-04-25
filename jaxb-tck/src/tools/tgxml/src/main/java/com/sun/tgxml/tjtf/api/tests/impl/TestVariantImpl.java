@@ -24,10 +24,10 @@ import com.sun.tgxml.tjtf.api.tests.TestVariant;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 /**
- * TestVariantImpl - 
+ * TestVariantImpl -
  *
- * <b>TestVariantImpl</b> is the implementation of the TestVariant interface. 
- * 
+ * <b>TestVariantImpl</b> is the implementation of the TestVariant interface.
+ *
  * <p>
  *
  * @author  Dmitry Fazunenko
@@ -37,7 +37,7 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 /*
  * ======================================================================
  *    TestVariantImpl
- * ====================================================================== 
+ * ======================================================================
  */
 
 
@@ -49,9 +49,9 @@ public class TestVariantImpl implements TestVariant {
 
 
     /*
-     * ====================================================================== 
+     * ======================================================================
      *    Ctors
-     * ====================================================================== 
+     * ======================================================================
      */
 
      public TestVariantImpl() {
@@ -69,9 +69,9 @@ public class TestVariantImpl implements TestVariant {
      }
 
     /*
-     * ====================================================================== 
+     * ======================================================================
      *    Methods
-     * ====================================================================== 
+     * ======================================================================
      */
 
    /**
@@ -88,7 +88,7 @@ public class TestVariantImpl implements TestVariant {
         }
     }
 
-     
+
    /**
     * Sets the variant identifier associated with the TestCase or Library.
     * <p>
@@ -136,7 +136,7 @@ public class TestVariantImpl implements TestVariant {
    /**
     * Sets VarOrder for the variant
     * @params value the string is of the form: "x[.y]",
-    *         where x,y are positive integers 
+    *         where x,y are positive integers
     *         and the value x.y represents a positive decimal value between
     *         00.00 and 99.99.
     * @throws TestFileException if passed value is in illegal format
@@ -166,7 +166,7 @@ public class TestVariantImpl implements TestVariant {
        return order;
    }
 
-   
+
    private static final int MAX_FRACTION = 2;
    private static final String MIN_VALUE = "0.0";
    private static final String MAX_VALUE = "99.99";
@@ -179,16 +179,16 @@ public class TestVariantImpl implements TestVariant {
 
        try {
            BigDecimal bd = new BigDecimal(vo);
-           if (bd.compareTo(new BigDecimal(MIN_VALUE)) < 0) 
+           if (bd.compareTo(new BigDecimal(MIN_VALUE)) < 0)
                throw new TestFileException(LibResHandler.getResStr(
                       "api.varid.toosmall", vo, MIN_VALUE));
-           if (bd.compareTo(new BigDecimal(MAX_VALUE)) > 0) 
+           if (bd.compareTo(new BigDecimal(MAX_VALUE)) > 0)
                throw new TestFileException(LibResHandler.getResStr(
                       "api.varid.toolarge", vo, MAX_VALUE));
-           if (bd.scale() > MAX_FRACTION) 
+           if (bd.scale() > MAX_FRACTION)
                throw new TestFileException(LibResHandler.getResStr(
                       "api.varid.toomanydigits", vo, "" + MAX_FRACTION));
-           return bd.movePointRight(MAX_FRACTION).intValue(); 
+           return bd.movePointRight(MAX_FRACTION).intValue();
        } catch (NumberFormatException e) {
            throw new TestFileException(LibResHandler.getResStr(
                   "api.varid.cannotparse", vo));
@@ -198,17 +198,17 @@ public class TestVariantImpl implements TestVariant {
    private String orderToString(int order) {
        try {
            BigDecimal bd = new BigDecimal("" + order);
-           String str = bd.movePointLeft(MAX_FRACTION).toString(); 
-           // removes zeros from the end 
+           String str = bd.movePointLeft(MAX_FRACTION).toString();
+           // removes zeros from the end
            int i = str.length() - 1;
            while (i >= 0 && str.charAt(i) == '0')
                i--;
 
-           // removes '.' sign from the end 
+           // removes '.' sign from the end
            if (i >= 0 && str.charAt(i) == '.')
                i--;
            return str.substring(0, i+1);
-           
+
        } catch (NumberFormatException e) {
            // should never arise
            return "";

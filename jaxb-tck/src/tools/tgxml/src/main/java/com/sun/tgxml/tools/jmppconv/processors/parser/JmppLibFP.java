@@ -26,26 +26,26 @@ import com.sun.jmpp.lib.TDGenerator;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.util.CopyrightManager;
 
-/**  
+/**
  * The class extends com.sun.jmpp.lib.JmppLibFP,
  * but instead of HTML test descriptions IR objects corresponding
  * to test descriptions are created.
  */
 
-public class JmppLibFP 
+public class JmppLibFP
     extends com.sun.jmpp.lib.JmppLibFP implements IRGenerator {
 
 /**
  * @return an ArrayList of TestRoot objects created during JMPP to test generation.
- */ 
+ */
     protected ArrayList getRoots(){
         return ((IRTDGenerator) tdGenerator).getRoots();
     }
 
 /**
- * Overriden JmppLibFP method which initializes tdGenerator variable with the 
+ * Overriden JmppLibFP method which initializes tdGenerator variable with the
  * instance of IRTDGenerator class.
- */ 
+ */
     protected void initTDGenerator(){
         tdGenerator = (TDGenerator) new IRTDGenerator();
     }
@@ -68,7 +68,7 @@ public class JmppLibFP
         parseOptions(hash);
         argsSet = true;
     }
-    
+
 /**
  * Implemented IRGenerator method, starts test generation.
  * @param inputFile an input JMPP template to generate tests from.

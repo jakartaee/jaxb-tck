@@ -25,14 +25,14 @@ import com.sun.tgxml.tjtf.api.attributes.TestCaseAttributes;
 // </importgen>
 
 /**
- * TestCaseAttributes - 
+ * TestCaseAttributes -
  *
  * <b>TestCaseAttributes</b> is the basic interface for describing the attributes
  * associated with a TestCase.
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -51,21 +51,21 @@ public  class TestCaseAttributesImpl  extends TestAttributesImpl implements Test
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
     public TestCaseAttributesImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
 
     public TestCaseAttributesImpl(ArrayList reqResources, ArrayList attrElems, ArrayList targetSpecs, String timeout) {
-	super(reqResources, attrElems, targetSpecs, timeout);
-	init();
+    super(reqResources, attrElems, targetSpecs, timeout);
+    init();
     }
 
 

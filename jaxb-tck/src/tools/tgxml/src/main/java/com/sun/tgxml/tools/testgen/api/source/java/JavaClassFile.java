@@ -34,7 +34,7 @@ public class JavaClassFile {
     private String comment;
     private String id;
     private String varID;
-    
+
     public JavaClassFile() {
         String crn_prop = BuildProperties.getPrefixString(
             "testgen",
@@ -46,74 +46,74 @@ public class JavaClassFile {
         copyright.setContent(crn_prop);
         setCopyrightNotice(copyright.toString());
     }
-    
+
     public void setName(String name) {
         if (name != null) {
             this.name = name.trim();
             if (!this.name.endsWith(".java")) this.name += ".java";
         } else name = "";
     }
-    
+
     public String getName() {
         return name == null?"":name;
     }
-    
+
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
+
     public String getComment() {
        return comment == null?"":comment;
     }
-    
+
     public void setCopyrightNotice(String copyrightNotice) {
         this.copyrightNotice = copyrightNotice;
     }
-    
+
     public String getCopyrightNotice() {
        return copyrightNotice == null?"":copyrightNotice;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public String getDescription() {
        return description == null?"":description;
     }
-    
+
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
     public String getTitle() {
        return title == null?"":title;
     }
-   
+
     public void setLibID(String ID) {
         this.id = ID;
     }
-    
+
     public String getLibID() {
        return (id == null || id.length() == 0) ? null : id;
     }
-   
+
     public void setLibVarID(String ID) {
         this.varID = ID;
     }
-    
+
     public String getLibVarID() {
        return (varID == null || varID.length() == 0) ? null : varID;
     }
-   
+
     public void setPackageName(String packageName) {
         this.packageName = packageName;
     }
-    
+
     public String getPackageName() {
        return packageName == null?"":packageName;
     }
-    
+
     public void addImport(String value) {
         if (imports == null) imports = new ArrayList();
         if (value != null
@@ -122,7 +122,7 @@ public class JavaClassFile {
             imports.add(value);
         }
     }
-    
+
     public void addImports(ArrayList imports) {
         if (imports != null) {
             Iterator it = imports.iterator();
@@ -131,11 +131,11 @@ public class JavaClassFile {
             }
         }
     }
-    
+
     public ArrayList getClasses() {
         return classes == null?new ArrayList():classes;
     }
-    
+
     public void addClass(JavaClass value) {
         if (classes == null) classes = new ArrayList();
         if (value != null
@@ -148,7 +148,7 @@ public class JavaClassFile {
             classes.add(value);
         }
     }
-    
+
     public String getAuthors() {
         String result = "";
         if (authors != null) {
@@ -158,10 +158,10 @@ public class JavaClassFile {
                 result += it.next();
             }
         }
-        
+
         return result;
     }
-    
+
     public void addAuthor(String value) {
         if (authors == null) authors = new ArrayList();
         if (value != null
@@ -170,7 +170,7 @@ public class JavaClassFile {
             authors.add(value);
         }
     }
-    
+
     public void addAuthors(ArrayList authors) {
         if (authors != null) {
             Iterator it = authors.iterator();
@@ -179,7 +179,7 @@ public class JavaClassFile {
             }
         }
     }
-    
+
     protected String getImports() {
         String result = "";
         if (imports != null) {
@@ -189,10 +189,10 @@ public class JavaClassFile {
             }
             result += "\n";
         }
-        
+
         return result;
     }
-    
+
     protected String libraryIDvariantID() {
         String libID = getLibID();
         String libVarID = getLibVarID();
@@ -207,17 +207,17 @@ public class JavaClassFile {
             result += "  Variant ID: " + libVarID;
         }
         result += " --- */\n\n";
-        
+
         return result;
     }
-    
+
     public String toString() {
         String result = "";
-        
+
         result += getCopyrightNotice() + "\n";
-        
+
         result += "package " +  getPackageName() +";\n\n";
-        
+
         //imports
         ////
         result+= getImports();
@@ -225,17 +225,17 @@ public class JavaClassFile {
         //Library ID, VarID
         ////
         result+= libraryIDvariantID();
-        
+
         //comments
         ////
-        Comment classComment = new Comment(); 
+        Comment classComment = new Comment();
         classComment.setContent(getTitle());
         classComment.addContent(getDescription());
         classComment.addContent("Author: " + getAuthors());
-        
+
         result+= classComment.toString() + "\n";
-        
-        
+
+
         //classes
         ////
         Iterator it = getClasses().iterator();
@@ -243,8 +243,8 @@ public class JavaClassFile {
             result += it.next().toString();
             result += "\n";
         }
-        
+
         return result;
     }
 }
-            
+

@@ -26,14 +26,14 @@ import javasoft.sqe.javatest.lib.MultiStatus;
  * <P>
  * This class is an implementation of the Generator interface that is used
  * for executing test cases for a specific testpoint. The best use of this
- * class is as follows. First execute a test case using AssertionTest's 
+ * class is as follows. First execute a test case using AssertionTest's
  * default Generator viz the GridGenerator. While executing this test use
  * the default Reporter viz. the PrintReporter. This test will execute and
  * if there are any failure the reporter will print out a list of failures.
  * The report will contain a line <I>Index of Factory Object</I> followed
  * by a colon seperated list of numbers. These numbers correspond to the
  * Factory index in the array of Factory objects present in the test case
- * that was used for identifying the object under test and execution 
+ * that was used for identifying the object under test and execution
  * parameters used for executing this specific test point. These are the
  * test points where the tests failed. When the test developer/product
  * developer wants to rerun the test case all grid points may not be of
@@ -58,10 +58,10 @@ public class SingletonGenerator implements Generator {
    * <P>
    * This method implements the interface Generator for the SingletonGenerator.
    * This method copies the value of the AssertionTest object that called this
-   * Generator (which will be used for callback) and the array of Factory 
+   * Generator (which will be used for callback) and the array of Factory
    * objects that represents the data used for creating the testpoints.
    * </P>
-   * @param testObject the AssertionTest object 
+   * @param testObject the AssertionTest object
    * @param paramFactory the data factory
    */
   public Status run (AssertionTest testObject, Factory[] paramFactory) {
@@ -90,17 +90,17 @@ public class SingletonGenerator implements Generator {
   public void init (String[] args) throws AssertionTest.Fault {
     try {
       if (args != null) {
-	for (int i = 0; i < args.length; ++i) {
-	  if (args[i].equals("-reporter")) {
-	    throw  new AssertionTest.Fault ("There was no -end at the end of the argument list for Generator");
-	  } else if (args[i].equals("-testPoint")) {
-	    i += 1;
-	    while (i < args.length) {
-	      testPointVector.addElement (args[i]);
-	      i += 1;
-	    }
-	  }
-	}
+    for (int i = 0; i < args.length; ++i) {
+      if (args[i].equals("-reporter")) {
+        throw  new AssertionTest.Fault ("There was no -end at the end of the argument list for Generator");
+      } else if (args[i].equals("-testPoint")) {
+        i += 1;
+        while (i < args.length) {
+          testPointVector.addElement (args[i]);
+          i += 1;
+        }
+      }
+    }
       }
     } catch (ArrayIndexOutOfBoundsException ae) {
       throw new AssertionTest.Fault (ae.getMessage() + " raised in generator's init() method");
@@ -119,9 +119,9 @@ public class SingletonGenerator implements Generator {
       StringTokenizer st = new StringTokenizer (elem, ":");
       index = 0;
       while (st.hasMoreElements()) {
-	Integer val = new Integer ((String) st.nextElement());
-	param[index] = val.intValue();
-	index += 1;
+    Integer val = new Integer ((String) st.nextElement());
+    param[index] = val.intValue();
+    index += 1;
       }
       testData.addElement(param);
     }
@@ -140,11 +140,11 @@ public class SingletonGenerator implements Generator {
       Object[] exeParameters = new Object[p.length - 1];
       Object objectUnderTest = null;
       for (int i = 0; i < p.length; ++i) {
-	testID = testID + String.valueOf(p[i]) + ":";
-	if (i == 0) 
-	  objectUnderTest = factory[i].createElement(p[i]);
-	else 
-	  exeParameters[i - 1] = factory[i].createElement (p[i]);
+    testID = testID + String.valueOf(p[i]) + ":";
+    if (i == 0)
+      objectUnderTest = factory[i].createElement(p[i]);
+    else
+      exeParameters[i - 1] = factory[i].createElement (p[i]);
       }
       Status testStatus = testObject.runTest (objectUnderTest, exeParameters, p);
       overallStatus.add (testID, testStatus);
@@ -164,5 +164,5 @@ public class SingletonGenerator implements Generator {
   private Vector testPointVector = new Vector();
   private Vector testData = new Vector();
 
- 
+
 }

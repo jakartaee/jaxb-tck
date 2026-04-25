@@ -25,8 +25,8 @@ import java.util.StringTokenizer;
  *  This is an implementation of prefix option. All options
  *  with specified prefixes will be passed to the extenal OptionHandler
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -39,10 +39,10 @@ public class ExternalOption extends PrefixOption {
      * Creates with one specified switch prefix, usageInfo and external
      * OptionHandler
      *
-     * @throws IllegalArgumentException if either usageInfo is null 
+     * @throws IllegalArgumentException if either usageInfo is null
      *         or sw is null, or handler is null
      */
-    public ExternalOption(String swPrefix, String usageInfo, 
+    public ExternalOption(String swPrefix, String usageInfo,
             OptionHandler oHandler) {
         this(new String[]{swPrefix}, usageInfo, oHandler);
     }
@@ -52,14 +52,14 @@ public class ExternalOption extends PrefixOption {
      * Creates option with a set of specified switch prefixes, usageInfo
      * and external OptionHandler
      *
-     * @throws IllegalArgumentException if either usageInfo is null 
+     * @throws IllegalArgumentException if either usageInfo is null
      *          or array of switches is empty or contains null
      *          or handler is null
-     */    
+     */
     public ExternalOption(String[] swPrefixes, String usageInfo,
             OptionHandler oHandler) {
         super(swPrefixes, usageInfo);
-        
+
         this.optionHandler = oHandler;
     }
 
@@ -71,7 +71,7 @@ public class ExternalOption extends PrefixOption {
         ArrayList extArgs = new ArrayList(size*2);
         for (int i = 0; i < size; i++) {
             StringTokenizer st = new StringTokenizer(removePrefix((String)found.get(i)));
-            while (st.hasMoreElements()) 
+            while (st.hasMoreElements())
                 extArgs.add(st.nextToken());
         }
 
@@ -83,10 +83,10 @@ public class ExternalOption extends PrefixOption {
                     sb.append(", ");
                     sb.append((String)extArgs.get(i));
                 }
-                throw new ParseArgumentException(optionHandler 
+                throw new ParseArgumentException(optionHandler
                     + " cannot process arguments: " + sb.toString());
             }
-        }        
+        }
     }
 
 

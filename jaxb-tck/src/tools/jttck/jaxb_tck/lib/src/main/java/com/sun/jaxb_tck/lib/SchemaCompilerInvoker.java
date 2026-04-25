@@ -20,7 +20,7 @@ import java.io.PrintStream;
 
 /**
  * Wrapper to invoke a schema(s) compiler in sameJVM mode.
- * 
+ *
  * @author Leonid Kuskov
  * @version 1.7
  */
@@ -79,7 +79,7 @@ public class SchemaCompilerInvoker extends Invoker {
   /**
    * Invokes SchemaCompiler(xjc) with specific options to perform schema
    * compilation.
-   * 
+   *
    * @param out
    *          A stream to which to report messages and errors
    * @param err

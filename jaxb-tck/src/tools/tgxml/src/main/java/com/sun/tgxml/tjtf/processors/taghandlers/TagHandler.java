@@ -19,23 +19,23 @@ package com.sun.tgxml.tjtf.processors.taghandlers;
 
 
 /**
- * TagHandler - The tag-handler abstraction. 
+ * TagHandler - The tag-handler abstraction.
  * XML processors (parsers and emitters) get their abstraction
  * by defining a set of (plug-in) TagHandlers whose function is to
  * handle a tag.  So different parsers/emitters formats can be defined by
  * different sets of TagHandlers that "plug-into" them.
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TagHandler 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TagHandler
+ * ============================================================================================
+ */
 public interface TagHandler   {
 
 

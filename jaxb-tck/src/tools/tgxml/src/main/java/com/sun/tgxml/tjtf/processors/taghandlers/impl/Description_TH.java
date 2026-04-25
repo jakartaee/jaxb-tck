@@ -28,50 +28,50 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
-/** 
- * Description_TH - The tag-handler for a Description tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Description_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Description_TH - The tag-handler for a Description tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Description_TH
+ * ============================================================================================
+ */
 public class Description_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Description_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Description_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Description_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -82,13 +82,13 @@ public class Description_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_description;
+    return TagsImpl.ctStr_tag_description;
     }
 
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -96,38 +96,38 @@ public class Description_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
+    super.endTag(text);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
 
-	if (testitem == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+    if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	if (! (testitem instanceof Documentation)  )
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(),
-						 TagsImpl.ctStr_tag_testgroupdocumentation,
-						 TagsImpl.ctStr_tag_testcasedocumentation,
-						 TagsImpl.ctStr_tag_librarydocumentation));
-	
-	//  Nothing is pushed onto the stack
-	Documentation doc = (Documentation) testitem;
+    if (! (testitem instanceof Documentation)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(),
+                         TagsImpl.ctStr_tag_testgroupdocumentation,
+                         TagsImpl.ctStr_tag_testcasedocumentation,
+                         TagsImpl.ctStr_tag_librarydocumentation));
 
-	// validated the description
-	//   If the tag is parsed in, it can not have null text.
-	if (text == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	
-	StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
-	if (! tknzr.hasMoreTokens())
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	doc.setDescription(text);
+    //  Nothing is pushed onto the stack
+    Documentation doc = (Documentation) testitem;
+
+    // validated the description
+    //   If the tag is parsed in, it can not have null text.
+    if (text == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+
+    StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
+    if (! tknzr.hasMoreTokens())
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+    doc.setDescription(text);
     }
- 
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -135,13 +135,13 @@ public class Description_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String description = (String) tdObject;
+    String description = (String) tdObject;
 
-	m_EmitterHandler.emitText(description);
+    m_EmitterHandler.emitText(description);
 
     }
 

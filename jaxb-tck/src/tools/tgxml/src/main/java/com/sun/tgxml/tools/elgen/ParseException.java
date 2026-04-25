@@ -18,7 +18,7 @@
 package com.sun.tgxml.tools.elgen;
 
 public class ParseException extends java.io.IOException {
-	public ParseException(String reason) {
-		super (reason);
-	}
+    public ParseException(String reason) {
+        super (reason);
+    }
 }

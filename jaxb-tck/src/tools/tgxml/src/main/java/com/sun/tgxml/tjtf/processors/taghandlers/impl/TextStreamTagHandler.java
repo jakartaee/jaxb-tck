@@ -24,47 +24,47 @@ import org.xml.sax.SAXException;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 
-/** 
- * TextStreamTagHandler - The tag-handler for a tag with unformatted text data. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TextStreamTagHandler 
- * ============================================================================================ 
- */ 
+/**
+ * TextStreamTagHandler - The tag-handler for a tag with unformatted text data.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TextStreamTagHandler
+ * ============================================================================================
+ */
 public class TextStreamTagHandler extends TagHandlerImpl   {
 
-   /* 
-    * ============================================================================================ 
-    *    fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    fields
+    * ============================================================================================
+    */
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TextStreamTagHandler constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TextStreamTagHandler constructor -
+    *       Initialize our internal fields.
+    */
     public TextStreamTagHandler() {
-	super();
-	 
+    super();
+
     }
 
     //------------------------------------------------------------------------------
@@ -78,8 +78,8 @@ public class TextStreamTagHandler extends TagHandlerImpl   {
     * @see #endTag
     */
     public final void endTag() throws SAXException {
-	super.endTag();
-	endTag(m_ParserHandler.getTextStream());
+    super.endTag();
+    endTag(m_ParserHandler.getTextStream());
     }
 
 
@@ -90,11 +90,11 @@ public class TextStreamTagHandler extends TagHandlerImpl   {
     */
     public void endTag(String text) throws SAXException {
     }
- 
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
 
   /**
     *   emit a tag (general function).
@@ -102,14 +102,14 @@ public class TextStreamTagHandler extends TagHandlerImpl   {
     * @see #endTag
     */
     public void emit(Object tdObject) throws TestFileException, IOException {
-	m_EmitterHandler.indent();
-	emitStartTag(tdObject);
-	emitTextFlow(tdObject);
-	emitEndTag();
-	m_EmitterHandler.newline();
+    m_EmitterHandler.indent();
+    emitStartTag(tdObject);
+    emitTextFlow(tdObject);
+    emitEndTag();
+    m_EmitterHandler.newline();
     }
-          
-         
+
+
 
   /**
     *   emit a tag (general function).
@@ -118,7 +118,7 @@ public class TextStreamTagHandler extends TagHandlerImpl   {
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
     }
-          
-          
+
+
 
 }

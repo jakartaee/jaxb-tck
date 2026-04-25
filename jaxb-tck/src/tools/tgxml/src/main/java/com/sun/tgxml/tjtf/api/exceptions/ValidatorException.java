@@ -21,12 +21,12 @@ package com.sun.tgxml.tjtf.api.exceptions;
 // </importgen>
 
 /**
- * ValidatorException - 
+ * ValidatorException -
  *
  * <b>ValidatorException</b> is the basic Exception class for the TestDescription library.
  * All throwable exceptions from the library derive from this exception.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -45,7 +45,7 @@ public  class ValidatorException  extends TestFileException {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -57,8 +57,8 @@ public  class ValidatorException  extends TestFileException {
      * @param message  a an exception message string.
      */
     public ValidatorException (String message) {
-	super(message);
+    super(message);
     }
 }
-     
+
 

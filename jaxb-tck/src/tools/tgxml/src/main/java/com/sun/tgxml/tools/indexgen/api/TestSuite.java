@@ -24,9 +24,9 @@ import com.sun.tgxml.tjtf.api.XMLObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 /**
- * TestSuite - 
+ * TestSuite -
  *
- * <b>TestSuite</b> is the basic interface for root element of doc.xml file 
+ * <b>TestSuite</b> is the basic interface for root element of doc.xml file
  * <p>
  * <b>TestSuite</b> contains the following:<br><br>
  * <ul>
@@ -51,8 +51,8 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 public  interface TestSuite  extends XMLObj {
 
 
-	public static final String LIST_FORMAT = "list";
-	public static final String TABLE_FORMAT = "table";
+    public static final String LIST_FORMAT = "list";
+    public static final String TABLE_FORMAT = "table";
 
 
 
@@ -61,7 +61,7 @@ public  interface TestSuite  extends XMLObj {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -79,12 +79,12 @@ public  interface TestSuite  extends XMLObj {
     * @see #setTitle
     */
     public String getTitle()  throws TestFileException;
-     
+
    /**
     *   Set the title associated with this documentation.
     *  <p>
     *   This title must be a valid String
-    *   and not NULL. 
+    *   and not NULL.
     *  <p>
     * @param     title The title of the documentation.
     * @exception TestFileException if the title is NULL
@@ -104,7 +104,7 @@ public  interface TestSuite  extends XMLObj {
     * @see #setDescription
     */
     public String getDescription();
-     
+
    /**
     *   Set the description associated with this documentation.
     *  <p>
@@ -121,9 +121,9 @@ public  interface TestSuite  extends XMLObj {
   /**
     *   Get the content format of this documentation.
     *  <p>
-	* 
+    *
     *  <p>
-    *   There are two format <code>TestSuite.LIST_FORMAT </code> and 
+    *   There are two format <code>TestSuite.LIST_FORMAT </code> and
     * <code>TestSuite.TABLE_FORMAT </code>
     *  <p>
     * @return content format of this documentation.
@@ -133,13 +133,13 @@ public  interface TestSuite  extends XMLObj {
     */
     public String getContentsFormat();
 
-     
+
   /**
     *   Set the content format of this documentation.
     *  <p>
-	* 
+    *
     *  <p>
-    *   There are to format <code>TestSuite.LIST_FORMAT </code> and 
+    *   There are to format <code>TestSuite.LIST_FORMAT </code> and
     * <code>TestSuite.TABLE_FORMAT </code>
     *  <p>
     * @exception TestFileException if the format is not a LIST_FORMAT or TABLE_FORMAT
@@ -147,7 +147,7 @@ public  interface TestSuite  extends XMLObj {
     * @see #LIST_FORMAT
     * @see #TABLE_FORMAT
     */
-	public void setContentsFormat(String format) throws TestFileException;
+    public void setContentsFormat(String format) throws TestFileException;
 
 
 
@@ -160,7 +160,7 @@ public  interface TestSuite  extends XMLObj {
     * @see #setComments
     */
     public String getComments();
-     
+
    /**
     *   Set the comments associated with this documentation.
     *  <p>
@@ -181,7 +181,7 @@ public  interface TestSuite  extends XMLObj {
     * @see #setID
     */
     public String getID();
-     
+
    /**
     *   Set the ID of this documentation.
     *  <p>
@@ -192,7 +192,7 @@ public  interface TestSuite  extends XMLObj {
     */
     public void setID(String id);
 
-    
+
   /**
     *   Get the repository-specific attributes associated with this entity.
     *  <p>
@@ -204,7 +204,7 @@ public  interface TestSuite  extends XMLObj {
     * @see #setAttrElems
     */
     public ArrayList getAttrElems();
-     
+
    /**
     *   Set the repository-specific attributes associated with this entity.
     *  <p>

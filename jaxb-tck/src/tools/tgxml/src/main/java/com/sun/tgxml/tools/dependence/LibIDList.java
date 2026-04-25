@@ -26,8 +26,8 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 /**
- * The <code>LibIDList</code> is a list of library identifiers. 
- * An instance of the LibIDList can be written to a stream and read from it. 
+ * The <code>LibIDList</code> is a list of library identifiers.
+ * An instance of the LibIDList can be written to a stream and read from it.
  */
 
 public class LibIDList extends StringArray {
@@ -48,7 +48,7 @@ public class LibIDList extends StringArray {
                 add(tokenizer.nextToken());
             }
         }
-    } 
+    }
 
     /**
      * Writes the list of library identifiers to the specified stream.

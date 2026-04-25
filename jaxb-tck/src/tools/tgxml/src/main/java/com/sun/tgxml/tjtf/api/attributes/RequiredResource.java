@@ -23,15 +23,15 @@ import com.sun.tgxml.tjtf.api.common.NameValuePair;
 // </importgen>
 
 /**
- * RequiredResource - 
+ * RequiredResource -
  *
- * <b>RequiredResource</b>  is an (extension) element that provides additional 
+ * <b>RequiredResource</b>  is an (extension) element that provides additional
  * attributes a repository may use to describe resources that a test requires.
- * RequiredResource describes a (physical, or software) resource that a test requires 
- * for execution. RequiredResource is a 'name' and 'value' pair that is a requirement 
+ * RequiredResource describes a (physical, or software) resource that a test requires
+ * for execution. RequiredResource is a 'name' and 'value' pair that is a requirement
  * of a repository. 'name' and 'value' attributes are generic strings.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -50,14 +50,14 @@ public interface RequiredResource extends NameValuePair {
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
 
     //------------------------------------------------------------------------------

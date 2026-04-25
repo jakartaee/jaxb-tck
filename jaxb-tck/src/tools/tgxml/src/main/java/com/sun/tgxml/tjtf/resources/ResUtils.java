@@ -20,98 +20,98 @@ package com.sun.tgxml.tjtf.resources;
 import java.text.MessageFormat;
 
 
-/** 
- * This is just a set of utils for error string substitution. 
- * 
- * @version 	1.16, 08/17/97 
- * @author 	Kevin T. Looney 
- */ 
-public class ResUtils { 
- 
-    static public String handleGetSubst( String patt, String arg) { 
-	    String[] s = { arg }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, String arg2) { 
-	    String[] s = { arg1, arg2 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, 
-				  String arg2, String arg3) { 
-	    String[] s = { arg1, arg2, arg3 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, 
-				  String arg2, String arg3, String arg4) { 
-	    String[] s = { arg1, arg2, arg3, arg4 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, 
-				  String arg2, String arg3, String arg4, String arg5) { 
-	    String[] s = { arg1, arg2, arg3, arg4, arg5 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, 
-				  String arg2, String arg3, String arg4, String arg5, String arg6) { 
-	    String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, 
-				  String arg2, String arg3, String arg4, String arg5, 
-				  String arg6, String arg7) { 
-	    String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6, arg7 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, 
-				  String arg2, String arg3, String arg4, String arg5, 
-				  String arg6, String arg7, String arg8) { 
-	    String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6, arg7, arg8 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, 
-				  String arg2, String arg3, String arg4, String arg5, 
-				  String arg6, String arg7, String arg8, String arg9) { 
-	    String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6, arg7, arg8, arg9 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String arg1, 
-				  String arg2, String arg3, String arg4, String arg5, 
-				  String arg6, String arg7, String arg8, String arg9, String arg10) { 
-	    String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6, arg7, arg8, arg9, arg10 }; 
-	    return handleGetSubst(patt, s); 
-    } 
- 
-    static public String handleGetSubst( String patt, String[] args) { 
-	if (patt == null) { 
-	    return null; 
-	} 
-	
-	for (int i = 0; i < args.length; i++) { 
-	    if (args[i] == null) { 
-		args[i] = "null"; 
-	    } 
-	} 
-	
-	String retVal = null; 
-	
-	try  { 
-	    retVal = MessageFormat.format(patt, args); 
-	} 
-	catch (NullPointerException e)  { 
-	    System.out.println("Res.subst(): Exception occured: "+e); 
-	} 
-	
-	return retVal; 
-    } 
-} 
+/**
+ * This is just a set of utils for error string substitution.
+ *
+ * @version     1.16, 08/17/97
+ * @author  Kevin T. Looney
+ */
+public class ResUtils {
+
+    static public String handleGetSubst( String patt, String arg) {
+        String[] s = { arg };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1, String arg2) {
+        String[] s = { arg1, arg2 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1,
+                  String arg2, String arg3) {
+        String[] s = { arg1, arg2, arg3 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1,
+                  String arg2, String arg3, String arg4) {
+        String[] s = { arg1, arg2, arg3, arg4 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1,
+                  String arg2, String arg3, String arg4, String arg5) {
+        String[] s = { arg1, arg2, arg3, arg4, arg5 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1,
+                  String arg2, String arg3, String arg4, String arg5, String arg6) {
+        String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1,
+                  String arg2, String arg3, String arg4, String arg5,
+                  String arg6, String arg7) {
+        String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6, arg7 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1,
+                  String arg2, String arg3, String arg4, String arg5,
+                  String arg6, String arg7, String arg8) {
+        String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6, arg7, arg8 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1,
+                  String arg2, String arg3, String arg4, String arg5,
+                  String arg6, String arg7, String arg8, String arg9) {
+        String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6, arg7, arg8, arg9 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String arg1,
+                  String arg2, String arg3, String arg4, String arg5,
+                  String arg6, String arg7, String arg8, String arg9, String arg10) {
+        String[] s = { arg1, arg2, arg3, arg4, arg5 , arg6, arg7, arg8, arg9, arg10 };
+        return handleGetSubst(patt, s);
+    }
+
+    static public String handleGetSubst( String patt, String[] args) {
+    if (patt == null) {
+        return null;
+    }
+
+    for (int i = 0; i < args.length; i++) {
+        if (args[i] == null) {
+        args[i] = "null";
+        }
+    }
+
+    String retVal = null;
+
+    try  {
+        retVal = MessageFormat.format(patt, args);
+    }
+    catch (NullPointerException e)  {
+        System.out.println("Res.subst(): Exception occured: "+e);
+    }
+
+    return retVal;
+    }
+}
 
 

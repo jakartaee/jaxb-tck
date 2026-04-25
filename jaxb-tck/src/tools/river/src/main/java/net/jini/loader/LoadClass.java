@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,11 +38,11 @@ import org.apache.river.thread.NamedThreadFactory;
 /**
  * LoadClass delegates to @link {Class#forName(String, boolean, ClassLoader)},
  * calls to each ClassLoader are thread confined.
- * 
+ *
  * @author peter
  */
 public class LoadClass {
-    
+
     private LoadClass() {throw new AssertionError();}
     /**
      * loaderMap contains a list of single threaded ExecutorService's for
@@ -51,7 +51,7 @@ public class LoadClass {
      * becomes weakly reachable, or the ExecutorService hasn't been used
      * recently.
      */
-    private static final ConcurrentMap<ClassLoader, ExecutorService> loaderMap 
+    private static final ConcurrentMap<ClassLoader, ExecutorService> loaderMap
             = RC.concurrentMap(
                     new ConcurrentHashMap<Referrer<ClassLoader>,
                     Referrer<ExecutorService>>(),
@@ -87,12 +87,12 @@ public class LoadClass {
      * @see Class
      * @since 3.0
      */
-    public static Class forName(String name, boolean initialize, ClassLoader loader) 
-            throws ClassNotFoundException 
+    public static Class forName(String name, boolean initialize, ClassLoader loader)
+            throws ClassNotFoundException
     {
         if (loader == null) return Class.forName(name, initialize, loader);
         if (loader.toString().startsWith(
-                "javax.management.remote.rmi.RMIConnectionImpl")) 
+                "javax.management.remote.rmi.RMIConnectionImpl"))
         {
             return Class.forName(name, initialize, loader);
         }
@@ -112,7 +112,7 @@ public class LoadClass {
                 exec = existed;
             }
         }
-        FutureTask<Class> future = 
+        FutureTask<Class> future =
                 new FutureTask(new GetClassTask(name, initialize, loader));
         exec.submit(future);
         try {
@@ -164,7 +164,7 @@ public class LoadClass {
             } finally {
                 /**
                  * See jtreg sun bug ID:6304035
-                 * This ensures that a thread doesn't unnecessarily hold 
+                 * This ensures that a thread doesn't unnecessarily hold
                  * a strong reference to a ClassLoader, thus preventing
                  * it from being garbage collected.
                  */
@@ -174,7 +174,7 @@ public class LoadClass {
                         return null;
                     }
                 });
-                
+
             }
         }
 

@@ -29,7 +29,7 @@ public abstract class FileFinder {
     public FileFinder() {
     }
 
-    /** 
+    /**
      * This method recursively descends the directory hierarchy for
      * each passed dir. It returns list of all files that match filtering
      * condition (checkFile(file) should return true).
@@ -45,25 +45,25 @@ public abstract class FileFinder {
     }
 
     /**
-     * Returns true if specified dir should be processed. 
+     * Returns true if specified dir should be processed.
      * Default implementation returns false only if dir is "SCCS" dir.
-     */     
+     */
     protected boolean processDir(File dir) {
-        return 
+        return
            dir != null && dir.isDirectory() && !"SCCS".equals(dir.getName());
     }
 
     /**
      * Returns true if specified file saticfy the filtering condition.
      * Subclasses should implement this method to provide a filtering
-     */    
+     */
     protected abstract boolean acceptFile(File file);
 
 
     /**
      * Checks all files in the passed dir and class find() method
      * for all appropriate subdirs.
-     */    
+     */
     private void find(File dir) {
        if (!processDir(dir))
            return;
@@ -71,7 +71,7 @@ public abstract class FileFinder {
            found.add(dir);
        }
        File[] list = dir.listFiles();
-       if (list == null) 
+       if (list == null)
            return;
 
        for (int i = 0; i < list.length; i++) {

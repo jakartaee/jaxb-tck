@@ -21,11 +21,11 @@ package com.sun.tgxml.tjtf.api.documentation;
 // </importgen>
 
 /**
- * TestTechnique - 
+ * TestTechnique -
  *
  * <b>TestTechnique</b>  is the enumeration for a method of testing a given API.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -44,7 +44,7 @@ public interface TestTechnique  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
 
     //------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ public interface TestTechnique  {
     * @return     The true if this technique is EqClass.
     */
     public boolean isEqClass();
-     
+
 
   /**
     *   Is this an Boundary technique.
@@ -66,6 +66,6 @@ public interface TestTechnique  {
     * @return     The true if this technique is Boundary.
     */
     public boolean isBoundary();
-     
+
 
 }

@@ -249,7 +249,7 @@ public class JmppLibVMParam extends com.sun.jmpp.lib.JmppLibVM implements IRGene
     /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 
     /**
-     * Generates necessary imports into the intermediate program. 
+     * Generates necessary imports into the intermediate program.
      *
      * @param out                   output destination
      * @param intermediateClassName intermediate program class name
@@ -313,7 +313,7 @@ public class JmppLibVMParam extends com.sun.jmpp.lib.JmppLibVM implements IRGene
      */
     public String testName() {
         test = super.testName() + irTdGen.getTestCaseProperty(irTdGen.TC_NAME);
-        return test; 
+        return test;
     }
 
     /**
@@ -409,7 +409,7 @@ public class JmppLibVMParam extends com.sun.jmpp.lib.JmppLibVM implements IRGene
 
     /**
      * @return a list (ArrayList) of IR root objects created during test generation.
-     */ 
+     */
     protected ArrayList getRoots() {
         return irTdGen.getRoots();
     }

@@ -38,14 +38,14 @@ public class ExternalLibraryBuilder extends TestItemSelectionListener.EmptyListe
     private Generator generator = new EmitterManager();
     private HashSet done = new HashSet();
     private String tckRootDir;
-    
+
     /**
      * creates instance with "." root directory.
      */
     public ExternalLibraryBuilder() {
         this(".");
     }
-    
+
     public ExternalLibraryBuilder(String tckRoot, Properties properies) {
         this(tckRoot);
         generator.setProperties(properies);
@@ -58,7 +58,7 @@ public class ExternalLibraryBuilder extends TestItemSelectionListener.EmptyListe
     public ExternalLibraryBuilder(String[] args) {
         this(args[0]);
     }
-    
+
     /**
      * creates instance with a diven root directory.
      */
@@ -89,7 +89,7 @@ public class ExternalLibraryBuilder extends TestItemSelectionListener.EmptyListe
             throw new RuntimeException("Can not generate library. IOException is thrown:" + e);
         }
     }
-           
+
     public void flush() {
     }
 }

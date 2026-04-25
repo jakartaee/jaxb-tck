@@ -26,12 +26,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * DataFactory - 
+ * DataFactory -
  *
- * <b>DataFactory</b> is a static factory class for creating data objects (InlineData, ExternalData). 
+ * <b>DataFactory</b> is a static factory class for creating data objects (InlineData, ExternalData).
  *<p>
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -50,7 +50,7 @@ public  final class DataFactory {
      *    constructors
      * ============================================================================================
      */
-    
+
     private DataFactory () {
 
     }
@@ -60,14 +60,14 @@ public  final class DataFactory {
      *    Member Fields
      * ============================================================================================
      */
-    
-    
+
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Factories
@@ -81,9 +81,9 @@ public  final class DataFactory {
     * @see com.sun.tgxml.tjtf.api.data.InlineData
     */
     static public InlineData  createInlineData() {
-	return new InlineDataImpl();
+    return new InlineDataImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) InlineData object.
@@ -96,14 +96,14 @@ public  final class DataFactory {
     * @see com.sun.tgxml.tjtf.api.data.InlineData
     */
     static public InlineData  createInlineData (String data, String targetFilename, DataType type ) throws TestFileException {
-	InlineData id = createInlineData();
-	id.setData(data);
-	id.setTargetName(targetFilename);
-	id.setType(type);
+    InlineData id = createInlineData();
+    id.setData(data);
+    id.setTargetName(targetFilename);
+    id.setType(type);
 
-	return id;
+    return id;
     }
-     
+
 
 
 
@@ -115,23 +115,23 @@ public  final class DataFactory {
     * @throws TestFileException if there is a parameter problem.
     * @see com.sun.tgxml.tjtf.api.data.InlineData
     */
-    static public InlineData  cloneInlineData (InlineData origID ) 
-	throws TestFileException {
-	if (origID == null)
-	    return null;
+    static public InlineData  cloneInlineData (InlineData origID )
+    throws TestFileException {
+    if (origID == null)
+        return null;
 
-	InlineData cloneID = createInlineData();
+    InlineData cloneID = createInlineData();
 
-	// let sub-classes override their clone fields
-	cloneOverrideInlineData(origID, cloneID);
+    // let sub-classes override their clone fields
+    cloneOverrideInlineData(origID, cloneID);
 
-	cloneID.setData(origID.getData());
-	cloneID.setTargetName(origID.getTargetName());
-	cloneID.setType(origID.getType());
+    cloneID.setData(origID.getData());
+    cloneID.setTargetName(origID.getTargetName());
+    cloneID.setType(origID.getType());
 
-	return cloneID;
+    return cloneID;
     }
-     
+
 
 
   /**
@@ -154,9 +154,9 @@ public  final class DataFactory {
     * @see com.sun.tgxml.tjtf.api.data.ExternalData
     */
     static public ExternalData  createExternalData() {
-	return new ExternalDataImpl();
+    return new ExternalDataImpl();
     }
-     
+
 
   /**
     *   Create an (cannon) ExternalData object.
@@ -167,10 +167,10 @@ public  final class DataFactory {
     * @see com.sun.tgxml.tjtf.api.data.ExternalData
     */
     static public ExternalData  createExternalData (String sourceFilename ) throws TestFileException {
-	ExternalData ed = createExternalData();
-	ed.setSourceName(sourceFilename);
+    ExternalData ed = createExternalData();
+    ed.setSourceName(sourceFilename);
 
-	return ed;
+    return ed;
     }
 
 
@@ -183,22 +183,22 @@ public  final class DataFactory {
     * @throws TestFileException if there is a parameter problem.
     * @see com.sun.tgxml.tjtf.api.data.ExternalData
     */
-    static public ExternalData  cloneExternalData (ExternalData origED ) 
-	throws TestFileException {
-	if (origED == null)
-	    return null;
+    static public ExternalData  cloneExternalData (ExternalData origED )
+    throws TestFileException {
+    if (origED == null)
+        return null;
 
-	ExternalData cloneED = createExternalData();
+    ExternalData cloneED = createExternalData();
 
-	// let sub-classes override their clone fields
-	cloneOverrideExternalData(origED, cloneED);
+    // let sub-classes override their clone fields
+    cloneOverrideExternalData(origED, cloneED);
 
-	cloneED.setSourceName(origED.getSourceName());
-	cloneED.setType(origED.getType());
+    cloneED.setSourceName(origED.getSourceName());
+    cloneED.setType(origED.getType());
 
-	return cloneED;
+    return cloneED;
     }
-     
+
 
 
   /**
@@ -213,7 +213,7 @@ public  final class DataFactory {
 
     }
 
-     
+
 
   /**
     *   Create an (cannon) ExternalData object.
@@ -224,20 +224,20 @@ public  final class DataFactory {
     * @see com.sun.tgxml.tjtf.api.data.DataType
     */
     static public DataType  createDataType (String dt ) throws TestFileException {
-	DataType dtp = null;
+    DataType dtp = null;
 
-	if (dt == null)
-	    throw new TestFileException("Null data type string.");
+    if (dt == null)
+        throw new TestFileException("Null data type string.");
 
-	if (dt.equals(DataTypeImpl.cStr_Resource))
-	    dtp =  DataTypeImpl.createResource();
+    if (dt.equals(DataTypeImpl.cStr_Resource))
+        dtp =  DataTypeImpl.createResource();
 
-	else if (dt.equals(DataTypeImpl.cStr_IOData))
-	    dtp = DataTypeImpl.createIOData();
-	else
-	    throw new TestFileException("Undefined DataType.");
+    else if (dt.equals(DataTypeImpl.cStr_IOData))
+        dtp = DataTypeImpl.createIOData();
+    else
+        throw new TestFileException("Undefined DataType.");
 
-	return dtp;
+    return dtp;
     }
-     
+
 }

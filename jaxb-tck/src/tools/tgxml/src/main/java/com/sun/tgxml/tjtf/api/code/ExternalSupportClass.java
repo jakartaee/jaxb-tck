@@ -23,22 +23,22 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * ExternalSupportClass - 
+ * ExternalSupportClass -
  *
  * <b>ExternalSupportClass</b> is the marker interface to a externally referenced Class (code).
- * <b>ExternalSupportClass</b> describes auxiliary classes that a test uses to compile or execute. 
+ * <b>ExternalSupportClass</b> describes auxiliary classes that a test uses to compile or execute.
  * <p>
  * <b>ExternalSupportClass</b> is described by a SourceName which describes an external filename for
  * code of the external class.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    ExternalSupportClass 
+ *    ExternalSupportClass
  * ============================================================================================
  */
 
@@ -60,7 +60,7 @@ public  interface ExternalSupportClass extends SupportClass {
     * @see #setSourceName
     */
     public String getSourceName() throws TestFileException;
-     
+
   /**
     *   Set the location of the (external) source.
     *  <p>
@@ -69,7 +69,7 @@ public  interface ExternalSupportClass extends SupportClass {
     * @see #getSourceName
     */
     public void setSourceName(String sourceName) throws TestFileException;
-   
+
 
 }
 

@@ -24,7 +24,7 @@ import com.sun.tgxml.tjtf.api.data.DataType;
 // </importgen>
 
 /**
- * Data - 
+ * Data -
  *
  * <b>Data</b> describes the data that a test needs to be able to
  * execute.
@@ -32,7 +32,7 @@ import com.sun.tgxml.tjtf.api.data.DataType;
  * <b>Data</b> contains either a URL to a data file, or inline text
  * that represents data.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -58,25 +58,25 @@ public class DataImpl implements Data {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
-    
+
     public DataImpl() {
-	init();
+    init();
     }
-    
-    
+
+
     public DataImpl(DataType dataType) {
-	init();
-	setType(dataType);
+    init();
+    setType(dataType);
     }
 
 
     private void init() {
-	m_datatype = null;
+    m_datatype = null;
     }
 
     //------------------------------------------------------------------------------
@@ -93,9 +93,9 @@ public class DataImpl implements Data {
     * @see #setType
     */
     public DataType getType() {
-	return m_datatype;
+    return m_datatype;
     }
-     
+
    /**
     *   Set the data type (resource or iodata).
     *  <p>
@@ -106,7 +106,7 @@ public class DataImpl implements Data {
     * @see #getType
     */
     public void setType(DataType type) {
-	m_datatype = type;
+    m_datatype = type;
     }
 
 }

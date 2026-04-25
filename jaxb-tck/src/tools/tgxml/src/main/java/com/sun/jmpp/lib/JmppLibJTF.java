@@ -21,97 +21,97 @@ import java.io.PrintWriter;
 
 import com.sun.jmpp.lib.jtf.JTF_Slot;
 
-/**  
+/**
  * Jmpp Test Factory (JTF) support class for javasoft.sqe.tests.lang
  * testsuite. Used to generate tests from JTF-based templates.
  *
  * @author Konstantin S. Bobrovsky
- * @version @(#)JmppLibJTF.java	1.9 03/07/23
+ * @version @(#)JmppLibJTF.java 1.9 03/07/23
  */
 
 public class JmppLibJTF extends JmppLibLang {
 /** pass number for 2-pass templates */
-	protected int passNum = 0;
+    protected int passNum = 0;
 /** Root slot for a template. */
-	public JTF_Slot mainRoot = null;
+    public JTF_Slot mainRoot = null;
 
-	public final static int SKIP_NEG_PASS = 0;
-	public final static int POS_PASS      = 1;
-	public final static int NEG_PASS      = 2;
+    public final static int SKIP_NEG_PASS = 0;
+    public final static int POS_PASS      = 1;
+    public final static int NEG_PASS      = 2;
 
 /*-------->>> 2-pass scheme - related methods --------*/
 /** this method should be overloaded in a template
  *  @return the kind of the current combination - positive (true)
  *  or negative (false) */
-	public boolean combinationKind() {
-		return false;
-	}
+    public boolean combinationKind() {
+        return false;
+    }
 
 /** skips negative combinations on the pass when a positive test is generated */
-	public void skipNegativeComb() {
-		if (passNum == SKIP_NEG_PASS) {
-			if (!combinationKind()) {
-				skipTest = true;
-				generation = true;
-			} else {
-				passNum = POS_PASS;
-				mainRoot.reset();
-				mainRoot.genNext();
-			}
-		}
-	}
+    public void skipNegativeComb() {
+        if (passNum == SKIP_NEG_PASS) {
+            if (!combinationKind()) {
+                skipTest = true;
+                generation = true;
+            } else {
+                passNum = POS_PASS;
+                mainRoot.reset();
+                mainRoot.genNext();
+            }
+        }
+    }
 
 /** skips positive combinations on the pass when negative tests are generated */
-	public void skipPositiveComb() {
-		if (passNum == NEG_PASS && combinationKind())
-			skipTest = true;
-	}
+    public void skipPositiveComb() {
+        if (passNum == NEG_PASS && combinationKind())
+            skipTest = true;
+    }
 
 /** @return true if positive test is generated on the current pass,
  *  false otherwise */
-	public int pass() {
-		return passNum;
-	}
+    public int pass() {
+        return passNum;
+    }
 /** properly assigns <i>testKind</i> and <i>keywords</i> variables
  *  and resets <i>mainRoot</i> before negative tests generation */
-	public void assignKeywords() {
-		if (passNum == NEG_PASS) {
-			testKind=NEGATIVE;
-			keywords = negCompilerKeywords;
-		} else if (passNum == POS_PASS) {
-			passNum = NEG_PASS;
-			mainRoot.reset();
-			testKind = POSITIVE;
-			keywords = posCompilerKeywords;
-		}
-	}
+    public void assignKeywords() {
+        if (passNum == NEG_PASS) {
+            testKind=NEGATIVE;
+            keywords = negCompilerKeywords;
+        } else if (passNum == POS_PASS) {
+            passNum = NEG_PASS;
+            mainRoot.reset();
+            testKind = POSITIVE;
+            keywords = posCompilerKeywords;
+        }
+    }
 /*-----<<< end of 2-pass scheme - related methods ----*/
 
 
 /** Generates 'prolog' of an intermediate program. */
-	public void generateProlog(PrintWriter out, String intermediateClassName) {
-		out.println("package "+templatePackage+";\n");
-		out.println("import com.sun.jmpp.lib.jtf.*;\n");
-		out.println("public class "+intermediateClassName+" extends "+getClass().getName()+" {");
-	}
+    public void generateProlog(PrintWriter out, String intermediateClassName) {
+        out.println("package "+templatePackage+";\n");
+        out.println("import com.sun.jmpp.lib.jtf.*;\n");
+        out.println("public class "+intermediateClassName+" extends "+getClass().getName()+" {");
+    }
 
 
 /**
  *   Performs necessary actions before generation of the current test starts.
  *   Among these is calculating the test's name.
  */
-	public void composeTest() {
-		if (mainRoot == null)
-			generationError(log, "mainRoot not initialized.");
-		generation = mainRoot.genNext();
-		test = className + mainRoot.snapshotSlotTreeState();
-		if (!generation)
-			skipTest = true;
-	}
+    public void composeTest() {
+        if (mainRoot == null)
+            generationError(log, "mainRoot not initialized.");
+        generation = mainRoot.genNext();
+        test = className + mainRoot.snapshotSlotTreeState();
+        if (!generation)
+            skipTest = true;
+    }
 
-	public static void main(String[] argv) {
-		libMain(argv, new JmppLibJTF());
-	}
+    public static void main(String[] argv) {
+        libMain(argv, new JmppLibJTF());
+    }
 
     /**
      * Substitutes macros in given string with concrete values.

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 // </importgen>
 
 /**
- * TestCaseDocumentation - 
+ * TestCaseDocumentation -
  *
  * <b>TestCaseDocumentation</b>  is the typed-documentation interface for describing the documentation
  * associated with a TestCase.
@@ -36,7 +36,7 @@ import java.util.ArrayList;
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -55,7 +55,7 @@ public  interface TestCaseDocumentation extends Documentation  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -73,7 +73,7 @@ public  interface TestCaseDocumentation extends Documentation  {
     */
     public ArrayList getTestCaseSpecs();
 
-     
+
  /**
     *   Set the TestCaseSpecs associated with this documentation.
     *  <p>

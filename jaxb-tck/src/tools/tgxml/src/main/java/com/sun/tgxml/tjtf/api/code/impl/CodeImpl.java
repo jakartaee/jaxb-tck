@@ -23,13 +23,13 @@ import com.sun.tgxml.tjtf.api.code.Code;
 // </importgen>
 
 /**
- * Code - 
+ * Code -
  *
  * <b>Code</b> is the marker interface to a class structure that describes the root of a test description.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -58,21 +58,21 @@ public  class CodeImpl implements Code {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public CodeImpl() {
-	init();
+    init();
     }
 
    public CodeImpl(String langType) {
-	setSourceLang(langType);
+    setSourceLang(langType);
     }
 
     private void init() {
-	m_sourcelang = ctStr_langType_default;
+    m_sourcelang = ctStr_langType_default;
     }
 
 
@@ -89,9 +89,9 @@ public  class CodeImpl implements Code {
     * @see #setSourceLang
     */
     public String getSourceLang() {
-	return m_sourcelang;
+    return m_sourcelang;
     }
-     
+
   /**
     *   Set the source-language of this code  (default is "java").
     *  <p>
@@ -99,10 +99,10 @@ public  class CodeImpl implements Code {
     * @see #getSourceLang
     */
     public void setSourceLang(String sourcelang) {
-	if (sourcelang == null || sourcelang.equals(""))
-	    m_sourcelang = ctStr_langType_default;
-	else
-	    m_sourcelang = sourcelang;
+    if (sourcelang == null || sourcelang.equals(""))
+        m_sourcelang = ctStr_langType_default;
+    else
+        m_sourcelang = sourcelang;
     }
 
 }

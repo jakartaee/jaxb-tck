@@ -27,9 +27,9 @@ import org.apache.river.impl.Messages;
  * @since 3.0.0
  */
 final class UriParser {
-    
+
     private static final boolean isFileCaseInsensitiveOS = File.separatorChar == '\\';
-    
+
     String string;
     String scheme;
     String schemespecificpart;
@@ -105,21 +105,21 @@ final class UriParser {
                 /**
                  * The following line of code was incorrect and caused 6 test failures.
                  * According to RFC 3986, Pages 40 and 41:
-                 * 
+                 *
                  * For example,
                  * because the "http" scheme makes use of an authority component, has a
                  * default port of "80", and defines an empty path to be equivalent to
                  * "/", the following four URIs are equivalent:
-                 * 
+                 *
                  *    http://example.com
                  *    http://example.com/
                  *    http://example.com:/
                  *    http://example.com:80/
-                 * 
+                 *
                  * Normalization should not remove delimiters when their associated
-                 * component is empty unless licensed to do so by the scheme 
+                 * component is empty unless licensed to do so by the scheme
                  * specification.
-                 * 
+                 *
                  * For example, the URI "http://example.com/?" cannot be
                  * assumed to be equivalent to any of the examples above.
                  */
@@ -151,7 +151,7 @@ final class UriParser {
                 }
                 if (authority.length() == 0) {
                     authority = null;
-                } 
+                }
                 // Authority validated by userinfo, host and port, later.
             } else {
                 // no authority specified
@@ -191,9 +191,9 @@ final class UriParser {
                 result.append(scheme);
                 result.append(':');
             }
-            
+
             schemespecificpart = setSchemeSpecificPart(authority, normalizedPath , query);
-            
+
             if (authority != null) {
                 result.append("//"); //$NON-NLS-1$
                 result.append(authority);
@@ -214,7 +214,7 @@ final class UriParser {
             }
 
             this.string = result.toString();
-        }      
+        }
     }
 
     private void validateScheme(String uri, String scheme, int index) throws URISyntaxException {
@@ -568,7 +568,7 @@ final class UriParser {
         URIEncoderDecoder.validate(sub, Uri.iPvFuture);
         return true;
     }
-    
+
     /*
      * normalize path, and return the resulting string
      */
@@ -657,7 +657,7 @@ final class UriParser {
         }
         return result;
     }
-    
+
     /**
      * UriParser method used to re-calculate the scheme specific part of the
      * resolved or normalized URIs

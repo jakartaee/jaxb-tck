@@ -28,18 +28,18 @@ import org.apache.tools.ant.Task;
  *
  */
 public class JBGenerateTask extends Task {
-	
-	private String packageName;
-	private String jbfile;
-	private String xmlfile;
-	private String compilepath;
-	
-    public JBGenerateTask() {
-		super();
-		setTaskName("jbxml-generate");
-	}
 
-	/**
+    private String packageName;
+    private String jbfile;
+    private String xmlfile;
+    private String compilepath;
+
+    public JBGenerateTask() {
+        super();
+        setTaskName("jbxml-generate");
+    }
+
+    /**
      * @param args
      */
     public static void main(String[] args) {
@@ -47,54 +47,54 @@ public class JBGenerateTask extends Task {
 
     }
 
-	public String getCompilepath() {
-		return compilepath;
-	}
+    public String getCompilepath() {
+        return compilepath;
+    }
 
-	public void setCompilepath(String compilepath) {
-		this.compilepath = compilepath;
-	}
+    public void setCompilepath(String compilepath) {
+        this.compilepath = compilepath;
+    }
 
-	public String getJbfile() {
-		return jbfile;
-	}
+    public String getJbfile() {
+        return jbfile;
+    }
 
-	public void setJbfile(String jbfile) {
-		this.jbfile = jbfile;
-	}
+    public void setJbfile(String jbfile) {
+        this.jbfile = jbfile;
+    }
 
-	public String getPackage() {
-		return packageName;
-	}
+    public String getPackage() {
+        return packageName;
+    }
 
-	public void setPackage(String packageName) {
-		this.packageName = packageName;
-	}
+    public void setPackage(String packageName) {
+        this.packageName = packageName;
+    }
 
-	public String getXmlfile() {
-		return xmlfile;
-	}
+    public String getXmlfile() {
+        return xmlfile;
+    }
 
-	public void setXmlfile(String xmlfile) {
-		this.xmlfile = xmlfile;
-	}
+    public void setXmlfile(String xmlfile) {
+        this.xmlfile = xmlfile;
+    }
 
-	@Override
-	public void execute() throws BuildException {
-		String basedirName = getProject().getProperty("basedir");
-		String testGroupName = getProject().getProperty("testgroup");
-		String [] args = new String[] {
-		        "-package", getPackage(),
-		        "-classpath", basedirName + File.separator + getCompilepath(),
-		        "-document", getXmlfile(),
-		        "-pcontent", getJbfile(),
-		        "-TestURL", "file://" + basedirName + File.separator + testGroupName				
-		};
-		try {
-			JBContentBuild.main(args);
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-	}
+    @Override
+    public void execute() throws BuildException {
+        String basedirName = getProject().getProperty("basedir");
+        String testGroupName = getProject().getProperty("testgroup");
+        String [] args = new String[] {
+                "-package", getPackage(),
+                "-classpath", basedirName + File.separator + getCompilepath(),
+                "-document", getXmlfile(),
+                "-pcontent", getJbfile(),
+                "-TestURL", "file://" + basedirName + File.separator + testGroupName
+        };
+        try {
+            JBContentBuild.main(args);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
 
 }

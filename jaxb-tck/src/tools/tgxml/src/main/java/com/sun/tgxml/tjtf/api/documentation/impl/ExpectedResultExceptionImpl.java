@@ -25,12 +25,12 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * ExpectedResultException - 
+ * ExpectedResultException -
  *
  * <b>ExpectedResultException</b> is an exception that is expected as the outcome
  * of a test
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -58,7 +58,7 @@ public class ExpectedResultExceptionImpl implements ExpectedResultException {
      * ============================================================================================
      */
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -86,7 +86,7 @@ public class ExpectedResultExceptionImpl implements ExpectedResultException {
     * @see com.sun.tgxml.tjtf.api.documentation.ExpectedResult
     */
     public ExpectedResultExceptionImpl(String ex){
-	m_exception = ex;
+    m_exception = ex;
     }
 
 
@@ -103,9 +103,9 @@ public class ExpectedResultExceptionImpl implements ExpectedResultException {
     * @see #setException
     */
     public String getException() {
-	return m_exception; 
+    return m_exception;
     }
-     
+
    /**
     *   Set the side-effect associated with this ExpectedResult.
     *  <p>
@@ -113,10 +113,10 @@ public class ExpectedResultExceptionImpl implements ExpectedResultException {
     * @see #getException
     */
     public void setException(String ex) throws TestFileException {
-	if (ex == null || ex.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.doc.expectresexcpt.value.null") );
+    if (ex == null || ex.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.doc.expectresexcpt.value.null") );
 
-	m_exception = ex;
+    m_exception = ex;
     }
 
 }

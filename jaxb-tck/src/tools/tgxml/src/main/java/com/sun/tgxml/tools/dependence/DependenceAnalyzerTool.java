@@ -31,23 +31,23 @@ import com.sun.tgxml.tools.dependence.processors.DependenceAnalyzer;
 // import com.sun.tgxml.tools.dependence.LibraryDependencies;
 // import com.sun.tgxml.tools.dependence.LibraryDependency;
 
-/**  
+/**
  * A processing dependency tool. The tool is to provide a command
  * line user interface to the <i>DependenceAnalyzer</i> component.
  * <br>
  *
  * @author Evgueni Rouban
- * @version @(#)DependenceAnalyzerTool.java	1.12 05/04/08
+ * @version @(#)DependenceAnalyzerTool.java 1.12 05/04/08
  * @see com.sun.tgxml.tools.dependence.processors.DependenceAnalyzer
  */
 
 public class DependenceAnalyzerTool extends ToolBase {
-    
+
     private static final String CtStr_ToolName = "DependenceAnalyzerTool";
-    
+
     protected String dependenciesFileName = null;
     protected String libraryListFile = null;
-    
+
     protected LibraryDependencies libraryDependencies = null;
     protected LibIDList libIDList = new LibIDList();
 
@@ -64,11 +64,11 @@ public class DependenceAnalyzerTool extends ToolBase {
 
 
    /** ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    StringOption dOption = new StringOption(LibResHandler.getResStr("dependencednalyzertool.option.d.mnem"), 
+    StringOption dOption = new StringOption(LibResHandler.getResStr("dependencednalyzertool.option.d.mnem"),
          LibResHandler.getResStr("dependencednalyzertool.option.d.desc"),
          OBLIGATORY);
 
@@ -89,19 +89,19 @@ public class DependenceAnalyzerTool extends ToolBase {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
     public void applyOptionsValues() throws ParseArgumentException {
         dependenciesFileName = dOption.getStringValue();
         if (lOption.isSet())
             libraryListFile = lOption.getStringValue();
- 
+
         // check operands
-        for (int i = 0; i < operands.length; i++) {        
+        for (int i = 0; i < operands.length; i++) {
             libIDList.add(operands[i]);
         }
-	    
+
 
         if (libraryListFile == null && libIDList.isEmpty()) {
             throw new ParseArgumentException (LibResHandler.getResStr("dependencednalyzertool.error.args.library.not.specified"));
@@ -121,7 +121,7 @@ public class DependenceAnalyzerTool extends ToolBase {
         super.applyOptionsValues();
     }
 
-    /** 
+    /**
      * Sets OperandsValidator that validates that allows any operands
      */
     protected void setOperandsValidator() {
@@ -129,10 +129,10 @@ public class DependenceAnalyzerTool extends ToolBase {
             LibResHandler.getResStr("dependencednalyzertool.operands.0"),
             LibResHandler.getResStr("dependencednalyzertool.operands.1")
         };
-        operandsValidator = new DefaultOperandsValidator(0, Integer.MAX_VALUE, 
+        operandsValidator = new DefaultOperandsValidator(0, Integer.MAX_VALUE,
             null, null, operandsUsageLines);
     }
-    
+
     /**
      * Sets usage header
      */
@@ -140,8 +140,8 @@ public class DependenceAnalyzerTool extends ToolBase {
         toolUsageHeader = LibResHandler.getResStr("dependencednalyzertool.usage.header", getProgramName(), str_Term);
     }
 
-    /** 
-     *  
+    /**
+     *
      *  Primary tool interface.
      * <p>
      * This method creates the DependenceAnalyzer and calls its method analyze.
@@ -151,7 +151,7 @@ public class DependenceAnalyzerTool extends ToolBase {
 
         DependenceAnalyzer dependenceAnalyzer = new DependenceAnalyzer(getStandardErr());
         LibIDList requiredLibraries = dependenceAnalyzer.analyze(libIDList, libraryDependencies);
-        
+
         if (requiredLibraries != null) {
             requiredLibraries.write(getStandardOut());
         }
@@ -164,17 +164,17 @@ public class DependenceAnalyzerTool extends ToolBase {
 
     /**
      * Implements command line user interface.
-     * <pre> usage: 
+     * <pre> usage:
      *   DependenceAnalyzerTool -d dependencies_file_name -l library_list_file
      *   DependenceAnalyzerTool -d dependencies_file_name LibID ...
      * </pre>
      * <ul>
-     * <li>library_list_file - text file containing list of library 
-     *     identifiers referred by test groups. This file is produced 
-     *     by TestGroup filtering. 
-     * <li>LibID - a library identifier 
-     * <li>dependencies_file_name - text file containing library dependencies. 
-     *     The file format must be acceptable by the method 
+     * <li>library_list_file - text file containing list of library
+     *     identifiers referred by test groups. This file is produced
+     *     by TestGroup filtering.
+     * <li>LibID - a library identifier
+     * <li>dependencies_file_name - text file containing library dependencies.
+     *     The file format must be acceptable by the method
      *     LibraryDependencies.read(InputStream)
      * </ul>
      *

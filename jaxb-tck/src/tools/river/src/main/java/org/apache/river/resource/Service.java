@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -118,29 +118,29 @@ import net.jini.loader.LoadClass;
  * class from within a privileged security context.
  *
  * @author Sun Microsystems, Inc.
- * 
+ *
  * @since 2.0
  */
 
 public final class Service {
 
-	private static final Logger log=
-		Logger.getLogger(Service.class.getName());
+    private static final Logger log=
+        Logger.getLogger(Service.class.getName());
 
     private static final String prefix = "META-INF/services/";
 
     private Service() { }
 
     private static void fail(Class service, String msg)
-	throws ServiceConfigurationError
+    throws ServiceConfigurationError
     {
-	throw new ServiceConfigurationError(service.getName() + ": " + msg);
+    throw new ServiceConfigurationError(service.getName() + ": " + msg);
     }
 
     private static void fail(Class service, URL u, int line, String msg)
-	throws ServiceConfigurationError
+    throws ServiceConfigurationError
     {
-	fail(service, u + ":" + line + ": " + msg);
+    fail(service, u + ":" + line + ": " + msg);
     }
 
     /**
@@ -149,33 +149,33 @@ public final class Service {
      * not already a member of the returned set.
      */
     private static int parseLine(Class service, URL u, BufferedReader r, int lc,
-				 List names, Set returned)
-	throws IOException, ServiceConfigurationError
+                 List names, Set returned)
+    throws IOException, ServiceConfigurationError
     {
-	String ln = r.readLine();
-	if (ln == null) {
-	    return -1;
-	}
-	int ci = ln.indexOf('#');
-	if (ci >= 0) ln = ln.substring(0, ci);
-	ln = ln.trim();
-	int n = ln.length();
-	if (n != 0) {
-	    if ((ln.indexOf(' ') >= 0) || (ln.indexOf('\t') >= 0))
-		fail(service, u, lc, "Illegal configuration-file syntax");
-	    if (!Character.isJavaIdentifierStart(ln.charAt(0)))
-		fail(service, u, lc, "Illegal provider-class name: " + ln);
-	    for (int i = 1; i < n; i++) {
-		char c = ln.charAt(i);
-		if (!Character.isJavaIdentifierPart(c) && (c != '.'))
-		    fail(service, u, lc, "Illegal provider-class name: " + ln);
-	    }
-	    if (!returned.contains(ln)) {
-		names.add(ln);
-		returned.add(ln);
-	    }
-	}
-	return lc + 1;
+    String ln = r.readLine();
+    if (ln == null) {
+        return -1;
+    }
+    int ci = ln.indexOf('#');
+    if (ci >= 0) ln = ln.substring(0, ci);
+    ln = ln.trim();
+    int n = ln.length();
+    if (n != 0) {
+        if ((ln.indexOf(' ') >= 0) || (ln.indexOf('\t') >= 0))
+        fail(service, u, lc, "Illegal configuration-file syntax");
+        if (!Character.isJavaIdentifierStart(ln.charAt(0)))
+        fail(service, u, lc, "Illegal provider-class name: " + ln);
+        for (int i = 1; i < n; i++) {
+        char c = ln.charAt(i);
+        if (!Character.isJavaIdentifierPart(c) && (c != '.'))
+            fail(service, u, lc, "Illegal provider-class name: " + ln);
+        }
+        if (!returned.contains(ln)) {
+        names.add(ln);
+        returned.add(ln);
+        }
+    }
+    return lc + 1;
     }
 
     /**
@@ -202,27 +202,27 @@ public final class Service {
      *         if a configuration-file format error is detected
      */
     private static Iterator parse(Class service, URL u, Set returned)
-	throws ServiceConfigurationError
+    throws ServiceConfigurationError
     {
-	InputStream in = null;
-	BufferedReader r = null;
-	ArrayList names = new ArrayList();
-	try {
-	    in = u.openStream();
-	    r = new BufferedReader(new InputStreamReader(in, "utf-8"));
-	    int lc = 1;
-	    while ((lc = parseLine(service, u, r, lc, names, returned)) >= 0);
-	} catch (IOException x) {
-	    fail(service, ": " + x);
-	} finally {
-	    try {
-		if (r != null) r.close();
-		if (in != null) in.close();
-	    } catch (IOException y) {
-		fail(service, ": " + y);
-	    }
-	}
-	return names.iterator();
+    InputStream in = null;
+    BufferedReader r = null;
+    ArrayList names = new ArrayList();
+    try {
+        in = u.openStream();
+        r = new BufferedReader(new InputStreamReader(in, "utf-8"));
+        int lc = 1;
+        while ((lc = parseLine(service, u, r, lc, names, returned)) >= 0);
+    } catch (IOException x) {
+        fail(service, ": " + x);
+    } finally {
+        try {
+        if (r != null) r.close();
+        if (in != null) in.close();
+        } catch (IOException y) {
+        fail(service, ": " + y);
+        }
+    }
+    return names.iterator();
     }
 
 
@@ -231,71 +231,71 @@ public final class Service {
      */
     private static class LazyIterator implements Iterator {
 
-	Class service;
-	ClassLoader loader;
-	Enumeration configs = null;
-	Iterator pending = null;
-	Set returned = new LinkedHashSet();
-	String nextName = null;
+    Class service;
+    ClassLoader loader;
+    Enumeration configs = null;
+    Iterator pending = null;
+    Set returned = new LinkedHashSet();
+    String nextName = null;
 
-	private LazyIterator(Class service, ClassLoader loader) {
-	    this.service = service;
-	    this.loader = loader;
-	}
+    private LazyIterator(Class service, ClassLoader loader) {
+        this.service = service;
+        this.loader = loader;
+    }
 
-	public boolean hasNext() throws ServiceConfigurationError {
-	    if (nextName != null) {
-		return true;
-	    }
-	    if (configs == null) {
-		try {
-		    String fullName = prefix + service.getName();
-		    if (loader == null)
-			configs = ClassLoader.getSystemResources(fullName);
-		    else
-			configs = loader.getResources(fullName);
-		} catch (IOException x) {
-		    fail(service, ": " + x);
-		}
-	    }
-	    while ((pending == null) || !pending.hasNext()) {
-		if (!configs.hasMoreElements()) {
-		    return false;
-		}
-		pending = parse(service, (URL)configs.nextElement(), returned);
-	    }
-	    nextName = (String)pending.next();
-	    return true;
-	}
+    public boolean hasNext() throws ServiceConfigurationError {
+        if (nextName != null) {
+        return true;
+        }
+        if (configs == null) {
+        try {
+            String fullName = prefix + service.getName();
+            if (loader == null)
+            configs = ClassLoader.getSystemResources(fullName);
+            else
+            configs = loader.getResources(fullName);
+        } catch (IOException x) {
+            fail(service, ": " + x);
+        }
+        }
+        while ((pending == null) || !pending.hasNext()) {
+        if (!configs.hasMoreElements()) {
+            return false;
+        }
+        pending = parse(service, (URL)configs.nextElement(), returned);
+        }
+        nextName = (String)pending.next();
+        return true;
+    }
 
-	public Object next() throws ServiceConfigurationError {
-	    if (!hasNext()) {
-		throw new NoSuchElementException();
-	    }
-	    String cn = nextName;
-	    nextName = null;
-	    try {
-		Class c = LoadClass.forName(cn, true, loader);
-		if (!service.isAssignableFrom(c)) {
-			log.severe("service classloader is "
-					  + service.getClass().getClassLoader()
-					  + ", provider loader is " + loader);
-		    fail(service, "Provider " + cn + " is of incorrect type");
-		}
-		return c.newInstance();
-	    } catch (ClassNotFoundException x) {
-		fail(service,
-		     "Provider " + cn + " not found");
-	    } catch (Exception x) {
-		fail(service,
-		     "Provider " + cn + " could not be instantiated: " + x);
-	    }
-	    return null;	/* This cannot happen */
-	}
+    public Object next() throws ServiceConfigurationError {
+        if (!hasNext()) {
+        throw new NoSuchElementException();
+        }
+        String cn = nextName;
+        nextName = null;
+        try {
+        Class c = LoadClass.forName(cn, true, loader);
+        if (!service.isAssignableFrom(c)) {
+            log.severe("service classloader is "
+                      + service.getClass().getClassLoader()
+                      + ", provider loader is " + loader);
+            fail(service, "Provider " + cn + " is of incorrect type");
+        }
+        return c.newInstance();
+        } catch (ClassNotFoundException x) {
+        fail(service,
+             "Provider " + cn + " not found");
+        } catch (Exception x) {
+        fail(service,
+             "Provider " + cn + " could not be instantiated: " + x);
+        }
+        return null;    /* This cannot happen */
+    }
 
-	public void remove() {
-	    throw new UnsupportedOperationException();
-	}
+    public void remove() {
+        throw new UnsupportedOperationException();
+    }
 
     }
 
@@ -324,7 +324,7 @@ public final class Service {
      *         and instantiate provider classes, or <tt>null</tt> if the system
      *         class loader (or, failing that the bootstrap class loader) is to
      *         be used
-     * 
+     *
      * @return An <tt>Iterator</tt> that yields provider objects for the given
      *         service, in instantiation order.  The iterator will throw a
      *         <tt>ServiceConfigurationError</tt> if a provider-configuration
@@ -339,9 +339,9 @@ public final class Service {
      * @see #installedProviders(java.lang.Class)
      */
     public static Iterator providers(Class service, ClassLoader loader)
-	throws ServiceConfigurationError
+    throws ServiceConfigurationError
     {
-	return new LazyIterator(service, loader);
+    return new LazyIterator(service, loader);
     }
 
 
@@ -371,10 +371,10 @@ public final class Service {
      * @see #providers(java.lang.Class, java.lang.ClassLoader)
      */
     public static Iterator providers(Class service)
-	throws ServiceConfigurationError
+    throws ServiceConfigurationError
     {
-	ClassLoader cl = Thread.currentThread().getContextClassLoader();
-	return Service.providers(service, cl);
+    ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    return Service.providers(service, cl);
     }
 
 
@@ -408,11 +408,11 @@ public final class Service {
      * @see #providers(java.lang.Class, java.lang.ClassLoader)
      */
     public static Iterator installedProviders(Class service)
-	throws ServiceConfigurationError
+    throws ServiceConfigurationError
     {
-	ClassLoader cl = ClassLoader.getSystemClassLoader();
-	if (cl != null) cl = cl.getParent();
-	return Service.providers(service, cl);
+    ClassLoader cl = ClassLoader.getSystemClassLoader();
+    if (cl != null) cl = cl.getParent();
+    return Service.providers(service, cl);
     }
 
 }

@@ -19,14 +19,14 @@ package com.sun.tgxml.tjtf.api.tests;
 
 
 /**
- * TestGroupComponent - 
+ * TestGroupComponent -
  *
- * <b>TestGroupComponent</b> is the interface that describes that this object 
+ * <b>TestGroupComponent</b> is the interface that describes that this object
  * belongs to some TestGroup.
- * 
+ *
  * <p>
  *
- * @version 	1.1, 11/30/2003
+ * @version     1.1, 11/30/2003
  * @author  Dmitry Fazunenko
  */
 
@@ -54,9 +54,9 @@ public  interface TestGroupComponent {
     * @see #setTestGroup
     */
     public TestGroup getTestGroup();
-     
 
-     
+
+
   /**
     *   Set the (TestGroup) parent of this TestGroupComponent.
     *  <p>

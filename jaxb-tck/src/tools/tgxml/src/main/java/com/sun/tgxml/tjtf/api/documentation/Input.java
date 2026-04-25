@@ -23,13 +23,13 @@ import com.sun.tgxml.tjtf.api.common.NameValuePair;
 // </importgen>
 
 /**
- * Input - 
+ * Input -
  *
- * <b>Input</b> is an (extension) element that provides additional documentation 
+ * <b>Input</b> is an (extension) element that provides additional documentation
  * a repository may use to describe a test. Input contains a name-value pair for
  * a description item that may be defined in a given repository entity.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,17 +48,17 @@ public interface Input extends NameValuePair {
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
     //------------------------------------------------------------------------------
     //  Operations
-    //------------------------------------------------------------------------------     
+    //------------------------------------------------------------------------------
 
 
 }

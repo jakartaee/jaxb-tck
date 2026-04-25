@@ -47,13 +47,13 @@ import com.sun.tgxml.util.MiscUtils;
 public class TestFilterTool2 extends XMLValToolBase {
 
     String inputFileName,
-	   outputFileName;
+       outputFileName;
 
     TestFilterConveyer2 tfConveyer;
-    
+
     public TestFilterTool2(PrintStream out, PrintStream err) {
-	super(out, err, "TestFilterTool2");
-	tfConveyer = new TestFilterConveyer2(err);
+    super(out, err, "TestFilterTool2");
+    tfConveyer = new TestFilterConveyer2(err);
     }
 
     public static void main(String args[]) {
@@ -62,9 +62,9 @@ public class TestFilterTool2 extends XMLValToolBase {
     }
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
@@ -81,7 +81,7 @@ public class TestFilterTool2 extends XMLValToolBase {
      */
     public void registerOptions() {
 
-        // add "-in" switch to fileOption defined in XMLToolBase 
+        // add "-in" switch to fileOption defined in XMLToolBase
         fileOption.addSwitch(LibResHandler.getResStr("filter.option.testfilter.in.mnem"));
         fileOption.setUsageInfo(LibResHandler.getResStr("filter.option.testfilter.in"));
 
@@ -93,24 +93,24 @@ public class TestFilterTool2 extends XMLValToolBase {
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      */
-    public void applyOptionsValues() throws ParseArgumentException {	   
+    public void applyOptionsValues() throws ParseArgumentException {
 
         outputFileName  = outOption.getStringValue();
 
         super.applyOptionsValues();
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
     *
     * ----------------------------------------------------------------------
     */
 
 
-    /** 
-     *  
+    /**
+     *
      * Sub-classes override this method when they wish to process any arguments
      * before running the "executeTool" method. (Called by startTool()).
      * <p>
@@ -118,13 +118,13 @@ public class TestFilterTool2 extends XMLValToolBase {
      * @throws IOException if there is some type of IO problem.
      */
     public void processArgs() throws TestFileException, IOException {
-	super.processArgs();
-	tfConveyer.setup();
+    super.processArgs();
+    tfConveyer.setup();
     }
 
 //    public void process(IRObj testGroup) throws TestFileException {
 //
-    /** 
+    /**
      *  Parse an input file, filter the TestGroup, and emit the cleaned tree.<b>
      * TestFilter needs to override this method since no output should be produced if
      * the whole TestGroup is filtered out.
@@ -133,49 +133,49 @@ public class TestFilterTool2 extends XMLValToolBase {
      * @throws IOException if there is an IO problem.
      */
     public void executeTool() throws TestFileException, IOException {
-	XMLEmitter emitter = (XMLEmitter) m_emitter;
+    XMLEmitter emitter = (XMLEmitter) m_emitter;
 
-	File files[] = { getInputFile() };
-	IRObj ir = (m_parser.parse(files))[0];
+    File files[] = { getInputFile() };
+    IRObj ir = (m_parser.parse(files))[0];
 
-	if (! (ir instanceof TestGroup) )
-	    throw new TestFileException(LibResHandler.getResStr("filter.error.testfilter.badTestRootType", ir.getClass().toString()));
+    if (! (ir instanceof TestGroup) )
+        throw new TestFileException(LibResHandler.getResStr("filter.error.testfilter.badTestRootType", ir.getClass().toString()));
 
-	TestGroup testGroup = tfConveyer.process((TestGroup)ir);
-	
-	if (testGroup == null) {
-//	    m_emitter = new NullEmitter();
-	    log(">>>> The whole TestGroup "+ IR.getID((TestGroup)ir) +
-							" is filtered out >>>> no output");
-	    return;
-	}
+    TestGroup testGroup = tfConveyer.process((TestGroup)ir);
 
-	try {
-	    File fl = new File(outputFileName);
-	    File dir = fl.getParentFile();
-	    if (dir != null && !MiscUtils.mkdirs(dir))
+    if (testGroup == null) {
+//      m_emitter = new NullEmitter();
+        log(">>>> The whole TestGroup "+ IR.getID((TestGroup)ir) +
+                            " is filtered out >>>> no output");
+        return;
+    }
+
+    try {
+        File fl = new File(outputFileName);
+        File dir = fl.getParentFile();
+        if (dir != null && !MiscUtils.mkdirs(dir))
                         throw new TestFileException(LibResHandler.getResStr("filter.error.testfilter.DirCreateError", dir.getName()));
-	     
-	    OutputStream output = new BufferedOutputStream(new FileOutputStream(fl), 32*1024);
-	    emitter.emit(testGroup, output);
-	    output.close();
-	} catch (Exception e) {
-	    reportErrorMsg(LibResHandler.getResStr("filter.error.testfilter.outputError", outputFileName, e.toString()));
-	    if (m_debug)
-		e.printStackTrace(getStandardErr());
-	    throw new TestFileException(LibResHandler.getResStr("filter.error.testfilter.outputError", outputFileName, e.toString()));
-	}
+
+        OutputStream output = new BufferedOutputStream(new FileOutputStream(fl), 32*1024);
+        emitter.emit(testGroup, output);
+        output.close();
+    } catch (Exception e) {
+        reportErrorMsg(LibResHandler.getResStr("filter.error.testfilter.outputError", outputFileName, e.toString()));
+        if (m_debug)
+        e.printStackTrace(getStandardErr());
+        throw new TestFileException(LibResHandler.getResStr("filter.error.testfilter.outputError", outputFileName, e.toString()));
+    }
     }
 }
 //=================================================================================
 
 /*
     static class NullEmitter implements XMLEmitter {
-	public void emit(IRObj[] irs, File[] files)          {}
-	public void emit(IRObj[] irs, OutputStream[] outputs){}
-	public void emit(XMLObj root, File file)	     {}
-	public void emit(XMLObj root, OutputStream stream)   {}
-	public void setDebug(boolean debug)		     {}
+    public void emit(IRObj[] irs, File[] files)          {}
+    public void emit(IRObj[] irs, OutputStream[] outputs){}
+    public void emit(XMLObj root, File file)         {}
+    public void emit(XMLObj root, OutputStream stream)   {}
+    public void setDebug(boolean debug)          {}
     }
 */
 

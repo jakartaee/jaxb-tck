@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -89,25 +89,25 @@ import net.jini.security.policy.DynamicPolicy;
  * <pre>
  * <i>Target</i>:
  *   <i>DelimiterDeclaration</i><sub>opt</sub> <i>Permissions</i> ;<sub>opt</sub>
- *   
+ *
  * <i>DelimiterDeclaration</i>:
  *   delim = <i>DelimiterCharacter</i>
- *   
+ *
  * <i>Permissions</i>:
  *   <i>Permission</i>
  *   <i>Permissions</i> ; <i>Permission</i>
- *   
+ *
  * <i>Permission</i>:
  *   <i>PermissionClassName</i>
  *   <i>PermissionClassName Name</i>
  *   <i>PermissionClassName Name</i> , <i>Actions</i>
- *   
+ *
  * <i>PermissionClassName</i>:
  *   <i>ClassName</i>
- *   
+ *
  * <i>Name</i>:
  *   <i>DelimitedString</i>
- *   
+ *
  * <i>Actions</i>:
  *   <i>DelimitedString</i>
  * </pre>
@@ -146,7 +146,7 @@ import net.jini.security.policy.DynamicPolicy;
  *     "java.net.SocketPermission \"localhost:1024-\", \"accept,listen\"";
  *
  * // allow granting of permissions to read files under /foo, /bar directories
- * permission net.jini.security.GrantPermission 
+ * permission net.jini.security.GrantPermission
  *     "delim=' java.io.FilePermission '/foo/-', 'read'; java.io.FilePermission '/bar/-', 'read'";
  *
  * // allow granting of permission for client authentication as jack, with or without delegation, to any server
@@ -154,18 +154,18 @@ import net.jini.security.policy.DynamicPolicy;
  *     "delim=| net.jini.security.AuthenticationPermission |javax.security.auth.x500.X500Principal \"CN=jack\"|, |delegate|";
  * </pre>
  *
- * @author	Sun Microsystems, Inc.
- * @see		DynamicPolicy#grant(Class, Principal[], Permission[])
+ * @author  Sun Microsystems, Inc.
+ * @see     DynamicPolicy#grant(Class, Principal[], Permission[])
  * @since 2.0
  */
 public final class GrantPermission extends Permission {
 
     private static final long serialVersionUID = 4668259055340724280L;
-    
+
     private static final Class[] PARAMS0 = {};
     private static final Class[] PARAMS1 = { String.class };
     private static final Class[] PARAMS2 = { String.class, String.class };
-    
+
     private transient Permission[] grants;
     private transient boolean unserializable;
     private transient volatile Implier implier;
@@ -174,58 +174,58 @@ public final class GrantPermission extends Permission {
     /**
      * Creates a <code>GrantPermission</code> for the permission(s) specified
      * in the name string.
-     * 
-     * @param	name string describing contained permissions
-     * @throws	NullPointerException if <code>name</code> is <code>null</code>
-     * @throws	IllegalArgumentException if unable to parse target name
+     *
+     * @param   name string describing contained permissions
+     * @throws  NullPointerException if <code>name</code> is <code>null</code>
+     * @throws  IllegalArgumentException if unable to parse target name
      */
     public GrantPermission(String name) {
-	super(name);
-	initFromName(name);
+    super(name);
+    initFromName(name);
     }
-    
+
     /**
      * Creates a <code>GrantPermission</code> for the given permission.
-     * 
-     * @param	permission permission to allow to be granted
-     * @throws	NullPointerException if <code>permission</code> is
-     * 		<code>null</code>
+     *
+     * @param   permission permission to allow to be granted
+     * @throws  NullPointerException if <code>permission</code> is
+     *      <code>null</code>
      */
     public GrantPermission(Permission permission) {
-	this(new Permission[]{ permission });
+    this(new Permission[]{ permission });
     }
 
     /**
      * Creates a <code>GrantPermission</code> for the given permissions.  The
      * permissions array passed in is neither modified nor retained; subsequent
      * changes to the array have no effect on the <code>GrantPermission</code>.
-     * 
-     * @param	permissions permissions to allow to be granted
-     * @throws	NullPointerException if <code>permissions</code> array or any
-     * 		element of <code>permissions</code> array is <code>null</code>
+     *
+     * @param   permissions permissions to allow to be granted
+     * @throws  NullPointerException if <code>permissions</code> array or any
+     *      element of <code>permissions</code> array is <code>null</code>
      */
     public GrantPermission(Permission[] permissions) {
-	super(constructName(permissions = (Permission[]) permissions.clone()));
-	grants = flatten(permissions);
-	for (int i = 0; i < permissions.length; i++) {
-	    if (permissions[i] instanceof UnresolvedPermission) {
-		unserializable = true;
-		return;
-	    }
-	}
+    super(constructName(permissions = (Permission[]) permissions.clone()));
+    grants = flatten(permissions);
+    for (int i = 0; i < permissions.length; i++) {
+        if (permissions[i] instanceof UnresolvedPermission) {
+        unserializable = true;
+        return;
+        }
     }
-    
+    }
+
     /**
      * Returns canonical string representation of this permission's actions,
      * which for <code>GrantPermission</code> is always the empty string
      * <code>""</code>.
-     * 
-     * @return	the empty string <code>""</code>
+     *
+     * @return  the empty string <code>""</code>
      */
     public String getActions() {
-	return "";
+    return "";
     }
-    
+
     /**
      * Returns a newly created empty mutable permission collection for
      * <code>GrantPermission</code> instances.  The <code>implies</code> method
@@ -237,21 +237,21 @@ public final class GrantPermission extends Permission {
      * <code>GrantPermission</code>s themselves. Then, a <code>GrantPermission
      * g</code> is implied by the <code>PermissionCollection pc</code> if and
      * only if each permission in <code>c(g)</code> is implied by the union of
-     * <code>c(p)</code> for all <code>p</code> in <code>pc</code>.  
+     * <code>c(p)</code> for all <code>p</code> in <code>pc</code>.
      * <p>
      * Implication of contained
      * <code>java.security.UnresolvedPermission</code>s is special-cased: an
      * <code>UnresolvedPermission p1</code> is taken to imply another
      * <code>UnresolvedPermission p2</code> if and only if the serialized
      * representations of <code>p1</code> and <code>p2</code> are identical.
-     * 
-     * @return	newly created empty mutable permission collection for
-     *		<code>GrantPermissions</code>
+     *
+     * @return  newly created empty mutable permission collection for
+     *      <code>GrantPermissions</code>
      */
     public PermissionCollection newPermissionCollection() {
-	return new GrantPermissionCollection();
+    return new GrantPermissionCollection();
     }
-    
+
     /**
      * Returns <code>true</code> if the given permission is a
      * <code>GrantPermission</code> implied by this permission, or
@@ -269,50 +269,50 @@ public final class GrantPermission extends Permission {
      * <code>UnresolvedPermission p1</code> is taken to imply another
      * <code>UnresolvedPermission p2</code> if and only if the serialized
      * representations of <code>p1</code> and <code>p2</code> are identical.
-     * 
-     * @param	permission permission to check
-     * @return	<code>true</code> if given permission is implied by this
-     *		permission, <code>false</code> otherwise
+     *
+     * @param   permission permission to check
+     * @return  <code>true</code> if given permission is implied by this
+     *      permission, <code>false</code> otherwise
      */
     public boolean implies(Permission permission) {
-	if (!(permission instanceof GrantPermission)) {
-	    return false;
-	}
-	// perm -> perm implies infrequent, so construct implier lazily
-	if (implier == null) {
-	    Implier imp = new Implier();
-	    imp.add(this);
-	    implier = imp;
-	}
-	return implier.implies(permission);
+    if (!(permission instanceof GrantPermission)) {
+        return false;
     }
-    
+    // perm -> perm implies infrequent, so construct implier lazily
+    if (implier == null) {
+        Implier imp = new Implier();
+        imp.add(this);
+        implier = imp;
+    }
+    return implier.implies(permission);
+    }
+
     /**
      * Returns <code>true</code> if the given object is a
      * <code>GrantPermission</code> which both implies and is implied by this
      * permission; returns <code>false</code> otherwise.
-     * 
-     * @param	obj object to compare against
-     * @return	<code>true</code> if given object is a
-     * 		<code>GrantPermission</code> which both implies and is implied
-     * 		by this permission, <code>false</code> otherwise
+     *
+     * @param   obj object to compare against
+     * @return  <code>true</code> if given object is a
+     *      <code>GrantPermission</code> which both implies and is implied
+     *      by this permission, <code>false</code> otherwise
      */
     public boolean equals(Object obj) {
-	if (this == obj) {
-	    return true;
-	}
-	if (obj instanceof GrantPermission) {
-	    GrantPermission gp = (GrantPermission) obj;
-	    return this.implies(gp) && gp.implies(this);
-	}
-	return false;
+    if (this == obj) {
+        return true;
     }
-    
+    if (obj instanceof GrantPermission) {
+        GrantPermission gp = (GrantPermission) obj;
+        return this.implies(gp) && gp.implies(this);
+    }
+    return false;
+    }
+
     public int hashCode() {
-	if (hash == null) {
-	    hash = Integer.valueOf(computeHashCode());
-	}
-	return hash.intValue();
+    if (hash == null) {
+        hash = Integer.valueOf(computeHashCode());
+    }
+    return hash.intValue();
     }
 
     /**
@@ -320,66 +320,66 @@ public final class GrantPermission extends Permission {
      * permission class name.
      */
     private int computeHashCode() {
-	int sum = 0;
-	HashSet set = new HashSet(grants.length);
-	for (int i = 0; i < grants.length; i++) {
-	    Permission p = grants[i];
-	    String pcn = p.getClass().getName();
-	    if (p instanceof AllPermission) {
-		return pcn.hashCode();
-	    } else if (p instanceof UnresolvedPermission) {
-		pcn += ":" + p.getName();    // add name of unresolved class
-	    }
-	    if (!set.contains(pcn)) {
-		set.add(pcn);
-		sum += pcn.hashCode();
-	    }
-	}
-	return sum;
+    int sum = 0;
+    HashSet set = new HashSet(grants.length);
+    for (int i = 0; i < grants.length; i++) {
+        Permission p = grants[i];
+        String pcn = p.getClass().getName();
+        if (p instanceof AllPermission) {
+        return pcn.hashCode();
+        } else if (p instanceof UnresolvedPermission) {
+        pcn += ":" + p.getName();    // add name of unresolved class
+        }
+        if (!set.contains(pcn)) {
+        set.add(pcn);
+        sum += pcn.hashCode();
+        }
+    }
+    return sum;
     }
 
     /**
      * Writes target name representing contained permissions.
      *
-     * @throws	NotSerializableException if the <code>GrantPermission</code>
-     * 		was constructed explicitly with
-     * 		<code>java.security.UnresolvedPermission</code>s
+     * @throws  NotSerializableException if the <code>GrantPermission</code>
+     *      was constructed explicitly with
+     *      <code>java.security.UnresolvedPermission</code>s
      */
     private void writeObject(ObjectOutputStream out) throws IOException {
-	if (unserializable) {
-	    throw new NotSerializableException(
-		GrantPermission.class.getName());
-	}
-	out.defaultWriteObject();
+    if (unserializable) {
+        throw new NotSerializableException(
+        GrantPermission.class.getName());
+    }
+    out.defaultWriteObject();
     }
 
     /**
      * Reconstitutes contained permissions based on the information in the
      * target name.
-     * 
-     * @throws	InvalidObjectException if the target name is <code>null</code>
-     * 		or does not conform to the syntax specified in the
-     * 		documentation for {@link GrantPermission}
+     *
+     * @throws  InvalidObjectException if the target name is <code>null</code>
+     *      or does not conform to the syntax specified in the
+     *      documentation for {@link GrantPermission}
      */
     private void readObject(ObjectInputStream in)
-	throws IOException, ClassNotFoundException
+    throws IOException, ClassNotFoundException
     {
-	in.defaultReadObject();
-	try {
-	    initFromName(getName());
-	} catch (RuntimeException e) {
-	    if (e instanceof NullPointerException ||
-		e instanceof IllegalArgumentException)
-	    {
-		InvalidObjectException ee =
-		    new InvalidObjectException(e.getMessage());
-		ee.initCause(e);
-		throw ee;
-	    }
-	    throw e;
-	}
+    in.defaultReadObject();
+    try {
+        initFromName(getName());
+    } catch (RuntimeException e) {
+        if (e instanceof NullPointerException ||
+        e instanceof IllegalArgumentException)
+        {
+        InvalidObjectException ee =
+            new InvalidObjectException(e.getMessage());
+        ee.initCause(e);
+        throw ee;
+        }
+        throw e;
     }
-    
+    }
+
     /**
      * Initializes GrantPermission to contain permissions described in the
      * given name.  Throws an IllegalArgumentException if the name is
@@ -387,64 +387,64 @@ public final class GrantPermission extends Permission {
      * SecurityException if access to the class is not permitted.
      */
     private void initFromName(String name) {
-	PermissionInfo[] pia = parsePermissions(name);
-	ArrayList l = new ArrayList();
-	for (int i = 0; i < pia.length; i++) {
-	    PermissionInfo pi = pia[i];
+    PermissionInfo[] pia = parsePermissions(name);
+    ArrayList l = new ArrayList();
+    for (int i = 0; i < pia.length; i++) {
+        PermissionInfo pi = pia[i];
 
-	    SecurityManager sm = System.getSecurityManager();
-	    if (sm != null) {
-		int d = pi.type.lastIndexOf('.');
-		if (d != -1) {
-		    sm.checkPackageAccess(pi.type.substring(0, d));
-		}
-	    }
-	    Class cl;
-	    try {
-		cl = Class.forName(pi.type);
-	    } catch (ClassNotFoundException ex) {
-		l.add(new UnresolvedPermission(
-		    pi.type, pi.name, pi.actions, null));
-		continue;
-	    }
-	    if (!Permission.class.isAssignableFrom(cl)) {
-		throw new IllegalArgumentException(
-		    "not a permission class: " + cl);
-	    }
-	    if (!Modifier.isPublic(cl.getModifiers())) {
-		throw new IllegalArgumentException(
-		    "non-public permission class: " + cl);
-	    }
-	    
-	    if (pi.name == null) {
-		try {
-		    Constructor c = cl.getConstructor(PARAMS0);
-		    l.add(c.newInstance(new Object[0]));
-		    continue;
-		} catch (Exception ex) {
+        SecurityManager sm = System.getSecurityManager();
+        if (sm != null) {
+        int d = pi.type.lastIndexOf('.');
+        if (d != -1) {
+            sm.checkPackageAccess(pi.type.substring(0, d));
+        }
+        }
+        Class cl;
+        try {
+        cl = Class.forName(pi.type);
+        } catch (ClassNotFoundException ex) {
+        l.add(new UnresolvedPermission(
+            pi.type, pi.name, pi.actions, null));
+        continue;
+        }
+        if (!Permission.class.isAssignableFrom(cl)) {
+        throw new IllegalArgumentException(
+            "not a permission class: " + cl);
+        }
+        if (!Modifier.isPublic(cl.getModifiers())) {
+        throw new IllegalArgumentException(
+            "non-public permission class: " + cl);
+        }
+
+        if (pi.name == null) {
+        try {
+            Constructor c = cl.getConstructor(PARAMS0);
+            l.add(c.newInstance(new Object[0]));
+            continue;
+        } catch (Exception ex) {
                     if (ex instanceof RuntimeException) throw (RuntimeException) ex;
-		}
-	    } 
-	    if (pi.actions == null) {
-		try {
-		    Constructor c = cl.getConstructor(PARAMS1);
-		    l.add(c.newInstance(new Object[]{ pi.name }));
-		    continue;
-		} catch (Exception ex) {
+        }
+        }
+        if (pi.actions == null) {
+        try {
+            Constructor c = cl.getConstructor(PARAMS1);
+            l.add(c.newInstance(new Object[]{ pi.name }));
+            continue;
+        } catch (Exception ex) {
                     if (ex instanceof RuntimeException) throw (RuntimeException) ex;
-		}
-	    } 
-	    try {
-		Constructor c = cl.getConstructor(PARAMS2);
-		l.add(c.newInstance(new Object[]{ pi.name, pi.actions }));
-		continue;
-	    } catch (Exception ex) {
+        }
+        }
+        try {
+        Constructor c = cl.getConstructor(PARAMS2);
+        l.add(c.newInstance(new Object[]{ pi.name, pi.actions }));
+        continue;
+        } catch (Exception ex) {
                 if (ex instanceof RuntimeException) throw (RuntimeException) ex;
-	    }
-	    throw new IllegalArgumentException(
-		"uninstantiable permission class: " + cl);
-	}
-	grants = flatten((Permission[]) l.toArray(new Permission[l.size()]));
+        }
+        throw new IllegalArgumentException(
+        "uninstantiable permission class: " + cl);
+    }
+    grants = flatten((Permission[]) l.toArray(new Permission[l.size()]));
     }
 
     /**
@@ -452,84 +452,84 @@ public final class GrantPermission extends Permission {
      * Throws an IllegalArgumentException if the name string is misformatted.
      */
     private static PermissionInfo[] parsePermissions(String s) {
-	try {
-	    ArrayList l = new ArrayList();
-	    StreamTokenizer st = createTokenizer(s);
-	    char delim = '"';
+    try {
+        ArrayList l = new ArrayList();
+        StreamTokenizer st = createTokenizer(s);
+        char delim = '"';
 
-	    if (st.nextToken() == StreamTokenizer.TT_WORD &&
-		st.sval.equals("delim"))
-	    {
-		if (st.nextToken() == '=') {
-		    if (st.nextToken() == StreamTokenizer.TT_WORD) {
-			if (st.sval.length() > 1) {
-			    throw new IllegalArgumentException(
-				"excess delimiter characters");
-			}
-			delim = st.sval.charAt(0);
-		    } else {
-			delim = (char) st.ttype;
-		    }
-		    if (delim == ';') {
-			throw new IllegalArgumentException(
-			    "illegal delimiter ';'");
-		    }
-		} else {	// rewind
-		    st = createTokenizer(s);
-		}
-		st.nextToken();
-	    }
-	    st.quoteChar(delim);
+        if (st.nextToken() == StreamTokenizer.TT_WORD &&
+        st.sval.equals("delim"))
+        {
+        if (st.nextToken() == '=') {
+            if (st.nextToken() == StreamTokenizer.TT_WORD) {
+            if (st.sval.length() > 1) {
+                throw new IllegalArgumentException(
+                "excess delimiter characters");
+            }
+            delim = st.sval.charAt(0);
+            } else {
+            delim = (char) st.ttype;
+            }
+            if (delim == ';') {
+            throw new IllegalArgumentException(
+                "illegal delimiter ';'");
+            }
+        } else {    // rewind
+            st = createTokenizer(s);
+        }
+        st.nextToken();
+        }
+        st.quoteChar(delim);
 
-	    do {
-		String type, name = null, actions = null;
+        do {
+        String type, name = null, actions = null;
 
-		if (st.ttype != StreamTokenizer.TT_WORD) {
-		    throw new IllegalArgumentException(
-			"expected permission type");
-		}
-		type = st.sval;
-		
-		// REMIND: allow unquoted name/actions?
-		st.nextToken();
-		if (st.ttype == StreamTokenizer.TT_EOF || st.ttype == ';') {
-		    l.add(new PermissionInfo(type, null, null));
-		    continue;
-		} else if (st.ttype == delim) {
-		    name = st.sval;
-		} else {
-		    throw new IllegalArgumentException(
-			"expected permission name or ';'");
-		}
-		
-		st.nextToken();
-		if (st.ttype == StreamTokenizer.TT_EOF || st.ttype == ';') {
-		    l.add(new PermissionInfo(type, name, null));
-		    continue;
-		} else if (st.ttype != ',') {
-		    throw new IllegalArgumentException("expected ',' or ';'");
-		}
+        if (st.ttype != StreamTokenizer.TT_WORD) {
+            throw new IllegalArgumentException(
+            "expected permission type");
+        }
+        type = st.sval;
 
-		if (st.nextToken() != delim) {
-		    throw new IllegalArgumentException(
-			"expected permission actions");
-		}
-		actions = st.sval;
-		
-		st.nextToken();
-		if (st.ttype == StreamTokenizer.TT_EOF || st.ttype == ';') {
-		    l.add(new PermissionInfo(type, name, actions));
-		    continue;
-		} else {
-		    throw new IllegalArgumentException("expected ';'");
-		}
+        // REMIND: allow unquoted name/actions?
+        st.nextToken();
+        if (st.ttype == StreamTokenizer.TT_EOF || st.ttype == ';') {
+            l.add(new PermissionInfo(type, null, null));
+            continue;
+        } else if (st.ttype == delim) {
+            name = st.sval;
+        } else {
+            throw new IllegalArgumentException(
+            "expected permission name or ';'");
+        }
 
-	    } while (st.nextToken() != StreamTokenizer.TT_EOF);
+        st.nextToken();
+        if (st.ttype == StreamTokenizer.TT_EOF || st.ttype == ';') {
+            l.add(new PermissionInfo(type, name, null));
+            continue;
+        } else if (st.ttype != ',') {
+            throw new IllegalArgumentException("expected ',' or ';'");
+        }
 
-	    return (PermissionInfo[]) l.toArray(new PermissionInfo[l.size()]);
-	} catch (IOException ex) {
-	    throw (Error) new InternalError().initCause(ex);
-	}
+        if (st.nextToken() != delim) {
+            throw new IllegalArgumentException(
+            "expected permission actions");
+        }
+        actions = st.sval;
+
+        st.nextToken();
+        if (st.ttype == StreamTokenizer.TT_EOF || st.ttype == ';') {
+            l.add(new PermissionInfo(type, name, actions));
+            continue;
+        } else {
+            throw new IllegalArgumentException("expected ';'");
+        }
+
+        } while (st.nextToken() != StreamTokenizer.TT_EOF);
+
+        return (PermissionInfo[]) l.toArray(new PermissionInfo[l.size()]);
+    } catch (IOException ex) {
+        throw (Error) new InternalError().initCause(ex);
+    }
     }
 
     /**
@@ -538,21 +538,21 @@ public final class GrantPermission extends Permission {
      * that comments are disabled and no quote character is set (yet).
      */
     private static StreamTokenizer createTokenizer(String s) {
-	StreamTokenizer st = new StreamTokenizer(new StringReader(s));
-	st.resetSyntax();
-	st.wordChars('a', 'z');
-	st.wordChars('A', 'Z');
-	st.wordChars('.', '.');
-	st.wordChars('0', '9');
-	st.wordChars('_', '_');
-	st.wordChars('$', '$');
-	st.wordChars(128 + 32, 255);
-	st.whitespaceChars(0, ' ');
-	st.lowerCaseMode(false);
-	st.ordinaryChar('/');
-	st.slashSlashComments(false);
-	st.slashStarComments(false);
-	return st;
+    StreamTokenizer st = new StreamTokenizer(new StringReader(s));
+    st.resetSyntax();
+    st.wordChars('a', 'z');
+    st.wordChars('A', 'Z');
+    st.wordChars('.', '.');
+    st.wordChars('0', '9');
+    st.wordChars('_', '_');
+    st.wordChars('$', '$');
+    st.wordChars(128 + 32, 255);
+    st.whitespaceChars(0, ' ');
+    st.lowerCaseMode(false);
+    st.ordinaryChar('/');
+    st.slashSlashComments(false);
+    st.slashStarComments(false);
+    return st;
     }
 
     /**
@@ -560,26 +560,26 @@ public final class GrantPermission extends Permission {
      * of permissions.
      */
     private static String constructName(Permission[] pa) {
-	StringBuffer sb = new StringBuffer(60);
-	for (int i = 0; i < pa.length; i++) {
-	    Permission p = pa[i];
-	    if (p instanceof UnresolvedPermission) {
-		sb.append(p).append("; ");
-	    } else {
-		Class cl = p.getClass();
-		int nargs = maxConsArgs(cl);
-		String t = cl.getName(), n = p.getName(), a = p.getActions();
-		if (nargs == 2 && a != null) {
-		    // REMIND: handle null name?
-		    sb.append(t + " " + quote(n) + ", " + quote(a) + "; ");
-		} else if (nargs >= 1 && n != null) {
-		    sb.append(t + " " + quote(n) + "; ");
-		} else {
-		    sb.append(t + "; ");
-		}
-	    }
-	}
-	return sb.toString().trim();
+    StringBuffer sb = new StringBuffer(60);
+    for (int i = 0; i < pa.length; i++) {
+        Permission p = pa[i];
+        if (p instanceof UnresolvedPermission) {
+        sb.append(p).append("; ");
+        } else {
+        Class cl = p.getClass();
+        int nargs = maxConsArgs(cl);
+        String t = cl.getName(), n = p.getName(), a = p.getActions();
+        if (nargs == 2 && a != null) {
+            // REMIND: handle null name?
+            sb.append(t + " " + quote(n) + ", " + quote(a) + "; ");
+        } else if (nargs >= 1 && n != null) {
+            sb.append(t + " " + quote(n) + "; ");
+        } else {
+            sb.append(t + "; ");
+        }
+        }
+    }
+    return sb.toString().trim();
     }
 
     /**
@@ -588,22 +588,22 @@ public final class GrantPermission extends Permission {
      * (including no-arg constructor) is defined by given class.
      */
     private static int maxConsArgs(Class cl) {
-	try {
-	    cl.getConstructor(PARAMS2);
-	    return 2;
-	} catch (Exception ex) {
-	}
-	try {
-	    cl.getConstructor(PARAMS1);
-	    return 1;
-	} catch (Exception ex) {
-	}
-	try {
-	    cl.getConstructor(PARAMS0);
-	    return 0;
-	} catch (Exception ex) {
-	}
-	return -1;
+    try {
+        cl.getConstructor(PARAMS2);
+        return 2;
+    } catch (Exception ex) {
+    }
+    try {
+        cl.getConstructor(PARAMS1);
+        return 1;
+    } catch (Exception ex) {
+    }
+    try {
+        cl.getConstructor(PARAMS0);
+        return 0;
+    } catch (Exception ex) {
+    }
+    return -1;
     }
 
     /**
@@ -615,30 +615,30 @@ public final class GrantPermission extends Permission {
      * incorrect for GrantPermission.
      */
     private static String quote(String s) {
-	StringBuffer sb = new StringBuffer(s.length() + 2);
-	sb.append('"');
-	char[] ca = s.toCharArray();
-	for (int i = 0; i < ca.length; i++) {
-	    char c = ca[i];
-	    if (c == '\\' || c == '"') {
-		sb.append("\\").append(c);
-	    } else if (c == '\n') {
-		sb.append("\\n");
-	    } else if (c == '\r') {
-		sb.append("\\r");
-	    } else if (c == '\t') {
-		sb.append("\\t");
-	    } else if (c == '\f') {
-		sb.append("\\f");
-	    } else if (c == '\b') {
-		sb.append("\\b");
-	    } else if (c < 0x20) {
-		sb.append("\\").append(Integer.toOctalString(c));
-	    } else {
-		sb.append(c);
-	    }
-	}
-	return sb.append('"').toString();
+    StringBuffer sb = new StringBuffer(s.length() + 2);
+    sb.append('"');
+    char[] ca = s.toCharArray();
+    for (int i = 0; i < ca.length; i++) {
+        char c = ca[i];
+        if (c == '\\' || c == '"') {
+        sb.append("\\").append(c);
+        } else if (c == '\n') {
+        sb.append("\\n");
+        } else if (c == '\r') {
+        sb.append("\\r");
+        } else if (c == '\t') {
+        sb.append("\\t");
+        } else if (c == '\f') {
+        sb.append("\\f");
+        } else if (c == '\b') {
+        sb.append("\\b");
+        } else if (c < 0x20) {
+        sb.append("\\").append(Integer.toOctalString(c));
+        } else {
+        sb.append(c);
+        }
+    }
+    return sb.append('"').toString();
     }
 
     /**
@@ -647,109 +647,109 @@ public final class GrantPermission extends Permission {
      * GrantPermissions in the array.
      */
     private static Permission[] flatten(Permission[] pa) {
-	List l = new ArrayList(pa.length);
-	for (int i = 0; i < pa.length; i++) {
-	    Permission p = pa[i];
-	    if (p instanceof GrantPermission) {
-		l.addAll(Arrays.asList(((GrantPermission) p).grants));
-	    } else {
-		l.add(p);
-	    }
-	}
-	return (Permission[]) l.toArray(new Permission[l.size()]);
+    List l = new ArrayList(pa.length);
+    for (int i = 0; i < pa.length; i++) {
+        Permission p = pa[i];
+        if (p instanceof GrantPermission) {
+        l.addAll(Arrays.asList(((GrantPermission) p).grants));
+        } else {
+        l.add(p);
+        }
+    }
+    return (Permission[]) l.toArray(new Permission[l.size()]);
     }
 
     /**
      * Parsed information about a permission.
      */
     private static class PermissionInfo {
-	
-	final String type;
-	final String name;
-	final String actions;
-	
-	PermissionInfo(String type, String name, String actions) {
-	    this.type = type;
-	    this.name = name;
-	    this.actions = actions;
-	}
+
+    final String type;
+    final String name;
+    final String actions;
+
+    PermissionInfo(String type, String name, String actions) {
+        this.type = type;
+        this.name = name;
+        this.actions = actions;
     }
-    
+    }
+
     /**
      * Class for checking implication of contained permissions.
      */
     private static class Implier {
-	
-	private final PermissionCollection perms = new Permissions();
-	private final ArrayList unresolved = new ArrayList();
 
-	void add(GrantPermission gp) {
-	    for (int i = 0; i < gp.grants.length; i++) {
-		Permission p = gp.grants[i];
-		if (!impliesContained(p)) {
-		    perms.add(p);
-		    if (p instanceof UnresolvedPermission) {
-			unresolved.add(p);
-		    }
-		}
-	    }
-	}
-	
-	boolean implies(Permission p) {
-	    if (!(p instanceof GrantPermission)) {
-		return false;
-	    }
-	    Permission[] pa = ((GrantPermission) p).grants;
-	    for (int i = 0; i < pa.length; i++) {
-		if (!impliesContained(pa[i])) {
-		    return false;
-		}
-	    }
-	    return true;
-	}
+    private final PermissionCollection perms = new Permissions();
+    private final ArrayList unresolved = new ArrayList();
 
-	private boolean impliesContained(Permission p) {
-	    if (p instanceof UnresolvedPermission) {
-		for (Iterator i = unresolved.iterator(); i.hasNext();) {
-		    if (implies((UnresolvedPermission) i.next(),
-				(UnresolvedPermission) p))
-		    {
-			return true;
-		    }
-		}
-		return false;
-	    } else {
-		return perms.implies(p);
-	    }
-	}
-	
-	private static boolean implies(UnresolvedPermission p1,
-				       UnresolvedPermission p2)
-	{
-	    if (p1 == p2) {
-		return true;
-	    }
-	    // REMIND: use UnresolvedPermission.equals() once 4513737 fixed
-	    try {
-		ByteArrayOutputStream bout = new ByteArrayOutputStream();
-		ObjectOutputStream oout = new ObjectOutputStream(bout);
+    void add(GrantPermission gp) {
+        for (int i = 0; i < gp.grants.length; i++) {
+        Permission p = gp.grants[i];
+        if (!impliesContained(p)) {
+            perms.add(p);
+            if (p instanceof UnresolvedPermission) {
+            unresolved.add(p);
+            }
+        }
+        }
+    }
 
-		bout.reset();
-		oout.writeObject(p1);
-		oout.flush();
-		byte[] b1 = bout.toByteArray();
-		
-		oout.reset();
-		bout.reset();
-		oout.writeObject(p2);
-		oout.flush();
-		byte[] b2 = bout.toByteArray();
-		
-		return Arrays.equals(b1, b2);
-	    } catch (IOException ex) {
-		throw (Error) new InternalError().initCause(ex);
-	    }
-	}
+    boolean implies(Permission p) {
+        if (!(p instanceof GrantPermission)) {
+        return false;
+        }
+        Permission[] pa = ((GrantPermission) p).grants;
+        for (int i = 0; i < pa.length; i++) {
+        if (!impliesContained(pa[i])) {
+            return false;
+        }
+        }
+        return true;
+    }
+
+    private boolean impliesContained(Permission p) {
+        if (p instanceof UnresolvedPermission) {
+        for (Iterator i = unresolved.iterator(); i.hasNext();) {
+            if (implies((UnresolvedPermission) i.next(),
+                (UnresolvedPermission) p))
+            {
+            return true;
+            }
+        }
+        return false;
+        } else {
+        return perms.implies(p);
+        }
+    }
+
+    private static boolean implies(UnresolvedPermission p1,
+                       UnresolvedPermission p2)
+    {
+        if (p1 == p2) {
+        return true;
+        }
+        // REMIND: use UnresolvedPermission.equals() once 4513737 fixed
+        try {
+        ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        ObjectOutputStream oout = new ObjectOutputStream(bout);
+
+        bout.reset();
+        oout.writeObject(p1);
+        oout.flush();
+        byte[] b1 = bout.toByteArray();
+
+        oout.reset();
+        bout.reset();
+        oout.writeObject(p2);
+        oout.flush();
+        byte[] b2 = bout.toByteArray();
+
+        return Arrays.equals(b1, b2);
+        } catch (IOException ex) {
+        throw (Error) new InternalError().initCause(ex);
+        }
+    }
     }
 
     /**
@@ -759,95 +759,95 @@ public final class GrantPermission extends Permission {
      */
     static class GrantPermissionCollection extends PermissionCollection {
 
-	private static final long serialVersionUID = 8227621799817733985L;
+    private static final long serialVersionUID = 8227621799817733985L;
 
-	/**
-	 * @serialField perms List The permissions.
-	 */
-	private static final ObjectStreamField[] serialPersistentFields = {
-	    new ObjectStreamField("perms", List.class, true)
-	};
-        
+    /**
+     * @serialField perms List The permissions.
+     */
+    private static final ObjectStreamField[] serialPersistentFields = {
+        new ObjectStreamField("perms", List.class, true)
+    };
+
         // Serial form.
-	private List<Permission> perms = new ArrayList<Permission>();
-	private Implier implier = new Implier();
+    private List<Permission> perms = new ArrayList<Permission>();
+    private Implier implier = new Implier();
 
-	public synchronized void add(Permission p) {
-	    if (!(p instanceof GrantPermission)) {
-		throw new IllegalArgumentException("invalid permission: " + p);
-	    }
-	    if (isReadOnly()) {
-		throw new SecurityException(
-		    "can't add to read-only PermissionCollection");
-	    }
+    public synchronized void add(Permission p) {
+        if (!(p instanceof GrantPermission)) {
+        throw new IllegalArgumentException("invalid permission: " + p);
+        }
+        if (isReadOnly()) {
+        throw new SecurityException(
+            "can't add to read-only PermissionCollection");
+        }
             // Cannot use TreeSet to ensure correctness, just don't
             // add twice, in other words check must be external.
             // Stack overflow may occur if permissions added without checking
             perms.add(p);
             implier.add((GrantPermission) p);
-	    
-	}
-	
-	public synchronized Enumeration<Permission> elements() {
-	    return Collections.enumeration(perms);
-	}
-	
-	public synchronized boolean implies(Permission p) {
-	    return implier.implies(p);
+
+    }
+
+    public synchronized Enumeration<Permission> elements() {
+        return Collections.enumeration(perms);
+    }
+
+    public synchronized boolean implies(Permission p) {
+        return implier.implies(p);
         }
 
-	public synchronized void setReadOnly() {
-	    super.setReadOnly();
-	}
+    public synchronized void setReadOnly() {
+        super.setReadOnly();
+    }
 
-	public synchronized boolean isReadOnly() {
-	    return super.isReadOnly();
-	}
+    public synchronized boolean isReadOnly() {
+        return super.isReadOnly();
+    }
 
-	/**
-	 * Writes the permissions list.
-	 */
-	private synchronized void writeObject(ObjectOutputStream s)
-	    throws IOException
-	{
-	    s.defaultWriteObject();
-	}
+    /**
+     * Writes the permissions list.
+     */
+    private synchronized void writeObject(ObjectOutputStream s)
+        throws IOException
+    {
+        s.defaultWriteObject();
+    }
 
-	/**
-	 * Verifies the permissions list.
-	 *
-	 * @throws InvalidObjectException if the list is
-	 * 	   <code>null</code> or any element is not an instance of
-	 * 	   <code>GrantPermission</code>
-	 */
-	private void readObject(ObjectInputStream s)
-	    throws IOException, ClassNotFoundException
-	{
-	    s.defaultReadObject();
-	    if (perms == null) {
-		throw new InvalidObjectException("list cannot be null");
-	    }
-	    if (!perms.getClass().equals(ArrayList.class)) {
-		perms = new ArrayList(perms);
-	    }
-	    if (perms.contains(null)) {
-		throw new InvalidObjectException(
-		    "element must be a GrantPermission");
-	    }
+    /**
+     * Verifies the permissions list.
+     *
+     * @throws InvalidObjectException if the list is
+     *     <code>null</code> or any element is not an instance of
+     *     <code>GrantPermission</code>
+     */
+    private void readObject(ObjectInputStream s)
+        throws IOException, ClassNotFoundException
+    {
+        s.defaultReadObject();
+        if (perms == null) {
+        throw new InvalidObjectException("list cannot be null");
+        }
+        if (!perms.getClass().equals(ArrayList.class)) {
+        perms = new ArrayList(perms);
+        }
+        if (perms.contains(null)) {
+        throw new InvalidObjectException(
+            "element must be a GrantPermission");
+        }
 
-	    GrantPermission[] pa;
-	    try {
-		pa = (GrantPermission[]) 
-		    perms.toArray(new GrantPermission[perms.size()]);
-	    } catch (ArrayStoreException e) {
-		throw new InvalidObjectException(
-		    "element must be a GrantPermission");
-	    }
+        GrantPermission[] pa;
+        try {
+        pa = (GrantPermission[])
+            perms.toArray(new GrantPermission[perms.size()]);
+        } catch (ArrayStoreException e) {
+        throw new InvalidObjectException(
+            "element must be a GrantPermission");
+        }
 
-	    implier = new Implier();
-	    for (int i = 0; i < pa.length; i++) {
-		implier.add(pa[i]);
-	    }
-	}
+        implier = new Implier();
+        for (int i = 0; i < pa.length; i++) {
+        implier.add(pa[i]);
+        }
+    }
     }
 }

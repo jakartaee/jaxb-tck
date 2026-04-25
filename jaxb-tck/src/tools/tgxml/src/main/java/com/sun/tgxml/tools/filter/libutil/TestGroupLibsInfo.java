@@ -22,7 +22,7 @@ import java.util.ArrayList;
 /**
  * TestGroupLibsInfo is an utility class to be used by TestFilter
  * to retrieve information about library by libID.
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */
@@ -30,18 +30,18 @@ import java.util.ArrayList;
 public class TestGroupLibsInfo implements LibSelectionInfo {
 
     /**
-     * Contstructs information about library selection and library type 
+     * Contstructs information about library selection and library type
      * (inline/external).
      */
-    public TestGroupLibsInfo(LibSelectionInfo extLibs, 
+    public TestGroupLibsInfo(LibSelectionInfo extLibs,
             LibSelectionInfo inlineLibs) {
 
         ArrayList inlineAccList = inlineLibs.accepted();
         ArrayList inlineRejList = inlineLibs.rejected();
 
         inlineList = new ArrayList(inlineAccList.size() + inlineRejList.size());
-        inlineList.addAll(inlineAccList);        
-        inlineList.addAll(inlineRejList);        
+        inlineList.addAll(inlineAccList);
+        inlineList.addAll(inlineRejList);
         accList = (ArrayList)(extLibs.accepted().clone());
         accList.removeAll(inlineAccList); // removes duplicates libIDs
         accList.addAll(inlineAccList);
@@ -100,7 +100,7 @@ public class TestGroupLibsInfo implements LibSelectionInfo {
     }
 
     /**
-     * Returns true if library is known (libID belongs to accepted 
+     * Returns true if library is known (libID belongs to accepted
      * or rejected list)
      */
     public boolean isKnown(String libID) {
@@ -108,7 +108,7 @@ public class TestGroupLibsInfo implements LibSelectionInfo {
     }
 
     /**
-     * Returns true if library is inline library (libID belongs to 
+     * Returns true if library is inline library (libID belongs to
      * inline list)
      */
     public boolean isInline(String libID) {

@@ -23,14 +23,14 @@ import com.sun.tgxml.tjtf.api.common.NameValuePair;
 // </importgen>
 
 /**
- * AttrElem - 
+ * AttrElem -
  *
- * <b>AttrElem</b>  is an (extension) element that provides additional (general-purpose) 
+ * <b>AttrElem</b>  is an (extension) element that provides additional (general-purpose)
  * attributes a repository may use to select a test to be built or
- * executed. AttrElem is a 'name' and 'value' pair that is a requirement of a repository. 
- * 'name' and 'value' attributes are generic strings. 
+ * executed. AttrElem is a 'name' and 'value' pair that is a requirement of a repository.
+ * 'name' and 'value' attributes are generic strings.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -49,14 +49,14 @@ public interface AttrElem extends NameValuePair {
      *    Fields
      * ============================================================================================
      */
-    
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
   /**
     *   Determine if two RepositorySpecificAttribute's are equal.

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 /**
  * LibSelectionInfo provides lists of  accepted and rejected library IDs.
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */

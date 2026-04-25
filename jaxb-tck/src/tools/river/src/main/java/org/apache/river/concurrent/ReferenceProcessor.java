@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -35,31 +35,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * ReferenceProcessor is responsible for creation and collection of References 
+ * ReferenceProcessor is responsible for creation and collection of References
  * on behalf of Reference Collection implementations.
  *
- * @param <T> 
+ * @param <T>
  * @author peter
  */
 class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
-    
+
     private final static ScheduledExecutorService garbageCleaner =
             Executors.newScheduledThreadPool(1, new SystemThreadFactory());
     // Map to register newly created object references.
-    private final static Map<Reference,ScheduledFuture> finalizerTasks = 
+    private final static Map<Reference,ScheduledFuture> finalizerTasks =
             new ConcurrentHashMap<Reference,ScheduledFuture>();
-    // Finalizer queue to advise cancellation of ScheduledFuture's, 
+    // Finalizer queue to advise cancellation of ScheduledFuture's,
     // when their ReferenceProcessor has been collected.
-    private final static ReferenceQueue<Reference> phantomQueue = 
+    private final static ReferenceQueue<Reference> phantomQueue =
             new ReferenceQueue<Reference>();
     static {
         // Finizer Task to cancel unneeded tasks.
         garbageCleaner.scheduleAtFixedRate(
-                new FinalizerTask(phantomQueue, finalizerTasks), 
+                new FinalizerTask(phantomQueue, finalizerTasks),
                 5L, 5L, TimeUnit.MINUTES
                 );
     }
-    
+
     private final Collection<Referrer<T>> col;
     private final Object colLock;
     private final RefQueue<T> queue;
@@ -67,7 +67,7 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
     private final Lock queueLock;
     private final boolean gcThreads;
     private volatile boolean started = false;
-    
+
     ReferenceProcessor(Collection<Referrer<T>> col, Ref type, RefQueue<T> queue, boolean gcThreads, Object lock){
         if (col == null || type == null ) throw new NullPointerException("collection or reference type cannot be null");
         this.col = col;
@@ -77,7 +77,7 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
         this.gcThreads = gcThreads;
         queueLock = new ReentrantLock();
     }
-    
+
     /**
      * Register with executor service and finaliser for cleanup.
      * @param GcInterval time interval between scheduled cleaning runs.
@@ -90,7 +90,7 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
        }
        if (queue == null) return;
        long enqDelay = GcInterval * (9L/10L);
-       // Enque garbage task preceeds cleaner task slightly, so we don't 
+       // Enque garbage task preceeds cleaner task slightly, so we don't
        // consume too much memory with massive collections.
        // It would be more efficient for the enque task to perform removal
        // from the collection while iterating, however it has been left
@@ -98,7 +98,7 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
        // behaviour in some way.
        ScheduledFuture task;
        task = ( queue != null && (gcThreads || type.equals(Ref.TIME)))
-                ? garbageCleaner.scheduleAtFixedRate(new CleanerTask(col, queue), GcInterval, GcInterval, TimeUnit.MILLISECONDS) 
+                ? garbageCleaner.scheduleAtFixedRate(new CleanerTask(col, queue), GcInterval, GcInterval, TimeUnit.MILLISECONDS)
                 : null;
        scheduleFinaliserTask(task);
        task = (type.equals(Ref.TIME))
@@ -106,7 +106,7 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
                : null;
        scheduleFinaliserTask(task);
     }
-    
+
     private void scheduleFinaliserTask(ScheduledFuture task){
         if ( task != null ){
            // Register with finaliser.
@@ -136,8 +136,8 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
          * The reason for using an explicit lock is if another thread is
          * removing the garbage, we don't want to prevent all other threads
          * accessing the underlying collection, when it blocks on poll,
-         * this means that some client threads will receive null values 
-         * on occassion, but this is a small price to pay.  
+         * this means that some client threads will receive null values
+         * on occassion, but this is a small price to pay.
          * Might have to employ the null object pattern.
          */
         if ( queueLock.tryLock()){
@@ -150,16 +150,16 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
             }
         }
     }
-    
+
     private static class EnqueGarbageTask implements Runnable{
         private final Collection col;
         private final Object lock; // This could be the same as col, or a map.
-        
+
         EnqueGarbageTask(Collection c, Object lock){
             col = c;
             this.lock = lock;
         }
-        
+
         public void run() {
             long time = System.nanoTime();
             synchronized (lock){
@@ -172,38 +172,38 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
                 }
             }
         }
-        
+
     }
-    
+
     private static class CleanerTask implements Runnable {
-        
+
         private final Collection col;
         private final RefQueue queue;
-        
+
         private CleanerTask(Collection c, RefQueue queue){
             col = c;
             this.queue = queue;
         }
-        
+
         @Override
         public void run() {
             try {
-                for ( Object t = queue.poll(); t != null; t = queue.poll()){ 
+                for ( Object t = queue.poll(); t != null; t = queue.poll()){
                     col.remove(t);
                 }
             }catch(Exception e){
                 e.printStackTrace(System.err);
             }
         }
-    
+
     }
-    
+
     private static class FinalizerTask implements Runnable {
-        
+
         private final ReferenceQueue phantomQueue;
         private final Map<Reference,ScheduledFuture> finalizerTasks ;
-        
-        private FinalizerTask(ReferenceQueue queue, 
+
+        private FinalizerTask(ReferenceQueue queue,
                 Map<Reference,ScheduledFuture> tasks){
             phantomQueue = queue;
             finalizerTasks = tasks;
@@ -220,12 +220,12 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
                 p.clear();
             }
         }
-        
+
     }
-    
+
     private static class SystemThreadFactory implements ThreadFactory{
         private static final ThreadGroup g;
-        
+
         static {
             ThreadGroup tg = Thread.currentThread().getThreadGroup();
             g = AccessController.doPrivileged( new ThreadGroupAction(tg));
@@ -233,17 +233,17 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
 
         private SystemThreadFactory(){
         }
-        
+
         @Override
         public Thread newThread(Runnable r) {
             return AccessController.doPrivileged( new CreateThread(g, r));
         }
-        
+
     }
-    
+
     private static class ThreadGroupAction implements PrivilegedAction<ThreadGroup>{
         private ThreadGroup tg;
-        
+
         ThreadGroupAction(ThreadGroup g){
             tg = g;
         }
@@ -260,11 +260,11 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
             return tg;
         }
     }
-    
+
     private static class CreateThread implements PrivilegedAction<Thread>{
         private ThreadGroup g;
         private Runnable r;
-        
+
         CreateThread(ThreadGroup g, Runnable r){
             this.g = g;
             this.r = r;
@@ -279,7 +279,7 @@ class ReferenceProcessor<T> implements ReferenceQueuingFactory<T, Referrer<T>> {
             }
             return t;
         }
-        
+
     }
-    
+
 }

@@ -21,7 +21,7 @@ package com.sun.tgxml.tjtf.api.attributes;
 // </importgen>
 
 /**
- * LibAttributes - 
+ * LibAttributes -
  *
  * <b>LibAttributes</b> is the typed-attribute interface for describing the attributes
  * associated with a Library.
@@ -36,7 +36,7 @@ package com.sun.tgxml.tjtf.api.attributes;
  * <b>LibAttributes</b> do not contain any other additional entities.
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -55,7 +55,7 @@ public  interface LibAttributes extends Attributes  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters

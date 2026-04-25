@@ -22,7 +22,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TestAttributes - 
+ * TestAttributes -
  *
  * <b>TestAttributes</b> is the typed-attribute interface for describing the attributes
  * associated with a TestCase.
@@ -41,7 +41,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  *
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -60,7 +60,7 @@ public  interface TestAttributes extends Attributes  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -75,23 +75,23 @@ public  interface TestAttributes extends Attributes  {
     *   The Timeout is a string containing "timeout"
     *   times (integer), or NULL.
     * <p>
-    * Timeout is a string encoding a timeout integer. A value specified in 
-    *  seconds used to override the default time-out used for TCK tests. 
+    * Timeout is a string encoding a timeout integer. A value specified in
+    *  seconds used to override the default time-out used for TCK tests.
     *  <p>
     * @return     The timeout (String) value.
     * @see #setTimeout
     * @see java.lang.String
     */
     public String getTimeout();
-     
+
    /**
     *   Set the timeout associated with this test.
     *  <p>
     *   The Timeout is a string containing "timeout"
     *   times (integer), or NULL.
     * <p>
-    * Timeout is a string encoding a timeout integer. A value specified in 
-    *  seconds used to override the default time-out used for TCK tests. 
+    * Timeout is a string encoding a timeout integer. A value specified in
+    *  seconds used to override the default time-out used for TCK tests.
     *  <p>
     * @param     timeout The timeout value.
     * @throws     TestFileException if timeout is less than zero, or not an integer.
@@ -106,8 +106,8 @@ public  interface TestAttributes extends Attributes  {
     *   The Timeout is an integer containing "timeout"
     *   times (integer, greater than 0).
     * <p>
-    * Timeout is a timeout integer. A value specified in 
-    *  seconds used to override the default time-out used for TCK tests. 
+    * Timeout is a timeout integer. A value specified in
+    *  seconds used to override the default time-out used for TCK tests.
     *  <p>
     * @param     timeout The timeout value.
     * @throws     TestFileException if timeout is less than zero, or not an integer.

@@ -18,72 +18,72 @@
 package com.sun.jmpp.lib.jtf;
 /**
  * <i>Jmpp Test Factory</i>
- * 
+ *
  * This class realizes a slot giving all possible pairs of primitive types
- * involved in the widening primitive conversion (see JLS 5.1.2). 
+ * involved in the widening primitive conversion (see JLS 5.1.2).
  *
  * @author Konstantin S. Bobrovsky
  * @version @(#)JTF_WidePrimConv.java 1.7 02/04/01
  */
 public class JTF_WidePrimConv extends JTF_Slot {
-	private JTF_Types tbyt = new JTF_Types(JTF_Types.BYT);
-	private JTF_Types tsho = new JTF_Types(JTF_Types.SHO);
-	private JTF_Types tcha = new JTF_Types(JTF_Types.CHA);
-	private JTF_Types tint = new JTF_Types(JTF_Types.INT);
-	private JTF_Types tlon = new JTF_Types(JTF_Types.LON);
-	private JTF_Types tflo = new JTF_Types(JTF_Types.FLO);
-	private JTF_Types tdou = new JTF_Types(JTF_Types.DOU);
-		/* total number of possible conversions */
-	private final static int length = 19;
-	protected JTF_Slot root = null;
-	protected JTF_Types type_to = null;
-	protected JTF_Types type_from = null;
-	
-	{
-		JTF_Slot[] tmp = {
-			multiplyFULL(
-				tbyt,
-				unite(tsho, tint, tlon, tflo, tdou)),
-			multiplyFULL(
-				tsho,
-				unite(tint, tlon, tflo, tdou)),
-			multiplyFULL(
-				tcha,
-				unite(tint, tlon, tflo, tdou)),
-			multiplyFULL(
-				tint,
-				unite(tlon, tflo, tdou)),
-			multiplyFULL(
-				tlon,
-				unite(tflo, tdou)),
-			multiplyFULL(tflo, tdou)};
-		root = merge(tmp);
-	}
+    private JTF_Types tbyt = new JTF_Types(JTF_Types.BYT);
+    private JTF_Types tsho = new JTF_Types(JTF_Types.SHO);
+    private JTF_Types tcha = new JTF_Types(JTF_Types.CHA);
+    private JTF_Types tint = new JTF_Types(JTF_Types.INT);
+    private JTF_Types tlon = new JTF_Types(JTF_Types.LON);
+    private JTF_Types tflo = new JTF_Types(JTF_Types.FLO);
+    private JTF_Types tdou = new JTF_Types(JTF_Types.DOU);
+        /* total number of possible conversions */
+    private final static int length = 19;
+    protected JTF_Slot root = null;
+    protected JTF_Types type_to = null;
+    protected JTF_Types type_from = null;
+
+    {
+        JTF_Slot[] tmp = {
+            multiplyFULL(
+                tbyt,
+                unite(tsho, tint, tlon, tflo, tdou)),
+            multiplyFULL(
+                tsho,
+                unite(tint, tlon, tflo, tdou)),
+            multiplyFULL(
+                tcha,
+                unite(tint, tlon, tflo, tdou)),
+            multiplyFULL(
+                tint,
+                unite(tlon, tflo, tdou)),
+            multiplyFULL(
+                tlon,
+                unite(tflo, tdou)),
+            multiplyFULL(tflo, tdou)};
+        root = merge(tmp);
+    }
 /*-----------------------------------------*/
-		/**
-		 * @return <i>JTF_Types</i> object corresponding to the type
-		 * which the conversion is performed to
-		 */
-	public JTF_Types typeTo() {
-		return type_to;
-	}
-		/**
-		 * @return <i>JTF_Types</i> object corresponding to the type
-		 * which the conversion is performed from
-		 */
-	public JTF_Types typeFrom() {
-		return type_from;
-	}
+        /**
+         * @return <i>JTF_Types</i> object corresponding to the type
+         * which the conversion is performed to
+         */
+    public JTF_Types typeTo() {
+        return type_to;
+    }
+        /**
+         * @return <i>JTF_Types</i> object corresponding to the type
+         * which the conversion is performed from
+         */
+    public JTF_Types typeFrom() {
+        return type_from;
+    }
 /*-----------------------------------------*/
-		/** See <i>JTF_Slot</i> */
-	public void setTo(int value_num) {
-		super.setTo(value_num);
-		root.setTo(value_num);
-		type_to  = (JTF_Types)root.curSlot().subSlot(1);
-		type_from = (JTF_Types)root.curSlot().subSlot(0);
-	}
+        /** See <i>JTF_Slot</i> */
+    public void setTo(int value_num) {
+        super.setTo(value_num);
+        root.setTo(value_num);
+        type_to  = (JTF_Types)root.curSlot().subSlot(1);
+        type_from = (JTF_Types)root.curSlot().subSlot(0);
+    }
 /*------------- Constructors ---------------*/
-	public JTF_WidePrimConv() {
-		super(length);
-	}
+    public JTF_WidePrimConv() {
+        super(length);
+    }
 }

@@ -21,20 +21,20 @@ package com.sun.tgxml.tjtf.api.code;
 // </importgen>
 
 /**
- * InlineCode - 
+ * InlineCode -
  *
  * <b>InlineCode</b> is the interface to a class structure that describes code that is inlined in a test.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    InlineCode  
+ *    InlineCode
  * ============================================================================================
  */
 
@@ -46,7 +46,7 @@ public  interface InlineCode extends Code {
      *    Methods
      * ============================================================================================
      */
-   
+
 
   /**
     *   Get the source.
@@ -55,7 +55,7 @@ public  interface InlineCode extends Code {
     * @see #setSource
     */
     public String getSource();
-     
+
   /**
     *   Set the source.
     *  <p>

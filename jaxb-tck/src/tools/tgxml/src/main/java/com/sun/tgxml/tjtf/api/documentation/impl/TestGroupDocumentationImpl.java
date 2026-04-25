@@ -26,7 +26,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TestGroupDocumentation - 
+ * TestGroupDocumentation -
  *
  * <b>TestGroupDocumentation</b> is the basic interface for describing a JavaTest test description
  * associated with a TestGroup.
@@ -41,7 +41,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -61,7 +61,7 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
      *    Fields
      * ============================================================================================
      */
-   
+
     private ArrayList   m_assertions;
     private ArrayList   m_docElems;
     private String      m_testedPackage;
@@ -74,45 +74,45 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public TestGroupDocumentationImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
-    public TestGroupDocumentationImpl(String title, String description, ArrayList authors, 
-				      ArrayList assertions, String testedPackage, String testedClass,
-				      String memberSig, ArrayList docElems ) {
-	super(title, description, authors);
-	if (assertions == null)
-	    m_assertions = new ArrayList();
-	else
-	    m_assertions = assertions;
+    public TestGroupDocumentationImpl(String title, String description, ArrayList authors,
+                      ArrayList assertions, String testedPackage, String testedClass,
+                      String memberSig, ArrayList docElems ) {
+    super(title, description, authors);
+    if (assertions == null)
+        m_assertions = new ArrayList();
+    else
+        m_assertions = assertions;
 
-	if (docElems == null)
-	    m_docElems = new ArrayList();
-	else
-	    m_docElems = docElems;
+    if (docElems == null)
+        m_docElems = new ArrayList();
+    else
+        m_docElems = docElems;
 
-	m_testedPackage = testedPackage;
-	m_testedClass = testedClass;
-	m_memberSig = memberSig;
+    m_testedPackage = testedPackage;
+    m_testedClass = testedClass;
+    m_memberSig = memberSig;
 
     }
 
     private void init() {
         m_assertions = new ArrayList();
         m_docElems = new ArrayList();
-	m_testedPackage = null;
-	m_testedClass = null;
-	m_memberSig = null;
+    m_testedPackage = null;
+    m_testedClass = null;
+    m_memberSig = null;
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -134,14 +134,14 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #setTitle
     */
     public String getTitle()  throws TestFileException {
-	String title = super.getTitle();
+    String title = super.getTitle();
 
-	if (title == null || title.equals(""))
-	    throw new TestFileException("Null title.");
+    if (title == null || title.equals(""))
+        throw new TestFileException("Null title.");
 
-	return title;
+    return title;
     }
-     
+
    /**
     *   Set the title associated with this documentation.
     *  <p>
@@ -156,10 +156,10 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #getTitle
     */
     public void setTitle(String title)  throws TestFileException {
-	if (title == null || title.equals(""))
-	    throw new TestFileException("Null title.");
+    if (title == null || title.equals(""))
+        throw new TestFileException("Null title.");
 
-	super.setTitle(title);
+    super.setTitle(title);
     }
 
 
@@ -174,10 +174,10 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #setAssertions
     */
     public ArrayList getAssertions() {
-	return m_assertions;
+    return m_assertions;
     }
 
-     
+
  /**
     *   Set the Assertions associated with this documentation.
     *  <p>
@@ -189,10 +189,10 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #getAssertions
     */
     public void setAssertions(ArrayList assertions) {
-	if (assertions == null)
-	    m_assertions.clear();
+    if (assertions == null)
+        m_assertions.clear();
 
-	m_assertions = assertions;
+    m_assertions = assertions;
     }
 
 
@@ -207,9 +207,9 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #setTestedPackage
     */
     public String getTestedPackage() {
-	return m_testedPackage;
+    return m_testedPackage;
     }
-     
+
    /**
     *   Set the TestedPackage associated with this documentation.
     *  <p>
@@ -219,7 +219,7 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #getTestedPackage
     */
     public void setTestedPackage(String testedPackage) {
-	m_testedPackage = testedPackage;
+    m_testedPackage = testedPackage;
     }
 
 
@@ -234,9 +234,9 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #setTestedClass
     */
     public String getTestedClass() {
-	return m_testedClass;
+    return m_testedClass;
     }
-     
+
    /**
     *   Set the TestedClass associated with this documentation.
     *  <p>
@@ -246,7 +246,7 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #getTestedClass
     */
     public void setTestedClass(String testedClass) {
-	m_testedClass = testedClass;
+    m_testedClass = testedClass;
     }
 
 
@@ -261,9 +261,9 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #setMemberSig
     */
     public String getMemberSig() {
-	return m_memberSig;
+    return m_memberSig;
     }
-     
+
    /**
     *   Set the member signature associated with this documentation.
     *  <p>
@@ -273,7 +273,7 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #getMemberSig
     */
     public void setMemberSig(String sig) {
-	m_memberSig = sig;
+    m_memberSig = sig;
     }
 
 
@@ -287,10 +287,10 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #setDocElems
     */
     public ArrayList getDocElems() {
-	return m_docElems;
+    return m_docElems;
     }
 
-     
+
  /**
     *   Set the (Repository Specific) description-entities associated with this documentation.
     *  <p>
@@ -301,10 +301,10 @@ public  class TestGroupDocumentationImpl extends DocumentationImpl implements Te
     * @see #getDocElems
     */
     public void setDocElems(ArrayList docelems) {
-	if (docelems == null)
-	    m_docElems.clear();
-	else
-	    m_docElems = docelems;
+    if (docelems == null)
+        m_docElems.clear();
+    else
+        m_docElems = docelems;
     }
 
 

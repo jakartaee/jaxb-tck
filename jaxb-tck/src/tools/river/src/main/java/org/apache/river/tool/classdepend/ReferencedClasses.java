@@ -32,7 +32,7 @@ public class ReferencedClasses {
 
     /** This class cannot be instantiated. */
     private ReferencedClasses() {
-	throw new AssertionError();
+    throw new AssertionError();
     }
 
     /**
@@ -42,25 +42,25 @@ public class ReferencedClasses {
      * class bytecodes in the input.  The input stream is left open when this
      * method returns.
      *
-     * @param	in the input stream containing the class bytecodes
-     * @return	a set of the names of the classes referred to by the class
-     *		bytecodes
-     * @throws	IOException if a I/O failure occurs while reading the class
-     *		bytecodes
+     * @param   in the input stream containing the class bytecodes
+     * @return  a set of the names of the classes referred to by the class
+     *      bytecodes
+     * @throws  IOException if a I/O failure occurs while reading the class
+     *      bytecodes
      */
     public static Set compute(InputStream in) throws IOException {
-	if (in == null) {
-	    throw new NullPointerException(
-		"The in argument must not be null");
-	}
-	final Set dependencies = new HashSet();
-	new ClassReader(in).accept(
-	    new AbstractDependencyVisitor() {
-		protected void addName(String name) {
-		    dependencies.add(name);
-		}
-	    },
-	    ClassReader.SKIP_DEBUG);
-	return dependencies;
+    if (in == null) {
+        throw new NullPointerException(
+        "The in argument must not be null");
+    }
+    final Set dependencies = new HashSet();
+    new ClassReader(in).accept(
+        new AbstractDependencyVisitor() {
+        protected void addName(String name) {
+            dependencies.add(name);
+        }
+        },
+        ClassReader.SKIP_DEBUG);
+    return dependencies;
     }
 }

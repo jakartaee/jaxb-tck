@@ -75,13 +75,13 @@ import com.sun.tgxml.util.MiscUtils;
 public class XMLSchemaTestEmitter extends ExternalEmitter {
 
 
-    // File extension that used in test suite to identify xml schema files. 
-    public static final String[] ALLOWED_SCHEMA_EXTESIONS = { 
-    	".xsd",
-    	".inc",
-    	".imp",
-    	".imp2",
-    	".red"
+    // File extension that used in test suite to identify xml schema files.
+    public static final String[] ALLOWED_SCHEMA_EXTESIONS = {
+        ".xsd",
+        ".inc",
+        ".imp",
+        ".imp2",
+        ".red"
     };
 
 
@@ -96,28 +96,28 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
     public final static String PARAMETER_DOCUMENT = "document";
 
     public final static String PARAMETER_BINDINFO = "bindinfo";
-    
+
     public final static String PARAMETER_JBXCONTEXT = "jb-context";
 
     public static final String SCHEMA_NAME = "schemaName";
 
     /* property prefix */
-    public final static String PROPERTY_PREFIX = 
-    	"testgen.emitter.TestGroup.JAXBXMLSchemaTest.";
+    public final static String PROPERTY_PREFIX =
+        "testgen.emitter.TestGroup.JAXBXMLSchemaTest.";
 
     /*
      * default value of the executeClass parameter in schema test description
      * table
      */
-    public final static String PARAMETER_SCHEMA_EXECUTE_CLASS = 
-    	"com.sun.tdk.signaturetest.Test";
+    public final static String PARAMETER_SCHEMA_EXECUTE_CLASS =
+        "com.sun.tdk.signaturetest.Test";
 
     /*
      * default value of the executeArgs parameter in schema test description
      * table
      */
-    public final static String PARAMETER_SCHEMA_EXECUTE_ARGS = 
-    	"-TestURL $testURL -Plugin com.sun.jaxb_tck.sigtest.JaxbPlugin -FileName $sigfile -PackageWithoutSubpackages $package";
+    public final static String PARAMETER_SCHEMA_EXECUTE_ARGS =
+        "-TestURL $testURL -Plugin com.sun.jaxb_tck.sigtest.JaxbPlugin -FileName $sigfile -PackageWithoutSubpackages $package";
 
     /**
      * the property is used to define value of the executeClass parameter in
@@ -139,15 +139,15 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
      * default value of the executeClass parameter in document test description
      * table
      */
-    public final static String PARAMETER_DOCUMENT_EXECUTE_CLASS = 
-	"javasoft.sqe.tests.api.jakarta.xml.bind.JAXBTest";
+    public final static String PARAMETER_DOCUMENT_EXECUTE_CLASS =
+    "javasoft.sqe.tests.api.jakarta.xml.bind.JAXBTest";
 
     /*
      * default value of the executeArgs parameter in document test description
      * table
      */
-    public final static String PARAMETER_DOCUMENT_EXECUTE_ARGS = 
-    	"-TestURL $testURL -package $package -out :ref -document $document -pcontent $pcontent";
+    public final static String PARAMETER_DOCUMENT_EXECUTE_ARGS =
+        "-TestURL $testURL -package $package -out :ref -document $document -pcontent $pcontent";
 
     /**
      * the property is used to define value of the executeClass parameter in
@@ -181,18 +181,18 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
     public final static String KEYWORD_JAXB_NOT_REQUIRED  = "jaxb_not_required";
 
     public final static String KEYWORD_VALIDATION_CHECKER = "validation_checker";
-    
+
     public final static String KEYWORD_EMPTY_OUPUT        = "empty_output";
 
     /* the keyword list */
-    public static final String RECOGNIZED_KEYWORDS = 
-                            KEYWORD_POSITIVE + " " + 
-                            KEYWORD_NEGATIVE + " " + 
-                            KEYWORD_SCHEMA + " " + 
-                            KEYWORD_DOCUMENT + " " + 
-                            KEYWORD_RUNTIME + " " + 
-                            KEYWORD_BINDINFO + " " + 
-                            KEYWORD_JAXB_NOT_REQUIRED + " " + 
+    public static final String RECOGNIZED_KEYWORDS =
+                            KEYWORD_POSITIVE + " " +
+                            KEYWORD_NEGATIVE + " " +
+                            KEYWORD_SCHEMA + " " +
+                            KEYWORD_DOCUMENT + " " +
+                            KEYWORD_RUNTIME + " " +
+                            KEYWORD_BINDINFO + " " +
+                            KEYWORD_JAXB_NOT_REQUIRED + " " +
                             KEYWORD_VALIDATION_CHECKER + " " +
                             KEYWORD_EMPTY_OUPUT;
 
@@ -218,38 +218,38 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
 
     /* IR attribute group, which is needed to group testcases into one CT test */
     public final static String IR_ATTR_GROUP = "group";
-    
+
     /*
      * Extended test description IR is to represent various test description
      * parameters. The default list is: TITLE, NAME, SOURCE, PARAMETER_PACKAGE,
-     * PARAMETER_SIGNATURE, PARAMETER_DOCUMENT, PARAMETER_JBXCONTEXT, CLASS, 
+     * PARAMETER_SIGNATURE, PARAMETER_DOCUMENT, PARAMETER_JBXCONTEXT, CLASS,
      * KEYWORDS, CONTEXT, EXECUTE_ARGS, SELECT_IF, TIMEOUT.
      */
     public static class XMLSchemaTestDescriptionIR extends TestDescriptionIR {
 
         /* default list of test description parameters in html output order */
-        public static final String[] PARAMETER_LIST = { 
-													TITLE, 
-													NAME, 
-													SOURCE,
-													SCHEMA_NAME, 
-													CLASS, 
-													EXECUTE_ARGS, 
-													KEYWORDS, 
-													CONTEXT, 
-													SELECT_IF, 
-													TIMEOUT 
-//															PARAMETER_BINDINFO,
-//															PARAMETER_PACKAGE, 
-//															PARAMETER_SIGNATURE, 
-//															PARAMETER_DOCUMENT,
-//															PARAMETER_JBXCONTEXT,
-        											};
+        public static final String[] PARAMETER_LIST = {
+                                                    TITLE,
+                                                    NAME,
+                                                    SOURCE,
+                                                    SCHEMA_NAME,
+                                                    CLASS,
+                                                    EXECUTE_ARGS,
+                                                    KEYWORDS,
+                                                    CONTEXT,
+                                                    SELECT_IF,
+                                                    TIMEOUT
+//                                                          PARAMETER_BINDINFO,
+//                                                          PARAMETER_PACKAGE,
+//                                                          PARAMETER_SIGNATURE,
+//                                                          PARAMETER_DOCUMENT,
+//                                                          PARAMETER_JBXCONTEXT,
+                                                    };
 
         public void add(String key, String value) {
             if (value != null) {
                 if (key.equals(PARAMETER_DOCUMENT)
-                		|| key.equals(PARAMETER_JBXCONTEXT)
+                        || key.equals(PARAMETER_JBXCONTEXT)
                         || key.equals(PARAMETER_SIGNATURE)
                         || key.equals(PARAMETER_BINDINFO)) {
                     value = "<a href=\"" + value + "\">" + value + "</a>";
@@ -1022,8 +1022,8 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
      * Constructs TestDescriptionIR by: id, title, tgAttr, CodeSet.
      */
     protected TestDescriptionIR constructTestDescriptionIR(String id,
-                                                             String title, 
-                                                             TestGroupAttributes tgAttr, 
+                                                             String title,
+                                                             TestGroupAttributes tgAttr,
                                                              CodeSet codeSet)
             throws TestFileException {
         TestDescriptionIR tdIR = new XMLSchemaTestDescriptionIR();
@@ -1036,9 +1036,9 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
         tdIR.add(TestDescriptionIR.SELECT_IF, tgAttr.getSelectIfs());
         tdIR.add(TestDescriptionIR.TIMEOUT, tgAttr.getTimeout());
         tdIR.addRef(TestDescriptionIR.SOURCE, findSourceFileNames(codeSet, (String[])null));
-        
+
         tdIR.add(SCHEMA_NAME, getSchemaListAsString(codeSet, tgAttr));
-        
+
         tdIR.add(PARAMETER_BINDINFO, findExternalFileNames(codeSet, EXTENSION_BINDINFO));
         tdIR.add(PARAMETER_PACKAGE, getPackage(id, tgAttr, codeSet));
         tdIR.add(PARAMETER_SIGNATURE, getSignature(id, tgAttr, codeSet));
@@ -1048,90 +1048,90 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
         return tdIR;
     }
 
-    private String getJBContext(String id, 
+    private String getJBContext(String id,
                                  TestGroupAttributes tgAttr,
                                  CodeSet codeSet) throws TestFileException {
-    	if (getTCType(id, tgAttr, codeSet).equals(KEYWORD_DOCUMENT)) {
-    		List<String> jbxFileList = findExternalFileNames(codeSet, new String[]{".jbx" });
-    		int n = jbxFileList.size();
-    		if (n > 1) {
-    			String msg = jbxFileList.get(0);
-    			for( int i=1; i<n; i++){
-    				msg = ", " + jbxFileList.get(i);
-    			}
-    			throw new TestFileException("TestGroup " + 
-    					id + 
-    					" contains more than one jb content file: " + 
-    					msg + ".");
-    		}	else if(n==1) {	
-    			return jbxFileList.get(0);
-    		}
-    		return IR.getAttrElem(PARAMETER_JBXCONTEXT, tgAttr);
-    	}
-    	return null;
-	}
-        
-    protected String getSignature(	String id, 
-						    		TestGroupAttributes tgAttr,
-						    		CodeSet codeSet) throws TestFileException {
-    	if (getTCType(id, tgAttr, codeSet).equals(KEYWORD_SCHEMA)) {
-    		List<String> sigFileList = findExternalFileNames(codeSet, new String[]{".sig"});
-    		int n = sigFileList.size();
-    		if (n > 1) {
-    			String msg = sigFileList.get(0);
-    			for( int i=1; i<n; i++){
-    				msg = ", " + sigFileList.get(i);
-    			}
-    			throw new TestFileException("TestGroup " + 
-    					id + 
-    					" contains more than one signature file: " + 
-    					msg);
-    		}	else if(n==1) {	
-    			return sigFileList.get(0);
-    		}
-    		return IR.getAttrElem(PARAMETER_SIGNATURE, tgAttr);
-    	}
-    	return null;	
+        if (getTCType(id, tgAttr, codeSet).equals(KEYWORD_DOCUMENT)) {
+            List<String> jbxFileList = findExternalFileNames(codeSet, new String[]{".jbx" });
+            int n = jbxFileList.size();
+            if (n > 1) {
+                String msg = jbxFileList.get(0);
+                for( int i=1; i<n; i++){
+                    msg = ", " + jbxFileList.get(i);
+                }
+                throw new TestFileException("TestGroup " +
+                        id +
+                        " contains more than one jb content file: " +
+                        msg + ".");
+            }   else if(n==1) {
+                return jbxFileList.get(0);
+            }
+            return IR.getAttrElem(PARAMETER_JBXCONTEXT, tgAttr);
+        }
+        return null;
     }
 
-    protected String getDocument(String id, 
-					    		  TestGroupAttributes tgAttr,
-						    	  CodeSet codeSet) throws TestFileException {
-    	if (getTCType(id, tgAttr, codeSet).equals(KEYWORD_DOCUMENT)) {
-    		List<String> xmlFileList = findExternalFileNames(codeSet, new String[]{".xml"});
-    		int n = xmlFileList.size();
-    		if (n > 1) {
-    			String msg = xmlFileList.get(0);
-    			for( int i=1; i<n; i++){
-    				msg = ", " + xmlFileList.get(i);
-    			}
-    			throw new TestFileException("More than document are defined for document " +
-    					                     " tescase " + id + 
-    					                     " : " + msg);
-    		}	else if(n==1) {	
-    			return xmlFileList.get(0);
-    		}
-    		return IR.getAttrElem(PARAMETER_DOCUMENT, tgAttr);
-    	}
-    	return null;
+    protected String getSignature(  String id,
+                                    TestGroupAttributes tgAttr,
+                                    CodeSet codeSet) throws TestFileException {
+        if (getTCType(id, tgAttr, codeSet).equals(KEYWORD_SCHEMA)) {
+            List<String> sigFileList = findExternalFileNames(codeSet, new String[]{".sig"});
+            int n = sigFileList.size();
+            if (n > 1) {
+                String msg = sigFileList.get(0);
+                for( int i=1; i<n; i++){
+                    msg = ", " + sigFileList.get(i);
+                }
+                throw new TestFileException("TestGroup " +
+                        id +
+                        " contains more than one signature file: " +
+                        msg);
+            }   else if(n==1) {
+                return sigFileList.get(0);
+            }
+            return IR.getAttrElem(PARAMETER_SIGNATURE, tgAttr);
+        }
+        return null;
     }
 
-	protected String getMainSchema(CodeSet codeSet, TestGroupAttributes tgAttr) 
-													 throws TestFileException {
+    protected String getDocument(String id,
+                                  TestGroupAttributes tgAttr,
+                                  CodeSet codeSet) throws TestFileException {
+        if (getTCType(id, tgAttr, codeSet).equals(KEYWORD_DOCUMENT)) {
+            List<String> xmlFileList = findExternalFileNames(codeSet, new String[]{".xml"});
+            int n = xmlFileList.size();
+            if (n > 1) {
+                String msg = xmlFileList.get(0);
+                for( int i=1; i<n; i++){
+                    msg = ", " + xmlFileList.get(i);
+                }
+                throw new TestFileException("More than document are defined for document " +
+                                             " tescase " + id +
+                                             " : " + msg);
+            }   else if(n==1) {
+                return xmlFileList.get(0);
+            }
+            return IR.getAttrElem(PARAMETER_DOCUMENT, tgAttr);
+        }
+        return null;
+    }
+
+    protected String getMainSchema(CodeSet codeSet, TestGroupAttributes tgAttr)
+                                                     throws TestFileException {
         List<String> schemaList = findSourceFileNames(codeSet, ALLOWED_SCHEMA_EXTESIONS);
         if (schemaList.size() > 0) {
-        	// The first "ExternalSupportClass" schema is main and must be used 
-        	// to build package. 
-        	return schemaList.get(0);
+            // The first "ExternalSupportClass" schema is main and must be used
+            // to build package.
+            return schemaList.get(0);
         }
         return StringArray.split(IR.getAttrElem(SCHEMA_NAME, tgAttr))[0];
     }
 
-	protected String getSchemaListAsString(CodeSet codeSet, TestGroupAttributes tgAttr)
-													 throws TestFileException {
-		List<String> schemaList = findSourceFileNames(codeSet, ALLOWED_SCHEMA_EXTESIONS);
-		if( schemaList.size() > 0 ) {
-			return StringArray.join(schemaList.toArray(new String[schemaList.size()]));
+    protected String getSchemaListAsString(CodeSet codeSet, TestGroupAttributes tgAttr)
+                                                     throws TestFileException {
+        List<String> schemaList = findSourceFileNames(codeSet, ALLOWED_SCHEMA_EXTESIONS);
+        if( schemaList.size() > 0 ) {
+            return StringArray.join(schemaList.toArray(new String[schemaList.size()]));
         }
         return IR.getAttrElem(SCHEMA_NAME, tgAttr);
     }
@@ -1140,14 +1140,14 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
      * Constructs TestDescriptionIR by: id, title, tgAttr, CodeSet. Added for
      * compatibility with BTools 1.3
      */
-    protected TestDescriptionIR constructTestDescriptionIR(	
-				    		String id,
-				            String title, 
-				            TestGroupAttributes tgAttr, 
-				            CodeSet codeSet,
-				            TestCase tc, 
-				            String context, 
-				            String executeArgs)     throws TestFileException {
+    protected TestDescriptionIR constructTestDescriptionIR(
+                            String id,
+                            String title,
+                            TestGroupAttributes tgAttr,
+                            CodeSet codeSet,
+                            TestCase tc,
+                            String context,
+                            String executeArgs)     throws TestFileException {
         return constructTestDescriptionIR(id, title, tgAttr, codeSet);
     }
 
@@ -1168,7 +1168,7 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
         } else {
             keywords = (ArrayList) keywords.clone();
         }
-        
+
         boolean isValidationTest = keywords.contains(KEYWORD_VALIDATION_CHECKER);
 
         // leave only recognized keywords
@@ -1232,8 +1232,8 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
         return sb.toString().trim();
     }
 
-    protected String getTCType( String id, 
-    		                    TestGroupAttributes tgAttr,
+    protected String getTCType( String id,
+                                TestGroupAttributes tgAttr,
                                 CodeSet codeSet ) throws TestFileException {
         ArrayList keys = tgAttr.getKeywords();
         if (keys != null && keys.contains(KEYWORD_SCHEMA)) {
@@ -1358,14 +1358,14 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
         String  tcType = getTCType(id, tgAttr, codeSet);
         boolean isEmptyOut       = getKeywords(id, tgAttr, codeSet).indexOf(KEYWORD_NEGATIVE) != -1;
         boolean isValidationTest = getKeywords(id, tgAttr, codeSet).indexOf(KEYWORD_VALIDATION_CHECKER) != -1;
-        
+
         if (tcType.equals(KEYWORD_SCHEMA)
                 && getKeywords(id, tgAttr, codeSet).indexOf(KEYWORD_NEGATIVE) == -1) {
-// keywords: schema 
+// keywords: schema
             args = BuildProperties.getString( PROPERTY_PARAMETER_SCHEMA_EXECUTE_ARGS, PARAMETER_SCHEMA_EXECUTE_ARGS);
             if ( isEmptyOut ) {
                 args = " -empty_output ";
-            } else {           
+            } else {
                 String signature = getSignature(id, tgAttr, codeSet);
                 if (signature != null) {
                     args = args.replaceAll("\\$sigfile", signature.replaceAll("\\$", "\\\\\\$") );
@@ -1377,24 +1377,24 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
 // keywords: document
             args = BuildProperties.getString( PROPERTY_PARAMETER_DOCUMENT_EXECUTE_ARGS,
                     PARAMETER_DOCUMENT_EXECUTE_ARGS);
-            
+
             String doc = getDocument(id, tgAttr, codeSet);
             if (doc == null) {
                 throw new TestFileException("No document is defined for document testcase " + id);
             }
             if(isEmptyOut) {
-                throw new TestFileException("Testcate " + id + 
-                                            " has empty_output keyword and contains a document for testing."); 
+                throw new TestFileException("Testcate " + id +
+                                            " has empty_output keyword and contains a document for testing.");
             }
-            
+
             args = args.replaceAll("\\$document", doc.replaceAll("\\$", "\\\\\\$"));
-          
+
             String jbx = getJBContext(id, tgAttr, codeSet);
-            
+
             if ( jbx != null ) {
                 args = args.replaceAll("\\$pcontent", jbx.replaceAll("\\$", "\\\\\\$") );
             } else {
-            	args = args.replaceAll("\\$pcontent", "skip" );
+                args = args.replaceAll("\\$pcontent", "skip" );
             }
 
             // if the document is invalid.
@@ -1417,14 +1417,14 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
                 args = "-invalid " + args;
             }
         } else if ( tcType.equals(KEYWORD_RUNTIME) )  {
-// keywords: runtime    
+// keywords: runtime
             if(isEmptyOut) {
-                throw new TestFileException("\"Runtime\" testcate " + id + " cannot have an empty_output keyword."); 
+                throw new TestFileException("\"Runtime\" testcate " + id + " cannot have an empty_output keyword.");
             }
            args = tgAttr.getExecuteArgs();
            // See JaxbTckScript.java.execute.if (isDocument && !isRuntime ){
             if( args != null && !isValidationTest) {
-            	args += " -schema "  + getSchemaListAsString(codeSet, tgAttr);
+                args += " -schema "  + getSchemaListAsString(codeSet, tgAttr);
             }
         }
 
@@ -1489,8 +1489,8 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
     }
 
     /* default value of the CTTest class imports */
-    public final static String TEST_IMPORTS = 
-	"javasoft.sqe.tests.api.jakarta.xml.bind.CTTest";
+    public final static String TEST_IMPORTS =
+    "javasoft.sqe.tests.api.jakarta.xml.bind.CTTest";
 
     /**
      * the property is used to define imports for a base class
@@ -1586,8 +1586,8 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
     /**
      * Java keyword list.
      */
-    protected static final List<String> javaKeywords = Arrays.asList( 
-    		"abstract", "default",
+    protected static final List<String> javaKeywords = Arrays.asList(
+            "abstract", "default",
             "if", "private", "this", "boolean", "do", "implements",
             "protected", "throw", "break", "double", "import", "public",
             "throws", "byte", "else", "instanceof", "return", "transient",
@@ -1597,64 +1597,64 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
             "while", "const", "for", "new", "switch", "continue", "goto",
             "package", "synchronized");
 
-	private String fixJavaKeywords(String pkg) {
-		int i = 0;
-		StringBuffer result = new StringBuffer();
-		for (String str : pkg.split("\\.")) {
-			if (i > 1) {
-				if (javaKeywords.contains(str)) {
-					str = "_" + str;
+    private String fixJavaKeywords(String pkg) {
+        int i = 0;
+        StringBuffer result = new StringBuffer();
+        for (String str : pkg.split("\\.")) {
+            if (i > 1) {
+                if (javaKeywords.contains(str)) {
+                    str = "_" + str;
                     }
-				result.append((result.length() > 0 ? "." : "") + str);
+                result.append((result.length() > 0 ? "." : "") + str);
                 }
-			i++;
+            i++;
             }
-		// TODO: It's needed to convert a long package Name to shortest. 
-		return result.toString();
+        // TODO: It's needed to convert a long package Name to shortest.
+        return result.toString();
         }
 
 
-    protected String getPackage(String id, 
-    							 TestGroupAttributes tgAttr,
-            					 CodeSet codeSet) throws TestFileException {
+    protected String getPackage(String id,
+                                 TestGroupAttributes tgAttr,
+                                 CodeSet codeSet) throws TestFileException {
 
-        String prefix = BuildProperties.getString(	PROPERTY_PACKAGE_NAME_PREFFIX, 
-        											PACKAGE_NAME_PREFFIX);
+        String prefix = BuildProperties.getString(  PROPERTY_PACKAGE_NAME_PREFFIX,
+                                                    PACKAGE_NAME_PREFFIX);
 
-		try {
-        	String schemaPath = getMainSchema(codeSet, tgAttr);
-			String path = IR.getAttrElem(IR.relSourcePathAttrElemName, tgAttr).replaceAll("(.*)/.*", "$1/");
-			/*
-			 * Hack: Remove last path component for api tests 
-			 * to avoid regeneration of api tests code
-			 */
-			URI testUri = path.startsWith("api") ? new URI(path.replaceAll("(.*)/.*/", "$1/")): new URI(path);
-			URI schemaUri = testUri.resolve(schemaPath);
-			/* 
-			 * 1. toLowerCase
-			 * 2. Remove .xsd extension
-			 * 3. Remove .bind 
-			 * 4. Replace package names started with digits to _digit 
-			 * 5. Replace all slashes to dots 
-			 * 6. Replace all non java identifier symbols to '_'
-			 */
-			String packageName = schemaUri.toString().toLowerCase()
-				.replaceAll("\\.xsd$", "")
-								 .replaceAll("\\.bind$", "")
-				.replaceAll("[\\\\/]+", ".")
-				.replaceAll("\\.([0-9])", "._$1")
-				.replaceAll("[^a-z0-9.]", "_");
-			/*
-			 * 1. Remove first two parts of the path, 
-			 * 2. prepends java keywords with _,
-			 * 3. add prefix 
-			 */
-			packageName = (prefix + (prefix.length() == 0 ? "" : ".")) + 
-			              fixJavaKeywords(packageName);
-			return packageName;
-			
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+        try {
+            String schemaPath = getMainSchema(codeSet, tgAttr);
+            String path = IR.getAttrElem(IR.relSourcePathAttrElemName, tgAttr).replaceAll("(.*)/.*", "$1/");
+            /*
+             * Hack: Remove last path component for api tests
+             * to avoid regeneration of api tests code
+             */
+            URI testUri = path.startsWith("api") ? new URI(path.replaceAll("(.*)/.*/", "$1/")): new URI(path);
+            URI schemaUri = testUri.resolve(schemaPath);
+            /*
+             * 1. toLowerCase
+             * 2. Remove .xsd extension
+             * 3. Remove .bind
+             * 4. Replace package names started with digits to _digit
+             * 5. Replace all slashes to dots
+             * 6. Replace all non java identifier symbols to '_'
+             */
+            String packageName = schemaUri.toString().toLowerCase()
+                .replaceAll("\\.xsd$", "")
+                                 .replaceAll("\\.bind$", "")
+                .replaceAll("[\\\\/]+", ".")
+                .replaceAll("\\.([0-9])", "._$1")
+                .replaceAll("[^a-z0-9.]", "_");
+            /*
+             * 1. Remove first two parts of the path,
+             * 2. prepends java keywords with _,
+             * 3. add prefix
+             */
+            packageName = (prefix + (prefix.length() == 0 ? "" : ".")) +
+                          fixJavaKeywords(packageName);
+            return packageName;
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         return null;
     }
         }
@@ -1671,7 +1671,7 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
     }
 
     /*
-     * 1. change description for nist tests (insert it into the <pre> tag) 
+     * 1. change description for nist tests (insert it into the <pre> tag)
      * 2. files section is constructed calling findExternalFileNames
      */
     protected String getTestGroupDescription(TestGroup tg)
@@ -1700,40 +1700,40 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
     }
 
     public static ArrayList<String> findExternalFileNames(CodeSet cs,
-			String[] extensions) throws TestFileException {
-		ArrayList<String> res = findSourceFileNames(cs, extensions);
-		if (cs == null) {
-			return res;
-		}
+            String[] extensions) throws TestFileException {
+        ArrayList<String> res = findSourceFileNames(cs, extensions);
+        if (cs == null) {
+            return res;
+        }
 
-		ArrayList<?> data = cs.getData();
-		if (data != null) {
-			for (int i = 0; i < data.size(); i++) {
-				Data datum = (Data) data.get(i);
-				String sourceName = null;
-				if (datum instanceof ExternalData) {
-					ExternalData edt = (ExternalData) datum;
-					sourceName = edt.getSourceName();
-				} else if (datum instanceof InlineData) {
-					InlineData idt = (InlineData) datum;
-					sourceName = idt.getTargetName();
-				}
-				if (sourceName != null) {
-					if (extensions == null) {
-						res.add(sourceName);
-					} else {
-						for (String ext : extensions) {
-							if (sourceName.endsWith(ext)) {
-								res.add(sourceName);
-								break;
-							}
-						}
-					}
-				}
-			}
-		}
-		return res;
-	}
+        ArrayList<?> data = cs.getData();
+        if (data != null) {
+            for (int i = 0; i < data.size(); i++) {
+                Data datum = (Data) data.get(i);
+                String sourceName = null;
+                if (datum instanceof ExternalData) {
+                    ExternalData edt = (ExternalData) datum;
+                    sourceName = edt.getSourceName();
+                } else if (datum instanceof InlineData) {
+                    InlineData idt = (InlineData) datum;
+                    sourceName = idt.getTargetName();
+                }
+                if (sourceName != null) {
+                    if (extensions == null) {
+                        res.add(sourceName);
+                    } else {
+                        for (String ext : extensions) {
+                            if (sourceName.endsWith(ext)) {
+                                res.add(sourceName);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
 
     public static ArrayList<String> findSourceFileNames(CodeSet cs, String[] extensions)
             throws TestFileException {
@@ -1754,18 +1754,18 @@ public class XMLSchemaTestEmitter extends ExternalEmitter {
                     InlineSupportClass isc = (InlineSupportClass) sc;
                     sourceName = isc.getTargetName();
                 }
-				if (sourceName != null) {
-					if (extensions == null) {
-						res.add(sourceName);
-					} else {
-						for (String ext : extensions) {
-							if (sourceName.endsWith(ext)) {
-								res.add(sourceName);
-								break;
-							}
-						}
-					}
-				}
+                if (sourceName != null) {
+                    if (extensions == null) {
+                        res.add(sourceName);
+                    } else {
+                        for (String ext : extensions) {
+                            if (sourceName.endsWith(ext)) {
+                                res.add(sourceName);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
         return res;

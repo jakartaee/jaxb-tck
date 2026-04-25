@@ -26,7 +26,7 @@ import com.sun.tgxml.tjtf.api.tests.Library;
 /**
  * An object that maps libID to accepted variant IR or null, if library
  * is rejected.
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */
@@ -35,7 +35,7 @@ public class LibMap implements LibSelectionInfo {
 
     private HashMap map = null;
 
-    // the flag that signals wether accepted and rejected lists are 
+    // the flag that signals wether accepted and rejected lists are
     // up to date or not.
     // method put() set this flag (these lists should be updated)
     // method prepareLists() reset this flag
@@ -60,14 +60,14 @@ public class LibMap implements LibSelectionInfo {
      * @throws IllegalArgumentException if libID is null
      */
     public void put(String libID, Library var) {
-        if (libID == null) 
+        if (libID == null)
             throw new IllegalArgumentException("libID should be null");
         map.put(libID, var);
         isUpdated = true;
     }
 
     /**
-     * Returns accepted library variant by its libID or null if library 
+     * Returns accepted library variant by its libID or null if library
      * rejected.
      * @throws IllegalArgumentException if the map does not contain libID
      */

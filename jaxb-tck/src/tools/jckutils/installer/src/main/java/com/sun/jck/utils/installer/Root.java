@@ -25,68 +25,68 @@ import java.util.TreeMap;
 class Root {
 
     class Fault extends Exception {
-	public Fault(String msg) {
-	    super(msg);
-	}
+    public Fault(String msg) {
+        super(msg);
+    }
     }
 
     private Root() {
     }
-   
+
     public Root(File rootFile) throws IOException, Fault {
-	m_nodes = new TreeMap();
-	m_rootFile = rootFile;
-	m_rootPath = rootFile.getAbsolutePath();
-	generateNodes(m_rootFile);
+    m_nodes = new TreeMap();
+    m_rootFile = rootFile;
+    m_rootPath = rootFile.getAbsolutePath();
+    generateNodes(m_rootFile);
     }
 
     public String getRootPath() {
-	return m_rootPath;
+    return m_rootPath;
     }
 
     public File getRootFile() {
-	return m_rootFile;
+    return m_rootFile;
     }
 
     public TreeMap getNodes() {
-	return m_nodes;
+    return m_nodes;
     }
 
     public Iterator iterator() {
-	return this.getNodes().entrySet().iterator();
+    return this.getNodes().entrySet().iterator();
     }
 
     private void generateNodes(File file) throws IOException, Fault {
-	File [] children;
-	Node node;
+    File [] children;
+    Node node;
 
-	if (file.isDirectory()) {
+    if (file.isDirectory()) {
 
-	    children = file.listFiles();
+        children = file.listFiles();
 
-	    for (int i = 0; i < children.length; i++) {
-		generateNodes(children[i]);
-	    }
+        for (int i = 0; i < children.length; i++) {
+        generateNodes(children[i]);
+        }
 
-	}
-	else {
+    }
+    else {
 
-	    try {
-		node = new Node(m_rootPath, file);
-		m_nodes.put(file.getCanonicalPath(), node);
-	    }
-	    catch (IllegalArgumentException iae) {
-		throw new Fault("Illegal argument exception thrown while generating node list for root " + m_rootPath +
-				"\n" + iae.getMessage());
+        try {
+        node = new Node(m_rootPath, file);
+        m_nodes.put(file.getCanonicalPath(), node);
+        }
+        catch (IllegalArgumentException iae) {
+        throw new Fault("Illegal argument exception thrown while generating node list for root " + m_rootPath +
+                "\n" + iae.getMessage());
 
-	    }
-	    catch (IOException ioe) {
-		throw new Fault("IO exception thrown while generating node list for root " + m_rootPath +
-				"\n" + ioe.getMessage());
-	    }
+        }
+        catch (IOException ioe) {
+        throw new Fault("IO exception thrown while generating node list for root " + m_rootPath +
+                "\n" + ioe.getMessage());
+        }
 
-	}
-	
+    }
+
 
     }
 

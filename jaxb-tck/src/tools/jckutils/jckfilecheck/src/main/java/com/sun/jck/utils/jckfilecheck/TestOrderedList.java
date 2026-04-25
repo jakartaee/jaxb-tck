@@ -25,60 +25,60 @@ import javasoft.sqe.harness.Test;
 /* Auxillary class used for testing */
 public class TestOrderedList implements Test {
 
-	/* Entry point for a test routine */
-	public static void main( String argv[] ) {
-		TestOrderedList test = new TestOrderedList( );
-		Status status = test.run( argv, System.err, System.out );
-		status.exit( );
-	}
+    /* Entry point for a test routine */
+    public static void main( String argv[] ) {
+        TestOrderedList test = new TestOrderedList( );
+        Status status = test.run( argv, System.err, System.out );
+        status.exit( );
+    }
 
-	public Status run( String argv[], PrintStream log, PrintStream out ) {
-		OrderedList ol = new OrderedList( 20 );
-		TestString lastTestString = null;
-		TestString testString = null;
+    public Status run( String argv[], PrintStream log, PrintStream out ) {
+        OrderedList ol = new OrderedList( 20 );
+        TestString lastTestString = null;
+        TestString testString = null;
 
-		ol.setMsgLevel( 2 );
-		ol.addNode( new TestString( "Kevin" ) );
-		ol.addNode( new TestString( "Paul" ) );
-		ol.addNode( new TestString( "george" ) );
-		ol.addNode( new TestString( "ABC" ) );
-		ol.addNode( new TestString( "efg" ) );
+        ol.setMsgLevel( 2 );
+        ol.addNode( new TestString( "Kevin" ) );
+        ol.addNode( new TestString( "Paul" ) );
+        ol.addNode( new TestString( "george" ) );
+        ol.addNode( new TestString( "ABC" ) );
+        ol.addNode( new TestString( "efg" ) );
 
-		Enumeration iter = ol.getIterator();
-		
-		while( iter.hasMoreElements() ) {
-			testString = (TestString) iter.nextElement();
-			out.println( testString );
-			if( ( lastTestString != null ) && 
-				( testString.compareTo( lastTestString ) <= 0 ) ){
-				return Status.failed( "this is not greater than last" );
-			}
-			lastTestString = testString;
-		}
+        Enumeration iter = ol.getIterator();
 
-		return Status.passed( "OKAY" );
-	}
+        while( iter.hasMoreElements() ) {
+            testString = (TestString) iter.nextElement();
+            out.println( testString );
+            if( ( lastTestString != null ) &&
+                ( testString.compareTo( lastTestString ) <= 0 ) ){
+                return Status.failed( "this is not greater than last" );
+            }
+            lastTestString = testString;
+        }
+
+        return Status.passed( "OKAY" );
+    }
 
 }
 
 class TestString implements Comparable {
 
-	public String value;
+    public String value;
 
-	public TestString( String val ) {
-		value = val;
-	}
+    public TestString( String val ) {
+        value = val;
+    }
 
-	public int compareTo( Comparable obj ) {
-		if( ! ( obj instanceof TestString ) ){
-			return -1;
-		}
-		else{
-			return value.compareTo( ( (TestString)obj ).value );
-		}
-	}
+    public int compareTo( Comparable obj ) {
+        if( ! ( obj instanceof TestString ) ){
+            return -1;
+        }
+        else{
+            return value.compareTo( ( (TestString)obj ).value );
+        }
+    }
 
-	public String toString() {
-		return value.toString();
-	}
+    public String toString() {
+        return value.toString();
+    }
 }

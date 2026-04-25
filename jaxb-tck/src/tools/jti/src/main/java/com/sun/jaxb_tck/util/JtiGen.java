@@ -25,7 +25,7 @@ import com.sun.interview.Interview;
 
 public class JtiGen extends Interview {
 
-    private static final String USAGE = 
+    private static final String USAGE =
         "Usage: java com.sun.jaxp_tck.util.JtiGen -single -work dir "
         + "-testsuite dir -tests testURLs "
         + "\n"
@@ -79,7 +79,7 @@ public class JtiGen extends Interview {
             this.data.put("jck.env.testPlatform.multiJVM", "Yes");
             this.data.put("jck.env.jaxb.testExecute.otherOpts", "");
             this.data.put("jck.env.jaxb.schemagen.run.jxcCmd", "/bin/ksh solaris/bin/schemagen.sh");
-        }        
+        }
         this.data.putAll(data);
     }
 
@@ -219,8 +219,8 @@ public class JtiGen extends Interview {
 
     private static void print(HashMap data) {
         System.out.println("#JavaTest Configuration Interview");
-	System.out.print("#");
-	System.out.println(Calendar.getInstance().getTime().toString());
+    System.out.print("#");
+    System.out.println(Calendar.getInstance().getTime().toString());
         for (Iterator i = data.keySet().iterator(); i.hasNext(); ) {
             Object key = i.next();
             Object value = data.get(key);

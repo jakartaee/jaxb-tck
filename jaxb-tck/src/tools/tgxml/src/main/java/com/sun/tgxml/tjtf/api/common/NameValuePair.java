@@ -22,11 +22,11 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * NameValuePair - 
+ * NameValuePair -
  *
  * <b>NameValuePair</b>  is the name value pair for some description item.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -46,7 +46,7 @@ public interface NameValuePair  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
 
   /**
@@ -57,7 +57,7 @@ public interface NameValuePair  {
     * @see #setName
     */
     public String getName();
-     
+
    /**
     *   Set the name associated with this rsde.
     * Value can not be set to a null value (i.e. "");
@@ -76,7 +76,7 @@ public interface NameValuePair  {
     * @see #setValue
     */
     public String getValue();
-     
+
    /**
     *   Set the value associated with this rsde.
     * Value can be a null value (i.e. "");
@@ -87,7 +87,7 @@ public interface NameValuePair  {
     public void setValue(String value);
 
 
-    
+
 
 
 }

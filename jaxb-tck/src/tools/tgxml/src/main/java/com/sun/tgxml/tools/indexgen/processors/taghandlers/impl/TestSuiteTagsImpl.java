@@ -20,7 +20,7 @@ package com.sun.tgxml.tools.indexgen.processors.taghandlers.impl;
 import com.sun.tgxml.tjtf.impl.TagsImpl;
 
 /**
- * TagsImpl - 
+ * TagsImpl -
  *
  * <b>TagsImpl</b> contains the the string names for all XML entity tags, attrib
 utes, and
@@ -52,7 +52,7 @@ public  class TestSuiteTagsImpl extends TagsImpl {
     * ==========================================================================
 ==================
     */
-    
+
     public static final String  ctStr_tag_testsuite                = "TestSuite";
     public static final String  ctStr_tag_comments                = "Comments";
 

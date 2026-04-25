@@ -23,10 +23,10 @@ import java.io.InputStream;
 
 /**
  * @author Vladimir Sosnin
- * 
+ *
  */
 class TCKJaxbTreeDeserializer implements JaxbTreeDeserializer {
-    
+
 
     public Object deserialize(InputStream input, ClassLoader cl) {
         Object docRoot = null;

@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 /**
  * A class loader for loading classes from a path of directories.
- * 
+ *
  * @author   Evgueni M. Astigueevitch
  * @version  1.8
  */
@@ -36,7 +36,7 @@ public class DirsClassLoader extends ClassLoader {
 //    private static DirsClassLoader loader;
     public static final String LOGGER_NAME = "jaxb_tck.lib.dirs_class_loader";
     final static Logger logger = Logger.getLogger(LOGGER_NAME);
-    
+
     private File[] dirs;
 
 
@@ -53,7 +53,7 @@ public class DirsClassLoader extends ClassLoader {
     }
 
     public static synchronized DirsClassLoader newInstance(File[] dirs, ClassLoader parent) {
-    	DirsClassLoader loader = new DirsClassLoader(parent);
+        DirsClassLoader loader = new DirsClassLoader(parent);
         logger.info(Thread.currentThread().toString());
         loader.dirs = dirs;
         return loader;
@@ -69,9 +69,9 @@ public class DirsClassLoader extends ClassLoader {
             } catch (ClassNotFoundException e) {
                 ClassLoader parent = getParent();
                 if (parent != null) {
-					cl = parent.loadClass(name);
+                    cl = parent.loadClass(name);
                 } else {
-                	ClassNotFoundException clnf = new ClassNotFoundException(name); 
+                    ClassNotFoundException clnf = new ClassNotFoundException(name);
                     throw clnf;
                 }
             }
@@ -103,7 +103,7 @@ public class DirsClassLoader extends ClassLoader {
         throw new ClassNotFoundException(name);
     }
 
-    private byte[] loadClassData(File classFile) 
+    private byte[] loadClassData(File classFile)
             throws ClassNotFoundException {
         try {
             int size = (int)classFile.length();

@@ -71,59 +71,59 @@ import org.apache.river.impl.Messages;
  * loaded by this {@code URLClassLoader} are granted permission to access the
  * URLs contained in the URL search list.
  * <p>
- * Unlike java.net.URLClassLoader, {@link CodeSource#equals(java.lang.Object) } 
+ * Unlike java.net.URLClassLoader, {@link CodeSource#equals(java.lang.Object) }
  * and {@link CodeSource#hashCode() } is based on Certificate
- * and RFC3986 {@link Uri#equals(java.lang.Object) } and {@link Uri#hashCode() }, 
+ * and RFC3986 {@link Uri#equals(java.lang.Object) } and {@link Uri#hashCode() },
  * not {@link URL#equals(java.lang.Object)}. SecureClassLoader
  * uses the overridden CodeSource equality as a key to cache ProtectionDomain's.
  * <p>
- * The following property 
- * <code>-Dnet.jini.loader.codebaseAnnotation=URL</code> 
+ * The following property
+ * <code>-Dnet.jini.loader.codebaseAnnotation=URL</code>
  * may be set from the command line to revert to {@link URL#equals(java.lang.Object) }
  * and {@link URL#hashCode() }.
  * <p>
  * This allows implementors of {@link java.rmi.Remote} to do two things:
  * <ol>
  * <li>Utilise replication of codebase servers or mirrors.</li>
- * <li>Use different domain names to ensure separation of proxy classes that 
+ * <li>Use different domain names to ensure separation of proxy classes that
  * otherwise utilise identical jar files</li>
  * </ol>
  * <p>
- * The locking strategy of this ClassLoader is by default, the standard 
+ * The locking strategy of this ClassLoader is by default, the standard
  * ClassLoader strategy.  This ClassLoader is also thread safe, so can use
  * a Parallel loading / synchronization strategy if the platform supports it.
  * <p>
  * @since 3.0.0
  */
 public class RFC3986URLClassLoader extends java.net.URLClassLoader {
-    
+
     /**
      * value of "net.jini.loader.codebaseAnnotation" property, as cached at class
      * initialization time.  It may contain malformed URLs.
      */
     private final static boolean uri;
-    
+
     private final static Logger logger = Logger.getLogger(RFC3986URLClassLoader.class.getName());
-    
+
     static {
         try {
             registerAsParallelCapable();//Since 1.7
         } catch (NoSuchMethodError e){
-	    // Ignore, earlier version of Java.
+        // Ignore, earlier version of Java.
             logger.log(Level.FINEST, "Platform doesn't support parallel class loading", e);
-	}        
+    }
         String codebaseAnnotationProperty = null;
-	String prop = AccessController.doPrivileged(
+    String prop = AccessController.doPrivileged(
            new GetPropertyAction("net.jini.loader.codebaseAnnotation"));
-	if (prop != null && prop.trim().length() > 0) codebaseAnnotationProperty = prop;
-        uri = codebaseAnnotationProperty == null || 
+    if (prop != null && prop.trim().length() > 0) codebaseAnnotationProperty = prop;
+        uri = codebaseAnnotationProperty == null ||
             !Uri.asciiStringsUpperCaseEqual(codebaseAnnotationProperty, "URL");
     }
-    
+
     private final List<URL> originalUrls; // Copy on Write
 
     private final List<URL> searchList; // Synchronized
-    
+
     /* synchronize on handlerList for all access to handlerList and handlerMap */
     private final List<URLHandler> handlerList;
     private final Map<Uri, URLHandler> handlerMap = new HashMap<Uri, URLHandler>();
@@ -158,13 +158,13 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
          *             If the class could not be found.
          */
         @Override
-        protected Class<?> loadClass(String className, boolean resolveClass) 
-                throws ClassNotFoundException 
+        protected Class<?> loadClass(String className, boolean resolveClass)
+                throws ClassNotFoundException
         {
             /* Synchronization or locking isn't necessary here, ClassLoader
              * has it's own locking scheme, which is likely to change depending
              * on concurrency or multi thread strategies.
-             */ 
+             */
             SecurityManager sm = System.getSecurityManager();
             if (sm != null) {
                 int index = className.lastIndexOf('.');
@@ -282,7 +282,7 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
             this.codeSourceUrl = url;
             this.loader = loader;
         }
-        
+
         public URLHandler(URL url, URL codeSourceUrl, RFC3986URLClassLoader loader){
             this.url = url;
             this.codeSourceUrl = codeSourceUrl;
@@ -351,14 +351,14 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
             if (uri) return loader.defineClass(
                     origName,
                     clBuf,
-                    0, 
+                    0,
                     clBuf != null ? clBuf.length: 0,
                     new UriCodeSource(codeSourceUrl, (Certificate[]) null, null)
             );
             return loader.defineClass(
-                    origName, 
+                    origName,
                     clBuf,
-                    0, 
+                    0,
                     clBuf != null ? clBuf.length: 0,
                     new CodeSource(codeSourceUrl, (Certificate[]) null)
             );
@@ -402,7 +402,7 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
                 return null;
             }
         }
-        
+
         public void close() throws IOException {
             // do nothing.
         }
@@ -545,8 +545,8 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
                     }
                 }
             }
-            CodeSource codeS = uri ? 
-                new UriCodeSource(codeSourceUrl, entry.getCertificates(),null) 
+            CodeSource codeS = uri ?
+                new UriCodeSource(codeSourceUrl, entry.getCertificates(),null)
                 : new CodeSource(codeSourceUrl, entry.getCertificates());
             return loader.defineClass(
                     origName,
@@ -651,7 +651,7 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
             }
             return null;
         }
-        
+
         public void close() throws IOException {
             IOException first = null;
             try {
@@ -727,7 +727,7 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
             String filename;
 
             // Do not create a UNC path, i.e. \\host
-            while (idx < name.length() && 
+            while (idx < name.length() &&
                    ((name.charAt(idx) == '/') || (name.charAt(idx) == '\\'))) {
                 idx++;
             }
@@ -752,20 +752,20 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
         }
 
     }
-    
+
     /**
      * To avoid CodeSource equals and hashCode methods in SecureClassLoader keys.
-     * 
-     * CodeSource uses DNS lookup calls to check location IP addresses are 
+     *
+     * CodeSource uses DNS lookup calls to check location IP addresses are
      * equal.
-     * 
+     *
      * This class must not be serialized.
      */
     private static class UriCodeSource extends CodeSource {
         private static final long serialVersionUID = 1L;
         private final Uri uri;
         private final int hashCode;
-        
+
         UriCodeSource(URL url, Certificate [] certs, Collection<Permission> perms){
             super(url, certs);
             Uri uRi = null;
@@ -783,7 +783,7 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
         public int hashCode() {
             return hashCode;
         }
-        
+
         @Override
         public boolean equals(Object o){
             if (!(o instanceof UriCodeSource)) return false;
@@ -798,11 +798,11 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
             return (Arrays.asList(getCertificates()).equals(
                     Arrays.asList(that.getCertificates())));
         }
-        
+
         Object writeReplace() throws ObjectStreamException {
             return new CodeSource(getLocation(), getCertificates());
         }
-       
+
     }
 
 
@@ -828,7 +828,7 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
      * Constructs a new URLClassLoader instance. The newly created instance will
      * have the system ClassLoader as its parent. URLs that end with "/" are
      * assumed to be directories, otherwise they are assumed to be JAR files.
-     * 
+     *
      * @param urls
      *            the list of URLs where a specific class or file could be
      *            found.
@@ -1052,7 +1052,7 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
      * use the specified factory to create stream handlers. URLs that end with
      * "/" are assumed to be directories, otherwise they are assumed to be JAR
      * files.
-     * 
+     *
      * @param searchUrls
      *            the list of URLs where a specific class or file could be
      *            found.
@@ -1070,10 +1070,10 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
                           URLStreamHandlerFactory factory) {
         this(searchUrls, parent, factory, AccessController.getContext());
     }
-    
-    RFC3986URLClassLoader( URL[] searchUrls, 
-                            ClassLoader parent, 
-                            URLStreamHandlerFactory factory, 
+
+    RFC3986URLClassLoader( URL[] searchUrls,
+                            ClassLoader parent,
+                            URLStreamHandlerFactory factory,
                             AccessControlContext context)
     {
         super(searchUrls, parent, factory);  // ClassLoader protectes against finalizer attack.
@@ -1098,8 +1098,8 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
      * Tries to locate and load the specified class using the known URLs. If the
      * class could be found, a class object representing the loaded class will
      * be returned.
-     * 
-     * The locking and synchronization strategy of this method is the 
+     *
+     * The locking and synchronization strategy of this method is the
      * responsibility of the caller.
      *
      * @param clsName
@@ -1128,7 +1128,7 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
      * Returns an URL that will be checked if it contains the class or resource.
      * If the file component of the URL is not a directory, a Jar URL will be
      * created.
-     * 
+     *
      * We need to modify this implementation to allow URLStreamHandlerFactory's
      * to use custom caching, such as the per ClassLoader caching used by
      * Apache Geronimo.  This would be very useful as it allows services
@@ -1464,18 +1464,18 @@ public class RFC3986URLClassLoader extends java.net.URLClassLoader {
         return null;
 
     }
-    
+
     /**
      * Java 6 compatible implementation that overrides Java 7 URLClassLoader.close()
-     * 
+     *
      * URLClassLoader implements Closeable in Java 7 to allow resources such
      * as open jar files to be released.
-     * 
+     *
      * Closes any open resources and prevents this ClassLoader loading any
      * additional classes or resources.
-     * 
-     * TODO: Add support for nested Exceptions when support for Java 6 is dropped. 
-     * 
+     *
+     * TODO: Add support for nested Exceptions when support for Java 6 is dropped.
+     *
      * @throws IOException
      */
     public void close() throws IOException {

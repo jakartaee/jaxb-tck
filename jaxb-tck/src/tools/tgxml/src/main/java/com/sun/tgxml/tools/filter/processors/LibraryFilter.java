@@ -26,10 +26,10 @@ import com.sun.tgxml.tjtf.api.tests.Library;
  * @author   Ilya V. Neverov
  */
 public interface LibraryFilter {
-    /** 
+    /**
      * chooses Library implementation and removes support classes
      *
-     * @param      libraryImpls  array of Library implementations to be processed. 
+     * @param      libraryImpls  array of Library implementations to be processed.
      *                           One impls is chosen and it is modified while the filtering.
      * @return     Library reference to chosen and cleaned Library object.
      * @throws     FilteringException to diagnose problems discovered by plugin or standard

@@ -25,7 +25,7 @@ import java.io.PrintStream;
  * @version 1.14
  */
 public class Xjc extends CompositeInvoker{
-    
+
     private boolean isSetIOAllowed;
 
     {
@@ -41,18 +41,18 @@ public class Xjc extends CompositeInvoker{
             }
         }
     }
-    
-	/**
-	 * ctor
-	 */
-	public Xjc(String[] args) {
-	    super(args);
-	}
 
-	/**
+    /**
+     * ctor
+     */
+    public Xjc(String[] args) {
+        super(args);
+    }
+
+    /**
      * Processes command line arguments.
      */
-    @Override 
+    @Override
     public void processArguments() throws Invoker.ArgumentException {
         boolean isEmptyOut = new Arguments(args).contains(EMPTY_OUT_PARAMETER);
         add(new SchemaCompilerInvoker(args));
@@ -64,8 +64,8 @@ public class Xjc extends CompositeInvoker{
     /**
      *  Performs the schema generation
      */
-    @Override 
-    protected int execute(PrintStream out, PrintStream err) throws Exception 
+    @Override
+    protected int execute(PrintStream out, PrintStream err) throws Exception
     {
         PrintStream oldSystemOut = System.out;
         PrintStream oldSystemErr = System.err;

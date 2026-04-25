@@ -38,34 +38,34 @@ import com.sun.tgxml.util.MiscUtils;
 public class InlineSupportUtil {
 
     /**
-     * This method looks in the passed TestGroup for 'InlineSupportClass'  
+     * This method looks in the passed TestGroup for 'InlineSupportClass'
      * and 'InlineData' elements with specified 'TargetName' attribute.
      * When such element is found it writes its contents
      * to the file specified by this attribute.
      * For 'InlineSupportClass' element specified copyright (constructed from
      * the supplied source code control information), package
      * and imports will be put into the begin of generated file.
-     * 
+     *
      * @param tg the TestGroup for processing
      * @param outputDir the name of output directory
-     * @param scInfo the source code control information 
-     * @param defaultCopyright default copyright notice 
-     * @param packageName the name of package 
-     * @param imports the list of requried imports 
-     * 
+     * @param scInfo the source code control information
+     * @param defaultCopyright default copyright notice
+     * @param packageName the name of package
+     * @param imports the list of requried imports
+     *
      * @exception  TestFileException if IOException occured during
      *             the generation.
      */
     public static void generateInlines(
-            TestGroup tg, 
+            TestGroup tg,
             String outputDir,
-            String scInfo, 
-            String defaultCopyright, 
+            String scInfo,
+            String defaultCopyright,
             String packageName,
             ArrayList imports
         ) throws TestFileException {
 
-        InlineGenerator visitor = new InlineGenerator( 
+        InlineGenerator visitor = new InlineGenerator(
                 outputDir, scInfo, defaultCopyright,
                 packageName, imports);
         visitor.visit_TestGroup(tg);
@@ -79,11 +79,11 @@ public class InlineSupportUtil {
         String packageName;
         ArrayList imports;
         String outputDirPath;
-        
+
         public InlineGenerator(
                 String outputDir,
-                String scInfo, 
-                String defaultCopyright, 
+                String scInfo,
+                String defaultCopyright,
                 String packageName,
                 ArrayList imports
             ) throws TestFileException {
@@ -98,7 +98,7 @@ public class InlineSupportUtil {
 
         public void visit_TestGroup(TestGroup tg)
                 throws TestFileException {
-            if (tg == null) 
+            if (tg == null)
                 return;
 
             visit_CodeSet(tg.getCodeSet());
@@ -108,19 +108,19 @@ public class InlineSupportUtil {
                 for (Iterator it = librarys.iterator(); it.hasNext();) {
                     visit_CodeSet(((Library) it.next()).getCodeSet());
                 }
-            }    
+            }
 
             ArrayList testCases = tg.getTestCases();
             if (testCases != null) {
                 for (Iterator it = testCases.iterator(); it.hasNext();) {
                     visit_CodeSet(((TestCase) it.next()).getCodeSet());
                 }
-            }    
+            }
         }
-        
-        public void visit_CodeSet(CodeSet cs) 
+
+        public void visit_CodeSet(CodeSet cs)
                 throws TestFileException {
-            if (cs == null) 
+            if (cs == null)
                 return;
 
             ArrayList supportClasses = cs.getSupportClasses();
@@ -128,18 +128,18 @@ public class InlineSupportUtil {
                 for (Iterator it = supportClasses.iterator(); it.hasNext();) {
                     visit_SupportClass((SupportClass)it.next());
                 }
-            }    
+            }
 
             ArrayList data = cs.getData();
             if (data != null) {
                 for (Iterator it = data.iterator(); it.hasNext();) {
                     visit_Data((Data)it.next());
                 }
-            }    
+            }
         }
 
 
-        public void visit_SupportClass(SupportClass sc) 
+        public void visit_SupportClass(SupportClass sc)
                 throws TestFileException {
 
             if (sc == null || ! (sc instanceof InlineSupportClass))
@@ -152,7 +152,7 @@ public class InlineSupportUtil {
                 generateJavaFile(isc.getTargetName(), isc.getSource());
             }
         }
-        
+
         public void visit_Data(Data d) throws TestFileException {
 
             if (d == null || !(d instanceof InlineData))
@@ -184,12 +184,12 @@ public class InlineSupportUtil {
             return s;
         }
 
-        public void generateJavaFile(String fileName, String fileData) 
+        public void generateJavaFile(String fileName, String fileData)
                throws TestFileException
         {
             String crn = "";
             String full_path = outputDir + "/" + fileName;
-            
+
             try {
                 crn = CopyrightManager.getCopyright(
                     CopyrightManager.CRN_JAVA_SHORT,
@@ -223,7 +223,7 @@ public class InlineSupportUtil {
         }
 
 
-        public void generateFile(String fileName, String fileData) 
+        public void generateFile(String fileName, String fileData)
                 throws TestFileException
         {
             File f = new File(outputDir, fileName);
@@ -246,4 +246,4 @@ public class InlineSupportUtil {
             }
         }
     }
-} 
+}

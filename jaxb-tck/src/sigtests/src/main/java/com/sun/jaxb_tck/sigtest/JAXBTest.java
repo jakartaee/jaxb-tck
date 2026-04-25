@@ -76,7 +76,7 @@ public class JAXBTest implements com.sun.javatest.Test {
      */
     public com.sun.javatest.Status run(String[] args, PrintWriter log, PrintWriter ref) {
         SignatureTest t = new SignatureTest();
-       
+
         List command = new ArrayList();
 
         for(int i=0; i < args.length; i++){

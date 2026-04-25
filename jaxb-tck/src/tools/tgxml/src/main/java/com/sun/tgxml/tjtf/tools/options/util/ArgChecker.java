@@ -20,21 +20,21 @@ package com.sun.tgxml.tjtf.tools.options.util;
 /**
  * ArgChecker - class for checking that element may be an option argument
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public class ArgChecker extends Checker {
 
-    String invalidPrefix = null;   
-    String validPrefix = null;   
+    String invalidPrefix = null;
+    String validPrefix = null;
 
     /**
-     * Creates ArgChecker instance. 
-     * @param invalidPrefix  is set, elements starting with this 
+     * Creates ArgChecker instance.
+     * @param invalidPrefix  is set, elements starting with this
      *                       prefix will be treated as non-acceptable
-     * @param validPrefix    is set, elements not starting with this 
+     * @param validPrefix    is set, elements not starting with this
      *                       prefix will be treated as non-acceptable
      */
     public ArgChecker (String invalidPrefix, String validPrefix) {
@@ -45,11 +45,11 @@ public class ArgChecker extends Checker {
 
     /**
      * Checks whether argument is acceptable or not.<p>
-     * if <code>invalidPrefix</code> is set, argument starting with this 
+     * if <code>invalidPrefix</code> is set, argument starting with this
      *        prefix is non-acceptable<p>
-     * if <code>validPrefix</code> is set argument not starting with this 
+     * if <code>validPrefix</code> is set argument not starting with this
      *        prefix is non-acceptable<p>
-     * Subclasses may override this method to implement own algorithm of 
+     * Subclasses may override this method to implement own algorithm of
      * checking.
      *
      * @return <code>true</code> if argument is acceptable

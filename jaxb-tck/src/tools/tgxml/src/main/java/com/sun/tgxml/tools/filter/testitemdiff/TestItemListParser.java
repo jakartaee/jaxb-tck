@@ -25,7 +25,7 @@ import com.sun.tgxml.tools.elgen.ExcludeEntry;
 import com.sun.tgxml.tools.elgen.ExcludeList;
 
 /**
- * The class is responsible for parsing of the TestItem list. 
+ * The class is responsible for parsing of the TestItem list.
  * This implementation parses the TestItem list in the following format:
  * &lt;path&gt;/foo[:fred][[bar[:fred]]]   attributes
  * <p>
@@ -35,11 +35,11 @@ import com.sun.tgxml.tools.elgen.ExcludeList;
  * fred: variant name.
  */
 public class TestItemListParser {
-    
+
     /**
      * reads and parses a TestItem list from the given Reader.
      */
-    public TestItemList parse(Reader in) throws IOException { 
+    public TestItemList parse(Reader in) throws IOException {
         ExcludeList list = new ExcludeList(in);
         TestItemList retVal = new TestItemList();
         for (Iterator i = list.getAllEntries(); i.hasNext();) {
@@ -50,7 +50,7 @@ public class TestItemListParser {
             String tCase = entry.getTestCaseID();
             int pos;
             String variant = null;
-            if ((tCase == null) 
+            if ((tCase == null)
                 && ((pos = tGroup.lastIndexOf(':')) > 0)) {
                 variant = tGroup.substring(pos + 1);
                 tGroup = tGroup.substring(0, pos);
@@ -74,7 +74,7 @@ public class TestItemListParser {
         }
         return retVal;
     }
-    
+
     private void addNonNull(StringBuffer buff, Object o) {
         if (o != null) {
             buff.append(' ');

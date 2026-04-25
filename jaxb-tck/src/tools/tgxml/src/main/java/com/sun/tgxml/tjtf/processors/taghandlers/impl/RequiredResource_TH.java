@@ -29,50 +29,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * RequiredResource_TH - The tag-handler for a RequiredResource tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    RequiredResource_TH 
- * ============================================================================================ 
- */ 
+/**
+ * RequiredResource_TH - The tag-handler for a RequiredResource tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    RequiredResource_TH
+ * ============================================================================================
+ */
 public class RequiredResource_TH extends NameValueTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   RequiredResource_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   RequiredResource_TH constructor -
+    *       Initialize our internal fields.
+    */
     public RequiredResource_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ public class RequiredResource_TH extends NameValueTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_requiredresource;
+    return TagsImpl.ctStr_tag_requiredresource;
     }
 
     //------------------------------------------------------------------------------
@@ -96,39 +96,39 @@ public class RequiredResource_TH extends NameValueTagHandler  {
     * @see #endTag
     */
     public void endTag(String name, String value) throws SAXException {
-	try {
-	    super.endTag(name, value);
-	    
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    if (! (testitem instanceof com.sun.tgxml.tjtf.api.attributes.Attributes)  )
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(), 
-							TagsImpl.ctStr_tag_testgroupattributes,
-							TagsImpl.ctStr_tag_testcaseattributes,
-							TagsImpl.ctStr_tag_libraryattributes));
-	    
-	    //  Nothing is pushed onto the stack
-	    com.sun.tgxml.tjtf.api.attributes.Attributes attrs = (com.sun.tgxml.tjtf.api.attributes.Attributes) testitem;
-	    
-	    ArrayList rrs = attrs.getRequiredResources();
-	    if (rrs == null) {
-		rrs = new ArrayList();
-		attrs.setRequiredResources(rrs);
-	    }
-	    
-	    RequiredResource rr = AttributesFactory.createRequiredResource(name, value);
-	    // validated the import name
-	    // validateRequiredResource(ae);
-	    rrs.add(rr);
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+    try {
+        super.endTag(name, value);
+
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
+
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        if (! (testitem instanceof com.sun.tgxml.tjtf.api.attributes.Attributes)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext3", getTagName(),
+                            TagsImpl.ctStr_tag_testgroupattributes,
+                            TagsImpl.ctStr_tag_testcaseattributes,
+                            TagsImpl.ctStr_tag_libraryattributes));
+
+        //  Nothing is pushed onto the stack
+        com.sun.tgxml.tjtf.api.attributes.Attributes attrs = (com.sun.tgxml.tjtf.api.attributes.Attributes) testitem;
+
+        ArrayList rrs = attrs.getRequiredResources();
+        if (rrs == null) {
+        rrs = new ArrayList();
+        attrs.setRequiredResources(rrs);
+        }
+
+        RequiredResource rr = AttributesFactory.createRequiredResource(name, value);
+        // validated the import name
+        // validateRequiredResource(ae);
+        rrs.add(rr);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-          
+    }
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------

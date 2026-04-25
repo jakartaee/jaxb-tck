@@ -36,7 +36,7 @@ import com.sun.tgxml.tools.testgen.api.TestDescriptionIR;
 import com.sun.tgxml.util.IR;
 
 /**
- * Emitter for java-to-schema tests. Java-to-schema tests consist of java file and set of xml files. Each xml file is 
+ * Emitter for java-to-schema tests. Java-to-schema tests consist of java file and set of xml files. Each xml file is
  * considered as a separate TestCase.
  */
 public class J2XTestEmitter extends ExternalEmitter {
@@ -55,10 +55,10 @@ public class J2XTestEmitter extends ExternalEmitter {
     public static final String KWD_NEGATIVE = "negative";
     /** parameters of test description table */
     public final static String PARAMETER_PACKAGE = "package";
-    
+
     private String javaSource;
     protected ArrayList javaSourceArray;
-    
+
     protected StringBuffer createExecuteArgsBuffer() {
         StringBuffer buffer = new StringBuffer();
         return buffer;
@@ -75,7 +75,7 @@ public class J2XTestEmitter extends ExternalEmitter {
              TestGroupAttributes tgAttr,
              CodeSet codeSet,
              TestCase tc,
-             String context, 
+             String context,
              String executeArgs)
                  throws TestFileException {
         StringBuffer buffer = createExecuteArgsBuffer();
@@ -98,23 +98,23 @@ public class J2XTestEmitter extends ExternalEmitter {
         }
         buffer.append(" -TestURL $testURL ");
         executeArgs = buffer.toString();
-        
+
         if ( tgAttr.getKeywords() != null && !tgAttr.getKeywords().contains(J2XRuntimeEmitter.KWD_RTGEN) ) {
             ArrayList selectIfs = new ArrayList();
             selectIfs.add("toTestOptionalSchemagen");
             tgAttr.setSelectIfs(selectIfs);
         }
-        
+
         String executeClass = BuildProperties.getString(PROPERTY_PARAMETER_EXECUTE_CLASS, PARAMETER_EXECUTE_CLASS);
         TestDescriptionIR td;
-        
+
         td = super.constructTestDescriptionIR(id,title,tgAttr,codeSet,tc,context, executeArgs);
         td.add(TestDescriptionIR.CLASS, executeClass);
         td.addRef(TestDescriptionIR.SOURCE, tdSource);
-        
+
         return td;
     }
-    
+
     /**
      * Check if the TestCase is positive
      */
@@ -136,7 +136,7 @@ public class J2XTestEmitter extends ExternalEmitter {
             }
             throw new TestFileException("no " + ATTR_POS_NEG + " attribute in TestCase " + tc.getID());
     }
-    
+
     /**
      * Get string array of external xml source files. There is may be no xml sources in that case
      * empty array is returned.
@@ -179,7 +179,7 @@ public class J2XTestEmitter extends ExternalEmitter {
         javaSourceArray = javaFiles;
         javaSource = inlineArray((String[])javaFiles.toArray(new String[0])).toString();
         fixTDFile(tg);
-        
+
 
         TestGroupAttributes tgAttr = tg.getTGAttributes();
         ArrayList keywords = tgAttr.getKeywords();
@@ -190,10 +190,10 @@ public class J2XTestEmitter extends ExternalEmitter {
                 }
             }
         }
-        
+
         return super.splitTestGroup(tg, tg2tc);
     }
-    
+
     /**
      * Represents string array as a string if arguments,
      * current format is arr[0]:arr[1]:....
@@ -208,14 +208,14 @@ public class J2XTestEmitter extends ExternalEmitter {
         }
         return buffer;
     }
-    
+
     /**
      * The exception is thrown if not test cases were specified and test
      * consists of only xml schema compiling
      */
     private class NoXmlException extends Exception {
     }
-    
+
     protected void fixTDFile(TestGroup tg) {
         /* - always reset tdFile!
         String tdFile = LibUtils.getTDFile(tg);
@@ -228,5 +228,5 @@ public class J2XTestEmitter extends ExternalEmitter {
             ex.printStackTrace();
         }
     }
-    
+
 }

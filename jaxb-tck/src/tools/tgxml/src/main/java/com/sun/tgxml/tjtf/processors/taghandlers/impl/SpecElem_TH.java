@@ -30,50 +30,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * SpecElem_TH - The tag-handler for a SpecElem tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    SpecElem_TH 
- * ============================================================================================ 
- */ 
+/**
+ * SpecElem_TH - The tag-handler for a SpecElem tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    SpecElem_TH
+ * ============================================================================================
+ */
 public class SpecElem_TH extends NameValueTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   SpecElem_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   SpecElem_TH constructor -
+    *       Initialize our internal fields.
+    */
     public SpecElem_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ public class SpecElem_TH extends NameValueTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_specelem;
+    return TagsImpl.ctStr_tag_specelem;
     }
 
     //------------------------------------------------------------------------------
@@ -97,42 +97,42 @@ public class SpecElem_TH extends NameValueTagHandler  {
     * @see #endTag
     */
     public void endTag(String name, String value) throws SAXException {
-	try {
-	    super.endTag(name, value);
-	    
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    if (! (testitem instanceof TestCaseSpec)  )
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcasespec));
-	    
-	    //  Nothing is pushed onto the stack
-	    TestCaseSpec tcs = (TestCaseSpec) testitem;
-	    
-	    ArrayList specelems = tcs.getSpecElems();
-	    if (specelems == null) {
-		specelems = new ArrayList();
-		tcs.setSpecElems(specelems);
-	    }
-	    
-	    SpecElem se = DocumentationFactory.createSpecElem(name, value);
-	    // validated the import name
-	    // validateSpecElem(se);
-	    specelems.add(se);
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+    try {
+        super.endTag(name, value);
+
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
+
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        if (! (testitem instanceof TestCaseSpec)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcasespec));
+
+        //  Nothing is pushed onto the stack
+        TestCaseSpec tcs = (TestCaseSpec) testitem;
+
+        ArrayList specelems = tcs.getSpecElems();
+        if (specelems == null) {
+        specelems = new ArrayList();
+        tcs.setSpecElems(specelems);
+        }
+
+        SpecElem se = DocumentationFactory.createSpecElem(name, value);
+        // validated the import name
+        // validateSpecElem(se);
+        specelems.add(se);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-          
- 
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
     // NameValueTagHandler handles emitter.
-         
+
 
 }

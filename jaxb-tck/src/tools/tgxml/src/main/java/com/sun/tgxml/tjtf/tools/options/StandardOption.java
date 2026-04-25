@@ -25,20 +25,20 @@ import com.sun.tgxml.tjtf.tools.options.util.SwitchChecker ;
 
 /**
  * Abstract class implementing based algorithm of option parsing
- * To implement parsing subclasses need provide implementaistions only for 
+ * To implement parsing subclasses need provide implementaistions only for
  * the following methods:<p>
  * <tt>getOptionReader()</tt><p>
  * <tt>getSwitchChecker()</tt><p>
  * <tt>calculateValue(ArrayList parsedOption)</tt><p>
- * 
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ *
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public abstract class StandardOption implements Option {
-   
+
     private String usageInfo = null;
     private boolean isSet = false;
 
@@ -48,7 +48,7 @@ public abstract class StandardOption implements Option {
      */
     private boolean isObligatory = false;
 
-    private String patt_missedOption = 
+    private String patt_missedOption =
             ErrorMessages.getPattern("option.ObligatoryOptionMissed");
 
 
@@ -60,7 +60,7 @@ public abstract class StandardOption implements Option {
      *
      */
 
-    public final ArrayList parse(ArrayList unparsed) 
+    public final ArrayList parse(ArrayList unparsed)
             throws ParseArgumentException {
         OptionReader oReader = getOptionReader();
         ArrayList parsedOption = oReader.read(unparsed);
@@ -79,31 +79,31 @@ public abstract class StandardOption implements Option {
 
     /**
      * Returns OptionReader used to extact option with arguments from the list
-     */ 
+     */
     public abstract OptionReader getOptionReader() ;
 
     /**
      * Returns SwitchChecker used to check whether an element may be an option
      * switch or not
-     */ 
+     */
     public abstract SwitchChecker getSwitchChecker();
 
     /**
-     * Calculates value of extracted option 
-     */ 
+     * Calculates value of extracted option
+     */
     public abstract void calculateValue(ArrayList parsedOption)
             throws ParseArgumentException;
 
-    /** 
+    /**
      * Returns true if option is obligatory, false - otherwise
      */
     public boolean isObligatory() {
         return isObligatory;
     }
 
-    /** 
+    /**
      * Sets type of opotoin
-     * @param flag <code>true</code>if option is obligatory, 
+     * @param flag <code>true</code>if option is obligatory,
      *             <code>false</code> - otherwise
      */
     public void setObligatory(boolean flag) {
@@ -112,7 +112,7 @@ public abstract class StandardOption implements Option {
 
 
 
-    /** 
+    /**
      * Returns true if option is present in the list
      */
     public boolean isSet() {
@@ -120,7 +120,7 @@ public abstract class StandardOption implements Option {
     }
 
 
-    /** 
+    /**
      * Marks option as unset.
      */
     public void reset() {
@@ -151,7 +151,7 @@ public abstract class StandardOption implements Option {
     /**
      * Sets error message pattern will be printed if option is specified
      * as obligatory but missed.
-     * <p>Example of pattern : 
+     * <p>Example of pattern :
      * <pre>
      *     Option "{0}" is required but missed
      * </pre>

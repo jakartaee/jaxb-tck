@@ -24,8 +24,8 @@ import java.util.Properties;
  * <b>JCKIRPFactorySpi</b> class that provides JCK specific
  * implementation of <code>IRPFactorySpi</code> interface.
  * <p>
- * @version 	1.0, 21/01/2004
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 21/01/2004
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -42,7 +42,7 @@ public class JCKIRPFactorySpi implements IRPFactorySpi {
      * and then DistributedIRProcessor.
      */
     public IRProcessor getProcessor(Properties props) {
-        
+
         ArrayList ps = new ArrayList();
         ps.add(new XMLSchemaTestsIRProcessor(props));
         return new ConveyerIRProcessor((IRProcessor[])
@@ -50,4 +50,4 @@ public class JCKIRPFactorySpi implements IRPFactorySpi {
     }
 
 }
-        
+

@@ -30,50 +30,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * Input_TH - The tag-handler for a Input tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Input_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Input_TH - The tag-handler for a Input tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Input_TH
+ * ============================================================================================
+ */
 public class Input_TH extends NameValueTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Input_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Input_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Input_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ public class Input_TH extends NameValueTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_input;
+    return TagsImpl.ctStr_tag_input;
     }
 
     //------------------------------------------------------------------------------
@@ -97,44 +97,44 @@ public class Input_TH extends NameValueTagHandler  {
     * @see #endTag
     */
     public void endTag(String name, String value) throws SAXException {
-	try {
-	    super.endTag(name, value);
-	    
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    if (! (testitem instanceof TestCaseSpec)  )
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcasespec));
-	    
-	    //  Nothing is pushed onto the stack
-	    TestCaseSpec tcs = (TestCaseSpec) testitem;
-	    
-	    ArrayList inputs = tcs.getInputs();
-	    if (inputs == null) {
-		inputs = new ArrayList();
-		tcs.setInputs(inputs);
-	    }
-	    
-	    Input input = DocumentationFactory.createInput(name, value);
-	    // validated the import name
-	    // validateInput(de);
-	    inputs.add(input);
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+    try {
+        super.endTag(name, value);
+
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
+
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+
+        if (! (testitem instanceof TestCaseSpec)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcasespec));
+
+        //  Nothing is pushed onto the stack
+        TestCaseSpec tcs = (TestCaseSpec) testitem;
+
+        ArrayList inputs = tcs.getInputs();
+        if (inputs == null) {
+        inputs = new ArrayList();
+        tcs.setInputs(inputs);
+        }
+
+        Input input = DocumentationFactory.createInput(name, value);
+        // validated the import name
+        // validateInput(de);
+        inputs.add(input);
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
     }
-          
+    }
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
-         
+
+
+
 
     //  NameValueTagHandler handles emit code
-     
+
 
 }

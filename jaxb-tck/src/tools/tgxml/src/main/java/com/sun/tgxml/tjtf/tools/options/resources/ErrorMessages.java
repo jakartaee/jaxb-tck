@@ -22,17 +22,17 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 
-/** 
- * ErrorMessages - functionality for access to internationalized 
+/**
+ * ErrorMessages - functionality for access to internationalized
  * error messages
- * 
- * 
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
- */ 
- 
- 
-public class  ErrorMessages { 
+ *
+ *
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
+ */
+
+
+public class  ErrorMessages {
 
     private static String bundleName =
          "com.sun.tgxml.tjtf.tools.options.resources.ErrorsBundle";
@@ -121,14 +121,14 @@ public class  ErrorMessages {
      * Returns formatted message with two arguments
      */
     public static String getMessage(String pattern, int arg1, int arg2) {
-        return getMessage(pattern, 
+        return getMessage(pattern,
             new Object[]{new Integer(arg1), new Integer(arg2)});
     }
 
     /**
      * Returns formatted message with three arguments
      */
-    public static String getMessage(String pattern, 
+    public static String getMessage(String pattern,
             Object arg1, Object arg2, Object arg3) {
         return getMessage(pattern, new Object[]{arg1, arg2, arg3});
     }
@@ -136,7 +136,7 @@ public class  ErrorMessages {
     /**
      * Returns formatted message with three arguments
      */
-    public static String getMessage(String pattern, 
+    public static String getMessage(String pattern,
             Object arg1, int arg2, int arg3) {
         return getMessage(pattern,
                 new Object[]{arg1, new Integer(arg2), new Integer(arg3)});

@@ -27,13 +27,13 @@ import com.sun.tgxml.tools.dependence.LibIDList;
 import com.sun.tgxml.tools.dependence.LibraryDependencies;
 import com.sun.tgxml.tools.dependence.LibraryDependency;
 
-/**  
- * A processing dependency component. The component is to reveal the whole 
+/**
+ * A processing dependency component. The component is to reveal the whole
  * set of libraries that given ones depend on.<br>
  * The following inconsistencies are detected and printed as warnings to
  * specified #err:<br>
  * <ul>
- * <li>Duplicate library - if the specified <i>libIDList</i> contains a 
+ * <li>Duplicate library - if the specified <i>libIDList</i> contains a
  *                         library identifier twice
  * <li>No starting libraries - if the specified <i>libIDList</i> contains no
  *                         libraries. In this case an empty list becomes the
@@ -42,20 +42,20 @@ import com.sun.tgxml.tools.dependence.LibraryDependency;
  *                         entries. In this case the method assumes that
  *                         all libraries are independent.
  * <li>Cyclic dependency - if a cyclic dependency is found
- *                         
+ *
  * </ul>
  * <br>
  *
  * @author Evgueni Rouban
- * @version @(#)DependenceAnalyzer.java	1.3 02/03/13
+ * @version @(#)DependenceAnalyzer.java 1.3 02/03/13
  * @see com.sun.tgxml.tools.dependence.DependenceAnalyzerTool
  *      LibraryDependency
  */
 
 public class DependenceAnalyzer {
-    
+
     /**
-     * Error stream. 
+     * Error stream.
      */
     protected PrintStream err;
 
@@ -65,7 +65,7 @@ public class DependenceAnalyzer {
     protected Stack stack;
 
     /**
-     * The set of libraries found as 'needed'. 
+     * The set of libraries found as 'needed'.
      */
     protected TreeSet resultingSet;
 
@@ -75,13 +75,13 @@ public class DependenceAnalyzer {
     protected LibraryDependencies libraryDependencies;
 
     /**
-     * Finds identifiers of all libraries those are <i>needed</i> by a given 
+     * Finds identifiers of all libraries those are <i>needed</i> by a given
      * set of libraries. A library <i>L<sub>x</sub></i>is needed by another
      * library <i>L<sub>y</sub></i> iff there is a sequence of libraries
      * <i>L<sub>1</sub></i>, <i>L<sub>2</sub></i>, ..., <i>L<sub>N</sub></i>
-     * where for every <i>i</i>: (1 &lt;= i &lt; N implies that 
+     * where for every <i>i</i>: (1 &lt;= i &lt; N implies that
      * <i>L<sub>i</sub></i> directly depends on <i>L<sub>i+1</sub></i>) and
-     * <i>L<sub>x</sub></i> = <i>L<sub>N</sub></i> and 
+     * <i>L<sub>x</sub></i> = <i>L<sub>N</sub></i> and
      * <i>L<sub>y</sub></i> = <i>L<sub>1</sub></i>. <br>
      * For example: <br>
      *  for libraries <br>
@@ -92,23 +92,23 @@ public class DependenceAnalyzer {
      *      {<i>L<sub>4</sub></i>, {<i>L<sub>5</sub></i>}}<br>
      *      {<i>L<sub>7</sub></i>, {<i>L<sub>6</sub></i>}}<br>
      *  the result is <br>
-     *      {<i>L<sub>1</sub></i>, <i>L<sub>2</sub></i>, <i>L<sub>3</sub></i>, 
+     *      {<i>L<sub>1</sub></i>, <i>L<sub>2</sub></i>, <i>L<sub>3</sub></i>,
      *       <i>L<sub>4</sub></i>, <i>L<sub>5</sub></i>}<br>
      *
      * @param libIDList
-     * @param libraryDependencies 
+     * @param libraryDependencies
      *                   this set defines the direct dependence relation
-     * @return sorted list of distinct libraries that the given ones need. 
+     * @return sorted list of distinct libraries that the given ones need.
      */
     public LibIDList analyze(LibIDList libIDList, LibraryDependencies libraryDependencies) {
-        
+
 
         TreeSet startingSet = new TreeSet();
         for(int i = 0; i < libIDList.size(); ++i){
             if (!startingSet.add(libIDList.get(i))) {
-                err.println(LibResHandler.getResStr("dependenceanalyzer.warning.library.duplicate") 
+                err.println(LibResHandler.getResStr("dependenceanalyzer.warning.library.duplicate")
                           + libIDList.get(i));
-            } 
+            }
         }
 
         if (startingSet.isEmpty()) {
@@ -117,14 +117,14 @@ public class DependenceAnalyzer {
 
         if (libraryDependencies.isEmpty()) {
             err.println(LibResHandler.getResStr("dependenceanalyzer.warning.dependency.no"));
-        } 
+        }
 
         this.libraryDependencies = libraryDependencies;
 
         for(Iterator it = startingSet.iterator(); it.hasNext(); ) {
             dive((String)(it.next()));
         }
-        
+
         LibIDList result = new LibIDList();
         result.addAll(resultingSet);
 
@@ -133,7 +133,7 @@ public class DependenceAnalyzer {
 
     /**
      * Constructs a dependence analizer with the specified error stream.
-     * Sets <i>stack</i> and <i>resultingSet</i> to be empty. 
+     * Sets <i>stack</i> and <i>resultingSet</i> to be empty.
      * @param err
      *                 the stream for error messages
      */
@@ -146,8 +146,8 @@ public class DependenceAnalyzer {
     /**
      * Starts depth-first-traversal with the specified library as a root.
      * After the method returns, <i>resultingSet</i> contains all
-     * libraries that the specified one needs. The <i>stack</i> is used 
-     * but unchanged. 
+     * libraries that the specified one needs. The <i>stack</i> is used
+     * but unchanged.
      * @param libID
      *                 the dependence relation of libraries.
      */
@@ -161,7 +161,7 @@ public class DependenceAnalyzer {
         } else {
             if (resultingSet.add(libID)) {
                 stack.push(libID);
-                LibraryDependency libraryDependency 
+                LibraryDependency libraryDependency
                     = libraryDependencies.get(libID);
                 if (libraryDependency != null) {
                     for(int j=0; j < libraryDependency.size(); ++j) {
@@ -172,5 +172,5 @@ public class DependenceAnalyzer {
             }
         }
     }
-    
+
 }

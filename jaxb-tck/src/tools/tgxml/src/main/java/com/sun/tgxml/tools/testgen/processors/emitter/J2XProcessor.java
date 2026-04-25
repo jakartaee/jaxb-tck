@@ -34,7 +34,7 @@ import javax.lang.model.element.TypeElement;
  * Processor catches names of classes being compiled
  */
 public class J2XProcessor extends javax.annotation.processing.AbstractProcessor {
-    
+
     ArrayList<String> classNames;
 
     public SourceVersion getSupportedSourceVersion() {
@@ -52,32 +52,32 @@ public class J2XProcessor extends javax.annotation.processing.AbstractProcessor 
             set = roundEnv.getRootElements();
             return true;
         }
-        
+
         Iterator<? extends Element> it = set.iterator();
-        
+
         classNames = new ArrayList<String>();
         while(it.hasNext()) {
             printElement(it.next());
         }
         return true;
     }
-    
+
     protected void printElement(Element element) {
         if (! (element instanceof TypeElement)) return;
         TypeElement typeElement = (TypeElement)element;
-        
+
         String elementBinaryName = getBinaryName(typeElement);
-        
+
         classNames.add(elementBinaryName);
         System.out.println("... compiling " + elementBinaryName);
-        
+
         List<? extends Element> list = element.getEnclosedElements();
         Iterator<? extends Element> it = list.iterator();
         while (it.hasNext()) {
             printElement(it.next());
         }
     }
-    
+
     protected String getBinaryName(TypeElement element) {
         if (element.getNestingKind() == NestingKind.TOP_LEVEL) {
             return element.getQualifiedName().toString();
@@ -94,21 +94,21 @@ public class J2XProcessor extends javax.annotation.processing.AbstractProcessor 
             return;
         }
         Element cur = element.getEnclosingElement();
-        
+
         // cur is already instance of TypeElement, the next while statement is formal
         // cur cannot be null here, so checking after the while statement is formal
         while ( !(cur == null || cur instanceof TypeElement) )  {
             cur = cur.getEnclosingElement();
         }
         if (cur == null) return;
-        
+
         composeBinaryName((TypeElement)cur, buffer);
         buffer.append("$");
         buffer.append(element.getSimpleName());
     }
-    
+
     public Iterable<String> getClassNames() {
         return classNames;
     }
-    
+
 }

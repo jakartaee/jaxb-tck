@@ -36,7 +36,7 @@ import com.sun.tgxml.util.IR;
 public class J2XTestWTBEmitter extends MultiTestWriter {
 
     final public String SCHEMAGENMODE_PROPERTY = "testgen.emitter.TestGroup.J2XTestWTB.SchemaGenMode";
-    
+
     public static final String KWD_RTGEN = "rtgen";
     public static final String KWD_SCHEMAGEN_REQUIRED = "java_to_schema";
 
@@ -65,7 +65,7 @@ public class J2XTestWTBEmitter extends MultiTestWriter {
     }
 
     //protected Map testGroupExecuteClass = new HashMap();
-    
+
     final static public <T> T noNull( T obj, T def ){
         return (obj != null)? obj : def;
     }
@@ -115,7 +115,7 @@ public class J2XTestWTBEmitter extends MultiTestWriter {
                     // add 'java_to_schema' keyword (JaxbTckScript.KWD_SCHEMAGEN_REQUIRED)
                     addKeyword( tg , KWD_SCHEMAGEN_REQUIRED );
                 }
-                
+
                 tg.getTGAttributes().setExecuteArgs( args.toString() );
                 //
                 IR.setAttrElem( tg, "testSource", getClassFileName( tg.getID() ) + ".java" );

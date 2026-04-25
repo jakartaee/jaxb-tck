@@ -24,26 +24,26 @@ import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 public interface ExcludeListCollector {
 
-   /** This method adds new entry to the Collector if testcase contains 
+   /** This method adds new entry to the Collector if testcase contains
      * "excluded" attribute.
      * The tescase should have "testDescriptionURL" and "testCaseName"
-     * attributes. 
+     * attributes.
      * @throws IncorrectAttributesException if "testDescriptionURL"  are not defined.
-     * @return true, if exclude entry was added 
+     * @return true, if exclude entry was added
      */
 
-    public boolean addEntry(TestCase testCase) 
+    public boolean addEntry(TestCase testCase)
            throws IncorrectAttributesException, IOException;
 
 
-   /** This method adds new entry to the Collector if testgroup contains 
+   /** This method adds new entry to the Collector if testgroup contains
      * "excluded" attribute.
-     * The tescase should have "testDescriptionURL" attribute. 
+     * The tescase should have "testDescriptionURL" attribute.
      * @throws IncorrectAttributesException if "testDescriptionURL"  are not defined.
-     * @return true, if exclude entry was added 
+     * @return true, if exclude entry was added
      */
 
-    public boolean addEntry(TestGroup group) 
+    public boolean addEntry(TestGroup group)
            throws IncorrectAttributesException, IOException;
 
     /**

@@ -33,48 +33,48 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * LibraryDocumentation_TH - The tag-handler for a LibraryDocumentation tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    LibraryDocumentation_TH 
- * ============================================================================================ 
- */ 
+/**
+ * LibraryDocumentation_TH - The tag-handler for a LibraryDocumentation tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    LibraryDocumentation_TH
+ * ============================================================================================
+ */
 public class LibraryDocumentation_TH extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
     */
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   LibraryDocumentation_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   LibraryDocumentation_TH constructor -
+    *       Initialize our internal fields.
+    */
     public LibraryDocumentation_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ public class LibraryDocumentation_TH extends TagHandlerImpl  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_librarydocumentation;
+    return TagsImpl.ctStr_tag_librarydocumentation;
     }
 
     //------------------------------------------------------------------------------
@@ -98,19 +98,19 @@ public class LibraryDocumentation_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
-	if (! (testitem instanceof Library))
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
+    super.startTag(attrs);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
+    if (! (testitem instanceof Library))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_codeset));
 
-	LibDocumentation libdoc = DocumentationFactory.createLibDocumentation();
-	Library lib = (Library) testitem;
-	lib.setLibDocumentation(libdoc);
-	testItemStack.push(libdoc);
+    LibDocumentation libdoc = DocumentationFactory.createLibDocumentation();
+    Library lib = (Library) testitem;
+    lib.setLibDocumentation(libdoc);
+    testItemStack.push(libdoc);
 
     }
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -118,59 +118,59 @@ public class LibraryDocumentation_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void endTag() throws SAXException {
-	super.endTag();
-	try {
-	    Stack testItemStack = getParserHandler().getStack();
+    super.endTag();
+    try {
+        Stack testItemStack = getParserHandler().getStack();
 
-	    Object testitem = testItemStack.pop();
+        Object testitem = testItemStack.pop();
 
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if (! (testitem instanceof LibDocumentation))
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
+        if (! (testitem instanceof LibDocumentation))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
 
-	} catch (EmptyStackException e) {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
-	}
+    } catch (EmptyStackException e) {
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
     }
-     
-     
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-          
-          
+
+
+
   /**
     *   emit a tags components.
     *  <p>
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof LibDocumentation))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"LibDocumentation", tdObject.getClass().getName()));
+    if (! (tdObject instanceof LibDocumentation))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "LibDocumentation", tdObject.getClass().getName()));
 
-	LibDocumentation libd = (LibDocumentation) tdObject;
+    LibDocumentation libd = (LibDocumentation) tdObject;
 
-	String title = libd.getTitle();
-	if (title != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_title, title);
+    String title = libd.getTitle();
+    if (title != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_title, title);
 
-	String description = libd.getDescription();
-	if (description != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_description, description);
+    String description = libd.getDescription();
+    if (description != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_description, description);
 
 
 
-	ArrayList authors = libd.getAuthors();
-	if (authors != null) {
-	    Iterator it2 = authors.iterator();
+    ArrayList authors = libd.getAuthors();
+    if (authors != null) {
+        Iterator it2 = authors.iterator();
 
-	    while (it2.hasNext()) {
-		m_EmitterHandler.emit(TagsImpl.ctStr_tag_author, it2.next());
-	    }
-	}
+        while (it2.hasNext()) {
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_author, it2.next());
+        }
+    }
 
     }
 

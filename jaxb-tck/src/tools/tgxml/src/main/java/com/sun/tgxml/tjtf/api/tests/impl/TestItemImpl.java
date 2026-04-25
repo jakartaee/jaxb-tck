@@ -28,13 +28,13 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * TestItem - 
+ * TestItem -
  *
  * <b>TestItem</b> is the marker interface to a class structure that describes the root of a test description.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -54,7 +54,7 @@ public  class TestItemImpl implements TestItem {
      *    Fields
      * ============================================================================================
      */
-   
+
     private String             m_ID;
     private Documentation      m_documentation;
     private Attributes         m_attributes;
@@ -66,30 +66,30 @@ public  class TestItemImpl implements TestItem {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public TestItemImpl() {
-	init();
+    init();
     }
 
     public TestItemImpl(String ID, Documentation documentation, Attributes attributes, CodeSet codeset ) {
-	m_ID = ID;
-	m_documentation = documentation;
-	m_attributes = attributes;
-	m_codeset = codeset;
+    m_ID = ID;
+    m_documentation = documentation;
+    m_attributes = attributes;
+    m_codeset = codeset;
     }
 
     private void init() {
-	m_ID = null;
-	m_documentation = null;
-	m_attributes = null;
-	m_codeset = null;
+    m_ID = null;
+    m_documentation = null;
+    m_attributes = null;
+    m_codeset = null;
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -104,12 +104,12 @@ public  class TestItemImpl implements TestItem {
      * @see #setID
      */
     public String getID() throws TestFileException {
-	if (m_ID == null || m_ID.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.tg.id.null"));
-	return m_ID;
+    if (m_ID == null || m_ID.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.tg.id.null"));
+    return m_ID;
     }
 
-     
+
     /**
      *   Set the identifier associated with the TestGroup, TestClass, or Library.
      *  <p>
@@ -118,9 +118,9 @@ public  class TestItemImpl implements TestItem {
      * @see #getID
      */
     public void setID(String id) throws TestFileException{
-	if (id == null || id.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.tg.id.null"));
-	m_ID = id;
+    if (id == null || id.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.tg.id.null"));
+    m_ID = id;
     }
 
 
@@ -132,9 +132,9 @@ public  class TestItemImpl implements TestItem {
     * @see com.sun.tgxml.tjtf.api.documentation.Documentation
     */
     public Documentation getDocumentation() {
-	return m_documentation;
+    return m_documentation;
     }
-     
+
 
 
   /**
@@ -144,9 +144,9 @@ public  class TestItemImpl implements TestItem {
     * @see com.sun.tgxml.tjtf.api.documentation.Documentation
     */
     public void _setDocumentation(Documentation doc) {
-	m_documentation = doc;
+    m_documentation = doc;
     }
-     
+
 
 
 
@@ -158,9 +158,9 @@ public  class TestItemImpl implements TestItem {
     * @see com.sun.tgxml.tjtf.api.attributes.Attributes
     */
     public Attributes getAttributes() {
-	return m_attributes;
+    return m_attributes;
     }
-     
+
 
 
   /**
@@ -170,9 +170,9 @@ public  class TestItemImpl implements TestItem {
     * @see com.sun.tgxml.tjtf.api.documentation.Documentation
     */
     public void _setAttributes(Attributes attrs) {
-	m_attributes = attrs;
+    m_attributes = attrs;
     }
-     
+
 
 
   /**
@@ -184,11 +184,11 @@ public  class TestItemImpl implements TestItem {
     * @see #setCodeSet
     */
     public CodeSet getCodeSet() {
-	return m_codeset;
+    return m_codeset;
     }
-     
 
-     
+
+
   /**
     *   Set the CodeSet for this TestItem.
     *  <p>
@@ -197,7 +197,7 @@ public  class TestItemImpl implements TestItem {
     * @see #getCodeSet
     */
     public void setCodeSet(CodeSet codeset) {
-	m_codeset = codeset;
+    m_codeset = codeset;
     }
 
 

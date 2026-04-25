@@ -74,7 +74,7 @@ public class JmppException extends RuntimeException {
         case SYSTEM_ERROR:
             return "A system error occurred: " + super.getMessage();
         case SYNTAX_ERROR:
-            return "Syntax errors found in jmpp source file:" + " \n" + 
+            return "Syntax errors found in jmpp source file:" + " \n" +
                    super.getMessage();
         case COMPILATION_ERROR:
             return "Compilation of the intermediate program (" +

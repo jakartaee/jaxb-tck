@@ -49,20 +49,20 @@ import com.sun.tgxml.tjtf.tools.options.StringOption;
 import com.sun.tgxml.tools.indexgen.api.TestSuite;
 import com.sun.tgxml.util.IR;
 
-/** 
- * XMLParserImpl - The basic engine for an XML parser. 
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    XMLParserImpl 
- * ============================================================================================ 
- */ 
+/**
+ * XMLParserImpl - The basic engine for an XML parser.
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    XMLParserImpl
+ * ============================================================================================
+ */
 public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser {
 
 
@@ -86,82 +86,82 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
-   /** 
-    *   XMLParserImpl constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
+   /**
+    *   XMLParserImpl constructor -
+    *       Initialize our internal fields.
+    */
     public XMLParserImpl() {
-	super();
-	m_handler = new BaseParserHandlerImpl();
-	m_addSourceDirAttr = true;
-	m_xmlValidating = false;
-	m_alternateParser = null;
-	reset();
+    super();
+    m_handler = new BaseParserHandlerImpl();
+    m_addSourceDirAttr = true;
+    m_xmlValidating = false;
+    m_alternateParser = null;
+    reset();
     }
 
 
-   /** 
-    *   resets the parser for reuse. 
-    */ 
+   /**
+    *   resets the parser for reuse.
+    */
     public void reset() {
-	if (m_handler != null)
-	    m_handler.reset();
+    if (m_handler != null)
+        m_handler.reset();
     }
 
 
 
 
-   /** 
+   /**
     *  Gets the mode that determines whether the (SAX XMLReader) parser is validating.
     * <p>
     * @return true if the parser is validating XML to the DTD.
-    */ 
+    */
     public boolean getXMLValidation() {
-	return m_xmlValidating;
+    return m_xmlValidating;
     }
 
 
 
 
-   /** 
+   /**
     *  Sets the mode that determines whether the (SAX XMLReader) parser is validating.
     * <p>
     * @param validating Set this to true to have the parser validate incoming XML to the DTD.
     * @throws SAXException if the SAXParser can not handle validation (should never happen).
-    */ 
+    */
     public void setXMLValidation(boolean validating) throws SAXException {
-	if (validating) {
-	    // Turn on validation
-	    m_xmlReader.setFeature("http://xml.org/sax/features/validation", true);
-	} else {
-	    // Turn off validation
-	    m_xmlReader.setFeature("http://xml.org/sax/features/validation", false);
-	}
-	// Turn off namespace awareness
-	m_xmlReader.setFeature("http://xml.org/sax/features/namespaces", false);
-	m_xmlValidating = validating;
+    if (validating) {
+        // Turn on validation
+        m_xmlReader.setFeature("http://xml.org/sax/features/validation", true);
+    } else {
+        // Turn off validation
+        m_xmlReader.setFeature("http://xml.org/sax/features/validation", false);
+    }
+    // Turn off namespace awareness
+    m_xmlReader.setFeature("http://xml.org/sax/features/namespaces", false);
+    m_xmlValidating = validating;
     }
 
 
 
-   /** 
-    *   Set the parser's debug mode. 
-    */ 
+   /**
+    *   Set the parser's debug mode.
+    */
     public void setDebug(boolean debug) {
-	m_handler.setDebug(debug);
+    m_handler.setDebug(debug);
     }
 
-   /** 
-    *   Get the parser's debug mode. 
-    */ 
+   /**
+    *   Get the parser's debug mode.
+    */
     public boolean getDebug() {
-	return m_handler.getDebug();
+    return m_handler.getDebug();
     }
 
   /**
@@ -170,7 +170,7 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     * @param mode Parser will add a "SourceFile" AttrElem when mode is true.
     */
     public void setSourceFileMode(boolean mode) {
-	m_addSourceDirAttr = mode;
+    m_addSourceDirAttr = mode;
     }
 
   /**
@@ -179,7 +179,7 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     * @returns true if the Parser will add a "SourceFile" AttrElem.
     */
     public boolean getSourceFileMode() {
-	return m_addSourceDirAttr;
+    return m_addSourceDirAttr;
     }
 
 
@@ -189,7 +189,7 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     * @param parserClassName The (fully-qualified) name of a SAX 2.0 compliant XMLReader.
     */
     public void setAlternateParser(String parserClassName) {
-	m_alternateParser = parserClassName;
+    m_alternateParser = parserClassName;
     }
 
   /**
@@ -198,7 +198,7 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     * @returns The (fully-qualified) name of a SAX 2.0 compliant XMLReader.
     */
     public String getAlternateParser() {
-	return m_alternateParser;
+    return m_alternateParser;
     }
 
 
@@ -208,24 +208,24 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     * @param shellClass The shell that owns this parser.
     */
     public void setShell(Shell shellClass) {
-	super.setShell(shellClass);
-	m_handler.setShell(shellClass);
+    super.setShell(shellClass);
+    m_handler.setShell(shellClass);
     }
 
-   
-   /* 
+
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    FlagOption debugOption = new FlagOption("-Pdiag", 
+    FlagOption debugOption = new FlagOption("-Pdiag",
             "  -Pdiag   debug mode");
 
-    FlagOption suppressOption = new FlagOption("-PsuppressSourceFile", 
+    FlagOption suppressOption = new FlagOption("-PsuppressSourceFile",
             "  -PsuppressSourceFile   suppress source file name ");
 
-    StringOption alternateOption = new StringOption("-PalternateParser", 
+    StringOption alternateOption = new StringOption("-PalternateParser",
             "  -PalternateParser  <classname>   alternate parser class name ");
 
     /**
@@ -242,69 +242,69 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      */
     public void applyOptionsValues() throws ParseArgumentException {
         if (debugOption.isSet()) {
-	    setDebug(true); 
+        setDebug(true);
         }
 
         if (suppressOption.isSet()) {
-	    setSourceFileMode(false);
+        setSourceFileMode(false);
         }
 
         if (alternateOption.isSet()) {
-	    setAlternateParser(alternateOption.getStringValue());
+        setAlternateParser(alternateOption.getStringValue());
         }
 
-	if (m_alternateParser != null) {
-	    try {
-		Class.forName(m_alternateParser);
-	    } catch (Exception e) {
-		throw new ParseArgumentException(LibResHandler.getResStr("parser.altparser.error.class.missing", m_alternateParser));
-	    }
-	}
+    if (m_alternateParser != null) {
+        try {
+        Class.forName(m_alternateParser);
+        } catch (Exception e) {
+        throw new ParseArgumentException(LibResHandler.getResStr("parser.altparser.error.class.missing", m_alternateParser));
+        }
+    }
 
         super.applyOptionsValues();
     }
 
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    XMLParser Interface implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    XMLParser Interface implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
 
-   
+
     /**
      *  A parser needs to create TagHandlers with a reference to the
      *  ParserHandler.  ToolWriters that are creating a new parser implementation
      *  will need to create their TagHandlers with this ParserHandler.
      */
     public ParserHandlerSupport getParserHandlerSupport () {
-	return m_handler;
+    return m_handler;
     }
-  
+
 
 
   /**
     *  Parse the File(s) into a set of IR's (General Parse contract).
     */
     public IRObj[] parse (File files[]) throws TestFileException, IOException {
-	try {
-	    int numFiles = files.length;
-	    IRObj[] IRs = new IRObj[numFiles];
+    try {
+        int numFiles = files.length;
+        IRObj[] IRs = new IRObj[numFiles];
 
-	    for (int i=0; i < numFiles; i++) {
-		IRs[i] = parse(files[i]);
-		reset();
-	    }
-	    
-	    return IRs;
-	} catch (SAXException e) {
-	    throw new EmbeddedTFException(e);
-	}
+        for (int i=0; i < numFiles; i++) {
+        IRs[i] = parse(files[i]);
+        reset();
+        }
+
+        return IRs;
+    } catch (SAXException e) {
+        throw new EmbeddedTFException(e);
+    }
     }
 
 
@@ -312,21 +312,21 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     *  Parse the File(s) into a set of IR's (General Parse contract).
     */
     public IRObj[] parse (InputStream inputs[]) throws TestFileException, IOException {
-	try {
-	    int numInputs = inputs.length;
-	    IRObj[] IRs = new IRObj[numInputs];
+    try {
+        int numInputs = inputs.length;
+        IRObj[] IRs = new IRObj[numInputs];
 
-	    for (int i=0; i < numInputs; i++) {
-		IRs[i] = parse(inputs[i]);
-	    }
-	    
-	    return IRs;
-	} catch (SAXException e) {
-	    throw new EmbeddedTFException(e);
-	}
+        for (int i=0; i < numInputs; i++) {
+        IRs[i] = parse(inputs[i]);
+        }
+
+        return IRs;
+    } catch (SAXException e) {
+        throw new EmbeddedTFException(e);
     }
-   
-    
+    }
+
+
     /**
      * Parse the TD from an XML file.
      */
@@ -335,71 +335,71 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     }
 
     public XMLObj parse (File xmlFile, String tckSourceDir) throws TestFileException, SAXException, IOException  {
-	// Test validity of file
-	// ....
+    // Test validity of file
+    // ....
 
-	FileInputStream is = new FileInputStream(xmlFile);
-	InputSource inputSource = new InputSource(is);
-	inputSource.setPublicId(xmlFile.getCanonicalPath());
+    FileInputStream is = new FileInputStream(xmlFile);
+    InputSource inputSource = new InputSource(is);
+    inputSource.setPublicId(xmlFile.getCanonicalPath());
 
-	XMLObj root =  parseSource(inputSource);
-	if (m_addSourceDirAttr) 
-	    addPathAttr(root, tckSourceDir, xmlFile.getCanonicalPath());
-	return root;
+    XMLObj root =  parseSource(inputSource);
+    if (m_addSourceDirAttr)
+        addPathAttr(root, tckSourceDir, xmlFile.getCanonicalPath());
+    return root;
     }
 
-  
-	
-    
+
+
+
     /**
      * Parse the TD from an input stream.
      */
     public XMLObj parse (InputStream stream) throws TestFileException, SAXException, IOException {
-	InputSource inputSource = new InputSource(stream);
-	return parseSource(inputSource);
+    InputSource inputSource = new InputSource(stream);
+    return parseSource(inputSource);
     }
-	
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    utility methods 
-    * -------------------------------------------------------------------------------------------- 
+
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    utility methods
+    * --------------------------------------------------------------------------------------------
     */
      /**
      *  Parse the TD IR from an input stream.
      */
     private XMLObj parseSource (InputSource inputSource) throws TestFileException, SAXException, IOException  {
-	TagHandlerTable tht = m_handler.getHandlerTable();
-	String uri = tht.getDocURI();
-	inputSource.setSystemId(uri);	
+    TagHandlerTable tht = m_handler.getHandlerTable();
+    String uri = tht.getDocURI();
+    inputSource.setSystemId(uri);
 
-	// parse the document
-	m_xmlReader.parse(inputSource);
+    // parse the document
+    m_xmlReader.parse(inputSource);
 
-	XMLObj tree = m_handler.getRoot();
-	m_validator.validate(tree);
-	return tree;
+    XMLObj tree = m_handler.getRoot();
+    m_validator.validate(tree);
+    return tree;
     }
 
-   
+
     /**
      *  Parse the TD IR from an input stream.
      */
     private XMLObj parseStream (InputStream is) throws TestFileException, SAXException, IOException  {
-	//
-	// Turn the input stream into an input source
-	//
-	InputSource inputSource = new InputSource(is);
-	TagHandlerTable tht = m_handler.getHandlerTable();
-	String uri = tht.getDocURI();
-	inputSource.setSystemId(uri);	
+    //
+    // Turn the input stream into an input source
+    //
+    InputSource inputSource = new InputSource(is);
+    TagHandlerTable tht = m_handler.getHandlerTable();
+    String uri = tht.getDocURI();
+    inputSource.setSystemId(uri);
 
-	// parse the document
-	m_xmlReader.parse(inputSource);
+    // parse the document
+    m_xmlReader.parse(inputSource);
 
-	XMLObj tree = m_handler.getRoot();
-	m_validator.validate(tree);
-	return tree;
+    XMLObj tree = m_handler.getRoot();
+    m_validator.validate(tree);
+    return tree;
     }
 
   /**
@@ -407,45 +407,45 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
     */
     public void setupParser (TagHandlerTable handlerTable) throws TestFileException, SAXException  {
 
-	// Create a JAXP SAXParserFactory and configure it
-	//	    SAXParserFactory spf = SAXParserFactory.newInstance();
-	//	    spf.setValidating(true); 
-	
-	// Create a JAXP SAXParser
-	//	    SAXParser parser = spf.newSAXParser();
-	
-	m_handler.setHandlerTable(handlerTable);
-	m_handler.reset();
-	
-	if (m_alternateParser != null) {
-	    // Get the encapsulated SAX XMLReader
-	    //  Use this method if creating an XML reader in the standard SAX 2.0 manner
-	    m_xmlReader = XMLReaderFactory.createXMLReader(m_alternateParser);
-	} else {
-	    // Get the encapsulated SAX XMLReader
-	    //  Use this method if creating an XML reader using Sun's JAXP/Crimson
-	    // Create a JAXP SAXParserFactory and configure it
-	    try {
-		SAXParserFactory spf = SAXParserFactory.newInstance();
-		spf.setValidating(true);
-		// Create a JAXP SAXParser
-		SAXParser saxParser = spf.newSAXParser();
-		
-		// Get the encapsulated SAX XMLReader
-		m_xmlReader = saxParser.getXMLReader();
-	    } catch (ParserConfigurationException e) {
-		throw new TestFileException(LibResHandler.getResStr("parser.error.internal.config"));
-	    }
-	}	
-	
-	// Set the ContentHandler of the XMLReader
-	m_xmlReader.setContentHandler(m_handler);
-	m_xmlReader.setErrorHandler(m_handler.getErrorHandler());
+    // Create a JAXP SAXParserFactory and configure it
+    //      SAXParserFactory spf = SAXParserFactory.newInstance();
+    //      spf.setValidating(true);
+
+    // Create a JAXP SAXParser
+    //      SAXParser parser = spf.newSAXParser();
+
+    m_handler.setHandlerTable(handlerTable);
+    m_handler.reset();
+
+    if (m_alternateParser != null) {
+        // Get the encapsulated SAX XMLReader
+        //  Use this method if creating an XML reader in the standard SAX 2.0 manner
+        m_xmlReader = XMLReaderFactory.createXMLReader(m_alternateParser);
+    } else {
+        // Get the encapsulated SAX XMLReader
+        //  Use this method if creating an XML reader using Sun's JAXP/Crimson
+        // Create a JAXP SAXParserFactory and configure it
+        try {
+        SAXParserFactory spf = SAXParserFactory.newInstance();
+        spf.setValidating(true);
+        // Create a JAXP SAXParser
+        SAXParser saxParser = spf.newSAXParser();
+
+        // Get the encapsulated SAX XMLReader
+        m_xmlReader = saxParser.getXMLReader();
+        } catch (ParserConfigurationException e) {
+        throw new TestFileException(LibResHandler.getResStr("parser.error.internal.config"));
+        }
+    }
+
+    // Set the ContentHandler of the XMLReader
+    m_xmlReader.setContentHandler(m_handler);
+    m_xmlReader.setErrorHandler(m_handler.getErrorHandler());
 
     }
 
 
-    
+
     /**
      *  Add a "SourcePath" attribute to "TestRoot" sub-classes.
      */
@@ -476,9 +476,9 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
         setAttrElem(root, IR.SourcePathAttrElemName, path);
         if (relPath != null) {
             setAttrElem(root, IR.relSourcePathAttrElemName, relPath);
-        }    
+        }
     }
-    
+
     private void setAttrElem(XMLObj obj, String elemName, String path) {
         String oldVal = null;
         if (obj instanceof TestSuite) {
@@ -495,5 +495,5 @@ public class XMLParserImpl extends ValidatingProcessorImpl implements XMLParser 
             }
         }
     }
-    
+
 }

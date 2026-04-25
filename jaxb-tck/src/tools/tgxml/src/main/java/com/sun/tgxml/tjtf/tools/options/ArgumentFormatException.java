@@ -19,13 +19,13 @@ package com.sun.tgxml.tjtf.tools.options;
 
 
 /**
- * ArgumentFormatException - 
+ * ArgumentFormatException -
  *
  * Signals that illegal option argument is passed
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -38,8 +38,8 @@ public class ArgumentFormatException extends ParseArgumentException {
      * @param message  a an exception message string.
      */
     public ArgumentFormatException (String message) {
-	super(message);
+    super(message);
     }
 }
-     
+
 

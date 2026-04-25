@@ -28,46 +28,46 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
 /**
- * NameValueTagHandler - The tag-handler for a tag with unformatted text data. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    NameValueTagHandler 
- * ============================================================================================ 
- */ 
+ * NameValueTagHandler - The tag-handler for a tag with unformatted text data.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    NameValueTagHandler
+ * ============================================================================================
+ */
 public class NameValueTagHandler extends TextStreamTagHandler   {
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
     private String  m_Name;
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   NameValueTagHandler constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   NameValueTagHandler constructor -
+    *       Initialize our internal fields.
+    */
     public NameValueTagHandler() {
-	super();
-	 
+    super();
+
     }
 
     //------------------------------------------------------------------------------
@@ -82,19 +82,19 @@ public class NameValueTagHandler extends TextStreamTagHandler   {
     * @see #endTag
     */
     public final void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	if (attrs != null) {
-	    for (int i = 0; i < attrs.getLength (); i++) {
-		// Get the ID
-		if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_name)) {
-		    m_Name = attrs.getValue (i);
-		}
-		// unknown attribute
-		else 
-		    // Unknown spec attribute
-		    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownTDAttr", attrs.getQName (i)));
-	    }
-	}
+    super.startTag(attrs);
+    if (attrs != null) {
+        for (int i = 0; i < attrs.getLength (); i++) {
+        // Get the ID
+        if ((attrs.getQName (i)).equals(TagsImpl.ctStr_attr_name)) {
+            m_Name = attrs.getValue (i);
+        }
+        // unknown attribute
+        else
+            // Unknown spec attribute
+            m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.unknownTDAttr", attrs.getQName (i)));
+        }
+    }
 
     }
 
@@ -106,11 +106,11 @@ public class NameValueTagHandler extends TextStreamTagHandler   {
     * @see #endTag
     */
     public final void endTag(String text) throws SAXException {
-	super.endTag(text);
+    super.endTag(text);
 
-	endTag(m_Name, text);
+    endTag(m_Name, text);
     }
-          
+
 
   /**
     *   End handling a given XML tag.
@@ -119,11 +119,11 @@ public class NameValueTagHandler extends TextStreamTagHandler   {
     */
     public void endTag(String name, String value) throws SAXException {
     }
-          
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
+
 
   /**
     *   emit a tag (general function).
@@ -131,16 +131,16 @@ public class NameValueTagHandler extends TextStreamTagHandler   {
     * @see #endTag
     */
     public void emitAttributes(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof NameValuePair))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.notnamevalue", getTagName()));
+    if (! (tdObject instanceof NameValuePair))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.notnamevalue", getTagName()));
 
-	NameValuePair nv = (NameValuePair) tdObject;
+    NameValuePair nv = (NameValuePair) tdObject;
 
-	String name = nv.getName();
-	m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_name, name);
+    String name = nv.getName();
+    m_EmitterHandler.emitAttribute(TagsImpl.ctStr_attr_name, name);
     }
 
-         
+
 
   /**
     *   emit a tag (general function).
@@ -148,16 +148,16 @@ public class NameValueTagHandler extends TextStreamTagHandler   {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof NameValuePair))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"NameValuePair", tdObject.getClass().getName()));
+    if (! (tdObject instanceof NameValuePair))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "NameValuePair", tdObject.getClass().getName()));
 
-	NameValuePair nv = (NameValuePair) tdObject;
+    NameValuePair nv = (NameValuePair) tdObject;
 
-	String value = nv.getValue();
-	m_EmitterHandler.emitText(value);
+    String value = nv.getValue();
+    m_EmitterHandler.emitText(value);
     }
 
-          
+
 
 }

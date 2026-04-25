@@ -25,12 +25,12 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * ExpectedResultValue - 
+ * ExpectedResultValue -
  *
  * <b>ExpectedResultValue</b> is a value that is the expected result of a tests
  * outcome.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -58,7 +58,7 @@ public class ExpectedResultValueImpl implements ExpectedResultValue  {
      * ============================================================================================
      */
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -86,7 +86,7 @@ public class ExpectedResultValueImpl implements ExpectedResultValue  {
     * @see com.sun.tgxml.tjtf.api.documentation.ExpectedResult
     */
     public ExpectedResultValueImpl(String value){
-	m_value = value;
+    m_value = value;
     }
 
 
@@ -103,9 +103,9 @@ public class ExpectedResultValueImpl implements ExpectedResultValue  {
     * @see #setValue
     */
     public String getValue() {
-	return m_value; 
+    return m_value;
     }
-     
+
    /**
     *   Set the value associated with this ExpectedResult.
     *  <p>
@@ -113,10 +113,10 @@ public class ExpectedResultValueImpl implements ExpectedResultValue  {
     * @see #getValue
     */
     public void setValue(String value) throws TestFileException {
-	if (value == null || value.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.doc.expectresval.value.null") );
+    if (value == null || value.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.doc.expectresval.value.null") );
 
-	m_value = value;
+    m_value = value;
     }
 
 }

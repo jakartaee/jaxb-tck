@@ -57,7 +57,7 @@ public class LibraryEmitter
 
     public void setExcludeListCollector(ExcludeListCollector collector){
     }
-    
+
     public void setConfiguration(Hashtable args){
     }
 
@@ -67,7 +67,7 @@ public class LibraryEmitter
      */
     public void generate(IRObj[] trees) throws TestFileException, IOException {
         int numIRs = trees.length;
-        
+
         for (int i=0; i < numIRs; i++) {
             generate(trees[i]);
         }
@@ -79,47 +79,47 @@ public class LibraryEmitter
         }
 
         Library lib = (Library) root;
-        if (lib.isInline()) 
+        if (lib.isInline())
             return;
 
         String libID = lib.getID();
         String libVarID = lib.getVarID();
         String relOutputDir = getRelativeOutputDirectory(lib);
 
-        // Create the list of java source files            
+        // Create the list of java source files
         Hashtable sourceFiles =  new Hashtable();
-        CodeSet codeSet = lib.getCodeSet();                       
+        CodeSet codeSet = lib.getCodeSet();
         if (codeSet == null) {
             return;
-        }   
+        }
 
         ArrayList classes = codeSet.getSupportClasses();
 
-        // iterate through all support classes 
+        // iterate through all support classes
         if (classes != null) {
             Iterator it = classes.iterator();
             while (it.hasNext()) {
-                SupportClass sc = (SupportClass)it.next();            
+                SupportClass sc = (SupportClass)it.next();
                 if (sc instanceof InlineSupportClass) {
                     InlineSupportClass isc = (InlineSupportClass)sc;
-                    JavaClass jc = new JavaClass();                   
-                    
+                    JavaClass jc = new JavaClass();
+
                     // determine the name of a java file to put the class to
                     String targetName = isc.getTargetName();
                     if (targetName == null || targetName.trim().equals("")) {
                         targetName = libID;
                     }
-                    
 
-                    jc.setName(targetName);                    
-                    jc.setClassCode(isc.getSource());                    
-                    
+
+                    jc.setName(targetName);
+                    jc.setClassCode(isc.getSource());
+
                     // create new java file if not yet created
                     if (!sourceFiles.containsKey(targetName)) {
                         JavaClassFile src = new JavaClassFile();
                         src.setName(targetName);
                         src.setLibID(libID);
-                        src.setLibVarID(libVarID);             
+                        src.setLibVarID(libVarID);
                         src.setPackageName(detectPackageName(lib));
                         LibDocumentation libDoc = lib.getLibDocumentation();
                         if (libDoc != null) {
@@ -157,25 +157,25 @@ public class LibraryEmitter
                             String msg = "(LibraryEmitter) " + f.getMessage();
                             CopyrightManager.errorSkipCRN(msg, file);
                         }
-                    } 
+                    }
                     JavaClassFile jcf = (JavaClassFile)sourceFiles.get(targetName);
                     jcf.addClass(jc);
-                } 
-            } 
-	    it = sourceFiles.values().iterator();           
-	    while (it.hasNext()) {
+                }
+            }
+        it = sourceFiles.values().iterator();
+        while (it.hasNext()) {
             JavaClassFile current = (JavaClassFile)it.next();
             File outputFile = getOutputFile(current, relOutputDir);
             MiscUtils.mkdirs(outputFile.getParentFile());
             FileWriter os = new FileWriter(outputFile);
             os.write(current.toString());
             os.close();
-	    }
-            
-        } 
+        }
 
-	ArrayList data = codeSet.getData();
-	// process inline IODataFiles
+        }
+
+    ArrayList data = codeSet.getData();
+    // process inline IODataFiles
         if (data != null) {
             Iterator it = data.iterator();
             while (it.hasNext()) {
@@ -188,7 +188,7 @@ public class LibraryEmitter
                         if (targetName == null || targetName.trim().equals("")) {
                             targetName = lib.getID();
                         }
-                        File outputFile = new File (getRelativeOutputDirectory(lib), targetName); 
+                        File outputFile = new File (getRelativeOutputDirectory(lib), targetName);
                         MiscUtils.mkdirs(outputFile.getParentFile());
                         FileWriter os = new FileWriter(outputFile);
                         os.write(idt.getData().trim());
@@ -196,8 +196,8 @@ public class LibraryEmitter
                     }
                 }
             }
-	}
-        
+    }
+
         ResourceInstaller ri = new ResourceInstaller();
         ri.installResources(lib);
 
@@ -213,19 +213,19 @@ public class LibraryEmitter
     public void setShell(Shell value) {
         m_shell = value;
     }
-    
+
     public Shell getShell() throws TestFileException {
         return m_shell;
     }
-    
+
     public void setProperties(Properties props) {}
 
-    protected String getRelativeOutputDirectory(Library lib) 
+    protected String getRelativeOutputDirectory(Library lib)
             throws TestFileException {
         String outDir = IR.getAttrElem("OutputDir", lib);
         return (outDir == null) ? "." : outDir;
     }
-    
+
     protected String getRelativeSourcePath(Library lib) throws TestFileException {
         String rsp = IR.getAttrElem("relSourcePath",lib);
         rsp = rsp.substring(0,rsp.lastIndexOf(fileSep));
@@ -256,7 +256,7 @@ public class LibraryEmitter
      * or from the build properties.
      */
     protected String detectPackageName(Library lib) throws TestFileException {
-        // Actual implmentation of this method has been moved to LibUtils. 
+        // Actual implmentation of this method has been moved to LibUtils.
         // Leaving this stub around for backwards compatability.
         String res = LibUtils.detectPackageName(lib);
         if (res == "") {

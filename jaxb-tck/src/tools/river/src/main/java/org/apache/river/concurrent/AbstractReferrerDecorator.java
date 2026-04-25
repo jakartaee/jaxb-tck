@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,16 +17,16 @@ package org.apache.river.concurrent;
 
 /**
  * This class exists purely for allowing a client with their own Collection
- * implementation or Collection wrapper to perform custom serialisation of the 
+ * implementation or Collection wrapper to perform custom serialisation of the
  * References by replacing the standard Referrer's with their own implementation.
- * 
- * During de-serialisation the client's Referrer can 
+ *
+ * During de-serialisation the client's Referrer can
  * perform any required de-serialisation defensive copying or integrity checks.
- * 
+ *
  * The client Referrer will be replaced after de-serialisation is complete.
- * 
+ *
  * The client doesn't need to implement this class, just Referrer.
- * 
+ *
  * @param <T> - the referent.
  * @author peter
  */
@@ -41,16 +41,16 @@ abstract class AbstractReferrerDecorator<T> implements UntouchableReferrer<T> {
             refresh(rqf.referenced(object, true, false));
         }
     }
-    
+
     /**
      * This method is called after de-serialisation, to update the Referrer,
-     * the Ref type will be governed by the ReferenceCollection, the queue will 
-     * have also been defined.  
-     * 
+     * the Ref type will be governed by the ReferenceCollection, the queue will
+     * have also been defined.
+     *
      * The object will be retrieved and encapsulated in the Referrer
      * using the get() method.
-     * 
-     * @param r 
+     *
+     * @param r
      */
     abstract void refresh(Referrer<T> r);
 
@@ -76,7 +76,7 @@ abstract class AbstractReferrerDecorator<T> implements UntouchableReferrer<T> {
     public final T get() {
         return getReference().get();
     }
-    
+
     public T lookDontTouch(){
         Referrer<T> r = getReference();
         if (r instanceof UntouchableReferrer){
@@ -98,5 +98,5 @@ abstract class AbstractReferrerDecorator<T> implements UntouchableReferrer<T> {
     public boolean isEnqueued() {
         return getReference().isEnqueued();
     }
-    
+
 }

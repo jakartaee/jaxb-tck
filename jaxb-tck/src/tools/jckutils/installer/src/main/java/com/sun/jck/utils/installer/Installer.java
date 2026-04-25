@@ -28,18 +28,18 @@ public class Installer {
 
 
     class BadArgs extends Exception {
-	BadArgs(String msg) {
-	    super(msg);
-	}
+    BadArgs(String msg) {
+        super(msg);
+    }
     }
 
 
 
 
     class Fault extends Exception {
-	Fault(String msg) {
-	    super(msg);
-	}
+    Fault(String msg) {
+        super(msg);
+    }
     }
 
 
@@ -51,26 +51,26 @@ public class Installer {
 
 
      public static void main (String [] args) {
-	 Installer i = new Installer ();
+     Installer i = new Installer ();
 
-	 try {
-	    i.run(args);
-	    System.exit(0);
-	 }
-	 catch (BadArgs b) {
-	     System.err.println("Invalid or poorly formed command line argument:");
-	     System.err.println(b.getMessage());
-	     usage();
-	     System.exit(1);
-	 }
-	 catch (Fault f) {
-	     System.err.println(f.getMessage());
-	     System.exit(2);
-	 }
-	 catch (Throwable t) {
-	     t.printStackTrace(System.err);
-	     System.exit(3);
-	 }
+     try {
+        i.run(args);
+        System.exit(0);
+     }
+     catch (BadArgs b) {
+         System.err.println("Invalid or poorly formed command line argument:");
+         System.err.println(b.getMessage());
+         usage();
+         System.exit(1);
+     }
+     catch (Fault f) {
+         System.err.println(f.getMessage());
+         System.exit(2);
+     }
+     catch (Throwable t) {
+         t.printStackTrace(System.err);
+         System.exit(3);
+     }
      }
 
 
@@ -78,194 +78,194 @@ public class Installer {
 
      public void run(String args [])  throws BadArgs, Fault {
 
-	 int i = 0;
-	 String currentOption;
-	 MegaZipFile mzf;
-	 boolean installOK = false;
+     int i = 0;
+     String currentOption;
+     MegaZipFile mzf;
+     boolean installOK = false;
 
-	 if (System.getProperty("DEBUG") != null)
-	     m_verbosity = MegaZipFile.VERBOSE_LOUD;
+     if (System.getProperty("DEBUG") != null)
+         m_verbosity = MegaZipFile.VERBOSE_LOUD;
 
-	 //decode options: all options start with -
-	 while (i < args.length ) {
-	     
-	     currentOption = args[i++];
+     //decode options: all options start with -
+     while (i < args.length ) {
 
-	     if (currentOption.equalsIgnoreCase("-usage") || currentOption.equalsIgnoreCase("-help") 
-		    || currentOption.equalsIgnoreCase("\\?") ) {
+         currentOption = args[i++];
 
-		 this.usage();
-		 return;
+         if (currentOption.equalsIgnoreCase("-usage") || currentOption.equalsIgnoreCase("-help")
+            || currentOption.equalsIgnoreCase("\\?") ) {
 
-	     }
+         this.usage();
+         return;
 
-	     else if(currentOption.equalsIgnoreCase("-q")) {
+         }
 
-		 m_verbosity = MegaZipFile.VERBOSE_QUIET;
+         else if(currentOption.equalsIgnoreCase("-q")) {
 
-	     }
+         m_verbosity = MegaZipFile.VERBOSE_QUIET;
 
-	     
-	     else if(currentOption.equalsIgnoreCase("-l")) {
-
-		 m_mode = MegaZipFile.MODE_LIST;
-
-	     }
-	     else if(currentOption.equalsIgnoreCase("-o")) {
-
-		 if ( ! (i < args.length) ) {
-		    throw new BadArgs("No value provided for output directory (-o) option");
-		 }
-
-		 m_outdir = new File(args[i++]);
-
-	     }
-
-	     else if(currentOption.equalsIgnoreCase("-f")) {
-
-		 if ( ! (i < args.length) ) {
-		    throw new BadArgs("No value provided for archive file (-f) option");
-		 }
-
-		 m_archiveFile = new File(args[i++]);
-
-		 if (!m_archiveFile.exists()) {
-		    throw new BadArgs("The archive File " + m_archiveFile.getPath() + " does not exist");
-
-		 }
+         }
 
 
-	     }
+         else if(currentOption.equalsIgnoreCase("-l")) {
+
+         m_mode = MegaZipFile.MODE_LIST;
+
+         }
+         else if(currentOption.equalsIgnoreCase("-o")) {
+
+         if ( ! (i < args.length) ) {
+            throw new BadArgs("No value provided for output directory (-o) option");
+         }
+
+         m_outdir = new File(args[i++]);
+
+         }
+
+         else if(currentOption.equalsIgnoreCase("-f")) {
+
+         if ( ! (i < args.length) ) {
+            throw new BadArgs("No value provided for archive file (-f) option");
+         }
+
+         m_archiveFile = new File(args[i++]);
+
+         if (!m_archiveFile.exists()) {
+            throw new BadArgs("The archive File " + m_archiveFile.getPath() + " does not exist");
+
+         }
 
 
-	     else if(currentOption.equalsIgnoreCase("-onError")) {
-
-		 if ( ! (i < args.length) ) {
-		    throw new BadArgs("No value provided for on Error (-onError) mode");
-		 }
-
-		 m_onError = args[i++];
-	     }
-	     else {
-
-		throw new BadArgs("Unrecognized option " + currentOption);
-
-	     }
-
-	 }
+         }
 
 
-	//validate args and options
-	if (m_outdir == null)
-	    m_outdir = new File(".");
-	
-	if (!m_outdir.isDirectory())
-	    throw new BadArgs("The specified output directory " + m_outdir.getPath() 
-				+ " is not a directory or can not be found.");
+         else if(currentOption.equalsIgnoreCase("-onError")) {
 
-	if (!m_outdir.canWrite())
-	    throw new BadArgs("You do not have permision to write to the output directory " + m_outdir.getPath() );
+         if ( ! (i < args.length) ) {
+            throw new BadArgs("No value provided for on Error (-onError) mode");
+         }
+
+         m_onError = args[i++];
+         }
+         else {
+
+        throw new BadArgs("Unrecognized option " + currentOption);
+
+         }
+
+     }
 
 
-	//configure mzf
+    //validate args and options
+    if (m_outdir == null)
+        m_outdir = new File(".");
 
-	if (m_archiveFile == null) {
+    if (!m_outdir.isDirectory())
+        throw new BadArgs("The specified output directory " + m_outdir.getPath()
+                + " is not a directory or can not be found.");
 
-	    m_archiveFile = new File (System.getProperty("java.class.path"));
+    if (!m_outdir.canWrite())
+        throw new BadArgs("You do not have permision to write to the output directory " + m_outdir.getPath() );
 
-	}
 
-	try {
-	    mzf = new MegaZipFile(m_archiveFile,System.out);
-	    mzf.setVerbosity(m_verbosity);
-	}
-	catch (MegaZipFile.Fault f) {
-	    throw new Fault ("An error occured while preparing to unpack the JCK Archive File. \n" +
-				f.getMessage());
-	}
+    //configure mzf
 
-	catch (IllegalArgumentException iae) {
-	    throw new Fault ("An error occured while preparing to unpack the JCK Archive File. \n" +
-				iae.getMessage());
-	}
+    if (m_archiveFile == null) {
 
-	if (m_onError != null) {
-	    if (m_onError.equalsIgnoreCase("ignore"))
-		mzf.setErrorMode(MegaZipFile.ON_ERROR_IGNORE);
-	    else if (m_onError.equalsIgnoreCase("report"))
-		mzf.setErrorMode(MegaZipFile.ON_ERROR_REPORT);
-	    else if (m_onError.equalsIgnoreCase("fail"))
-		mzf.setErrorMode(MegaZipFile.ON_ERROR_FAIL);
-	    else 
-		throw new BadArgs("Invalid OnError value: " + m_onError +"\n" +
-				    "Valid values are ignore, report, fail.");
-	}
+        m_archiveFile = new File (System.getProperty("java.class.path"));
 
-	//do it
-	try {
-	    if (m_mode == MegaZipFile.MODE_LIST) 
-		installOK = mzf.list();
-	    else 
-		installOK = mzf.unzip(m_outdir);
-	}
-	catch (Exception e) {
-	    handleErrors(mzf.getErrors(), e);
-	}
+    }
 
-	if (!installOK) 
-	    handleErrors(mzf.getErrors(), null);
+    try {
+        mzf = new MegaZipFile(m_archiveFile,System.out);
+        mzf.setVerbosity(m_verbosity);
+    }
+    catch (MegaZipFile.Fault f) {
+        throw new Fault ("An error occured while preparing to unpack the JCK Archive File. \n" +
+                f.getMessage());
+    }
+
+    catch (IllegalArgumentException iae) {
+        throw new Fault ("An error occured while preparing to unpack the JCK Archive File. \n" +
+                iae.getMessage());
+    }
+
+    if (m_onError != null) {
+        if (m_onError.equalsIgnoreCase("ignore"))
+        mzf.setErrorMode(MegaZipFile.ON_ERROR_IGNORE);
+        else if (m_onError.equalsIgnoreCase("report"))
+        mzf.setErrorMode(MegaZipFile.ON_ERROR_REPORT);
+        else if (m_onError.equalsIgnoreCase("fail"))
+        mzf.setErrorMode(MegaZipFile.ON_ERROR_FAIL);
+        else
+        throw new BadArgs("Invalid OnError value: " + m_onError +"\n" +
+                    "Valid values are ignore, report, fail.");
+    }
+
+    //do it
+    try {
+        if (m_mode == MegaZipFile.MODE_LIST)
+        installOK = mzf.list();
+        else
+        installOK = mzf.unzip(m_outdir);
+    }
+    catch (Exception e) {
+        handleErrors(mzf.getErrors(), e);
+    }
+
+    if (!installOK)
+        handleErrors(mzf.getErrors(), null);
 
      }
 
      private void handleErrors(Map zipErrors, Exception e) throws Fault {
-	    
-	    Iterator it; 
-	    String entry;
-	    MegaZipFile.EntryFault currentError;
-	    Map.Entry me;
 
-	    if (e != null)  {
-		System.err.println("An exception occured while installing " + m_archiveFile.getPath() + ": " + e.getMessage());
-		System.err.println();
-	    }
+        Iterator it;
+        String entry;
+        MegaZipFile.EntryFault currentError;
+        Map.Entry me;
+
+        if (e != null)  {
+        System.err.println("An exception occured while installing " + m_archiveFile.getPath() + ": " + e.getMessage());
+        System.err.println();
+        }
 
 
-	    if (zipErrors.size() > 0) {
+        if (zipErrors.size() > 0) {
 
-		it = zipErrors.entrySet().iterator();
+        it = zipErrors.entrySet().iterator();
 
-		System.err.println("Errors were encountered while installing the following files:");
-		System.err.println("-------------------------------------------------------------");
+        System.err.println("Errors were encountered while installing the following files:");
+        System.err.println("-------------------------------------------------------------");
 
-		while (it.hasNext()) {
+        while (it.hasNext()) {
 
-		    me = (Map.Entry) it.next();
-		    currentError = (MegaZipFile.EntryFault) me.getValue();
-		    System.err.println(currentError.getEntry() +" :");
-		    System.err.println("     " + currentError.getMessage());
-		    System.err.println();
-		}
+            me = (Map.Entry) it.next();
+            currentError = (MegaZipFile.EntryFault) me.getValue();
+            System.err.println(currentError.getEntry() +" :");
+            System.err.println("     " + currentError.getMessage());
+            System.err.println();
+        }
 
-		System.err.println("-------------------------------------------------------------");
-		System.err.println();
-		System.err.println(zipErrors.size() + " Errors.");
+        System.err.println("-------------------------------------------------------------");
+        System.err.println();
+        System.err.println(zipErrors.size() + " Errors.");
 
-	    }
-	    throw new Fault ("Install Failed!");
+        }
+        throw new Fault ("Install Failed!");
      }
 
      public static void usage() {
-	 String prog = System.getProperty("program", "java " + Installer.class.getName());
-	 System.err.println("");
-	 System.err.println("Usage: ");
-	 System.err.println("  " + prog + " [options] ");
-	 System.err.println("");
-	 System.err.println("Options are:");
-	 System.err.println("  -q                       extract JCK in quiet mode");
-	 System.err.println("  -l                       list contents of JCK archive file");
-	 System.err.println("  -onError 'mode '         mode of sensitivity Installer has to errors");
-	 System.err.println("  -o 'target directory'    path of directory where JCK will be installed");
-	 System.err.println("");
+     String prog = System.getProperty("program", "java " + Installer.class.getName());
+     System.err.println("");
+     System.err.println("Usage: ");
+     System.err.println("  " + prog + " [options] ");
+     System.err.println("");
+     System.err.println("Options are:");
+     System.err.println("  -q                       extract JCK in quiet mode");
+     System.err.println("  -l                       list contents of JCK archive file");
+     System.err.println("  -onError 'mode '         mode of sensitivity Installer has to errors");
+     System.err.println("  -o 'target directory'    path of directory where JCK will be installed");
+     System.err.println("");
 
      }
 

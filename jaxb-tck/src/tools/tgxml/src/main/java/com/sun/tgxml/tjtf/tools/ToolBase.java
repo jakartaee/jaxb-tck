@@ -36,33 +36,33 @@ import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 import com.sun.tgxml.tjtf.tools.options.StandardOptionHandler;
 import com.sun.tgxml.tjtf.tools.options.StringOption;
 // </importgen>
- 
- 
-/** 
+
+
+/**
  * ToolBase -
- *   This is the lowest base-class for implementing a tool-shell. 
- *   ToolBase handles standards for command-line arg parsing, 
+ *   This is the lowest base-class for implementing a tool-shell.
+ *   ToolBase handles standards for command-line arg parsing,
  *   Error handling, and debugging.
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    ToolBase 
- * ============================================================================================ 
- */ 
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    ToolBase
+ * ============================================================================================
+ */
 public class ToolBase extends StandardOptionHandler implements Shell {
- 
-   /* 
-    * ============================================================================================ 
-    *    Member Fields 
-    * ============================================================================================ 
-    */ 
- 
+
+   /*
+    * ============================================================================================
+    *    Member Fields
+    * ============================================================================================
+    */
+
 
             /** Print Strings   */
     private static final String str_Term = System.getProperty("line.separator");
@@ -71,10 +71,10 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     //-------------------------------------------------------
     // CommandLine options
 
-    private static final String ctStr_arg_logging = LibResHandler.getResStr("basetool.loggingarg.mnem"); 
-    private static final String ctStr_arg_logfile = LibResHandler.getResStr("basetool.logfilearg.mnem"); 
-    private static final String ctStr_arg_verbose = LibResHandler.getResStr("basetool.verbosearg.mnem"); 
-    private static final String ctStr_arg_version = LibResHandler.getResStr("basetool.versionarg.mnem"); 
+    private static final String ctStr_arg_logging = LibResHandler.getResStr("basetool.loggingarg.mnem");
+    private static final String ctStr_arg_logfile = LibResHandler.getResStr("basetool.logfilearg.mnem");
+    private static final String ctStr_arg_verbose = LibResHandler.getResStr("basetool.verbosearg.mnem");
+    private static final String ctStr_arg_version = LibResHandler.getResStr("basetool.versionarg.mnem");
     private static final String ctStr_arg_help = LibResHandler.getResStr("basetool.helparg.mnem");
     private static final String ctStr_arg_help1 = LibResHandler.getResStr("basetool.helparg.mnem1");
     private static final String ctStr_arg_help2 = LibResHandler.getResStr("basetool.helparg.mnem2");
@@ -83,18 +83,18 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     private static final String ctStr_arg_help5 = LibResHandler.getResStr("basetool.helparg.mnem5");
     private static final String ctStr_arg_help6 = LibResHandler.getResStr("basetool.helparg.mnem6");
 
- 
 
-    protected String[] helpSwitches = 
+
+    protected String[] helpSwitches =
         {ctStr_arg_help, ctStr_arg_help1, ctStr_arg_help2, ctStr_arg_help3, ctStr_arg_help4, ctStr_arg_help5, ctStr_arg_help6};
 
-    protected HelpOption helpOption = new HelpOption(helpSwitches, 
-        "  " + ctStr_arg_help + LibResHandler.getResStr("basetool.helparg.desc"), 
+    protected HelpOption helpOption = new HelpOption(helpSwitches,
+        "  " + ctStr_arg_help + LibResHandler.getResStr("basetool.helparg.desc"),
         OPTIONAL);
 
     protected FlagOption verboseOption = new FlagOption(
         new String[]{ctStr_arg_verbose, ctStr_arg_verbose},
-        "  " + ctStr_arg_verbose + LibResHandler.getResStr("basetool.verbosearg.desc"), 
+        "  " + ctStr_arg_verbose + LibResHandler.getResStr("basetool.verbosearg.desc"),
         OPTIONAL);
 
     protected FlagOption versionOption = new FlagOption(ctStr_arg_version,
@@ -124,7 +124,7 @@ public class ToolBase extends StandardOptionHandler implements Shell {
    /** Default Precedence:  break the program when a class with the same name.  */
     private static int m_ResultCode = ctInt_ErrorCode_NoError;
 
-    
+
     /** Default output stream.  */
     private static PrintStream m_standardOut;
 
@@ -174,12 +174,12 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     protected String toolUsageButtom = "";
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
-    
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
     /**
      * All sub-classes must override the main.
      *  They should replace the creation of "ToolBase" with the name of their sub-class.
@@ -192,30 +192,30 @@ public class ToolBase extends StandardOptionHandler implements Shell {
         System.exit(c.run(args));
     }
 
-   /** 
+   /**
     * Calls BuildProperties.loadProperties(), setup() and doIt() methods
     * @return exit status of a tool.
     */
     public final int run(String args[]) {
         try {
             BuildProperties.loadProperties();
-	    setup();
-	    doIt(args);
+        setup();
+        doIt(args);
         } catch (Exception e) {
-	    handleShellException(e);
+        handleShellException(e);
         }
         return getResultCode();
     }
 
    /**
     * Prints usage info if ParseArgumentException is thrown.
-    * Sub-classes should override this method to handle 
+    * Sub-classes should override this method to handle
     * other specific exceptions.
     */
     protected void handleShellException(Exception e) {
-	if (e instanceof HelpOptionException) {
+    if (e instanceof HelpOptionException) {
             usage();
-	} else if (e instanceof ParseArgumentException) {
+    } else if (e instanceof ParseArgumentException) {
             setResultCode(ctInt_ErrorCode_Error);
             getStandardErr().println(e.getMessage());
             usage();
@@ -226,117 +226,117 @@ public class ToolBase extends StandardOptionHandler implements Shell {
         }
     }
 
-    /* 
+    /*
      * -----------------------------------------------------------
      * -----------------------------------------------------------
      *    Public Methods (outside world can call these)
      * -----------------------------------------------------------
      * -----------------------------------------------------------
-     */ 
- 
-   /* 
+     */
+
+   /*
     * -------------------------------------------------------------------
-    *    Constructors 
+    *    Constructors
     * -------------------------------------------------------------------
-    */ 
+    */
 
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the ToolBase base class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
-    public ToolBase ( PrintStream out, PrintStream err) { 
+    public ToolBase ( PrintStream out, PrintStream err) {
         setStandardOut(out);
         setStandardErr(err);
-	init();
-    } 
+    init();
+    }
 
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the ToolBase with a program name.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      * @param name The name of this (sub-class specific) tool.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
-    public ToolBase ( PrintStream out, PrintStream err, String name) { 
+    public ToolBase ( PrintStream out, PrintStream err, String name) {
         this(out, err);
-	progname = name;
-    } 
+    progname = name;
+    }
 
- 
-   /* 
+
+   /*
     * -------------------------------------------------------------------
-    *    Getters/Setters 
+    *    Getters/Setters
     * -------------------------------------------------------------------
-    */ 
+    */
 
 
-    /** 
-     *  
+    /**
+     *
      *  Get the out stream.
      * @return an output stream (for normal tool messages).
      * @see #setStandardOut
       */
     public PrintStream getStandardOut() {
-	return m_standardOut;
+    return m_standardOut;
     }
- 
 
-    /** 
-     *  
+
+    /**
+     *
      *  Set the out stream.
      * @param outStream an output stream (for normal tool messages).
      * @see #getStandardOut
       */
     public void setStandardOut(PrintStream outStream) {
-	m_standardOut = outStream;
+    m_standardOut = outStream;
     }
- 
 
-    /** 
-     *  
+
+    /**
+     *
      *  Get the out stream.
      * @return an output stream (for tool error messages).
      * @see #setStandardErr
      */
     public PrintStream getStandardErr() {
-	return m_standardErr;
+    return m_standardErr;
     }
- 
-    
 
-    /** 
-     *  
+
+
+    /**
+     *
      *  Set the out stream.
      * @param errStream an output stream (for (tool) error messages).
      * @see #getStandardErr
       */
     public void setStandardErr(PrintStream errStream) {
-	m_standardErr = errStream;
+    m_standardErr = errStream;
     }
 
 
 
   /**
     * Get a string that describes this tool's name.
-    * <p> 
+    * <p>
     * @return a String with the tool name.
      * @see #setProgramName
     */
     public final String getProgramName() {
-	return progname;
+    return progname;
     }
 
   /**
     * Set this tool's name.
-    * <p> 
+    * <p>
     * @param name A String with the tool name.
      * @see #getProgramName
     */
@@ -347,17 +347,17 @@ public class ToolBase extends StandardOptionHandler implements Shell {
 
   /**
     * Get a string that describes this tool's name.
-    * <p> 
+    * <p>
     * @return a String with the tool name.
      * @see #setVersionString
     */
     public final String getVersionString() {
-	return m_versionStr;
+    return m_versionStr;
     }
 
   /**
     * Set this tool's name.
-    * <p> 
+    * <p>
     * @param version A String with the tool name.
      * @see #getVersionString
     */
@@ -369,17 +369,17 @@ public class ToolBase extends StandardOptionHandler implements Shell {
 
   /**
     * Get the (current) result-code that this tool returns to the invoking process.
-    * <p> 
+    * <p>
     * @return an int error-code.
      * @see #setResultCode
     */
     public final int getResultCode() {
-	return m_ResultCode;
+    return m_ResultCode;
     }
 
   /**
     * Set the (current) result-code that this tool returns to the invoking process.
-    * <p> 
+    * <p>
     * @param errorCode an int error-code.
      * @see #getResultCode
     */
@@ -387,26 +387,26 @@ public class ToolBase extends StandardOptionHandler implements Shell {
         m_ResultCode = errorCode;
     }
 
- 
-   /* 
+
+   /*
     * -------------------------------------------------------------------
     *    I/O
     * -------------------------------------------------------------------
-    */   
+    */
 
- 
+
   /**
     * output a message.
     * @param msg the message to output.
     */
     public void reportOutputMsg(String msg) {
-	getStandardOut().println(msg);
-	// Always log output messages.
-	try {
-	    log(msg);
-	} catch (TestFileException e) {
-	    // just go on if log fails.
-	}
+    getStandardOut().println(msg);
+    // Always log output messages.
+    try {
+        log(msg);
+    } catch (TestFileException e) {
+        // just go on if log fails.
+    }
     }
 
 
@@ -415,49 +415,49 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     * @param msg the error message to output.
     */
     public void reportErrorMsg(String msg) {
-	getStandardErr().println(msg);
-	try {
-	    // Log the message (only if logging to a file).
-	    if (m_loggingEnabled) {
-		if (m_logFile != null) {
-		    logToFile(msg);
-		}	
-	    }
-	} catch (TestFileException e) {
-	    // just go on if log fails.
-	}
+    getStandardErr().println(msg);
+    try {
+        // Log the message (only if logging to a file).
+        if (m_loggingEnabled) {
+        if (m_logFile != null) {
+            logToFile(msg);
+        }
+        }
+    } catch (TestFileException e) {
+        // just go on if log fails.
+    }
     }
 
- 
+
   /**
     * output a message.
     * @param msg the message to output.
     */
     public void log(String msg) throws TestFileException {
-	if (m_loggingEnabled) {
-	    if (m_logFile != null) {
-		logToFile(msg);
-	    } else {
-		// log to StandardOut if a file is not specified
-		getStandardOut().println(msg);
-	    }
-	}
+    if (m_loggingEnabled) {
+        if (m_logFile != null) {
+        logToFile(msg);
+        } else {
+        // log to StandardOut if a file is not specified
+        getStandardOut().println(msg);
+        }
+    }
     }
 
-   /* 
+   /*
     * -------------------------------------------------------------------
     *    Shell methods
     * -------------------------------------------------------------------
-    */   
+    */
   /**
     * Start the tool.
     *<p>
     * This function initiates the argument verification, and
     * starts the tool-process functions
-    * <p> 
+    * <p>
     * @param args the commandline args.
     */
-    public final void doIt(String args[]) 
+    public final void doIt(String args[])
             throws TestFileException, ParseArgumentException {
 
         setResultCode(ctInt_ErrorCode_NoError);
@@ -468,7 +468,7 @@ public class ToolBase extends StandardOptionHandler implements Shell {
         decoder.applyOptionsValues();
 
         _startTool();
-        
+
     }
 
 
@@ -477,10 +477,10 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     *<p>
     */
     public final void setup() throws TestFileException, IOException {
-	//	setupArguments();
+    //  setupArguments();
 
-	setupTool();
-       
+    setupTool();
+
         // usage info setup
         setToolUsageHeader();
         setToolUsageBottom();
@@ -490,8 +490,8 @@ public class ToolBase extends StandardOptionHandler implements Shell {
 
         // decoder setup
         decoder.setOperandsValidator(getOperandsValidator());
-        decoder.setUsageHeader(getToolUsageHeader());            
-        decoder.setUsageBottom(getToolUsageBottom());            
+        decoder.setUsageHeader(getToolUsageHeader());
+        decoder.setUsageBottom(getToolUsageBottom());
         decoder.addOptionHandler(this);
         decoder.registerOptions();
 
@@ -501,7 +501,7 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     * Setup the inner-components of a tool.
     *<p>
     * Sub-classes override this method.
-    * <p> 
+    * <p>
     * If an error condition has been detected in the sub-class,
     * the tool must set an error-code: <br>
     *   i.e. setResultCode(ctInt_ErrorCode_Error);
@@ -513,10 +513,10 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     * Start the tool.
     *<p>
     * Sub-classes override this method.
-    * This method assumes that all argument 
+    * This method assumes that all argument
     * verification has happened, and that
     * arguments have been parsed into local variables.
-    * <p> 
+    * <p>
     * If an error condition has been detected in the sub-class,
     * the tool must set an error-code: <br>
     *   i.e. setResultCode(ctInt_ErrorCode_Error);
@@ -525,30 +525,30 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     }
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
 
 
-    /** 
-     * Registers tool options at ArgumentDecoder. 
+    /**
+     * Registers tool options at ArgumentDecoder.
      * <p>Subclasses should override this method to register own options
      * <p> ArgumentDecoder uses FIFO order of options parsing:
      * first registered options will be used first for parsing.
      * Option are registered by <tt>decoder.addOption(toolOption)</tt> call.
-     * To use options registered by superclass subclass should call 
+     * To use options registered by superclass subclass should call
      * <tt>super.registerOptions()</tt>.
      * Options registered before this call
-     * will be processed before superclass options. 
+     * will be processed before superclass options.
      * Options registered after this call will be processed after
-     * superclass options. 
+     * superclass options.
      * If tool does not invoke <tt>super.registerOptions()</tt>
      * no superclass options will be registered.
      * <p><code>Notes: tool initialization work is doing by applyOptionsValues()
-     * after decoding is done. So tool options objects should be defined outside 
+     * after decoding is done. So tool options objects should be defined outside
      * of registerOptions() to be visible from applyOptionsValues() </code>
      */
     public void registerOptions() {
@@ -568,7 +568,7 @@ public class ToolBase extends StandardOptionHandler implements Shell {
      * This method is invoked after all options parsing is done and
      * the set of registered Option objects are initialized.
      * Subclasses should override this method if to apply values of own options.
-     * To apply values of superclass options <tt>super.applyOptionsValues()</tt>      
+     * To apply values of superclass options <tt>super.applyOptionsValues()</tt>
      * should be called from this method.
      */
     public void applyOptionsValues() throws ParseArgumentException {
@@ -576,7 +576,7 @@ public class ToolBase extends StandardOptionHandler implements Shell {
         if (verboseOption.isSet()) {
             m_verbose = true;
         }
-      
+
         if (versionOption.isSet()) {
             m_version = true;
         }
@@ -584,40 +584,40 @@ public class ToolBase extends StandardOptionHandler implements Shell {
         if (enableLogingOption.isSet()) {
             m_loggingEnabled = true;
         }
-     
+
         if (logFileOption.isSet()) {
             m_logFile = logFileOption.getStringValue();
         }
 
     }
 
-    /* 
+    /*
      * -----------------------------------------------------------
      * -----------------------------------------------------------
      *    Protected Methods (only sub-classes can call these)
      * -----------------------------------------------------------
      * -----------------------------------------------------------
-     */ 
+     */
 
-    /** 
-     * Initialize the options. 
+    /**
+     * Initialize the options.
      * <p>
      * Tool Sub-classes should override this to initialize their state.
      * They should also make sure that they call "super.init();"
-     */ 
-     protected void init() { 
-	m_handlesVerbose = false;
-     } 
- 
+     */
+     protected void init() {
+    m_handlesVerbose = false;
+     }
+
 
   /**
     * Print a banner (Tool name and version)
-    * <p> 
+    * <p>
     * sub-classes should override this to output their specific name and version.
     */
     protected void printHeader()  {
         if (m_verbose)
-	  reportOutputMsg(LibResHandler.getResStr("basetool.version.message.default", getProgramName(), getVersionString()));
+      reportOutputMsg(LibResHandler.getResStr("basetool.version.message.default", getProgramName(), getVersionString()));
     }
 
     /**
@@ -643,8 +643,8 @@ public class ToolBase extends StandardOptionHandler implements Shell {
      */
     protected void setToolUsageHeader() {
         toolUsageHeader = LibResHandler.getResStr("basetool.usage", getProgramName()) +
-	    str_Term +
-	    LibResHandler.getResStr("basetool.usage1");
+        str_Term +
+        LibResHandler.getResStr("basetool.usage1");
     }
 
     /**
@@ -669,62 +669,62 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     protected String getToolUsageBottom() {
         return toolUsageButtom;
     }
-   
-    /* 
-     * -----------------------------------------------------------
-     * -----------------------------------------------------------
-     *    Private Methods 
-     * -----------------------------------------------------------
-     * -----------------------------------------------------------
-     */ 
-    
 
- 
+    /*
+     * -----------------------------------------------------------
+     * -----------------------------------------------------------
+     *    Private Methods
+     * -----------------------------------------------------------
+     * -----------------------------------------------------------
+     */
+
+
+
   /**
     * output a message.
     * @param msg the message to output.
     */
     public void logToFile(String msg) throws TestFileException {
-	boolean append = false;
+    boolean append = false;
 
         File log = new File(m_logFile);
 
-	if (log.exists()) {
-	    if (! log.canRead())
-		throw new TestFileException(LibResHandler.getResStr("basetool.log.cantread", getProgramName(), m_logFile));
-	    
-	    if (! log.canWrite())
-		throw new TestFileException(LibResHandler.getResStr("basetool.log.cantwrite", getProgramName(), m_logFile));
-	    
-	    append = true;
-	} 
+    if (log.exists()) {
+        if (! log.canRead())
+        throw new TestFileException(LibResHandler.getResStr("basetool.log.cantread", getProgramName(), m_logFile));
+
+        if (! log.canWrite())
+        throw new TestFileException(LibResHandler.getResStr("basetool.log.cantwrite", getProgramName(), m_logFile));
+
+        append = true;
+    }
 
 
-	int retry = 0;
-	boolean exit = false;
-	while(! exit) {
-	    try {
-		FileOutputStream fos = new FileOutputStream(m_logFile, append);
-		PrintStream out = new PrintStream(fos);
-		out.println(msg);
-		fos.flush();
-		fos.getFD().sync();
-		fos.close();
-		exit = true;
-	    } catch (IOException e) {
-		retry++;
-		if (retry > ctInt_log_retryTimes)
-		    throw new TestFileException(LibResHandler.getResStr("basetool.log.retry.exceeded", getProgramName(), m_logFile));
-		
-		try {
-		    wait(50);
-		} catch (InterruptedException ie) {
+    int retry = 0;
+    boolean exit = false;
+    while(! exit) {
+        try {
+        FileOutputStream fos = new FileOutputStream(m_logFile, append);
+        PrintStream out = new PrintStream(fos);
+        out.println(msg);
+        fos.flush();
+        fos.getFD().sync();
+        fos.close();
+        exit = true;
+        } catch (IOException e) {
+        retry++;
+        if (retry > ctInt_log_retryTimes)
+            throw new TestFileException(LibResHandler.getResStr("basetool.log.retry.exceeded", getProgramName(), m_logFile));
 
-		}
-	    }
-	    
-	}
-	
+        try {
+            wait(50);
+        } catch (InterruptedException ie) {
+
+        }
+        }
+
+    }
+
     }
 
    /**
@@ -742,7 +742,7 @@ public class ToolBase extends StandardOptionHandler implements Shell {
     * Start the parsing process
     */
     private void _startTool( )  {
-	startTool();
+    startTool();
     }
 
 }

@@ -41,10 +41,10 @@ class URIEncoderDecoder {
     static final String digits = "0123456789ABCDEF"; //$NON-NLS-1$
 
     static final String encoding = "UTF8"; //$NON-NLS-1$
-    
+
     // Map of escaped unreserved characters defined in RFC3986
     private static final Map<String,Character> legalEscaped;
-    
+
     static {
         legalEscaped = new HashMap<String,Character>();
         char [] legals = "abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~".toCharArray();
@@ -68,9 +68,9 @@ class URIEncoderDecoder {
             buf.delete(0, buf.length());
         }
     }
-    
-    
-    
+
+
+
     /**
      * Validate a string by checking if it contains any characters other than:
      * 1. letters ('a'..'z', 'A'..'Z') 2. numbers ('0'..'9') 3. characters in
@@ -106,11 +106,11 @@ class URIEncoderDecoder {
 
                 continue;
             }
-            if (    !((ch >= 'a' && ch <= 'z') 
+            if (    !((ch >= 'a' && ch <= 'z')
                     || (ch >= 'A' && ch <= 'Z')
-                    || (ch >= '0' && ch <= '9') 
+                    || (ch >= '0' && ch <= '9')
                     || legal.indexOf(ch) > -1 )
-                ) 
+                )
             {
                 throw new URISyntaxException(s, Messages.getString("luni.7F"), i); //$NON-NLS-1$
             }
@@ -154,12 +154,12 @@ class URIEncoderDecoder {
         StringBuilder buf = new StringBuilder(s.length() + 24);
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if (       
+            if (
                        (ch >= 'a' && ch <= 'z')
                     || (ch >= 'A' && ch <= 'Z')
                     || (ch >= '0' && ch <= '9')
                     || legal.indexOf(ch) > -1
-                ) 
+                )
             {
                 buf.append(ch);
             } else {
@@ -216,7 +216,7 @@ class URIEncoderDecoder {
      * e.g. "A%20B%20C %24%25" -> "A B C $%"
      * <p>
      * Called from URI.getXYZ() methods
-     * 
+     *
      * @param s
      *            java.lang.String The encoded string.
      * @return java.lang.String The decoded version.
@@ -253,7 +253,7 @@ class URIEncoderDecoder {
         }
         return result.toString();
     }
-    
+
     static String decodeUnreserved(String s) throws URISyntaxException {
         StringBuilder result = new StringBuilder(s.length());
         StringBuilder pct_encoded = new StringBuilder(12);
@@ -291,7 +291,7 @@ class URIEncoderDecoder {
         }
         return result.toString();
     }
-    
+
     private static boolean isValidHexChar(char c) {
         return (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
     }

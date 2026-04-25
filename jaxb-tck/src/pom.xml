@@ -359,10 +359,18 @@
                                 <configuration>
                                     <checkstyleRules>
                                         <module name="Checker">
-<!--                                            <module name="FileTabCharacter">-->
-<!--                                                <property name="eachLine" value="true"/>-->
-<!--                                            </module>-->
+                                            <!-- no tabs -->
+                                            <module name="FileTabCharacter">
+                                                <property name="eachLine" value="true"/>
+                                            </module>
                                             <module name="TreeWalker">
+                                                <!-- no trailing whitespaces -->
+                                                <module name="Regexp">
+                                                    <property name="format" value="[ \t]+$"/>
+                                                    <property name="illegalPattern" value="true"/>
+                                                    <property name="message" value="Trailing whitespace"/>
+                                                </module>
+                                                <!-- import ordering -->
                                                 <module name="ImportOrder">
                                                     <property name="groups" value="jakarta,java,javax,org.w3c,org.xml,*"/>
                                                     <property name="ordered" value="true"/>

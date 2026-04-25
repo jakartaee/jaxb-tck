@@ -23,16 +23,16 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TestVariant - 
+ * TestVariant -
  *
  * <b>TestVariant</b> is the interface that describes that this object may have variants
  * (i.e. two items with the same ID).  TestGroup and Libraries have variants
  * <p>
  *  A variant typically contains a unique VarID descriptor.
- * 
+ *
  * <p>
  *
- * @version 	1.1, 10/22/2002
+ * @version     1.1, 10/22/2002
  * @author  Kevin T. Looney
  */
 
@@ -60,7 +60,7 @@ public  interface TestVariant {
     */
     public String getVarID();
 
-     
+
   /**
     * Sets the variant identifier associated with the TestCase or Library.
     * <p>
@@ -77,7 +77,7 @@ public  interface TestVariant {
    /**
     * Sets VarOrder for the variant
     * @param value the string is of the form: "x[.y]",
-    *         where x,y are positive integers 
+    *         where x,y are positive integers
     *         and the value x.y represents a positive decimal value between
     *         00.00 and 99.99.
     * @throws TestFileException if passed value is in illegal format

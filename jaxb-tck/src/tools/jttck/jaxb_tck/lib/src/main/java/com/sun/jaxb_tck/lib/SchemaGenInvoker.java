@@ -19,37 +19,37 @@ package com.sun.jaxb_tck.lib;
 import java.io.PrintStream;
 
 /**
- * Wrapper to invoke a schema(s) generation in sameJVM mode. 
+ * Wrapper to invoke a schema(s) generation in sameJVM mode.
  *
  * @author  Leonid Kuskov
  * @version 1.11
  */
 public class SchemaGenInvoker extends Invoker {
 
-	//	 SUN implementation : "com.sun.jaxb_tck.lib.SchemaGen"
-    protected String schemaGenClassName  = null; 
-    
+    //   SUN implementation : "com.sun.jaxb_tck.lib.SchemaGen"
+    protected String schemaGenClassName  = null;
+
     // Collection of java files to be processed
     protected Arguments javaFiles = new Arguments();
-    
+
     /**
      * ctor
      */
     public SchemaGenInvoker(String[] args){
-    	super(args);
+        super(args);
     }
-    
+
      /**
      * Process SchemaGen's command line arguments.
      *
      */
-    @Override 
+    @Override
     public void processArguments()  throws Invoker.ArgumentException {
-    	
+
         schemaGenClassName = args.getValue("-jxc");
 
         if(schemaGenClassName == null) {
-            throw new Invoker.ArgumentException("No class name specified after the option '-jxc'.");    
+            throw new Invoker.ArgumentException("No class name specified after the option '-jxc'.");
         }
         args.removeArgs("-jxc",2);
         args.setArgs(args.getTail("-", false));
@@ -58,13 +58,13 @@ public class SchemaGenInvoker extends Invoker {
 
         int n = args.size();
         if ( n == 0 ) {
-        	throw new Invoker.ArgumentException("Error executing the schema generator. No java file(s) specified.");
+            throw new Invoker.ArgumentException("Error executing the schema generator. No java file(s) specified.");
         }
         // Splits patches of java files that could be merged into one argument.
         for (int i = 0; i < n; i++) {
-        	javaFiles.append(args.get(i).split("\u0085"));
-		}
-        // KLEO: remove this method use mechanism that is used in XJC 
+            javaFiles.append(args.get(i).split("\u0085"));
+        }
+        // KLEO: remove this method use mechanism that is used in XJC
         adjustArgs();
     }
 
@@ -75,18 +75,18 @@ public class SchemaGenInvoker extends Invoker {
      * @param err   An additional stream to which to write output.
      * @return      The result of the command
      */
-    @Override 
+    @Override
     public int invoke(PrintStream out, PrintStream err) throws Exception {
-		Class<?> schemaGenClass = Class.forName(schemaGenClassName);
-		SchemaGenTool schemaGenTool = SchemaGenTool.class.cast(schemaGenClass
-				.newInstance());
-		return schemaGenTool.generate(javaFiles.getArgs(), outDir, out, err);
-	}
-    
+        Class<?> schemaGenClass = Class.forName(schemaGenClassName);
+        SchemaGenTool schemaGenTool = SchemaGenTool.class.cast(schemaGenClass
+                .newInstance());
+        return schemaGenTool.generate(javaFiles.getArgs(), outDir, out, err);
+    }
+
     /**
      * Replaces a final file separator(s) in a java file names with appropriate
      * to OS.
-     * 
+     *
      * Transforms the found defect as follows:
      * R:\jck\tests\java2schema\CustomizedMapping\classes\XmlType\namespace\NameSpace012s/package-info.java
      * to
@@ -100,9 +100,9 @@ public class SchemaGenInvoker extends Invoker {
                 int wi = fname.indexOf('\\');
                 if (ui == -1 || wi == -1)
                     continue;
-                args.set(i, fname.replace(wi < ui ? '/' : '\\', 
+                args.set(i, fname.replace(wi < ui ? '/' : '\\',
                         wi < ui ? '\\': '/') );
             }
-        }      
+        }
     }
 }

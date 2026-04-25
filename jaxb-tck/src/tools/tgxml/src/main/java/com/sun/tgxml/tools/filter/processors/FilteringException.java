@@ -30,6 +30,6 @@ public class FilteringException extends Exception {
      * @param      message   string description of the problem found
      */
     public FilteringException(String message) {
-	super(message);
+    super(message);
     }
 }

@@ -25,11 +25,11 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * NameValuePair - 
+ * NameValuePair -
  *
  * <b>NameValuePair</b>  is the name value pair for some description item.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,10 +48,10 @@ public class NameValuePairImpl implements NameValuePair  {
      *    Fields
      * ============================================================================================
      */
-    
+
     /** The entity Name */
     private String m_name;
-    
+
     /** The entity Value */
     private String m_value;
 
@@ -60,7 +60,7 @@ public class NameValuePairImpl implements NameValuePair  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -84,8 +84,8 @@ public class NameValuePairImpl implements NameValuePair  {
     * @return     The TestedPackage associated with this documentation
     */
     public NameValuePairImpl(String name, String value) throws TestFileException {
-	    setName(name);
-	    setValue(value);
+        setName(name);
+        setValue(value);
     }
 
     //------------------------------------------------------------------------------
@@ -99,9 +99,9 @@ public class NameValuePairImpl implements NameValuePair  {
     * @see #setName
     */
     public String getName()  {
-	return m_name; 
+    return m_name;
     }
-     
+
    /**
     *   Set the name associated with this rsde.
     *  <p>
@@ -109,9 +109,9 @@ public class NameValuePairImpl implements NameValuePair  {
     * @see #getName
     */
     public void setName(String name)  throws TestFileException {
-	if (name == null || name.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("api.namevalpair.name.null"));
-	m_name = name;
+    if (name == null || name.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.namevalpair.name.null"));
+    m_name = name;
     }
 
 
@@ -123,9 +123,9 @@ public class NameValuePairImpl implements NameValuePair  {
     * @see #setValue
     */
     public String getValue()  {
-	return m_value; 
+    return m_value;
     }
-     
+
    /**
     *   Set the value associated with this rsde.
     *  <p>
@@ -133,9 +133,9 @@ public class NameValuePairImpl implements NameValuePair  {
     * @see #getValue
     */
     public void setValue(String value) {
-	if (value == null)
-	    value = "";
-	m_value = value;
+    if (value == null)
+        value = "";
+    m_value = value;
     }
 
 
@@ -145,9 +145,9 @@ public class NameValuePairImpl implements NameValuePair  {
     //  Operations
     //------------------------------------------------------------------------------
 
-     
 
-     
+
+
 
 
 }

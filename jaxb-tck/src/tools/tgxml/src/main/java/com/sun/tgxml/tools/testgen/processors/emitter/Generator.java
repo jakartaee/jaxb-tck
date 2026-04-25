@@ -26,13 +26,13 @@ import com.sun.tgxml.tjtf.processors.Processor;
 import com.sun.tgxml.tools.elgen.ExcludeListCollector;
 
 public interface Generator extends Processor {
-    
+
     public void generate(IRObj[] trees) throws TestFileException, IOException;
-    
+
     public void generate(IRObj tree) throws TestFileException, IOException;
-    
+
     public void setExcludeListCollector(ExcludeListCollector collector);
-    
+
     public void setProperties(Properties props);
 }
-    
+

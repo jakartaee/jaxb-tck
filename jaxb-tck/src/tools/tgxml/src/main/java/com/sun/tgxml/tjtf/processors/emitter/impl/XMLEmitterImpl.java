@@ -33,20 +33,20 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.tools.options.FlagOption;
 import com.sun.tgxml.tjtf.tools.options.ParseArgumentException;
 
-/** 
- * XMLEmitterImpl - The basic engine for an XML emitter. 
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    XMLEmitterImpl 
- * ============================================================================================ 
- */ 
+/**
+ * XMLEmitterImpl - The basic engine for an XML emitter.
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    XMLEmitterImpl
+ * ============================================================================================
+ */
 public class XMLEmitterImpl extends ValidatingProcessorImpl implements XMLEmitter {
 
 
@@ -55,48 +55,48 @@ public class XMLEmitterImpl extends ValidatingProcessorImpl implements XMLEmitte
     private BaseEmitterHandlerImpl m_handler;
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
-   /** 
-    *   XMLEmitterImpl constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
+   /**
+    *   XMLEmitterImpl constructor -
+    *       Initialize our internal fields.
+    */
     public XMLEmitterImpl() {
-	super();
-	m_handler = new BaseEmitterHandlerImpl();
-	reset();
+    super();
+    m_handler = new BaseEmitterHandlerImpl();
+    reset();
     }
 
 
-   /** 
-    *   resets the parser for reuse. 
-    */ 
+   /**
+    *   resets the parser for reuse.
+    */
     public void reset() {
-	if (m_handler != null)
-	    m_handler.reset();
+    if (m_handler != null)
+        m_handler.reset();
     }
 
 
-   /** 
-    *   resets the parser for reuse. 
-    */ 
+   /**
+    *   resets the parser for reuse.
+    */
     public void setDebug(boolean debug) {
-	m_handler.setDebug(debug);
+    m_handler.setDebug(debug);
     }
 
 
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    FlagOption debugOption = new FlagOption("-Ediag", 
+    FlagOption debugOption = new FlagOption("-Ediag",
             "  -Ediag   debug mode");
 
     /**
@@ -111,49 +111,49 @@ public class XMLEmitterImpl extends ValidatingProcessorImpl implements XMLEmitte
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      */
     public void applyOptionsValues() throws ParseArgumentException {
         if (debugOption.isSet()) {
-	    setDebug(true); 
+        setDebug(true);
         }
 
         super.applyOptionsValues();
     }
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    XMLParser Interface implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    XMLParser Interface implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
 
-   
+
     /**
      *  A parser needs to create TagHandlers with a reference to the
      *  EmitterHandler.  ToolWriters that are creating a new emitter implementation
      *  will need to create their TagHandlers with this EmitterHandler.
      */
     public EmitterHandlerSupport getEmitterHandlerSupport () {
-	return m_handler;
+    return m_handler;
     }
-    
+
 
 
   /**
     *  Emit the IR's into a set of File(s).
     */
     public  void emit ( IRObj irs[], File files[]) throws TestFileException, IOException {
-	int numIRs = irs.length;
-	int numFiles = files.length;
-	
-	if (numIRs != numFiles)
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.generic.numouts"));
-	
-	for (int i=0; i < numFiles; i++) {
-	    emit((XMLObj) irs[i], files[i] );
-	}
-	
+    int numIRs = irs.length;
+    int numFiles = files.length;
+
+    if (numIRs != numFiles)
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.generic.numouts"));
+
+    for (int i=0; i < numFiles; i++) {
+        emit((XMLObj) irs[i], files[i] );
+    }
+
     }
 
 
@@ -161,56 +161,56 @@ public class XMLEmitterImpl extends ValidatingProcessorImpl implements XMLEmitte
     *  Emit the IR's into a set of File(s).
     */
     public  void emit ( IRObj irs[],  OutputStream outputs[]) throws TestFileException, IOException {
-	int numIRs = irs.length;
-	int numOutputs = outputs.length;
-	
-	if (numIRs != numOutputs)
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.generic.numouts"));
-	
-	for (int i=0; i < numOutputs; i++) {
-	    emit((XMLObj) irs[i], outputs[i] );
-	}
-	
+    int numIRs = irs.length;
+    int numOutputs = outputs.length;
+
+    if (numIRs != numOutputs)
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.generic.numouts"));
+
+    for (int i=0; i < numOutputs; i++) {
+        emit((XMLObj) irs[i], outputs[i] );
     }
-   
-    
-    
+
+    }
+
+
+
     /**
      *  Record the locator for diagnostics messages.
      */
     public void emit (XMLObj root, File xmlTDFile) throws TestFileException, IOException  {
-	// Test validity of file
-	// ....
+    // Test validity of file
+    // ....
 
-	FileOutputStream os = new FileOutputStream(xmlTDFile);
-	emit(root, os);
+    FileOutputStream os = new FileOutputStream(xmlTDFile);
+    emit(root, os);
     }
-	
-    
+
+
     /**
      *  Record the locator for diagnostics messages.
      */
     public void emit (XMLObj root, OutputStream stream) throws TestFileException, IOException  {
-	m_validator.validate(root);
-	m_handler.setStream(stream);
-	m_handler.startDocument(root);
-	m_handler.endDocument();
-	m_handler.setStream(null);
+    m_validator.validate(root);
+    m_handler.setStream(stream);
+    m_handler.startDocument(root);
+    m_handler.endDocument();
+    m_handler.setStream(null);
     }
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    utility methods 
-    * -------------------------------------------------------------------------------------------- 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    utility methods
+    * --------------------------------------------------------------------------------------------
     */
 
- 
+
   /**
     *  Record the locator for diagnostics messages.
     */
     public void setupEmitter (TagHandlerTable handlerTable) throws TestFileException  {
-	m_handler.setHandlerTable(handlerTable);
-	m_handler.reset();
+    m_handler.setHandlerTable(handlerTable);
+    m_handler.reset();
 
     }
 

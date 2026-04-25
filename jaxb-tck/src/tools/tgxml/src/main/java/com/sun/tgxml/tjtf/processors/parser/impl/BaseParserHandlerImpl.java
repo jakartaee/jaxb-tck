@@ -33,21 +33,21 @@ import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 import com.sun.tgxml.tjtf.tools.Shell;
 
-/** 
- * BaseParserHandlerImpl.java - The Handlers that the SAXparser uses to parse XML SpecFiles into. 
- * a parse tree of ClassInfos. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    BaseParserHandlerImpl 
- * ============================================================================================ 
- */ 
+/**
+ * BaseParserHandlerImpl.java - The Handlers that the SAXparser uses to parse XML SpecFiles into.
+ * a parse tree of ClassInfos.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    BaseParserHandlerImpl
+ * ============================================================================================
+ */
 public final class BaseParserHandlerImpl extends DefaultHandler implements ParserHandlerSupport {
 
     static private boolean           DEBUG = false;
@@ -78,68 +78,68 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     // Platform Parser exceptions
     //_____________________________________
      public class PlatformParseException extends SAXParseException {
-	 public PlatformParseException (String message) {
-	     super(message, m_locator);
-	 }
-
-	 public PlatformParseException (Exception e) {
-	     super(e.getClass().getName(), m_locator.getPublicId (), m_locator.getSystemId (), m_locator.getLineNumber (), m_locator.getColumnNumber (), e);
-	     //	     super(message, m_locator);
-	 }
-	 public PlatformParseException (Exception e, String message) {
-	     super(message, m_locator.getPublicId (), m_locator.getSystemId (), m_locator.getLineNumber (), m_locator.getColumnNumber (), e);
-	     //	     super(message, m_locator);
-	 }
+     public PlatformParseException (String message) {
+         super(message, m_locator);
      }
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    constructors 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
- 
-   /** 
-    *   PlatformParser constructor - 
-    *       Initialize our internal fields. 
-    */ 
+     public PlatformParseException (Exception e) {
+         super(e.getClass().getName(), m_locator.getPublicId (), m_locator.getSystemId (), m_locator.getLineNumber (), m_locator.getColumnNumber (), e);
+         //      super(message, m_locator);
+     }
+     public PlatformParseException (Exception e, String message) {
+         super(message, m_locator.getPublicId (), m_locator.getSystemId (), m_locator.getLineNumber (), m_locator.getColumnNumber (), e);
+         //      super(message, m_locator);
+     }
+     }
+
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    constructors
+    * --------------------------------------------------------------------------------------------
+    */
+
+   /**
+    *   PlatformParser constructor -
+    *       Initialize our internal fields.
+    */
     public BaseParserHandlerImpl() {
-	init();
-	reset();
+    init();
+    reset();
     }
 
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    ParserHandlerSupport Interface implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    ParserHandlerSupport Interface implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
 
 
-   /** 
-    *  Get the (XML TD) parser's stack. 
-    */ 
+   /**
+    *  Get the (XML TD) parser's stack.
+    */
     public Stack getStack() {
-	return m_stack;
+    return m_stack;
     }
 
   /**
     *  Set the root of the Java-object parse tree.
     */
     public void setRoot (XMLObj root)  {
-	m_root = root;
+    m_root = root;
     }
 
   /**
     *  Report (throw) a semantic error through the parser.
     */
     public void _throwError (String error)  throws SAXException  {
-	throw new PlatformParseException(error);
+    throw new PlatformParseException(error);
     }
 
 
@@ -147,11 +147,11 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Report (throw) a semantic error through the parser.
     */
     public void _throwError (Exception error)  throws SAXException  {
-	if (error.getMessage() != null) {
-	    SAXException e = new PlatformParseException( error.getMessage());
-	    throw ((SAXException) e.fillInStackTrace());
-	} else
-	    throw new PlatformParseException(error);
+    if (error.getMessage() != null) {
+        SAXException e = new PlatformParseException( error.getMessage());
+        throw ((SAXException) e.fillInStackTrace());
+    } else
+        throw new PlatformParseException(error);
     }
 
 
@@ -159,7 +159,7 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Report (throw) a semantic error through the parser.
     */
     public void _throwError (Exception error, String message)  throws SAXException  {
-	throw new PlatformParseException(error, message);
+    throw new PlatformParseException(error, message);
     }
 
 
@@ -167,9 +167,9 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Report (throw) a semantic error through the parser.
     */
     public void throwError (String error)  throws SAXException  {
-	recordError(error);
+    recordError(error);
         SAXException e = new PlatformParseException( m_parsingFailure.toString());
-	throw ((SAXException) e.fillInStackTrace());
+    throw ((SAXException) e.fillInStackTrace());
     }
 
 
@@ -178,18 +178,18 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Report (throw) a semantic error through the parser.
     */
     public void throwError (Exception error)  throws SAXException  {
-	recordError(error.getMessage());
+    recordError(error.getMessage());
         SAXException e = new PlatformParseException( m_parsingFailure.toString());
-	throw ((SAXException) e.fillInStackTrace());
+    throw ((SAXException) e.fillInStackTrace());
     }
 
   /**
     *  Report (throw) a semantic error through the parser.
     */
     public void throwError (Exception error, String message)  throws SAXException  {
-	recordError(message);
+    recordError(message);
         SAXException e = new PlatformParseException( m_parsingFailure.toString());
-	throw ((SAXException) e.fillInStackTrace());
+    throw ((SAXException) e.fillInStackTrace());
     }
 
 
@@ -197,7 +197,7 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Set the debug flag.
     */
     public boolean getDebug ()    {
-	return 	DEBUG;
+    return  DEBUG;
     }
 
 
@@ -205,7 +205,7 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Get the running text stream for a given tag.
     */
     public String getTextStream ()    {
-	return 	flushPCDATA ();
+    return  flushPCDATA ();
     }
 
 
@@ -215,7 +215,7 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     * @param shellClass The shell that owns this parser.
     */
     public void setShell(Shell shellClass) {
-	m_shell = shellClass;
+    m_shell = shellClass;
     }
 
   /**
@@ -224,7 +224,7 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     * @returns The shell that owns this parser.
     */
     public Shell getShell() {
-	return m_shell;
+    return m_shell;
     }
 
   /**
@@ -233,53 +233,53 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     * @returns The shell that owns this parser.
     */
     public void log(String msg) throws TestFileException {
-	m_shell.log(msg);
+    m_shell.log(msg);
     }
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    utility methods 
-    * -------------------------------------------------------------------------------------------- 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    utility methods
+    * --------------------------------------------------------------------------------------------
     */
 
 
-   /** 
-    *  initially set up the parser. 
-    */ 
+   /**
+    *  initially set up the parser.
+    */
     public void init() {
-	m_stack = new Stack();
-	reset();
-	m_errorHandler = new BPH_ErrorHandler();
+    m_stack = new Stack();
+    reset();
+    m_errorHandler = new BPH_ErrorHandler();
     }
 
-   /** 
-    *  reset the internal fields for reusing the parser. 
-    */ 
+   /**
+    *  reset the internal fields for reusing the parser.
+    */
     public void reset() {
-	m_finishedParsing = false;
-	m_parsingFailure = null;
-	m_root = null;
-	m_stack.clear();
+    m_finishedParsing = false;
+    m_parsingFailure = null;
+    m_root = null;
+    m_stack.clear();
     }
 
 
-   /** 
-    *  reset the internal fields for reusing the parser. 
-    */ 
+   /**
+    *  reset the internal fields for reusing the parser.
+    */
     public void setParsingFailure() {
-	if (m_parsingFailure == null) {
-	    m_parsingFailure = new StringBuffer(LibResHandler.getResStr("xmlbasetool.error.xml.locator", str_Term, 
-									m_locator.getPublicId(), str_Term, 
-									m_locator.getSystemId(), str_Term, str_Term));
-	    m_root = null;
-	}
+    if (m_parsingFailure == null) {
+        m_parsingFailure = new StringBuffer(LibResHandler.getResStr("xmlbasetool.error.xml.locator", str_Term,
+                                    m_locator.getPublicId(), str_Term,
+                                    m_locator.getSystemId(), str_Term, str_Term));
+        m_root = null;
+    }
     }
 
   /**
     *  Returns the fully qualified name of the package.
     */
     public XMLObj getRoot ()  {
-	return (XMLObj) m_root;
+    return (XMLObj) m_root;
     }
 
 
@@ -288,14 +288,14 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Set handler table.
     */
     public void setHandlerTable (TagHandlerTable handlerTable)    {
-	m_handlerTable = handlerTable;
+    m_handlerTable = handlerTable;
     }
 
   /**
     *  Get the handler table.
     */
     public TagHandlerTable getHandlerTable()    {
-	return 	m_handlerTable;
+    return  m_handlerTable;
     }
 
 
@@ -303,14 +303,14 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Set the debug flag.
     */
     public void setDebug (boolean debug)    {
-	DEBUG = debug;
+    DEBUG = debug;
     }
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    SAX parser-handler methods 
-    * -------------------------------------------------------------------------------------------- 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    SAX parser-handler methods
+    * --------------------------------------------------------------------------------------------
     */
 
   /**
@@ -319,7 +319,7 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     public void setDocumentLocator (Locator l)    {
         // we'd record this if we needed to resolve relative URIs
         // in content or attributes, or wanted to give diagnostics.
-	m_locator = l;
+    m_locator = l;
     }
 
 
@@ -328,14 +328,14 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
   /**
     *  Returns the fully qualified name of the package.
     */
-    private String flushPCDATA ()  {	
-	String currentData = null;
+    private String flushPCDATA ()  {
+    String currentData = null;
 
-	if (m_currentBuffer != null) {
-	    currentData = m_currentBuffer.toString();
-	    m_currentBuffer = null;
-	}
-	return currentData;
+    if (m_currentBuffer != null) {
+        currentData = m_currentBuffer.toString();
+        m_currentBuffer = null;
+    }
+    return currentData;
     }
 
 
@@ -346,10 +346,10 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  string to an existing buffer.
     */
     private void passString (String str) throws SAXException {
-	if (m_currentBuffer == null)
-	    m_currentBuffer = new StringBuffer(str);
-	else
-	    m_currentBuffer.append(str);
+    if (m_currentBuffer == null)
+        m_currentBuffer = new StringBuffer(str);
+    else
+        m_currentBuffer.append(str);
     }
 
 
@@ -358,10 +358,10 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Returns the fully qualified name of the package.
     */
     public void characters (char buf [], int offset, int len) throws SAXException {
-	if (m_currentBuffer == null)
-	    m_currentBuffer = new StringBuffer(new String(buf, offset, len));
-	else
-	    m_currentBuffer.append(new String(buf, offset, len));
+    if (m_currentBuffer == null)
+        m_currentBuffer = new StringBuffer(new String(buf, offset, len));
+    else
+        m_currentBuffer.append(new String(buf, offset, len));
     }
 
 
@@ -380,7 +380,7 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
 
 
   /**
-    *  
+    *
     */
     public void processingInstruction (String target, String data)  throws SAXException   {
     }
@@ -394,8 +394,8 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Returns the fully qualified name of the package.
     */
     public void startDocument () throws SAXException {
-	m_finishedParsing = false;
-	m_currentSourceToken = ctInt_ParsingToken_Nothing;
+    m_finishedParsing = false;
+    m_currentSourceToken = ctInt_ParsingToken_Nothing;
     }
 
 
@@ -403,38 +403,38 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     *  Returns the fully qualified name of the package.
     */
     public void endDocument () throws SAXException  {
-	m_finishedParsing = true;
+    m_finishedParsing = true;
 
          // Throw an exception at the end to terminate parsing.
-	if (m_parsingFailure != null) {
-	    _throwError(m_parsingFailure.toString());
-	}
+    if (m_parsingFailure != null) {
+        _throwError(m_parsingFailure.toString());
+    }
     }
 
 
   /**
     *  Returns the fully qualified name of the package.
     */
-    public void startElement(String namespaceURI, String localName, String qualifiedName, 
-			     org.xml.sax.Attributes attrs) throws SAXException {
+    public void startElement(String namespaceURI, String localName, String qualifiedName,
+                 org.xml.sax.Attributes attrs) throws SAXException {
 
          // return immediately when there is a parsing failure (let the syntax errors just get logged).
-	if (m_parsingFailure != null)
-	    return;
-				 
+    if (m_parsingFailure != null)
+        return;
+
         try {
-	    // We always turn-off the namespace-prefixes property on the parser,
-	    // so the tag name is always coming in on the qualifiedName.
-	    ParserTagHandler TH = (ParserTagHandler) m_handlerTable.get(qualifiedName);
-	    if (TH == null)
-		_throwError(LibResHandler.getResStr("parser.error.taghandlertable.undefTag", qualifiedName));
-	    // flush any remaining text from the text-flow 
-	    // before parsing a tag.
-	    flushPCDATA();
-	    TH.startTag(attrs);
-	} catch (TestFileException e) {
-	    _throwError(e);
-	}
+        // We always turn-off the namespace-prefixes property on the parser,
+        // so the tag name is always coming in on the qualifiedName.
+        ParserTagHandler TH = (ParserTagHandler) m_handlerTable.get(qualifiedName);
+        if (TH == null)
+        _throwError(LibResHandler.getResStr("parser.error.taghandlertable.undefTag", qualifiedName));
+        // flush any remaining text from the text-flow
+        // before parsing a tag.
+        flushPCDATA();
+        TH.startTag(attrs);
+    } catch (TestFileException e) {
+        _throwError(e);
+    }
     }
 
 
@@ -443,53 +443,53 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
     */
     public void endElement(String namespaceURI, String localName, String qualifiedName) throws SAXException {
          // return immediately when there is a parsing failure (let the syntax errors just get logged).
-	if (m_parsingFailure != null)
-	    return;
-				 
+    if (m_parsingFailure != null)
+        return;
+
         try {
-	    // We always turn-off the namespace-prefixes property on the parser,
-	    // so the tag name is always coming in on the qualifiedName.
-	    ParserTagHandler TH = (ParserTagHandler) m_handlerTable.get(qualifiedName);
-	    if (TH == null)
-		_throwError(LibResHandler.getResStr("parser.error.taghandlertable.undefTagEnd", qualifiedName));
-	    TH.endTag();
-	} catch (TestFileException e) {
-	    _throwError(e);
-	}
+        // We always turn-off the namespace-prefixes property on the parser,
+        // so the tag name is always coming in on the qualifiedName.
+        ParserTagHandler TH = (ParserTagHandler) m_handlerTable.get(qualifiedName);
+        if (TH == null)
+        _throwError(LibResHandler.getResStr("parser.error.taghandlertable.undefTagEnd", qualifiedName));
+        TH.endTag();
+    } catch (TestFileException e) {
+        _throwError(e);
+    }
     }
 
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    Error-handler methods 
-    * -------------------------------------------------------------------------------------------- 
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    Error-handler methods
+    * --------------------------------------------------------------------------------------------
     */
 
     protected void recordError(String errMsg) {
-	setParsingFailure();
-	int col = m_locator.getColumnNumber();
-	
-	if (col < 0) 
-	    m_parsingFailure.append(LibResHandler.getResStr("parser.error.syntax.line", 
-							    Integer.toString(m_locator.getLineNumber()), 
-							    str_Term, errMsg, str_Term));  
-	else
-	    m_parsingFailure.append(LibResHandler.getResStr("parser.error.syntax.linecol", 
-							    Integer.toString(m_locator.getLineNumber()), 
-							    Integer.toString(m_locator.getColumnNumber()), 
-							    str_Term, errMsg, str_Term));  
-	
-	m_parsingFailure.append(str_Term);
+    setParsingFailure();
+    int col = m_locator.getColumnNumber();
+
+    if (col < 0)
+        m_parsingFailure.append(LibResHandler.getResStr("parser.error.syntax.line",
+                                Integer.toString(m_locator.getLineNumber()),
+                                str_Term, errMsg, str_Term));
+    else
+        m_parsingFailure.append(LibResHandler.getResStr("parser.error.syntax.linecol",
+                                Integer.toString(m_locator.getLineNumber()),
+                                Integer.toString(m_locator.getColumnNumber()),
+                                str_Term, errMsg, str_Term));
+
+    m_parsingFailure.append(str_Term);
     }
 
-    /* 
-    * ============================================================================================ 
-    *    InnerClasses  
-    * ============================================================================================ 
-    */ 
+    /*
+    * ============================================================================================
+    *    InnerClasses
+    * ============================================================================================
+    */
 
     public ErrorHandler getErrorHandler() {
-	return m_errorHandler;
+    return m_errorHandler;
     }
 
 
@@ -508,14 +508,14 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
             String systemId = spe.getSystemId();
             if (systemId == null) {
                 systemId = "null";
-	    }
+        }
 
-	    recordError(spe.getMessage());
-	}
-        
+        recordError(spe.getMessage());
+    }
+
         public void error(SAXParseException spe) throws SAXException {
-	    recordError(spe.getMessage());
-	}
+        recordError(spe.getMessage());
+    }
 
         public void fatalError(SAXParseException spe) throws SAXException {
             String systemId = spe.getSystemId();
@@ -523,9 +523,9 @@ public final class BaseParserHandlerImpl extends DefaultHandler implements Parse
                 systemId = "null";
             }
 
-	    recordError(spe.getMessage());
+        recordError(spe.getMessage());
 
-	    _throwError(m_parsingFailure.toString());
+        _throwError(m_parsingFailure.toString());
         }
     }
 

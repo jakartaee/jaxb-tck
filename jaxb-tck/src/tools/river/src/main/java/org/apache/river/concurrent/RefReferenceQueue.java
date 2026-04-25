@@ -19,7 +19,7 @@ import java.lang.ref.ReferenceQueue;
 
 /**
  * A ReferenceQueue that implements RefQueue
- * 
+ *
  * @author Peter Firmstone
  */
 class RefReferenceQueue<T> extends ReferenceQueue<T> implements RefQueue<T>{}

@@ -21,16 +21,16 @@ package com.sun.tgxml.tjtf.tools;
 // </importgen>
 
 /**
- * ArgHandler - 
+ * ArgHandler -
  *
  * <b>ArgHandler</b> is a generic contract for shell sub-classes, and the components that they
  * contain.  ArgHandler describes a delegation model contract such that these objects may
  * participate in decoding and verifying arguments.
  * <p>
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -66,13 +66,13 @@ public  interface ArgHandler  {
    *         // verify the localargs:
    *         //   retval = verifyMyArg();
    *         //
-   *        if (retval != false) 
+   *        if (retval != false)
    *            retval = myComponent.verifyArguments();
-   *        if (retval != false) 
+   *        if (retval != false)
    *            retval = super.verifyArguments();
    *        return retval;
    *     }
-   *  </pre> </code> 
+   *  </pre> </code>
     *
     * @return false if the overriden method doesn't verify its args.
     */
@@ -99,18 +99,18 @@ public  interface ArgHandler  {
    *        } else {
    *             int consumed = 0;
    *
-   *             // First, pass on the arguments to the components 
+   *             // First, pass on the arguments to the components
    *             // that this shell owns.
    *             consumed = myComponent.decodeArguments(args, i);
    *
-   *             // Next, pass on the arguments to the this 
+   *             // Next, pass on the arguments to the this
    *             // shell's super.
    *             if (consumed == 0)
    *                consumed = super.decodeArguments(args, i);
    *             return consumed;
    *        }
    *     }
-   *  </pre> </code> 
+   *  </pre> </code>
    * <p>
    *  Component handlers should just return only the number of consumed args.
    *

@@ -21,20 +21,20 @@ package com.sun.tgxml.tjtf.api.code;
 // </importgen>
 
 /**
- * SupportClass - 
+ * SupportClass -
  *
  * <b>SupportClass</b> is the marker interface to a Class (code).
- * <b>SupportClass</b> describes an auxiliary class that a test uses to compile or execute. 
+ * <b>SupportClass</b> describes an auxiliary class that a test uses to compile or execute.
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
 
 /*
  * ============================================================================================
- *    SupportClass 
+ *    SupportClass
  * ============================================================================================
  */
 
@@ -46,7 +46,7 @@ public  interface SupportClass extends Code {
      *    Methods
      * ============================================================================================
      */
-   
+
 
   /**
     *   Get the ClassID string.
@@ -55,7 +55,7 @@ public  interface SupportClass extends Code {
     * @see #setClassID
     */
     public String getClassID();
-     
+
   /**
     *   Set the ClassID string.
     *  <p>

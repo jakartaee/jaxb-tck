@@ -34,7 +34,7 @@ import com.sun.tgxml.util.IR;
 public class LibUtils {
     /**
      * A string which separates test variant name from the source file name.
-     * For example: a/b/c/abc001m1[^^]&lt;variant name&gt;.jasm (separator example 
+     * For example: a/b/c/abc001m1[^^]&lt;variant name&gt;.jasm (separator example
      * is marked here by square brackets).
      * The field is private so that external modules, especially Jmpp libraries,
      * would not be able to rely on particular separator string and would be forced
@@ -52,7 +52,7 @@ public class LibUtils {
         ArrayList result = new ArrayList();
         String classes = BuildProperties.getString("library.id." + libID);
         if (classes == null || classes.trim().length() == 0) {
-           // use autonaming scheme, import the whole package        
+           // use autonaming scheme, import the whole package
            // result.add(getLibraryPackage0(libID) + ".*");
            result.add(getLibraryPackage0(libID) + "." + getLibraryClassName(libID));
         } else {
@@ -64,11 +64,11 @@ public class LibUtils {
         }
         return result;
     }
-    
+
 
     /**
      * Returns the primary package for the given LibID.
-     */    
+     */
     public static String getLibraryPackage(String libID) {
         String classes = BuildProperties.getString("library.id." + libID);
         if (classes == null || classes.trim().length() == 0) {
@@ -81,67 +81,67 @@ public class LibUtils {
                 if (index > 0 && index < cls.length()-1) {
                     return cls.substring(0,index);
                 }
-            }        
+            }
             return "";
         }
     }
-    
-    
+
+
     private static String getLibraryPackage0(String libID) {
 
-	    // Assume that last token in libID is class name, so I will need to strip that off to get 'subPackage'
-	    // Assume that lib.packagePrefix is defined
+        // Assume that last token in libID is class name, so I will need to strip that off to get 'subPackage'
+        // Assume that lib.packagePrefix is defined
 
-	    String prefix = BuildProperties.getPrefixString("testgen", "lib.packagePrefix", null);
-	    String fqn="";
+        String prefix = BuildProperties.getPrefixString("testgen", "lib.packagePrefix", null);
+        String fqn="";
 
-	    if (prefix == null || prefix.trim().length() == 0) {
-		fqn = libID;
-	    }
-	    else {
-		fqn = prefix + "." + libID;
-	    }
+        if (prefix == null || prefix.trim().length() == 0) {
+        fqn = libID;
+        }
+        else {
+        fqn = prefix + "." + libID;
+        }
 
-	    int lastDotLoc = fqn.lastIndexOf('.');
-	    if (lastDotLoc > 0) {
-		return fqn.substring(0,lastDotLoc);
-	    }
-	    else {
-		return ""; // Should never happen
-	    }
+        int lastDotLoc = fqn.lastIndexOf('.');
+        if (lastDotLoc > 0) {
+        return fqn.substring(0,lastDotLoc);
+        }
+        else {
+        return ""; // Should never happen
+        }
     }
 
     public static String getLibraryClassName(String libID) {
-	// Assumes that token after last dot is classname, 
-	// if no dot is found that entire string is class name (ie a shortname has been passed in)
-	String prefix = BuildProperties.getPrefixString("testgen", "lib.packagePrefix", null);
-	int lastDotLoc = libID.lastIndexOf('.');
-	if (lastDotLoc > 0) {
-	    return libID.substring(lastDotLoc+1);
-	}
-	else {
-	    return libID; 
-	}
+    // Assumes that token after last dot is classname,
+    // if no dot is found that entire string is class name (ie a shortname has been passed in)
+    String prefix = BuildProperties.getPrefixString("testgen", "lib.packagePrefix", null);
+    int lastDotLoc = libID.lastIndexOf('.');
+    if (lastDotLoc > 0) {
+        return libID.substring(lastDotLoc+1);
+    }
+    else {
+        return libID;
+    }
     }
 
 
     /**
      * Returns the value of "tdFile" AttrElem, and null if not found
-     */    
+     */
     public static String getTDFile(TestGroupAttributes tgAttributes) {
         return IR.getAttrElem("tdFile", tgAttributes);
     }
 
     /**
      * Returns the value of "tdFile" AttrElem, and null if not found
-     */    
+     */
     public static String getTDFile(TestGroup testGroup) {
         return getTDFile(testGroup.getTGAttributes());
     }
 
     /**
      * Returns the value of "TestType" AttrElem, and null if not found
-     */    
+     */
     public static String getTestType(TestGroup testGroup) {
         return IR.getAttrElem("testType", testGroup);
     }
@@ -175,7 +175,7 @@ public class LibUtils {
      *     name is simply returned.
      */
     public static String removeVariantNameFromSource(String file_name, String var_name) {
-    	if (var_name == null) {
+        if (var_name == null) {
             return file_name;
         }
         String[] nam_ext = getNameExtensionPair(file_name);
@@ -220,9 +220,9 @@ public class LibUtils {
             return false;
         }
     }
-    
+
      /**
-      * Returns true if export value for passed in library is 
+      * Returns true if export value for passed in library is
       * set to NONE
       */
     public static boolean isNoExports(Library lib) {
@@ -232,9 +232,9 @@ public class LibUtils {
         }
         return false;
     }
-    
+
     /**
-     * Returns the Package name of a library. If none can be determined, 
+     * Returns the Package name of a library. If none can be determined,
      * an empty String is returned.:
      */
     public static String detectPackageName(Library lib) {
@@ -244,8 +244,8 @@ public class LibUtils {
             if (!isNoExports((String)firstExport)) {
                 int c = firstExport.lastIndexOf(".");
                 if (c <= 0) {
-                    return new String();   
-                } 
+                    return new String();
+                }
                 return firstExport.substring(0, c);
             }
         } catch (NullPointerException e) {
@@ -260,6 +260,6 @@ public class LibUtils {
             return new String();
         }
     }
-    
+
 
 }

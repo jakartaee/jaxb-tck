@@ -43,13 +43,13 @@ public class JCKIndexGenerator extends ToolBase {
     /**
      * Root dir of .doc.xml files tree
      */
-	File xmlDir;
+    File xmlDir;
 
     /**
      * Root dir of resulting html files tree
      */
      File jckDir;
-     
+
      String copyrightLink=null;
 
    /*
@@ -119,7 +119,7 @@ public class JCKIndexGenerator extends ToolBase {
      * @param args The command line arguments to  this tool.
      */
     public static void main(String args[]) {
-  		JCKIndexGenerator generator = new JCKIndexGenerator(System.out, System.err);
+        JCKIndexGenerator generator = new JCKIndexGenerator(System.out, System.err);
         generator.setProgramName(CtStr_ToolName);
         System.exit(generator.run(args));
     }
@@ -132,8 +132,8 @@ public class JCKIndexGenerator extends ToolBase {
      * @see java.io.PrintStream
      */
     public JCKIndexGenerator(PrintStream out, PrintStream err) {
-		super(out, err);
-		m_needsCommandLineArguments = true;
+        super(out, err);
+        m_needsCommandLineArguments = true;
     }
 
 
@@ -141,26 +141,26 @@ public class JCKIndexGenerator extends ToolBase {
      *  Converts all .doc.xml files into .html files.
      */
     public void startTool() {
-    	try {
-    		// the second argument must be "" or null to indicate that there 
-    		// should be no links to upper indexes in the root html file.
-    		// if copyrightLink == null, then no Copyright generation.
-     		Vector topElems = generateIndex(jckDir, "", copyrightLink);
+        try {
+            // the second argument must be "" or null to indicate that there
+            // should be no links to upper indexes in the root html file.
+            // if copyrightLink == null, then no Copyright generation.
+            Vector topElems = generateIndex(jckDir, "", copyrightLink);
 /*
-    		if ((topElems.size() != 1)
-				|| ! ((File)(topElems.firstElement())).getAbsolutePath().endsWith("testsuite.doc.xml")) {
-     			reportErrorMsg("Unresolved links for the top directory remain.");
-     			reportErrorMsg(topElems.size() + " elemets:");
-        		for (int i = 0; i < topElems.size(); i++)
-          			reportErrorMsg(((File)topElems.get(i)).getAbsolutePath());
-       			setResultCode(ctInt_ErrorCode_Error);
-     		}
+            if ((topElems.size() != 1)
+                || ! ((File)(topElems.firstElement())).getAbsolutePath().endsWith("testsuite.doc.xml")) {
+                reportErrorMsg("Unresolved links for the top directory remain.");
+                reportErrorMsg(topElems.size() + " elemets:");
+                for (int i = 0; i < topElems.size(); i++)
+                    reportErrorMsg(((File)topElems.get(i)).getAbsolutePath());
+                setResultCode(ctInt_ErrorCode_Error);
+            }
 */
-		} catch (TestFileException e) {
+        } catch (TestFileException e) {
             reportErrorMsg(e.getMessage());
-			setResultCode(ctInt_ErrorCode_Error);
+            setResultCode(ctInt_ErrorCode_Error);
         }
-      	return;
+        return;
     }
 
     /**
@@ -170,75 +170,75 @@ public class JCKIndexGenerator extends ToolBase {
      * @param dir  Directory to generate index for.
      */
     protected Vector generateIndex(File dir, String upperIndexFileName, String pathToCopyright) throws TestFileException {
-	String currentIndexFN="";
-    	Vector linkHolder = new Vector();
+    String currentIndexFN="";
+        Vector linkHolder = new Vector();
 
-    	if (!dir.isDirectory()){
-     		throw new TestFileException(dir.getAbsolutePath() + " is not a directory");
-     	}
-	
-     	log("Generating index for " + dir.toString());
+        if (!dir.isDirectory()){
+            throw new TestFileException(dir.getAbsolutePath() + " is not a directory");
+        }
+
+        log("Generating index for " + dir.toString());
 
         File[] docXmls = findFiles(new File(jck2xmlDir(dir.getAbsolutePath())), ".doc.xml");
 
         if (docXmls.length == 1){
-		currentIndexFN = docXmls[0].getName().replaceFirst("\\.doc\\.xml", ".html");
-	} else if (docXmls.length > 1) {
-    		throw new TestFileException("Too many XML files: " + docXmls.length + " in " + jck2xmlDir(dir.getAbsolutePath()));
-	} else {
-		if (upperIndexFileName != null && !upperIndexFileName.equals("")){
-			currentIndexFN = ".." + File.separator + upperIndexFileName;
-		} else {
-			throw new TestFileException("No testsuite.doc.xml file");
-		}
-	}
+        currentIndexFN = docXmls[0].getName().replaceFirst("\\.doc\\.xml", ".html");
+    } else if (docXmls.length > 1) {
+            throw new TestFileException("Too many XML files: " + docXmls.length + " in " + jck2xmlDir(dir.getAbsolutePath()));
+    } else {
+        if (upperIndexFileName != null && !upperIndexFileName.equals("")){
+            currentIndexFN = ".." + File.separator + upperIndexFileName;
+        } else {
+            throw new TestFileException("No testsuite.doc.xml file");
+        }
+    }
 
-     	File[] subdirs = findSubdirs(dir);
-     	for (int i = 0; i < subdirs.length; i++){
-       		linkHolder.addAll(generateIndex(subdirs[i], currentIndexFN, pathToCopyright == null ? null : ".." + File.separator + pathToCopyright));
-      	}
+        File[] subdirs = findSubdirs(dir);
+        for (int i = 0; i < subdirs.length; i++){
+            linkHolder.addAll(generateIndex(subdirs[i], currentIndexFN, pathToCopyright == null ? null : ".." + File.separator + pathToCopyright));
+        }
 
 
-       	// add all html files of the directory to linkHolder
-       	File[] htmlFiles = findFiles(dir, ".html");
-	for (int i = 0; i < htmlFiles.length; i++)
-       		linkHolder.add(htmlFiles[i]);
+        // add all html files of the directory to linkHolder
+        File[] htmlFiles = findFiles(dir, ".html");
+    for (int i = 0; i < htmlFiles.length; i++)
+            linkHolder.add(htmlFiles[i]);
 
 
         if (docXmls.length == 1){
-	       	File xmlFile = docXmls[0];
-		String finalHtmlName = xml2jckDir(xmlFile.getAbsolutePath()).replaceFirst("\\.doc\\.xml", ".html");
-         	
-	        File finalHtmlFile = new File(finalHtmlName);
-	        if (! finalHtmlFile.isFile()) {
-        	   	Vector args = new Vector();
-	        	log("Generating " + finalHtmlName + " for XML file:\n" + xmlFile.getAbsolutePath());
-			args.add("-contents");
-			args.add(xmlFile.getAbsolutePath());
-			args.add("-fileName");
-			args.add(finalHtmlName);
-			args.add("-log");
-			if (upperIndexFileName != null && !upperIndexFileName.equals("")){
-			    args.add("-backward");
-			    args.add(".." + File.separator + upperIndexFileName);
-	    		}
-	    		if (pathToCopyright != null){
-	    		    args.add("-copyrightLink");
-	    		    args.add(pathToCopyright);
-	    		}
-	             	for (int i = 0; i < linkHolder.size(); i++) {
-	              		args.add(((File)linkHolder.get(i)).getAbsolutePath());
-	              	}
-	
-	                JCKIndexGen c = new JCKIndexGen(System.out, System.err);
-	            	if (c.run((String[])args.toArray(new String[0])) == ctInt_ErrorCode_Error){
-	             		throw new TestFileException("Error. Generation failed.");
-	             	}
+            File xmlFile = docXmls[0];
+        String finalHtmlName = xml2jckDir(xmlFile.getAbsolutePath()).replaceFirst("\\.doc\\.xml", ".html");
+
+            File finalHtmlFile = new File(finalHtmlName);
+            if (! finalHtmlFile.isFile()) {
+                Vector args = new Vector();
+                log("Generating " + finalHtmlName + " for XML file:\n" + xmlFile.getAbsolutePath());
+            args.add("-contents");
+            args.add(xmlFile.getAbsolutePath());
+            args.add("-fileName");
+            args.add(finalHtmlName);
+            args.add("-log");
+            if (upperIndexFileName != null && !upperIndexFileName.equals("")){
+                args.add("-backward");
+                args.add(".." + File.separator + upperIndexFileName);
+                }
+                if (pathToCopyright != null){
+                    args.add("-copyrightLink");
+                    args.add(pathToCopyright);
+                }
+                    for (int i = 0; i < linkHolder.size(); i++) {
+                        args.add(((File)linkHolder.get(i)).getAbsolutePath());
+                    }
+
+                    JCKIndexGen c = new JCKIndexGen(System.out, System.err);
+                    if (c.run((String[])args.toArray(new String[0])) == ctInt_ErrorCode_Error){
+                        throw new TestFileException("Error. Generation failed.");
+                    }
                         linkHolder.clear();
                         linkHolder.add(finalHtmlFile);
-		}
         }
-     	return linkHolder;
+        }
+        return linkHolder;
     }
 
 
@@ -249,15 +249,15 @@ public class JCKIndexGenerator extends ToolBase {
      */
     private File[] findSubdirs(File dir) throws TestFileException {
 
-    	if (! dir.isDirectory())
-     		throw new TestFileException("findSubdirs: Directory not found - " + dir.getAbsolutePath());
+        if (! dir.isDirectory())
+            throw new TestFileException("findSubdirs: Directory not found - " + dir.getAbsolutePath());
 
-		FileFilter filter = new FileFilter () {
-  			public boolean accept(File pathname) {
-     			return pathname.isDirectory();
-     		}
-       	};
-       	return dir.listFiles(filter);
+        FileFilter filter = new FileFilter () {
+            public boolean accept(File pathname) {
+                return pathname.isDirectory();
+            }
+        };
+        return dir.listFiles(filter);
     }
 
     /**
@@ -268,16 +268,16 @@ public class JCKIndexGenerator extends ToolBase {
       */
     private File[] findFiles(File dir, final String suffix) throws TestFileException {
 
-    	if (! dir.isDirectory())
-     		return new File[0];
+        if (! dir.isDirectory())
+            return new File[0];
 
-		FileFilter filter = new FileFilter () {
-  			public boolean accept(File pathname) {
-     			return pathname.isFile() &&
-        			   pathname.getAbsolutePath().endsWith(suffix);
-     		}
-       	};
-       	return dir.listFiles(filter);
+        FileFilter filter = new FileFilter () {
+            public boolean accept(File pathname) {
+                return pathname.isFile() &&
+                       pathname.getAbsolutePath().endsWith(suffix);
+            }
+        };
+        return dir.listFiles(filter);
     }
 
     /**
@@ -289,9 +289,9 @@ public class JCKIndexGenerator extends ToolBase {
      * @see #jckDir
      * @see #xmlDir
      */
-	private String jck2xmlDir(String jckdir) {
- 		return jckdir.replaceFirst(jckDir.getAbsolutePath(), xmlDir.getAbsolutePath());
- 	}
+    private String jck2xmlDir(String jckdir) {
+        return jckdir.replaceFirst(jckDir.getAbsolutePath(), xmlDir.getAbsolutePath());
+    }
 
     /**
      * Converts xml directory name into jck directory name
@@ -302,9 +302,9 @@ public class JCKIndexGenerator extends ToolBase {
      * @see #xmlDir
      * @see #jckDir
      */
-	private String xml2jckDir(String xmldir) {
- 		return xmldir.replaceFirst(xmlDir.getAbsolutePath(), jckDir.getAbsolutePath());
- 	}
+    private String xml2jckDir(String xmldir) {
+        return xmldir.replaceFirst(xmlDir.getAbsolutePath(), jckDir.getAbsolutePath());
+    }
 
 }
 
@@ -313,13 +313,13 @@ public class JCKIndexGenerator extends ToolBase {
         String exIndex = dir.getAbsolutePath() + "/index.html";
         File exIndexFile = new File(exIndex);
         if (exIndexFile.exists()) {
-        	linkHolder.clear();
-         	linkHolder.add(exIndexFile);
+            linkHolder.clear();
+            linkHolder.add(exIndexFile);
         } else {
-        	// add all html files of the directory to linkHolder
-        	File[] htmlFiles = findFiles(dir, ".html");
-     		for (int i = 0; i < htmlFiles.length; i++)
-        		linkHolder.add(htmlFiles[i]);
+            // add all html files of the directory to linkHolder
+            File[] htmlFiles = findFiles(dir, ".html");
+            for (int i = 0; i < htmlFiles.length; i++)
+                linkHolder.add(htmlFiles[i]);
         }
 */
 

@@ -36,7 +36,7 @@ import com.sun.tgxml.tjtf.tools.BuildProperties;
 import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
 
 /**
- * The implementation of LibraryLoader, which loads information about external 
+ * The implementation of LibraryLoader, which loads information about external
  * library files from a InputStream in the following format:
  * <ul>
  *   <li> each line contains description about all external libraries withe the same ID.
@@ -45,19 +45,19 @@ import com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser;
  *    <p>
  *   &lt;library&nbsp;id&gt;&nbsp;&lt;repository&nbsp;location&gt;:&lt;relative&nbsp;library&nbsp;file&gt;[&nbsp;&lt;repository&nbsp;location&gt;:&lt;relative&nbsp;library&nbsp;file&gt;&nbsp;...]
  * </ul>
- * The external library files are parsed by 
+ * The external library files are parsed by
  * <code>com.sun.tgxml.tools.testgen.processors.parser.MiddleWareXMLParser</code>
  */
 public class LibMapLibraryLoader implements LibraryLoader {
-    
+
     private HashMap list = new HashMap();
     private MiddleWareXMLParser parser = new MiddleWareXMLParser();
-    
-    /*  
-     * 32 is enough, because this cache is required only during processing 
-     * of the library by TestItem selector. 
+
+    /*
+     * 32 is enough, because this cache is required only during processing
+     * of the library by TestItem selector.
      * When the library is processed by TestItemSelector, the Library is cached
-     * by TestItemSelector and there are no needs to store list of external 
+     * by TestItemSelector and there are no needs to store list of external
      * libraries here.
      */
     private Map cache = Collections.synchronizedMap(new WeakHashMap());
@@ -71,7 +71,7 @@ public class LibMapLibraryLoader implements LibraryLoader {
     public LibMapLibraryLoader(String name) {
         loadResource(openResource(name));
     }
-    
+
     private InputStream openResource(String name) {
         ClassLoader loader = this.getClass().getClassLoader();
         loader = (loader == null) ? ClassLoader.getSystemClassLoader() : loader;
@@ -90,7 +90,7 @@ public class LibMapLibraryLoader implements LibraryLoader {
     public LibMapLibraryLoader(InputStream in) {
         loadResource(in);
     }
-    
+
     /**
      * parses lib map file
      */
@@ -101,7 +101,7 @@ public class LibMapLibraryLoader implements LibraryLoader {
             while ((line = reader.readLine()) != null) {
                 int pos = line.indexOf(' ');
                 if ((pos > 0) && (pos < line.length() - 1))  {
-                    list.put(line.substring(0, pos).trim(), 
+                    list.put(line.substring(0, pos).trim(),
                              line.substring(pos + 1).trim());
                 }
             }
@@ -110,8 +110,8 @@ public class LibMapLibraryLoader implements LibraryLoader {
              throw new IllegalArgumentException("Can not read from InputStream: " + in);
         }
     }
-    
-    private Library parseLibrary(String name) 
+
+    private Library parseLibrary(String name)
         throws TestFileException, SAXException, IOException {
         String sourceRoot = BuildProperties.getString("tck.source.dir");
         int pos = name.indexOf(':');
@@ -120,7 +120,7 @@ public class LibMapLibraryLoader implements LibraryLoader {
         }
         return (Library) parser.parse(new File(name.replace(':', File.separatorChar)), sourceRoot);
     }
-    
+
     /**
      * obtains list of the required external library files, parses these
      * files and returns ArrayList with Library instances.

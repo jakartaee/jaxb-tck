@@ -43,47 +43,47 @@ import com.sun.tgxml.util.MiscUtils;
 public class LibFilterConveyer extends StandardOptionHandler {
 
     String pluginName,
-	   libListFileName,
-	   libListOutFileName,
-	   outputName;
+       libListFileName,
+       libListOutFileName,
+       outputName;
 
     LibraryFilter filter;
     LibDepExtractor libEx;
     PrintStream err;
 
     public LibFilterConveyer(PrintStream err) {
-	if (err == null){
-	    throw new IllegalArgumentException(LibResHandler.getResStr("filter.error.libfilter.noErrorStream"));
-	}
-	this.err = err;
+    if (err == null){
+        throw new IllegalArgumentException(LibResHandler.getResStr("filter.error.libfilter.noErrorStream"));
+    }
+    this.err = err;
     }
 
     public void setup() throws TestFileException {
-	try {
-	    FilterFactory filtFact = FilterFactory.newInstance(pluginName);
-	    filter = filtFact.getLibraryFilter(null);
-	} catch ( FilteringException fe ) {
-	    throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.badPlugin", pluginName, fe.toString()));
-	}
-	try {
-	    libEx = new LibDepExtractor(libListFileName, libListOutFileName);
-	} catch (Exception e) {
-	    throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.badDepLibList", libListFileName, e.toString()));
-	}
+    try {
+        FilterFactory filtFact = FilterFactory.newInstance(pluginName);
+        filter = filtFact.getLibraryFilter(null);
+    } catch ( FilteringException fe ) {
+        throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.badPlugin", pluginName, fe.toString()));
+    }
+    try {
+        libEx = new LibDepExtractor(libListFileName, libListOutFileName);
+    } catch (Exception e) {
+        throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.badDepLibList", libListFileName, e.toString()));
+    }
     }
 
     protected StringOption pluginOption = new StringOption(LibResHandler.getResStr("filter.plugin.mnem"),
         LibResHandler.getResStr("filter.plugin.desc"),
         OBLIGATORY);
 
-    protected StringOption outOption = new StringOption(LibResHandler.getResStr("filter.out.mnem"), 
+    protected StringOption outOption = new StringOption(LibResHandler.getResStr("filter.out.mnem"),
         LibResHandler.getResStr("filter.out.desc"),
         OBLIGATORY);
 
     protected String libMap2FileName = null;
 
     protected String libIDMapString = null;
-    
+
     public void registerOptions() {
         super.registerOptions();
         addOption(pluginOption);
@@ -95,14 +95,14 @@ public class LibFilterConveyer extends StandardOptionHandler {
         outputName = outOption.getStringValue();
         super.applyOptionsValues();
     }
-    
+
     public Library process(String libID, IRParser parser, String libIDMap) throws TestFileException {
         if (libIDMap == null || libIDMap.trim().equals("")){
             throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.noLibImpl", libID, libIDMap));
         }
-	File libFiles[] = LibraryMap.getXMLFiles(libID, libIDMap);
-	if (libFiles.length == 0) {
-		throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.noLibImpl", libID, libIDMap));
+    File libFiles[] = LibraryMap.getXMLFiles(libID, libIDMap);
+    if (libFiles.length == 0) {
+        throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.noLibImpl", libID, libIDMap));
         }
         libIDMapString = libIDMap;
         return process(libID, parser, libFiles);
@@ -130,23 +130,23 @@ public class LibFilterConveyer extends StandardOptionHandler {
            libImpls[i] = lib;
        }
 
-	Library chosenLib;
-	try {
-	    chosenLib = filter.strip(libImpls);
-	} catch ( FilteringException fe ) {
-	    throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.libFilterError", libID, fe.toString()));
-	}
-	if (chosenLib == null){
-	    return null;
-	}
-	try {
-	     libEx.extract(chosenLib);
-	} catch (Exception e) {
-	    throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.libIDExtrError", e.toString()));
-	}
-	return chosenLib;
+    Library chosenLib;
+    try {
+        chosenLib = filter.strip(libImpls);
+    } catch ( FilteringException fe ) {
+        throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.libFilterError", libID, fe.toString()));
     }
-    
+    if (chosenLib == null){
+        return null;
+    }
+    try {
+         libEx.extract(chosenLib);
+    } catch (Exception e) {
+        throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.libIDExtrError", e.toString()));
+    }
+    return chosenLib;
+    }
+
     protected String constructOutputPath(Library lib) throws TestFileException {
         String path, root = getRepositoryPath(lib);
         try {
@@ -167,11 +167,11 @@ public class LibFilterConveyer extends StandardOptionHandler {
             throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.badTCKDir", "",
                                  root, IR.SourcePathAttrElemName, path));
         }
-        
+
         path = outputName + File.separatorChar + transformLibSubDir(path.substring(root.length()));
         return path;
     }
-    
+
     protected String transformLibSubDir(String subDir){
         return subDir;
     }
@@ -199,33 +199,33 @@ public class LibFilterConveyer extends StandardOptionHandler {
             OutputStream output = new BufferedOutputStream(new FileOutputStream(fl), 32*1024);
             emitter.emit(lib, output);
             output.close();
-	} catch (Exception e) {
-	    throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.ioException2", path, e.toString()));
-	}
+    } catch (Exception e) {
+        throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.ioException2", path, e.toString()));
+    }
 
-	if (libMap2FileName == null){
-	    return;
-	}
+    if (libMap2FileName == null){
+        return;
+    }
 
-	String libMapEntry = lib.getID() + " " + path + "\n";
-	try {
-	    File flmap = new File(libMap2FileName);
-	    File dirmap = flmap.getParentFile();
-	    if (dirmap != null && !MiscUtils.mkdirs(dirmap)){
+    String libMapEntry = lib.getID() + " " + path + "\n";
+    try {
+        File flmap = new File(libMap2FileName);
+        File dirmap = flmap.getParentFile();
+        if (dirmap != null && !MiscUtils.mkdirs(dirmap)){
                 throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.DirCreateError", dirmap.getName()));
             }
-	    OutputStream output = new FileOutputStream(libMap2FileName, true);
-	    output.write(libMapEntry.getBytes());
-	    output.close();
-	} catch (Exception e) {
-	    throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.ioException2", libMap2FileName, e.toString()));
-	}
+        OutputStream output = new FileOutputStream(libMap2FileName, true);
+        output.write(libMapEntry.getBytes());
+        output.close();
+    } catch (Exception e) {
+        throw new TestFileException(LibResHandler.getResStr("filter.error.libfilter.ioException2", libMap2FileName, e.toString()));
+    }
     }
 
     public void setLibListFileName(String fn){
         libListFileName = fn;
     }
-    
+
     public void setLibListOutFileName(String fn){
         libListOutFileName = fn;
     }

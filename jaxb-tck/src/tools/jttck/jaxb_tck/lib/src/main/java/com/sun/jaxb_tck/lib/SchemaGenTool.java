@@ -21,18 +21,18 @@ import java.io.PrintStream;
 
 /**
  * Interface to invoke a schema generator in sameJVM mode.
- * 
+ *
  * @author   Leonid Kuskov
  * @version  1.5
  */
 public interface SchemaGenTool {
-	/**
-	 * @param javaFiles array of string containing java source files 
-	 * @param outDir output directory where xml schema file(s) will be generated
-	 * @param out output stream for logging
-	 * @param err error stream for logging
-	 * @return  0 if xml schema file(s) generated successfully
-	 */
-	int generate(String[] javaFiles, File outDir, 
-			final PrintStream out, final PrintStream err) throws Exception;
+    /**
+     * @param javaFiles array of string containing java source files
+     * @param outDir output directory where xml schema file(s) will be generated
+     * @param out output stream for logging
+     * @param err error stream for logging
+     * @return  0 if xml schema file(s) generated successfully
+     */
+    int generate(String[] javaFiles, File outDir,
+            final PrintStream out, final PrintStream err) throws Exception;
 }

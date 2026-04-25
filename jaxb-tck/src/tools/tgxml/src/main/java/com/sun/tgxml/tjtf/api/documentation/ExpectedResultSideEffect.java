@@ -22,12 +22,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * ExpectedResultSideEffect - 
+ * ExpectedResultSideEffect -
  *
  * <b>ExpectedResultSideEffect</b> is a side-effect that is expected as the
  * outcome of a test.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -48,7 +48,7 @@ public interface ExpectedResultSideEffect extends ExpectedResult {
      * ============================================================================================
      */
 
-   
+
 
 
     //------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ public interface ExpectedResultSideEffect extends ExpectedResult {
     * @see #setSideEffect
     */
     public String getSideEffect();
-     
+
    /**
     *   Set the side-effect associated with this ExpectedResult.
     *  <p>

@@ -57,9 +57,9 @@ public class TestGen extends StandardToolBase {
 
     private File[]              m_inputFiles;
     private ArrayList           m_inputFileNames;
-    
+
     private String              m_elFileName;
-    
+
     protected Generator         m_generator;
 
     /*
@@ -67,7 +67,7 @@ public class TestGen extends StandardToolBase {
      *    Methods
      * =========================================================================
      */
-    
+
     /**
      * Program entry
      *
@@ -78,15 +78,15 @@ public class TestGen extends StandardToolBase {
         TestGen c = new TestGen(System.out, System.err);
         System.exit(c.run(args));
     }
-    
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public TestGen( PrintStream out, PrintStream err) {
         super(out, err, CtStr_ToolName);
@@ -94,23 +94,23 @@ public class TestGen extends StandardToolBase {
         m_needsCommandLineArguments = true;
         m_inputFileNames = new ArrayList();
     }
-    
+
     protected String getTCKPropertiesFileName() {
         return BuildProperties.TCK_PROPERTIES_FILE_NAME;
     }
-    
+
 
   /**
     * Create a (generic processor).
     * <p>
     *  Sub-classes may override this to install
     *  different types of parsers.
-    * <p> 
+    * <p>
     * @return a (generic) IRParser.
     * @throws TestFileException if there is a problem creating a parser.
     */
     public IRParser createParser() throws TestFileException {
-	    return new MiddleWareXMLParser();
+        return new MiddleWareXMLParser();
     }
 
     /**
@@ -118,24 +118,24 @@ public class TestGen extends StandardToolBase {
      * <p>
      *  Sub-classes may override this to install
      *  different types of emitters.
-     * <p> 
+     * <p>
      * @return a (generic) IREmitter.
      * @throws TestFileException if there is a problem creating an emitter.
      */
     public Generator createGenerator() throws TestFileException {
-        emitterProperties.setProperty(EmitterManager.GEN_TYPE_PROPERTY, 
+        emitterProperties.setProperty(EmitterManager.GEN_TYPE_PROPERTY,
                                       getGenType());
         EmitterManager retVal = new EmitterManager();
         retVal.setProperties(emitterProperties);
-	    return retVal;
+        return retVal;
     }
 
 
     public IREmitter createEmitter() throws TestFileException {
-	    return null;
+        return null;
     }
 
-    /** 
+    /**
      *  Parse inputs, process the IR, emit outputs.
      * <p>
      *  Tools should override this, this function determines
@@ -155,41 +155,41 @@ public class TestGen extends StandardToolBase {
     public String getGenType() {
         return "testgen";
     }
-    
+
     /**
      * Verify that input files are valid files. Invokes setInputFiles() if files are OK.
      *
      * @return false the additional arguments don't verify.
      */
-   
-    public String chkInputFiles() {    
-	if (m_inputFileNames.isEmpty()) 
-	    return "Error: No input files are specified";
+
+    public String chkInputFiles() {
+    if (m_inputFileNames.isEmpty())
+        return "Error: No input files are specified";
 
         File[] inputFiles = new File[m_inputFileNames.size()];
         String m_fileName;
-        
+
         Iterator it = m_inputFileNames.iterator();
-        
-	for (int i=0; i<inputFiles.length; i++) {
-	    m_fileName = it.next().toString().trim();
-	    if (! m_fileName.endsWith(".xml"))
-		return "Error: No .xml extension for the file : " + m_fileName;
 
-	    inputFiles[i] = new File(m_fileName);
+    for (int i=0; i<inputFiles.length; i++) {
+        m_fileName = it.next().toString().trim();
+        if (! m_fileName.endsWith(".xml"))
+        return "Error: No .xml extension for the file : " + m_fileName;
 
-	    if (! inputFiles[i].exists() || inputFiles[i].isDirectory()) {
-		return "Error: Bad file : " + m_fileName;
+        inputFiles[i] = new File(m_fileName);
+
+        if (! inputFiles[i].exists() || inputFiles[i].isDirectory()) {
+        return "Error: Bad file : " + m_fileName;
             }
         }
-	    
+
         setInputFiles(inputFiles);
-        
+
         return null;
     }
 
-    /** 
-     *  
+    /**
+     *
      * Sub-classes override this method when they wish to process any arguments
      * before running the "executeTool" method. (Called by startTool()).
      * <p>
@@ -198,36 +198,36 @@ public class TestGen extends StandardToolBase {
      */
     public void processArgs() throws TestFileException, IOException {
         if (m_elFileName != null) {
-            ExcludeListCollector elCollector = 
+            ExcludeListCollector elCollector =
                         ExcludeListToolFactory.createELCollector(m_elFileName);
             m_generator.setExcludeListCollector(elCollector);
         }
         m_generator.setProperties(emitterProperties);
     }
-    
-   /* 
+
+   /*
     * ----------------------------------------------------------------------
-    *    Options parsing methods 
+    *    Options parsing methods
     * ----------------------------------------------------------------------
     */
 
-    StringOption elOption = new StringOption("-el", 
+    StringOption elOption = new StringOption("-el",
          "  -el <exludelist>  exclude list file");
 
-    PropertyOption emitterOptions = new PropertyOption("-emitter.", 
+    PropertyOption emitterOptions = new PropertyOption("-emitter.",
          "  -emitter.XXX=YYY  emitter option");
 
     /**
      * Registers -el options
      */
-    public void registerOptions() {         
+    public void registerOptions() {
          super.registerOptions();
          addOption(elOption);
          addOption(emitterOptions);
     }
 
     /**
-     * Applies values for options registered by <tt>registerOptions()</tt> 
+     * Applies values for options registered by <tt>registerOptions()</tt>
      * Initializes operands.
      */
     public void applyOptionsValues() throws ParseArgumentException {
@@ -241,19 +241,19 @@ public class TestGen extends StandardToolBase {
 
         // check operands (input files)
         File[] inputFiles = new File[operands.length];
-        for (int i = 0; i < inputFiles.length; i++) {        
+        for (int i = 0; i < inputFiles.length; i++) {
             inputFiles[i] = new File(operands[i]);
             if (! inputFiles[i].exists() || inputFiles[i].isDirectory()) {
                 throw new ParseArgumentException("file does not exist or is a directory: " + operands[i]);
             }
         }
-	    
+
         setInputFiles(inputFiles);
 
         super.applyOptionsValues();
     }
 
-    /** 
+    /**
      * Sets OperandsValidator thats validates that at least one operand
      * is passed, operands end with ".xml" and operands do not start with "-"
      */
@@ -262,48 +262,48 @@ public class TestGen extends StandardToolBase {
             "Operands: ",
             "  file1.xml file2.xml ... "
         };
-        operandsValidator = new DefaultOperandsValidator(1, Integer.MAX_VALUE, 
+        operandsValidator = new DefaultOperandsValidator(1, Integer.MAX_VALUE,
             "-", ".xml", operandsUsageLines);
     }
-    
+
     /**
      * Sets TestGen usage header
      */
     protected void setToolUsageHeader() {
-        toolUsageHeader = 
-            "Usage: " + getProgramName() + " [<options>] [<fileName>.xml [<fileName>.xml]]\n" + 
+        toolUsageHeader =
+            "Usage: " + getProgramName() + " [<options>] [<fileName>.xml [<fileName>.xml]]\n" +
             "where options include:";
     }
 
-   /* 
+   /*
     * ----------------------------------------------------------------------
-    * 
+    *
     * ----------------------------------------------------------------------
     */
-    
+
     /**
      * get this tool's input file.
-     * <p> 
+     * <p>
      * @return a String with the tool name.
      * @see #setInputFiles
      */
     public final File[] getInputFiles() {
-	    return m_inputFiles;
+        return m_inputFiles;
     }
-    
+
 
     /**
      * Set this tool's input file.
-     * <p> 
+     * <p>
      * @param input A String with the tool name.
      * @see #getInputFiles
      */
     public final void setInputFiles(File[] input) {
         m_inputFiles = input;
     }
-    
-    /** 
-     *  
+
+    /**
+     *
      *  Primary tool (set-up) interface.
      * <p>
      * This method creates/sets-up a parser and emitter (calls the create/setup methods).

@@ -28,11 +28,11 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * TargetSpecImpl - 
+ * TargetSpecImpl -
  *
- * <b>TargetSpec</b> describes the specification that a TestGroup, TestCase, 
+ * <b>TargetSpec</b> describes the specification that a TestGroup, TestCase,
  *  or Library depends on. TargetSpec describes a spec ID
- *  and version, encoded to describe ranges of specs. 
+ *  and version, encoded to describe ranges of specs.
  * <p>
  * A version is encoded using a <b><em>Major</em></b>, <b><em>Minor</em></b> and <b><em>Maint</em></b>
  * version integers, and <b><em>Upper</em></b> and <b><em>Lower</em></b> boolean modifiers.
@@ -47,7 +47,7 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
  *  For version 1.1, TargetSpec now can contain TargetSpecElems to describe
  *  a finer grain of spec dependencies.
  *
- * @version 	1.1, 10/28/2002
+ * @version     1.1, 10/28/2002
  * @author  Kevin T. Looney
  */
 
@@ -55,7 +55,7 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 /*
  * ============================================================================================
- *    TargetSpecImpl 
+ *    TargetSpecImpl
  * ============================================================================================
  */
 
@@ -98,21 +98,21 @@ public  class TargetSpecImpl implements TargetSpec   {
      *    Methods
      * ============================================================================================
      */
-   
-    public boolean isValid(String version) {
-	return validateString(version);
-    }
-   
-    static public boolean validateString(String version) {
-	return true;
-    }
-   
-    static public TargetSpec create(String name, String version) throws TestFileException {
-	if (! validateString(version))
-	    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
 
-	TargetSpec spec = new TargetSpecImpl(name, version);
-	return spec;
+    public boolean isValid(String version) {
+    return validateString(version);
+    }
+
+    static public boolean validateString(String version) {
+    return true;
+    }
+
+    static public TargetSpec create(String name, String version) throws TestFileException {
+    if (! validateString(version))
+        throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+
+    TargetSpec spec = new TargetSpecImpl(name, version);
+    return spec;
 
     }
 
@@ -120,31 +120,31 @@ public  class TargetSpecImpl implements TargetSpec   {
     //  Constructors
     //------------------------------------------------------------------------------
     public TargetSpecImpl() {
-	init();
+    init();
     }
 
     public TargetSpecImpl(String id, String version) {
-	setID(id);
-	try {
-	    setVersion(version);
-	} catch ( TestFileException e) {
-	    // do something if the version doesn't parse
-	}
+    setID(id);
+    try {
+        setVersion(version);
+    } catch ( TestFileException e) {
+        // do something if the version doesn't parse
+    }
 
-	init();
+    init();
     }
 
     public TargetSpecImpl(String id, String version, ArrayList specelems) {
-	this(id, version);
-	setTargetSpecElems(specelems);
+    this(id, version);
+    setTargetSpecElems(specelems);
     }
 
 
     private void init() {
-	if (m_SpecElems == null)
-	    m_SpecElems = new ArrayList();
-	else
-	    m_SpecElems.clear();
+    if (m_SpecElems == null)
+        m_SpecElems = new ArrayList();
+    else
+        m_SpecElems.clear();
     }
 
 
@@ -164,9 +164,9 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #setTargeSpecElems
     */
     public ArrayList getTargetSpecElems() {
-	return m_SpecElems;
+    return m_SpecElems;
     }
-     
+
    /**
     *   Set the TargetSpecElem attributes associated with this entity.
     *  <p>
@@ -178,61 +178,61 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #getTargetSpecElems
     */
     public void setTargetSpecElems(ArrayList specelems) {
-	m_SpecElems = specelems;
+    m_SpecElems = specelems;
     }
 
 
 
- 
+
   /**
     *   Get the version (constructed as a string).
     *  <p>
     * @return    A String encoded version.
     */
     public String getVersion() {
-	StringBuffer sb = new StringBuffer();
+    StringBuffer sb = new StringBuffer();
 
-	if (m_lowerModifier)
-	    sb.append(str_modifier);
+    if (m_lowerModifier)
+        sb.append(str_modifier);
 
-	sb.append(Integer.toString(m_major));
-	sb.append(str_dot);
-	sb.append(Integer.toString(m_minor));
-	if (m_maint > 0) {
-	    sb.append(str_dot);
-	    sb.append(Integer.toString(m_maint));
-	}
-
-	if (m_upperModifier)
-	    sb.append(str_modifier);
-
-	return sb.toString();
+    sb.append(Integer.toString(m_major));
+    sb.append(str_dot);
+    sb.append(Integer.toString(m_minor));
+    if (m_maint > 0) {
+        sb.append(str_dot);
+        sb.append(Integer.toString(m_maint));
     }
 
- 
+    if (m_upperModifier)
+        sb.append(str_modifier);
+
+    return sb.toString();
+    }
+
+
   /**
     *   Get the version (constructed as a string).
     *  <p>
     * @return    A String encoded version.
     */
     public void setVersion(String version) throws TestFileException {
-	parse(version, this);
+    parse(version, this);
     }
- 
+
   /**
     *   Get the version (constructed as a string).
     *  <p>
     * @return    A String encoded version.
     */
     public static boolean valid(String version) {
-	boolean ret = true;
-	try {
-	    parse(version, null);
-	} catch (TestFileException e) {
-	    ret = false;
-	}
+    boolean ret = true;
+    try {
+        parse(version, null);
+    } catch (TestFileException e) {
+        ret = false;
+    }
 
-	return ret;
+    return ret;
     }
 
   /**
@@ -244,9 +244,9 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #setID
     */
     public String getID() {
-	return m_ID;
+    return m_ID;
     }
-     
+
    /**
     *   Set the ID associated with this data.
     *  <p>
@@ -257,7 +257,7 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #getID
     */
     public void setID(String id) {
-	m_ID = id;
+    m_ID = id;
     }
 
 
@@ -269,9 +269,9 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #setMajor
     */
     public int getMajor() {
-	return m_major;
+    return m_major;
     }
-     
+
    /**
     *   Set the Major version value.
     *  <p>
@@ -279,7 +279,7 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #getMajor
     */
     public void setMajor(int major) {
-	m_major = major;
+    m_major = major;
     }
 
 
@@ -290,9 +290,9 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #setMinor
     */
     public int getMinor() {
-	return m_minor;
+    return m_minor;
     }
-     
+
    /**
     *   Set the Major version value.
     *  <p>
@@ -300,7 +300,7 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #getMinor
     */
     public void setMinor(int minor) {
-	m_minor = minor;
+    m_minor = minor;
     }
 
 
@@ -311,9 +311,9 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #setMaint
     */
     public int getMaint() {
-	return m_maint;
+    return m_maint;
     }
-     
+
    /**
     *   Set the Minor version value.
     *  <p>
@@ -321,7 +321,7 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #getMaint
     */
     public void setMaint(int maint) {
-	m_maint = maint;
+    m_maint = maint;
     }
 
 
@@ -329,86 +329,86 @@ public  class TargetSpecImpl implements TargetSpec   {
   /**
     *   predicate - has the "upper" modifier set.
     *  <p>
-    *  When the upper modifier is set, the SpecTarget 
+    *  When the upper modifier is set, the SpecTarget
     *  applies to all versions greater than the major.minor version.
     * <p>
     * @return     true if the upper modifier is set.
     * @see #setUpperModifier
     */
     public boolean isUpperModifierSet() {
-	return m_upperModifier;
+    return m_upperModifier;
     }
-     
+
    /**
     *   Set the "upper" modifier set.
     *  <p>
-    *  When the upper modifier is set, the SpecTarget 
+    *  When the upper modifier is set, the SpecTarget
     *  applies to all versions greater than the major.minor version.
     * <p>
     * @param     upper The (boolean) upper modifier value.
     * @see #isUpperModifierSet
     */
     public void setUpperModifier(boolean upper) {
-	m_upperModifier = upper;
+    m_upperModifier = upper;
     }
 
 
   /**
     *   predicate - has the "lower" modifier set.
     *  <p>
-    *  When the lower modifier is set, the SpecTarget 
+    *  When the lower modifier is set, the SpecTarget
     *  applies to all versions greater than the major.minor version.
     * <p>
     * @return     true if the lower modifier is set.
     * @see #setLowerModifier
     */
     public boolean isLowerModifierSet() {
-	return m_lowerModifier;
+    return m_lowerModifier;
     }
-     
+
    /**
     *   Set the "lower" modifier set.
     *  <p>
-    *  When the lower modifier is set, the SpecTarget 
+    *  When the lower modifier is set, the SpecTarget
     *  applies to all versions greater than the major.minor version.
     * <p>
     * @param     lower The (boolean) lower modifier value.
     * @see #isLowerModifierSet
     */
     public void setLowerModifier(boolean lower) {
-	m_lowerModifier = lower;
+    m_lowerModifier = lower;
     }
 
 
     private static boolean validToken(String token) {
-	return (token.equals("-") ||
-		token.equals(".") ||
-		isWhitespace(token) ||
-		isInteger(token) );
+    return (token.equals("-") ||
+        token.equals(".") ||
+        isWhitespace(token) ||
+        isInteger(token) );
     }
 
    private static boolean isInteger(String token) {
        try {
-	   Integer.valueOf(token);
-	   return true;
+       Integer.valueOf(token);
+       return true;
        } catch (NumberFormatException e) {
-	   return false;
+       return false;
        }
    }
 
    private static int getInteger(String token) throws TestFileException {
        try {
-	   return Integer.parseInt(token);
+       return Integer.parseInt(token);
        } catch (NumberFormatException e) {
-	   throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.numb.ill", token));
+       throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.numb.ill", token));
        }
    }
 
    private static boolean isWhitespace(String token) {
-	return (token.equals(" ") ||
-		token.equals("\t") ||
-		token.equals("\n") ||
-		token.equals("\r")  );
+    return (token.equals(" ") ||
+        token.equals("\t") ||
+        token.equals("\n") ||
+        token.equals("\r")  );
    }
 
 
@@ -421,146 +421,146 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #setSpec
     */
     private static void parse(String version, TargetSpecImpl spec) throws TestFileException {
-	boolean lowerModifier = false;
-	boolean upperModifier = false;
+    boolean lowerModifier = false;
+    boolean upperModifier = false;
 
-	// state0 - can accept whitespace, lowmodifier, majornumber.
-	// state1 - can accept majornumber.
-	// state2 - can accept dot.
-	// state3 - can accept minornumber.
-	// state4 - can accept himodifier, dot, whitespace (terminating).
-	// state5 - can accept whitespace (terminating).
-	// state6 - can accept maintnumber.
-	// state7 - can accept himodifier, whitespace (terminating).
+    // state0 - can accept whitespace, lowmodifier, majornumber.
+    // state1 - can accept majornumber.
+    // state2 - can accept dot.
+    // state3 - can accept minornumber.
+    // state4 - can accept himodifier, dot, whitespace (terminating).
+    // state5 - can accept whitespace (terminating).
+    // state6 - can accept maintnumber.
+    // state7 - can accept himodifier, whitespace (terminating).
 
-	int state = 0;
+    int state = 0;
 
-	int major = 0;
-	int minor = 0;
-	int maint = 0;
-	int length = version.length();
-	String token = "";
+    int major = 0;
+    int minor = 0;
+    int maint = 0;
+    int length = version.length();
+    String token = "";
 
-	// clear any space before
-	StringTokenizer parser = new StringTokenizer(version, "-. \t\n\r", true);
+    // clear any space before
+    StringTokenizer parser = new StringTokenizer(version, "-. \t\n\r", true);
 
-	while (parser.hasMoreTokens()) {
-	    token = parser.nextToken();
-	    if (! validToken(token))
-		throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-	    switch (state) {
+    while (parser.hasMoreTokens()) {
+        token = parser.nextToken();
+        if (! validToken(token))
+        throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        switch (state) {
 
-	    case 0:   // can accept whitespace, lowmodifier, majornumber
-		if (isWhitespace(token))
-		    ;  // accept and consume  whitespaces.
-		else if (token.equals("-")) {
-		    lowerModifier = true;
-		    state = 1;
-		} else if (isInteger(token)) {
-		    major = getInteger(token);
-		    state = 2;
-		} else
-		    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		break;
-
-
-	    case 1:   // can accept majornumber
-		if (isInteger(token)) {
-		    major = getInteger(token);
-		    state = 2;
-		} else
-		    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		break;
+        case 0:   // can accept whitespace, lowmodifier, majornumber
+        if (isWhitespace(token))
+            ;  // accept and consume  whitespaces.
+        else if (token.equals("-")) {
+            lowerModifier = true;
+            state = 1;
+        } else if (isInteger(token)) {
+            major = getInteger(token);
+            state = 2;
+        } else
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        break;
 
 
-	    case 2:   // can accept dot
-		if (token.equals(".")) {
-		    state = 3;
-		} else
-		    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		break;
-
-	    case 3:   // can accept minornumber
-		if (isInteger(token)) {
-		    minor = getInteger(token);
-		    state = 4;
-		} else 
-		    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		break;
+        case 1:   // can accept majornumber
+        if (isInteger(token)) {
+            major = getInteger(token);
+            state = 2;
+        } else
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        break;
 
 
-	    case 4:   // can accept dot, whitespace, himodifier
-		if (token.equals(".")) {
-		    state = 6;
-		} else if (isWhitespace(token)) {
-		    state = 5;
-		} else if (token.equals("-")) {
-		    if (lowerModifier)
-			throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		    upperModifier = true;
-		    state = 5;
-		} else
-		    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		break;
+        case 2:   // can accept dot
+        if (token.equals(".")) {
+            state = 3;
+        } else
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        break;
 
-	    case 5:   // can accept whitespace
-		if (isWhitespace(token)) {
-		    state = 5;
-		} else
-		    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		break;
+        case 3:   // can accept minornumber
+        if (isInteger(token)) {
+            minor = getInteger(token);
+            state = 4;
+        } else
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        break;
 
 
-	    case 6:   // can accept maintnumber
-		if (isInteger(token)) {
-		    maint = getInteger(token);
-		    state = 7;
-		} else 
-		    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		break;
+        case 4:   // can accept dot, whitespace, himodifier
+        if (token.equals(".")) {
+            state = 6;
+        } else if (isWhitespace(token)) {
+            state = 5;
+        } else if (token.equals("-")) {
+            if (lowerModifier)
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+            upperModifier = true;
+            state = 5;
+        } else
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        break;
+
+        case 5:   // can accept whitespace
+        if (isWhitespace(token)) {
+            state = 5;
+        } else
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        break;
 
 
-	    case 7:   // himodifier, whitespace (terminating).
-		if (isWhitespace(token)) {
-		    state = 5;
-		} else if (token.equals("-")) {
-		    if (lowerModifier)
-			throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		    upperModifier = true;
-		    state = 5;
-		} else
-		    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
-		break;
-	    }
-
-	}
-
-	// Throw an error if the state is non-terminating
-	if (state != 4 && state != 5 && state != 7)
-	    throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        case 6:   // can accept maintnumber
+        if (isInteger(token)) {
+            maint = getInteger(token);
+            state = 7;
+        } else
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        break;
 
 
-	// only set the version if the validate flag is false
-	if (spec != null) {
-	    spec.setLowerModifier(lowerModifier);
-	    spec.setUpperModifier(upperModifier);
-	    spec.setMaint(maint);
-	    spec.setMinor(minor);
-	    spec.setMajor(major);
-	}
+        case 7:   // himodifier, whitespace (terminating).
+        if (isWhitespace(token)) {
+            state = 5;
+        } else if (token.equals("-")) {
+            if (lowerModifier)
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+            upperModifier = true;
+            state = 5;
+        } else
+            throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+        break;
+        }
+
+    }
+
+    // Throw an error if the state is non-terminating
+    if (state != 4 && state != 5 && state != 7)
+        throw new TestFileException(LibResHandler.getResStr("api.code.targetspec.vers.ill", version));
+
+
+    // only set the version if the validate flag is false
+    if (spec != null) {
+        spec.setLowerModifier(lowerModifier);
+        spec.setUpperModifier(upperModifier);
+        spec.setMaint(maint);
+        spec.setMinor(minor);
+        spec.setMajor(major);
+    }
 
     }
 
 
-  
+
 
 
     //------------------------------------------------------------------------------
     //  predicates
     //------------------------------------------------------------------------------
 
- 
-     
+
+
    /**
     *   predicate - return true if the given spec version is within the TargetSpec range.
     *  <p>
@@ -570,13 +570,13 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #getSpec
     */
     public boolean inSpec(int major, int minor) {
-	return inSpec(major, minor, 0);
+    return inSpec(major, minor, 0);
     }
 
-    
-     
- 
-     
+
+
+
+
    /**
     *   predicate - return true if the given spec version is within the TargetSpec range.
     *  <p>
@@ -586,35 +586,35 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #getSpec
     */
     public boolean inSpec(int major, int minor, int maint) {
-	if (major == m_major && minor == m_minor && maint == m_maint )
-	    return true;
+    if (major == m_major && minor == m_minor && maint == m_maint )
+        return true;
 
-	if (m_lowerModifier) {
-	    if (major < m_major)
-		return true;
-	    if (major == m_major && minor < m_minor)
-		return true;
-	    if (major == m_major && minor == m_minor && maint < m_maint)
-		return true;
-	    return false;
-	}
+    if (m_lowerModifier) {
+        if (major < m_major)
+        return true;
+        if (major == m_major && minor < m_minor)
+        return true;
+        if (major == m_major && minor == m_minor && maint < m_maint)
+        return true;
+        return false;
+    }
 
-	if (m_upperModifier) {
-	    if (major > m_major)
-		return true;
-	    if (major == m_major && minor > m_minor)
-		return true;
-	    if (major == m_major && minor == m_minor && maint > m_maint)
-		return true;
-	    return false;
-	}
+    if (m_upperModifier) {
+        if (major > m_major)
+        return true;
+        if (major == m_major && minor > m_minor)
+        return true;
+        if (major == m_major && minor == m_minor && maint > m_maint)
+        return true;
+        return false;
+    }
 
-	return false;
+    return false;
 
     }
 
-    
-     
+
+
    /**
     *   predicate - return true if the given TargetSpec is within the TargetSpec range.
     *  <p>
@@ -624,21 +624,21 @@ public  class TargetSpecImpl implements TargetSpec   {
     * @see #getSpec
     */
     public boolean inSpec(TargetSpec other) {
-	int otMajor = other.getMajor();
-	int otMinor = other.getMinor();
-	int otMaint = other.getMaint();
+    int otMajor = other.getMajor();
+    int otMinor = other.getMinor();
+    int otMaint = other.getMaint();
 
-	boolean inspec = inSpec(otMajor, otMinor, otMaint);
+    boolean inspec = inSpec(otMajor, otMinor, otMaint);
 
-	if (inspec)
-	    return true;
+    if (inspec)
+        return true;
 
-	boolean inOtSpec = other.inSpec(m_major, m_minor, m_maint);
+    boolean inOtSpec = other.inSpec(m_major, m_minor, m_maint);
 
-	return inOtSpec;
+    return inOtSpec;
     }
 
-   
-     
+
+
 
 }

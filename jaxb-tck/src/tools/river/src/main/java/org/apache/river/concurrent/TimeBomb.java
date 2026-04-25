@@ -22,5 +22,5 @@ package org.apache.river.concurrent;
 interface TimeBomb {
 
     void updateClock(long time);
-    
+
 }

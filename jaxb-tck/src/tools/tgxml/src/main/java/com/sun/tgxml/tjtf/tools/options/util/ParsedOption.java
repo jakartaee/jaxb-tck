@@ -20,21 +20,21 @@ package com.sun.tgxml.tjtf.tools.options.util;
 import java.util.ArrayList;
 
 /**
- * ParsedOption - class that contains an option switch and an array 
+ * ParsedOption - class that contains an option switch and an array
  * of option arguments
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public class ParsedOption {
 
-    String sw = null;   
-    ArrayList arguments = null;   
+    String sw = null;
+    ArrayList arguments = null;
 
     /**
-     * Initializes ParsedOption with specified switch and arguments 
+     * Initializes ParsedOption with specified switch and arguments
      */
     public ParsedOption(String optionSwitch, ArrayList optionArguments) {
          sw = optionSwitch;
@@ -42,7 +42,7 @@ public class ParsedOption {
     }
 
     /**
-     * Initializes ParsedOption with specified option switch 
+     * Initializes ParsedOption with specified option switch
      */
     public ParsedOption(String optionSwitch) {
          this(optionSwitch, null);
@@ -50,28 +50,28 @@ public class ParsedOption {
 
 
     /**
-     * Sets option switch 
+     * Sets option switch
      */
     public void setSwitch(String optionSwitch) {
          sw = optionSwitch;
     }
 
     /**
-     * Returns option switch 
+     * Returns option switch
      */
     public String getSwitch() {
          return sw;
     }
 
     /**
-     * Sets option arguments 
+     * Sets option arguments
      */
     public void setArguments(ArrayList optionArguments) {
          arguments = optionArguments;
     }
 
     /**
-     * Returns option switch 
+     * Returns option switch
      */
     public ArrayList getArguments() {
          return arguments;

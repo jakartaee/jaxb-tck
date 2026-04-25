@@ -20,15 +20,15 @@ import javasoft.sqe.javatest.Status;
 
 /**
  * <P>
- * The interface generator defines a set of methods that should be 
+ * The interface generator defines a set of methods that should be
  * present in all types of generators used in AssertionTest. The
  * task of the generator is to get the Factory of objects created
  * by the test developer and manipulate the factory to get some
- * meaningful data. For example, the GridGenerator generates a 
- * grid of possible data combinations using which either the 
+ * meaningful data. For example, the GridGenerator generates a
+ * grid of possible data combinations using which either the
  * method or the constructor under test can be executed.
  * </P>
- * 
+ *
  * @author Rampalli Narasimhan, Jonathan Gibbons, Kevin A Smith
  * @see    GridGenerator
  * @see    Factory
@@ -41,11 +41,11 @@ public interface Generator {
    * <P>
    * This method takes the Factory[] given by the test developer and
    * manipulates this data to get some meaningful set of data using
-   * which AssertionTest will execute either the method or the 
+   * which AssertionTest will execute either the method or the
    * constructor under test.
    * </P>
    *
-   * @param assertionTestObject the assertion test instance 
+   * @param assertionTestObject the assertion test instance
    * @param f data factories supplied by the test developer
    */
   Status run(AssertionTest assertionTestObject, Factory[] f);
@@ -56,7 +56,7 @@ public interface Generator {
    * object. The arguments are passed at runtime and are process by the
    * AssertionTest base class.
    * </P>
-   * 
+   *
    * @param arguments arguments passed to the generator
    * @exception AssertionTest.Fault is raised when there is an error in decoding
    *                                the arguments.

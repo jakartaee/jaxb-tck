@@ -21,9 +21,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
-public class KeywordSet extends HashSet 
+public class KeywordSet extends HashSet
 {
-   
+
    public KeywordSet() {
    }
 
@@ -35,17 +35,17 @@ public class KeywordSet extends HashSet
     }
 
     public String toString() {
-		String result = "";
+        String result = "";
         if(size() > 0) {
-			Iterator keywords = iterator(); 
-			result += keywords.next();
-			
-	   	    while ( keywords.hasNext()) {
-				result += "," + keywords.next();
-			}
-		} 		
-		
-		return result;
+            Iterator keywords = iterator();
+            result += keywords.next();
 
-	}
+            while ( keywords.hasNext()) {
+                result += "," + keywords.next();
+            }
+        }
+
+        return result;
+
+    }
 }

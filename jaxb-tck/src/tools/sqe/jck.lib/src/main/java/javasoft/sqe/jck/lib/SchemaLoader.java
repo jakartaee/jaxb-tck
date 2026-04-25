@@ -31,7 +31,7 @@ import javasoft.sqe.javatest.lib.MultiTest.SetupException;
  */
 public class SchemaLoader {
     static SchemaFactory sf;
-    
+
     static public Schema loadSchema(Source... sources) throws SetupException {
         try {
             if (sf == null) {

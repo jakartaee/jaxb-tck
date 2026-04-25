@@ -50,25 +50,25 @@ import com.sun.jmpp.share.Utils;
  * i-class   - intermediate class<br>
  *
  * @author Oleg V. Ulyankin, Konstantin S. Bobrovsky
- * @version @(#)JmppLib.java	1.62 07/10/11
+ * @version @(#)JmppLib.java    1.62 07/10/11
  */
 public class JmppLib implements JmppLibIntf {
-	public static final String JMPP_EXT = ".jmpp";
+    public static final String JMPP_EXT = ".jmpp";
 
     /**
      * Name of the option which makes Jmpp only generate i-program.
      */
-	public static final String OPT_PP_ONLY = "p";
+    public static final String OPT_PP_ONLY = "p";
 
     /**
      * Working directory option name.
      */
-	public static final String OPT_WRK_DIR = "w";
+    public static final String OPT_WRK_DIR = "w";
 
     /**
      * Output directory option name.
      */
-	public static final String OPT_OUT_DIR = "o";
+    public static final String OPT_OUT_DIR = "o";
 
     public final static String USG_PP_ONLY =
         "    -" + OPT_PP_ONLY + "\n" +
@@ -101,7 +101,7 @@ public class JmppLib implements JmppLibIntf {
      * String.
      * @see #screenString(String)
      */
-	public static final String stringContextScreenMethod = "screenString";
+    public static final String stringContextScreenMethod = "screenString";
 
     /**
      * Standard extension of a Java source file.
@@ -111,48 +111,48 @@ public class JmppLib implements JmppLibIntf {
     /**
      * A directory to put the generated sources into.
      */
-	protected String outputDir = ".";
+    protected String outputDir = ".";
 
     /**
      * A vector of delayed macros.
      */
-	protected Vector unflushedMacros = new Vector();
+    protected Vector unflushedMacros = new Vector();
 
     /**
      * StringBuffer object to fill output into, if set.
      * @see #setOutput
      */
-	protected StringBuffer outBuffer;
+    protected StringBuffer outBuffer;
 
     /**
      * Variable to store name of the file to write the output to.
      */
-	public String outName;
+    public String outName;
 
     /**
      * Stream where all error/warning messages of the underlying
      * JmppReader are redirected.
      */
-	protected PrintWriter log = new PrintWriter(System.err, true);
+    protected PrintWriter log = new PrintWriter(System.err, true);
 
     /**
      * Macro containing the name of a currently generated source file
      * without extension.
      * @see #setOutput(String)
      */
-	protected String fileName;
+    protected String fileName;
 
     /**
      * Contains short class name of the i-program.
      * Assigned at the second (generation) step.
      * @see #setOutput
      */
-	protected String className;
+    protected String className;
 
     /**
      * Contains a name of the intermediate class package.
      */
-	public String templatePackage = "template"; //KONST: should be protected!
+    public String templatePackage = "template"; //KONST: should be protected!
 
     /**
      * Lib specific suffix for generated file/class names
@@ -168,20 +168,20 @@ public class JmppLib implements JmppLibIntf {
      * Contains name of a directory where the i-program
      * and its compiled class are placed.
      */
-	protected String workJavaDir = ".";
+    protected String workJavaDir = ".";
 
     /**
      * 'dirname' (in unix sense) of the inFile.
      * Default is current dir.
      * @see #inFile
      */
-	protected String inDir = "." + File.separator;
+    protected String inDir = "." + File.separator;
 
     /**
      * Specifies whether old-style macros should be processed
      * @see #transform(String)
      */
-	protected boolean processOldMacroInTextBlocks = false;
+    protected boolean processOldMacroInTextBlocks = false;
 
     /**
      * First step preprocessor instance. Created to transform a jmpp source
@@ -189,14 +189,14 @@ public class JmppLib implements JmppLibIntf {
      * (xLib) step preprocessor instance. Currently not used, but maybe
      * necessary to be used in jmpp source files.
      */
-	protected JmppLib stepOneLib;
+    protected JmppLib stepOneLib;
 
     /**
      * Second step preprocessor instance. Created by the first step
      * preprocessor instance (stepOneLib). Performs actual generation of output.
      * Actually contains a reference to the i-class instance.
      */
-	protected JmppLib stepTwoLib;
+    protected JmppLib stepTwoLib;
 
     /**
      * Name of a main Java compiler class, used to compile the i-program.
@@ -224,12 +224,12 @@ public class JmppLib implements JmppLibIntf {
      * Controls whether the generated (at the first step) i-program
      * gets compiled and run by the preprocessor or not.
      */
-	protected boolean doCompilation = true;
+    protected boolean doCompilation = true;
 
     /**
      * Keeps input file name (usually, jmpp source file name).
      */
-	protected String inName = null;
+    protected String inName = null;
 
     /**
      * maps a test name to a vector of the test's sources
@@ -256,10 +256,10 @@ public class JmppLib implements JmppLibIntf {
      * via the main(String[]) method.
      * @param in File object corresponding to a file to be processed.
      */
-	public JmppLib(File in) {
-		inFile = in;
-		inName = in.getName();
-	}
+    public JmppLib(File in) {
+        inFile = in;
+        inName = in.getName();
+    }
 
     /**
      * Generates 'prolog' of the i-program: package, i-class and makeOut method
@@ -271,12 +271,12 @@ public class JmppLib implements JmppLibIntf {
      * @param out where to output the prolog
      * @param shortClassName short i-class name (without package)
      */
-	protected void generateProlog(PrintWriter out, String shortClassName) {
-		out.println("package " + templatePackage + ";\n");
-		out.println("public class " + shortClassName+" extends " +
+    protected void generateProlog(PrintWriter out, String shortClassName) {
+        out.println("package " + templatePackage + ";\n");
+        out.println("public class " + shortClassName+" extends " +
                     getClass().getName()+" {");
-		out.println("public void makeOut() {");
-	}
+        out.println("public void makeOut() {");
+    }
 
     /**
      * Generates 'epilog' of the i-program: closing brace for makeOut method
@@ -284,11 +284,11 @@ public class JmppLib implements JmppLibIntf {
      * @param out where to output the epilog
      * @param shortClassName short i-class name (without package)
      */
-	protected void generateEpilog(PrintWriter out, String shortClassName) {
-		out.println("\n}");
-		generateMain(out, shortClassName);
-		out.println("}");
-	}
+    protected void generateEpilog(PrintWriter out, String shortClassName) {
+        out.println("\n}");
+        generateMain(out, shortClassName);
+        out.println("}");
+    }
 
     /**
      * Generates main method of the i-class (which simply creates an instance
@@ -298,29 +298,29 @@ public class JmppLib implements JmppLibIntf {
      * @see #makeOut()
      * @see #closeOut()
      */
-	protected void generateMain(PrintWriter out, String shortClassName) {
-		String s = getClass().getName().replace('$', '.');
-		out.println("    {");
-		out.println("        className = \"" + shortClassName + "\";");
-		out.println("    }");
-		out.println("    public static void main(String[] argv) {");
-		out.println("        " + s + " x = null;");
-		out.println("        try {");
-		out.println("            x = (" + s + ") Class.forName(\"" +
+    protected void generateMain(PrintWriter out, String shortClassName) {
+        String s = getClass().getName().replace('$', '.');
+        out.println("    {");
+        out.println("        className = \"" + shortClassName + "\";");
+        out.println("    }");
+        out.println("    public static void main(String[] argv) {");
+        out.println("        " + s + " x = null;");
+        out.println("        try {");
+        out.println("            x = (" + s + ") Class.forName(\"" +
                     intermediateClassName + "\").newInstance();");
-		out.println("        } catch (Throwable e) {\n"+
+        out.println("        } catch (Throwable e) {\n"+
                     "            System.err.println(\"" + shortClassName +
                     " error:\");\n" +
                     "            e.printStackTrace();\n" +
                     "            throw new com.sun.jmpp.JmppException" +
                     "(\"Could not create library instance\");\n" +
                     "        }");
-		out.println("        if (argv.length > 0)");
-		out.println("            x.outName = argv[0];");
-		out.println("        x.makeOut();");
-		out.println("        x.closeOut();");
-		out.println("    }");
-	}
+        out.println("        if (argv.length > 0)");
+        out.println("            x.outName = argv[0];");
+        out.println("        x.makeOut();");
+        out.println("        x.closeOut();");
+        out.println("    }");
+    }
 
     /**
      * Base method that screens all double quotes and backslashes of
@@ -331,24 +331,24 @@ public class JmppLib implements JmppLibIntf {
      * all macros are dynamically screened so it would be passed to
      * final output as it is.
      */
-	public String screenString(String stringToScreen) {
-		String newString = new String();
-		char c;
-		if (stringToScreen == null)
-			throw new JmppException(JmppException.SYNTAX_ERROR,
+    public String screenString(String stringToScreen) {
+        String newString = new String();
+        char c;
+        if (stringToScreen == null)
+            throw new JmppException(JmppException.SYNTAX_ERROR,
                                     "macro used in string context is null.");
-		else
-			for (int i = 0; i < stringToScreen.length(); i++) {
-				c = stringToScreen.charAt(i);
-				if (c == '\\' || c == '"') {
-					newString += "\\";
+        else
+            for (int i = 0; i < stringToScreen.length(); i++) {
+                c = stringToScreen.charAt(i);
+                if (c == '\\' || c == '"') {
+                    newString += "\\";
                 }
-				newString += c;
-			}
-		return newString;
-	}
+                newString += c;
+            }
+        return newString;
+    }
 
-	public String screenString(int value) {
+    public String screenString(int value) {
         return new Integer(value).toString();
     }
 
@@ -356,23 +356,23 @@ public class JmppLib implements JmppLibIntf {
         return new Boolean(value).toString();
     }
 
-	public String screenString(float value) {
+    public String screenString(float value) {
         return new Float(value).toString();
     }
 
-	public String screenString(double value) {
+    public String screenString(double value) {
         return new Double(value).toString();
     }
 
-	public String screenString(char value) {
+    public String screenString(char value) {
         return new Character(value).toString();
     }
 
-	public String screenString(byte value) {
+    public String screenString(byte value) {
         return new Byte(value).toString();
     }
 
-	public String screenString(short value) {
+    public String screenString(short value) {
         return new Short(value).toString();
     }
 
@@ -386,25 +386,25 @@ public class JmppLib implements JmppLibIntf {
      * prolog and epilog generation methods in a library, and this method -
      * in the jmpp source file itself.
      */
-	public void makeOut() {}
+    public void makeOut() {}
 
     /**
      * Output a string with trailing '\n'. You do not normally need to
      * call this method.
      * @param s a string to be written to set up output.
      */
-	protected void L(String s) {
-		lEndOfLine(s, "\n");
-	}
+    protected void L(String s) {
+        lEndOfLine(s, "\n");
+    }
 
     /**
      * Output a string without trailing '\n'. You do not normally need
      * to call this method.
      * @param s a string to be written to set up output.
      */
-	protected void LN(String s) {
-		lEndOfLine(s, "");
-	}
+    protected void LN(String s) {
+        lEndOfLine(s, "");
+    }
 
     /**
      * Output a string to set up output file. You do not normally need
@@ -412,51 +412,51 @@ public class JmppLib implements JmppLibIntf {
      * @param s a string to be written to set up output.
      * @param eol string epilog
      */
-	protected void lEndOfLine(String s, String eol) {
-		if (outBuffer == null)
-			setOutput(outName);
-		if (s != null)
-			outBuffer.append(s + eol);
-	}
+    protected void lEndOfLine(String s, String eol) {
+        if (outBuffer == null)
+            setOutput(outName);
+        if (s != null)
+            outBuffer.append(s + eol);
+    }
 
     /**
      * You have to call this method when you have to change the output file.
      * @param fileName name of the file to set the output to.
      */
-	protected void setOutput(String fileName) {
-		closeOut();
-		this.fileName = fileName;
-		outBuffer = new StringBuffer();
-	}
+    protected void setOutput(String fileName) {
+        closeOut();
+        this.fileName = fileName;
+        outBuffer = new StringBuffer();
+    }
 
     /**
      * Final output is first written to a StringBuffer, this method flushes the
      * StringBuffer to designated file.
      */
-	public void closeOut() {
-		if (outBuffer == null)
-			return;
-		DelayedMacro dm;
-		// now, flush all macros we have in the
-		// vector unflushedMacros (unflushed explicitly)
-		String strOut = outBuffer.toString();
-		for (int i = 0; i < unflushedMacros.size(); i++) {
-			dm = (DelayedMacro)unflushedMacros.elementAt(i);
-			strOut = replace(strOut, dm.anchor, dm.value, 0);
-		}
-		unflushedMacros = new Vector();
-		try {
-			outBuffer = null;
-			BufferedWriter bufOut = createOutputWriter();
+    public void closeOut() {
+        if (outBuffer == null)
+            return;
+        DelayedMacro dm;
+        // now, flush all macros we have in the
+        // vector unflushedMacros (unflushed explicitly)
+        String strOut = outBuffer.toString();
+        for (int i = 0; i < unflushedMacros.size(); i++) {
+            dm = (DelayedMacro)unflushedMacros.elementAt(i);
+            strOut = replace(strOut, dm.anchor, dm.value, 0);
+        }
+        unflushedMacros = new Vector();
+        try {
+            outBuffer = null;
+            BufferedWriter bufOut = createOutputWriter();
             String tmp = postProcessOutput(strOut, getOutputFile());
             strOut = tmp == null ? strOut : tmp;
-			bufOut.write(strOut, 0, strOut.length());
-			bufOut.flush();
-			bufOut.close();
-		} catch (IOException e) {
+            bufOut.write(strOut, 0, strOut.length());
+            bufOut.flush();
+            bufOut.close();
+        } catch (IOException e) {
             throw new JmppException(e);
-		}
-	}
+        }
+    }
 
     /**
      * @return the File object corresponding to the file
@@ -487,20 +487,20 @@ public class JmppLib implements JmppLibIntf {
      * @return BufferedWriter which can be used to write to the final output
      *         file
      */
-	protected BufferedWriter createOutputWriter() throws IOException {
-		String dir2Create = outputDir;
-		if (outputDir.equals(".")) {
-			int i = fileName.lastIndexOf(File.separator);
-			if (i != -1)
-				dir2Create = fileName.substring(0, i);
-		}
-		File d = new File(dir2Create);
-		if(!d.exists() && !mkdirs(d))
-			throw new JmppException(JmppException.SYSTEM_ERROR,
+    protected BufferedWriter createOutputWriter() throws IOException {
+        String dir2Create = outputDir;
+        if (outputDir.equals(".")) {
+            int i = fileName.lastIndexOf(File.separator);
+            if (i != -1)
+                dir2Create = fileName.substring(0, i);
+        }
+        File d = new File(dir2Create);
+        if(!d.exists() && !mkdirs(d))
+            throw new JmppException(JmppException.SYSTEM_ERROR,
                                     "can't create directory: " + dir2Create);
         outputFile = new File(fileName);
-		return new BufferedWriter(new FileWriter(fileName));
-	}
+        return new BufferedWriter(new FileWriter(fileName));
+    }
 
     /**
      * Replace all occurrences of 'out' with 'in' for the string 'src',
@@ -511,49 +511,49 @@ public class JmppLib implements JmppLibIntf {
      *       each occurrence of 'out'.
      * @param fromIndex index in the 'src' to start the replacements from.
      */
-	public static String replace(String src,
+    public static String replace(String src,
                                  String out,
                                  String in,
                                  int fromIndex) {
-		while ((fromIndex = src.indexOf(out, fromIndex)) != -1) {
-			src = src.substring(0, fromIndex) + in +
+        while ((fromIndex = src.indexOf(out, fromIndex)) != -1) {
+            src = src.substring(0, fromIndex) + in +
                   src.substring(fromIndex + out.length(), src.length());
-			src = replace(src, out, in, fromIndex);
-		}
-		return src;
-	}
+            src = replace(src, out, in, fromIndex);
+        }
+        return src;
+    }
 
     /**
      * @param s a string (filename)
      * @return the input string without trailing (if any) .*
      */
-	public String trimExtension(String s) {
+    public String trimExtension(String s) {
         int i = s.lastIndexOf('.');
         return (i < 0 ? s : s.substring(0, i));
-	}
+    }
 
     /**
      * Macro to check if specified system property is defined.
      * @param property a property to check.
      */
-	public boolean defined(String property) {
-		return (System.getProperty(property) != null);
-	}
+    public boolean defined(String property) {
+        return (System.getProperty(property) != null);
+    }
 
     /**
      * Sets the output stream for JmppReader messages.
      * @param log stream to set the output to.
      */
-	public void setLog(PrintWriter log) {
-		this.log = log;
-	}
+    public void setLog(PrintWriter log) {
+        this.log = log;
+    }
 
     /**
      * @return output stream for JmppReader messages.
      */
-	public PrintWriter getLog() {
-		return log;
-	}
+    public PrintWriter getLog() {
+        return log;
+    }
 
     /**
      * This class implements a so-called "delayed macro". Sometimes,
@@ -567,35 +567,35 @@ public class JmppLib implements JmppLibIntf {
      * The "occurances" are strings, returned by the macro's underlying
      * Object instance' toString() method.
      */
-	public class DelayedMacro {
-		public String value;
-		public String anchor;
+    public class DelayedMacro {
+        public String value;
+        public String anchor;
 
-		public String toString() {
-			return set();
-		}
+        public String toString() {
+            return set();
+        }
 
-		public String set() {
-			// add this macro to the vector of unflushed macros
-			unflushedMacros.addElement(this);
-			anchor = super.toString(); // Object.toString() - unique string
-			return anchor;
-		}
+        public String set() {
+            // add this macro to the vector of unflushed macros
+            unflushedMacros.addElement(this);
+            anchor = super.toString(); // Object.toString() - unique string
+            return anchor;
+        }
 
-		public void flush() {
-			String strOut = outBuffer.toString();
-			strOut = replace(strOut, anchor, value, 0);
-			outBuffer = new StringBuffer(strOut);
-			unflushedMacros.removeElement(this);
-		}
-	}
+        public void flush() {
+            String strOut = outBuffer.toString();
+            strOut = replace(strOut, anchor, value, 0);
+            outBuffer = new StringBuffer(strOut);
+            unflushedMacros.removeElement(this);
+        }
+    }
 
     /**
      *   Tries to create directory with specified path
      *
      */
     public static boolean mkdirs(String dir) {
-	return mkdirs(new File(dir));
+    return mkdirs(new File(dir));
     }
 
     /**
@@ -603,17 +603,17 @@ public class JmppLib implements JmppLibIntf {
      *
      */
     public static boolean mkdirs(File dir) {
-	if (dir.exists())
-	    return dir.isDirectory();
+    if (dir.exists())
+        return dir.isDirectory();
 
-	File f = dir.isAbsolute()? dir
-				 : dir.getAbsoluteFile();
+    File f = dir.isAbsolute()? dir
+                 : dir.getAbsoluteFile();
 
-	File p = f.getParentFile();
-	if (!mkdirs(p))
-	    return false;
+    File p = f.getParentFile();
+    if (!mkdirs(p))
+        return false;
 
-	return f.mkdir() || f.isDirectory() ;
+    return f.mkdir() || f.isDirectory() ;
     }
 
     /**
@@ -622,31 +622,31 @@ public class JmppLib implements JmppLibIntf {
      * @param name jmpp source file name to be transformed
      * @return i-program's File instance
      */
-	public File transform(String name) throws IOException {
-		File gen_prog;
-		JmppReader br;
-		File d = new File(workJavaDir);
+    public File transform(String name) throws IOException {
+        File gen_prog;
+        JmppReader br;
+        File d = new File(workJavaDir);
 
-		if (!d.exists() && !mkdirs(d)) {
+        if (!d.exists() && !mkdirs(d)) {
             String msg = "can't create working directory: " + workJavaDir;
-			throw new JmppException(JmppException.SYSTEM_ERROR, msg);
+            throw new JmppException(JmppException.SYSTEM_ERROR, msg);
         }
-		if (name != null)
-			br = new JmppReader(new FileReader(inDir + name));
-		else {
-			name = inFile.getName();
-			br = new JmppReader(new FileReader(inFile));
-		}
+        if (name != null)
+            br = new JmppReader(new FileReader(inDir + name));
+        else {
+            name = inFile.getName();
+            br = new JmppReader(new FileReader(inFile));
+        }
         String short_class_name = trimExtension(name) + CLASS_SUFF;
         intermediateClassName = templatePackage + "." + short_class_name;
-		gen_prog = new File(workJavaDir, short_class_name + JAVA_EXT);
-		PrintWriter out = new PrintWriter(new FileWriter(gen_prog), true);
-		br.setLog(log);
-		br.processOldMacroInTextBlocks(processOldMacroInTextBlocks);
-		generateProlog(out, short_class_name);
-		String line = null;
+        gen_prog = new File(workJavaDir, short_class_name + JAVA_EXT);
+        PrintWriter out = new PrintWriter(new FileWriter(gen_prog), true);
+        br.setLog(log);
+        br.processOldMacroInTextBlocks(processOldMacroInTextBlocks);
+        generateProlog(out, short_class_name);
+        String line = null;
         String err_msg = "";
-		while (true) {
+        while (true) {
             try {
                 line = br.readLine();
             } catch (BadSyntaxException e) {
@@ -656,16 +656,16 @@ public class JmppLib implements JmppLibIntf {
             }
             if (line == null)
                 break;
-			out.print(line);
+            out.print(line);
         }
-		generateEpilog(out, short_class_name);
-		br.close();
-		out.close();
+        generateEpilog(out, short_class_name);
+        br.close();
+        out.close();
         if (!err_msg.equals(""))
             throw new JmppException(JmppException.SYNTAX_ERROR, err_msg);
         intermediateSrcName = gen_prog.getAbsolutePath();
-		return gen_prog;
-	}
+        return gen_prog;
+    }
 
     public static final String JAVAC_THREAD_SAFE_PROPERTY_NAME = "javac.thread.safe";
     public static final String JMPP_COMPILER_NAME_PROPERTY = "jmmp.compiler.name";
@@ -689,7 +689,7 @@ public class JmppLib implements JmppLibIntf {
 
         if(jmppCompilerName != null) {
             javacName =  jmppCompilerName;
-        }       
+        }
         try {
             String javacThreadSafety = System.getProperty(JAVAC_THREAD_SAFE_PROPERTY_NAME);
             if (javacThreadSafety == null || !javacThreadSafety.equals("true")){
@@ -706,7 +706,7 @@ public class JmppLib implements JmppLibIntf {
     }
 
 
-   
+
     protected Object compileSuccessive(String[] argv) throws Throwable {
         Object ret;
         Class c = Class.forName(javacName);
@@ -735,22 +735,22 @@ public class JmppLib implements JmppLibIntf {
      * Second step preprocessor routine. Compiles given i-program and runs it.
      * @param inFileName name of the file to be compiled and executed.
      */
-	public void compileAndRun(String inFileName) {
-		try {
+    public void compileAndRun(String inFileName) {
+        try {
             compile(inFileName);
             runXLib();
-		} catch (JmppException e0) {
+        } catch (JmppException e0) {
             throw e0;
-		} catch (Exception e1) {
-			throw new JmppException(e1);
-		}
-	}
+        } catch (Exception e1) {
+            throw new JmppException(e1);
+        }
+    }
 
     /**
      * Shortcut to runXLib(Class) with current i-class.
      * @see #runXLib(Class)
      */
-	protected void runXLib() {
+    protected void runXLib() {
         try {
             Class c = null;
             String name = getIntermediateClassName();
@@ -760,12 +760,12 @@ public class JmppLib implements JmppLibIntf {
                 c = createDirClassLoader().loadClass(name);
             }
             runXLib(c);
-		} catch (JmppException e0) {
+        } catch (JmppException e0) {
             throw e0;
-		} catch (Exception e1) {
-			throw new JmppException(e1);
-		}
-	}
+        } catch (Exception e1) {
+            throw new JmppException(e1);
+        }
+    }
 
     /**
      * Creates DirClassLoader object - a ClassLoader instance to load an intermediate
@@ -799,40 +799,40 @@ public class JmppLib implements JmppLibIntf {
      * Assumes that the parameter is a subclass, and copies (some of)
      * its fields.
      */
-	public void passDataTo(Object o) {
-		JmppLib l = (JmppLib) o;
-		l.stepOneLib = this;
-		l.log		 = log;
-		l.outputDir	 = outputDir;
-		l.outName	 = outName;
-		l.inDir		 = inDir;
-		l.inFile	 = inFile;
-		l.inName	 = inName;
+    public void passDataTo(Object o) {
+        JmppLib l = (JmppLib) o;
+        l.stepOneLib = this;
+        l.log        = log;
+        l.outputDir  = outputDir;
+        l.outName    = outName;
+        l.inDir      = inDir;
+        l.inFile     = inFile;
+        l.inName     = inName;
         l.indexHtml  = indexHtml;
-	}
+    }
 
     /**
      * Performs all steps: transformation, compilation and generation.
      */
-	public void generate() { //KONST: should be protected!
-		try {
+    public void generate() { //KONST: should be protected!
+        try {
             File generator_program = transform(inName);
             if (generator_program != null && doCompilation)
                 compileAndRun(generator_program.getAbsolutePath());
-		} catch (JmppException e0) {
+        } catch (JmppException e0) {
             throw e0;
-		} catch (Exception e1) {
-			throw new JmppException(e1);
-		}
-	}
+        } catch (Exception e1) {
+            throw new JmppException(e1);
+        }
+    }
 
     /**
      * Command-line interface.
      * @param argv command-line arguments
      */
-	public static void main(String[] argv) {
-		libMain(argv, new JmppLib());
-	}
+    public static void main(String[] argv) {
+        libMain(argv, new JmppLib());
+    }
 
     /**
      * This method allows the main (which should be overriden in every
@@ -842,10 +842,10 @@ public class JmppLib implements JmppLibIntf {
      * @param p a library instance which is to parse the command line
      *          and perform preprocessing
      */
-	public static void libMain(String[] argv, JmppLib p) {
-		p.parseOptions(argv);
-		p.generate();
-	}
+    public static void libMain(String[] argv, JmppLib p) {
+        p.parseOptions(argv);
+        p.generate();
+    }
 
     /**
      * Parses given command line according to given descriptors of
@@ -902,9 +902,9 @@ public class JmppLib implements JmppLibIntf {
      * @param argv the command-line
      * @return an object describing all options set in the command line
      */
-	public Options parseOptions(String[] argv) { //KONST: should be protected!
+    public Options parseOptions(String[] argv) { //KONST: should be protected!
         return parseOptions(argv, getValidOptions());
-	}
+    }
 
     /**
      * Override this method in subclasses to construct different set
@@ -926,10 +926,10 @@ public class JmppLib implements JmppLibIntf {
      * @return "concatenation" of arr1 and arr2. arr1 elements come first.
      */
     protected static OptionDescr[] concat(OptionDescr[] arr1, OptionDescr[] arr2) {
-		OptionDescr[] res = new OptionDescr[arr1.length + arr2.length];
-		System.arraycopy(arr1, 0, res, 0, arr1.length);
-		System.arraycopy(arr2, 0, res, arr1.length, arr2.length);
-		return res;
+        OptionDescr[] res = new OptionDescr[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, res, 0, arr1.length);
+        System.arraycopy(arr2, 0, res, arr1.length, arr2.length);
+        return res;
     }
 
     public void error(String msg) {
@@ -974,7 +974,7 @@ public class JmppLib implements JmppLibIntf {
      * @param inFile jmpp source file name
      */
     public void preprocessAndCompile(String inFile) throws Exception {
-		parseOptions(new String[] { inFile });
+        parseOptions(new String[] { inFile });
         File generator_program = transform(inName);
         if (generator_program != null && doCompilation)
             compile(generator_program.getAbsolutePath());
@@ -1011,7 +1011,7 @@ public class JmppLib implements JmppLibIntf {
         return null;
     }
 
-	public void setOutputDir(String s) {
+    public void setOutputDir(String s) {
         outputDir = s;
     }
 
@@ -1023,7 +1023,7 @@ public class JmppLib implements JmppLibIntf {
         workJavaDir = s;
     }
 
-	public String getWorkDir() {
+    public String getWorkDir() {
         return workJavaDir;
     }
 

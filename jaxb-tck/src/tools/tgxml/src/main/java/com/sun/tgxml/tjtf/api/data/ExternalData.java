@@ -23,13 +23,13 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * ExternalData - 
+ * ExternalData -
  *
  * <b>ExternalData</b> describes the data that a test needs to be able to
  * execute.
  *<p>
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -49,7 +49,7 @@ public  interface ExternalData extends Data  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -68,7 +68,7 @@ public  interface ExternalData extends Data  {
     * @see #setSourceName
     */
     public String getSourceName() throws TestFileException;
-     
+
    /**
     *   Set the filename associated with this data.
     *  <p>

@@ -20,7 +20,7 @@
 //
 
 //
-// This file creates an ISODataBase class. This class will hold an entry and 
+// This file creates an ISODataBase class. This class will hold an entry and
 // make note of its ISO-9660 status. A file may violate the ISO specification
 // in more than one way. The first violation will be noted. All others will be
 // ignored.
@@ -57,48 +57,48 @@ public class ISODataBase implements Comparable {
     public static final int CLASH_DIR = 7;
 
     public ISODataBase (File fn) {
-	entry = fn.getAbsolutePath();
-	status = 0;
+    entry = fn.getAbsolutePath();
+    status = 0;
     }
-  
+
     public ISODataBase (String baseDirectory, File fn) {
-	entry = fn.getAbsolutePath().substring (baseDirectory.length());
-	status = 0;
+    entry = fn.getAbsolutePath().substring (baseDirectory.length());
+    status = 0;
     }
 
     public ISODataBase (String file, int status) {
-	entry = file;
-	this.status = status;
+    entry = file;
+    this.status = status;
     }
 
     public int getStatus () {
-	return status;
+    return status;
     }
     public String getEntry() {
-	return entry;
+    return entry;
     }
     //
     // Implement the comparable interface
     //
     public int compareTo (Comparable obj) {
-	int retVal;
-	if (obj instanceof ISODataBase) {
-	    retVal = this.entry.compareTo (((ISODataBase) obj).entry);
-	}
-	else {
-	    retVal = -1;
-	}
-	return retVal;
+    int retVal;
+    if (obj instanceof ISODataBase) {
+        retVal = this.entry.compareTo (((ISODataBase) obj).entry);
+    }
+    else {
+        retVal = -1;
+    }
+    return retVal;
     }
 
     public boolean equals (Comparable obj) {
-	boolean retVal;
-	if (obj instanceof ISODataBase) {
-	    retVal = this.entry.equals (((ISODataBase) obj).entry);
-	}
-	else {
-	    retVal = false;
-	}
-	return retVal;
+    boolean retVal;
+    if (obj instanceof ISODataBase) {
+        retVal = this.entry.equals (((ISODataBase) obj).entry);
+    }
+    else {
+        retVal = false;
+    }
+    return retVal;
     }
 }

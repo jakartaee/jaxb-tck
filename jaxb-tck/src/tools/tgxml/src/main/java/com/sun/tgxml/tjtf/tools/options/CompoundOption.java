@@ -28,8 +28,8 @@ import java.util.Vector;
  * <tt>getUsageInfo()</tt> combined info for all registred options
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -37,12 +37,12 @@ public class CompoundOption implements Option {
 
     /**
      * array of registred options
-     */   
+     */
     protected Vector options = null;
 
     /**
      * flag indicating whether option is set or non
-     */   
+     */
     protected boolean isSet = false;
 
     /**
@@ -59,7 +59,7 @@ public class CompoundOption implements Option {
          }
     }
 
-    /** 
+    /**
      * Adds new option to the list
      */
     public void addOption(Option op) {
@@ -68,7 +68,7 @@ public class CompoundOption implements Option {
     }
 
 
-    /** 
+    /**
      * Removes option from the list
      */
     public void removeOption(Option op) {
@@ -113,13 +113,13 @@ public class CompoundOption implements Option {
      * Returns string with usage info for this option
      */
     public String getUsageInfo() {
-        if (usageInfo != null) 
+        if (usageInfo != null)
             return usageInfo;
         StringBuffer sb = new StringBuffer();
         Enumeration list = options.elements();
         while (list.hasMoreElements()) {
             sb.append(((Option)list.nextElement()).getUsageInfo());
-            if (list.hasMoreElements()) 
+            if (list.hasMoreElements())
                 sb.append("\n");
         }
         return sb.toString();

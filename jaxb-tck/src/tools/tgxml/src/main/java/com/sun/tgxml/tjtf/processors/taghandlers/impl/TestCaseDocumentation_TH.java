@@ -32,47 +32,47 @@ import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
-/** 
- * TestCaseDocumentation_TH - The tag-handler for a TestCaseDocumentation tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    TestCaseDocumentation_TH 
- * ============================================================================================ 
- */ 
+/**
+ * TestCaseDocumentation_TH - The tag-handler for a TestCaseDocumentation tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    TestCaseDocumentation_TH
+ * ============================================================================================
+ */
 public class TestCaseDocumentation_TH extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   TestCaseDocumentation_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   TestCaseDocumentation_TH constructor -
+    *       Initialize our internal fields.
+    */
     public TestCaseDocumentation_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ public class TestCaseDocumentation_TH extends TagHandlerImpl  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_testcasedocumentation;
+    return TagsImpl.ctStr_tag_testcasedocumentation;
     }
 
     //------------------------------------------------------------------------------
@@ -96,19 +96,19 @@ public class TestCaseDocumentation_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void startTag(org.xml.sax.Attributes attrs) throws SAXException {
-	super.startTag(attrs);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
-	if (! (testitem instanceof TestCase))
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcase));
+    super.startTag(attrs);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
+    if (! (testitem instanceof TestCase))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcase));
 
-	TestCaseDocumentation tcd  = DocumentationFactory.createTestCaseDocumentation();
-	TestCase tc = (TestCase) testitem;
-	tc.setTCDocumentation(tcd);
-	testItemStack.push(tcd);
+    TestCaseDocumentation tcd  = DocumentationFactory.createTestCaseDocumentation();
+    TestCase tc = (TestCase) testitem;
+    tc.setTCDocumentation(tcd);
+    testItemStack.push(tcd);
 
     }
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -116,67 +116,67 @@ public class TestCaseDocumentation_TH extends TagHandlerImpl  {
     * @see #endTag
     */
     public void endTag() throws SAXException {
-	super.endTag();
-	try {
-	    Stack testItemStack = m_ParserHandler.getStack();
+    super.endTag();
+    try {
+        Stack testItemStack = m_ParserHandler.getStack();
 
-	    Object testitem = testItemStack.pop();
+        Object testitem = testItemStack.pop();
 
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if (! (testitem instanceof TestCaseDocumentation))
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
+        if (! (testitem instanceof TestCaseDocumentation))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.inconsistentstack", getTagName()));
 
-	} catch (EmptyStackException e) {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
-	}
+    } catch (EmptyStackException e) {
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.emptystack.pop"));
     }
-     
+    }
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-          
-          
+
+
+
   /**
     *   emit a tags components.
     *  <p>
     */
     public void emitComponents(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof TestCaseDocumentation))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"TestCaseDocumentation", tdObject.getClass().getName()));
+    if (! (tdObject instanceof TestCaseDocumentation))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "TestCaseDocumentation", tdObject.getClass().getName()));
 
-	TestCaseDocumentation tcd = (TestCaseDocumentation) tdObject;
+    TestCaseDocumentation tcd = (TestCaseDocumentation) tdObject;
 
-	String title = tcd.getTitle();
-	if (title != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_title, title);
+    String title = tcd.getTitle();
+    if (title != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_title, title);
 
-	String description = tcd.getDescription();
-	if (description != null)
-	    m_EmitterHandler.emit(TagsImpl.ctStr_tag_description, description);
+    String description = tcd.getDescription();
+    if (description != null)
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_description, description);
 
 
 
-	ArrayList authors = tcd.getAuthors();
-	if (authors != null) {
-	    Iterator it2 = authors.iterator();
+    ArrayList authors = tcd.getAuthors();
+    if (authors != null) {
+        Iterator it2 = authors.iterator();
 
-	    while (it2.hasNext()) {
-		m_EmitterHandler.emit(TagsImpl.ctStr_tag_author, it2.next());
-	    }
-	}
+        while (it2.hasNext()) {
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_author, it2.next());
+        }
+    }
 
-	ArrayList tcspecs = tcd.getTestCaseSpecs();
-	if (tcspecs != null) {
-	    Iterator it3 = tcspecs.iterator();
+    ArrayList tcspecs = tcd.getTestCaseSpecs();
+    if (tcspecs != null) {
+        Iterator it3 = tcspecs.iterator();
 
-	    while (it3.hasNext()) {
-		m_EmitterHandler.emit(TagsImpl.ctStr_tag_testcasespec, it3.next());
-	    }
-	}
+        while (it3.hasNext()) {
+        m_EmitterHandler.emit(TagsImpl.ctStr_tag_testcasespec, it3.next());
+        }
+    }
 
     }
 

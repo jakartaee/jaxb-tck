@@ -24,24 +24,24 @@ import java.io.IOException;
  * JCKHtmlFile is a JCK specific representation of html file.
  * This class provides methods to read an html title from the html file.
  * It also contains method that parses html file to detect description
- * for lang/vm tests. It makes an assumption that lang/vm descrption 
+ * for lang/vm tests. It makes an assumption that lang/vm descrption
  * stored in the one of the followin formats:
  *   1.  <b></big> 'something' </big></b> - 'desription' <p>
  *   2.  <b></big> 'something' - 'desription' </big></b>
  */
 
 public class JCKHtmlFile extends DefaultHtmlFile {
-   
+
     protected String descr = null;
-    
-    /** 
+
+    /**
      * create JCKHtmlFile object from the file.
      * the html file is parsed and the title of the html file became a title
      * of the oblect
      */
     public JCKHtmlFile(File name) throws IOException {
         super(name);
-        this.descr = findDescr(buf);        
+        this.descr = findDescr(buf);
     }
 
     private String findDescr(StringBuffer buf) {
@@ -50,11 +50,11 @@ public class JCKHtmlFile extends DefaultHtmlFile {
         String str = buf.toString().toLowerCase();
         int start = str.indexOf("</big></b> -");
         int end = -1;
-        if (start > -1) {   
+        if (start > -1) {
             end = str.indexOf("<p>", start);
             if (start >= end) {
                 return "";
-            }    
+            }
             start += 12;
         } else {
             start = str.indexOf("<b><big>");

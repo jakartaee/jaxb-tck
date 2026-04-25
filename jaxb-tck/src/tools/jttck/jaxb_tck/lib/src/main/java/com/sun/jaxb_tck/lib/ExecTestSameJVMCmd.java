@@ -99,30 +99,30 @@ public class ExecTestSameJVMCmd extends Command {
                     (String) m2.invoke(result));
 
         } catch (NoSuchMethodException e) {
-        	e.printStackTrace(log);
+            e.printStackTrace(log);
             return Status.failed("Can't load test: " + e);
         } catch (java.lang.reflect.InvocationTargetException e) {
-        	e.printStackTrace(log);
+            e.printStackTrace(log);
             return Status.failed("Can't load test: " + e.getCause());
         } catch (ClassCastException e) {
-        	e.printStackTrace(log);
+            e.printStackTrace(log);
             return Status.failed("Can't load test: " + e);
         } catch (ClassNotFoundException e) {
-        	e.printStackTrace(log);
+            e.printStackTrace(log);
             return Status.failed("Can't load test: " + e);
         } catch (InstantiationException e) {
-        	e.printStackTrace(log);
+            e.printStackTrace(log);
             return Status.failed("Can't instantiate test: " + e);
         } catch (IllegalAccessException e) {
-        	e.printStackTrace(log);
+            e.printStackTrace(log);
             return Status.failed("Illegal access to test: " + e);
         } catch (VerifyError e) {
-        	e.printStackTrace(log);
+            e.printStackTrace(log);
             return Status
                     .failed("Class verification error while trying to load test class `"
                             + className + "': " + e);
         } catch (LinkageError e) {
-        	e.printStackTrace(log);
+            e.printStackTrace(log);
             return Status
                     .failed("Class linking error while trying to load test class `"
                             + className + "': " + e);

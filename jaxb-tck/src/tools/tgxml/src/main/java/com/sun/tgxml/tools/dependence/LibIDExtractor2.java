@@ -33,8 +33,8 @@ import com.sun.tgxml.tools.filter.libutil.LibMap;
 import com.sun.tgxml.util.IR;
 
 /**
- * The <code>LibIDExtractor2</code> is a list of library identifiers 
- * capable to extract the identifiers from the given <i>TestGroup</i> 
+ * The <code>LibIDExtractor2</code> is a list of library identifiers
+ * capable to extract the identifiers from the given <i>TestGroup</i>
  * and store the list to the file. <br>
  * If the <code>LibIDExtractor2</code> is constructed with <strong>outUpdatesFileName</strong>
  * defined then only new entries are written to the  <strong>outUpdatesFileName</strong>.
@@ -48,13 +48,13 @@ public class LibIDExtractor2 extends LibIDList {
     protected String fileName;
 
     /**
-     * Name of the file where updates of the list are written to. 
+     * Name of the file where updates of the list are written to.
      * If set to null the input file is updated.
      */
     protected String outUpdatesFileName;
 
     /**
-     * The updates are collected there if output file is defined. 
+     * The updates are collected there if output file is defined.
      */
     protected LibIDList updates;
 
@@ -80,7 +80,7 @@ public class LibIDExtractor2 extends LibIDList {
     /**
      * Constructs the list which updates the given output file with new entries found.
      * @param fileName
-     *        name of the file where the list is read. If the name is null no pre-existent 
+     *        name of the file where the list is read. If the name is null no pre-existent
      *        entries are read so all found entries are treated new.
      * @param outFileName
      *        name of the file where updates of the list are written to.
@@ -98,24 +98,24 @@ public class LibIDExtractor2 extends LibIDList {
     }
 
     private void addEntry(String libID) {
-	if (!addString(libID))
-	    return;
+    if (!addString(libID))
+        return;
 
-	newFound = true;
+    newFound = true;
 
-	if (updates == null) {
-	    if (outUpdatesFileName == null)
-		return;
-	    else
-		updates = new LibIDList();
-	}
-	updates.addString(libID);
+    if (updates == null) {
+        if (outUpdatesFileName == null)
+        return;
+        else
+        updates = new LibIDList();
     }
-    
+    updates.addString(libID);
+    }
+
 
     /**
-     * Adds to the list all external library identifiers referred by the given 
-     * test group, its test cases and selected inline libraries. 
+     * Adds to the list all external library identifiers referred by the given
+     * test group, its test cases and selected inline libraries.
      * Makes selecting of inline libraries. Every selected inline library
      * should be dependent on some testcase or other selected inline library.
      *
@@ -134,7 +134,7 @@ public class LibIDExtractor2 extends LibIDList {
         extract(testGroup, dependentInlineLibIDs);
         ArrayList testCases = testGroup.getTestCases();
         if (testCases != null) {
-            for(Iterator it = testCases.iterator(); it.hasNext();) { 
+            for(Iterator it = testCases.iterator(); it.hasNext();) {
                 extract((TestCase)it.next(), dependentInlineLibIDs);
             }
         }
@@ -156,12 +156,12 @@ public class LibIDExtractor2 extends LibIDList {
 
     }
 
-    /** 
+    /**
      * Extracts depenedecies from passed TestItem.
      * Adds inline depenedecies to the inlineDeps list,
      * Invoke addEntry() method for external depenedecies.
      */
-    private void extract(TestItem ti, ArrayList inlineDeps)  
+    private void extract(TestItem ti, ArrayList inlineDeps)
             throws TestFileException {
 
         ArrayList depLibs = IR.getDependentLibs(ti);
@@ -194,7 +194,7 @@ public class LibIDExtractor2 extends LibIDList {
      * @throws FileNotFoundException
      * @see #LibIDExtractor2(String fileName)
      */
-    public void close() 
+    public void close()
             throws java.io.IOException, java.io.FileNotFoundException {
         if (! newFound)
             return;
@@ -204,7 +204,7 @@ public class LibIDExtractor2 extends LibIDList {
             if (fileName == null)
                 return;
             else
-		fn = fileName;
+        fn = fileName;
         }
         FileOutputStream fos = new FileOutputStream(fn);
         if (outUpdatesFileName == null)

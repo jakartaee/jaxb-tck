@@ -21,13 +21,13 @@ package com.sun.tgxml.tjtf.api.code;
 // </importgen>
 
 /**
- * SupportCode - 
+ * SupportCode -
  *
  * <b>SupportCode</b> is the marker interface to a class structure that describes the root of a test description.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -46,7 +46,7 @@ public  interface SupportCode extends InlineCode {
      *    Methods
      * ============================================================================================
      */
-   
+
 
 }
 

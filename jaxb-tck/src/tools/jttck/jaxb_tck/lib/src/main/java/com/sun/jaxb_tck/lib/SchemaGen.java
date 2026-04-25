@@ -22,14 +22,14 @@ import java.util.LinkedList;
 
 
 /**
- * Wrapper to generate schema in sameJVM mode. It invokes the schema 
- * generate method that is supplied by SUN's reference implementation.  
+ * Wrapper to generate schema in sameJVM mode. It invokes the schema
+ * generate method that is supplied by SUN's reference implementation.
  *
  * @author  Leonid Kuskov
  * @version 1.9
  */
 public class SchemaGen implements SchemaGenTool {
-    
+
     /**
      * Invokes  the SUN implemented internal tool to perform schema generation.
      *
@@ -38,42 +38,42 @@ public class SchemaGen implements SchemaGenTool {
      * @param err   An additional stream to which to write output.
      * @return      The result of the command
      */
-    public int generate(String[] javaFiles, File outDir, 
-    		final PrintStream out, final PrintStream err) throws Exception {
+    public int generate(String[] javaFiles, File outDir,
+            final PrintStream out, final PrintStream err) throws Exception {
         LinkedList<String> schemaGenArgs = new LinkedList<String>();
-        
+
         schemaGenArgs.add("-d");
-        schemaGenArgs.add(outDir.getAbsolutePath());        
-        
+        schemaGenArgs.add(outDir.getAbsolutePath());
+
         if ( javaFiles == null || javaFiles.length == 0 ) {
-        	throw new Invoker.ArgumentException("No java file(s) specified.");
+            throw new Invoker.ArgumentException("No java file(s) specified.");
         }
-        
+
         for (String javaFile : javaFiles)
             schemaGenArgs.add(javaFile);
 
-        String[] args = (String[])schemaGenArgs.toArray( new String[schemaGenArgs.size()]); 
-        
+        String[] args = (String[])schemaGenArgs.toArray( new String[schemaGenArgs.size()]);
+
         try {
-        	/* Invoke Standalone RI */
-        	return com.sun.tools.jxc.SchemaGenerator.run(args);
+            /* Invoke Standalone RI */
+            return com.sun.tools.jxc.SchemaGenerator.run(args);
         } catch (Throwable ex) {
             String msg = ex.getMessage();
-			throw new Exception("The schemagen invoker SchemaGenerator.run(" + 
-					_toString(args) + ") failed\n" 
-					+ (msg != null ? " with the message \"" + msg + "\" " : ""));
+            throw new Exception("The schemagen invoker SchemaGenerator.run(" +
+                    _toString(args) + ") failed\n"
+                    + (msg != null ? " with the message \"" + msg + "\" " : ""));
         }
     }
-	
-	static private String _toString(String[] a){
-		StringBuilder sb = new StringBuilder(" ");
-		for(String s : a){
-				sb.append(s + ", ");
-		}
-		sb.deleteCharAt(sb.length()-2);
-		return sb.toString();
-	}    
-    
+
+    static private String _toString(String[] a){
+        StringBuilder sb = new StringBuilder(" ");
+        for(String s : a){
+                sb.append(s + ", ");
+        }
+        sb.deleteCharAt(sb.length()-2);
+        return sb.toString();
+    }
+
 }
 
 

@@ -25,7 +25,7 @@ import com.sun.tgxml.tjtf.api.attributes.Attributes;
 // </importgen>
 
 /**
- * Attributes - 
+ * Attributes -
  *
  * <b>Attributes</b> is the basic interface for describing the build and target attributes
  * that a test can have.
@@ -38,15 +38,15 @@ import com.sun.tgxml.tjtf.api.attributes.Attributes;
  *  </ul> <br>
  *
  * <p>
- * <b>Attributes</b> are registered with a <b>TestGroup</b>, <b>Library</b>, and <b>TestCase</b> 
- *  elements.  
- * <p> 
+ * <b>Attributes</b> are registered with a <b>TestGroup</b>, <b>Library</b>, and <b>TestCase</b>
+ *  elements.
+ * <p>
  * Each of the fields above have setter and getter methods that return information based
- * on the local description for that element.  
+ * on the local description for that element.
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -65,7 +65,7 @@ public  class  AttributesImpl implements Attributes  {
      *    Fields
      * ============================================================================================
      */
-   
+
     private ArrayList m_RequiredResources;
     private ArrayList m_AttrElems;
     private ArrayList m_TargetSpecs;
@@ -75,41 +75,41 @@ public  class  AttributesImpl implements Attributes  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
     public AttributesImpl() {
-	init();
+    init();
     }
 
 
     public AttributesImpl(ArrayList reqResources, ArrayList attrElems, ArrayList targetSpecs) {
-	init();
-	setRequiredResources(reqResources);
-	setAttrElems(attrElems);
-	setTargetSpecs(targetSpecs);
+    init();
+    setRequiredResources(reqResources);
+    setAttrElems(attrElems);
+    setTargetSpecs(targetSpecs);
     }
 
 
 
     private void init() {
-	if (m_RequiredResources == null)
-	    m_RequiredResources = new ArrayList();
-	else
-	    m_RequiredResources.clear();
+    if (m_RequiredResources == null)
+        m_RequiredResources = new ArrayList();
+    else
+        m_RequiredResources.clear();
 
-	if (m_AttrElems == null)
-	    m_AttrElems = new ArrayList();
-	else
-	    m_AttrElems.clear();
+    if (m_AttrElems == null)
+        m_AttrElems = new ArrayList();
+    else
+        m_AttrElems.clear();
 
-	if (m_TargetSpecs == null)
-	    m_TargetSpecs = new ArrayList();
-	else
-	    m_TargetSpecs.clear();
+    if (m_TargetSpecs == null)
+        m_TargetSpecs = new ArrayList();
+    else
+        m_TargetSpecs.clear();
 
 
     }
@@ -132,9 +132,9 @@ public  class  AttributesImpl implements Attributes  {
     * @see #setRequiredResources
     */
     public ArrayList getRequiredResources() {
-	return m_RequiredResources;
+    return m_RequiredResources;
     }
-     
+
    /**
     *   Set the required-resources associated with this entity.
     *  <p>
@@ -146,7 +146,7 @@ public  class  AttributesImpl implements Attributes  {
     * @see #getRequiredResources
     */
     public void setRequiredResources(ArrayList reqres) {
-	m_RequiredResources = reqres;
+    m_RequiredResources = reqres;
     }
 
 
@@ -161,9 +161,9 @@ public  class  AttributesImpl implements Attributes  {
     * @see #setAttrElems
     */
     public ArrayList getAttrElems() {
-	return m_AttrElems;
+    return m_AttrElems;
     }
-     
+
    /**
     *   Set the repository-specific attributes associated with this entity.
     *  <p>
@@ -175,7 +175,7 @@ public  class  AttributesImpl implements Attributes  {
     * @see #getAttrElems
     */
     public void setAttrElems(ArrayList attrelems) {
-	m_AttrElems = attrelems;
+    m_AttrElems = attrelems;
     }
 
 
@@ -191,9 +191,9 @@ public  class  AttributesImpl implements Attributes  {
     * @see #setTargetSpecs
     */
     public ArrayList getTargetSpecs() {
-	return m_TargetSpecs;
+    return m_TargetSpecs;
     }
-     
+
    /**
     *   Set the specifications associated with this entity.
     *  <p>
@@ -205,7 +205,7 @@ public  class  AttributesImpl implements Attributes  {
     * @see #getTargetSpecs
     */
     public void setTargetSpecs(ArrayList specs) {
-	m_TargetSpecs = specs;
+    m_TargetSpecs = specs;
     }
 
 

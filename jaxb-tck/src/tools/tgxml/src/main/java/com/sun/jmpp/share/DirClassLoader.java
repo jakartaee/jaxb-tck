@@ -88,7 +88,7 @@ public class DirClassLoader extends ClassLoader {
      * ClassNotFoundException. For more information see Java API docs.
      * @param name class name
      * @return a Class object for the class with given name
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     protected Class findClass(String name) throws ClassNotFoundException {
         String class_file_name = name.replace('.', File.separatorChar);
@@ -134,11 +134,11 @@ public class DirClassLoader extends ClassLoader {
 
     /**
      * Loads a class.
-     * @param name    class name 
+     * @param name    class name
      * @param resolve indicates whether the class should be resolved
      *                (via ClassLoader.resolveClass)
      * @return a Class object for the class
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     protected Class loadClass(String name, boolean resolve)
         throws ClassNotFoundException {

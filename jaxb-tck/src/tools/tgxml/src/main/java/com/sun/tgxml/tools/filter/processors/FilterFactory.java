@@ -32,7 +32,7 @@ public abstract class FilterFactory {
 
     /**
      * The method is used to get a factory instance
-     *  initialized with plugin 
+     *  initialized with plugin
      *
      * @param      pluginClassName    full name of main plugin class.
      * @return     FilterFactory instance.
@@ -40,21 +40,21 @@ public abstract class FilterFactory {
      */
     public static FilterFactory newInstance(String pluginClassName)
                                               throws FilteringException {
-	try {
-	    Class pluginClass = Class.forName(pluginClassName);
-	    Object plugin = pluginClass.newInstance();
-	    return (FilterFactory)plugin;
-	} catch (Throwable thr) {
-	    throw new FilteringException(
+    try {
+        Class pluginClass = Class.forName(pluginClassName);
+        Object plugin = pluginClass.newInstance();
+        return (FilterFactory)plugin;
+    } catch (Throwable thr) {
+        throw new FilteringException(
                             LibResHandler.getResStr("filter.error.factory.loadPlugin", thr.toString()) );
-	}
+    }
     }
 
     /**
-     * Creates TestFilter instance initialized with configuration data 
-     * and Exclude List components to get and supply exclude list data. 
+     * Creates TestFilter instance initialized with configuration data
+     * and Exclude List components to get and supply exclude list data.
      *
-     * @param      configuration   string value identifying configuration data 
+     * @param      configuration   string value identifying configuration data
      *                             in a way specific for plugin : filename, etc
      * @param      elf    instance of the ExcludeListFilter implementation.
      * @param      fol    instance of the FilteredOutList implementation.
@@ -62,104 +62,104 @@ public abstract class FilterFactory {
      * @throws     FilteringException to diagnose problems with configuration data.
      */
     public TestFilter    getTestFilter(String configuration, ExcludeListFilter elf,
-							     FilteredOutList fol)
-							     throws FilteringException {
-	FilterExpression tree = cfgRead(configuration);
-	return new TestFilterImpl(tree, elf, fol);
+                                 FilteredOutList fol)
+                                 throws FilteringException {
+    FilterExpression tree = cfgRead(configuration);
+    return new TestFilterImpl(tree, elf, fol);
     }
 
     /**
      * Creates TestFilter instance initialized with configuration data .
-     * The filter does not interact with Exclude List components. 
+     * The filter does not interact with Exclude List components.
      *
-     * @param      configuration   string value identifying configuration data 
+     * @param      configuration   string value identifying configuration data
      *                             in a way specific for plugin : filename, etc
      * @return     TestFilter instance.
      * @throws     FilteringException to diagnose problems with configuration data.
      */
     public TestFilter    getTestFilter(String configuration) throws FilteringException {
-	return getTestFilter(configuration, null, null);
+    return getTestFilter(configuration, null, null);
     }
 
 
     /**
-     * Creates TestFilter instance initialized with configuration data 
-     * and Exclude List components to get and supply exclude list data. 
+     * Creates TestFilter instance initialized with configuration data
+     * and Exclude List components to get and supply exclude list data.
      *
-     * @param      configuration   string value identifying configuration data 
+     * @param      configuration   string value identifying configuration data
      *                             in a way specific for plugin : filename, etc
      * @param      elf    instance of the ExcludeListFilter implementation.
      * @param      fol    instance of the FilteredOutList implementation.
      * @return     TestFilter instance.
-     * @throws     FilteringException to diagnose problems with 
+     * @throws     FilteringException to diagnose problems with
      *             configuration data.
      */
-    public TestFilter2 getTestFilter2(String configuration, 
+    public TestFilter2 getTestFilter2(String configuration,
             ExcludeListFilter elf, FilteredOutList fol)
             throws FilteringException {
 
-	FilterExpression tree = cfgRead(configuration);
-	return new TestFilterImpl2(tree, elf, fol);
+    FilterExpression tree = cfgRead(configuration);
+    return new TestFilterImpl2(tree, elf, fol);
     }
 
     /**
      * Creates TestFilter2 instance initialized with configuration data .
-     * The filter does not interact with Exclude List components. 
+     * The filter does not interact with Exclude List components.
      *
-     * @param      configuration   string value identifying configuration data 
+     * @param      configuration   string value identifying configuration data
      *                             in a way specific for plugin : filename, etc
      * @return     TestFilter2 instance.
-     * @throws     FilteringException to diagnose problems with 
+     * @throws     FilteringException to diagnose problems with
      *             configuration data.
      */
     public TestFilter2 getTestFilter2(String configuration)
            throws FilteringException {
 
-	return getTestFilter2(configuration, null, null);
+    return getTestFilter2(configuration, null, null);
     }
 
     /**
-     * Creates LibraryFilter instance initialized with configuration data. 
+     * Creates LibraryFilter instance initialized with configuration data.
      *
-     * @param      configuration   string value identifying configuration data 
+     * @param      configuration   string value identifying configuration data
      *                             in a way specific for plugin : filename, etc
      * @return     LibraryFilter instance.
      * @throws     FilteringException to diagnose problems with configuration data.
      */
     public LibraryFilter getLibraryFilter(String configuration)
-						          throws FilteringException{
-	FilterExpression tree = cfgRead(configuration);
-	return new LibraryFilterImpl(tree);
+                                  throws FilteringException{
+    FilterExpression tree = cfgRead(configuration);
+    return new LibraryFilterImpl(tree);
     }
 
     // ---------- methods below are intended for use in plugin
 
-    /** 
+    /**
      *  Creates standard leaf TRUE node.
      */
     public static FilterExpression createTRUE() {
-	return new NodeTRUE();
+    return new NodeTRUE();
     }
 
-    /** 
+    /**
      *  Creates standard non-leaf NOT node. Hides node implementing class.
      */
     public static FilterExpression createNOT(FilterExpression child) {
-	return new NodeNOTimpl(child);
+    return new NodeNOTimpl(child);
     }
 
-    /** 
+    /**
      *  Creates standard non-leaf AND node. Hides node implementing class.
      */
     public static FilterExpression createAND(FilterExpression left, FilterExpression right) {
-	return new NodeANDimpl(left, right);
+    return new NodeANDimpl(left, right);
     }
 
-    /** 
+    /**
      *  Creates standard non-leaf OR node. Hides node implementing class.
      */
     public static FilterExpression createOR(FilterExpression left, FilterExpression right) {
-	return new NodeORimpl(left, right);
+    return new NodeORimpl(left, right);
     }
 
     /** This method should be implemented in plugin.

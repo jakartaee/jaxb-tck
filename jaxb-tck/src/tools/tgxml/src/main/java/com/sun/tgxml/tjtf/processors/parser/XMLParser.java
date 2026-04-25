@@ -27,30 +27,30 @@ import com.sun.tgxml.tjtf.api.XMLObj;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 import com.sun.tgxml.tjtf.processors.validator.IRValidator;
 
-/** 
+/**
  * TestFileParser - The Generic-interface for an XML parser.  This parser can be
  * re-used for other file formats by providing a dtd and a set of TagHandlers that
- * parse a file into a given IR. 
- * 
- * 
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    XMLParser 
- * ============================================================================================ 
- */ 
+ * parse a file into a given IR.
+ *
+ *
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    XMLParser
+ * ============================================================================================
+ */
 public interface XMLParser extends IRParser {
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
 
   /**
@@ -63,12 +63,12 @@ public interface XMLParser extends IRParser {
     * @throws IOException if there is an IO problem.
     */
     public XMLObj parse (File xmlFile) throws TestFileException, SAXException, IOException;
-    
+
     /**
      *  Parse the XML File (as a File) from the given respository.
      * <p>
      * @param xmlFile A single (XML) file to be parsed.
-     * @param sourceRoot A repository root dorectory. It is used for calculation 
+     * @param sourceRoot A repository root dorectory. It is used for calculation
      * of the relSourcePath attribute.
      * @return The IR root to the parsed object tree.
      * @throws TestFileException if the file contains generic values that do not validate.
@@ -119,31 +119,31 @@ public interface XMLParser extends IRParser {
     */
     public boolean getSourceFileMode();
 
-   /** 
+   /**
     *  Gets the mode that determines whether the (SAX XMLReader) parser is validating.
     * <p>
     * @return true if the parser is validating XML to the DTD.
-    */ 
+    */
     public boolean getXMLValidation();
 
-   /** 
+   /**
     *  Sets the mode that determines whether the (SAX XMLReader) parser is validating.
     * <p>
     * @param validating Set this to true to have the parser validate incoming XML to the DTD.
     * @throws SAXException if the SAXParser can not handle validation (should never happen).
-    */ 
+    */
     public void setXMLValidation(boolean validating) throws SAXException;
 
-   /** 
+   /**
     *  Sets the Validator (3rd-level semantics validation engine).
     * <p>
     * @param validator The validator to set.
-    */ 
+    */
     public void setValidator(IRValidator validator);
 
-   /** 
+   /**
     *  Sets the Validator (3rd-level semantics validation engine).
-    * 
-    */ 
+    *
+    */
     public IRValidator getValidator();
 }

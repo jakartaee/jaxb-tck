@@ -23,11 +23,11 @@ import com.sun.tgxml.tjtf.api.data.DataType;
 // </importgen>
 
 /**
- * DataTypeImpl - 
+ * DataTypeImpl -
  *
  * <b>DataTypeImpl</b>  is the enumeration for a type of data.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -59,7 +59,7 @@ public class DataTypeImpl implements DataType {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -75,7 +75,7 @@ public class DataTypeImpl implements DataType {
     * @see com.sun.tgxml.tjtf.api.common.NameValuePair
     */
     private DataTypeImpl(String value){
-	m_type = value;
+    m_type = value;
     }
 
 
@@ -90,9 +90,9 @@ public class DataTypeImpl implements DataType {
     * @return     The Resource DataType associated with this Data
     */
     static public DataType createResource(){
-	return Resource;
+    return Resource;
     }
-     
+
 
   /**
     *   Factory DataType Constructor (IOData).
@@ -100,10 +100,10 @@ public class DataTypeImpl implements DataType {
     * @return     The IOData DataType associated with this Data
     */
     static public DataType createIOData(){
-	return IOData;
+    return IOData;
     }
-          
-          
+
+
 
     //------------------------------------------------------------------------------
     //  Predicate methods
@@ -116,9 +116,9 @@ public class DataTypeImpl implements DataType {
     * @return     The true if this technique is Resource.
     */
     public boolean isResource(){
-	return (this == Resource);
+    return (this == Resource);
     }
-     
+
 
   /**
     *   Is this an IOData type.
@@ -126,9 +126,9 @@ public class DataTypeImpl implements DataType {
     * @return     The true if this technique is IOData.
     */
     public boolean isIOData(){
-	return (this == IOData);
+    return (this == IOData);
     }
-     
+
 
     //------------------------------------------------------------------------------
     //  Factory methods
@@ -141,8 +141,8 @@ public class DataTypeImpl implements DataType {
     * @return     The DataType value.
     */
     public String toString(){
-	return m_type;
+    return m_type;
     }
-     
+
 
 }

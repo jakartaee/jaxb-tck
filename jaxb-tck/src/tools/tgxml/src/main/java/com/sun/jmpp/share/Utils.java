@@ -21,7 +21,7 @@ import java.io.File;
 import java.util.Vector;
 
 /**
- * This class contains commonly-used methods. 
+ * This class contains commonly-used methods.
  * @author Konstantin S. Bobrovsky
  */
 public class Utils {

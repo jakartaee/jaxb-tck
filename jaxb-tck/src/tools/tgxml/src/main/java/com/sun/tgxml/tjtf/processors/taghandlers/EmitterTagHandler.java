@@ -23,31 +23,31 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 
 /**
- * EmitterTagHandler - The tag-handler abstraction. 
+ * EmitterTagHandler - The tag-handler abstraction.
  * <p>
  * This is the (internal) contract (from the point of view of the
- * emitter) that a TagHandler must support.  
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    EmitterTagHandler 
- * ============================================================================================ 
- */ 
+ * emitter) that a TagHandler must support.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    EmitterTagHandler
+ * ============================================================================================
+ */
 public interface EmitterTagHandler extends TagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ public interface EmitterTagHandler extends TagHandler  {
     * @throws IOException If there is an IO problem.
     */
     public void emit(Object tdObject)  throws TestFileException, IOException ;
-          
+
 
   /**
     *   Set the Handler.  The EmitterHandlerSupport is the (internal) contract
@@ -70,6 +70,6 @@ public interface EmitterTagHandler extends TagHandler  {
     * @param handler The emitter that fulfills the EmitterHandlerSupport contract.
     */
     public void setEmitterHandler(EmitterHandlerSupport handler);
-          
+
 
 }

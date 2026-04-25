@@ -59,7 +59,7 @@ public class VariantsMap {
      * If passed var is null this method just returns.
      */
      public void addVariant(Library var) {
-         if (var == null) 
+         if (var == null)
              return;
 
          String libID = IR.getID(var);
@@ -67,12 +67,12 @@ public class VariantsMap {
      }
 
     /**
-     * Adds var to the variant list of libID. libID may be different 
+     * Adds var to the variant list of libID. libID may be different
      * from var.getID()
      * If either passed var or libID is null this method just returns.
      */
      public void addVariant(String libID, Library var) {
-         if (var == null || libID == null) 
+         if (var == null || libID == null)
              return;
 
          ArrayList vars = variants(libID);
@@ -92,7 +92,7 @@ public class VariantsMap {
      * If passed libID is null or already exists this method just returns.
      */
      public void addLibID(String libID) {
-         if (libID == null || map.containsKey(libID)) 
+         if (libID == null || map.containsKey(libID))
              return;
          map.put(libID, new ArrayList());
      }
@@ -106,7 +106,7 @@ public class VariantsMap {
      * @return  true if variant has been removed, false otherwise
      */
      public boolean removeVariant(Library var) {
-         if (var == null) 
+         if (var == null)
              return false;
 
          String libID = IR.getID(var);
@@ -114,13 +114,13 @@ public class VariantsMap {
      }
 
     /**
-     * Removes var from the variant list of libID. libID may be different 
+     * Removes var from the variant list of libID. libID may be different
      * from var.getID()
      * If either passed var or libID is null this method just returns false
      * @return  true if variant has been removed, false otherwise
      */
      public boolean removeVariant(String libID, Library var) {
-         if (var == null || libID == null) 
+         if (var == null || libID == null)
              return false;
 
          ArrayList vars = variants(libID);
@@ -143,7 +143,7 @@ public class VariantsMap {
      * @return  true if libID has been removed, false otherwise
      */
      public boolean removeLibID(String libID) {
-         if (libID == null || !map.containsKey(libID)) 
+         if (libID == null || !map.containsKey(libID))
              return false;
          map.remove(libID);
          return true;
@@ -159,7 +159,7 @@ public class VariantsMap {
      }
 
     /**
-     * Returns the iterator over the all libIDs 
+     * Returns the iterator over the all libIDs
      */
      public Iterator libIDs() {
          return map.keySet().iterator();

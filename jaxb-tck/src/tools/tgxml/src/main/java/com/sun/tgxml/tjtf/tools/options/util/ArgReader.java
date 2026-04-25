@@ -25,35 +25,35 @@ import com.sun.tgxml.tjtf.tools.options.resources.ErrorMessages;
 /**
  * Class for reading option arguments from ArrayList.
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public class ArgReader {
 
-    ArgChecker argChecker = null;   
-    int min = 0;   
-    int max = 0;   
+    ArgChecker argChecker = null;
+    int min = 0;
+    int max = 0;
 
-    private String patt_missedOptionParameter = 
+    private String patt_missedOptionParameter =
             ErrorMessages.getPattern("option.ArgumentsNumber.missed");
 
     private String optionName = "";
 
     /**
-     * Creates new ArgReader. 
+     * Creates new ArgReader.
      * @param min  a number of minimal required parameters
      * @param max  a number of maximum required parameters
-     * @param argChecker  argument validator used to check whether argument 
-     * is acceptable or not     
+     * @param argChecker  argument validator used to check whether argument
+     * is acceptable or not
      *
-     * @throws IllegalArgumentException if the following condition is 
+     * @throws IllegalArgumentException if the following condition is
      *         is broken: <code> 0 <= min <= max </code>
      */
     public ArgReader (int min, int max, ArgChecker argChecker) {
-        if (min < 0 || min > max) 
-             throw new IllegalArgumentException("Illegal paramaters: " + min 
+        if (min < 0 || min > max)
+             throw new IllegalArgumentException("Illegal paramaters: " + min
                  + ", " + max);
         this.min = min;
         this.max = max;
@@ -63,30 +63,30 @@ public class ArgReader {
     }
 
     /**
-     * Creates new ArgReader. 
+     * Creates new ArgReader.
      * @param min  a number of minimal required parameters
      * @param max  a number of maximum required parameters
      * @param invalidPrefix if set arguments should not start with this prefix
      * @param validPrefix  if set arguments should start with this prefix
      *
-     * @throws IllegalArgumentException if the following condition is 
+     * @throws IllegalArgumentException if the following condition is
      *         is broken: <code> 0 <= min <= max </code>
      */
-    public ArgReader (int min, int max, 
+    public ArgReader (int min, int max,
               String invalidPrefix, String validPrefix) {
          this(min, max, new ArgChecker(invalidPrefix, validPrefix));
     }
 
     /**
      * Reads option arguments from array and removes them from array.
-     * 
+     *
      * @param arr - unparsed command line arguments list
      * @param index - current index in the array
      * @return an array of option agruments
      * @throws ArgumentsNumberException - if insufficient number of arguments
      *         can be read
      */
-    public ArrayList read(ArrayList arr, int index) 
+    public ArrayList read(ArrayList arr, int index)
         throws ArgumentsNumberException {
 
         int n = 0; // number of read arguments
@@ -112,7 +112,7 @@ public class ArgReader {
     /**
      * Sets error message pattern will be printed if option parameter
      * is missed.
-     * <p>Example of pattern : 
+     * <p>Example of pattern :
      * <pre>
      *     "{0}" option expects {1} parameter(s), passed only {2}
      * </pre>

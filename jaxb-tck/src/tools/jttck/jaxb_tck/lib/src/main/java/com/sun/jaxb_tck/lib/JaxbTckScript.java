@@ -60,23 +60,23 @@ public class JaxbTckScript extends Script {
     public static final String KWD_SCHEMAGEN_REQUIRED = "java_to_schema";
 
     public static final String KWD_RTGEN = "rtgen";
-    
+
     public static final String KWD_EMPTY_OUT = "empty_output";
 
     // also used by javasoft.sqe.tests.api.jakarta.xml.bind.SchemaGenTest::getSchemaSources(String schemaNames
     public static final String SCHEMA_SEPARATOR = ";";
 
     private static final int INVOCATION_LIMIT = 50;
-    
-    // File extension that used in test suite to identify xml schema files. 
-    public static final String[] ALLOWED_SCHEMA_EXTESIONS = { 
-    	".xsd",
-    	".inc",
-    	".imp",
-    	".imp2",
-    	".red"
+
+    // File extension that used in test suite to identify xml schema files.
+    public static final String[] ALLOWED_SCHEMA_EXTESIONS = {
+        ".xsd",
+        ".inc",
+        ".imp",
+        ".imp2",
+        ".red"
     };
-    
+
 
     /**
      * Counter of the number of test runs.
@@ -88,7 +88,7 @@ public class JaxbTckScript extends Script {
     protected String outDir = "";
 
     protected ArrayList<String> schemaSrcList = new ArrayList<String>();
-    
+
     protected String schemaSources = null;
 
     protected String pkg = "";
@@ -110,7 +110,7 @@ public class JaxbTckScript extends Script {
     protected boolean isSchemaGenRequired;
 
     protected boolean isSameJVM;
-    
+
     protected boolean isEmptyOut; // KWD_EMPTY_OUT = "empty_output"
 
     protected boolean needCompile = true;
@@ -119,20 +119,20 @@ public class JaxbTckScript extends Script {
 
     // schema name as it is passed from test description
     protected String schemaName = "";
-    
+
     static final int LRU_CAPACITY = 25;
-    
+
     /**
      * Cache of compiled schemata.
      * It is static because an instance of this class is created for each run of every test.
      */
      static Map<String, Status[]> schemaCache = Collections.synchronizedMap(
-    		 new LinkedHashMap<String, Status[]>() {
-    		      // (an anonymous inner class)
-    		      private static final long serialVersionUID = 1;
-    		      @Override protected boolean removeEldestEntry (Map.Entry<String, Status[]> eldest) {
-    		         return size() > LRU_CAPACITY; }});  
-    
+             new LinkedHashMap<String, Status[]>() {
+                  // (an anonymous inner class)
+                  private static final long serialVersionUID = 1;
+                  @Override protected boolean removeEldestEntry (Map.Entry<String, Status[]> eldest) {
+                     return size() > LRU_CAPACITY; }});
+
     public static class InitializationException extends Exception {
         private static final long serialVersionUID = 3977022838043587382L;
 
@@ -240,7 +240,7 @@ public class JaxbTckScript extends Script {
         ArrayList<String> xsdSourceList = new ArrayList<String>();
         for(String _s : schemaSrcList) {
             if(isSameJVM) {
-                envSchema.append( (envSchema.length() > 0 ? "\u0085" : "") + _s); 
+                envSchema.append( (envSchema.length() > 0 ? "\u0085" : "") + _s);
             } else {
                 xsdSourceList.add(_s);
             }
@@ -248,7 +248,7 @@ public class JaxbTckScript extends Script {
         // Add an array of schema files in multiJVM, so it will be separate
         // arguments for external script
         if (isSameJVM) {
-            env.put("schema", envSchema.toString()); 
+            env.put("schema", envSchema.toString());
         } else {
             env.put("schema", (String[]) xsdSourceList.toArray(new String[xsdSourceList.size()]));
         }
@@ -274,7 +274,7 @@ public class JaxbTckScript extends Script {
         isJaxbNotRequired = false;
         defaultOperationMode = false;
         isSchemaGenRequired = false;
-        isEmptyOut = false; 
+        isEmptyOut = false;
 
         if (counter.getValue() >= INVOCATION_LIMIT) {
             counter.reset();
@@ -285,9 +285,9 @@ public class JaxbTckScript extends Script {
 
     protected void initTestRun(TestDescription td, TestEnvironment env)
             throws InitializationException {
-        
+
         initKeywords(td);
-        
+
         if( debug ){
             System.out.printf( "JaxbTckScript.initTestRun: '%s' keywords:", td.getId() );
                 Set<?> keywords = td.getKeywordTable();
@@ -299,7 +299,7 @@ public class JaxbTckScript extends Script {
 
         if (!env.equals(this.env))
             initTestEnvironment(env);
-        
+
         if (!td.equals(this.td))
             initTestDescription(td);
 
@@ -344,7 +344,7 @@ public class JaxbTckScript extends Script {
         isJaxbNotRequired = keywords.contains(KWD_JAXB_NOT_REQUIRED);
         isSchemaGenRequired = keywords.contains(KWD_SCHEMAGEN_REQUIRED);
         isRtgen = keywords.contains(KWD_RTGEN);
-        isEmptyOut = keywords.contains(KWD_EMPTY_OUT); 
+        isEmptyOut = keywords.contains(KWD_EMPTY_OUT);
     }
 
     /**
@@ -360,13 +360,13 @@ public class JaxbTckScript extends Script {
         }
         if (outDir.length() == 0)
             return;
-        
+
         if (needPersonalDir()) {
             String name = td.getName();
             if (name != null) {
-            	if (! outDir.endsWith(File.separator) ) {
-            		outDir += File.separator;
-            	}
+                if (! outDir.endsWith(File.separator) ) {
+                    outDir += File.separator;
+                }
                 outDir +=  name;
             }
         }
@@ -431,11 +431,11 @@ public class JaxbTckScript extends Script {
      * Construct package name from test URL
      */
     private String getDefaultPackage() {
-    	String name = getRelativePath().replaceAll("_",  ".").
+        String name = getRelativePath().replaceAll("_",  ".").
                 replaceAll(Pattern.quote(".." + File.separator), "");
-    	return name.replaceAll(Pattern.quote(File.separator),  ".").toLowerCase();
-    } 
-    
+        return name.replaceAll(Pattern.quote(File.separator),  ".").toLowerCase();
+    }
+
     /*
      * Get relative path
      */
@@ -448,27 +448,27 @@ public class JaxbTckScript extends Script {
         absPath = absPath.substring(pos + 1);
         return absPath;
     }
-    
+
     protected void initSchema() {
         String[] sources = td.getSources();
         ArrayList<String> schemaSources = new ArrayList<String>();
         ArrayList<String> xsdSourceList = new ArrayList<String>();
-        
+
         if (sources.length == 0) {
             return;
         }
-        
+
         for (int i = 0; i < sources.length; i++){
-        	for(String ext : ALLOWED_SCHEMA_EXTESIONS) {
-        		if (sources[i].endsWith(ext)) {
-        			schemaSources.add(sources[i]);
-        			break;
-        		}
-        	}
+            for(String ext : ALLOWED_SCHEMA_EXTESIONS) {
+                if (sources[i].endsWith(ext)) {
+                    schemaSources.add(sources[i]);
+                    break;
+                }
+            }
         }
-        
+
         if ( schemaSources.size() == 0 ) {
-            String sn = td.getParameter(SCHEMA_NAME); 
+            String sn = td.getParameter(SCHEMA_NAME);
             if ( sn == null) {
                 return;
             }
@@ -477,20 +477,20 @@ public class JaxbTckScript extends Script {
             }
             needCompile = false;
         }
-        
+
         schemaName = arrayListAsString(schemaSources);
         StringBuilder envSchema = new StringBuilder();
         String fileSeparator = getFileSeparator("xjc");
-        
+
         for(String str : schemaSources) {
             String schema = td.getRootRelativeFile().getParent() + File.separator + str;
-            schema = testSuiteRootDir + fileSeparator + "tests" + fileSeparator + 
+            schema = testSuiteRootDir + fileSeparator + "tests" + fileSeparator +
             ((fileSeparator.equals(File.separator)) ? schema : schema.replace(File.separatorChar, fileSeparator.charAt(0)));
-            
+
             schemaSrcList.add(schema);
-            
+
             if(isSameJVM) {
-                envSchema.append( (envSchema.length() > 0 ? "\u0085" : "") + schema); 
+                envSchema.append( (envSchema.length() > 0 ? "\u0085" : "") + schema);
             } else {
                 xsdSourceList.add(schema);
             }
@@ -498,7 +498,7 @@ public class JaxbTckScript extends Script {
         // Add an array of schema files in multiJVM, so it will be separate
         // arguments for external script
         if (isSameJVM) {
-            env.put("schema", envSchema.toString()); 
+            env.put("schema", envSchema.toString());
         } else {
             env.put("schema", (String[]) xsdSourceList.toArray(new String[xsdSourceList.size()]));
         }
@@ -511,7 +511,7 @@ public class JaxbTckScript extends Script {
     protected boolean needExecuteStage() {
         return (!(isSchema && (isNegative || isEmptyOut)) || isRtgen);
     }
-    
+
     protected boolean isDefaultMappingJ2Stest(TestDescription td) {
         return td.getParameter( "testSource") != null;
     }
@@ -524,15 +524,15 @@ public class JaxbTckScript extends Script {
         StringBuilder     javaSource = new StringBuilder();
         ArrayList<String> javaSourceList = new ArrayList<String>();
         StringBuilder     args = new StringBuilder();
-    	
-    	String            executeArgs = td.getParameter("executeArgs");
+
+        String            executeArgs = td.getParameter("executeArgs");
         StringTokenizer   tokenizer = new StringTokenizer(executeArgs, " ", false);
 
         while (tokenizer.hasMoreElements()) {
             String str = tokenizer.nextToken();
             if ("-j".equals(str) && tokenizer.hasMoreElements()) {
                 str = tokenizer.nextToken();
-                
+
                 // initializes JavaFiles
                 File testDir = td.getDir();
                 StringTokenizer colonizer = new StringTokenizer(str, ":", false);
@@ -540,7 +540,7 @@ public class JaxbTckScript extends Script {
                 while (colonizer.hasMoreElements()) {
                     String source = colonizer.nextToken();
                     File file = new File(testDir, source);
-                    
+
                     if (isSameJVM) {
                         if (javaSource.length() > 0)
                             javaSource.append('\u0085');
@@ -552,7 +552,7 @@ public class JaxbTckScript extends Script {
 
             } else {
                 if (args.length() > 0) {
-                	args.append(' ');
+                    args.append(' ');
                 }
                 args.append(str);
             }
@@ -575,27 +575,27 @@ public class JaxbTckScript extends Script {
 
         if (result.isPassed() && !isDefaultMappingJ2Stest(td)) {
             // add just generated schema to execute args if !isEmptyOut
-        	schemaSources = getGeneratedSources(".xsd");
-        	
-        	if ( isEmptyOut ) { 
-        		// No schema(s) have to be produced.
+            schemaSources = getGeneratedSources(".xsd");
+
+            if ( isEmptyOut ) {
+                // No schema(s) have to be produced.
                 if ( schemaSources == null ) {
-                	result = Status.passed("No schemas were generated as expected");
+                    result = Status.passed("No schemas were generated as expected");
                 } else {
-                	result = Status.failed("Unexpected schemas were generated");
+                    result = Status.failed("Unexpected schemas were generated");
                 }
-        	} else {
-	            // validate schema against xml
-	            // add just generated schema(s) to execute args.
-	            if ( schemaSources == null ) {
-	            	result = Status.failed("No schemas were generated");
-	            } else {
-	            	//call java
-			        args.append(" -schemas ").append(adjustForSpace(schemaSources));
-		            String executeClass = td.getParameter("executeClass");
-		            result = super.execute("execute", executeClass, args.toString()); 
-	            }
-        	}
+            } else {
+                // validate schema against xml
+                // add just generated schema(s) to execute args.
+                if ( schemaSources == null ) {
+                    result = Status.failed("No schemas were generated");
+                } else {
+                    //call java
+                    args.append(" -schemas ").append(adjustForSpace(schemaSources));
+                    String executeClass = td.getParameter("executeClass");
+                    result = super.execute("execute", executeClass, args.toString());
+                }
+            }
         }
         return result;
     }
@@ -622,13 +622,13 @@ public class JaxbTckScript extends Script {
         }
         return status;
     }
-    
+
     protected Status compile() {
         if (isSchema && (isNegative || isEmptyOut)) {
-            // skip if a test either produces no java files or is negative. 
+            // skip if a test either produces no java files or is negative.
             return compileSchema();
         }
-        
+
         Status[] status;
         synchronized (schemaCache) {
             status = schemaCache.get(arrayListAsString(schemaSrcList));
@@ -637,7 +637,7 @@ public class JaxbTckScript extends Script {
                 schemaCache.put(arrayListAsString(schemaSrcList), status);
             }
         }
-        
+
         synchronized (status) {
             if ( status[0] != null && status[0].isPassed() ) {
                 trOut.println("Using compiled schema(s):");
@@ -651,26 +651,26 @@ public class JaxbTckScript extends Script {
             return status[0];
         }
     }
-    
+
 
     protected Status execute() {
         String executeArgs = td.getParameter("executeArgs");
-        
-        if (isDocument && !isRuntime ){        
-            // Adds schema if test contains keywords: 
-        	// 1. document validation_checker
-        	// 2. document bindinfo
-        	// 3. document 
-        	// See XMLSchemaTestEmitter,java.getExecuteArgs.else if ( tcType.equals(KEYWORD_RUNTIME) )
+
+        if (isDocument && !isRuntime ){
+            // Adds schema if test contains keywords:
+            // 1. document validation_checker
+            // 2. document bindinfo
+            // 3. document
+            // See XMLSchemaTestEmitter,java.getExecuteArgs.else if ( tcType.equals(KEYWORD_RUNTIME) )
             executeArgs += " -schema " + schemaName;
         } else if (isRtgen) {
-            env.put("testWorkDir", 
+            env.put("testWorkDir",
                     adjustForSpace(workDir.getFile(outDir).getAbsolutePath()));
         }
 
         if (!defaultOperationMode && (isSchema && isPositive))
             executeArgs += " -EnableSuperSet";
-        
+
         //
         if ( isSchemaGenRequired ) {
             schemaSources = getGeneratedSources(".xsd");
@@ -686,7 +686,7 @@ public class JaxbTckScript extends Script {
                         if ("-j".equals(str) && tokenizer.hasMoreElements()) {
                             tokenizer.nextToken();
                         } else {
-                        	args.append(" " + str);
+                            args.append(" " + str);
                         }
                     }
 
@@ -718,7 +718,7 @@ public class JaxbTckScript extends Script {
     }
 
     /**
-     * Gets sources with extension that were just generated  
+     * Gets sources with extension that were just generated
      */
     private String getGeneratedSources(String ext) {
         Arguments args = new Arguments();
@@ -729,17 +729,17 @@ public class JaxbTckScript extends Script {
         }
         return null;
     }
-    
+
     // if pathname has ' ' in <code>s</code>, add quotations
     static String adjustForSpace(String s) {
         if (s != null && s.indexOf(" ") > 0)
             return "'" + s + "'";
         else
             return s;
-    }    
+    }
 
     private String arrayListAsString(ArrayList<String> src) {
-        if(src == null || src.size() == 0) 
+        if(src == null || src.size() == 0)
             return "";
         return StringArray.join(src.toArray(new String[src.size()]));
     }

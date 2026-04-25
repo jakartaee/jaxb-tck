@@ -28,10 +28,10 @@ import com.sun.tgxml.util.IR;
 
 public class DefaultExcludeListCollector implements ExcludeListCollector {
 
-	
+
     private PrintWriter out = null;
     private String fileName = null;
-    
+
     public DefaultExcludeListCollector() {
     }
 
@@ -56,7 +56,7 @@ public class DefaultExcludeListCollector implements ExcludeListCollector {
     }
 
 
-    private synchronized void writeToFile(String url, String testCaseName, 
+    private synchronized void writeToFile(String url, String testCaseName,
                        String excludedContents) throws IOException {
         if (out == null) {
             out = new PrintWriter(new FileWriter(fileName, true));
@@ -71,57 +71,57 @@ public class DefaultExcludeListCollector implements ExcludeListCollector {
         buf.append(excludedContents);
         out.println(buf.toString());
         out.flush();
-    
+
     }
-   /** This method adds new entry to the Collector if testcase contains 
+   /** This method adds new entry to the Collector if testcase contains
      * "excluded" attribute.
      * The tescase should have "testDescriptionURL" and "testCaseName"
-     * attributes. 
+     * attributes.
      * @throws IncorrectAttributesException if "testDescriptionURL"  are not defined.
-     * @return true, if exclude entry was added 
+     * @return true, if exclude entry was added
      */
 
-	public synchronized boolean addEntry(TestCase testCase) throws IncorrectAttributesException, IOException {
-		if (!ExcludeListUtils.isMarkedExcluded(testCase)) {
-			return false;
-		}
-		TestGroup parent = testCase.getTestGroup();
+    public synchronized boolean addEntry(TestCase testCase) throws IncorrectAttributesException, IOException {
+        if (!ExcludeListUtils.isMarkedExcluded(testCase)) {
+            return false;
+        }
+        TestGroup parent = testCase.getTestGroup();
         String url = null;
-		String testCaseName = null;
-		String excludedContents = null;
+        String testCaseName = null;
+        String excludedContents = null;
 
-		url = IR.getAttrElem(ExcludeListUtils.TestDescriptionURLAttrElemName, testCase);
+        url = IR.getAttrElem(ExcludeListUtils.TestDescriptionURLAttrElemName, testCase);
         if (url == null) {
             IR.getAttrElem(ExcludeListUtils.TestDescriptionURLAttrElemName, parent);
         }
 
-		excludedContents = IR.getAttrElem(ExcludeListUtils.ExcludedAttrElemName, testCase);
-		testCaseName = IR.getAttrElem(ExcludeListUtils.TestCaseNameAttrElemName, testCase);
-		writeToFile(url, testCaseName, excludedContents);
-	    return true;
+        excludedContents = IR.getAttrElem(ExcludeListUtils.ExcludedAttrElemName, testCase);
+        testCaseName = IR.getAttrElem(ExcludeListUtils.TestCaseNameAttrElemName, testCase);
+        writeToFile(url, testCaseName, excludedContents);
+        return true;
 
-	}
+    }
 
 
-   /** This method adds new entry to the Collector if testgroup contains 
+   /** This method adds new entry to the Collector if testgroup contains
      * "excluded" attribute.
-     * The tescase should have "testDescriptionURL" attribute. 
+     * The tescase should have "testDescriptionURL" attribute.
      * @throws IncorrectAttributesException if "testDescriptionURL"  are not defined.
-     * @return true, if exclude entry was added 
+     * @return true, if exclude entry was added
      */
 
-	public synchronized boolean addEntry(TestGroup group) throws IncorrectAttributesException, IOException  {
-		if (!ExcludeListUtils.isMarkedExcluded(group)) {
-			return false;
-		}
+    public synchronized boolean addEntry(TestGroup group) throws IncorrectAttributesException, IOException  {
+        if (!ExcludeListUtils.isMarkedExcluded(group)) {
+            return false;
+        }
         String url = null;
-		String excludedContents = null;
+        String excludedContents = null;
 
-		url = IR.getAttrElem(ExcludeListUtils.TestDescriptionURLAttrElemName, group);
-		excludedContents = IR.getAttrElem(ExcludeListUtils.ExcludedAttrElemName, group);
-		writeToFile(url, null, excludedContents);
-	    return true;
+        url = IR.getAttrElem(ExcludeListUtils.TestDescriptionURLAttrElemName, group);
+        excludedContents = IR.getAttrElem(ExcludeListUtils.ExcludedAttrElemName, group);
+        writeToFile(url, null, excludedContents);
+        return true;
 
-	}
+    }
 
 }

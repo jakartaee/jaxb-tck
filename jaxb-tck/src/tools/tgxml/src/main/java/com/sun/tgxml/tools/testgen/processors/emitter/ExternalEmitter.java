@@ -73,14 +73,14 @@ public class ExternalEmitter
     extends StandardOptionHandler
     implements Generator, CopyrightManager.Constants, EmitterManager.HtmlConflictModeReplace
 {
-   
-    protected ExcludeListCollector collector = null;    
+
+    protected ExcludeListCollector collector = null;
     protected Properties m_properties;
     protected Hashtable testGroup_testIR = new Hashtable();
     protected Hashtable testGroup_htmlName = new Hashtable();
     protected String copyrightLink = null;
     protected Hashtable hash = new Hashtable();
-	
+
     /**
     * set of conflict fiels
     */
@@ -93,13 +93,13 @@ public class ExternalEmitter
     public ExternalEmitter() {
     }
 
-    
+
     public void setExcludeListCollector(ExcludeListCollector collector){
         this.collector = collector;
     }
-    
-    public void setProperties(Properties props){        
-        m_properties = props;        
+
+    public void setProperties(Properties props){
+        m_properties = props;
         copyrightLink = props == null ? null :
                 props.getProperty(EmitterManager.TESTGEN_COPYRIGHT_LINK_PROP);
     }
@@ -117,7 +117,7 @@ public class ExternalEmitter
      */
     public void generate(IRObj[] trees) throws TestFileException {
         int numIRs = trees.length;
-        
+
         hash = new Hashtable();
         HashMap testSuites = new HashMap();
         ArrayList tgList = new ArrayList();
@@ -139,14 +139,14 @@ public class ExternalEmitter
 
         writeHtmls();
         notifyExcludeListGenerator();
-        
+
     }
-       
+
     public void generate (IRObj root) throws TestFileException  {
          generate(new IRObj[]{root});
     }
 
-    protected void generateTestGroup(TestGroup tg, HashMap testSuites) 
+    protected void generateTestGroup(TestGroup tg, HashMap testSuites)
             throws TestFileException  {
 
         // Keeps mappings TestGroup[i] -> TestCase[i]
@@ -154,9 +154,9 @@ public class ExternalEmitter
         // to be split
         HashMap tg2tc = new HashMap();
         ResourceInstaller ri = new ResourceInstaller();
-        
+
         TestGroup[] groups = splitTestGroup(tg, tg2tc);
-        for (int i = 0; i < groups.length; i++) {        
+        for (int i = 0; i < groups.length; i++) {
 
             HtmlIR html = getHtmlIR(groups[i], testSuites);
             html.addTestedClass(
@@ -206,7 +206,7 @@ public class ExternalEmitter
                 detectTestPackageName(groups[i]),
                 null //no imports by default
             );
-            
+
             ri.installResources(groups[i]);
         }
     }
@@ -234,12 +234,12 @@ public class ExternalEmitter
         ArrayList splitted = new ArrayList();
 
         if (tg.getTestCases() == null) {
-             throw new TestFileException("TestGroup: " + tg.getID() 
+             throw new TestFileException("TestGroup: " + tg.getID()
                  + " has no testcases");
         }
         Iterator tcs = tg.getTestCases().iterator();
         if (!tcs.hasNext()) {
-            splitted.add(tg);         
+            splitted.add(tg);
         } else {
             while (tcs.hasNext()) {
                 TestCase  cur_tc = (TestCase)tcs.next();
@@ -278,7 +278,7 @@ public class ExternalEmitter
           TestGroupDocumentation result = null;
           if (tgDoc != null)
                result = DocumentationFactory.cloneTestGroupDocumentation(tgDoc);
-          else 
+          else
                result = DocumentationFactory.createTestGroupDocumentation();
 
           if (tcDoc != null) {
@@ -293,14 +293,14 @@ public class ExternalEmitter
                     result.setDescription(descr);
 
                if (authors != null)
-                    result.setAuthors(authors);               
+                    result.setAuthors(authors);
           }
           return result;
     }
 
 
     protected TestGroupAttributes tcAttr2tgAttr(
-            TestCaseAttributes tcAttr, TestGroupAttributes tgAttr) 
+            TestCaseAttributes tcAttr, TestGroupAttributes tgAttr)
                 throws TestFileException {
 
           if (tgAttr == null && tcAttr == null)
@@ -309,9 +309,9 @@ public class ExternalEmitter
 
           TestGroupAttributes result = null;
           if (tgAttr != null)
-              result = AttributesFactory.cloneTestGroupAttributes(tgAttr); 
-          else 
-              result = AttributesFactory.createTestGroupAttributes(); 
+              result = AttributesFactory.cloneTestGroupAttributes(tgAttr);
+          else
+              result = AttributesFactory.createTestGroupAttributes();
 
           if (tcAttr != null) {
                String timeout = tcAttr.getTimeout();
@@ -328,17 +328,17 @@ public class ExternalEmitter
                if (timeout != null)
                     result.setTimeout(timeout);
 
-               result.setAttrElems(attrElems);          
-               result.setRequiredResources(reqResources);          
-               result.setTargetSpecs(targetSpecs);          
+               result.setAttrElems(attrElems);
+               result.setRequiredResources(reqResources);
+               result.setTargetSpecs(targetSpecs);
           }
           return result;
     }
 
 
-    /** 
+    /**
      * Returns true if anchor for the testgroup is always required.
-     * false - if anchor is not required when there is only one TestGroup in 
+     * false - if anchor is not required when there is only one TestGroup in
      * one html file and this TestGroup has no testcases.
      * Returned value depends on "testType" and "anchorRequired" AttrElems
      * For ExternalMultiTest returns true if "anchorRequired" is not
@@ -382,7 +382,7 @@ public class ExternalEmitter
         testGroupIR.setDescription(tdDescription);
         testGroupIR.setComments(authors);
         testGroupIR.setTestDescriptionIR(tdIR);
-        
+
         if (tg.getTestCases() != null) {
             for (Iterator it = tg.getTestCases().iterator(); it.hasNext();) {
                 testGroupIR.addTestCase((TestCase)it.next());
@@ -395,7 +395,7 @@ public class ExternalEmitter
     /**
      * Constructs TestDescriptionIR for the passed TestGroup and TestCase.
      * It can be overridden by subclasses if needed.
-     * The current implementation uses 
+     * The current implementation uses
      * constructTestDescriptionIR(id, title, tgAttr, codeSet, tc) method
      * to create TestDescriptionIR.
      */
@@ -411,7 +411,7 @@ public class ExternalEmitter
 
 
         TestGroupAttributes tgAttr = tg.getTGAttributes();
-        CodeSet codeSet = tg.getCodeSet();        
+        CodeSet codeSet = tg.getCodeSet();
 
         TestDescriptionIR tdIR =
             constructTestDescriptionIR(id, title, tgAttr, codeSet, tc,
@@ -441,7 +441,7 @@ public class ExternalEmitter
              TestCase tc)
                  throws TestFileException {
 
-         return constructTestDescriptionIR(id, title, tgAttr, codeSet, tc, 
+         return constructTestDescriptionIR(id, title, tgAttr, codeSet, tc,
               tgAttr.getContext(), tgAttr.getExecuteArgs());
     }
 
@@ -454,7 +454,7 @@ public class ExternalEmitter
              TestGroupAttributes tgAttr,
              CodeSet codeSet,
              TestCase tc,
-             String context, 
+             String context,
              String executeArgs)
                  throws TestFileException {
 
@@ -462,7 +462,7 @@ public class ExternalEmitter
         ArrayList sources = findSourceFileNames(codeSet, tc);
 
         TestDescriptionIR tdIR = new TestDescriptionIR();
-       
+
         tdIR.add(TestDescriptionIR.TITLE, id + " - " + title);
         tdIR.add(TestDescriptionIR.NAME, id);
         tdIR.add(TestDescriptionIR.CLASS, tgAttr.getExecuteClass());
@@ -487,14 +487,14 @@ public class ExternalEmitter
         String id = tg.getID();
         String title = tgDoc.getTitle();
         String descr = tgDoc.getDescription();
-        String comments = getTestGroupComments(tg); 
+        String comments = getTestGroupComments(tg);
         String files = filesToString(findExternalFileNames(tg.getCodeSet(), tc));
 
         return constructTDDescription(id, title, descr, comments, files);
     }
 
 
-    protected String constructTDDescription(String id, String title, 
+    protected String constructTDDescription(String id, String title,
             String descr, String comments, String files) {
 
         StringBuffer sb = new StringBuffer();
@@ -519,7 +519,7 @@ public class ExternalEmitter
 
     protected TDEntriesCollector createTDEntriesCollector() {
         return new TDEntriesCollector();
-    }                        
+    }
 
     protected String filesToString(ArrayList files) {
         if (files == null || files.size() == 0)
@@ -562,7 +562,7 @@ public class ExternalEmitter
             return sb.toString();
         } else {
              return null;
-        }       
+        }
     }
 
     protected String detectTestPackageName(TestGroup tg) {
@@ -634,23 +634,23 @@ public class ExternalEmitter
 
 
     protected HtmlIR getHtmlIR(TestGroup tg, HashMap testSuites)
-            throws TestFileException {      
+            throws TestFileException {
 
         String tdFile = LibUtils.getTDFile(tg);
         String indexName = (tdFile == null) ? tg.getID() : tdFile;
         String outDir = IR.getAttrElem("OutputDir", tg);
-        String fileName =  ((outDir == null) ? "" : outDir) + File.separator 
+        String fileName =  ((outDir == null) ? "" : outDir) + File.separator
             + indexName + ".html";
-    
+
         if (hash.containsKey(fileName)) {
             return (HtmlIR)(hash.get(fileName));
         } else {
             MyHtmlIR html = new MyHtmlIR();
             html.setFileName(fileName);
             html.setCopyrightLink(copyrightLink);
-			html.setIndexName(indexName);
+            html.setIndexName(indexName);
             TestSuite ts = (TestSuite)testSuites.get(indexName);
-            if (ts != null) {               
+            if (ts != null) {
                 html.setHeader(ts.getDescription());
                 html.setTitle(ts.getTitle());
             }
@@ -664,9 +664,9 @@ public class ExternalEmitter
     *  overriden version implements html conflict mode
     */
     protected void writeHtmls()
-    		throws TestFileException {
+            throws TestFileException {
         Enumeration e = hash.keys();
-    	while (e.hasMoreElements()) {
+        while (e.hasMoreElements()) {
             String fileName = (String) e.nextElement();
             MyHtmlIR html = (MyHtmlIR) hash.get(fileName);
             try {
@@ -705,8 +705,8 @@ public class ExternalEmitter
         }
     }
 
-    /** 
-     * notifies ExcludeListGenerator 
+    /**
+     * notifies ExcludeListGenerator
      */
     protected void notifyExcludeListGenerator()
              throws TestFileException {
@@ -719,7 +719,7 @@ public class ExternalEmitter
             if (!testIR.isAnchorRequired()) {
                 notifyExcludeListGenerator(tg, htmlName);
             } else {
-                String tdName = htmlName + "#" + testIR.id();            
+                String tdName = htmlName + "#" + testIR.id();
                 notifyExcludeListGenerator(tg, tdName);
                 ArrayList testCases = tg.getTestCases();
                 if (testCases != null && testCases.size() > 0) {
@@ -735,40 +735,40 @@ public class ExternalEmitter
 
     protected void notifyExcludeListGenerator(TestItem ti, String fileName)
              throws TestFileException {
-        // set testURL     
-        IR.setAttrElem(ti, ExcludeListUtils.TestDescriptionURLAttrElemName, fileName);        
+        // set testURL
+        IR.setAttrElem(ti, ExcludeListUtils.TestDescriptionURLAttrElemName, fileName);
         try {
             if (ti instanceof TestCase) {
                 // set testCaseName
                 IR.setAttrElem(ti, ExcludeListUtils.TestCaseNameAttrElemName, ti.getID());
-                collector.addEntry((TestCase) ti);    
+                collector.addEntry((TestCase) ti);
             } else if (ti instanceof TestGroup) {
-                collector.addEntry((TestGroup) ti);    
-            }        
+                collector.addEntry((TestGroup) ti);
+            }
         } catch (IncorrectAttributesException e) {
             throw new TestFileException (e.toString());
         } catch (IOException e) {
             throw new TestFileException (e.toString());
         }
     }
-	
-	/**
-	*  Adds conflict files or clear file set if parameter is null
-	*/    
-    public void setConflictFiles(HashSet files) {
-    	if (files != null) 
-	    	conflictFiles.addAll(files);
-		else 
-			conflictFiles.clear();    
-    }
-	
+
     /**
-	*	Checks whenever file is in conflict set
-	*/	
-    public boolean isInConflictMode(String file) {
-		return conflictFiles.contains(file);
+    *  Adds conflict files or clear file set if parameter is null
+    */
+    public void setConflictFiles(HashSet files) {
+        if (files != null)
+            conflictFiles.addAll(files);
+        else
+            conflictFiles.clear();
     }
-	
+
+    /**
+    *   Checks whenever file is in conflict set
+    */
+    public boolean isInConflictMode(String file) {
+        return conflictFiles.contains(file);
+    }
+
     /**
      * Access to protected memebers
      * Incapsulates index file (tdFile) information
@@ -783,17 +783,17 @@ public class ExternalEmitter
         public String testTable() {
             return super.testTable();
         }
-		
-		/**
-		* Helper method 
-		*/
+
+        /**
+        * Helper method
+        */
         public void setIndexName(String indexName) {
             this.indexName = indexName;
         }
-		
-		/**
-		* Helper method
-		*/
+
+        /**
+        * Helper method
+        */
         public String getIndexName() {
             return indexName;
         }

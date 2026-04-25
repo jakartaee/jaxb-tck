@@ -20,15 +20,15 @@ package com.sun.tgxml.tools.testgen.processors.ir;
 import java.util.Properties;
 
 /**
- * This interface defines the Service Provider Interface (SPI) for 
+ * This interface defines the Service Provider Interface (SPI) for
  * the <code>IRPFactory</code> class.
  * <p>
- * <code>getProcessor(Properties props)</code> method must be implemented 
- * by each IRProcessor provider who wishes to supply the implementation of 
+ * <code>getProcessor(Properties props)</code> method must be implemented
+ * by each IRProcessor provider who wishes to supply the implementation of
  * a particular IRObj processing.
  * <p>
- * @version 	1.0, 21/01/2004
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 21/01/2004
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -42,4 +42,4 @@ public interface IRPFactorySpi {
     public IRProcessor getProcessor(Properties props);
 
 }
-        
+

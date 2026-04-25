@@ -21,13 +21,13 @@ package com.sun.tgxml.tjtf.api.code;
 // </importgen>
 
 /**
- * Code - 
+ * Code -
  *
  * <b>Code</b> is the marker interface to a class structure that describes the root of a test description.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -83,7 +83,7 @@ public  interface Code {
      *    Methods
      * ============================================================================================
      */
-   
+
 
   /**
     *   Get the source-language of this code  (default is "java").
@@ -92,7 +92,7 @@ public  interface Code {
     * @see #setSourceLang
     */
     public String getSourceLang();
-     
+
   /**
     *   Set the source-language of this code  (default is "java").
     *  <p>

@@ -23,22 +23,22 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 /**
- * StandardOptionHandler - 
+ * StandardOptionHandler -
  *
- * <b>StandardOptionHandler</b> is a standard implementation of the 
- * OptionHandler interface. Subclasses should not care about 
+ * <b>StandardOptionHandler</b> is a standard implementation of the
+ * OptionHandler interface. Subclasses should not care about
  * implementing options adding and decoding. Subclasses may only
  * register their own options and apply their values.
  * <p>
  *
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
 public class StandardOptionHandler implements OptionHandler {
-   
+
     private Vector options = new Vector();
     private String[] optionsUsage = null;
 
@@ -57,13 +57,13 @@ public class StandardOptionHandler implements OptionHandler {
 
     /**
      * Parses command line arguments.
-     * Consequently calls parse() method of the each handler option. 
+     * Consequently calls parse() method of the each handler option.
      * @return unparsed arguments
      * @throws ParseArgumentException if arguments cannot be parsed
      * or incomplete.
      *
      */
-    public ArrayList parseArguments(ArrayList args) 
+    public ArrayList parseArguments(ArrayList args)
             throws ParseArgumentException {
 
         Enumeration ops = options.elements();
@@ -84,7 +84,7 @@ public class StandardOptionHandler implements OptionHandler {
     }
 
     /**
-     * Removes option from the list of handler options 
+     * Removes option from the list of handler options
      */
     public void removeOption(Option op) {
         if (op != null) {
@@ -93,7 +93,7 @@ public class StandardOptionHandler implements OptionHandler {
     }
 
     /**
-     * Resets all handler options 
+     * Resets all handler options
      */
     public void resetOptions() {
         Enumeration ops = options.elements();
@@ -105,7 +105,7 @@ public class StandardOptionHandler implements OptionHandler {
     /**
      * Sets Option Usage Info. By default getOptionsUsageInfo() returns
      * summary of handler options usage. Call this method to set
-     * OptionsUsageInfo. 
+     * OptionsUsageInfo.
      * @param oui new OptionsUsageInfo, if null usage info will be calculated
      */
     public void setOptionsUsageInfo(String[] oui) {
@@ -113,7 +113,7 @@ public class StandardOptionHandler implements OptionHandler {
     }
 
     /**
-     * Returns Option Usage Info. 
+     * Returns Option Usage Info.
      * @return summary of handler options usage if usage info has not
      *          been set with setOptionsUsageInfo method
      */
@@ -137,29 +137,29 @@ public class StandardOptionHandler implements OptionHandler {
 
 
     /**
-     * Returns the list of the all handler options. 
+     * Returns the list of the all handler options.
      */
     public Option[] allOptions() {
         return (Option[])options.toArray(new Option[0]);
     }
 
 
-    /** 
-     * Registers handler options. 
+    /**
+     * Registers handler options.
      * <p>Subclasses should override this method to register own options
      * <p> StandardOptionHandler uses FIFO order of options parsing:
      * first registered options will be used first for parsing.
      * Option are registered by <tt>addOption(option)</tt> call.
-     * To use options registered by superclass subclass should call 
+     * To use options registered by superclass subclass should call
      * <tt>super.registerOptions()</tt>.
      * Options registered before this call
-     * will be processed before superclass options. 
+     * will be processed before superclass options.
      * Options registered after this call will be processed after
-     * superclass options. 
+     * superclass options.
      * If <tt>super.registerOptions()</tt> method is not invoked
      * no superclass options will be registered.
      * <p><code>Notes: initialization work is doing by applyOptionsValues()
-     * after decoding is done. So options objects should be defined outside 
+     * after decoding is done. So options objects should be defined outside
      * of registerOptions() to be visible from applyOptionsValues() </code>
      */
 
@@ -172,7 +172,7 @@ public class StandardOptionHandler implements OptionHandler {
      * This method is invoked after all options parsing is done and
      * the set of registered Option objects are initialized.
      * Subclasses should override this method if to apply values of own options.
-     * To apply values of superclass options <tt>super.applyOptionsValues()</tt>      
+     * To apply values of superclass options <tt>super.applyOptionsValues()</tt>
      * should be called from this method.
      * @throws ParseArgumentException if options value cannot be applied
      *         (incorrect or insufficient arguments passed)

@@ -26,8 +26,8 @@ import com.sun.tgxml.tjtf.tools.options.util.ArgReader;
  *  This is an implementation of option without arguments.<p>
  *  Use <tt>isSet()</tt> to know whether options is set or not.
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -43,7 +43,7 @@ public class FlagOption extends BasicOption {
     }
 
     /**
-     * Creates option with one specified switch and usageInfo 
+     * Creates option with one specified switch and usageInfo
      *
      * @throws IllegalArgumentException if usageInfo is null, or sw is null
      */
@@ -56,8 +56,8 @@ public class FlagOption extends BasicOption {
      *
      * @throws IllegalArgumentException if usageInfo is null, or array of
      * switches is empty or contains null.
-     */    
-    public FlagOption(String[] switches, String usageInfo, 
+     */
+    public FlagOption(String[] switches, String usageInfo,
             boolean isObligatory) {
         super(switches, usageInfo, isObligatory);
     }
@@ -65,7 +65,7 @@ public class FlagOption extends BasicOption {
 
     /**
      * Returns null (flag option has no arguments)
-     */ 
+     */
     public ArgReader getArgReader() {
         return null;
     }

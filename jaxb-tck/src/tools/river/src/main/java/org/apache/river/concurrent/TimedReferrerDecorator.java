@@ -17,7 +17,7 @@ package org.apache.river.concurrent;
 
 /**
  *
- * @param <T> 
+ * @param <T>
  * @author peter
  */
 class TimedReferrerDecorator<T> extends ReferrerDecorator<T> implements TimeBomb {
@@ -27,10 +27,10 @@ class TimedReferrerDecorator<T> extends ReferrerDecorator<T> implements TimeBomb
         super(r);
         if (!(r instanceof TimeBomb)) throw new IllegalStateException("Must be instance of TimeBomb");
     }
-    
+
     public void updateClock(long time) {
         Referrer<T> r = getReference();
         ((TimeBomb)r).updateClock(time);
     }
-    
+
 }

@@ -30,50 +30,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * Context_TH - The tag-handler for a Description tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Context_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Context_TH - The tag-handler for a Description tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Context_TH
+ * ============================================================================================
+ */
 public class Context_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Context_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Context_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Context_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -84,13 +84,13 @@ public class Context_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_context;
+    return TagsImpl.ctStr_tag_context;
     }
 
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -98,39 +98,39 @@ public class Context_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
+    super.endTag(text);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
 
-	if (testitem == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+    if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	// validated the context
-	//   If the tag is parsed in, it can not have null text.
-	if (text == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
-	
-	StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
-	if (! tknzr.hasMoreTokens())
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+    // validated the context
+    //   If the tag is parsed in, it can not have null text.
+    if (text == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
 
-	if (testitem instanceof TestGroupAttributes) {
-	    //  Nothing is pushed onto the stack
-	    ((TestGroupAttributes)testitem).setContext(text);
+    StringTokenizer tknzr = new StringTokenizer(text, " \t\n\r");
+    if (! tknzr.hasMoreTokens())
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+
+    if (testitem instanceof TestGroupAttributes) {
+        //  Nothing is pushed onto the stack
+        ((TestGroupAttributes)testitem).setContext(text);
         } else if (testitem instanceof CodeSet) {
-	    ((CodeSet)testitem).setContext(text);
+        ((CodeSet)testitem).setContext(text);
         } else {
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), 
-						 TagsImpl.ctStr_tag_testgroupattributes));
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(),
+                         TagsImpl.ctStr_tag_testgroupattributes));
         }
     }
-     
- 
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -138,13 +138,13 @@ public class Context_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String context = (String) tdObject;
+    String context = (String) tdObject;
 
-	m_EmitterHandler.emitText(context);
+    m_EmitterHandler.emitText(context);
 
     }
 

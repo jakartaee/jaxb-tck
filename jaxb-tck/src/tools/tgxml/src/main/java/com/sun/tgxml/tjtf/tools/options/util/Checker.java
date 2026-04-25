@@ -24,8 +24,8 @@ import java.util.ArrayList;
  * specified index in the array list is acceptable or not.
  * Subclasses should implement the algorithm of checking
  *
- * @version 	1.0, 19/03/2002
- * @author      Dmitry Fazunenko 
+ * @version     1.0, 19/03/2002
+ * @author      Dmitry Fazunenko
  *
  */
 
@@ -33,7 +33,7 @@ public abstract class Checker {
 
 
     /**
-     * Takes the element from array with the specified index, 
+     * Takes the element from array with the specified index,
      * converts it to string and checks it with checkElement method.
      * Returns false if index is out of bounds
      */
@@ -43,12 +43,12 @@ public abstract class Checker {
              return checkElement((String)obj);
         } catch (IndexOutOfBoundsException e) {
              return false;
-        }        
+        }
     }
 
     /**
      * Checks whether <code>elem</code> is acceptable or not.<p>
-     * Subclasses should override this method to implement own algorith of 
+     * Subclasses should override this method to implement own algorith of
      * checking.
      *
      * @param elem the string under check

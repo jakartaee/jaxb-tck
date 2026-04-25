@@ -22,7 +22,7 @@ import java.util.Iterator;
 
 /**
  * Simple implementation of LibSelectionInfo interface
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */
@@ -74,7 +74,7 @@ public class LibsInfo implements LibSelectionInfo {
          return rejected;
      }
 
-     /**     
+     /**
       * Returns string representation of LibsInfo
       */
      public String toString() {

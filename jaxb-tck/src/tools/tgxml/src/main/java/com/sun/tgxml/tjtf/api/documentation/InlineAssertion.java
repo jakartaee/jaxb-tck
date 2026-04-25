@@ -22,12 +22,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * InlineAssertion - 
+ * InlineAssertion -
  *
  * <b>InlineAssertion</b> is an internal statement (specification assertion)
  * that is to be tested. An InlineAssertion contains the text of the assertion.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -47,7 +47,7 @@ public interface InlineAssertion extends Assertion {
      * ============================================================================================
      */
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Operations

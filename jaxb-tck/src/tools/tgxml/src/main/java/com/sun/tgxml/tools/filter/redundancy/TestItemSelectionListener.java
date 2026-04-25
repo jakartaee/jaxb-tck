@@ -24,65 +24,65 @@ import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 
 public interface TestItemSelectionListener {
-    
+
     public static final String EXTERNAL_LIBRARY = "ExternalLibrary";
     public static final String INLINE_LIBRARY = "InlineLibrary";
     public static final String TEST_GROUP = "TestGroup";
     public static final String TEST_CASE = "TestCase";
-   
+
     /**
-     * This method is executed for each registered instance, 
-     * when a external Library instance is selected. 
+     * This method is executed for each registered instance,
+     * when a external Library instance is selected.
      * The method may be invoked more than one time for same Library.
      * @param item selected Library.
      */
     public void externalLibrarySelected(Library item) throws TestFileException;
 
     /**
-     * This method is executed for each registered instance, 
-     * when a internal Library instance is selected. 
+     * This method is executed for each registered instance,
+     * when a internal Library instance is selected.
      * The method may be invoked more than one time for same Library.
      * @param item selected Library.
      */
     public void internalLibrarySelected(Library item) throws TestFileException;
-    
+
     /**
-     * This method is executed for each registered instance, 
-     * when a TestCase instance is selected. 
+     * This method is executed for each registered instance,
+     * when a TestCase instance is selected.
      * The method may be invoked more than one time for same TestCase.
      * @param item selected TestCase.
      */
     public void testCaseSelected(TestCase item) throws TestFileException;
- 
+
     /**
-     * This method is executed for each registered instance, 
-     * when a TestGroup instance is selected. 
+     * This method is executed for each registered instance,
+     * when a TestGroup instance is selected.
      * The method may be invoked more than one time for same TestGroup.
      * @param tGroup selected TestGroup.
      */
     public void testGroupSelected(TestGroup tGroup) throws TestFileException;
-    
+
     /**
      * This method is executed for each registered instance when a part of a
      * task is completed. It does not mean that all libraries are processed.
      */
     public void flush();
-    
+
     public static class EmptyListener implements TestItemSelectionListener {
         public void externalLibrarySelected(Library item) throws TestFileException {
         }
 
-        public void internalLibrarySelected(Library item) throws TestFileException {   
+        public void internalLibrarySelected(Library item) throws TestFileException {
         }
-        
+
         public void testCaseSelected(TestCase item) throws TestFileException {
         }
-        
+
         public void testGroupSelected(TestGroup tGroup) throws TestFileException {
         }
-        
+
         public void flush() {
         }
     }
-   
+
 }

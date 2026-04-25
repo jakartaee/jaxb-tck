@@ -20,17 +20,17 @@ package com.sun.tgxml.tools.dependence;
 import java.util.ArrayList;
 
 /**
- * The <code>StringArray</code> class adds two methods <i>addString</i> and 
+ * The <code>StringArray</code> class adds two methods <i>addString</i> and
  * <i>getString</i> to the <code>ArrayList</code>.
  */
 public class StringArray extends ArrayList {
-    
+
     /**
      * Appends the specified string to the end of this list if the string
      * is new.
-     * @param string 
+     * @param string
      *           string to be appended to this list.
-     * @return 
+     * @return
      *    <strong>true</strong>   if string is new and it is appended to this list.
      *    <strong>false</strong>  if string is found in the list.
      */
@@ -44,11 +44,11 @@ public class StringArray extends ArrayList {
 
     /**
      * Returns the string at the specified position in this list.
-     * @param index 
+     * @param index
      *           index of string to return.
      * @return the string at the specified position in this list.
-     * @throws IndexOutOfBoundsException 
-     *         if index is out of range 
+     * @throws IndexOutOfBoundsException
+     *         if index is out of range
      *           <code>(index < 0 || index >= size())</code>.
      */
     public String getString(int index) {

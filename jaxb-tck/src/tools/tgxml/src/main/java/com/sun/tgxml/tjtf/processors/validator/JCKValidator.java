@@ -37,10 +37,10 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * JCKValidator - The full validator for a JCK test format. 
+/**
+ * JCKValidator - The full validator for a JCK test format.
  * <p>
- * A JCKValidator adds implementation to a BaseUTDValidator to validate the 
+ * A JCKValidator adds implementation to a BaseUTDValidator to validate the
  * following JCK assertions:
  * <p>
  * <b> TestGroup</b><br>
@@ -52,7 +52,7 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
  * <p>
  * The following assertions have been removed for TestGroup:
  * <ul>
- * <li> TG2.) TestGroupAttributes must be present.</li> 
+ * <li> TG2.) TestGroupAttributes must be present.</li>
  * <li> TG3.) CodeSet must be present.</li>
  * </ul>
  * <p>
@@ -268,62 +268,62 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
  * <p>
  * The JCKValidator (or one of it's parent classes) must handle these assertions.
  * <p>
- * @version 	1.0, 10/02/97 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    JCKValidator 
- * ============================================================================================ 
- */ 
+ * @version     1.0, 10/02/97
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    JCKValidator
+ * ============================================================================================
+ */
 public class JCKValidator extends BaseUTDValidator {
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
     /** The name of the TCK. */
     protected String m_TCKName;
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
-   /** 
-    *   BaseUTDValidator constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
+   /**
+    *   BaseUTDValidator constructor -
+    *       Initialize our internal fields.
+    */
     public JCKValidator() {
-	super();
-	init();
+    super();
+    init();
     }
 
 
-   /** 
-    *   init internal fields. 
-    */ 
+   /**
+    *   init internal fields.
+    */
     private void init() {
-	m_TCKName = "JCK";
+    m_TCKName = "JCK";
     }
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
+   /*
+    * --------------------------------------------------------------------------------------------
     *    validation utilities
-    * -------------------------------------------------------------------------------------------- 
-    */ 
-   
+    * --------------------------------------------------------------------------------------------
+    */
 
-   /* 
-    * -------------------------------------------------------------------------------------------- 
-    *    BaseUTDValidator implementation methods 
-    * -------------------------------------------------------------------------------------------- 
-    */ 
-   
+
+   /*
+    * --------------------------------------------------------------------------------------------
+    *    BaseUTDValidator implementation methods
+    * --------------------------------------------------------------------------------------------
+    */
+
     /**
      * validate a TestGroup.
      * <p>
@@ -331,42 +331,42 @@ public class JCKValidator extends BaseUTDValidator {
      * @throws ValidatorException if the TestGroup is invalid.
      */
     public void validate_TestGroup(TestGroup obj) throws ValidatorException {
-	// the super validates ID's (TG5)
-	super.validate_TestGroup(obj);
+    // the super validates ID's (TG5)
+    super.validate_TestGroup(obj);
 
-	// Assertion TG1.
-	TestGroupDocumentation tgd = obj.getTGDocumentation();
-	if (tgd == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testgroup, TagsImpl.ctStr_tag_testgroupdocumentation));
-	/*  
-	 * These assertions have been removed (1/14/02)
-	 *
-	 */
+    // Assertion TG1.
+    TestGroupDocumentation tgd = obj.getTGDocumentation();
+    if (tgd == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testgroup, TagsImpl.ctStr_tag_testgroupdocumentation));
+    /*
+     * These assertions have been removed (1/14/02)
+     *
+     */
 
-	/*
-	// Assertion TG2.
-	TestGroupAttributes tga = obj.getTGAttributes();
-	if (tga == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testgroup, TagsImpl.ctStr_tag_testgroupattributes));
-	    
-	    
-	// Assertion TG3.
-	CodeSet cs = obj.getCodeSet();
-	if (cs == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testgroup, TagsImpl.ctStr_tag_codeset));
+    /*
+    // Assertion TG2.
+    TestGroupAttributes tga = obj.getTGAttributes();
+    if (tga == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testgroup, TagsImpl.ctStr_tag_testgroupattributes));
+
+
+    // Assertion TG3.
+    CodeSet cs = obj.getCodeSet();
+    if (cs == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testgroup, TagsImpl.ctStr_tag_codeset));
         */
 
-	    
-	// Assertion TG4.
-	ArrayList cases = obj.getTestCases();
-	if (cases == null || (cases.size() < 1))
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.needs1comp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testgroup, TagsImpl.ctStr_tag_testcase));
 
-	    
+    // Assertion TG4.
+    ArrayList cases = obj.getTestCases();
+    if (cases == null || (cases.size() < 1))
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.needs1comp",
+                     m_TCKName, TagsImpl.ctStr_tag_testgroup, TagsImpl.ctStr_tag_testcase));
+
+
     }
 
 
@@ -377,33 +377,33 @@ public class JCKValidator extends BaseUTDValidator {
      * @throws ValidatorException if the TestCase is invalid.
      */
     public void validate_TestCase(TestCase obj) throws ValidatorException {
-	// the super validates ID's (TC4)
-	super.validate_TestCase(obj);
+    // the super validates ID's (TC4)
+    super.validate_TestCase(obj);
 
-	// Assertion TC1.
-	TestCaseDocumentation tcd = obj.getTCDocumentation();
-	if (tcd == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testcase, TagsImpl.ctStr_tag_testcasedocumentation));
-	    
-	/*  
-	 * These assertions have been removed (1/14/02)
-	 *
-	 */
+    // Assertion TC1.
+    TestCaseDocumentation tcd = obj.getTCDocumentation();
+    if (tcd == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testcase, TagsImpl.ctStr_tag_testcasedocumentation));
 
-	/*
-	// Assertion TC2.
-	TestCaseAttributes tca = obj.getTCAttributes();
-	if (tca == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testcase, TagsImpl.ctStr_tag_testcaseattributes));
-	    
-	    
-	// Assertion TC3.
-	CodeSet cs = obj.getCodeSet();
-	if (cs == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testcase, TagsImpl.ctStr_tag_codeset));
+    /*
+     * These assertions have been removed (1/14/02)
+     *
+     */
+
+    /*
+    // Assertion TC2.
+    TestCaseAttributes tca = obj.getTCAttributes();
+    if (tca == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testcase, TagsImpl.ctStr_tag_testcaseattributes));
+
+
+    // Assertion TC3.
+    CodeSet cs = obj.getCodeSet();
+    if (cs == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testcase, TagsImpl.ctStr_tag_codeset));
          */
     }
 
@@ -415,27 +415,27 @@ public class JCKValidator extends BaseUTDValidator {
      * @throws ValidatorException if the Library is invalid.
      */
     public void validate_Library(Library obj) throws ValidatorException {
-	// the super validates ID's (Lib4)
-	super.validate_Library(obj);
+    // the super validates ID's (Lib4)
+    super.validate_Library(obj);
 
-	// Assertion Lib1.
-	LibDocumentation ld = obj.getLibDocumentation();
-	if (ld == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_library, TagsImpl.ctStr_tag_librarydocumentation));
-	    
-	// Assertion Lib2.
-	LibAttributes la = obj.getLibAttributes();
-	if (la == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_library, TagsImpl.ctStr_tag_libraryattributes));
-	    
-	    
-	// Assertion Lib3.
-	CodeSet cs = obj.getCodeSet();
-	if (cs == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_library, TagsImpl.ctStr_tag_codeset));
+    // Assertion Lib1.
+    LibDocumentation ld = obj.getLibDocumentation();
+    if (ld == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_library, TagsImpl.ctStr_tag_librarydocumentation));
+
+    // Assertion Lib2.
+    LibAttributes la = obj.getLibAttributes();
+    if (la == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_library, TagsImpl.ctStr_tag_libraryattributes));
+
+
+    // Assertion Lib3.
+    CodeSet cs = obj.getCodeSet();
+    if (cs == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_library, TagsImpl.ctStr_tag_codeset));
     }
 
 
@@ -447,30 +447,30 @@ public class JCKValidator extends BaseUTDValidator {
      * @throws ValidatorException if the TestGroupDocumentation is invalid.
      */
     public void validate_TestGroupDocumentation(TestGroupDocumentation obj) throws ValidatorException {
-	// Assertion TGD1.
-	String testedpck = obj.getTestedPackage();
-	if (testedpck == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testgroupdocumentation, TagsImpl.ctStr_tag_testedpackage));
-	    
-	// Assertion TGD2.
-	String testedcls = obj.getTestedClass();
-	if (testedcls == null)
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testgroupdocumentation, TagsImpl.ctStr_tag_testedclass));
-	    
-	    
-	// Assertion TGD3.
-	ArrayList assertions = obj.getAssertions();
-	if (assertions != null) {
-	    Iterator it = assertions.iterator();
-	    while (it.hasNext()) {
-		Assertion current = (Assertion) it.next();
-		if (! (current instanceof AssertionRef)) 
-		    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.needsonlycomp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testgroupdocumentation, TagsImpl.ctStr_tag_assertionref));
-	    }
-	}
+    // Assertion TGD1.
+    String testedpck = obj.getTestedPackage();
+    if (testedpck == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testgroupdocumentation, TagsImpl.ctStr_tag_testedpackage));
+
+    // Assertion TGD2.
+    String testedcls = obj.getTestedClass();
+    if (testedcls == null)
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.missingcomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testgroupdocumentation, TagsImpl.ctStr_tag_testedclass));
+
+
+    // Assertion TGD3.
+    ArrayList assertions = obj.getAssertions();
+    if (assertions != null) {
+        Iterator it = assertions.iterator();
+        while (it.hasNext()) {
+        Assertion current = (Assertion) it.next();
+        if (! (current instanceof AssertionRef))
+            raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.needsonlycomp",
+                     m_TCKName, TagsImpl.ctStr_tag_testgroupdocumentation, TagsImpl.ctStr_tag_assertionref));
+        }
+    }
 
     }
 
@@ -482,12 +482,12 @@ public class JCKValidator extends BaseUTDValidator {
      * @throws ValidatorException if the TestCaseDocumentation is invalid.
      */
     public void validate_TestCaseDocumentation(TestCaseDocumentation obj) throws ValidatorException {
-	// Assertion TCD1.
-	ArrayList specs = obj.getTestCaseSpecs();
-	if (specs == null || (specs.size() < 1))
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.needs1comp", 
-					 m_TCKName, TagsImpl.ctStr_tag_testcasedocumentation, TagsImpl.ctStr_tag_testcasespec));
-	    
+    // Assertion TCD1.
+    ArrayList specs = obj.getTestCaseSpecs();
+    if (specs == null || (specs.size() < 1))
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.needs1comp",
+                     m_TCKName, TagsImpl.ctStr_tag_testcasedocumentation, TagsImpl.ctStr_tag_testcasespec));
+
     }
 
 
@@ -498,11 +498,11 @@ public class JCKValidator extends BaseUTDValidator {
      * @throws ValidatorException if the InlineData is invalid.
      */
     public void validate_InlineData(InlineData obj) throws ValidatorException {
-	// Assertion ID1.
-	String targetname = obj.getTargetName();
-	DataType type = obj.getType();
-	if ( (targetname != null && type == null) ||
-	     (targetname == null && type != null))
-	    raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.inlinedata.targtype"));
+    // Assertion ID1.
+    String targetname = obj.getTargetName();
+    DataType type = obj.getType();
+    if ( (targetname != null && type == null) ||
+         (targetname == null && type != null))
+        raiseValidatorException(LibResHandler.getResStr("jckvalidator.error.inlinedata.targtype"));
     }
 }

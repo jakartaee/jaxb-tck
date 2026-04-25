@@ -48,7 +48,7 @@ public class BundleCopyrightConverter {
      *
      * @param src_dir source directory. Non-absolute source file names
      *     are treated to be relative to this directory.
-     * @param dst_dir 
+     * @param dst_dir
      *     destination directory, where to put files with valid CRNs inserted.
      */
     public BundleCopyrightConverter(String src_dir, String dst_dir) {
@@ -190,7 +190,7 @@ public class BundleCopyrightConverter {
         dst_path = dstDir + File.separator + dst_path;
         File dst = new File(dst_path);
         File src = new File(src_path);
-    
+
         if (!src.exists()) {
             warning("file does not exist: " + name);
             return;

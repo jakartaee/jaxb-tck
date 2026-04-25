@@ -22,59 +22,59 @@ import java.util.Iterator;
 import java.util.StringTokenizer;
 
 public class KeywordExpression {
-	
+
    private HashSet expr;
    public KeywordExpression(String line) {
-	   expr = new HashSet();
-	   StringTokenizer st = new StringTokenizer(line, "|");
-	   while (st.hasMoreTokens()) {
-		   expr.add(st.nextToken());
-	   }	  
-	   
- 
+       expr = new HashSet();
+       StringTokenizer st = new StringTokenizer(line, "|");
+       while (st.hasMoreTokens()) {
+           expr.add(st.nextToken());
+       }
+
+
   }
 
    public boolean accept(KeywordSet set) {
-	   for( Iterator keywords = expr.iterator(); keywords.hasNext();) {
-		   if(set.contains(keywords.next())) {
-			   return true;
-		   }
-	   }	   
-	   return false;
+       for( Iterator keywords = expr.iterator(); keywords.hasNext();) {
+           if(set.contains(keywords.next())) {
+               return true;
+           }
+       }
+       return false;
     }
 
    public boolean accept(ExcludeEntry entry) {
-	   return accept(entry.getKeywords());
+       return accept(entry.getKeywords());
    }
 
 
-	/**
-	 * return new ExcludeList that contains only accpeted entries
-	 */
+    /**
+     * return new ExcludeList that contains only accpeted entries
+     */
 
-	public ExcludeList apply (ExcludeList el) {
-	   ExcludeList list = new ExcludeList();
-	   for( Iterator entries = el.getAllEntries(); entries.hasNext();) {
-		   ExcludeEntry entry = (ExcludeEntry)entries.next();
-		   if(accept(entry)) {
-			   list.addEntry(entry);
-		   }
-	   }
-	   return list;
-	}
+    public ExcludeList apply (ExcludeList el) {
+       ExcludeList list = new ExcludeList();
+       for( Iterator entries = el.getAllEntries(); entries.hasNext();) {
+           ExcludeEntry entry = (ExcludeEntry)entries.next();
+           if(accept(entry)) {
+               list.addEntry(entry);
+           }
+       }
+       return list;
+    }
 
     public String toString() {
-		String result = "";
+        String result = "";
         if(expr.size() > 0) {
-			Iterator keywords = expr.iterator(); 
-			result += keywords.next();
-			
-	   	    while ( keywords.hasNext()) {
-				result += "|" + keywords.next();
-			}
-		} 		
-		
-		return result;
+            Iterator keywords = expr.iterator();
+            result += keywords.next();
 
-	}
+            while ( keywords.hasNext()) {
+                result += "|" + keywords.next();
+            }
+        }
+
+        return result;
+
+    }
 }

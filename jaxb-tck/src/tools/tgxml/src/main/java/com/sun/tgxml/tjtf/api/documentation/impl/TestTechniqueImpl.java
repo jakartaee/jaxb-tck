@@ -24,11 +24,11 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 // </importgen>
 
 /**
- * TestTechniqueImpl - 
+ * TestTechniqueImpl -
  *
  * <b>TestTechniqueImpl</b>  is the enumeration for a method of testing a given API.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -60,7 +60,7 @@ public class TestTechniqueImpl implements TestTechnique  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
@@ -76,7 +76,7 @@ public class TestTechniqueImpl implements TestTechnique  {
     * @see com.sun.tgxml.tjtf.api.common.NameValuePair
     */
     private TestTechniqueImpl(String value){
-	m_type = value;
+    m_type = value;
     }
 
 
@@ -91,9 +91,9 @@ public class TestTechniqueImpl implements TestTechnique  {
     * @return     The EqClass TestTechnique associated with this documentation
     */
     static public TestTechnique createEqClass(){
-	return EqClass;
+    return EqClass;
     }
-     
+
 
   /**
     *   Factory TestTechnique Constructor (Boundary).
@@ -101,9 +101,9 @@ public class TestTechniqueImpl implements TestTechnique  {
     * @return     The EqClass TestTechnique associated with this documentation
     */
     static public TestTechnique createBoundary(){
-	return Boundary;
+    return Boundary;
     }
-      
+
 
     //------------------------------------------------------------------------------
     //  Predicate methods
@@ -116,9 +116,9 @@ public class TestTechniqueImpl implements TestTechnique  {
     * @return     The true if this technique is EqClass.
     */
     public boolean isEqClass(){
-	return (this == EqClass);
+    return (this == EqClass);
     }
-     
+
 
   /**
     *   Is this an Boundary technique.
@@ -126,10 +126,10 @@ public class TestTechniqueImpl implements TestTechnique  {
     * @return     The true if this technique is Boundary.
     */
     public boolean isBoundary(){
-	return (this == Boundary);
+    return (this == Boundary);
     }
-     
-     
+
+
 
     //------------------------------------------------------------------------------
     //  Factory methods
@@ -142,8 +142,8 @@ public class TestTechniqueImpl implements TestTechnique  {
     * @return     The TestTechnique value.
     */
     public String toString(){
-	return m_type;
+    return m_type;
     }
-     
+
 
 }

@@ -28,20 +28,20 @@ public class EchoCommand extends Command
 {
     /**
      * The method that that does the work of the command.
-     * @param args	Words to write the the log stream
-     * @param log	A stream to which to report messages and errors
-     * @param ref	A stream to which to write reference output
-     * @return		Status.passed
+     * @param args  Words to write the the log stream
+     * @param log   A stream to which to report messages and errors
+     * @param ref   A stream to which to write reference output
+     * @return      Status.passed
      */
     public Status run(String[] args, PrintWriter log, PrintWriter ref) {
-	for (int i = 0; i < args.length; i++) {
-	    if (i > 0)
-		log.print(' ');
-	    log.print(args[i]);
-	}
-	log.println();
+    for (int i = 0; i < args.length; i++) {
+        if (i > 0)
+        log.print(' ');
+        log.print(args[i]);
+    }
+    log.println();
 
-	return passed;
+    return passed;
     }
 
     private static final Status passed = Status.passed("");

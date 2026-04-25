@@ -32,11 +32,11 @@ public class ExcludeListToolFactory {
      */
     protected static Hashtable jtxHash = new Hashtable();
 
-    /** 
+    /**
      * óreate a default ExcludeListCollector, that will put all exclude
      *  entries into the collectorFileName.
      */
-    public static ExcludeListCollector createELCollector(String outFileName) 
+    public static ExcludeListCollector createELCollector(String outFileName)
             throws TestFileException {
 
         String propName = "ExcludeListCollector";
@@ -49,15 +49,15 @@ public class ExcludeListToolFactory {
              return collector;
         } else {
              throw new TestFileException(propName + " should specify " +
-                 "instance of: com.sun.tgxml.tools.elgen." + propName); 
+                 "instance of: com.sun.tgxml.tools.elgen." + propName);
         }
     }
 
-    /** 
-     * óreate a default ExcludeListMarker, that will get exclude entries 
+    /**
+     * óreate a default ExcludeListMarker, that will get exclude entries
      *  from excludeListFileName
      */
-    public static ExcludeListMarker createELMarker(String excludeListFileName) 
+    public static ExcludeListMarker createELMarker(String excludeListFileName)
             throws IOException, TestFileException {
 
         String propName = "ExcludeListMarker";
@@ -70,7 +70,7 @@ public class ExcludeListToolFactory {
              return marker;
         } else {
              throw new TestFileException(propName + " should specify " +
-                 "instance of: com.sun.tgxml.tools.elgen." + propName); 
+                 "instance of: com.sun.tgxml.tools.elgen." + propName);
         }
 
 
@@ -84,7 +84,7 @@ public class ExcludeListToolFactory {
      */
     protected static Object getInstance(String propName)
              throws TestFileException {
-        String className = 
+        String className =
                 BuildProperties.getPrefixString("elgen", propName);
         if (className == null) {
             return null;
@@ -94,23 +94,23 @@ public class ExcludeListToolFactory {
              Class cl = Class.forName(className);
              return cl.newInstance();
         } catch (ClassNotFoundException e) {
-             throw new TestFileException("Cannot find: " + propName 
+             throw new TestFileException("Cannot find: " + propName
                  + " class: " + e);
         } catch (Exception e) {
-             throw new TestFileException("Cannot create instance of: " 
+             throw new TestFileException("Cannot create instance of: "
                  + propName + " class: " + e);
         }
-         
+
     }
 
     /**
-     * Returns true if contents of .jtx files may be changed during 
+     * Returns true if contents of .jtx files may be changed during
      * the build time, false otherwise.
      * This method should be invoked from getExcludeList() method,
      * if .jtx files may not be changed during the build time parsed
      * ExcludeList will be stored in the hash.
-     * This method looks up for 'elgen.elChangedDynamically' build 
-     * property. If the property is set to "false" or unset then 
+     * This method looks up for 'elgen.elChangedDynamically' build
+     * property. If the property is set to "false" or unset then
      * 'false' is returned.
      */
     public static boolean elChangedDynamically() {
@@ -122,12 +122,12 @@ public class ExcludeListToolFactory {
         }
     }
 
-    /** 
+    /**
      * Returns an ExcludeList which gets entries from the specified jtx file.
      * This method attempts to resolve multiple requests with the
      * same filename.
      * If contents of .jtx files may be changed during the build time
-     * or in case of the first request for specified jxt file new 
+     * or in case of the first request for specified jxt file new
      * ExcludeList instance is created. In case of posterior request
      * for specified jxt file previosly created instance is returned.
      */
@@ -143,5 +143,5 @@ public class ExcludeListToolFactory {
         return el;
     }
 
-} 
+}
 

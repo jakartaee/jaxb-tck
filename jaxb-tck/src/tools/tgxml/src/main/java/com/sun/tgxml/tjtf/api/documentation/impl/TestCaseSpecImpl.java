@@ -27,7 +27,7 @@ import com.sun.tgxml.tjtf.api.documentation.TestTechnique;
 // </importgen>
 
 /**
- * TestCaseSpec - 
+ * TestCaseSpec -
  *
  * <b>TestCaseSpec</b> is the basic interface for describing a JCK API test specification.
  * <p>
@@ -43,12 +43,12 @@ import com.sun.tgxml.tjtf.api.documentation.TestTechnique;
  *  </ul> <br>
  *
  * <p>
- * A <b>TestCaseSpec</b> is registered in the <b>TestCaseDocumentation</b>of a <b>TestCase</b> 
- *  element.  
- * <p> 
+ * A <b>TestCaseSpec</b> is registered in the <b>TestCaseDocumentation</b>of a <b>TestCase</b>
+ *  element.
+ * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -67,7 +67,7 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
      *    Fields
      * ============================================================================================
      */
-   
+
     private ArrayList          m_assertions;
     private ArrayList          m_inputs;
     private ArrayList          m_specElems;
@@ -85,71 +85,71 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public TestCaseSpecImpl() {
-	init();
+    init();
     }
 
     public TestCaseSpecImpl(ArrayList assertions, TestTechnique technique,
-			    String memberSig, ArrayList inputs,  ArrayList preconditions,
-			    ExpectedResultValue expValue, ArrayList sideeffects,  
-			    ArrayList exceptions,  ArrayList specElems ) {
-	if (assertions == null)
-	    m_assertions = new ArrayList();
-	else
-	    m_assertions = assertions;
+                String memberSig, ArrayList inputs,  ArrayList preconditions,
+                ExpectedResultValue expValue, ArrayList sideeffects,
+                ArrayList exceptions,  ArrayList specElems ) {
+    if (assertions == null)
+        m_assertions = new ArrayList();
+    else
+        m_assertions = assertions;
 
-	if (inputs == null)
-	    m_inputs = new ArrayList();
-	else
-	    m_inputs = inputs;
+    if (inputs == null)
+        m_inputs = new ArrayList();
+    else
+        m_inputs = inputs;
 
-	if (specElems == null)
-	    m_specElems = new ArrayList();
-	else
-	    m_specElems = specElems;
+    if (specElems == null)
+        m_specElems = new ArrayList();
+    else
+        m_specElems = specElems;
 
-	if (sideeffects == null)
-	    m_expSideEffects = new ArrayList();
-	else
-	    m_expSideEffects = sideeffects;
+    if (sideeffects == null)
+        m_expSideEffects = new ArrayList();
+    else
+        m_expSideEffects = sideeffects;
 
-	if (exceptions == null)
-	    m_expExceptions = new ArrayList();
-	else
-	    m_expExceptions = exceptions;
+    if (exceptions == null)
+        m_expExceptions = new ArrayList();
+    else
+        m_expExceptions = exceptions;
 
-	if (preconditions == null)
-	    m_preconditions = new ArrayList();
-	else
-	    m_preconditions = preconditions;
+    if (preconditions == null)
+        m_preconditions = new ArrayList();
+    else
+        m_preconditions = preconditions;
 
-	m_testTechnique = technique;
-	m_memberSig = memberSig;
-	m_expValue = expValue;
+    m_testTechnique = technique;
+    m_memberSig = memberSig;
+    m_expValue = expValue;
 
     }
 
     private void init() {
-	m_assertions = new ArrayList();
-	m_inputs = new ArrayList();
-	m_specElems = new ArrayList();
-	m_preconditions = new ArrayList();
+    m_assertions = new ArrayList();
+    m_inputs = new ArrayList();
+    m_specElems = new ArrayList();
+    m_preconditions = new ArrayList();
 
-	m_testTechnique = null;
-	m_memberSig = null;
-	m_preconditions = null;
-	m_expValue = null;
-	m_expSideEffects = new ArrayList();
-	m_expExceptions = new ArrayList();
+    m_testTechnique = null;
+    m_memberSig = null;
+    m_preconditions = null;
+    m_expValue = null;
+    m_expSideEffects = new ArrayList();
+    m_expExceptions = new ArrayList();
 
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -170,10 +170,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see com.sun.tgxml.tjtf.api.documentation.Assertion
     */
     public ArrayList getAssertions() {
-	return m_assertions;
+    return m_assertions;
     }
 
-     
+
  /**
     *   Set the assertions associated with this TestCaseSpec.
     *   An Assertion is a specification-assertion  that a given test
@@ -188,10 +188,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
      * @see com.sun.tgxml.tjtf.api.documentation.Assertion
    */
     public void setAssertions(ArrayList assertions) {
-	if (assertions == null)
-	    m_assertions.clear();
-	else
-	    m_assertions = assertions;
+    if (assertions == null)
+        m_assertions.clear();
+    else
+        m_assertions = assertions;
     }
 
 
@@ -202,27 +202,27 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
   /**
     *   Get the TestTechnique associated with this documentation.
     *  <p>
-    *   This TestTechnique may be NULL.  
+    *   This TestTechnique may be NULL.
     *  <p>
     * @return     The TestTechnique associated with this TestCaseSpec
     * @see com.sun.tgxml.tjtf.api.documentation.TestTechnique
     * @see #setTestTechnique
     */
     public TestTechnique getTestTechnique() {
-	return m_testTechnique;
+    return m_testTechnique;
     }
-     
+
    /**
     *   Set the TestTechnique associated with this documentation.
     *  <p>
-    *   This TestTechnique may be NULL.  
+    *   This TestTechnique may be NULL.
     *  <p>
     * @param     technique The TestTechnique of the TestCaseSpec.
     * @see com.sun.tgxml.tjtf.api.documentation.TestTechnique
     * @see #getTestTechnique
     */
     public void setTestTechnique(TestTechnique technique) {
-	m_testTechnique = technique;
+    m_testTechnique = technique;
     }
 
 
@@ -231,26 +231,26 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     *   Get the MemberSig associated with this TestCaseSpec.
     *  <p>
     *   This MemberSig may be a valid String
-    *   or NULL.  
+    *   or NULL.
     *  <p>
     * @return     The MemberSig associated with this TestCaseSpec
     * @see #setMemberSig
     */
     public String getMemberSig() {
-	return m_memberSig;
+    return m_memberSig;
     }
-     
+
    /**
     *   Set the MemberSig associated with this TestCaseSpec.
     *  <p>
     *   This MemberSig may be a valid String
-    *   or NULL.  
+    *   or NULL.
     *  <p>
     * @param     membersig The MemberSig of the TestCaseSpec.
     * @see #getMemberSig
     */
     public void setMemberSig(String membersig)  {
-	m_memberSig = membersig;
+    m_memberSig = membersig;
     }
 
 
@@ -267,10 +267,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #setInputs
     */
     public ArrayList getInputs() {
-	return m_inputs;
+    return m_inputs;
     }
 
-     
+
  /**
     *   Set the list of values of test input for a given test.
     *  <p>
@@ -282,10 +282,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #getInputs
    */
     public void setInputs(ArrayList inputs) {
-	if (inputs == null)
-	    m_inputs.clear();
-	else
-	    m_inputs = inputs;
+    if (inputs == null)
+        m_inputs.clear();
+    else
+        m_inputs = inputs;
     }
 
 
@@ -305,9 +305,9 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #setPreconditions
     */
     public ArrayList getPreconditions() {
-	return m_preconditions;
+    return m_preconditions;
     }
-     
+
    /**
     *   Set the list of Precondition values associated with this documentation.
     *   A Precondition is the expected state of the system before
@@ -321,10 +321,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #getPreconditions
     */
     public void setPreconditions(ArrayList preconditions) {
-	if (preconditions == null)
-	    m_preconditions.clear();
-	else
-	    m_preconditions = preconditions;
+    if (preconditions == null)
+        m_preconditions.clear();
+    else
+        m_preconditions = preconditions;
     }
 
 
@@ -342,9 +342,9 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #setExpectedResultValue
     */
     public ExpectedResultValue getExpectedResultValue() {
-	return m_expValue;
+    return m_expValue;
     }
-     
+
    /**
     *   Set the ExpectedResultValue associated with this TestCaseSpec.
     *   The ExpectedResults is the expected state of the system after
@@ -356,7 +356,7 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #getExpectedResultValue
     */
     public void setExpectedResultValue(ExpectedResultValue expectedresult) {
-	m_expValue = expectedresult;
+    m_expValue = expectedresult;
     }
 
 
@@ -368,10 +368,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #setExpectedResultSideEffects
     */
     public ArrayList getExpectedResultSideEffects() {
-	return m_expSideEffects;
+    return m_expSideEffects;
     }
 
-     
+
  /**
     *   Set the expected side-effects.
     *  <p>
@@ -380,10 +380,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #getExpectedResultSideEffects
     */
     public void setExpectedResultSideEffects(ArrayList sideeffects) {
-	if (sideeffects == null)
-	    m_expSideEffects.clear();
-	else
-	    m_expSideEffects = sideeffects;
+    if (sideeffects == null)
+        m_expSideEffects.clear();
+    else
+        m_expSideEffects = sideeffects;
     }
 
 
@@ -395,10 +395,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #setExpectedResultExceptions
     */
     public ArrayList getExpectedResultExceptions() {
-	return m_expExceptions;
+    return m_expExceptions;
     }
 
-     
+
  /**
     *   Set the expected exceptions.
     *  <p>
@@ -407,10 +407,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #getExpectedResultExceptions
     */
     public void setExpectedResultExceptions(ArrayList exceptions) {
-	if (exceptions == null)
-	    m_expExceptions.clear();
-	else
-	    m_expExceptions = exceptions;
+    if (exceptions == null)
+        m_expExceptions.clear();
+    else
+        m_expExceptions = exceptions;
     }
 
 
@@ -424,10 +424,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #setSpecElems
     */
     public ArrayList getSpecElems() {
-	return m_specElems;
+    return m_specElems;
     }
 
-     
+
  /**
     *   Set the SpecElems associated with this documentation.
     *  <p>
@@ -438,10 +438,10 @@ public  class TestCaseSpecImpl implements TestCaseSpec  {
     * @see #getSpecElems
     */
     public void setSpecElems(ArrayList specelems) {
-	if (specelems == null)
-	    m_specElems.clear();
-	else
-	    m_specElems = specelems;
+    if (specelems == null)
+        m_specElems.clear();
+    else
+        m_specElems = specelems;
     }
 
 

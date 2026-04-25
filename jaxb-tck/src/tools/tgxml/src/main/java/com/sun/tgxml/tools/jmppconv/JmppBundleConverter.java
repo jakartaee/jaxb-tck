@@ -45,7 +45,7 @@ public class JmppBundleConverter extends ToolBase {
     * ----------------------------------------------------------------------
     */
     String baseDir = null, outDir = null, workDir = null, jmppFilesList = null;
-    
+
     protected StringOption outDirOption = new StringOption("-outdir",
         "  -outdir <outdir>   the root directory to put resulted files to, <JCK>/tests/ as rule (obligatory)",
         OBLIGATORY);
@@ -123,8 +123,8 @@ public class JmppBundleConverter extends ToolBase {
      * @see java.io.PrintStream
      */
     public JmppBundleConverter(PrintStream out, PrintStream err) {
-		super(out, err);
-		m_needsCommandLineArguments = true;
+        super(out, err);
+        m_needsCommandLineArguments = true;
     }
 
     /**
@@ -144,7 +144,7 @@ public class JmppBundleConverter extends ToolBase {
                 args[1] = outDir + File.separator + new File(templPath).getParent();
                 args[3] = workDir;
                 args[4] = baseDir + File.separator + templPath;
-                reportOutputMsg("\n" + "...running JmppBundleConverter " + getString(args)); 
+                reportOutputMsg("\n" + "...running JmppBundleConverter " + getString(args));
                 int res = new JmppConverterTool(getStandardOut(), getStandardErr()).run(args);
                 if (res != ctInt_ErrorCode_NoError){
                     reportErrorMsg("Error occured running the last template");

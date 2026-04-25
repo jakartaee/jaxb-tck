@@ -25,14 +25,14 @@ import com.sun.tgxml.tjtf.api.attributes.LibAttributes;
 // </importgen>
 
 /**
- * LibAttributes - 
+ * LibAttributes -
  *
  * <b>LibAttributes</b> is the basic interface for describing the attributes
  * associated with a Library.
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -64,14 +64,14 @@ public  class LibAttributesImpl extends AttributesImpl implements LibAttributes 
     //------------------------------------------------------------------------------
 
     public LibAttributesImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
 
     public LibAttributesImpl(ArrayList reqResources, ArrayList attrElems, ArrayList targetSpecs) {
-	super(reqResources, attrElems, targetSpecs);
-	init();
+    super(reqResources, attrElems, targetSpecs);
+    init();
     }
 
 
@@ -79,7 +79,7 @@ public  class LibAttributesImpl extends AttributesImpl implements LibAttributes 
     private void init() {
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters

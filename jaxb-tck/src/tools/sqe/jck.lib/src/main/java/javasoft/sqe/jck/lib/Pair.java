@@ -24,7 +24,7 @@ public class Pair<T1, T2> {
         first = f;
         second = s;
     }
-    
+
     public Pair(){
         this( null, null );
     }

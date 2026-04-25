@@ -24,47 +24,47 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 
-/**  
- * Macro preprocessor reader to read jmpp sources with conversion into 
- * Java code. That output Java code is to have further compilation 
- * and execution in order to generate final output of the 
+/**
+ * Macro preprocessor reader to read jmpp sources with conversion into
+ * Java code. That output Java code is to have further compilation
+ * and execution in order to generate final output of the
  * preprocessor.<br>
  * <br>
  * <b>Brief syntax description:</b><br><br>
- * All text started with <code>#</code> character is further called 
- * <em>meta-text</em>, all other text is called <em>object-level 
+ * All text started with <code>#</code> character is further called
+ * <em>meta-text</em>, all other text is called <em>object-level
  * text</em>.<br>
- * All meta-text go into intermediate Java program, which generates 
+ * All meta-text go into intermediate Java program, which generates
  * final output.<br>
- * All object-level text goes into the final output with all contained 
+ * All object-level text goes into the final output with all contained
  * macros expanded.<br><br>
- * Whatever enclosed in double quotes object-level text of input file 
+ * Whatever enclosed in double quotes object-level text of input file
  * is called string context, everything else is called text context.<br>
- * Macro substitution syntax differs in both contexts the following 
+ * Macro substitution syntax differs in both contexts the following
  * way:<br>
- * in text context, macro is marked with @ symbol and is substituted 
+ * in text context, macro is marked with @ symbol and is substituted
  * as is.<br>
- * in string context, macro is marked with sequence \@ and substituted 
- * with dynamic screening of double quotes and backslashes with 
- * backslashes. This is implemented in such a manner that such macros 
- * are expanded to call of method of class <tt>JmppLib</tt> called 
+ * in string context, macro is marked with sequence \@ and substituted
+ * with dynamic screening of double quotes and backslashes with
+ * backslashes. This is implemented in such a manner that such macros
+ * are expanded to call of method of class <tt>JmppLib</tt> called
  * <tt>screenString()</tt>.<br><br>
- * Macro syntax is: after <code>\@</code> or <code>@</code> one may 
+ * Macro syntax is: after <code>\@</code> or <code>@</code> one may
  * use literal or any Java expression.<br>
- * If Java expression follows, it must be wrapped in round brackets 
+ * If Java expression follows, it must be wrapped in round brackets
  * '<code>(</code>' and '<code>)</code>'.<br>
- * No wrapping is allowed for simple identifiers or method invocations 
+ * No wrapping is allowed for simple identifiers or method invocations
  * (so-called parameterized macros).<br>
- * Literal syntax is: one may write <code>@-"-</code> and this will 
+ * Literal syntax is: one may write <code>@-"-</code> and this will
  * be expanded to <code>"</code> in final output.<br>
- * It is possible to use as a delimiter (instead of <code>-</code> 
- * sign here) any character that is neither left round bracket 
+ * It is possible to use as a delimiter (instead of <code>-</code>
+ * sign here) any character that is neither left round bracket
  * '<code>(</code>' symbol, nor a character which can serve as a first
  * character for regular Java identifier name.<br><br>
  * <br>
  *
  * @author Oleg V. Ulyankin
- * @version @(#)JmppReader.java	1.16 04/04/23
+ * @version @(#)JmppReader.java 1.16 04/04/23
  */
 
 public class JmppReader extends BufferedReader {
@@ -95,19 +95,19 @@ public class JmppReader extends BufferedReader {
     private ParsedMacro macro;
     private PrintWriter log = new PrintWriter(System.err, true);
     private boolean oldTextBlockMacro = false;
-    
+
     public void processOldMacroInTextBlocks(boolean state) {
         oldTextBlockMacro = state;
     }
-    
+
     public JmppReader(Reader in) {
         super(in);
     }
-    
+
     protected static String returnLine(StringBuffer s) {
         return (s.append("\n").toString());
     }
-    
+
     /**
      *  Process line of non-meta code from the jmpp source
      */
@@ -117,25 +117,25 @@ public class JmppReader extends BufferedReader {
         StringBuffer newString = new StringBuffer(line.length() + 100);
         int lineLen = line.length();
         int i = 0;
-        
+
         if (macro != null) {
             macro.resumeParsing(line);
-			
+
             newString.append((Object) macro.body);
             i = macro.length;
-            
+
             if (macro.closed) {
                 if (stringContext && !macro.wereBrackets)
                     newString.append(')');
                 newString.append(closingMacro);
                 macro = null;
-            } 
+            }
             else if (i < lineLen) { // assert
                 String msg = "INTERNAL: !macro.closed && chars left";
                 throw new BadSyntaxException(msg, lineNumber, line);
             }
         }
-        
+
         for (; i < lineLen; i++) {
             char c = line.charAt(i);
             if (c == macroToken && stringContext) {
@@ -161,8 +161,8 @@ public class JmppReader extends BufferedReader {
                     i--;
                     continue;
                 }
-                
-                // Use \@ out of stringContext in text blocks (wrapAsString) 
+
+                // Use \@ out of stringContext in text blocks (wrapAsString)
                 // as macroToken for backward compatibility
                 if (stringContext || (wrapAsString && oldTextBlockMacro))
                     ; // do nothing & go to  case macroToken:
@@ -179,7 +179,7 @@ public class JmppReader extends BufferedReader {
                     String msg = e.getMessage();
                     throw new BadSyntaxException(msg, lineNumber, line);
                 }
-                
+
                 i += macro.length; // points to last processed char
                 if (macro.wasLiteral) {
                     newString.append((Object) macro.body);
@@ -192,15 +192,15 @@ public class JmppReader extends BufferedReader {
                     if (!macro.wereBrackets)
                         newString.append('(');
                 }
-                
+
                 newString.append((Object) macro.body);
-                
+
                 if (macro.closed) {
                     if (stringContext && !macro.wereBrackets)
                         newString.append(')');
                     newString.append(closingMacro);
                     macro = null;
-                } 
+                }
                 continue;
             }
             newString.append(c);
@@ -236,15 +236,15 @@ public class JmppReader extends BufferedReader {
     }
 
     /**
-     *	Read a line of text, filtering it with preprocessor rules
-     *	@return	filtered string
-     *	@exception  IOException  If an I/O error occurs
+     *  Read a line of text, filtering it with preprocessor rules
+     *  @return filtered string
+     *  @exception  IOException  If an I/O error occurs
      */
     public String readLine() throws IOException {
         String line = "";
         while (nextLine != null || (line = super.readLine()) != null) {
             lineNumber++;
-            
+
             if (nextLine != null) {
                 line = nextLine;
                 nextLine = null;
@@ -252,10 +252,10 @@ public class JmppReader extends BufferedReader {
             // check for comment token
             if (line.startsWith(commentToken))
                 continue;
-            
+
             StringBuffer buf;
 
-            if (line.startsWith(noWrapToken)) {	// is a line of metacode
+            if (line.startsWith(noWrapToken)) { // is a line of metacode
                 stringContext = false;
                 if (macro != null)
                     throw new BadSyntaxException(msgNoMacroEnd,
@@ -278,7 +278,7 @@ public class JmppReader extends BufferedReader {
             boolean wasMacro = macro != null;
             buf = screenQuotesAndBackslashesAndParseMacros(line);
             boolean isMacro  = macro != null;
-            
+
             if (!wrapAsString) {
                 if (!wasMacro)
                     buf.insert(0, wrapLeft);
@@ -287,11 +287,11 @@ public class JmppReader extends BufferedReader {
                 return returnLine(buf);
             }
             // wrap strings in TextBlock
-            if (line.startsWith("\t")) 
+            if (line.startsWith("\t"))
                 buf.deleteCharAt(0);
             if ( (nextLine = super.readLine()) == null )
                 throw new BadSyntaxException(msgNoQuote, lineNumber, line);
-            
+
             if (!wasMacro)
                 buf.insert(0, wrapTabS);
             if (!isMacro) {
@@ -319,7 +319,7 @@ public class JmppReader extends BufferedReader {
                 boolean bc = tname.equals("-bc");
                 if (bc) {
                     if (argv.length == 1)
-                        break;	// go to usage
+                        break;  // go to usage
                     tname = argv[1];
                 }
                 JmppReader p = new JmppReader(new FileReader(tname));
@@ -359,24 +359,24 @@ public class JmppReader extends BufferedReader {
  * Used in screenQuotesAndBackslashesAndParseMacros()
  */
 class ParsedMacro {
-	static final char macroLeft = JmppReader.macroLeft;
-	static final char macroRite = JmppReader.macroRite;
+    static final char macroLeft = JmppReader.macroLeft;
+    static final char macroRite = JmppReader.macroRite;
 
-	boolean wasLiteral = false;
-	boolean wereBrackets;
-	boolean closed;
-	private int depth = 0;
+    boolean wasLiteral = false;
+    boolean wereBrackets;
+    boolean closed;
+    private int depth = 0;
 
-	int length; // length of the macro construct without '@' sign
-	StringBuffer body = new StringBuffer(40);
+    int length; // length of the macro construct without '@' sign
+    StringBuffer body = new StringBuffer(40);
 
     /**
      * Parse a macro or a literal, starting at the given position within the
      * given string.
-     * @param s	string containing the macro to extract
-     * @param i	position of the macroToken
-     * @return		extracted macro
-     * @exception	BadSyntaxException on syntax error occurred
+     * @param s string containing the macro to extract
+     * @param i position of the macroToken
+     * @return      extracted macro
+     * @exception   BadSyntaxException on syntax error occurred
      */
 
     ParsedMacro(String s, int i) throws BadSyntaxException {
@@ -389,9 +389,9 @@ class ParsedMacro {
         closed = true;
         wereBrackets = ch == macroLeft;
         if (!wereBrackets) {
-            if (!Character.isJavaIdentifierStart(ch)) {	// it's macro literal.
+            if (!Character.isJavaIdentifierStart(ch)) { // it's macro literal.
                 char delimiter = ch;
-                i += 2;	// i == index of char after opening delimiter
+                i += 2; // i == index of char after opening delimiter
                 ch = s.charAt(i);
                 if (ch == '"' || ch == '\\')
                     body.append('\\');
@@ -402,16 +402,16 @@ class ParsedMacro {
                     throw new BadSyntaxException(msg);
                 }
                 body.append(s.substring(i, k));
-                length = k - i + 2;	// length of the macro without '@' sign
+                length = k - i + 2; // length of the macro without '@' sign
                 wasLiteral = true;
                 return;
             }
             while (++k < sLen && Character.isJavaIdentifierPart(s.charAt(k)));
             body.append(s.substring(++i, k));
-            length = k - i;	// length of the macro name without '@' sign
+            length = k - i; // length of the macro name without '@' sign
 
             if (k == sLen || s.charAt(k) != macroLeft)
-                return;		// it's a simple macro variable
+                return;     // it's a simple macro variable
             i = k-1;
         }
         // length is inited with 0 if wereBrackets
@@ -429,7 +429,7 @@ class ParsedMacro {
 
     // i points to char before macro body
     void appendTillClosingToken(String line, int i) throws BadSyntaxException {
-        boolean sContext = false;		// flag : in string
+        boolean sContext = false;       // flag : in string
         int lineLen = line.length();
 
         while (++i < lineLen) {

@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -153,11 +153,11 @@ import org.apache.river.resource.Service;
 public final class Security {
 
     private static final Logger trustLogger =
-		Logger.getLogger("net.jini.security.trust");
+        Logger.getLogger("net.jini.security.trust");
     private static final Logger integrityLogger =
-		Logger.getLogger("net.jini.security.integrity");
+        Logger.getLogger("net.jini.security.integrity");
     private static final Logger policyLogger =
-		Logger.getLogger("net.jini.security.policy");
+        Logger.getLogger("net.jini.security.policy");
 
     /**
      * Weak map from String to [URL[], SoftReference(key)]
@@ -172,9 +172,9 @@ public final class Security {
      * SecurityManager instance used to obtain caller's Class.
      */
     private static final ClassContextAccess ctxAccess = (ClassContextAccess)
-	AccessController.doPrivileged(new PrivilegedAction() {
-	    public Object run() { return new ClassContextAccess(); }
-	});
+    AccessController.doPrivileged(new PrivilegedAction() {
+        public Object run() { return new ClassContextAccess(); }
+    });
 
     /**
      * Non-instantiable.
@@ -254,27 +254,27 @@ public final class Security {
      * @throws NullPointerException if the collection is <code>null</code>
      */
     public static void verifyObjectTrust(Object obj,
-					 ClassLoader loader,
-					 Collection context)
-	throws RemoteException
+                     ClassLoader loader,
+                     Collection context)
+    throws RemoteException
     {
-	if (context == null) {
-	    throw new NullPointerException("collection cannot be null");
-	}
-	if (new Context(loader, context).isTrustedObject(obj)) {
-	    return;
-	}
-	SecurityException e = new SecurityException(
-					    "object is not trusted: " + obj);
-	if (trustLogger.isLoggable(Levels.FAILED)) {
-	    logThrow(trustLogger, Levels.FAILED,
-		     Security.class.getName(), "verifyObjectTrust",
-		     "no verifier trusts {0}",
-		     new Object[]{obj}, e);
-	}
-	throw e;
+    if (context == null) {
+        throw new NullPointerException("collection cannot be null");
     }
-    
+    if (new Context(loader, context).isTrustedObject(obj)) {
+        return;
+    }
+    SecurityException e = new SecurityException(
+                        "object is not trusted: " + obj);
+    if (trustLogger.isLoggable(Levels.FAILED)) {
+        logThrow(trustLogger, Levels.FAILED,
+             Security.class.getName(), "verifyObjectTrust",
+             "no verifier trusts {0}",
+             new Object[]{obj}, e);
+    }
+    throw e;
+    }
+
     /**
      * Verifies that the URLs in the specified codebase all provide content
      * integrity, using verifiers from the specified class loader. If a
@@ -315,60 +315,60 @@ public final class Security {
      * does not provide content integrity
      */
     public static void verifyCodebaseIntegrity(String codebase,
-					       ClassLoader loader)
-	throws MalformedURLException
+                           ClassLoader loader)
+    throws MalformedURLException
     {
-	if (codebase == null) {
-	    return;
-	}
-	if (loader == null) {
-	    loader = getContextClassLoader();
-	}
-	URL[] urls = pathToURLs(codebase);
-	IntegrityVerifier[] verifiers = getIntegrityVerifiers(loader);
+    if (codebase == null) {
+        return;
+    }
+    if (loader == null) {
+        loader = getContextClassLoader();
+    }
+    URL[] urls = pathToURLs(codebase);
+    IntegrityVerifier[] verifiers = getIntegrityVerifiers(loader);
     outer:
-	for (int i = urls.length; --i >= 0; ) {
-	    for (int j = 0; j < verifiers.length; j++) {
-		if (verifiers[j].providesIntegrity(urls[i])) {
-		    if (integrityLogger.isLoggable(Level.FINE)) {
-			integrityLogger.log(Level.FINE, 
-					    "{0} verifies {1}",
-					     new Object[]{verifiers[j],
-							  urls[i]});
-		    }
-		    continue outer;
-		}
-	    }
-	    SecurityException e =
-		new SecurityException("URL does not provide integrity: " +
-				      urls[i]);
-	    if (integrityLogger.isLoggable(Levels.FAILED)) {
-		logThrow(integrityLogger, Levels.FAILED,
-			 Security.class.getName(), "verifyCodebaseIntegrity",
-			 "no verifier verifies {0}", new Object[]{urls[i]}, e);
-	    }
-	    throw e;
-	}
+    for (int i = urls.length; --i >= 0; ) {
+        for (int j = 0; j < verifiers.length; j++) {
+        if (verifiers[j].providesIntegrity(urls[i])) {
+            if (integrityLogger.isLoggable(Level.FINE)) {
+            integrityLogger.log(Level.FINE,
+                        "{0} verifies {1}",
+                         new Object[]{verifiers[j],
+                              urls[i]});
+            }
+            continue outer;
+        }
+        }
+        SecurityException e =
+        new SecurityException("URL does not provide integrity: " +
+                      urls[i]);
+        if (integrityLogger.isLoggable(Levels.FAILED)) {
+        logThrow(integrityLogger, Levels.FAILED,
+             Security.class.getName(), "verifyCodebaseIntegrity",
+             "no verifier verifies {0}", new Object[]{urls[i]}, e);
+        }
+        throw e;
+    }
     }
 
     /**
      * Log a throw.
      */
     private static void logThrow(Logger logger,
-				 Level level,
-				 String clazz,
-				 String method,
-				 String msg,
-				 Object[] args,
-				 Throwable t)
+                 Level level,
+                 String clazz,
+                 String method,
+                 String msg,
+                 Object[] args,
+                 Throwable t)
     {
-	LogRecord lr = new LogRecord(level, msg);
-	lr.setLoggerName(logger.getName());
-	lr.setSourceClassName(clazz);
-	lr.setSourceMethodName(method);
-	lr.setParameters(args);
-	lr.setThrown(t);
-	logger.log(lr);
+    LogRecord lr = new LogRecord(level, msg);
+    lr.setLoggerName(logger.getName());
+    lr.setSourceClassName(clazz);
+    lr.setSourceMethodName(method);
+    lr.setParameters(args);
+    lr.setThrown(t);
+    logger.log(lr);
     }
 
     /**
@@ -377,64 +377,64 @@ public final class Security {
      * if any of the URLs are invalid.
      */
     private static URL[] pathToURLs(String path) throws MalformedURLException {
-	synchronized (pathToURLsCache) {
-	    Object[] v = (Object[]) pathToURLsCache.get(path);
-	    if (v != null) {
-		return (URL[]) v[0];
-	    }
-	}
-	StringTokenizer st = new StringTokenizer(path);	// divide by spaces
-	URL[] urls = new URL[st.countTokens()];
-	for (int i = 0; st.hasMoreTokens(); i++) {
-	    urls[i] = new URL(st.nextToken());
-	}
-	synchronized (pathToURLsCache) {
-	    pathToURLsCache.put(path,
-				new Object[]{urls, new SoftReference(path)});
-	}
-	return urls;
+    synchronized (pathToURLsCache) {
+        Object[] v = (Object[]) pathToURLsCache.get(path);
+        if (v != null) {
+        return (URL[]) v[0];
+        }
+    }
+    StringTokenizer st = new StringTokenizer(path); // divide by spaces
+    URL[] urls = new URL[st.countTokens()];
+    for (int i = 0; st.hasMoreTokens(); i++) {
+        urls[i] = new URL(st.nextToken());
+    }
+    synchronized (pathToURLsCache) {
+        pathToURLsCache.put(path,
+                new Object[]{urls, new SoftReference(path)});
+    }
+    return urls;
     }
 
     /**
      * Return the integrity verifiers for the specified class loader.
      */
     private static IntegrityVerifier[] getIntegrityVerifiers(
-							final ClassLoader cl)
+                            final ClassLoader cl)
     {
-	SoftReference ref;
-	synchronized (integrityMap) {
-	    ref = (SoftReference) integrityMap.get(cl);
-	}
-	IntegrityVerifier[] verifiers = null;
-	if (ref != null) {
-	    verifiers = (IntegrityVerifier[]) ref.get();
-	}
-	if (verifiers == null) {
-	    final ArrayList list = new ArrayList(1);
-	    AccessController.doPrivileged(new PrivilegedAction() {
-		public Object run() {
-		    for (Iterator iter =
-			     Service.providers(IntegrityVerifier.class, cl);
-			 iter.hasNext(); )
-		    {
-			list.add(iter.next());
-		    }
-		    return null;
-		}
-	    });
-	    if (integrityLogger.isLoggable(Level.FINE)) {
-		integrityLogger.logp(Level.FINE, Security.class.getName(),
-				     "verifyCodebaseIntegrity",
-				     "integrity verifiers {0}",
-				     new Object[]{list});
-	    }
-	    verifiers = (IntegrityVerifier[]) list.toArray(
-					  new IntegrityVerifier[list.size()]);
-	    synchronized (integrityMap) {
-		integrityMap.put(cl, new SoftReference(verifiers));
-	    }
-	}
-	return verifiers;
+    SoftReference ref;
+    synchronized (integrityMap) {
+        ref = (SoftReference) integrityMap.get(cl);
+    }
+    IntegrityVerifier[] verifiers = null;
+    if (ref != null) {
+        verifiers = (IntegrityVerifier[]) ref.get();
+    }
+    if (verifiers == null) {
+        final ArrayList list = new ArrayList(1);
+        AccessController.doPrivileged(new PrivilegedAction() {
+        public Object run() {
+            for (Iterator iter =
+                 Service.providers(IntegrityVerifier.class, cl);
+             iter.hasNext(); )
+            {
+            list.add(iter.next());
+            }
+            return null;
+        }
+        });
+        if (integrityLogger.isLoggable(Level.FINE)) {
+        integrityLogger.logp(Level.FINE, Security.class.getName(),
+                     "verifyCodebaseIntegrity",
+                     "integrity verifiers {0}",
+                     new Object[]{list});
+        }
+        verifiers = (IntegrityVerifier[]) list.toArray(
+                      new IntegrityVerifier[list.size()]);
+        synchronized (integrityMap) {
+        integrityMap.put(cl, new SoftReference(verifiers));
+        }
+    }
+    return verifiers;
     }
 
     /**
@@ -460,17 +460,17 @@ public final class Security {
      * @return snapshot of the current security context
      */
     public static SecurityContext getContext() {
-	SecurityManager sm = System.getSecurityManager();
-	if (sm instanceof SecurityContextSource) {
-	    return ((SecurityContextSource) sm).getContext();
-	}
-	Policy policy = getPolicy();
-	if (policy instanceof SecurityContextSource) {
-	    return ((SecurityContextSource) policy).getContext();
-	}
+    SecurityManager sm = System.getSecurityManager();
+    if (sm instanceof SecurityContextSource) {
+        return ((SecurityContextSource) sm).getContext();
+    }
+    Policy policy = getPolicy();
+    if (policy instanceof SecurityContextSource) {
+        return ((SecurityContextSource) policy).getContext();
+    }
 
-	final AccessControlContext acc = AccessController.getContext();
-	return new SecurityContextImpl(acc);
+    final AccessControlContext acc = AccessController.getContext();
+    return new SecurityContextImpl(acc);
     }
 
     /**
@@ -486,24 +486,24 @@ public final class Security {
      * SubjectDomainCombiner}), thus retaining permissions granted to
      * principals of the <code>Subject</code>, as well as the ability to use
      * credentials of the <code>Subject</code> for authentication.
-     * 
-     * @param <T> 
+     *
+     * @param <T>
      * @param action the action to be executed
      * @return the object returned by the action's <code>run</code> method
      * @throws NullPointerException if the action is <code>null</code>
      */
     public static <T> T doPrivileged(final PrivilegedAction<T> action) {
-	final Class caller = ctxAccess.getCaller();
-	final AccessControlContext acc = AccessController.getContext();
-	return AccessController.doPrivileged(new PrivilegedAction<T>() {
-            
-	    public T run() {
-		return AccessController.doPrivileged(
-		    action, createPrivilegedContext(caller, acc));
-	    }
-	});
+    final Class caller = ctxAccess.getCaller();
+    final AccessControlContext acc = AccessController.getContext();
+    return AccessController.doPrivileged(new PrivilegedAction<T>() {
+
+        public T run() {
+        return AccessController.doPrivileged(
+            action, createPrivilegedContext(caller, acc));
+        }
+    });
     }
-    
+
     /**
      * Executes the specified action's <code>run</code> method with privileges
      * enabled, preserving the domain combiner (if any) of the calling context.
@@ -517,8 +517,8 @@ public final class Security {
      * <code>SubjectDomainCombiner</code>), thus retaining permissions granted
      * to principals of the <code>Subject</code>, as well as the ability to use
      * credentials of the <code>Subject</code> for authentication.
-     * 
-     * @param <T> 
+     *
+     * @param <T>
      * @param action the action to be executed
      * @return the object returned by the action's <code>run</code> method
      * @throws PrivilegedActionException if the action's <code>run</code>
@@ -526,42 +526,42 @@ public final class Security {
      * @throws NullPointerException if the action is <code>null</code>
      */
     public static <T> T doPrivileged(final PrivilegedExceptionAction<T> action)
-	throws PrivilegedActionException
+    throws PrivilegedActionException
     {
-	final Class caller = ctxAccess.getCaller();
-	final AccessControlContext acc = AccessController.getContext();
-	return AccessController.doPrivileged(new PrivilegedExceptionAction<T>() {
-            
-	    public T run() throws Exception {
-		try {
-		    return AccessController.doPrivileged(
-			action, createPrivilegedContext(caller, acc));
-		} catch (PrivilegedActionException e) {
-		    throw e.getException();
-		}
-	    }
-	});
+    final Class caller = ctxAccess.getCaller();
+    final AccessControlContext acc = AccessController.getContext();
+    return AccessController.doPrivileged(new PrivilegedExceptionAction<T>() {
+
+        public T run() throws Exception {
+        try {
+            return AccessController.doPrivileged(
+            action, createPrivilegedContext(caller, acc));
+        } catch (PrivilegedActionException e) {
+            throw e.getException();
+        }
+        }
+    });
     }
-    
+
     private static final Guard authPerm = new AuthPermission("doAsPrivileged");
-    
+
     /**
      * Performs work as a particular Subject in the presence of untrusted code,
      * for distributed systems.
      * <p>
      * This method retrieves the current Threads AccessControlContext and
      * using a SubjectDomainCombiner subclass, prepends a new ProtectionDomain
-     * implementing {@link org.apache.river.api.security.SubjectDomain}, 
-     * containing the Principals of the Subject, a 
+     * implementing {@link org.apache.river.api.security.SubjectDomain},
+     * containing the Principals of the Subject, a
      * CodeSource with a null URL and null Certificate array, with no
      * Permission and a null ClassLoader.
      * <p>
      * Unlike Subject.doAs, existing ProtectionDomains are not replaced unless
      * they implement {@link org.apache.river.api.security.SubjectDomain}.
      * <p>
-     * Policy grants to Principals only are implied when run as the Subject, 
-     * combinations of Principal, CodeSource URL and Certificates never imply 
-     * this Subjects Principals as it is treated independently of CodeSource 
+     * Policy grants to Principals only are implied when run as the Subject,
+     * combinations of Principal, CodeSource URL and Certificates never imply
+     * this Subjects Principals as it is treated independently of CodeSource
      * policy grants, nor do any such grants imply any of the ProtectionDomains
      * that represent code on the call stack, since these ProtectionDomains are
      * never replaced with ProtectionDomains containing the Subject Principals.
@@ -569,12 +569,12 @@ public final class Security {
      * The SubjectDomainCombiner used treats CodeSource and Principal grants
      * as separate concerns.
      * <p>
-     * If a policy provider is installed that recognises 
+     * If a policy provider is installed that recognises
      * {@link org.apache.river.api.security.SubjectDomain}, then
      * Subjects who's principals are mutated are effective immediately.
      * <p>
      * No AuthPermission is required to call this method, it cannot elevate
-     * privileges, only reduce them to those determined by a policy for a 
+     * privileges, only reduce them to those determined by a policy for a
      * particular Subject.
      * <p>
      * @param subject  The Subject the work will be performed as, may be null.
@@ -584,12 +584,12 @@ public final class Security {
      * @since 3.0.0
      */
     public static <T> T doAs(final Subject subject,
-			final PrivilegedAction<T> action) {
+            final PrivilegedAction<T> action) {
         if (action == null) throw new NullPointerException("action was null");
         AccessControlContext acc = AccessController.getContext();
         return AccessController.doPrivileged(action, combine(acc, subject));
     }
-    
+
     /**
      * Performs work as a particular Subject in the presence of untrusted code,
      * for distributed systems.
@@ -597,16 +597,16 @@ public final class Security {
      * This method retrieves the current Thread AccessControlContext and
      * using a SubjectDomainCombiner subclass, prepends a new ProtectionDomain
      * implementing {@link org.apache.river.api.security.SubjectDomain},
-     * containing the Principals of the Subject, a 
+     * containing the Principals of the Subject, a
      * CodeSource with a null URL and null Certificate array, with no
      * Permission and a null ClassLoader.
      * <p>
      * Unlike Subject.doAs, existing ProtectionDomains are not replaced unless
      * they implement {@link org.apache.river.api.security.SubjectDomain}.
      * <p>
-     * Policy grants to Principals only are implied when run as the Subject, 
-     * combinations of Principal, CodeSource URL and Certificate grants never imply 
-     * this Subjects Principals as it is treated independently of CodeSource 
+     * Policy grants to Principals only are implied when run as the Subject,
+     * combinations of Principal, CodeSource URL and Certificate grants never imply
+     * this Subjects Principals as it is treated independently of CodeSource
      * policy grants, nor do any such grants imply any of the ProtectionDomains
      * that represent code on the call stack, since these ProtectionDomains are
      * never replaced with ProtectionDomains containing the Subject Principals.
@@ -618,81 +618,81 @@ public final class Security {
      * is package private and can only be accessed through SubjectDomainCombiner
      * public methods.
      * <p>
-     * If a policy provider is installed that recognizes 
+     * If a policy provider is installed that recognizes
      * {@link org.apache.river.api.security.SubjectDomain}, then
      * Subjects who's principals are mutated are effective immediately.
      * <p>
      * No AuthPermission is required to call this method, it cannot elevate
-     * privileges, only reduce them to those determined by a policy for a 
+     * privileges, only reduce them to those determined by a policy for a
      * particular Subject.
      * <p>
      * @param subject  The Subject the work will be performed as, may be null.
      * @param action  The code to be run as the Subject.
      * @return   The value returned by the PrivilegedAction's run() method.
      * @throws  NullPointerException if action is null;
-     * @throws PrivilegedActionException 
+     * @throws PrivilegedActionException
      * @since 3.0.0
      */
     public static <T> T doAs(final Subject subject,
-			final PrivilegedExceptionAction<T> action)
-			throws PrivilegedActionException {
+            final PrivilegedExceptionAction<T> action)
+            throws PrivilegedActionException {
         if (action == null) throw new NullPointerException("action was null");
         AccessControlContext acc = AccessController.getContext();
         return AccessController.doPrivileged(action, combine(acc, subject));
     }
-    
+
     /**
      * Perform work as a particular Subject in the presence of untrusted code
      * for distributed systems.
-     * 
+     *
      * This method behaves exactly as Security.doAs, except that instead of
-     * retrieving the current Threads <code>AccessControlContext</code>, 
-     * it uses the provided <code>SecurityContext</code>. If the provided 
+     * retrieving the current Threads <code>AccessControlContext</code>,
+     * it uses the provided <code>SecurityContext</code>. If the provided
      * <code>SecurityContext</code> is null this method instantiates a new
      * <code>AccessControlContext</code> with an empty array of ProtectionDomains.
-     * 
-     * Unlike Security.doAs which doesn't require any privileges, this method 
+     *
+     * Unlike Security.doAs which doesn't require any privileges, this method
      * requires the same Permission as Subject.doAsPrivileged to execute.
-     * 
+     *
      * @param subject  The Subject the work will be performed as, may be null.
      * @param action  The code to be run as the Subject.
      * @param context  The SecurityContext to be tied to the specific action
      * and subject.
      * @return   The value returned by the PrivilegedAction's run() method.
-     * @throws NullPointerException  if the specified PrivilegedExceptionAction 
+     * @throws NullPointerException  if the specified PrivilegedExceptionAction
      * is null.
      * @throws SecurityException  if the caller doesn't have permission to call
      * this method.
      */
     public static <T> T doAsPrivileged(final Subject subject,
-			final java.security.PrivilegedAction<T> action,
-			final SecurityContext context) {
+            final java.security.PrivilegedAction<T> action,
+            final SecurityContext context) {
         if (action == null) throw new NullPointerException("action was null");
         authPerm.checkGuard(null);
         AccessControlContext acc = context != null ? context.getAccessControlContext() : null;
         PrivilegedAction<T> act = context != null ? context.wrap(action) : action;
         return AccessController.doPrivileged(act, combine(acc, subject));
     }
-    
+
      /**
      * Perform work as a particular Subject in the presence of untrusted code
      * for distributed systems.
-     * 
+     *
      * This method behaves exactly as Security.doAs, except that instead of
-     * retrieving the current Threads <code>AccessControlContext</code>, 
-     * it uses the provided <code>SecurityContext</code>.  If the provided 
+     * retrieving the current Threads <code>AccessControlContext</code>,
+     * it uses the provided <code>SecurityContext</code>.  If the provided
      * <code>SecurityContext</code> is null this method instantiates a new
      * <code>AccessControlContext</code> with an empty array of ProtectionDomains.
-     * 
-     * Unlike Security.doAs which doesn't require any privileges, this method 
+     *
+     * Unlike Security.doAs which doesn't require any privileges, this method
      * requires the same Permission as Subject.doAsPrivileged to execute.
-     * 
+     *
      * @param subject  The Subject the work will be performed as, may be null.
      * @param action  The code to be run as the Subject.
      * @param context  The SecurityContext to be tied to the specific action
      * and subject.
      * @return   The value returned by the PrivilegedAction's run() method.
-     * @throws NullPointerException  if the specified PrivilegedExceptionAction 
+     * @throws NullPointerException  if the specified PrivilegedExceptionAction
      * is null.
      * @throws SecurityException  if the caller doesn't have permission to call
      * this method.
@@ -700,16 +700,16 @@ public final class Security {
      * method throws a checked exception.
      */
     public static <T> T doAsPrivileged(final Subject subject,
-			final java.security.PrivilegedExceptionAction<T> action,
-			final SecurityContext context) throws PrivilegedActionException {
+            final java.security.PrivilegedExceptionAction<T> action,
+            final SecurityContext context) throws PrivilegedActionException {
         if (action == null) throw new NullPointerException("action was null");
         authPerm.checkGuard(null);
         AccessControlContext acc = context != null ? context.getAccessControlContext() : null;
         PrivilegedExceptionAction<T> act = context != null ? context.wrap(action) : action;
         return AccessController.doPrivileged(act, combine(acc, subject));
     }
-    
-    
+
+
     private static AccessControlContext combine(final AccessControlContext acc, final Subject subject){
         return AccessController.doPrivileged(new PrivilegedAction<AccessControlContext>(){
 
@@ -719,10 +719,10 @@ public final class Security {
                 if (subject == null) return context;
                 return new AccessControlContext(context, new DistributedSubjectCombiner(subject));
             }
-            
+
         });
     }
-    
+
     /**
      * Creates privileged context that contains the protection domain of the
      * given caller class (if non-null) and uses the domain combiner of the
@@ -730,20 +730,20 @@ public final class Security {
      * privileged block.
      */
     private static AccessControlContext createPrivilegedContext(
-						    Class caller,
-						    AccessControlContext acc)
+                            Class caller,
+                            AccessControlContext acc)
     {
-	DomainCombiner comb = acc.getDomainCombiner();
-	ProtectionDomain pd = caller.getProtectionDomain();
-	ProtectionDomain[] pds = (pd != null) ?
-	    new ProtectionDomain[]{pd} : null;
-	if (comb != null) {
-	    pds = comb.combine(pds, null);
-	}
-	if (pds == null) {
-	    pds = new ProtectionDomain[0];
-	}
-	return new AccessControlContext(new AccessControlContext(pds), comb);
+    DomainCombiner comb = acc.getDomainCombiner();
+    ProtectionDomain pd = caller.getProtectionDomain();
+    ProtectionDomain[] pds = (pd != null) ?
+        new ProtectionDomain[]{pd} : null;
+    if (comb != null) {
+        pds = comb.combine(pds, null);
+    }
+    if (pds == null) {
+        pds = new ProtectionDomain[0];
+    }
+    return new AccessControlContext(new AccessControlContext(pds), comb);
     }
 
     /**
@@ -760,9 +760,9 @@ public final class Security {
      * @see #grant(Class,Class)
      */
     public static boolean grantSupported() {
-	Policy policy = getPolicy();
-	return (policy instanceof DynamicPolicy && 
-		((DynamicPolicy) policy).grantSupported());
+    Policy policy = getPolicy();
+    return (policy instanceof DynamicPolicy &&
+        ((DynamicPolicy) policy).grantSupported());
     }
 
     /**
@@ -779,7 +779,7 @@ public final class Security {
      * AccessController.getContext}.  If the current subject is
      * <code>null</code> or has no principals, then principals are effectively
      * ignored in determining the protection domains to which the grant
-     * applies.  
+     * applies.
      * <p>
      * The given class, if non-<code>null</code>, must belong to either the
      * system domain or a protection domain whose associated class loader is
@@ -811,7 +811,7 @@ public final class Security {
      * @see DynamicPolicy#grant(Class,Principal[],Permission[])
      */
     public static void grant(Class cl, Permission[] permissions) {
-	grant(cl, getCurrentPrincipals(), permissions);
+    grant(cl, getCurrentPrincipals(), permissions);
     }
 
     /**
@@ -824,7 +824,7 @@ public final class Security {
      * applies across all protection domains that possess at least the
      * specified principals.  If the list of principals is <code>null</code> or
      * empty, then principals are effectively ignored in determining the
-     * protection domains to which the grant applies.  
+     * protection domains to which the grant applies.
      * <p>
      * The given class, if non-<code>null</code>, must belong to either the
      * system domain or a protection domain whose associated class loader is
@@ -858,22 +858,22 @@ public final class Security {
      * @see #grantSupported()
      * @see DynamicPolicy#grant(Class,Principal[],Permission[])
      */
-    public static void grant(Class cl, 
-                             Principal[] principals, 
+    public static void grant(Class cl,
+                             Principal[] principals,
                              Permission[] permissions)
     {
-	Policy policy = getPolicy();
-	if (!(policy instanceof DynamicPolicy)) {
-	    throw new UnsupportedOperationException("grants not supported");
-	}
-	((DynamicPolicy) policy).grant(cl, principals, permissions);
-	if (policyLogger.isLoggable(Level.FINER)) {
-	    policyLogger.log(Level.FINER, "granted {0} to {1}, {2}",
-		new Object[]{
-		    (permissions != null) ? Arrays.asList(permissions) : null,
-		    (cl != null) ? cl.getName() : null,
-		    (principals != null) ? Arrays.asList(principals) : null});
-	}
+    Policy policy = getPolicy();
+    if (!(policy instanceof DynamicPolicy)) {
+        throw new UnsupportedOperationException("grants not supported");
+    }
+    ((DynamicPolicy) policy).grant(cl, principals, permissions);
+    if (policyLogger.isLoggable(Level.FINER)) {
+        policyLogger.log(Level.FINER, "granted {0} to {1}, {2}",
+        new Object[]{
+            (permissions != null) ? Arrays.asList(permissions) : null,
+            (cl != null) ? cl.getName() : null,
+            (principals != null) ? Arrays.asList(principals) : null});
+    }
     }
 
     /**
@@ -911,37 +911,37 @@ public final class Security {
      * other than the system domain
      */
     public static void grant(Class fromClass, Class toClass) {
-	if (fromClass == null || toClass == null) {
-	    throw new NullPointerException();
-	}
-	Policy policy = getPolicy();
-	if (!(policy instanceof DynamicPolicy)) {
-	    throw new UnsupportedOperationException("grants not supported");
-	}
+    if (fromClass == null || toClass == null) {
+        throw new NullPointerException();
+    }
+    Policy policy = getPolicy();
+    if (!(policy instanceof DynamicPolicy)) {
+        throw new UnsupportedOperationException("grants not supported");
+    }
 
-	DynamicPolicy dpolicy = (DynamicPolicy) policy;
-	Principal[] principals = getCurrentPrincipals();
-	Permission[] permissions = 
-	    grantablePermissions(dpolicy.getGrants(fromClass, principals));
+    DynamicPolicy dpolicy = (DynamicPolicy) policy;
+    Principal[] principals = getCurrentPrincipals();
+    Permission[] permissions =
+        grantablePermissions(dpolicy.getGrants(fromClass, principals));
 
-	dpolicy.grant(toClass, principals, permissions);
-	if (policyLogger.isLoggable(Level.FINER)) {
-	    policyLogger.log(Level.FINER, "granted {0} from {1} to {2}, {3}",
-		new Object[]{
-		    (permissions != null) ? Arrays.asList(permissions) : null,
-		    fromClass.getName(), 
-		    toClass.getName(),
-		    (principals != null) ? Arrays.asList(principals) : null});
-	}
+    dpolicy.grant(toClass, principals, permissions);
+    if (policyLogger.isLoggable(Level.FINER)) {
+        policyLogger.log(Level.FINER, "granted {0} from {1} to {2}, {3}",
+        new Object[]{
+            (permissions != null) ? Arrays.asList(permissions) : null,
+            fromClass.getName(),
+            toClass.getName(),
+            (principals != null) ? Arrays.asList(principals) : null});
+    }
     }
 
     /**
      * Returns current thread's context class loader.
      */
     private static ClassLoader getContextClassLoader() {
-	return AccessController.doPrivileged(
+    return AccessController.doPrivileged(
             new PrivilegedAction<ClassLoader>() {
-               
+
                public ClassLoader run() {
                    return Thread.currentThread().getContextClassLoader();
                }
@@ -953,8 +953,8 @@ public final class Security {
      * Returns currently installed security policy, if any.
      */
     private static Policy getPolicy() {
-	return AccessController.doPrivileged(new PrivilegedAction<Policy>() {
-            
+    return AccessController.doPrivileged(new PrivilegedAction<Policy>() {
+
             public Policy run() { return Policy.getPolicy(); }
         });
     }
@@ -965,45 +965,45 @@ public final class Security {
      */
     private static Permission[] grantablePermissions(Permission[] permissions)
     {
-	SecurityManager sm = System.getSecurityManager();
-	if (sm == null || permissions.length == 0) {
-	    return permissions;
-	}
+    SecurityManager sm = System.getSecurityManager();
+    if (sm == null || permissions.length == 0) {
+        return permissions;
+    }
 
-	try {
-	    sm.checkPermission(new GrantPermission(permissions));
-	    return permissions;
-	} catch (SecurityException e) {
-	}
+    try {
+        sm.checkPermission(new GrantPermission(permissions));
+        return permissions;
+    } catch (SecurityException e) {
+    }
 
-	ArrayList<Permission> list = new ArrayList<Permission>(permissions.length);
-	for (int i = 0; i < permissions.length; i++) {
-	    try {
-		Permission p = permissions[i];
-		sm.checkPermission(new GrantPermission(p));
-		list.add(p);
-	    } catch (SecurityException e) {
-	    }
-	}
-	return list.toArray(new Permission[list.size()]);
+    ArrayList<Permission> list = new ArrayList<Permission>(permissions.length);
+    for (int i = 0; i < permissions.length; i++) {
+        try {
+        Permission p = permissions[i];
+        sm.checkPermission(new GrantPermission(p));
+        list.add(p);
+        } catch (SecurityException e) {
+        }
+    }
+    return list.toArray(new Permission[list.size()]);
     }
 
     /**
      * Returns principals of current subject, or null if no current subject.
      */
     private static Principal[] getCurrentPrincipals() {
-	final AccessControlContext acc = AccessController.getContext();
-	Subject s = AccessController.doPrivileged(
-	    new PrivilegedAction<Subject>() {
-            
-		public Subject run() { return Subject.getSubject(acc); }
-	    });
-	if (s != null) {
-	    Set<Principal> ps = s.getPrincipals();
-	    return ps.toArray(new Principal[ps.size()]);
-	} else {
-	    return null;
-	}
+    final AccessControlContext acc = AccessController.getContext();
+    Subject s = AccessController.doPrivileged(
+        new PrivilegedAction<Subject>() {
+
+        public Subject run() { return Subject.getSubject(acc); }
+        });
+    if (s != null) {
+        Set<Principal> ps = s.getPrincipals();
+        return ps.toArray(new Principal[ps.size()]);
+    } else {
+        return null;
+    }
     }
 
     /**
@@ -1012,144 +1012,144 @@ public final class Security {
      * so we never bother to defensively copy state.
      */
     private static class Context implements TrustVerifier.Context {
-	/**
-	 * Trust verifiers.
-	 */
-	private final TrustVerifier[] verifiers;
-	/**
-	 * The class loader.
-	 */
-	private final ClassLoader cl;
-	/**
-	 * Caller context.
-	 */
-	private final Collection context;
+    /**
+     * Trust verifiers.
+     */
+    private final TrustVerifier[] verifiers;
+    /**
+     * The class loader.
+     */
+    private final ClassLoader cl;
+    /**
+     * Caller context.
+     */
+    private final Collection context;
 
-	/**
-	 * Weak map from ClassLoader to SoftReference(TrustVerifier[]).
-	 */
-	private static final WeakIdentityMap map = new WeakIdentityMap();
+    /**
+     * Weak map from ClassLoader to SoftReference(TrustVerifier[]).
+     */
+    private static final WeakIdentityMap map = new WeakIdentityMap();
 
-	/**
-	 * Creates an instance containing the trust verifiers found from
-	 * the specified class loader, using the verifier cache and
-	 * updating the cache as necessary.
-	 */
-	Context(ClassLoader cl, Collection context) {
-	    this.cl = cl;
-	    if (cl == null) {
-		cl = getContextClassLoader();
-	    }
-	    SoftReference ref;
-	    synchronized (map) {
-		ref = (SoftReference) map.get(cl);
-	    }
-	    TrustVerifier[] verifiers = null;
-	    if (ref != null) {
-		verifiers = (TrustVerifier[]) ref.get();
-	    }
-	    if (verifiers == null) {
-		final ArrayList list = new ArrayList(1);
-		final ClassLoader scl = cl;
-		AccessController.doPrivileged(new PrivilegedAction() {
-                    
-		    public Object run() {
-			for (Iterator iter =
-				Service.providers(TrustVerifier.class, scl);
-			     iter.hasNext(); )
-			{
-			    list.add(iter.next());
-			}
-			return null;
-		    }
-		});
-		if (trustLogger.isLoggable(Level.FINE)) {
-		    trustLogger.logp(Level.FINE, Security.class.getName(),
-				     "verifyObjectTrust",
-				     "trust verifiers {0}", list);
-		}
-		verifiers = (TrustVerifier[]) list.toArray(
-					       new TrustVerifier[list.size()]);
-		synchronized (map) {
-		    map.put(cl, new SoftReference(verifiers));
+    /**
+     * Creates an instance containing the trust verifiers found from
+     * the specified class loader, using the verifier cache and
+     * updating the cache as necessary.
+     */
+    Context(ClassLoader cl, Collection context) {
+        this.cl = cl;
+        if (cl == null) {
+        cl = getContextClassLoader();
+        }
+        SoftReference ref;
+        synchronized (map) {
+        ref = (SoftReference) map.get(cl);
+        }
+        TrustVerifier[] verifiers = null;
+        if (ref != null) {
+        verifiers = (TrustVerifier[]) ref.get();
+        }
+        if (verifiers == null) {
+        final ArrayList list = new ArrayList(1);
+        final ClassLoader scl = cl;
+        AccessController.doPrivileged(new PrivilegedAction() {
+
+            public Object run() {
+            for (Iterator iter =
+                Service.providers(TrustVerifier.class, scl);
+                 iter.hasNext(); )
+            {
+                list.add(iter.next());
+            }
+            return null;
+            }
+        });
+        if (trustLogger.isLoggable(Level.FINE)) {
+            trustLogger.logp(Level.FINE, Security.class.getName(),
+                     "verifyObjectTrust",
+                     "trust verifiers {0}", list);
+        }
+        verifiers = (TrustVerifier[]) list.toArray(
+                           new TrustVerifier[list.size()]);
+        synchronized (map) {
+            map.put(cl, new SoftReference(verifiers));
                 }
-	    }
-	    this.verifiers = verifiers;
-	    this.context = context;
-	}
-
-	public boolean isTrustedObject(Object obj)
-	    throws RemoteException
-	{
-	    if (obj == null) {
-		return true;
-	    }
-	    Exception ex = null;
-	    for (int i = 0; i < verifiers.length; i++) {
-		try {
-		    if (verifiers[i].isTrustedObject(obj, this)) {
-			if (trustLogger.isLoggable(Level.FINE)) {
-			    trustLogger.log(Level.FINE,
-					    "{0} trusts {1}",
-					    new Object[]{verifiers[i], obj});
-			}
-			return true;
-		    }
-		} catch (Exception e) {
-		    boolean rethrow = (e instanceof RuntimeException &&
-				       !(e instanceof SecurityException));
-		    Level level = rethrow ? Levels.FAILED : Levels.HANDLED;
-		    if (trustLogger.isLoggable(level)) {
-			logThrow(trustLogger, level,
-				 this.getClass().getName(),
-				 "isTrustedObject",
-				 "{0} checking {1} throws",
-				 new Object[]{verifiers[i], obj},
-				 e);
-		    }
-		    if (rethrow) {
-			throw (RuntimeException) e;
-		    }
-		    ex = e;
-		}
-	    }
-	    if (ex != null) {
-		if (trustLogger.isLoggable(Levels.FAILED)) {
-		    logThrow(trustLogger, Levels.FAILED,
-			     this.getClass().getName(), "isTrustedObject",
-			     "checking {0} throws",
-			     new Object[]{obj}, ex);
-		}
-		if (ex instanceof RemoteException) {
-		    throw (RemoteException) ex;
-		}
-		throw (SecurityException) ex;
-	    }
-	    if (trustLogger.isLoggable(Level.FINE)) {
-		trustLogger.log(Level.FINE, "no verifier trusts {0}", obj);
-	    }
-	    return false;
-	}
-
-	public ClassLoader getClassLoader() {
-	    return cl;
-	}
-
-	public Collection getCallerContext() {
-	    return context;
-	}
+        }
+        this.verifiers = verifiers;
+        this.context = context;
     }
-    
+
+    public boolean isTrustedObject(Object obj)
+        throws RemoteException
+    {
+        if (obj == null) {
+        return true;
+        }
+        Exception ex = null;
+        for (int i = 0; i < verifiers.length; i++) {
+        try {
+            if (verifiers[i].isTrustedObject(obj, this)) {
+            if (trustLogger.isLoggable(Level.FINE)) {
+                trustLogger.log(Level.FINE,
+                        "{0} trusts {1}",
+                        new Object[]{verifiers[i], obj});
+            }
+            return true;
+            }
+        } catch (Exception e) {
+            boolean rethrow = (e instanceof RuntimeException &&
+                       !(e instanceof SecurityException));
+            Level level = rethrow ? Levels.FAILED : Levels.HANDLED;
+            if (trustLogger.isLoggable(level)) {
+            logThrow(trustLogger, level,
+                 this.getClass().getName(),
+                 "isTrustedObject",
+                 "{0} checking {1} throws",
+                 new Object[]{verifiers[i], obj},
+                 e);
+            }
+            if (rethrow) {
+            throw (RuntimeException) e;
+            }
+            ex = e;
+        }
+        }
+        if (ex != null) {
+        if (trustLogger.isLoggable(Levels.FAILED)) {
+            logThrow(trustLogger, Levels.FAILED,
+                 this.getClass().getName(), "isTrustedObject",
+                 "checking {0} throws",
+                 new Object[]{obj}, ex);
+        }
+        if (ex instanceof RemoteException) {
+            throw (RemoteException) ex;
+        }
+        throw (SecurityException) ex;
+        }
+        if (trustLogger.isLoggable(Level.FINE)) {
+        trustLogger.log(Level.FINE, "no verifier trusts {0}", obj);
+        }
+        return false;
+    }
+
+    public ClassLoader getClassLoader() {
+        return cl;
+    }
+
+    public Collection getCallerContext() {
+        return context;
+    }
+    }
+
     /**
      * Dummy security manager providing access to getClassContext method.
      */
     private static class ClassContextAccess extends SecurityManager {
-	/**
-	 * Returns caller's caller class.
-	 */
-	Class getCaller() {
-	    return getClassContext()[2];
-	}
+    /**
+     * Returns caller's caller class.
+     */
+    Class getCaller() {
+        return getClassContext()[2];
+    }
     }
 
     private static class SecurityContextImpl implements SecurityContext {
@@ -1171,7 +1171,7 @@ public final class Security {
             return a;
         }
 
-        public <T> PrivilegedExceptionAction<T> wrap(PrivilegedExceptionAction<T> a) 
+        public <T> PrivilegedExceptionAction<T> wrap(PrivilegedExceptionAction<T> a)
         {
             if (a == null) {
                 throw new NullPointerException();
@@ -1187,7 +1187,7 @@ public final class Security {
         public int hashCode() {
             return hashCode;
         }
-        
+
         @Override
         public boolean equals(Object o){
             if (!(o instanceof SecurityContextImpl)) return false;
@@ -1195,7 +1195,7 @@ public final class Security {
             return getAccessControlContext().equals(that.getAccessControlContext());
         }
     }
-    
+
     /**
      * Extends and overrides SubjectDomainCombiner, to allow untrusted code
      * to run as a Subject, without injecting Principals into the ProtectionDomain
@@ -1203,40 +1203,40 @@ public final class Security {
      * @since 3.0.0
      */
     private static class DistributedSubjectCombiner extends SubjectDomainCombiner {
-        
+
         private final Subject subject;
-    
+
         private DistributedSubjectCombiner(Subject subject){
             super(subject);
             // Don't throw exception in constructor, check subject before calling constructor.
 //            if (subject == null) throw new NullPointerException("subject cannot be null");
             this.subject = subject;
         }
-        
+
         /**
-         * Prepends one new SubjectDomain containing the Subject and Subject's 
+         * Prepends one new SubjectDomain containing the Subject and Subject's
          * Principals with a CodeSource that has a null URL and no signer
-         * Certificates.  Combines the current and assigned domains, 
+         * Certificates.  Combines the current and assigned domains,
          * removing any duplicates and any existing SubjectDomain.
          * A new array is returned.
-         * 
-         * @param currentDomains  the ProtectionDomains associated with the 
-         * current execution Thread, up to the most recent privileged 
-         * ProtectionDomain. The ProtectionDomains are are listed in 
-         * order of execution, with the most recently executing 
-         * ProtectionDomain residing at the beginning of the array. 
-         * This parameter may be null if the current execution Thread has no 
+         *
+         * @param currentDomains  the ProtectionDomains associated with the
+         * current execution Thread, up to the most recent privileged
+         * ProtectionDomain. The ProtectionDomains are are listed in
+         * order of execution, with the most recently executing
+         * ProtectionDomain residing at the beginning of the array.
+         * This parameter may be null if the current execution Thread has no
          * associated ProtectionDomains.
-         * @param assignedDomains  an array of inherited ProtectionDomains. 
-         * ProtectionDomains may be inherited from a parent Thread, 
+         * @param assignedDomains  an array of inherited ProtectionDomains.
+         * ProtectionDomains may be inherited from a parent Thread,
          * or from a privileged AccessControlContext.
          * This parameter may be null if there are no inherited ProtectionDomains.
          * @return  a new array containing current and assigned domains with
          * a new SubjectDomain prepended.
          */
         public ProtectionDomain[] combine(ProtectionDomain[] currentDomains,
-				ProtectionDomain[] assignedDomains) {
-            Set<ProtectionDomain> result = 
+                ProtectionDomain[] assignedDomains) {
+            Set<ProtectionDomain> result =
                     new LinkedHashSet<ProtectionDomain>(currentDomains.length + assignedDomains.length + 1);
             result.add(new SubjectProtectionDomain(subject));
             int l = currentDomains.length;
@@ -1252,20 +1252,20 @@ public final class Security {
             return result.toArray(new ProtectionDomain[result.size()]);
         }
     }
-    
+
     /**
      * A ProtectionDomain containing a Subject and CodeSource with a null URL,
-     * with a supportive policy provider installed, a Subject's Principals will 
+     * with a supportive policy provider installed, a Subject's Principals will
      * always be up to date.
      */
     private static class SubjectProtectionDomain extends ProtectionDomain
             implements SubjectDomain {
         private final static CodeSource nullCS = new CodeSource(null, (Certificate[]) null);
         private final Subject subject;
-        
-        /** 
-         * Visibility of Subject and it's principal set is guaranteed by final 
-         * reference and safe construction of this object. 
+
+        /**
+         * Visibility of Subject and it's principal set is guaranteed by final
+         * reference and safe construction of this object.
          */
         private SubjectProtectionDomain(Subject subject){
             super(nullCS, new Permissions(), null, (Principal[]) subject.getPrincipals().toArray());
@@ -1277,10 +1277,10 @@ public final class Security {
             hash = 67 * hash + (this.subject != null ? this.subject.hashCode() : 0);
             return hash;
         }
-        
+
         /**
          * Implement equals to allow efficient caching of AccessControlContext.
-         * 
+         *
          */
         public boolean equals(Object o){
             if (!(o instanceof SubjectProtectionDomain)) return false;
@@ -1289,11 +1289,11 @@ public final class Security {
             if (nullCS != getCodeSource()) return false;
             return (subject == other.subject);
         }
-        
+
         public Subject getSubject(){
             return subject;
         }
-        
+
     }
-    
+
 }

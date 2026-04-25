@@ -27,7 +27,7 @@ public interface JaxbTreeSerializer {
 
     /**
      * Method to save JaxbTree content.
-     * @param objTree - JAXB tree 
+     * @param objTree - JAXB tree
      * @param os - output stream
      * @param cl - ClassLoader holding classes used in JAXB tree
      */

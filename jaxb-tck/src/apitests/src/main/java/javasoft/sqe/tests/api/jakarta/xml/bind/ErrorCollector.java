@@ -95,18 +95,18 @@ public class ErrorCollector implements ValidationEventHandler, ErrorHandler {
         return sb.toString();
     }
 
-	public void warning(SAXParseException exception) throws SAXException {
-		events.add(new ValidationEventImpl(ValidationEvent.WARNING, exception.getMessage(), new ValidationEventLocatorImpl(exception), exception));
-	}
+    public void warning(SAXParseException exception) throws SAXException {
+        events.add(new ValidationEventImpl(ValidationEvent.WARNING, exception.getMessage(), new ValidationEventLocatorImpl(exception), exception));
+    }
 
-	public void error(SAXParseException exception) throws SAXException {
-		events.add(new ValidationEventImpl(ValidationEvent.ERROR, exception.getMessage(), new ValidationEventLocatorImpl(exception), exception));
-		throw exception;
-		
-	}
+    public void error(SAXParseException exception) throws SAXException {
+        events.add(new ValidationEventImpl(ValidationEvent.ERROR, exception.getMessage(), new ValidationEventLocatorImpl(exception), exception));
+        throw exception;
 
-	public void fatalError(SAXParseException exception) throws SAXException {
-		events.add(new ValidationEventImpl(ValidationEvent.FATAL_ERROR, exception.getMessage(), new ValidationEventLocatorImpl(exception), exception));
-		throw exception;
-	}
+    }
+
+    public void fatalError(SAXParseException exception) throws SAXException {
+        events.add(new ValidationEventImpl(ValidationEvent.FATAL_ERROR, exception.getMessage(), new ValidationEventLocatorImpl(exception), exception));
+        throw exception;
+    }
 }

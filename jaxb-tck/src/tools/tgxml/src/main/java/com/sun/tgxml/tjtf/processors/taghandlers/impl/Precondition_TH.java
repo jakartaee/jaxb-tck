@@ -29,50 +29,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * Precondition_TH - The tag-handler for a Description tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Precondition_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Precondition_TH - The tag-handler for a Description tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Precondition_TH
+ * ============================================================================================
+ */
 public class Precondition_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Precondition_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Precondition_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Precondition_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -83,13 +83,13 @@ public class Precondition_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_precondition;
+    return TagsImpl.ctStr_tag_precondition;
     }
 
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -97,37 +97,37 @@ public class Precondition_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	super.endTag(text);
-	Stack testItemStack = m_ParserHandler.getStack();
-	Object testitem = testItemStack.peek();
+    super.endTag(text);
+    Stack testItemStack = m_ParserHandler.getStack();
+    Object testitem = testItemStack.peek();
 
-	if (testitem == null)
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
+    if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	if (! (testitem instanceof TestCaseSpec)  )
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcasespec));
-	
-	//  Nothing is pushed onto the stack
-	TestCaseSpec tcs = (TestCaseSpec) testitem;
+    if (! (testitem instanceof TestCaseSpec)  )
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext", getTagName(), TagsImpl.ctStr_tag_testcasespec));
 
-	ArrayList preconditions = tcs.getPreconditions();
-	if (preconditions == null) {
-	    preconditions = new ArrayList();
-	    tcs.setPreconditions(preconditions);
-	}
+    //  Nothing is pushed onto the stack
+    TestCaseSpec tcs = (TestCaseSpec) testitem;
 
-	// validated the precondition name
-	if (text == null || text.equals(""))
-	    m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.text.null", getTagName()));
-	preconditions.add(text);
+    ArrayList preconditions = tcs.getPreconditions();
+    if (preconditions == null) {
+        preconditions = new ArrayList();
+        tcs.setPreconditions(preconditions);
     }
-     
- 
+
+    // validated the precondition name
+    if (text == null || text.equals(""))
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.text.null", getTagName()));
+    preconditions.add(text);
+    }
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -135,16 +135,16 @@ public class Precondition_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String precondition = (String) tdObject;
-	// validated the precondition name
-	if (precondition == null || precondition.equals(""))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
+    String precondition = (String) tdObject;
+    // validated the precondition name
+    if (precondition == null || precondition.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.text.null", getTagName()));
 
-	m_EmitterHandler.emitText(precondition);
+    m_EmitterHandler.emitText(precondition);
 
     }
 

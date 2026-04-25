@@ -30,28 +30,28 @@ public class ExecSimpTestOtherJVMCmd extends ProcessCommand
 {
     /**
      * Generate a status for the command, based upon the command's exit code.
-     * @param exitCode		The exit code from the command that was executed.
-     *				<table>
-     *				<tr><td>95    <td>passed
-     *				<tr><td>96    <td>compare the output written to the 
-     *						reference stream against a reference 
-     *						file
-     *				<tr><td>97    <td>failed (inside test)
-     *				<tr><td>other <td>other failure
-     *				</table>
-     * @param logStatus		This parameter is ignored.
-     * @return			A status object appropriate to the exitCode.
-     */ 
+     * @param exitCode      The exit code from the command that was executed.
+     *              <table>
+     *              <tr><td>95    <td>passed
+     *              <tr><td>96    <td>compare the output written to the
+     *                      reference stream against a reference
+     *                      file
+     *              <tr><td>97    <td>failed (inside test)
+     *              <tr><td>other <td>other failure
+     *              </table>
+     * @param logStatus     This parameter is ignored.
+     * @return          A status object appropriate to the exitCode.
+     */
     public Status getStatus(int exitCode, Status logStatus) {
-	// logStatus will always be null for these tests
-	switch (exitCode) {
-	case 95:
-	    return passed;
-	case 97:
-	    return failed;
-	default:
-	    return Status.failed("unexpected exit code: exit code " + exitCode);
-	}
+    // logStatus will always be null for these tests
+    switch (exitCode) {
+    case 95:
+        return passed;
+    case 97:
+        return failed;
+    default:
+        return Status.failed("unexpected exit code: exit code " + exitCode);
+    }
     }
 
     private static final Status passed = Status.passed("OK");

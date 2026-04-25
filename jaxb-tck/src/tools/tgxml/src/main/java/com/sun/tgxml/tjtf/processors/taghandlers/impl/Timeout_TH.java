@@ -30,50 +30,50 @@ import com.sun.tgxml.tjtf.impl.TagsImpl;
 import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
-/** 
- * Timeout_TH - The tag-handler for a Description tag. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    Timeout_TH 
- * ============================================================================================ 
- */ 
+/**
+ * Timeout_TH - The tag-handler for a Description tag.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    Timeout_TH
+ * ============================================================================================
+ */
 public class Timeout_TH extends TextStreamTagHandler  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   Timeout_TH constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   Timeout_TH constructor -
+    *       Initialize our internal fields.
+    */
     public Timeout_TH( ) {
-	super( );
-	 
+    super( );
+
     }
 
     //------------------------------------------------------------------------------
@@ -84,13 +84,13 @@ public class Timeout_TH extends TextStreamTagHandler  {
      * Get the tag string associated with this handler.
      */
     public String getTagName() {
-	return TagsImpl.ctStr_tag_timeout;
+    return TagsImpl.ctStr_tag_timeout;
     }
 
     //------------------------------------------------------------------------------
     //  Handlers
     //------------------------------------------------------------------------------
-     
+
 
   /**
     *   End handling a given XML tag.
@@ -98,48 +98,48 @@ public class Timeout_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void endTag(String text) throws SAXException {
-	try {
-	    super.endTag(text);
-	    Stack testItemStack = m_ParserHandler.getStack();
-	    Object testitem = testItemStack.peek();
-	    
-	    if (testitem == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
-	    
-	    //   If the tag is parsed in, it can not have null text.
-	    if (text == null)
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
+    try {
+        super.endTag(text);
+        Stack testItemStack = m_ParserHandler.getStack();
+        Object testitem = testItemStack.peek();
 
-	    String to = null;
-	    try {
-		to = CommonImpl.getSingleToken(text);
-	    } catch (TestFileException e) {
-		m_ParserHandler.throwError(e);
-	    }
+        if (testitem == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstackitem"));
 
-	    if  (testitem instanceof TestGroupAttributes) {
-		TestGroupAttributes tga = (TestGroupAttributes) testitem;
-		tga.setTimeout(to);
-	    } else if (testitem instanceof TestCaseAttributes) {
-		TestCaseAttributes tca = (TestCaseAttributes) testitem;
-		tca.setTimeout(to);
-	    } else 
-		m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext2", getTagName(), 
-								   TagsImpl.ctStr_tag_testgroupattributes,
-								   TagsImpl.ctStr_tag_testcaseattributes));
+        //   If the tag is parsed in, it can not have null text.
+        if (text == null)
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.nullstring", getTagName()));
 
-	} catch (TestFileException e) {
-	    m_ParserHandler.throwError(e.getMessage());
-	}
+        String to = null;
+        try {
+        to = CommonImpl.getSingleToken(text);
+        } catch (TestFileException e) {
+        m_ParserHandler.throwError(e);
+        }
+
+        if  (testitem instanceof TestGroupAttributes) {
+        TestGroupAttributes tga = (TestGroupAttributes) testitem;
+        tga.setTimeout(to);
+        } else if (testitem instanceof TestCaseAttributes) {
+        TestCaseAttributes tca = (TestCaseAttributes) testitem;
+        tca.setTimeout(to);
+        } else
+        m_ParserHandler.throwError(LibResHandler.getResStr("parser.error.invcontext2", getTagName(),
+                                   TagsImpl.ctStr_tag_testgroupattributes,
+                                   TagsImpl.ctStr_tag_testcaseattributes));
+
+    } catch (TestFileException e) {
+        m_ParserHandler.throwError(e.getMessage());
+    }
 
     }
-     
-          
+
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-         
-         
+
+
 
   /**
     *   emit the Ref text.
@@ -147,15 +147,15 @@ public class Timeout_TH extends TextStreamTagHandler  {
     * @see #endTag
     */
     public void emitTextFlow(Object tdObject) throws TestFileException, IOException {
-	if (! (tdObject instanceof String))
-	    throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj", 
-					"String", tdObject.getClass().getName()));
+    if (! (tdObject instanceof String))
+        throw new TestFileException(LibResHandler.getResStr("emitter.error.invObj",
+                    "String", tdObject.getClass().getName()));
 
-	String timeout = (String) tdObject;
+    String timeout = (String) tdObject;
 
-	m_EmitterHandler.emitText(timeout);
+    m_EmitterHandler.emitText(timeout);
 
     }
-     
+
 
 }

@@ -27,15 +27,15 @@ import com.sun.tgxml.tjtf.api.tests.Library;
 // </importgen>
 
 /**
- * Library - 
+ * Library -
  *
- * <b>Library</b> is the entity that describes a library that TestCodes depend on.  
+ * <b>Library</b> is the entity that describes a library that TestCodes depend on.
  * <p>
  * <b>Library</b>s derive from <b>TestItem</b>. These properties describe
  * the comments, assertions, and descriptions that this class contains.
  * <p>
  *
- * @version 	1.1, 10/28/02
+ * @version     1.1, 10/28/02
  * @author  Kevin T. Looney
  */
 
@@ -57,40 +57,40 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
      */
     private TestVariantImpl            m_TestVar;
     private boolean                    inlineFlag;
-   
+
 
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public LibraryImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
-    public LibraryImpl(String ID, LibDocumentation documentation, LibAttributes attributes, 
-			 CodeSet codeset ) {
-	super(ID, documentation, attributes, codeset);
-	init();
+    public LibraryImpl(String ID, LibDocumentation documentation, LibAttributes attributes,
+             CodeSet codeset ) {
+    super(ID, documentation, attributes, codeset);
+    init();
     }
 
-    public LibraryImpl(String ID, String VarID, LibDocumentation documentation, LibAttributes attributes, 
-			 CodeSet codeset ) throws TestFileException {
-	super(ID, documentation, attributes, codeset);
-	m_TestVar = new TestVariantImpl(VarID);
+    public LibraryImpl(String ID, String VarID, LibDocumentation documentation, LibAttributes attributes,
+             CodeSet codeset ) throws TestFileException {
+    super(ID, documentation, attributes, codeset);
+    m_TestVar = new TestVariantImpl(VarID);
     }
 
- 
+
     private void init() {
-	m_TestVar = new TestVariantImpl();
+    m_TestVar = new TestVariantImpl();
     }
-  
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -106,7 +106,7 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
         return m_TestVar.getVarID();
     }
 
-     
+
   /**
     * Sets the variant identifier associated with the TestCase or Library.
     * <p>
@@ -124,7 +124,7 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
    /**
     * Sets VarOrder for the variant
     * @params value the string is of the form: "x[.y]",
-    *         where x,y are positive integers 
+    *         where x,y are positive integers
     *         and the value x.y represents a positive decimal value between
     *         00.00 and 99.99.
     * @throws TestFileException if passed value is in illegal format
@@ -178,9 +178,9 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
     * @see #setLibDocumentation
     */
     public LibDocumentation getLibDocumentation() {
-	return (LibDocumentation) getDocumentation();
+    return (LibDocumentation) getDocumentation();
     }
-     
+
   /**
     *   Set the Documentation associated with this Library.
     *  <p>
@@ -189,7 +189,7 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
     * @see #getLibDocumentation
     */
     public void setLibDocumentation(LibDocumentation doc) {
-	_setDocumentation(doc);
+    _setDocumentation(doc);
     }
 
 
@@ -203,9 +203,9 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
     * @see #setLibAttributes
     */
     public LibAttributes getLibAttributes() {
-	return (LibAttributes) getAttributes();
+    return (LibAttributes) getAttributes();
     }
-     
+
   /**
     *   Set the Attributes associated with this Library.
     *  <p>
@@ -214,11 +214,11 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
     * @see #getLibAttributes
     */
     public void setLibAttributes(LibAttributes attrs) {
-	_setAttributes(attrs);
+    _setAttributes(attrs);
     }
 
   /**
-    *  Returns the value of inline flag associated with 
+    *  Returns the value of inline flag associated with
     *  this Library (false by default).
     *
     * @see #setInclude
@@ -226,7 +226,7 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
     public boolean isInline() {
         return inlineFlag;
     }
-     
+
   /**
     *  Sets the inline flag associated with this Library.
     *  <p>
@@ -238,7 +238,7 @@ public  class LibraryImpl extends TestItemImpl implements Library  {
     }
 
 
-     
+
 
 
 }

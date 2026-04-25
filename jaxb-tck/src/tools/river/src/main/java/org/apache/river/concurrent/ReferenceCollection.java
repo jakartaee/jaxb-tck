@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,33 +29,33 @@ import java.util.Set;
 /**
  * A Collection of Reference Objects, the developer may chose any Collection
  * implementation to store the References, which is passed in a runtime.
- * 
+ *
  * The underlying Collection implementation governs the specific behaviour of this
  * Collection.
- * 
+ *
  * Synchronisation must be implemented by the underlying Collection and cannot
  * be performed externally to this class.  The underlying Collection must
  * also be mutable.  Objects will be removed automatically from the underlying
  * Collection when they are eligible for garbage collection.
- * 
+ *
  * Weak, Weak Identity, Soft, Soft Identity or Strong references may be used.
- * This Collection may be used as an Object pool cache or any other purpose 
+ * This Collection may be used as an Object pool cache or any other purpose
  * that requires unique memory handling.
- * 
+ *
  * For concurrent threads, it is recommended to encapsulate the underlying
  * collection in a multi read, single write collection for scalability.
- * 
+ *
  * @see Ref
- * @see ConcurrentCollections#multiReadCollection(java.util.Collection) 
+ * @see ConcurrentCollections#multiReadCollection(java.util.Collection)
  * @author Peter Firmstone.
  */
-class ReferenceCollection<T> extends AbstractCollection<T> 
+class ReferenceCollection<T> extends AbstractCollection<T>
                                 implements Collection<T>, Serializable {
     private static final long serialVersionUID = 1L;
     private final Collection<Referrer<T>> col;
     private final ReferenceQueuingFactory<T, Referrer<T>> rqf;
     private final Ref type;
-    
+
     @SuppressWarnings("unchecked")
     ReferenceCollection(Collection<Referrer<T>> col, Ref type, boolean gcThread, long gcCycle){
         RefQueue<T> que = null;
@@ -67,30 +67,30 @@ class ReferenceCollection<T> extends AbstractCollection<T>
         rqf = rp;
         rp.start(gcCycle);
     }
-    
-    ReferenceCollection(Collection<Referrer<T>> col, 
+
+    ReferenceCollection(Collection<Referrer<T>> col,
             ReferenceQueuingFactory<T, Referrer<T>> rqf, Ref type){
         this.col = col;
         this.rqf = rqf;
         this.type = type;
     }
-    
+
     void processQueue(){
         //rqf.processQueue();
         }
-    
+
     ReferenceQueuingFactory<T, Referrer<T>> getRQF(){
         return rqf;
     }
-    
+
     Ref getRef(){
         return type;
     }
-    
+
     Referrer<T> wrapObj(T t, boolean enqueue, boolean temporary){
         return rqf.referenced(t, enqueue, temporary);
     }
-    
+
     public int size() {
         processQueue();
         return col.size();
@@ -105,13 +105,13 @@ class ReferenceCollection<T> extends AbstractCollection<T>
         processQueue();
         return col.contains(wrapObj((T) o, false, true));
     }
-    
+
     /**
      * This Iterator may return null values if garbage collection
      * runs during iteration.
-     * 
+     *
      * Always check for null values.
-     * 
+     *
      * @return T - possibly null.
      */
     public Iterator<T> iterator() {
@@ -129,14 +129,14 @@ class ReferenceCollection<T> extends AbstractCollection<T>
         return col.remove(wrapObj((T) o, false, true));
     }
 
- 
+
     @SuppressWarnings("unchecked")
     public boolean containsAll(Collection<?> c) {
         processQueue();
         return col.containsAll(new CollectionDecorator<T>((Collection<T>) c, getRQF(), false, true));
     }
 
-    
+
     @SuppressWarnings("unchecked")
     public boolean addAll(Collection<? extends T> c) {
         processQueue();
@@ -146,7 +146,7 @@ class ReferenceCollection<T> extends AbstractCollection<T>
     public void clear() {
         col.clear();
     }
-    
+
     /*
      * The next three methods are suitable implementations for subclasses also.
      */
@@ -161,19 +161,19 @@ class ReferenceCollection<T> extends AbstractCollection<T>
         }
         return System.identityHashCode(this);
     }
-    
+
     /**
-     * Because equals and hashCode are not defined for collections, we 
+     * Because equals and hashCode are not defined for collections, we
      * cannot guarantee consistent behaviour by implementing equals and
      * hashCode.  A collection could be a list, set, queue or deque.
      * So a List != Queue and a Set != list. therefore equals for collections is
      * not defined.
-     * 
+     *
      * However since two collections may both also be Lists, while abstracted
      * from the client two lists may still be equal.
-     * @see Collection#equals(java.lang.Object) 
+     * @see Collection#equals(java.lang.Object)
      */
-    
+
     @Override
     public boolean equals(Object o){
         if ( o == this ) return true;
@@ -182,7 +182,7 @@ class ReferenceCollection<T> extends AbstractCollection<T>
         }
         return false;
     }
-    
+
     final Object writeReplace() throws ObjectStreamException {
         try {
             // returns a Builder instead of this class.
@@ -193,8 +193,8 @@ class ReferenceCollection<T> extends AbstractCollection<T>
             throw new WriteAbortedException("Unable to create serialization proxy", ex);
         }
     }
-    
-    private void readObject(ObjectInputStream stream) 
+
+    private void readObject(ObjectInputStream stream)
             throws InvalidObjectException{
         throw new InvalidObjectException("Builder required");
     }

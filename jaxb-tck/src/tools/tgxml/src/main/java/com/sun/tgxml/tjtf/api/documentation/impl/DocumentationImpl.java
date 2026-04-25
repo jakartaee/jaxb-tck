@@ -26,7 +26,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * Documentation - 
+ * Documentation -
  *
  * <b>Documentation</b> is the basic interface for describing documentation
  * associated with a test.
@@ -39,12 +39,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  *  </ul> <br>
  *
  * <p>
- * A <b>documentation</b> is registered with a <b>TestGroup</b>, <b>Library</b>, and <b>TestCase</b> 
- *  elements.  
- * <p> 
+ * A <b>documentation</b> is registered with a <b>TestGroup</b>, <b>Library</b>, and <b>TestCase</b>
+ *  elements.
+ * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -64,7 +64,7 @@ public  class DocumentationImpl implements Documentation  {
      *    Fields
      * ============================================================================================
      */
-   
+
     private ArrayList   m_authors;
     private String      m_title;
     private String      m_description;
@@ -74,13 +74,13 @@ public  class DocumentationImpl implements Documentation  {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public DocumentationImpl() {
-	init();
+    init();
     }
 
     public DocumentationImpl(String title, String description, ArrayList authors) {
@@ -95,7 +95,7 @@ public  class DocumentationImpl implements Documentation  {
        m_authors = null;
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -115,9 +115,9 @@ public  class DocumentationImpl implements Documentation  {
     * @see #setTitle
     */
     public String getTitle()  throws TestFileException {
-	return m_title;
+    return m_title;
     }
-     
+
    /**
     *   Set the title associated with this documentation.
     *  <p>
@@ -130,7 +130,7 @@ public  class DocumentationImpl implements Documentation  {
     * @see #getTitle
     */
     public void setTitle(String title)  throws TestFileException{
-	m_title = title;
+    m_title = title;
     }
 
 
@@ -145,9 +145,9 @@ public  class DocumentationImpl implements Documentation  {
     * @see #setDescription
     */
     public String getDescription() {
-	return m_description;
+    return m_description;
     }
-     
+
    /**
     *   Set the description associated with this documentation.
     *  <p>
@@ -158,7 +158,7 @@ public  class DocumentationImpl implements Documentation  {
     * @see #getDescription
     */
     public void setDescription(String description) {
-	m_description = description;
+    m_description = description;
     }
 
 
@@ -175,10 +175,10 @@ public  class DocumentationImpl implements Documentation  {
     * @see #setAuthors
     */
     public ArrayList getAuthors() {
-	return m_authors;
+    return m_authors;
     }
 
-     
+
  /**
     *   Set the authors associated with this documentation.
     *  <p>
@@ -190,10 +190,10 @@ public  class DocumentationImpl implements Documentation  {
     * @see #getAuthors
     */
     public void setAuthors(ArrayList authors) {
-	if (authors == null)
-	    m_authors.clear();
-	else
-	    m_authors = authors;
+    if (authors == null)
+        m_authors.clear();
+    else
+        m_authors = authors;
     }
 
 

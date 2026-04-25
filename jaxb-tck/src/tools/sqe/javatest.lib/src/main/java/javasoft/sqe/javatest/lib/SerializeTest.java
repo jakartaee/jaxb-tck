@@ -34,13 +34,13 @@ import javasoft.sqe.javatest.Status;
 /**
  * Abstract base class for simple serialization tests.
  * This abstract base class extends the MultiTest library class with specific
- * features needed to perform a simple serialization test of serializable API 
+ * features needed to perform a simple serialization test of serializable API
  * classes.  This test assumes that the implementation of the toString()
  * and equals() methods will provide enough information to validate that correct
  * serialization and de-serialization have taken place.
  *
  * <P>You must supply the specific data to be serialized and de-serialized
- * to create a useful test class. There are three different test methods 
+ * to create a useful test class. There are three different test methods
  * in this test class:
  * <DL>
  * <DT><B>setup</B>
@@ -63,7 +63,7 @@ import javasoft.sqe.javatest.Status;
  *        value <EM>$testURL</EM>.
  * <DT><B>-TestCaseID</B>
  *    <DD>Which tests from the above list to be executed.  You will first need
- *        to execute <EM>setup</EM> to create the file used in the <EM>readTest</EM>.  
+ *        to execute <EM>setup</EM> to create the file used in the <EM>readTest</EM>.
  *        Normally the value for TestCaseID will be <EM>ALL</EM> which runs
  *        both <EM>readTest</EM> and <EM>writeTest</EM>.
  * <DT><B>-FileName</B>
@@ -72,7 +72,7 @@ import javasoft.sqe.javatest.Status;
  *        naming convention, and should end with the extension <EM>.ser</EM>.
  * </DL>
  *
- * <P>For an example of how to use this test class see 
+ * <P>For an example of how to use this test class see
  * tests/api/java_lang/Integer/manual.html#Serialized test.
  *
  * @author Kevin A. Smith
@@ -99,7 +99,7 @@ public abstract class SerializeTest extends MultiTest {
     protected boolean doStringTest = true;
 
     /** Flag that indicates if the serialized data file needs to be generated.
-     *  Test execution will not be performed if it is set to true. 
+     *  Test execution will not be performed if it is set to true.
      */
     protected boolean setupSerFile = false;
 
@@ -110,10 +110,10 @@ public abstract class SerializeTest extends MultiTest {
      * Initializes test using the execute arguments.
      * Calls the createValues method to create expected values.
      *
-     * @exception SetupException raised when initialization 
+     * @exception SetupException raised when initialization
      * is unsuccessful.
      *
-     * @see createValues 
+     * @see createValues
      *
      */
     protected void init() throws SetupException {
@@ -144,23 +144,23 @@ public abstract class SerializeTest extends MultiTest {
             throw new SetupException( tempStatus.getReason() );
         }
 
-        // hack for the creation of .ser file 
+        // hack for the creation of .ser file
         if (setupSerFile) {
-            System.out.println("Serialized data file update returned " + 
+            System.out.println("Serialized data file update returned " +
                     "the following status: " + setup().getStatus());
             System.exit(0);
         }
-               
+
     }
 
 
     /**  Decoding filename and testURL.
      *
-     * This method tries to decode filename and testURL, 
-     * supplied after "-FileName" and "-TestURL" accordingly, 
+     * This method tries to decode filename and testURL,
+     * supplied after "-FileName" and "-TestURL" accordingly,
      * from argv starting with current index.
      *
-     * There is an additional argument -setupSerFile that is used 
+     * There is an additional argument -setupSerFile that is used
      * in order to generate the seralized data file, which is used during ReadTest
      * This argument should NOT be used for test execution and is for updating
      * the data file purpose only
@@ -172,8 +172,8 @@ public abstract class SerializeTest extends MultiTest {
      *        value <EM>$testURL</EM>.
      * <DT><B>-TestCaseID</B>
      *    <DD>Which tests from the above list to be executed.  You will first need
-     *        to execute <EM>setup</EM> to create the file used in the 
-     *        <EM>readTest</EM>.  Normally the value for TestCaseID will be 
+     *        to execute <EM>setup</EM> to create the file used in the
+     *        <EM>readTest</EM>.  Normally the value for TestCaseID will be
      *        <EM>ALL</EM> which runs
      *        both <EM>readTest</EM> and <EM>writeTest</EM>.
      * <DT><B>-FileName</B>
@@ -195,13 +195,13 @@ public abstract class SerializeTest extends MultiTest {
      *        test setup.
      * </DL>
      *
-     * @param argv Execute arguments from the test harness or from the 
+     * @param argv Execute arguments from the test harness or from the
      *             command line
      * @param index current index into argv.
      *
-     * @return number of arguments decoded if SerializeTest specific argument 
-     *         is recognized, or 
-     *         <CODE>super.decodeArg( argv, index )</CODE> otherwise. 
+     * @return number of arguments decoded if SerializeTest specific argument
+     *         is recognized, or
+     *         <CODE>super.decodeArg( argv, index )</CODE> otherwise.
      *
      */
     protected int decodeArg( String argv[], int index ) throws SetupException {
@@ -252,7 +252,7 @@ public abstract class SerializeTest extends MultiTest {
      * to the expectedValues array.
      *
      * @return Status.passed("") if expectedValues array was initialized
-     *         successfully, or Status.failed( ) with an informative 
+     *         successfully, or Status.failed( ) with an informative
      *         message if unsuccessful.
      *
      */
@@ -261,8 +261,8 @@ public abstract class SerializeTest extends MultiTest {
 
     /** Creates serialized data file to be read during ReadTest.
      *
-     * @return WrapStatus with wrapped status of Status.passed("OKAY") if the data 
-     *         file was written successfully, or Status.failed( ) with an informative 
+     * @return WrapStatus with wrapped status of Status.passed("OKAY") if the data
+     *         file was written successfully, or Status.failed( ) with an informative
      *         message if unsuccessful.
      *
      */
@@ -299,18 +299,18 @@ public abstract class SerializeTest extends MultiTest {
     /** Read Serialized data test
      *
      * @return Status.passed("OKAY") if the data file was written
-     *         successfully, or Status.failed( ) with an informative 
+     *         successfully, or Status.failed( ) with an informative
      *         message if unsuccessful.
      * @exception IOException Rethrows IOException from IO calls.
-     * @exception ClassNotFoundException Thrown if the test is unable to 
-     *                                un-marshal the data from the 
+     * @exception ClassNotFoundException Thrown if the test is unable to
+     *                                un-marshal the data from the
      *                                serialized stream.
-     * @exception OptionalDataException Rethrown from calls to readObject that have 
+     * @exception OptionalDataException Rethrown from calls to readObject that have
      *                               optional data.
-     *                               
+     *
      */
-    public Status testRead() throws ClassNotFoundException, IOException, 
-        OptionalDataException 
+    public Status testRead() throws ClassNotFoundException, IOException,
+        OptionalDataException
         {
             ObjectInputStream iStream = new ObjectInputStream( serialFileURL.openStream() );
             Status s = read( iStream, expectedValues );
@@ -321,18 +321,18 @@ public abstract class SerializeTest extends MultiTest {
     /** Write and then read serialized data test
      *
      * @return Status.passed("OKAY") if the data file was written
-     *         successfully, or Status.failed( ) with an informative 
+     *         successfully, or Status.failed( ) with an informative
      *         message if unsuccessful.
      * @exception IOException Rethrows IOException from IO calls.
-     * @exception ClassNotFoundException Thrown if the test is unable to 
-     *                                un-marshal the data from the 
+     * @exception ClassNotFoundException Thrown if the test is unable to
+     *                                un-marshal the data from the
      *                                serialized stream.
-     * @exception OptionalDataException Rethrown from calls to readObject that have 
+     * @exception OptionalDataException Rethrown from calls to readObject that have
      *                               optional data.
      *
      */
-    public Status testWrite() throws ClassNotFoundException, IOException, 
-            OptionalDataException 
+    public Status testWrite() throws ClassNotFoundException, IOException,
+            OptionalDataException
         {
             ObjectOutputStream oStream;
             ObjectInputStream iStream;
@@ -345,7 +345,7 @@ public abstract class SerializeTest extends MultiTest {
             write( oStream, expectedValues );
             byte bytes[] = baos.toByteArray();
             baos.close();
-                
+
             /* create a byte array input stream, and deserialize
              * the dates.
              */
@@ -358,10 +358,10 @@ public abstract class SerializeTest extends MultiTest {
 
 
     /** Method to validate correct serialization/de-serialization of each object.
-     * 
-     * This method is called any time SerializeTest needs to validate that an 
+     *
+     * This method is called any time SerializeTest needs to validate that an
      * object has been correctly serialized and de-serialized.  It compares the
-     * object before serialization with the object after serialization and 
+     * object before serialization with the object after serialization and
      * de-serialization.  If the two objects are equal, then the object was
      * correctly serialized and de-serialized.
      *
@@ -370,7 +370,7 @@ public abstract class SerializeTest extends MultiTest {
      * object was correctly serialized and de-serialized.  Some classes should use
      * some other check of equality.  For example, class Throwable does not override
      * Object.equals(), so you cannot use Throwable.equals() to compare two different
-     * objects.  Therefore, this method is overridden in the serialized form test of 
+     * objects.  Therefore, this method is overridden in the serialized form test of
      * of class Throwable.
      *
      * @param expectedResult The object before serialization.
@@ -387,7 +387,7 @@ public abstract class SerializeTest extends MultiTest {
         String expectedString = expectedResult.toString();
 
         if( doEqualsTest && ( ! expectedResult.equals( result ) ) ) {
-            return Status.failed( "Equals test, expected: " + 
+            return Status.failed( "Equals test, expected: " +
                                   expectedString +
                                   ", received: " +
                                   result.toString() );
@@ -405,7 +405,7 @@ public abstract class SerializeTest extends MultiTest {
 
     /*********************************** Private Methods ***********************************/
     /** Actual test for reading objects from a stream */
-    private Status read( ObjectInputStream iStream, Object[] expectedResult ) 
+    private Status read( ObjectInputStream iStream, Object[] expectedResult )
         throws ClassNotFoundException, IOException, OptionalDataException {
             Object testVal;
             String testValString;
@@ -433,8 +433,8 @@ public abstract class SerializeTest extends MultiTest {
     }
 
     /** Actual test for writing objects to a stream */
-    private Status write( ObjectOutputStream oStream, Object[] desiredVal ) 
-        throws IOException 
+    private Status write( ObjectOutputStream oStream, Object[] desiredVal )
+        throws IOException
         {
             int i;
 

@@ -126,7 +126,7 @@ public class FPMaker
     public static class MyJmppLibFP extends com.sun.jmpp.lib.JmppLibFP {
         /**
          * Overrides super class' method to support general CRN
-	 * insertion mechanism.
+     * insertion mechanism.
          */
         public void makeHead() {
             String crn = CopyrightManager.getJmppCopyright(
@@ -144,7 +144,7 @@ public class FPMaker
 
         /**
          * Overrides generateProlog in JmppLibFP class to correctly
-	 * generate base class name (which is an inner class).
+     * generate base class name (which is an inner class).
          */
         public void generateProlog(PrintWriter out, String intermediateClassName) {
             out.println("package "+templatePackage+";\n");

@@ -25,51 +25,51 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 
 /**
- * SingletonTagHandler - The tag-handler abstraction. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    AttrElem_TH 
- * ============================================================================================ 
- */ 
+ * SingletonTagHandler - The tag-handler abstraction.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    AttrElem_TH
+ * ============================================================================================
+ */
 public class SingletonTagHandler extends TagHandlerImpl  {
 
 
-   /* 
-    * ============================================================================================ 
-    *    Fields 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Fields
+    * ============================================================================================
+    */
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
- 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
 
-   /** 
-    *   SingletonTagHandler constructor - 
-    *       Initialize our internal fields. 
-    */ 
+   /**
+    *   SingletonTagHandler constructor -
+    *       Initialize our internal fields.
+    */
     public SingletonTagHandler() {
-	super();
+    super();
     }
 
- 
+
     //------------------------------------------------------------------------------
     //  ParserHandlers
     //------------------------------------------------------------------------------
@@ -83,11 +83,11 @@ public class SingletonTagHandler extends TagHandlerImpl  {
     */
     public final void endTag() throws SAXException {
     }
- 
+
     //------------------------------------------------------------------------------
     //  EmitterHandlers
     //------------------------------------------------------------------------------
-                   
+
 
   /**
     *   emit a tag (general function).
@@ -95,12 +95,12 @@ public class SingletonTagHandler extends TagHandlerImpl  {
     * @see #endTag
     */
     public void emit(Object tdObject) throws TestFileException, IOException {
-	m_EmitterHandler.indent();
-	emitStartTag(tdObject);
-	m_EmitterHandler.newline();
+    m_EmitterHandler.indent();
+    emitStartTag(tdObject);
+    m_EmitterHandler.newline();
     }
 
-          
+
 
   /**
     *   emit a start tag (general function).
@@ -108,10 +108,10 @@ public class SingletonTagHandler extends TagHandlerImpl  {
     * @see #endTag
     */
     public void emitStartTag(Object tdObject) throws TestFileException, IOException {
-	m_EmitterHandler.emitSingletonBeginTag(getTagName());
-	emitAttributes(tdObject);
-	m_EmitterHandler.emitSingletonEndTag();
+    m_EmitterHandler.emitSingletonBeginTag(getTagName());
+    emitAttributes(tdObject);
+    m_EmitterHandler.emitSingletonEndTag();
     }
-          
+
 
 }

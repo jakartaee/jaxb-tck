@@ -33,10 +33,10 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 // </importgen>
 
 /**
- * TestGroup - 
+ * TestGroup -
  *
- * <b>TestGroup</b> is the entity that describes a grouping (or class) of atomic tests. 
- * <b>TestGroup</b> are owned by <b>Test</b>s.  
+ * <b>TestGroup</b> is the entity that describes a grouping (or class) of atomic tests.
+ * <b>TestGroup</b> are owned by <b>Test</b>s.
  * <p>
  * <b>TestGroup</b>es derive from <b>CommonTestProperties</b>,
  * and contain a <b>Test</b> as their parent. These properties describe
@@ -53,7 +53,7 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
  *  </ul> <br>
  * <p>
  *
- * @version 	1.1, 10/23/02
+ * @version     1.1, 10/23/02
  * @author  Kevin T. Looney
  */
 
@@ -73,7 +73,7 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
      *    Fields
      * ============================================================================================
      */
-   
+
     private ArrayList          m_testCases;
     private ArrayList          m_librarys;
     private boolean            isGloballyExcluded;
@@ -84,35 +84,35 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public TestGroupImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
-    public TestGroupImpl(String ID, TestGroupDocumentation documentation, TestGroupAttributes attributes, 
-			 CodeSet codeset, ArrayList testCases ) {
+    public TestGroupImpl(String ID, TestGroupDocumentation documentation, TestGroupAttributes attributes,
+             CodeSet codeset, ArrayList testCases ) {
         super(ID, documentation, attributes, codeset);
         setTestCases(testCases);
     }
 
-    public TestGroupImpl(String ID, TestGroupDocumentation documentation, TestGroupAttributes attributes, 
-			 CodeSet codeset, ArrayList testCases, ArrayList librarys ) {
+    public TestGroupImpl(String ID, TestGroupDocumentation documentation, TestGroupAttributes attributes,
+             CodeSet codeset, ArrayList testCases, ArrayList librarys ) {
         super(ID, documentation, attributes, codeset);
         setTestCases(testCases);
         setLibraries(librarys);
     }
 
     private void init() {
-	m_testCases = null;
-	m_librarys = null;
+    m_testCases = null;
+    m_librarys = null;
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -127,9 +127,9 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setTGDocumentation
     */
     public TestGroupDocumentation getTGDocumentation() {
-	return (TestGroupDocumentation) getDocumentation();
+    return (TestGroupDocumentation) getDocumentation();
     }
-     
+
   /**
     *   Set the Documentation associated with this TestItem.
     *  <p>
@@ -138,7 +138,7 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #getTGDocumentation
     */
     public void setTGDocumentation(TestGroupDocumentation doc) {
-	_setDocumentation(doc);
+    _setDocumentation(doc);
     }
 
 
@@ -152,9 +152,9 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setTGAttributes
     */
     public TestGroupAttributes getTGAttributes() {
-	return (TestGroupAttributes) getAttributes();
+    return (TestGroupAttributes) getAttributes();
     }
-     
+
   /**
     *   Set the Attributes associated with this TestItem.
     *  <p>
@@ -163,7 +163,7 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #getTGAttributes
     */
     public void setTGAttributes(TestGroupAttributes attrs) {
-	_setAttributes(attrs);
+    _setAttributes(attrs);
     }
 
 
@@ -177,11 +177,11 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setTestCases
     */
     public ArrayList getLibraries() {
-	return m_librarys;
+    return m_librarys;
     }
-     
 
-     
+
+
   /**
     *   Set the (ArrayList) list of Libraries that this TestGroup owns.
     *  <p>
@@ -192,40 +192,40 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     */
     public void setLibraries(ArrayList librarys) {
         m_librarys = librarys;
-	/* only do this if we need to establish reverse ownership
+    /* only do this if we need to establish reverse ownership
         if (librarys != null) {
-            Iterator it = librarys.iterator();                               
+            Iterator it = librarys.iterator();
             while (it.hasNext()) {
                 ((Library) it.next()).setTestGroup(this);
             }
         }
-	*/
+    */
     }
 
   /**
-    *   Adds the Library to this TestGroup.   
+    *   Adds the Library to this TestGroup.
     *   The owner for TestCase is set to be this TestGroup.
     *  <p>
     * @throws TestFileException if a library with the same ID and VarID exists;
     * @see com.sun.tgxml.tjtf.api.tests.TestCase
     * @see #setTestCases
     */
-    public void addLibrary(Library library) throws TestFileException {        
+    public void addLibrary(Library library) throws TestFileException {
         if (library != null) {
 
-	    Library lib1 = getLibrary(library.getID(), library.getVarID());
-	    if (lib1 != null) 
-		throw new TestFileException(LibResHandler.getResStr("api.tg.adddup.lib", library.getID(), library.getVarID()));
+        Library lib1 = getLibrary(library.getID(), library.getVarID());
+        if (lib1 != null)
+        throw new TestFileException(LibResHandler.getResStr("api.tg.adddup.lib", library.getID(), library.getVarID()));
 
 
-	    //            library.setTestGroup(this);
+        //            library.setTestGroup(this);
             if (m_librarys == null) {
                 m_librarys = new ArrayList();
             }
             m_librarys.add(library);
         }
     }
-     
+
 
 
   /**
@@ -238,25 +238,25 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setLibraries
     */
     public ArrayList getLibrary(String ID)  throws TestFileException {
-	if (ID == null) 
-	    throw new TestFileException(LibResHandler.getResStr("api.tg.libid.null"));
+    if (ID == null)
+        throw new TestFileException(LibResHandler.getResStr("api.tg.libid.null"));
 
         if (m_librarys == null)
-	    return null;
+        return null;
 
-	ArrayList libs = null;
-	Iterator libIter = m_librarys.iterator();
-	while (libIter.hasNext()) {
-	    Library lib = (Library) libIter.next();
-	    String libID = lib.getID();
-	    if (ID.equals(libID)) {
-		if (libs == null)
-		    libs = new ArrayList();
-		libs.add(lib);
-	    }
-	}
+    ArrayList libs = null;
+    Iterator libIter = m_librarys.iterator();
+    while (libIter.hasNext()) {
+        Library lib = (Library) libIter.next();
+        String libID = lib.getID();
+        if (ID.equals(libID)) {
+        if (libs == null)
+            libs = new ArrayList();
+        libs.add(lib);
+        }
+    }
 
-	return libs;
+    return libs;
     }
 
 
@@ -272,26 +272,26 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setLibraries
     */
     public Library getLibrary(String ID, String VarID)  throws TestFileException {
-	if (ID == null || ID.equals("")) 
-	    throw new TestFileException(LibResHandler.getResStr("api.tg.libid.null"));
+    if (ID == null || ID.equals(""))
+        throw new TestFileException(LibResHandler.getResStr("api.tg.libid.null"));
 
         if (m_librarys == null)
-	    return null;
+        return null;
 
-	Iterator libIter = m_librarys.iterator();
-	while (libIter.hasNext()) {
-	    Library lib = (Library) libIter.next();
-	    String libID = lib.getID();
-	    String libVarID = lib.getVarID();
-	    if (ID.equals(libID)) {
-		if ((VarID == null && libVarID == null) ||
-		    (VarID != null && libVarID != null && VarID.equals(libVarID))) {
-		    return lib;
-		}
-	    }
-	}
+    Iterator libIter = m_librarys.iterator();
+    while (libIter.hasNext()) {
+        Library lib = (Library) libIter.next();
+        String libID = lib.getID();
+        String libVarID = lib.getVarID();
+        if (ID.equals(libID)) {
+        if ((VarID == null && libVarID == null) ||
+            (VarID != null && libVarID != null && VarID.equals(libVarID))) {
+            return lib;
+        }
+        }
+    }
 
-	return null;
+    return null;
     }
 
 
@@ -310,11 +310,11 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setTestCases
     */
     public ArrayList getTestCases() {
-	return m_testCases;
+    return m_testCases;
     }
-     
 
-     
+
+
   /**
     *   Set the (ArrayList) list of TestCases that this TestGroup owns.
     *   Each of testcases in the ArrayList is updated with the new owner TestGroup.
@@ -327,7 +327,7 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     public void setTestCases(ArrayList testcases) {
         m_testCases = testcases;
         if (testcases != null) {
-            Iterator it = testcases.iterator();                               
+            Iterator it = testcases.iterator();
             while (it.hasNext()) {
                 ((TestCase) it.next()).setTestGroup(this);
             }
@@ -335,19 +335,19 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     }
 
   /**
-    *   Adds the TestCase to this TestGroup.   
+    *   Adds the TestCase to this TestGroup.
     *   The owner for TestCase is set to be this TestGroup.
     *  <p>
     * @throws TestFileException if a TestCase with the same ID and VarID exists;
     * @see com.sun.tgxml.tjtf.api.tests.TestCase
     * @see #setTestCases
     */
-    public void addTestCase(TestCase tcase) throws TestFileException {        
+    public void addTestCase(TestCase tcase) throws TestFileException {
         if (tcase != null) {
 
-	    TestCase tc1 = getTestCase(tcase.getID(), tcase.getVarID());
-	    if (tc1 != null) 
-		throw new TestFileException(LibResHandler.getResStr("api.tg.adddup.tc", tcase.getID(), tcase.getVarID()));
+        TestCase tc1 = getTestCase(tcase.getID(), tcase.getVarID());
+        if (tc1 != null)
+        throw new TestFileException(LibResHandler.getResStr("api.tg.adddup.tc", tcase.getID(), tcase.getVarID()));
 
             tcase.setTestGroup(this);
             if (m_testCases == null) {
@@ -356,7 +356,7 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
             m_testCases.add(tcase);
         }
     }
-     
+
 
 
   /**
@@ -369,25 +369,25 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setTestCases
     */
     public ArrayList getTestCase(String ID)  throws TestFileException {
-	if (ID == null) 
-	    throw new TestFileException(LibResHandler.getResStr("api.tg.tcid.null"));
+    if (ID == null)
+        throw new TestFileException(LibResHandler.getResStr("api.tg.tcid.null"));
 
         if (m_testCases == null)
-	    return null;
+        return null;
 
-	ArrayList tcs = null;
-	Iterator tcIter = m_testCases.iterator();
-	while (tcIter.hasNext()) {
-	    TestCase tc = (TestCase) tcIter.next();
-	    String tcID = tc.getID();
-	    if (ID.equals(tcID)) {
-		if (tcs == null)
-		    tcs = new ArrayList();
-		tcs.add(tc);
-	    }
-	}
+    ArrayList tcs = null;
+    Iterator tcIter = m_testCases.iterator();
+    while (tcIter.hasNext()) {
+        TestCase tc = (TestCase) tcIter.next();
+        String tcID = tc.getID();
+        if (ID.equals(tcID)) {
+        if (tcs == null)
+            tcs = new ArrayList();
+        tcs.add(tc);
+        }
+    }
 
-	return tcs;
+    return tcs;
     }
 
 
@@ -401,26 +401,26 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setTestCases
     */
     public TestCase getTestCase(String ID, String VarID)  throws TestFileException {
-	if (ID == null) 
-	    throw new TestFileException(LibResHandler.getResStr("api.tg.tcid.null"));
+    if (ID == null)
+        throw new TestFileException(LibResHandler.getResStr("api.tg.tcid.null"));
 
         if (m_testCases == null)
-	    return null;
+        return null;
 
-	Iterator tcIter = m_testCases.iterator();
-	while (tcIter.hasNext()) {
-	    TestCase tc = (TestCase) tcIter.next();
-	    String tcID = tc.getID();
-	    String tcVarID = tc.getVarID();
-	    if (ID.equals(tcID)) {
-		if ((VarID == null && tcVarID == null) ||
-		    (VarID != null && tcVarID != null && VarID.equals(tcVarID))) {
-		    return tc;
-		}
-	    }
-	}
+    Iterator tcIter = m_testCases.iterator();
+    while (tcIter.hasNext()) {
+        TestCase tc = (TestCase) tcIter.next();
+        String tcID = tc.getID();
+        String tcVarID = tc.getVarID();
+        if (ID.equals(tcID)) {
+        if ((VarID == null && tcVarID == null) ||
+            (VarID != null && tcVarID != null && VarID.equals(tcVarID))) {
+            return tc;
+        }
+        }
+    }
 
-	return null;
+    return null;
     }
 
 
@@ -431,22 +431,22 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setTestCases
     */
     public ArrayList getTestCaseIDs() {
-        if (m_testCases == null) 
+        if (m_testCases == null)
             return null;
 
-        ArrayList idList = new ArrayList();	
-	for (Iterator tcIter = m_testCases.iterator(); tcIter.hasNext();) {
-	    TestCase tc = (TestCase) tcIter.next();
+        ArrayList idList = new ArrayList();
+    for (Iterator tcIter = m_testCases.iterator(); tcIter.hasNext();) {
+        TestCase tc = (TestCase) tcIter.next();
             try {
-		String tcID = tc.getID();
-		if (!idList.contains(tcID)) {
-		    idList.add(tcID);
+        String tcID = tc.getID();
+        if (!idList.contains(tcID)) {
+            idList.add(tcID);
                 }
-	    } catch (TestFileException e) {
+        } catch (TestFileException e) {
             }
-	}
+    }
 
-	return idList;        
+    return idList;
     }
 
 
@@ -457,22 +457,22 @@ public  class TestGroupImpl extends TestItemImpl implements TestGroup {
     * @see #setLibraries
     */
     public ArrayList getLibraryIDs() {
-        if (m_librarys == null) 
+        if (m_librarys == null)
             return null;
 
-        ArrayList idList = new ArrayList();	
-	for (Iterator libIter = m_librarys.iterator(); libIter.hasNext();) {
-	    Library lib = (Library)libIter.next();
+        ArrayList idList = new ArrayList();
+    for (Iterator libIter = m_librarys.iterator(); libIter.hasNext();) {
+        Library lib = (Library)libIter.next();
             try {
-		String libID = lib.getID();
-		if (!idList.contains(libID)) {
-		    idList.add(libID);
+        String libID = lib.getID();
+        if (!idList.contains(libID)) {
+            idList.add(libID);
                 }
-	    } catch (TestFileException e) {
+        } catch (TestFileException e) {
             }
-	}
+    }
 
-	return idList;        
+    return idList;
     }
 
    /**

@@ -78,46 +78,46 @@ public class SchemaGenTestExt extends MultiTestExt {
     static {
         docBldFactory.setNamespaceAware( true );
     }
-    
+
     static interface IFileResolver {
         File[] getFile( String... fNames );
     }
-    
-            
+
+
     static class TrivialFileResolver implements IFileResolver {
         private TrivialFileResolver() {}
-        
+
         public File[] getFile(String... fNames) {
-        	int len = fNames.length;
-        	File[] files = new File[len];
-        	for(int i = 0; i<len; i++) {
-        		files[i] = new File(fNames[i]);
-        	}
+            int len = fNames.length;
+            File[] files = new File[len];
+            for(int i = 0; i<len; i++) {
+                files[i] = new File(fNames[i]);
+            }
             return files;
         }
-        
+
         static private TrivialFileResolver instance = new TrivialFileResolver();
         static IFileResolver getInstance() {
             return instance;
         }
     }
-    
+
     static class XMLDocumentParameterValue extends MultiTestExt.ParameterValue<Document> {
         final protected IFileResolver fr;
         public XMLDocumentParameterValue(  String name,IFileResolver fr ){
             super( name );
             this.fr = fr;
         }
-        
+
         public XMLDocumentParameterValue( String name ){
             this(  name,TrivialFileResolver.getInstance() );
         }
-        
+
         public int parseValue(String[] argv) {
             StringValue.Argument arg = new StringValue.Argument();
             int count = arg.parseValue(argv);
             try {
-            	File file = fr.getFile(arg.get())[0];
+                File file = fr.getFile(arg.get())[0];
                 set( docBldFactory.newDocumentBuilder().parse(file) );
             } catch (Exception ex) {
                 throw new InvalidValue( ex.toString() );
@@ -125,7 +125,7 @@ public class SchemaGenTestExt extends MultiTestExt {
             return count;
         }
     }
-    
+
     static class SchemaAsDocumentParameterValue extends XMLDocumentParameterValue {
         protected Schema asSchema;
 
@@ -147,7 +147,7 @@ public class SchemaGenTestExt extends MultiTestExt {
         public Schema getAsSchema() {
             return asSchema;
         }
-    } 
+    }
 
     static class SchemaParameterValue extends MultiTestExt.ParameterValue<Source[]> {
         final protected IFileResolver fr;
@@ -157,11 +157,11 @@ public class SchemaGenTestExt extends MultiTestExt {
             super( name );
             this.fr = fr;
         }
-        
+
         public SchemaParameterValue( String name ) {
-        	this(  name,TrivialFileResolver.getInstance() );
+            this(  name,TrivialFileResolver.getInstance() );
         }
-        
+
         public void set( Source[] sources ) {
             super.set( sources );
             try {
@@ -171,7 +171,7 @@ public class SchemaGenTestExt extends MultiTestExt {
                 throw new InvalidValue( ex.toString() );
             }
         }
-        
+
         public Schema getAsSchema() {
             return asSchema;
         }
@@ -180,27 +180,27 @@ public class SchemaGenTestExt extends MultiTestExt {
             ArrayStringValue.Argument arg = new ArrayStringValue.Argument();
             int count = arg.parseValue(argv);
             try {
-            	set(getSchemaSources( fr.getFile(arg.get()) ) );
+                set(getSchemaSources( fr.getFile(arg.get()) ) );
             } catch (Exception ex) {
                 throw new InvalidValue( ex.toString() );
             }
             return count;
         }
-        
+
         private Source[] getSchemaSources(File[] fileList) {
-        	int len = fileList.length;
+            int len = fileList.length;
             Source[] srcList = new Source[len];
             for (int i = 0; i < len; i++) {
-            	srcList[i] = new StreamSource(fileList[i]);
-			}
+                srcList[i] = new StreamSource(fileList[i]);
+            }
             return srcList;
-        }        
-        
+        }
+
     }
-    
+
     protected void init() throws SetupException {
         super.init();
-        
+
         if( schema.get() == null ){
             if( schemaClasses.get() == null )
                 throw new SetupException( "nor -schemas, nor -classes parameter isn't specified" );
@@ -227,15 +227,15 @@ public class SchemaGenTestExt extends MultiTestExt {
                 JAXBContext context = JAXBContext.newInstance(classes.toArray( new Class[classes.size()] ));
                 context.generateSchema(resolver);
                 if( resolver.schemas.size() != 1 )
-                    throw new SetupException( 
+                    throw new SetupException(
                         String.format( "SchemaGenTestExt: Wrong number of generated schemas (%d)", resolver.schemas.size() ) );
-                // 
+                //
                 schema.set( resolver.schemas.iterator().next() );
             } catch( Exception x ){
                 x.printStackTrace( ref );
                 throw new SetupException( x.getMessage() );
             }
-        } 
+        }
     }
 
     public static void writeTestXml(Document doc, StreamResult out) throws TransformerException {
@@ -272,7 +272,7 @@ public class SchemaGenTestExt extends MultiTestExt {
                                                 String... objType ) throws IOException {
         String header =
             "/*\n" +
-            " * @(#)SchemaGenTestExt.java	1.8 08/10/20\n" +
+            " * @(#)SchemaGenTestExt.java   1.8 08/10/20\n" +
             " *\n" +
             " * Copyright (c) 2026 Contributors to the Eclipse Foundation.\n" +
             " * Copyright (c) 2008, 2020 Oracle and/or its affiliates. All rights reserved.\n" +

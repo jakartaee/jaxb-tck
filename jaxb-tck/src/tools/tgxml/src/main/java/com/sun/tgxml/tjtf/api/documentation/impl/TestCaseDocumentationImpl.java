@@ -25,7 +25,7 @@ import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
 // </importgen>
 
 /**
- * TestCaseDocumentation - 
+ * TestCaseDocumentation -
  *
  * <b>TestCaseDocumentation</b> is the basic interface for describing a JavaTest test description
  * associated with a TestCase.
@@ -38,7 +38,7 @@ import com.sun.tgxml.tjtf.api.documentation.TestCaseDocumentation;
  * <p>
  *
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -57,7 +57,7 @@ public  class TestCaseDocumentationImpl extends DocumentationImpl implements Tes
      *    Fields
      * ============================================================================================
      */
-   
+
     private ArrayList   m_specs;
 
     /*
@@ -65,33 +65,33 @@ public  class TestCaseDocumentationImpl extends DocumentationImpl implements Tes
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Constructors
     //------------------------------------------------------------------------------
     public TestCaseDocumentationImpl() {
-	super();
-	init();
+    super();
+    init();
     }
 
     public TestCaseDocumentationImpl(String title, String description, ArrayList authors, ArrayList testCaseSpecs) {
-	super(title, description, authors);
-	if (testCaseSpecs == null)
-	    init();
-	else
-	    m_specs = testCaseSpecs;
+    super(title, description, authors);
+    if (testCaseSpecs == null)
+        init();
+    else
+        m_specs = testCaseSpecs;
     }
 
     private void init() {
         m_specs = new ArrayList();
     }
 
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
-    //------------------------------------------------------------------------------   
+    //------------------------------------------------------------------------------
 
 
 
@@ -106,10 +106,10 @@ public  class TestCaseDocumentationImpl extends DocumentationImpl implements Tes
     * @see #setTestCaseSpecs
     */
     public ArrayList getTestCaseSpecs() {
-	return m_specs;
+    return m_specs;
     }
 
-     
+
  /**
     *   Set the TestCaseSpecs associated with this documentation.
     *  <p>
@@ -120,10 +120,10 @@ public  class TestCaseDocumentationImpl extends DocumentationImpl implements Tes
     * @see #getTestCaseSpecs
     */
     public void setTestCaseSpecs(ArrayList tcspecs) {
-	if (tcspecs == null)
-	    m_specs.clear();
-	else
-	    m_specs = tcspecs;
+    if (tcspecs == null)
+        m_specs.clear();
+    else
+        m_specs = tcspecs;
     }
 
 

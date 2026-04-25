@@ -22,12 +22,12 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * ExpectedResultValue - 
+ * ExpectedResultValue -
  *
  * <b>ExpectedResultValue</b> is a value that is the expected result of a tests
  * outcome.
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -61,7 +61,7 @@ public interface ExpectedResultValue extends ExpectedResult {
     * @see #setValue
     */
     public String getValue();
-     
+
    /**
     *   Set the value associated with this ExpectedResult.
     *  <p>

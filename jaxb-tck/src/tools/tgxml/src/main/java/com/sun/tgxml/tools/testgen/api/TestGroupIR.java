@@ -34,14 +34,14 @@ public class TestGroupIR implements HtmlTestIR {
     private StringBuffer tcDescrSection = null;
     private boolean anchorRequired = true;
     private TestDescriptionIR tdIR = null;
-    
+
     public TestGroupIR(String id) {
         this.id = id;
     }
-   
+
 
    /**
-    * Returns html representation of of the TestGroup 
+    * Returns html representation of of the TestGroup
     */
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -128,7 +128,7 @@ public class TestGroupIR implements HtmlTestIR {
             for (Iterator it = authors.iterator(); it.hasNext();) {
                 String a = trim((String)it.next());
                 if (a != null) {
-                    if (tcAuthors == null) { 
+                    if (tcAuthors == null) {
                         tcAuthors = a;
                     } else {
                         tcAuthors = tcAuthors + ", " + a;
@@ -146,11 +146,11 @@ public class TestGroupIR implements HtmlTestIR {
         sb.append("<A NAME=\"" + tcAnchorName(tcid) + "\"></A>\n");
         sb.append("TestCase: <b>" + tcid + "</b>\n");
         sb.append("<table border=\"1\">\n");
-        if (tcTitle != null) 
+        if (tcTitle != null)
             sb.append(tcDesrcRow("title", tcTitle));
-        if (tcDescription != null) 
+        if (tcDescription != null)
             sb.append(tcDesrcRow("description", tcDescription));
-        if (tcAuthors != null) 
+        if (tcAuthors != null)
             sb.append(tcDesrcRow(tcAuthorKey, tcAuthors));
         sb.append("</table>\n<p>\n");
         return sb;
@@ -160,8 +160,8 @@ public class TestGroupIR implements HtmlTestIR {
      * Returns table row of testcase description
      */
     private String tcDesrcRow(String key, String value) {
-        return "  <tr>\n" + 
-               "      <th scope=\"row\">" + key + "</th>\n" + 
+        return "  <tr>\n" +
+               "      <th scope=\"row\">" + key + "</th>\n" +
                "      <td>" + value + "</td></tr>\n";
     }
 
@@ -190,11 +190,11 @@ public class TestGroupIR implements HtmlTestIR {
             if (s.length() > 0)
                 return s;
         }
-        return null;       
+        return null;
     }
 
 
-   
+
     /**
      * Access method for the description property.
      *
@@ -203,7 +203,7 @@ public class TestGroupIR implements HtmlTestIR {
     public String getDescription() {
         return description;
     }
-   
+
     /**
      * Sets the value of the description property.
      *
@@ -212,7 +212,7 @@ public class TestGroupIR implements HtmlTestIR {
     public void setDescription(String aDescription) {
         description = aDescription;
     }
-  
+
 
     /**
      * Add the value to the description property.
@@ -226,7 +226,7 @@ public class TestGroupIR implements HtmlTestIR {
             description += aDescription;
         }
     }
-   
+
 
     /**
      * Access method for the comments property.
@@ -236,7 +236,7 @@ public class TestGroupIR implements HtmlTestIR {
     public String getComments() {
         return comments;
     }
-   
+
     /**
      * Sets the value of the comments property.
      *
@@ -267,24 +267,24 @@ public class TestGroupIR implements HtmlTestIR {
     public String id() {
         return id;
     }
-    
+
     /**
-     * Sets requirenment of the html anchor generation 
+     * Sets requirenment of the html anchor generation
      *
-     * @param isNeeded if true the html anchor will be always inserted, 
+     * @param isNeeded if true the html anchor will be always inserted,
      *        if false the anchor will be inserted only in case
-     *        when TestDescription contains two or more testcases 
+     *        when TestDescription contains two or more testcases
      *        or html file contains two or more TestDescriptions.
-     *      
+     *
      */
     public void setAnchorRequired(boolean isNeeded) {
         anchorRequired = isNeeded;
     }
 
     /**
-     * @return true if the html anchor will be always inserted 
+     * @return true if the html anchor will be always inserted
      *        false if the anchor will be inserted only in case
-     *        when TestDescription contains two or more testcases 
+     *        when TestDescription contains two or more testcases
      *        or html file contains two or more TestDescriptions.
      */
     public boolean isAnchorRequired() {

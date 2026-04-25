@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -24,22 +24,22 @@ import java.util.ListIterator;
 
 /**
  * A List implementation that uses References.
- * 
+ *
  * This enables a Collection or List to contain, softly, weakly or strongly referenced
- * objects.  Objects that are no longer reachable will simply vanish from 
+ * objects.  Objects that are no longer reachable will simply vanish from
  * the Collection.
- * 
+ *
  * For example, this could be used as an Object cache containing softly reachable
  * objects which are only collected when the jvm is experiencing low memory
  * conditions.
- * 
+ *
  * Synchronisation must be performed by the underlying List, it cannot be
  * performed externally, since every read is also potentially a mutable
  * change, caused by removal of garbage collected Objects.
- * 
+ *
  * Removal of garbage collected objects is performed before iteration, but not
  * during, instead some Object's returned during iteration may be null.
- * 
+ *
  * @author Peter Firmstone.
  */
 class ReferenceList<T> extends ReferenceCollection<T> implements List<T> {
@@ -49,22 +49,22 @@ class ReferenceList<T> extends ReferenceCollection<T> implements List<T> {
         super(list, type, gcThreads, gcCycle);
         this.list = list;
     }
-    
+
     ReferenceList(List<Referrer<T>> list, ReferenceQueuingFactory<T, Referrer<T>> rqf, Ref type){
         super(list, rqf, type);
         this.list = list;
     }
-    
-    private void readObject(ObjectInputStream stream) 
+
+    private void readObject(ObjectInputStream stream)
             throws InvalidObjectException{
         throw new InvalidObjectException("Builder required");
     }
 
     /**
      * Implemented as per the List interface definition of equals.
-     * @see List#equals(java.lang.Object) 
+     * @see List#equals(java.lang.Object)
      * @param o
-     * @return 
+     * @return
      */
     public boolean equals(Object o){
         if ( o == null ) return false;
@@ -84,12 +84,12 @@ class ReferenceList<T> extends ReferenceCollection<T> implements List<T> {
         }
         return true;
     }
-    
+
     /**
      * Implemented as per List interface definition.
-     * 
-     * @see List#hashCode() 
-     * @return 
+     *
+     * @see List#hashCode()
+     * @return
      */
     public int hashCode() {
         // hash code calculation copied directly from List interface contract.
@@ -161,12 +161,12 @@ class ReferenceList<T> extends ReferenceCollection<T> implements List<T> {
         List<T> sub = new ReferenceList<T>(list.subList(fromIndex, toIndex), getRQF(), null);
         return sub;
     }
-    
+
     private  class ReferenceListIterator<T> implements ListIterator<T>{
         ListIterator<Referrer<T>> iterator;
         ReferenceQueuingFactory<T, Referrer<T>> rqf;
         private ReferenceListIterator(ListIterator<Referrer<T>> iterator, ReferenceQueuingFactory<T, Referrer<T>> rqf ){
-            if ( iterator == null || rqf == null ) throw 
+            if ( iterator == null || rqf == null ) throw
             new NullPointerException("Null iterator or reference queuing factory not allowed");
             this.iterator = iterator;
             this.rqf = rqf;
@@ -199,7 +199,7 @@ class ReferenceList<T> extends ReferenceCollection<T> implements List<T> {
         public int previousIndex() {
             return iterator.previousIndex();
         }
-        
+
         public void remove() {
             iterator.remove();
         }
@@ -210,6 +210,6 @@ class ReferenceList<T> extends ReferenceCollection<T> implements List<T> {
 
         public void add(T e) {
             iterator.add(rqf.referenced( e, true, false));
-        }       
+        }
     }
 }

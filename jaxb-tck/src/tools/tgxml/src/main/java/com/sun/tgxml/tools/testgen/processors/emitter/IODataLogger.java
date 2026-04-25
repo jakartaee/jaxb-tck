@@ -31,17 +31,17 @@ public class IODataLogger {
      * Build property name which designate the log file name.
      */
     public static final String LOG_FILENAME = "testgen.emitter.IOData.logFile";
-    
+
     private static IODataLogger logger = new IODataLogger();
-    
-    private IODataLogger() {            
+
+    private IODataLogger() {
         logFile = BuildProperties.getString(LOG_FILENAME);
     }
 
     public static IODataLogger getInstance() {
         return logger;
     }
-    
+
     /**
      * Log the IO file name into the log file.
      */

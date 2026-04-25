@@ -55,7 +55,7 @@ import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
  * @version 1.0
  */
 public class SchemaGenTest extends MultiTest{
-    
+
 
     /**
      * Implementation of customized SAX error handling

@@ -1,11 +1,11 @@
 /* Copyright (c) 2010-2012 Zeus Project Services Pty Ltd.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,27 +23,27 @@ import java.util.Set;
 /**
  * ReferenceMap is a wrapper object that encapsulates another Map implementation
  * which it uses to store references.
- * 
+ *
  * Synchronisation must be performed by the underlying map, using external
- * synchronisation will fail, since each read is also potentially a 
+ * synchronisation will fail, since each read is also potentially a
  * mutation to remove a garbage collected reference.
- * 
+ *
  * Implementation note:
- * 
+ *
  * ReferenceQueue's must be allowed to be used by any views when creating
  * new References using the wrapper, so the Reference is passed to the
  * correct ReferenceQueue when it becomes unreachable.
- * 
+ *
  * There is only one ReferenceQueue for each Collection, whether that is a
  * Collection of Key's or Values.  Defensive copies cannot be made by the
  * underlying encapsulated collections.
- * 
- * Abstract map is extended to take advantage of it's equals, hashCode and 
+ *
+ * Abstract map is extended to take advantage of it's equals, hashCode and
  * toString methods, which rely on calling entrySet() which this class
  * overrides.
- * 
- * @param <K> 
- * @param <V> 
+ *
+ * @param <K>
+ * @param <V>
  * @author Peter Firmstone.
  */
 class ReferenceMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
@@ -54,12 +54,12 @@ class ReferenceMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
     private final ReferenceQueuingFactory<V, Referrer<V>> vrqf;
     private final Ref key;
     private final Ref val;
-            
+
     // Views of values and keys, reduces object creation.
     private final Collection<V> values;
     private final Set<K> keys;
     private final Set<Entry<K,V>> entrys;
-    
+
     @SuppressWarnings("unchecked")
     ReferenceMap(Map<Referrer<K>,Referrer<V>> map, Ref key, Ref val, boolean gcThreads, long gcKeyCycle, long gcValCycle){
         // Note the ReferenceProcessor must synchronize on map, not the keySet or values for iteration.
@@ -72,9 +72,9 @@ class ReferenceMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
         if (val.equals(Ref.TIME)) valQue = new TimedRefQueue();
         else if (!val.equals(Ref.STRONG)) valQue = new RefReferenceQueue<V>();
         ReferenceProcessor<K> krp = new ReferenceProcessor<K>(map.keySet(), key, keyQue, gcThreads, map);
-        ReferenceProcessor<V> vrp = new ReferenceProcessor<V>(map.values(), val, valQue, gcThreads, map); 
+        ReferenceProcessor<V> vrp = new ReferenceProcessor<V>(map.values(), val, valQue, gcThreads, map);
         this.krqf = krp;
-        this.vrqf = vrp; 
+        this.vrqf = vrp;
         this.map = map;
         this.key = key;
         this.val = val;
@@ -83,13 +83,13 @@ class ReferenceMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
         // We let this escape during construction, but it's package private only
         // and doesn't escape the package.
         entrys = new EntrySetFacade<Entry<K,V>, Entry<Referrer<K>,Referrer<V>>>(
-                map.entrySet(), 
+                map.entrySet(),
                 new EntryFacadeConverter<K,V>(krqf, vrqf)
                 );
         krp.start(gcKeyCycle);
         vrp.start(gcValCycle);
     }
-    
+
     ReferenceMap(Map<Referrer<K>, Referrer<V>> map, ReferenceQueuingFactory<K, Referrer<K>> krqf, ReferenceQueuingFactory<V, Referrer<V>> vrqf, Ref key, Ref val){
         this.map = map;
         this.krqf = krqf;
@@ -101,29 +101,29 @@ class ReferenceMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
         // We let this escape during construction, but it's package private only
         // and doesn't escape the package.
         entrys = new EntrySetFacade<Entry<K,V>, Entry<Referrer<K>,Referrer<V>>>(
-                map.entrySet(), 
+                map.entrySet(),
                 new EntryFacadeConverter<K,V>(krqf, vrqf)
                 );
     }
-    
 
-     
+
+
     ReferenceQueuingFactory<K, Referrer<K>> getKeyRQF(){
         return krqf;
      }
-     
+
     ReferenceQueuingFactory<V, Referrer<V>> getValRQF(){
         return vrqf;
     }
-    
+
     Ref keyRef() {
         return key;
     }
-    
+
     Ref valRef() {
         return val;
     }
-    
+
     /**
      * Removes all associations from this map.
      */
@@ -145,15 +145,15 @@ class ReferenceMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * Returns a Set view of the mappings contained in the underlying map. 
-     * 
+     * Returns a Set view of the mappings contained in the underlying map.
+     *
      * The behaviour of this Set depends on the underlying Map passed in
      * at construction time.
-     * 
-     * The set supports element removal, which removes the corresponding 
-     * mapping from the map, via the Iterator.remove, Set.remove, removeAll, 
-     * retainAll and clear operations. 
-     * 
+     *
+     * The set supports element removal, which removes the corresponding
+     * mapping from the map, via the Iterator.remove, Set.remove, removeAll,
+     * retainAll and clear operations.
+     *
      * @return
      */
     public Set<Entry<K,V>> entrySet() {
@@ -245,5 +245,5 @@ class ReferenceMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
     Referrer<K> wrapKey(K key, boolean enque, boolean temporary) {
         return krqf.referenced(key, enque, temporary);
     }
-    
+
 }

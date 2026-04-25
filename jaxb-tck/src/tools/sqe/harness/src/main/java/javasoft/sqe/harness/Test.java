@@ -28,32 +28,32 @@ import java.io.PrintStream;
  * A test should also define `main' as follows:
  * <pre>
  * <code>
- * 	public static void main(String[] args) {
- * 	    Test t = new <em>test-class-name</em>();
- * 	    Status s = t.run(args, System.err, System.out);
- * 	    s.exit();
- * 	}
+ *  public static void main(String[] args) {
+ *      Test t = new <em>test-class-name</em>();
+ *      Status s = t.run(args, System.err, System.out);
+ *      s.exit();
+ *  }
  * </code>
  * </pre>
- * Defining `main' like this means that the test can also be run standalone, 
+ * Defining `main' like this means that the test can also be run standalone,
  * independent of the harness.
  *
  * @author Jonathan J Gibbons
- * @version @(#)Test.java	1.13 02/01/03
- * @deprecated 
+ * @version @(#)Test.java   1.13 02/01/03
+ * @deprecated
  * @see javasoft.sqe.javatest.Test
  */
 public interface Test
 {
     /**
      * Runs the test embodied by the implementation.
-     * @param args 	These are supplied from the `executeArgs'
-     *		   	values in the corresponding test description
-     *             	and permit an implementation to be used for a variety of tests.
-     * @param log  	A stream to which to report messages and errors.
-     * @param ref  	A stream to which to write reference output.
-     *			The file may subsequently be used to determine if the test 
-     *			succeeded by comparing the contents against a golden file.
+     * @param args  These are supplied from the `executeArgs'
+     *          values in the corresponding test description
+     *              and permit an implementation to be used for a variety of tests.
+     * @param log   A stream to which to report messages and errors.
+     * @param ref   A stream to which to write reference output.
+     *          The file may subsequently be used to determine if the test
+     *          succeeded by comparing the contents against a golden file.
      */
     public Status run(String[] args, PrintStream log, PrintStream ref);
 

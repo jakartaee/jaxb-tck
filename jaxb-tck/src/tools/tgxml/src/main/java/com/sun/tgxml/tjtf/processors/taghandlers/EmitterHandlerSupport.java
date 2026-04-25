@@ -22,32 +22,32 @@ import java.io.IOException;
 import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 
 
-/** 
- * EmitterHandlerSupport - The contract of methods that a (XML - TD) ParserHandler must provide 
- * in order to support ParserTagHandlers. 
- * 
- * 
- * @version 	1.0, 10/02/00 
- * @author Kevin T. Looney 
- */ 
- 
- 
-/* 
- * ============================================================================================ 
- *    EmitterHandlerSupport 
- * ============================================================================================ 
- */ 
+/**
+ * EmitterHandlerSupport - The contract of methods that a (XML - TD) ParserHandler must provide
+ * in order to support ParserTagHandlers.
+ *
+ *
+ * @version     1.0, 10/02/00
+ * @author Kevin T. Looney
+ */
+
+
+/*
+ * ============================================================================================
+ *    EmitterHandlerSupport
+ * ============================================================================================
+ */
 public interface EmitterHandlerSupport   {
 
 
 
 
 
-   /* 
-    * ============================================================================================ 
-    *    Methods 
-    * ============================================================================================ 
-    */ 
+   /*
+    * ============================================================================================
+    *    Methods
+    * ============================================================================================
+    */
 
 
   /**
@@ -58,104 +58,104 @@ public interface EmitterHandlerSupport   {
     public void log (String message) throws TestFileException;
 
 
-   /** 
-    *   emit a tag-handler (tdObject) of the given type (tdTagType). 
+   /**
+    *   emit a tag-handler (tdObject) of the given type (tdTagType).
     * <p>
     *  @param tdTagType The actual tag-name that is being emitted.
     *  @param tdObj A generic object handle of that type (the TagHandler downcasts the obj).
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void emit(String tdTagType, Object tdObj) throws TestFileException, IOException;
- 
-   /** 
-    *   Start a normal begin tag. 
+
+   /**
+    *   Start a normal begin tag.
     * <p>
     *  @param tdTagType The actual tag-name that is being emitted.
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void emitHeadBeginTag(String tdTagType) throws TestFileException, IOException;
 
-   /** 
-    *   Close-bracket a normal begin tag. 
+   /**
+    *   Close-bracket a normal begin tag.
     * <p>
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void emitHeadEndTag() throws TestFileException, IOException;
-          
-   /** 
-    *   Emit a normal end-tag. 
+
+   /**
+    *   Emit a normal end-tag.
     * <p>
     *  @param tdTagType The actual tag-name that is being emitted.
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void emitTailTag(String tdTagType) throws TestFileException, IOException;
- 
-   /** 
-    *   Start an XML singleton tag. 
+
+   /**
+    *   Start an XML singleton tag.
     * <p>
     *  @param tdTagType The actual tag-name that is being emitted.
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void emitSingletonBeginTag(String tdTagType) throws TestFileException, IOException;
 
-   /** 
-    *   Close-bracket an XML singleton tag. 
+   /**
+    *   Close-bracket an XML singleton tag.
     * <p>
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void emitSingletonEndTag() throws TestFileException, IOException;
 
-   /** 
-    *   Emit free-flow (PCDATA) text enclosed by a tag. 
+   /**
+    *   Emit free-flow (PCDATA) text enclosed by a tag.
     * <p>
     *  @param text The PCDATA being emitted.
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void emitText(String text) throws TestFileException, IOException;
 
-   /** 
-    *   Emit an XML attribute (i.e. name="value"). 
+   /**
+    *   Emit an XML attribute (i.e. name="value").
     * <p>
     *  @param name The attribute name being emitted.
     *  @param value The attribute value being emitted.
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void emitAttribute(String name, String value) throws TestFileException, IOException;
-          
-   /** 
-    *   Increment the indentation level. 
-    */ 
+
+   /**
+    *   Increment the indentation level.
+    */
     public void incrementIndentation();
 
-   /** 
-    *   The decrement the indentation level. 
-    */ 
+   /**
+    *   The decrement the indentation level.
+    */
     public void decrementIndentation();
 
 
-   /** 
-    *   flush a line in the print buffer. 
+   /**
+    *   flush a line in the print buffer.
     * <p>
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void newline() throws TestFileException, IOException;
 
 
-   /** 
-    *  Move a print buffer out to the proper indentation. 
+   /**
+    *  Move a print buffer out to the proper indentation.
     * <p>
     * @throws TestFileException If there is a casting or IR problem.
     * @throws IOException if there is an IO problem.
-    */ 
+    */
     public void indent() throws TestFileException, IOException;
 
 }

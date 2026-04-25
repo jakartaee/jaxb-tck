@@ -26,10 +26,10 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
 // </importgen>
 
 /**
- * TestCase - 
+ * TestCase -
  *
- * <b>TestCase</b> is the entity that describes a single (atomic) test case. 
- * <b>TestCase</b>s are owned by <b>TestGroup</b>s.  
+ * <b>TestCase</b> is the entity that describes a single (atomic) test case.
+ * <b>TestCase</b>s are owned by <b>TestGroup</b>s.
  * <p>
  * <b>TestCase</b>s derive from <b>TestItem</b>,and contain all of the
  * descriptions, attributes, and code that is relevant to this <b>TestCase</b>.
@@ -46,7 +46,7 @@ import com.sun.tgxml.tjtf.api.exceptions.TestFileException;
  *  </ul> <br>
  * <p>
  *
- * @version 	1.1, 10/23/02
+ * @version     1.1, 10/23/02
  * @author  Kevin T. Looney
  */
 
@@ -72,7 +72,7 @@ public  interface TestCase extends VariableTestItem, TestGroupComponent {
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Getters and Setters
@@ -86,7 +86,7 @@ public  interface TestCase extends VariableTestItem, TestGroupComponent {
     * @see #setTCDocumentation
     */
     public TestCaseDocumentation getTCDocumentation();
-     
+
   /**
     *   Set the Documentation associated with this TestItem.
     *  <p>
@@ -107,7 +107,7 @@ public  interface TestCase extends VariableTestItem, TestGroupComponent {
     * @see #setTCAttributes
     */
     public TestCaseAttributes getTCAttributes();
-     
+
   /**
     *   Set the Attributes associated with this TestItem.
     *  <p>
@@ -128,9 +128,9 @@ public  interface TestCase extends VariableTestItem, TestGroupComponent {
     * @see #setTestCode
     */
     public TestCode getTestCode();
-     
 
-     
+
+
   /**
     *   Set the (TestCode) code that this TestCase owns.
     *  <p>
@@ -140,7 +140,7 @@ public  interface TestCase extends VariableTestItem, TestGroupComponent {
     * @see #getTestCode
     */
     public void setTestCode(TestCode testcode) throws TestFileException;
-     
+
    /**
      * Returns true it the test is globally permanently excluded,
      * false otherwise

@@ -20,7 +20,7 @@ package javasoft.sqe.javatest.lib;
 /**
  * This is a modification of <code>ProcessCommand</code> suitable
  * for executing JCK tests in an separate JVM. JCK tests may be "standard"
- * tests which implement the Test interface and which report their exit 
+ * tests which implement the Test interface and which report their exit
  * status by calling <code>status.exit()</code>, or they may be
  * "simple" tests which report their exit status by an exit code alone.
  *

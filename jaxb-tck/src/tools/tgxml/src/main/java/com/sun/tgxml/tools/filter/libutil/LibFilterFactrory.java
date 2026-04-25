@@ -20,9 +20,9 @@ package com.sun.tgxml.tools.filter.libutil;
 import com.sun.tgxml.tools.filter.processors.FilteringException;
 
 /**
- * This interface defines a factory for creating 
+ * This interface defines a factory for creating
  * LibAttributesFilter, LibDependencyFilter and LibMapFile.
- * 
+ *
  * @version  1.0, April 1, 2003
  * @author   Dmitry Fazunenko
  */
@@ -30,7 +30,7 @@ import com.sun.tgxml.tools.filter.processors.FilteringException;
 public interface LibFilterFactrory {
 
     /**
-     * Creates an instance of LibAttributesFilter by the 
+     * Creates an instance of LibAttributesFilter by the
      * specified plugin name
      * @exception FilteringException if plugin cannot be created
      */

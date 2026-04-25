@@ -25,22 +25,22 @@ import com.sun.tgxml.tools.filter.redundancy.processors.ExternalLibraryMapCollec
 import com.sun.tgxml.tools.testgen.processors.ir.LibLinker;
 
 public class RuntimeLibraryLinker extends LibLinker {
-	
-	private ExternalLibraryMapCollector listener;
 
-	public RuntimeLibraryLinker(Properties properties, ExternalLibraryMapCollector map) {
-		super(properties);
-		this.listener = map;
-	}
-	
+    private ExternalLibraryMapCollector listener;
+
+    public RuntimeLibraryLinker(Properties properties, ExternalLibraryMapCollector map) {
+        super(properties);
+        this.listener = map;
+    }
+
     public boolean canGetExternalLibrary() {
         return (this.listener != null);
     }
 
-	public Library getExternalLibrary(String libID) throws TestFileException {
-		return this.listener.getLibrary(libID);
-	}
+    public Library getExternalLibrary(String libID) throws TestFileException {
+        return this.listener.getLibrary(libID);
+    }
 
-	protected void initialize() throws TestFileException {
-	}	
+    protected void initialize() throws TestFileException {
+    }
 }

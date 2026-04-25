@@ -27,9 +27,9 @@ import com.sun.tgxml.tjtf.processors.taghandlers.TagHandlerTable;
 import com.sun.tgxml.tools.indexgen.processors.taghandlers.TestSuiteTHFactory;
 
 /**
- * EmitterFactory - 
+ * EmitterFactory -
  *
- * <b>EmitterFactory</b> is a static factory class for creating XMLEmitters. 
+ * <b>EmitterFactory</b> is a static factory class for creating XMLEmitters.
  *<p>
  *
  */
@@ -50,14 +50,14 @@ public  class TestSuiteEmitterFactory {
      *    Member Fields
      * ============================================================================================
      */
-    
-    
+
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-   
+
 
     //------------------------------------------------------------------------------
     //  Factories
@@ -72,11 +72,11 @@ public  class TestSuiteEmitterFactory {
     * @see com.sun.tgxml.tjtf.processors.emitter.XMLEmitter
     */
     static public XMLEmitter  createTestSuiteEmitter() throws TestFileException  {
-		XMLEmitterImpl emitter = (XMLEmitterImpl) EmitterFactory.createXMLEmitter();
-		TagHandlerTable table = TestSuiteTHFactory.getTestSuiteHandlerTable();
-		TagHandlerFactory.setEmitterSupport(table, emitter.getEmitterHandlerSupport());
-		emitter.setupEmitter(table);
-		return emitter;
+        XMLEmitterImpl emitter = (XMLEmitterImpl) EmitterFactory.createXMLEmitter();
+        TagHandlerTable table = TestSuiteTHFactory.getTestSuiteHandlerTable();
+        TagHandlerFactory.setEmitterSupport(table, emitter.getEmitterHandlerSupport());
+        emitter.setupEmitter(table);
+        return emitter;
     }
 
 }

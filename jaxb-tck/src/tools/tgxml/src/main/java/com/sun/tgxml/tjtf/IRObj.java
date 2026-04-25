@@ -21,14 +21,14 @@ package com.sun.tgxml.tjtf;
 // </importgen>
 
 /**
- * IRObj - 
+ * IRObj -
  *
- * <b>IRObj</b> is the root interface for all Internal Representations of 
+ * <b>IRObj</b> is the root interface for all Internal Representations of
  * JavaObjects that are parsed in the B&I framework.
- * 
+ *
  * <p>
  *
- * @version 	1.0, 04/26/2001
+ * @version     1.0, 04/26/2001
  * @author  Kevin T. Looney
  */
 
@@ -47,8 +47,8 @@ public  interface IRObj  {
      *    Methods
      * ============================================================================================
      */
-   
 
-   
+
+
 
 }

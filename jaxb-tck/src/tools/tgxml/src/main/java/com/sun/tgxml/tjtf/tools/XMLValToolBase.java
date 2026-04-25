@@ -29,16 +29,16 @@ import com.sun.tgxml.tjtf.resources.LibResHandler;
 
 
 /**
- * XMLValToolBase - 
+ * XMLValToolBase -
  * <p>
  * This class adds to the XML tool base class by handling property setting for a
  * tool to do validation while XML processing.
- * <p> 
- * The system property <code>"jck.tgxml.validator"</code> should be set to the name of 
+ * <p>
+ * The system property <code>"jck.tgxml.validator"</code> should be set to the name of
  * the desired validator class. If the property is not defined a tool
- * does not use validator at all. 
+ * does not use validator at all.
  *
- * @version 	1.0, 04/17/98
+ * @version     1.0, 04/17/98
  * @author  Kevin T. Looney
  */
 
@@ -56,20 +56,20 @@ public  class XMLValToolBase extends XMLToolBase {
      * ============================================================================================
      */
     private static final String CtStr_ToolName = LibResHandler.getResStr("xmlvalbasetool.name");
-    
-      
+
+
             /** Print Strings   */
     private static final String str_Term = System.getProperty("line.separator");
 
     private IRValidator m_validator;
 
     /*
-     * The name of the system property which should be set to the name of 
+     * The name of the system property which should be set to the name of
      * the desired validator class. If the property is not defined the tool
-     * does not use validator at all. 
+     * does not use validator at all.
      */
     protected static final String validatorPropName = "jck.tgxml.validator"; // check class descr for
-									     // the property name
+                                         // the property name
 
     /*
      * The flag variable governs using defined validator while parsing the tool input.
@@ -87,22 +87,22 @@ public  class XMLValToolBase extends XMLToolBase {
      */
     protected boolean m_EmitterValidates = false;
 
-    
+
     /*
      * ============================================================================================
      *    Methods
      * ============================================================================================
      */
-    
-    
-    
-    /* 
+
+
+
+    /*
      * -----------------------------------------------------------
      * -----------------------------------------------------------
      *    Program Entry
      * -----------------------------------------------------------
      * -----------------------------------------------------------
-     */ 
+     */
   /**
     *  Program entry
     *
@@ -114,52 +114,52 @@ public  class XMLValToolBase extends XMLToolBase {
         XMLValToolBase c = new XMLValToolBase(System.out, System.err);
         System.exit(c.run(args));
     }
-    
 
-    /* 
+
+    /*
      * -----------------------------------------------------------
      * -----------------------------------------------------------
      *    Public Methods (outside world can call these)
      * -----------------------------------------------------------
      * -----------------------------------------------------------
-     */ 
-    
+     */
+
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLValToolBase tool class.
      *
      * @param out The print stream for writing program information.
      * @param err The print stream for error diagnostics.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public XMLValToolBase( PrintStream out, PrintStream err) {
-	this(out, err, CtStr_ToolName);
+    this(out, err, CtStr_ToolName);
     }
 
 
     /** Constructor (canon.)
-     *  
+     *
      *  constructs the XMLValToolBase tool class.
      *
      * @param out  The print stream for writing program information.
      * @param err  The print stream for error diagnostics.
      * @param name The name of the tool.
      *
-     * @see java.io.PrintStream 
+     * @see java.io.PrintStream
      */
     public XMLValToolBase( PrintStream out, PrintStream err, String name) {
-	super(out, err, name);
-	createValidator();
+    super(out, err, name);
+    createValidator();
     }
 
 
- 
-   /* 
+
+   /*
     * -------------------------------------------------------------------
-    *    Getters/Setters 
+    *    Getters/Setters
     * -------------------------------------------------------------------
-    */ 
+    */
 
 
   /**
@@ -167,13 +167,13 @@ public  class XMLValToolBase extends XMLToolBase {
     * <p>
     *  Sub-classes may override this to install a
     *  different type of parser.
-    * <p> 
+    * <p>
     */
     public void setupParser()  throws TestFileException {
-	super.setupParser();
+    super.setupParser();
 
-	if (m_ParserValidates && m_validator != null)
-	    m_parser.setValidator(m_validator);
+    if (m_ParserValidates && m_validator != null)
+        m_parser.setValidator(m_validator);
     }
 
 
@@ -182,38 +182,38 @@ public  class XMLValToolBase extends XMLToolBase {
     * <p>
     *  Sub-classes may override this to install a
     *  different type of parser.
-    * <p> 
+    * <p>
     */
     public void setupEmitter()  throws TestFileException {
-	super.setupEmitter();
+    super.setupEmitter();
 
-	if (m_EmitterValidates && m_validator != null)
-	    m_emitter.setValidator(m_validator);
+    if (m_EmitterValidates && m_validator != null)
+        m_emitter.setValidator(m_validator);
     }
 
- 
-   /* 
+
+   /*
     * -------------------------------------------------------------------
-    *    
+    *
     * -------------------------------------------------------------------
-    */ 
+    */
 
     private void createValidator() {
-	String valClassName = System.getProperty(validatorPropName);
+    String valClassName = System.getProperty(validatorPropName);
 
-	if (valClassName == null) {
-	    m_validator = null;
-	    return;
-	}
-	try {
-	    Class c = Class.forName(valClassName);
-	    Object ins = c.newInstance();
-	    m_validator = (IRValidator)ins;
-	} catch(Exception e) {
-	    throw new IllegalArgumentException(e.toString());
-	}
+    if (valClassName == null) {
+        m_validator = null;
+        return;
+    }
+    try {
+        Class c = Class.forName(valClassName);
+        Object ins = c.newInstance();
+        m_validator = (IRValidator)ins;
+    } catch(Exception e) {
+        throw new IllegalArgumentException(e.toString());
+    }
     }
 
- 
+
 
 }

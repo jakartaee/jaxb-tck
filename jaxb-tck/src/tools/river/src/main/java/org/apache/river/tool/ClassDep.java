@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -261,7 +261,7 @@ import org.apache.river.tool.classdepend.ClassDependencyRelationship;
  * considered "outside" without requiring the entire package it is defined
  * in to be considered outside.  This option can be specified zero or more
  * times.
- * </dd> 
+ * </dd>
  * <p>
  * <dt><b><code>-outer</code></b>
  * <dd>By default, if a static nested class is included in the dependency
@@ -289,7 +289,7 @@ import org.apache.river.tool.classdepend.ClassDependencyRelationship;
  *
  * <a name="output"></a>
  * <h3>Output Options and Arguments</h3>
- * 
+ *
  * The following options and arguments determine the content and format of
  * the output produced by this tool. These options do not affect the
  * dependency graph computation, only the information displayed in the
@@ -371,7 +371,7 @@ import org.apache.river.tool.classdepend.ClassDependencyRelationship;
  * useful for debugging.
  * </dd>
  * </dl>
- * 
+ *
  * <a name="examples"></a>
  * <h3>Examples</h3>
  *
@@ -452,21 +452,21 @@ import org.apache.river.tool.classdepend.ClassDependencyRelationship;
  */
 public class ClassDep {
     private ClassDepend cd;
-     
+
     /**
      * If true class names are printed using
-     * the system's File.separator, else the 
+     * the system's File.separator, else the
      * fully qualified class name is printed.
      */
     private boolean files = false;
     /**
-     * Set of paths to find class definitions in order to determine 
+     * Set of paths to find class definitions in order to determine
      * dependencies.
      */
     private String classpath = "";
     /**
      * Flag to determine whether there is interest
-     * in dependencies that go outside the set of 
+     * in dependencies that go outside the set of
      * interested classes. If false then outside,
      * references are ignored, if true they are noted.
      * i.e, if looking only under <code>net.jini.core.lease</code>
@@ -484,13 +484,13 @@ public class ClassDep {
      * big and may pull other classes along with it we allow the
      * choice to ignore the parent or not. If the flag is set to
      * true we pull in the parent class. If it is false we don't
-     * look at the parent. The default is is to not include the 
+     * look at the parent. The default is is to not include the
      * parent. <p>
      * <b>Note:</b> This is an optimization for those who plan
      * on doing work with the output of this utility. It does
-     * not impact this utility, but the work done on its 
-     * generated output  may have an impact. 
-     * 
+     * not impact this utility, but the work done on its
+     * generated output  may have an impact.
+     *
      * This will have to be implemented in ClassDepend note the above
      * description conflicts with the variable name.
      */
@@ -579,10 +579,10 @@ public class ClassDep {
      * Constructor that takes command line arguments and fills in the
      * appropriate fields. See the description of this class
      * for a list and description of the acceptable arguments.
-     * @param cmdLine 
+     * @param cmdLine
      */
     public ClassDep(String[] cmdLine){
-	setupOptions(cmdLine);
+    setupOptions(cmdLine);
     }
 
     /**
@@ -594,22 +594,22 @@ public class ClassDep {
      *     <li>a.bx
      *     <li>a.b.c
      * </ul>
-     * Looking for <code>a.b</code> should not match 
-     * <code>a.bx</code> and <code>a.b</code>, 
+     * Looking for <code>a.b</code> should not match
+     * <code>a.bx</code> and <code>a.b</code>,
      * just <code>a.b</code>.
-     * 
+     *
      * @param arg  the package-prefix in string form
      * @param elts container to add elements to
      *
      */
     private static void add(String arg, ArrayList elts) {
-	if (!arg.endsWith(".")) {
-	    arg = arg + '.';
+    if (!arg.endsWith(".")) {
+        arg = arg + '.';
         }
-	if (".".equals(arg)) {
-	    arg = null;
+    if (".".equals(arg)) {
+        arg = null;
         }
-	elts.add(arg);
+    elts.add(arg);
     }
 
     /**
@@ -623,110 +623,110 @@ public class ClassDep {
      * @param path path to traverse down from
      */
     private void traverse(String path) {
-	String apath = path;
-	/*
- 	 * We append File.separator to make sure that the path
-	 * is unique for the matching that we are going to do
-	 * next. 
-	 */
-	if (!apath.startsWith(File.separator)) {
-	    apath = File.separator + apath;
+    String apath = path;
+    /*
+     * We append File.separator to make sure that the path
+     * is unique for the matching that we are going to do
+     * next.
+     */
+    if (!apath.startsWith(File.separator)) {
+        apath = File.separator + apath;
         }
-	for (int i = 0; i < prunes.size(); i++) {
-	    /*
-	     * If we are on a root path that needs to be 
-	     * pruned leave this current recursive thread.
-	     */
-	    if (apath.endsWith((String)prunes.get(i))) {
-		return;
-	}
-	}
+    for (int i = 0; i < prunes.size(); i++) {
+        /*
+         * If we are on a root path that needs to be
+         * pruned leave this current recursive thread.
+         */
+        if (apath.endsWith((String)prunes.get(i))) {
+        return;
+    }
+    }
 
-	/*
- 	 * Get the current list of files at the current directory 
-	 * we are in. If there are no files then leave this current
-	 * recursive thread.
-	 */
-	String[] files_ = new File(path).list();
-	if (files_ == null) {
-	    return;
+    /*
+     * Get the current list of files at the current directory
+     * we are in. If there are no files then leave this current
+     * recursive thread.
+     */
+    String[] files_ = new File(path).list();
+    if (files_ == null) {
+        return;
         }
     outer:
-	/*
- 	 * Now, take the found list of files and iterate over them.
-	 */
-	for (int i = 0; i < files_.length; i++) {
-	    String file = files_[i];
-	    /*
-	     * Now see if we have a ".class" file.
-	     * If we do not then we lets call ourselves again.
-	     * The assumption here is that we have a directory. If it
-	     * is a class file we would have already been throw out
-	     * by the empty directory contents test above.
-	     */
-	    if (!file.endsWith(".class")) {
-		traverse(path + File.separatorChar + file);
-	    } else {
-		/*
-		 * We have a class file, so remove the ".class" from it
-		 * using the pattern:
-		 * 
-		 *     directory_name + File.Separator + filename = ".class"
-		 *
-		 * At this point the contents of the skip container follow
-		 * the pattern of:
-		 *
-		 *     "File.Separator+DirectoryPath"
-		 *
-		 * with dots converted to File.Separators
-		 */
-		file = apath + File.separatorChar +
-		       file.substring(0, file.length() - 6);
-		/*
-		 * See if there are any class files that need to be skipped.
-		 */
-		for (int j = 0; j < skips.size(); j++) {
-		    String skip = (String)skips.get(j);
-		    int k = file.indexOf(skip);
-		    if (k < 0) {
-                        continue; 
+    /*
+     * Now, take the found list of files and iterate over them.
+     */
+    for (int i = 0; i < files_.length; i++) {
+        String file = files_[i];
+        /*
+         * Now see if we have a ".class" file.
+         * If we do not then we lets call ourselves again.
+         * The assumption here is that we have a directory. If it
+         * is a class file we would have already been throw out
+         * by the empty directory contents test above.
+         */
+        if (!file.endsWith(".class")) {
+        traverse(path + File.separatorChar + file);
+        } else {
+        /*
+         * We have a class file, so remove the ".class" from it
+         * using the pattern:
+         *
+         *     directory_name + File.Separator + filename = ".class"
+         *
+         * At this point the contents of the skip container follow
+         * the pattern of:
+         *
+         *     "File.Separator+DirectoryPath"
+         *
+         * with dots converted to File.Separators
+         */
+        file = apath + File.separatorChar +
+               file.substring(0, file.length() - 6);
+        /*
+         * See if there are any class files that need to be skipped.
+         */
+        for (int j = 0; j < skips.size(); j++) {
+            String skip = (String)skips.get(j);
+            int k = file.indexOf(skip);
+            if (k < 0) {
+                        continue;
                     }//leave this current loop.
-		    k += skip.length();
-		    /*
-		     * If we matched the entire class or if we have
-		     * a class with an inner class, skip it and go
-		     * on to the next outer loop.
-		     */
-		    if (file.length() == k || file.charAt(k) == '$') {
-			continue outer;
-		}
-		}
-		/*
-		 * things to do:
-		 * prune when outside.
-		 * handle inside when its empty.
-		 *
-		 * Now see if we have classes within our working set "in".
-		 * If so add them to our working list "classes".
-		 */
-		for (int j = 0; j < inside.size(); j++) {
-		    if (inside.get(j) == null) {
-			continue;
+            k += skip.length();
+            /*
+             * If we matched the entire class or if we have
+             * a class with an inner class, skip it and go
+             * on to the next outer loop.
+             */
+            if (file.length() == k || file.charAt(k) == '$') {
+            continue outer;
+        }
+        }
+        /*
+         * things to do:
+         * prune when outside.
+         * handle inside when its empty.
+         *
+         * Now see if we have classes within our working set "in".
+         * If so add them to our working list "classes".
+         */
+        for (int j = 0; j < inside.size(); j++) {
+            if (inside.get(j) == null) {
+            continue;
                     }
-		    int k = file.indexOf(File.separatorChar +
-					 ((String)inside.get(j)).replace(
-						     '.', File.separatorChar));
-		    if (k >= 0) {
-			/*
-			 * Insert the class and make sure to replace
-			 * File.separators into dots.
-			 */
-			classes.add(file.substring(k + 1).replace(
-						   File.separatorChar, '.'));
-		    }
-		}
-	    }
-	}
+            int k = file.indexOf(File.separatorChar +
+                     ((String)inside.get(j)).replace(
+                             '.', File.separatorChar));
+            if (k >= 0) {
+            /*
+             * Insert the class and make sure to replace
+             * File.separators into dots.
+             */
+            classes.add(file.substring(k + 1).replace(
+                           File.separatorChar, '.'));
+            }
+        }
+        }
+    }
     }
 
     /**
@@ -740,87 +740,87 @@ public class ClassDep {
      *        the full qualified name of the class
      */
     private void traverse(String path, String rootPath) {
-	// get the current list of files at the current directory we are in. If
-	// there are no files then leave this current recursive thread.
-	String[] files_ = new File(path).list();
-	if (files_ == null) {
-	    return;
+    // get the current list of files at the current directory we are in. If
+    // there are no files then leave this current recursive thread.
+    String[] files_ = new File(path).list();
+    if (files_ == null) {
+        return;
         }
 
-	// determine the package name in File.Separators notation
-	String packageName = path.substring(rootPath.length(), path.length())
-				+ File.separatorChar;
+    // determine the package name in File.Separators notation
+    String packageName = path.substring(rootPath.length(), path.length())
+                + File.separatorChar;
     outer:
-	//take the found list of files and iterate over them
-	for (int i = 0; i < files_.length; i++) {
-	    String file = files_[i];
-	    // see if we have a ".class" file. If not then we call ourselves
-	    // again, assuming it is a directory, if not the call will return.
-	    if (!file.endsWith(".class")) {
-		traverse(path + File.separatorChar + file, rootPath);
-	    } else {
-		// when we have in roots defined verify whether we are inside
-		if (!insideRoots.isEmpty()) {
-		    boolean matched = false;
-		    for (int j = 0; j < insideRoots.size(); j++) {
-			if (packageName.startsWith(
-				(String) insideRoots.get(j))) {
-			    matched = true;
-			    break;
-			}
-		    }
-		    if (!matched) {
-			continue;
-		    }
-		}
+    //take the found list of files and iterate over them
+    for (int i = 0; i < files_.length; i++) {
+        String file = files_[i];
+        // see if we have a ".class" file. If not then we call ourselves
+        // again, assuming it is a directory, if not the call will return.
+        if (!file.endsWith(".class")) {
+        traverse(path + File.separatorChar + file, rootPath);
+        } else {
+        // when we have in roots defined verify whether we are inside
+        if (!insideRoots.isEmpty()) {
+            boolean matched = false;
+            for (int j = 0; j < insideRoots.size(); j++) {
+            if (packageName.startsWith(
+                (String) insideRoots.get(j))) {
+                matched = true;
+                break;
+            }
+            }
+            if (!matched) {
+            continue;
+            }
+        }
 
-		// when we have out roots and we are at this level outside we
-		// can break the recursion
-		if (!outsideRoots.isEmpty()) {
-		    for (int j = 0; j < outsideRoots.size(); j++) {
-			if (packageName.startsWith(
-				(String) outsideRoots.get(j))) {
-			    return;
-			}
-		    }
-		}
+        // when we have out roots and we are at this level outside we
+        // can break the recursion
+        if (!outsideRoots.isEmpty()) {
+            for (int j = 0; j < outsideRoots.size(); j++) {
+            if (packageName.startsWith(
+                (String) outsideRoots.get(j))) {
+                return;
+            }
+            }
+        }
 
-		// determine the fully qualified class name, but with dots
-		// converted to File.Separators and starting with a
-		// File.Separators as well
-		String className = packageName
-		    			+ file.substring(0, file.length() - 6);
-		// see if there are any class files that need to be skipped, the
-		// skip classes are in the above notation as well
-		for (int j = 0; j < skips.size(); j++) {
-		    String skip = (String) skips.get(j);
-		    if (!className.startsWith(skip)) {
-			continue;
-		    }
-		    // if we matched the entire class or if we have a class with
-		    // an inner class, skip it and go on to the next outer loop
-		    if (className.length() == skip.length()
-			    || className.charAt(skip.length()) == '$') {
-			continue outer;
-		}
-		}
+        // determine the fully qualified class name, but with dots
+        // converted to File.Separators and starting with a
+        // File.Separators as well
+        String className = packageName
+                        + file.substring(0, file.length() - 6);
+        // see if there are any class files that need to be skipped, the
+        // skip classes are in the above notation as well
+        for (int j = 0; j < skips.size(); j++) {
+            String skip = (String) skips.get(j);
+            if (!className.startsWith(skip)) {
+            continue;
+            }
+            // if we matched the entire class or if we have a class with
+            // an inner class, skip it and go on to the next outer loop
+            if (className.length() == skip.length()
+                || className.charAt(skip.length()) == '$') {
+            continue outer;
+        }
+        }
 
-		// we found a class that satisfy all the criteria, convert it
-		// to the proper notation
-		classes.add(className.substring(1).replace(File.separatorChar,
-							   '.'));
-	    }
-	}
+        // we found a class that satisfy all the criteria, convert it
+        // to the proper notation
+        classes.add(className.substring(1).replace(File.separatorChar,
+                               '.'));
+        }
+    }
     }
 
     private static class Compare implements Comparator {
-	public int compare(Object o1, Object o2) {
-	    if (o1 == null) {
-		return o2 == null ? 0 : 1;
+    public int compare(Object o1, Object o2) {
+        if (o1 == null) {
+        return o2 == null ? 0 : 1;
             }
-	    else {
-		return o2 == null ? -1 : ((Comparable) o2).compareTo(o1);
-	}
+        else {
+        return o2 == null ? -1 : ((Comparable) o2).compareTo(o1);
+    }
     }
     }
 
@@ -836,44 +836,44 @@ public class ClassDep {
      * specified by the options passed in
      */
     public String[] compute() {
-	failed = false;
+    failed = false;
 
-	if (!newRootDirBehavior) {
-	    if (!insideRoots.isEmpty()) {
-		failed = true;
-		print("classdep.invalidoption", "-newdirbehavior", "-inroot");
-	    }
-	    if (!outsideRoots.isEmpty()) {
-		failed = true;
-		print("classdep.invalidoption", "-newdirbehavior", "-outroot");
-	    }
-	    if (failed) {
-		return new String[0];
-	    }
-	}
+    if (!newRootDirBehavior) {
+        if (!insideRoots.isEmpty()) {
+        failed = true;
+        print("classdep.invalidoption", "-newdirbehavior", "-inroot");
+        }
+        if (!outsideRoots.isEmpty()) {
+        failed = true;
+        print("classdep.invalidoption", "-newdirbehavior", "-outroot");
+        }
+        if (failed) {
+        return new String[0];
+        }
+    }
 
-	/* sort ins and outs, longest first */
-	Comparator c = new Compare();
-	Collections.sort(inside, c);
-	Collections.sort(outside, c);
-	Collections.sort(shows, c);
-	Collections.sort(hides, c);
+    /* sort ins and outs, longest first */
+    Comparator c = new Compare();
+    Collections.sort(inside, c);
+    Collections.sort(outside, c);
+    Collections.sort(shows, c);
+    Collections.sort(hides, c);
 
-	/*
- 	 * Traverse the roots i.e the set of handed directories.
-	 */
-	for (int i = 0; i < roots.size(); i++) {
-	    /*
-	     * Get the classes that we want do to dependency checking on.
-	     */
-	    if (newRootDirBehavior) {
-		traverse((String)roots.get(i), (String)roots.get(i));
-	    }
-	    else {
-		traverse((String)roots.get(i));
-	    }
-	}
-        
+    /*
+     * Traverse the roots i.e the set of handed directories.
+     */
+    for (int i = 0; i < roots.size(); i++) {
+        /*
+         * Get the classes that we want do to dependency checking on.
+         */
+        if (newRootDirBehavior) {
+        traverse((String)roots.get(i), (String)roots.get(i));
+        }
+        else {
+        traverse((String)roots.get(i));
+        }
+    }
+
         // Now use ClassDepend to perform dependency computation
         if (classpath.length() == 0) { classpath = null; }
         try {
@@ -889,7 +889,7 @@ public class ClassDep {
         } catch (IOException e) {
             e.printStackTrace();
         }
-         
+
         if (tells.isEmpty()){
             // Here's where we should build the parameter list and call the filter
             //Ready the Parameter Builder for ClassDepend
@@ -900,7 +900,7 @@ public class ClassDep {
                     .addInsidePackages(addClassesRecursively(inside))
                     .addShowPackages(addClassesRecursively(shows))
                     .addHidePackages(addClassesRecursively(hides))
-                    .ignoreOuterParentClass(ignoreOuter)                   
+                    .ignoreOuterParentClass(ignoreOuter)
                     .excludePlatformClasses(false)
                     .edges(edges)
                     .build();
@@ -909,9 +909,9 @@ public class ClassDep {
             Iterator itr = result.iterator();
             while (itr.hasNext()) {
                 results.add(itr.next().toString());
-	}
+    }
         }else{
-        
+
             Iterator iter = tells.iterator();
             while (iter.hasNext()){
                 String name = (String) iter.next();
@@ -927,14 +927,14 @@ public class ClassDep {
         }
                             else {
                                 print("classdep.cause1", dependant);
-                            }                 
+                            }
                         }
                     }
                 }
             }
         }
         // cannot change the return type or we break the API backward compatibility.
-	return (String[])results.toArray(new String[results.size()]);
+    return (String[])results.toArray(new String[results.size()]);
     }
 
     /**
@@ -947,50 +947,50 @@ public class ClassDep {
         }
         return list;
     }
-    
+
     /**
      * Print out the usage for this utility.
      */
     public static void usage() {
-	print("classdep.usage", null);
+    print("classdep.usage", null);
     }
 
     /**
      * Set the classpath to use for finding our class definitions.
-     * @param classpath 
+     * @param classpath
      */
     public void setClassPath(String classpath) {
-	this.classpath = classpath;
+    this.classpath = classpath;
     }
 
     /**
      * Determines how to print out the fully qualified
      * class names. If <code>true</code> it will use
      * <code>File.separator</code>, else <code>.</code>'s
-     * will be used. 
+     * will be used.
      * If not set the default is <code>false</code>.
-     * @param files 
+     * @param files
      */
     public void setFiles(boolean files) {
-	this.files = files;
+    this.files = files;
     }
 
     /**
      * Add an entry into the set of package prefixes that
      * are to remain hidden from processing.
-     * @param packagePrefix 
+     * @param packagePrefix
      */
     public void addHides(String packagePrefix) {
-	add(packagePrefix, hides);
+    add(packagePrefix, hides);
     }
 
     /**
-     * Add an entry into the working set of package prefixes 
+     * Add an entry into the working set of package prefixes
      * that will make up the working domain space.
-     * @param packagePrefix 
+     * @param packagePrefix
      */
     public void addInside(String packagePrefix) {
-	add(packagePrefix, inside);
+    add(packagePrefix, inside);
     }
 
     /**
@@ -1003,10 +1003,10 @@ public class ClassDep {
      * <p>
      * <b>Note:</b> These edge classes must included
      * in the classpath for this utility.
-     * @param edges 
+     * @param edges
      */
     public void setEdges(boolean edges) {
-	this.edges = edges;
+    this.edges = edges;
     }
 
     /**
@@ -1014,10 +1014,10 @@ public class ClassDep {
      * that will bypassed during dependency checking.
      * These entries should be subsets of the contents
      * on the inside set.
-     * @param packagePrefix 
+     * @param packagePrefix
      */
     public void addOutside(String packagePrefix) {
-	add(packagePrefix, outside);
+    add(packagePrefix, outside);
     }
 
     /**
@@ -1028,28 +1028,28 @@ public class ClassDep {
      * This method has no impact if the new behavior is effective for the
      * interpretation of the root directories for finding class files to
      * include for dependency checking.
-     * @param packagePrefix 
+     * @param packagePrefix
      */
     public void addPrune(String packagePrefix) {
-	String arg = packagePrefix;
-	if (arg.endsWith(".")) {
-	    arg = arg.substring(0, arg.length() - 1);
+    String arg = packagePrefix;
+    if (arg.endsWith(".")) {
+        arg = arg.substring(0, arg.length() - 1);
         }
-	/*
-	 * Convert dots into File.separator for later usage.
-	 */
-	arg = File.separator + arg.replace('.', File.separatorChar);
-	prunes.add(arg);
+    /*
+     * Convert dots into File.separator for later usage.
+     */
+    arg = File.separator + arg.replace('.', File.separatorChar);
+    prunes.add(arg);
     }
 
     /**
      * Controls whether the behavior for finding class files in the specified
      * directories, if any, must be based on the old behavior (the default) or
      * the new behavior that solves some of the problems with the old behavior.
-     * @param newBehavior 
+     * @param newBehavior
      */
     public void setRootDirBehavior(boolean newBehavior) {
-	newRootDirBehavior = newBehavior;
+    newRootDirBehavior = newBehavior;
     }
 
     /**
@@ -1060,23 +1060,23 @@ public class ClassDep {
      * Adding entries without a call to {@link #setRootDirBehavior(boolean)}
      * with <code>true</code> as the argument will cause {@link #compute()} to
      * fail.
-     * @param packagePrefix 
+     * @param packagePrefix
      */
     public void addInsideRoot(String packagePrefix) {
-	String arg = packagePrefix;
-	if (arg.endsWith(".")) {
-	    arg = arg.substring(0, arg.length() - 1);
+    String arg = packagePrefix;
+    if (arg.endsWith(".")) {
+        arg = arg.substring(0, arg.length() - 1);
         }
-	/*
-	 * Convert dots into File.separator for later usage.
-	 */
-	if (arg.trim().length() == 0) {
-	    arg = File.separator;
+    /*
+     * Convert dots into File.separator for later usage.
+     */
+    if (arg.trim().length() == 0) {
+        arg = File.separator;
         }
-	else {
+    else {
             arg = File.separator + arg.replace('.', File.separatorChar) + File.separator;
         }
-	insideRoots.add(arg);
+    insideRoots.add(arg);
     }
 
     /**
@@ -1087,23 +1087,23 @@ public class ClassDep {
      * Adding entries without a call to {@link #setRootDirBehavior(boolean)}
      * with <code>true</code> as the argument will cause {@link #compute()} to
      * fail.
-     * @param packagePrefix 
+     * @param packagePrefix
      */
     public void addOutsideRoot(String packagePrefix) {
-	String arg = packagePrefix;
-	if (arg.endsWith(".")) {
-	    arg = arg.substring(0, arg.length() - 1);
+    String arg = packagePrefix;
+    if (arg.endsWith(".")) {
+        arg = arg.substring(0, arg.length() - 1);
         }
-	/*
-	 * Convert dots into File.separator for later usage.
-	 */
-	if (arg.trim().length() == 0) {
-	    arg = File.separator;
+    /*
+     * Convert dots into File.separator for later usage.
+     */
+    if (arg.trim().length() == 0) {
+        arg = File.separator;
         }
-	else {
+    else {
             arg = File.separator + arg.replace('.', File.separatorChar) + File.separator;
         }
-	outsideRoots.add(arg);
+    outsideRoots.add(arg);
     }
 
     /**
@@ -1112,33 +1112,33 @@ public class ClassDep {
      * This applies only to the final output, so this
      * set should be a subset of the inside set with
      * edges, if that was indicated.
-     * @param packagePrefix 
+     * @param packagePrefix
      */
     public void addShow(String packagePrefix) {
-	add(packagePrefix, shows);
+    add(packagePrefix, shows);
     }
 
     /**
      * Add an entry into the set of classes that
      * should be skipped during dependency generation.
-     * @param packagePrefix 
+     * @param packagePrefix
      */
     public void addSkip(String packagePrefix){
-	String arg = packagePrefix;
-	if (arg.endsWith(".")) {
-	    arg = arg.substring(0, arg.length() - 1);
+    String arg = packagePrefix;
+    if (arg.endsWith(".")) {
+        arg = arg.substring(0, arg.length() - 1);
         }
         /* No Longer required as ClassDepend will be passed the skips array
-	else {
-	    seen.add(Identifier.lookup(arg));
+    else {
+        seen.add(Identifier.lookup(arg));
         }
          */
-        
-	/*
-	 * Convert dots into File.separator for later usage.
-	 */
-	arg = File.separator + arg.replace('.', File.separatorChar);
-	skips.add(arg);
+
+    /*
+     * Convert dots into File.separator for later usage.
+     */
+    arg = File.separator + arg.replace('.', File.separatorChar);
+    skips.add(arg);
     }
 
     /**
@@ -1146,10 +1146,10 @@ public class ClassDep {
      * that lie with the inside set are listed. This in
      * the converse of the rest of the utility and is meant
      * more for debugging purposes.
-     * @param className 
+     * @param className
      */
     public void addTells(String className) {
-	tells.add(className);
+    tells.add(className);
     }
 
     /**
@@ -1158,24 +1158,24 @@ public class ClassDep {
      * the working domain space as defined by the
      * intersection of the following sets:
      * inside,outside,prune,show, and hide.
-     * @param rootName 
+     * @param rootName
      */
     public void addRoots(String rootName) {
-	if (rootName.endsWith(File.separator)) {
-	    //remove trailing File.separator
-	    rootName = rootName.substring(0, rootName.length() - 1);
+    if (rootName.endsWith(File.separator)) {
+        //remove trailing File.separator
+        rootName = rootName.substring(0, rootName.length() - 1);
         }
-	//these are directories.
-	roots.add(rootName);
+    //these are directories.
+    roots.add(rootName);
     }
 
     /**
      * Add an entry into the set of classes that
      * dependencies are going to be computed on.
-     * @param className 
+     * @param className
      */
     public void addClasses(String className) {
-	classes.add(className);
+    classes.add(className);
     }
 
    /**
@@ -1184,7 +1184,7 @@ public class ClassDep {
     * @return true or false
      */
     public boolean getFiles() {
-	return files;
+    return files;
     }
 
     /**
@@ -1192,9 +1192,9 @@ public class ClassDep {
      * @return String[] dependencies
      */
     public String[] getResults() {
-	String[] vals = (String[])results.toArray(new String[results.size()]);
-	Arrays.sort(vals);
-	return vals;
+    String[] vals = (String[])results.toArray(new String[results.size()]);
+    Arrays.sort(vals);
+    return vals;
     }
 
     /**
@@ -1205,65 +1205,65 @@ public class ClassDep {
      * class not being found, <code>false</code> otherwise
      */
     public boolean hasFailed() {
-	return failed;
+    return failed;
     }
 
     /**
      * Convenience method for initializing an instance with specific
      * command line arguments. See the description of this class
      * for a list and description of the acceptable arguments.
-     * @param args 
+     * @param args
      */
     public void setupOptions(String[] args) {
-	for (int i = 0; i < args.length ; i++ ) {
-	    String arg = args[i];
-	    if (arg.equals("-newdirbehavior")) {
-		newRootDirBehavior = true;
-	    }
-	    else if (arg.equals("-cp")) {
-		i++;
-		setClassPath(args[i]);
-	    } else if (arg.equals("-files")) {
-		setFiles(true);
-	    } else if (arg.equals("-hide")) {
-		i++;
-		addHides(args[i]);
-	    } else if (arg.equals("-in")) {
-		i++;
-		addInside(args[i]);
-	    } else if (arg.equals("-edges")) {
-		setEdges(true);
-	    } else if (arg.equals("-out")) {
-		i++;
-		addOutside(args[i]);
-	    } else if (arg.equals("-outer")) {
-		ignoreOuter = false;
-	    } else if (arg.equals("-prune")) {
-		i++;
-		addPrune(args[i]);
-	    } else if (arg.equals("-inroot")) {
-		i++;
-		addInsideRoot(args[i]);
-	    } else if (arg.equals("-outroot")) {
-		i++;
-		addOutsideRoot(args[i]);
-	    } else if (arg.equals("-show")) {
-		i++;
-		addShow(args[i]);
-	    } else if (arg.equals("-skip")) {
-		i++;
-		addSkip(args[i]);
-	    } else if (arg.equals("-tell")) {
-		i++;
-		addTells(args[i]);
-	    } else if (arg.indexOf(File.separator) >= 0) {
-		addRoots(arg);
-	    } else if (arg.startsWith("-")) {
-		usage();
-	    } else {
-		addClasses(arg);
-	    }
-	}
+    for (int i = 0; i < args.length ; i++ ) {
+        String arg = args[i];
+        if (arg.equals("-newdirbehavior")) {
+        newRootDirBehavior = true;
+        }
+        else if (arg.equals("-cp")) {
+        i++;
+        setClassPath(args[i]);
+        } else if (arg.equals("-files")) {
+        setFiles(true);
+        } else if (arg.equals("-hide")) {
+        i++;
+        addHides(args[i]);
+        } else if (arg.equals("-in")) {
+        i++;
+        addInside(args[i]);
+        } else if (arg.equals("-edges")) {
+        setEdges(true);
+        } else if (arg.equals("-out")) {
+        i++;
+        addOutside(args[i]);
+        } else if (arg.equals("-outer")) {
+        ignoreOuter = false;
+        } else if (arg.equals("-prune")) {
+        i++;
+        addPrune(args[i]);
+        } else if (arg.equals("-inroot")) {
+        i++;
+        addInsideRoot(args[i]);
+        } else if (arg.equals("-outroot")) {
+        i++;
+        addOutsideRoot(args[i]);
+        } else if (arg.equals("-show")) {
+        i++;
+        addShow(args[i]);
+        } else if (arg.equals("-skip")) {
+        i++;
+        addSkip(args[i]);
+        } else if (arg.equals("-tell")) {
+        i++;
+        addTells(args[i]);
+        } else if (arg.indexOf(File.separator) >= 0) {
+        addRoots(arg);
+        } else if (arg.startsWith("-")) {
+        usage();
+        } else {
+        addClasses(arg);
+        }
+    }
     }
 
     private static ResourceBundle resources;
@@ -1273,45 +1273,45 @@ public class ClassDep {
      * Get the strings from our resource localization bundle.
      */
     private static synchronized String getString(String key) {
-	if (!resinit) {
-	    resinit = true;
-	    try {
-		resources = ResourceBundle.getBundle
-		    ("org.apache.river.tool.resources.classdep");
-	    } catch (MissingResourceException e) {
-		e.printStackTrace();
-	    }
-	}
-	if (resources != null) {
-	    try {
-		return resources.getString(key);
-	    } catch (MissingResourceException e) {
-	    }
-	}
-	return null;
+    if (!resinit) {
+        resinit = true;
+        try {
+        resources = ResourceBundle.getBundle
+            ("org.apache.river.tool.resources.classdep");
+        } catch (MissingResourceException e) {
+        e.printStackTrace();
+        }
+    }
+    if (resources != null) {
+        try {
+        return resources.getString(key);
+        } catch (MissingResourceException e) {
+        }
+    }
+    return null;
     }
 
     /**
      * Print out string according to resourceBundle format.
      */
     private static void print(String key, Object val) {
-	String fmt = getString(key);
-	if (fmt == null) {
-	    fmt = "no text found: \"" + key + "\" {0}";
+    String fmt = getString(key);
+    if (fmt == null) {
+        fmt = "no text found: \"" + key + "\" {0}";
         }
-	System.err.println(MessageFormat.format(fmt, new Object[]{val}));
+    System.err.println(MessageFormat.format(fmt, new Object[]{val}));
     }
 
     /**
      * Print out string according to resourceBundle format.
      */
     private static void print(String key, Object val1, Object val2) {
-	String fmt = getString(key);
-	if (fmt == null) {
-	    fmt = "no text found: \"" + key + "\" {0} {1}";
+    String fmt = getString(key);
+    if (fmt == null) {
+        fmt = "no text found: \"" + key + "\" {0} {1}";
         }
-	System.err.println(MessageFormat.format(fmt,
-						new Object[]{val1, val2}));
+    System.err.println(MessageFormat.format(fmt,
+                        new Object[]{val1, val2}));
     }
 
     /**

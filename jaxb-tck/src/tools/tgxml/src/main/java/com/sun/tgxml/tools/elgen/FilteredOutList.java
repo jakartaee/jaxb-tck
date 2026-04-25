@@ -21,15 +21,15 @@ import com.sun.tgxml.tjtf.api.tests.TestCase;
 import com.sun.tgxml.tjtf.api.tests.TestGroup;
 
 /**
- *  Hides format and structure of list where information about filtered out tests is gathered. 
+ *  Hides format and structure of list where information about filtered out tests is gathered.
  *  Assumes the TestGroup objects have "sourceDir" AttrElem set.
  */
 public interface FilteredOutList {
-    /** 
+    /**
      *   adds one more testcase to the list
      */
     void add(TestCase tc) throws IncorrectAttributesException;
-    /** 
+    /**
      *   adds one more test group to the list
      */
     void add(TestGroup tg) throws IncorrectAttributesException;

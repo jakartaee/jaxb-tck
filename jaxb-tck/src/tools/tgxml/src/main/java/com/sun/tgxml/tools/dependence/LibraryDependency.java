@@ -18,16 +18,16 @@
 package com.sun.tgxml.tools.dependence;
 
 /**
- * The <code>LibraryDependency</code> is a pair of a library and a list of 
+ * The <code>LibraryDependency</code> is a pair of a library and a list of
  * library identifiers that the library directly depends on.
- * 
+ *
  */
 public class LibraryDependency extends StringArray {
 
     /**
      * The library identifier that depens on the libraries from the list.
      */
-    protected final String libID; 
+    protected final String libID;
 
     /**
      * Constructs a library dependency with an empty list and specified

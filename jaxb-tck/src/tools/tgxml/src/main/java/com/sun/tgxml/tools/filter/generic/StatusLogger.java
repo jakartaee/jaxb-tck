@@ -72,7 +72,7 @@ public class StatusLogger {
             } else if (name.equals("ALL")) {
                 level = Level.ALL;
             }
-        }   
+        }
         logger.log(Level.INFO, "logger.setLevel(" + level + ")");
         logger.setLevel(level);
     }
