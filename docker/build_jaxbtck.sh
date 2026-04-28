@@ -74,7 +74,7 @@ export TCK_ROOT=$WORKSPACE
 export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
 #getting jaxb-ri which is needed to build the JAXB TCK
-wget ${WGET_PROPS} ${JAXB_RI_BUNDLE_URL} -O jaxb-ri.zip && unzip -o jaxb-ri.zip
+wget ${WGET_PROPS} ${JAXB_RI_BUNDLE_URL} -O jaxb-ri.zip && unzip -q -o jaxb-ri.zip
 
 ls -l jaxb-ri/mod
 
@@ -85,7 +85,7 @@ export JAXB_JAR_LOC=${JAXB_HOME}/mod
 
 echo "$JAXB_HOME"
 
-unzip -o latest-glassfish.zip
+unzip -q -o latest-glassfish.zip
 ls -l $GF_HOME/glassfish7/glassfish/
 
 if [ ! -z "$GF_VERSION_URL" ]; then
