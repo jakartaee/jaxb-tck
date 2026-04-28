@@ -1,45 +1,34 @@
-The JAXB-TCK is built using jdk 8 and has been tested against JAXB-RI and Eclipse Glassfish.
+The Jakarta XML Binding TCK is built using Java SE 11 or newer and has been tested against JAXB RI and Eclipse Glassfish.
 
-Files Defs.mk and Defs.SFBay.mk need to be modified to build the bundle.
+### Required Software
 
-The paths of linux utilities and bundle dependencies need to be specified as per the system on which the JAX-B TCK bundle is being built.
+* linux or macos
+* make 3.82+/GNU make
+* perl
+* Java SE 11+
+* apache ant 1.10.x
+* apache maven 3.9.x
 
-Software requirements to build the TCK: 
+### Quick Build
 
-GNU make (version 3.82 was used to build the TCK)
+* Edit [build_jaxbtck.sh](docker/build_jaxbtck.sh):
+  - add `export WORKSPACE=<reporoot>`
+  - add `export JDK11_HOME=${JAVA_HOME}`
+  - edit `sed` calls to follow the build environment
+* run [build_jaxbtck.sh](docker/build_jaxbtck.sh)
 
-javatest 5.0
+This will:
+* download and configure the right versions of `JAXB RI`, `Jakarta Activation API` and `Glassfish` for use by the build
+* update `Defs.mk` and `Defs.SFBay.mk`
+* clean up possible relicts from previous builds
+* call maven to build java sources and documentation
+* call make to build tests
+* call ant to zip everything together
 
-sigtestdev 4.0
+### Quick Run
 
-Ant 1.10.x or higher
-
-jdk 8
-
-JAXB-RI 2.3.2 or higher
-
-Commands to build: make REPOSITORIES=$TCK_ROOT/xml_schema clean
-
-make REPOSITORIES=$TCK_ROOT/xml_schema nightly
-
-Entries to be modified to build:
-
-Defs.mk
-
-JAVATEST_JAR_LOC (This should point to the directory containing javatest 5.0 jar)
-
-SIGTESTDEV_JAR_LOC (This should point to the directory containing the sigtestdev jar)
-
-ASM_JAR_LOCATION (This should point to the directory containing ASM jars)
-
-Paths for linux utilities
-
-Defs.SFBay.mk
-
-JAXB_HOME (Tested building with JAXB-RI 2.3.2)
-ANT_HOME
-SIGTEST_DIST
-GENERAL_JAVAHOME
-JAVAHOME_6
-
-Paths for UNZIP ZIP PERL
+* Edit [run_jaxbtck.sh](docker/run_jaxbtck.sh):
+  - add `export WORKSPACE=<reporoot>`
+  - add `export JDK11_HOME=${JAVA_HOME}`
+  - edit `sed` calls to follow the build environment
+* run [run_jaxbtck.sh](docker/run_jaxbtck.sh)
