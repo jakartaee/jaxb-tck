@@ -48,12 +48,3 @@ $(LIB_FILES:%=$(TCKDIR)/lib/%):$(TCKDIR)/lib/%:$(CONFIGDIR)/%
 	$(CHMOD) -w $@
 
 ZIP.files += $(LIB_FILES:%=$(TCKDIR)/lib/%)
-
-jaxb.mtl: unzipped.ok
-	@ echo "Generating MTL..."
-	@JCKUTILS_CLASSPATH=$(UNZIPDIR)/$(TCKVERSION)/classes:$(JAXB_HOME)/mod/jakarta.xml.bind-api.jar \
-	JCKUTILS_JAVA=$(PRECOMPILE_JAVA) \
-	../jcktestlist  -o $@ -testCases -dirWalk $(UNZIPDIR)/$(TCKVERSION)/tests \
-	|| echo "Warning: Generation of MTL failed."
-
-CLEANFILES += jaxb.mtl

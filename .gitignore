@@ -9,8 +9,6 @@ jaxb-tck/build/make.properties
 jaxb-tck-build
 jaxb-tck/src/docs/userguide/src/main/jbake/content/toc.adoc
 *.iml
-asm.jar
-asm-commons.jar
 checker.jar
 jakarta.activation-api.jar
 jaxb-ri*

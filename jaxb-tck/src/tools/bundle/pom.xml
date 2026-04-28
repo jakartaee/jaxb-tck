@@ -43,12 +43,6 @@
             <artifactId>lib.sigtestdev</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>apache-river</artifactId>
-            <scope>provided</scope>
-            <version>${project.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -61,12 +55,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jckutils-installer</artifactId>
-            <scope>provided</scope>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jckutils-jckfilecheck</artifactId>

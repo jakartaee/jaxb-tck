@@ -43,7 +43,6 @@
         <module>tgxml</module>
         <module>jmpp.unicode</module>
         <module>jttck</module>
-        <module>river</module>
         <module>sqe</module>
         <module>jti</module>
     </modules>

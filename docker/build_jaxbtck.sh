@@ -85,9 +85,6 @@ export JAXB_JAR_LOC=${JAXB_HOME}/mod
 
 echo "$JAXB_HOME"
 
-wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/9.9.1/asm-commons-9.9.1.jar' -O asm-commons.jar
-wget ${WGET_PROPS} 'https://repo1.maven.org/maven2/org/ow2/asm/asm/9.9.1/asm-9.9.1.jar' -O asm.jar
-
 unzip -o latest-glassfish.zip
 ls -l $GF_HOME/glassfish7/glassfish/
 
@@ -143,7 +140,6 @@ sed -i 's#^ANT_HOME\s*=\s*.*#ANT_HOME = /usr/share/ant#g' $WORKSPACE/jaxb-tck/bu
 
 sed -i 's#^JAVATEST_JAR_LOC\s*=\s*.*#JAVATEST_JAR_LOC = '"${WORKSPACE}"'/jaxb-tck/lib#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 sed -i 's#^SIGTESTDEV_JAR_LOC\s*=\s*.*#SIGTESTDEV_JAR_LOC = '"${WORKSPACE}"'/jaxb-tck/lib#g' $WORKSPACE/jaxb-tck/build/Defs.mk
-sed -i 's#^ASM_JAR_LOCATION\s*=\s*.*#ASM_JAR_LOCATION = '"${WORKSPACE}"'#g' $WORKSPACE/jaxb-tck/build/Defs.mk
 
 echo '-[ Defs.mk ]----------------------------------------------------------'
 cat $WORKSPACE/jaxb-tck/build/Defs.mk
