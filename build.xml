@@ -55,19 +55,6 @@
     <zip destfile="${dist}/${bundle.name}">
       <zipfileset dir="${dist}/${bundle.folder}" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.0" excludes="**/?/**" prefix="${bundle.folder}"/>
-      <zipfileset dir="dist" includes="docs/**/*" excludes="**/?/**" prefix="${bundle.folder}"/>
-<!--      <zipfileset dir="${BASEDIR}/userguide/target/generated-docs"-->
-<!--                  includes="*.pdf"-->
-<!--                  prefix="${bundle.folder}/docs/pdf-usersguide"/>-->
-<!--      <zipfileset dir="${BASEDIR}/userguide/target/staging"-->
-<!--                  includes="*.html,css/*,img/*"-->
-<!--                  prefix="${bundle.folder}/docs/html-usersguide"/>-->
-      <zipfileset dir="jaxb-tck-build/docs/pdf-userguide"
-                  includes="*.pdf"
-                  prefix="${bundle.folder}/docs/pdf-usersguide"/>
-      <zipfileset dir="jaxb-tck-build/docs/html-userguide"
-                  includes="*.html,css/*,img/*"
-                  prefix="${bundle.folder}/docs/html-usersguide"/>
     </zip>
   </target>
 
@@ -91,27 +78,8 @@
       <zipfileset dir="${dist}/${bundle.folder}" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.0" excludes="**/?/**" prefix="${bundle.folder}"/>
       <zipfileset dir="dist" includes="docs/**/*" excludes="**/?/**" prefix="${bundle.folder}"/>
-<!--      <zipfileset dir="${BASEDIR}/userguide/target/generated-docs"-->
-<!--                  includes="*.pdf"-->
-<!--                  prefix="${bundle.folder}/docs/pdf-usersguide"/>-->
-<!--      <zipfileset dir="${BASEDIR}/userguide/target/staging"-->
-<!--                  includes="*.html,css/*,img/*"-->
-<!--                  prefix="${bundle.folder}/docs/html-usersguide"/>-->
-      <zipfileset dir="jaxb-tck-build/docs/pdf-userguide"
-                  includes="*.pdf"
-                  prefix="${bundle.folder}/docs/pdf-usersguide"/>
-      <zipfileset dir="jaxb-tck-build/docs/html-userguide"
-                  includes="*.html,css/*,img/*"
-                  prefix="${bundle.folder}/docs/html-usersguide"/>
     </zip>
   </target>
-
-<!--  <target name="mvn">-->
-<!--        <exec dir="${BASEDIR}/userguide" executable="mvn">-->
-<!--              <arg line="-B -V -Dmaven.repo.local=${BASEDIR}/.m2/repository"/>-->
-<!--        </exec>-->
-<!--   </target>-->
-
 
   <target name="clean" description="clean up">
     <!-- Delete the ${build} and ${dist} directory trees -->
