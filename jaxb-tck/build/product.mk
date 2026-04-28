@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 1999, 2018 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -29,7 +30,7 @@ include ../shared_env.mk
 all: build test
 
 
-build: $(TCKZIP) unzipped.ok jaxb.mtl
+build: build_dist_files
 
 clean: 
 	$(RM) $(CLEANFILES)

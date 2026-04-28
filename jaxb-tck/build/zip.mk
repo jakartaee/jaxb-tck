@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2026 Contributors to the Eclipse Foundation. All rights reserved.
 # Copyright (c) 1999, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
@@ -43,21 +44,9 @@ test_run_testsuite_jtt.ok: $(ZIP.files)
 #	ZIP.files += dependency ...
 #
 
-$(TCKZIP): $(ZIP.files) $(INSTALLER_EXPORT_FILE) test_run_testsuite_jtt.ok check-files.ok
-	$(RM) $(TCKZIP)
-	$(GENERAL_JAVA) -Xmx192m -cp $(TCKDIR)/classes com.sun.jck.utils.installer.Zipper -q \
-			-n 50000 -m com.sun.jck.utils.installer.Installer -e $(INSTALLER_EXPORT_FILE)\
-			$(TCKZIP) $(TCKDIR)
-	if [ $$TCKZIPEMAIL ]; then \
-	    $(PRINTF) "Subject: Zip build completed for $(TCKVERSION)\n\nSee $(TCKZIP)" | \
-	    /usr/bin/mail $$TCKZIPEMAIL; \
-	fi
+build_dist_files: test_run_testsuite_jtt.ok check-files.ok
 
-$(INSTALLER_EXPORT_FILE):
-	$(CLASSDEP_8) -cp $(TCKDIR)/classes com.sun.jck.utils.installer.Installer >$@
-
-
-CLEANFILES += $(TCKZIP) $(ZIP.files)
+CLEANFILES += $(ZIP.files)
 
 #----------------------------------------------------------------------
 #
@@ -92,19 +81,6 @@ $(TCKDIR)/build.txt: $(TCKDIR)
 	@echo "**** $@ created at `date` ****"
 
 ZIP.files += $(TCKDIR)/build.txt
-
-#----------------------------------------------------------------------
-#
-# unzip the product zip file into an area where it can be tested
-
-unzipped.ok: $(TCKZIP)
-	$(RM) $(UNZIPDIR)/$(TCKVERSION)
-	$(MKDIR) -p $(UNZIPDIR)
-	$(GENERAL_JAVA) -jar $(TCKZIP) -o $(UNZIPDIR) > unzip.log
-	echo "Unzipped at `date`" > $@
-
-CLEANFILES += $(UNZIPDIR)/$(TCKVERSION) unzipped.ok unzip.log
-
 
 #----------------------------------------------------------------------
 #

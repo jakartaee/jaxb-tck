@@ -34,7 +34,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>installer</module>
         <module>jckfilecheck</module>
         <module>jtxedit</module>
     </modules>

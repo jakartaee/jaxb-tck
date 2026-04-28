@@ -136,9 +136,8 @@ GENERAL_JAVAG = $(GENERAL_JAVAHOME)/bin/java_g
 PRECOMPILE_JAVAC = $(PRECOMPILE_JAVAHOME)/bin/javac
 PRECOMPILE_JAVA = $(PRECOMPILE_JAVAHOME)/bin/java
 PRECOMPILE_JAR = $(PRECOMPILE_JAVAHOME)/bin/jar
-JAVATEST_JAR_LOC = 
-SIGTESTDEV_JAR_LOC = 
-ASM_JAR_LOCATION = 
+JAVATEST_JAR_LOC =
+SIGTESTDEV_JAR_LOC =
 #----------------------------------------------------------------------
 #
 # General Utilities
@@ -271,7 +270,6 @@ FILTEREDLIBS = $(TEMPBUILDAREA)/filteredLibs/$(PRODUCT)
 PRECOMPILEDIR = $(TEMPBUILDAREA)/precompile/$(PRODUCT)
 JMPPWORKDIR = $(TEMPBUILDAREA)/jmppWork/$(PRODUCT)
 TCKDIR = $(TEMPBUILDAREA)/$(TCKVERSION)
-TCKZIP = $(BUILDAREA)/$(TCKVERSION).jar
 UNZIPDIR = $(TEMPBUILDAREA)/unzip
 TESTDIR = $(TEMPBUILDAREA)/test
 JTPLUGINBUILDDIR = $(TEMPBUILDAREA)/jtpluginWork
@@ -360,10 +358,6 @@ SRCBUNDLE_RMFILES += tests/testsuite.jtd doc/javatest
 SRCBUNDLE_RELEASE_DOCS =
 SRCBUNDLE_DEST = $(BUILDAREA)/tempBundle
 SRCBUNDLE_ZIP = $(SRCBUNDLE_DEST)/jaxb_tck-ro-src.zip
-
-CLASSDEP = $(GENERAL_JAVA) -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm.jar:$(ASM_JAR_LOCATION)/asm-commons.jar org.apache.river.tool.ClassDep -in com -in javasoft
-
-CLASSDEP_8 = $(JAVA_HOME_8)/bin/java -cp $(TCKDIR)/classes:$(ASM_JAR_LOCATION)/asm.jar:$(ASM_JAR_LOCATION)/asm-commons.jar org.apache.river.tool.ClassDep -in com -in javasoft
 
 JAXB_LIBS.sh = for i in `$(LS) -1 $(JAXB_HOME)/mod/*.jar`; do JAXB_LIBS="$$JAXB_LIBS:$$i"; done; echo $$JAXB_LIBS;
 JAXB_LIBS = $(shell $(JAXB_LIBS.sh))
