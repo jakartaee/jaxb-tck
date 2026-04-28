@@ -25,6 +25,7 @@
 html.ok: testsources.ok $(TEMPTESTSTORAGE)/tests/testsuite.doc.xml precompile-jck-index-generator.ok
 	CLASSPATH=classes:$(TCKDIR)/classes \
 	${GENERAL_JAVA} \
+	  -Dcrn.skip \
 	  -Dtck.build.propfile=../tck.properties \
 	  $(JCK_INDEX_GENERATOR) \
 		-log \

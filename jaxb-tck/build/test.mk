@@ -235,7 +235,7 @@ TESTS += $(TESTS.runtime)
 stats/index.html: tck-zip.lst
 	$(MKDIR) -p stats
 	CLASSPATH=$(TCKDIR)/classes:$(JAVATEST_JAR) \
-	$(GENERAL_JAVA) com.sun.jck.utils.jckfilecheck.Main \
+	$(GENERAL_JAVA) -Dcrn.skip com.sun.jck.utils.jckfilecheck.Main \
 		-d $(UNZIPDIR)/$(TCKVERSION) -o stats/index.html -a -f -iso \
 		-cbegin 4096 8192 16384 32768 -cend -extns COPYRIGHT README \
 		au aif c class dat dtd gif gm gz h jasm java jcod jtp jtr jts jtx \
@@ -275,7 +275,7 @@ TESTS += System_checks.ok
 tests.lst + testDescriptionErrors.log: unzipped.ok
 	@echo "+++ test list for $(PRODUCT): $@"
 	CLASSPATH=$(JAVATEST_JAR_LOC)/javatest.jar \
-	    $(GENERAL_JAVA) com.sun.jck.utils.jcktestlist.Main \
+	    $(GENERAL_JAVA) -Dcrn.skip com.sun.jck.utils.jcktestlist.Main \
 		-dirWalk  \
 		-log testDescriptionErrors.log $(TCKDIR)/tests > tests.lst
 

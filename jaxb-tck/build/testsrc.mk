@@ -73,6 +73,7 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
 			validator=""; \
         		CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
         		$(JAVA_6)  \
+        		-Dcrn.skip \
         		-Dtck.dest.dir=$(J2XRT_DEST_DIR)/tests \
         		-Dtck.source.dir=$(TEMPTESTSTORAGE)/tests \
         		-Dtck.classes.dir=$(BUILDCLASSDIR) \
@@ -92,6 +93,7 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
         		validator=""; \
         		CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
         		$(JAVA_6)  \
+        		-Dcrn.skip \
         		-Dtck.dest.dir=$(TCKDIR)/tests \
         		-Dtck.source.dir=$(TEMPTESTSTORAGE)/tests \
         		-Dtck.classes.dir=$(BUILDCLASSDIR) \
@@ -135,6 +137,7 @@ $(TCKDIR)/tests_j2xrt:
 	validator=""; \
 	CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
 	$(JAVA_6)  \
+	-Dcrn.skip \
 	-Dtck.dest.dir=$(J2XRT_DEST_DIR)/tests \
 	-Dtck.source.dir=$(TEMPTESTSTORAGE)/tests \
 	-Dtck.classes.dir=$(BUILDCLASSDIR) \
@@ -154,6 +157,7 @@ $(TCKDIR)/tests_j2xrt:
 	validator=""; \
 	CLASSPATH=classes:$(JAVATEST_JAR):$(TCKDIR)/classes \
 	$(JAVA_6)  \
+	-Dcrn.skip \
 	-Dtck.dest.dir=$(TCKDIR)/tests \
 	-Dtck.source.dir=$(TEMPTESTSTORAGE)/tests \
 	-Dtck.classes.dir=$(BUILDCLASSDIR) \

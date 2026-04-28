@@ -28,7 +28,7 @@ $(EXCLUDE_LIST:%=$(TCKDIR)/lib/%): $(EXCLUDE_LIST)
 	$(RM) $@
 	$(CP) $(EXCLUDE_LIST) $@
 	CLASSPATH=$(TCKDIR)/classes:$(JAVATEST_JAR_LOC)/javatest.jar \
-	    $(GENERAL_JAVA) -Dbackup.ignore=.jtx com.sun.jck.utils.jtxedit.Main $@
+	    $(GENERAL_JAVA) -Dcrn.skip -Dbackup.ignore=.jtx com.sun.jck.utils.jtxedit.Main $@
 
 ZIP.files += $(EXCLUDE_LIST:%=$(TCKDIR)/lib/%)
 
