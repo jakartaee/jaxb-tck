@@ -155,14 +155,14 @@ mvn clean -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 echo ************* Calling Maven ************
 mvn verify -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes
-unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle/target/bundle-${TCK_MVN_VERSION}.jar
+unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle/target/bundle-${TCK_MVN_VERSION}.jar
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes
-unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle.src/target/bundle-src-${TCK_MVN_VERSION}-sources.jar
+unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle.src/target/bundle-src-${TCK_MVN_VERSION}-sources.jar
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/docs/html-userguide
-unzip -d $WORKSPACE/jaxb-tck-build/XMLB-TCK-4.0/docs/html-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-${TCK_MVN_VERSION}-html.zip
+unzip -q -d $WORKSPACE/jaxb-tck-build/XMLB-TCK-4.0/docs/html-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-${TCK_MVN_VERSION}-html.zip
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/docs/pdf-userguide
-unzip -d $WORKSPACE/jaxb-tck-build/XMLB-TCK-4.0/docs/pdf-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-${TCK_MVN_VERSION}-pdf.zip
-unzip -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0 ${WORKSPACE}/jaxb-tck/src/docs/relnotes/target/tck-relnotes-${TCK_MVN_VERSION}-html.zip
+unzip -q -d $WORKSPACE/jaxb-tck-build/XMLB-TCK-4.0/docs/pdf-userguide ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-${TCK_MVN_VERSION}-pdf.zip
+unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0 ${WORKSPACE}/jaxb-tck/src/docs/relnotes/target/tck-relnotes-${TCK_MVN_VERSION}-html.zip
 echo ************* Calling make ************
 make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
