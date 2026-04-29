@@ -35,54 +35,35 @@
             value="${deliverable.name}"/>
   <property name="eclipse.bundle.name"
             value="${eclipse.deliverable.name}-${deliverable.version}.zip"/>
-  <property name="src" location="src"/>
-  <property name="build" location="build"/>
   <property name="dist" location="dist"/>
 
-  
-<!--  <target name="copyLicense" depends="mvn"-->
-<!--          description="copy the file">-->
-  <target name="copyLicense"
-          description="copy the file">
-    <mkdir dir="${dist}"/>
-    <mkdir dir="${dist}/${bundle.folder}"/>
-      <copy file="LICENSE.md" todir="${dist}/${bundle.folder}"/>
+  <target name="init">
+    <property name="dist.zip.name" value="${bundle.name}"/>
+    <property name="dist.license" value="LICENSE.md"/>
   </target>
 
-  <target name="dist" depends="clean"
-          description="generate the distribution">
-    <antcall target="copyLicense"/>
-    <zip destfile="${dist}/${bundle.name}">
-      <zipfileset dir="${dist}/${bundle.folder}" excludes="**/?/**" prefix="${bundle.folder}"/>
-      <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.0" excludes="**/?/**" prefix="${bundle.folder}"/>
+  <target name="init_eftl">
+    <property name="dist.zip.name" value="${eclipse.bundle.name}"/>
+    <property name="dist.license" value="LICENSE_EFTL.md"/>
+  </target>
+
+  <target name="build_zip" description="package the distribution">
+    <mkdir dir="${dist}"/>
+    <zip destfile="${dist}/${dist.zip.name}">
+      <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.0" prefix="${bundle.folder}"/>
+      <zipfileset dir="." includes="${dist.license}" fullpath="${bundle.folder}/LICENSE.md"/>
     </zip>
   </target>
 
-<!--  <target name="copyLicenseEFTL" depends="mvn"-->
-<!--          description="copy the file">-->
-  <target name="copyLicenseEFTL"
-          description="copy the file">
-    <mkdir dir="${dist}"/>
-    <mkdir dir="${dist}/${bundle.folder}"/>
-      <move file="LICENSE.md" tofile="LICENSE1.md"/>
-      <copy file="LICENSE_EFTL.md" tofile="LICENSE.md" />
-      <copy file="LICENSE.md" todir="${dist}/${bundle.folder}"/>
-      <move file="LICENSE1.md" tofile="LICENSE.md"/>
-  </target>
-  
-  <target name="dist_eftl" depends="clean"
+  <target name="dist" depends="clean,init,build_zip"
           description="generate the distribution">
-    <mkdir dir="${dist}"/>
-    <antcall target="copyLicenseEFTL"/>
-    <zip destfile="${dist}/${eclipse.bundle.name}">
-      <zipfileset dir="${dist}/${bundle.folder}" excludes="**/?/**" prefix="${bundle.folder}"/>
-      <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.0" excludes="**/?/**" prefix="${bundle.folder}"/>
-      <zipfileset dir="dist" includes="docs/**/*" excludes="**/?/**" prefix="${bundle.folder}"/>
-    </zip>
+  </target>
+
+  <target name="dist_eftl" depends="clean,init_eftl,build_zip"
+          description="generate the EFTL distribution">
   </target>
 
   <target name="clean" description="clean up">
-    <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${dist}"/>
   </target>
 

@@ -15,7 +15,6 @@ jaxb-ri*
 latest-glassfish.zip
 xml-binding-tck
 glassfish7/
-bundles
 JAXB_REPORT
 batch-multiJVM/
 jaxbtck-results*
