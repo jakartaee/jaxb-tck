@@ -268,14 +268,9 @@ TEMPTESTSTORAGE = $(TEMPBUILDAREA)/tempTestStorage/$(PRODUCT)
 TESTEXTRACTDIR = $(TEMPBUILDAREA)/testExtract/$(PRODUCT)
 FILTEREDLIBS = $(TEMPBUILDAREA)/filteredLibs/$(PRODUCT)
 PRECOMPILEDIR = $(TEMPBUILDAREA)/precompile/$(PRODUCT)
-JMPPWORKDIR = $(TEMPBUILDAREA)/jmppWork/$(PRODUCT)
 TCKDIR = $(TEMPBUILDAREA)/$(TCKVERSION)
 UNZIPDIR = $(TEMPBUILDAREA)/unzip
 TESTDIR = $(TEMPBUILDAREA)/test
-JTPLUGINBUILDDIR = $(TEMPBUILDAREA)/jtpluginWork
-JTPLUGINCLASSDIR = $(BUILDCLASSDIR)
-JTPLUGINSRCDIR = $(TOPDIR)/src/share/jttck
-INSTALLER_EXPORT_FILE = $(BUILDAREA)/installer-classes.lst
 
 #---------------------------------------------------------------------
 #
@@ -287,11 +282,8 @@ IGNORE = java javax org
 LEAFCLASSES = com.sun.javatest.lib.MultiTest com.sun.javatest.lib.MultiStatus
 
 
-
-
 JAXB_CLASSPATH.sh=(fl=`find $(JAXB_HOME)/mod -name '*.jar' -print` ; echo $$fl) | sed -e 's/ /:/g'
 JAXB_CLASSPATH=$(shell $(JAXB_CLASSPATH.sh))
-
 
 #---------------------------------------------------------------------
 #
@@ -305,28 +297,13 @@ LIBAPI_PROPERTIES = testjen.properties
 # Model TCK build specific parameters
 #
 
-BTOOLS_TESTGEN_SA = $(JAXPLIBS_DIR)/testgen_sa.jar
-BTOOLS_JAXP = $(JAXPLIBS_DIR)/jaxp.jar
-
-# btools workspace
-TGXMLTOOLS_WS.sh = \
-    if [ -z "$(BTOOLS_WS)" ]; then \
-        echo $(BTOOLS_WS_MODEL) ; \
-    else \
-        echo $(BTOOLS_WS) ; \
-    fi
-
-TGXMLTOOLS_WS = $(shell $(TGXMLTOOLS_WS.sh))
-
 # Repository list to construct TCK from
 REPOSITORIES = $(ABSTOPDIR)
 
 TEST_REPOSITORIES.sh=echo "$(REPOSITORIES)" | $(SED) -e 's|/ | |g' -e 's|/$$||'
 TEST_REPOSITORIES=$(shell $(TEST_REPOSITORIES.sh))
 
-JMPP_FILES_IN_BUNDLE = 100
 XML_DIRS_IN_BUNDLE = 150
-PL_FILES_IN_BUNDLE = 100
 
 JAXB_ID.sh=$(PRECOMPILE_JAVAHOME)/bin/java -jar $(JAXB_HOME)/mod/jaxb-xjc.jar -version 2>&1 | $(SED) -e 's/^[^"]*"//g' | $(SED) -e 's/".*$$//g'
 JAXB_ID=$(shell $(JAXB_ID.sh))
@@ -340,13 +317,6 @@ SHARED_MK = $(shell $(SHARED_MK.sh))
 
 # ABSTOPDIR of JCK for integrated XMLB-TCK or ABSTOPDIR of standalone XMLB-TCK
 SHARED_ABSTOPDIR = $(ABSTOPDIR)
-
-# various documentation files:
-DOC_RELEASE_NOTE=$(TOPDIR)/src/share/doc/releaseNote
-DOC_COPYRIGHT_TXT=$(TOPDIR)/src/share/doc/copyright.txt
-DOC_COPYRIGHT_HTML=$(TOPDIR)/src/share/doc/COPYRIGHT-jaxbtck.html
-DOC_README=$(TOPDIR)/src/share/doc/Readme
-DOC_INDEX_HTML=$(TOPDIR)/src/share/doc/index.html
 
 # variables for generating source bundle
 SRCBUNDLE_TEMPDIR = $(BUILDAREA)/tempBundle/jaxb
