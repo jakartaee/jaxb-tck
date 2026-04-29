@@ -150,6 +150,7 @@ echo '----------------------------------------------------------------------'
 
 cd $TCK_ROOT/jaxb-tck/build
 
+echo ************* Preparing environment ************
 make REPOSITORIES=$TCK_ROOT/xml_schema clean
 mvn clean -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 echo ************* Calling Maven ************
@@ -169,6 +170,7 @@ make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build
 cd $TCK_ROOT
+echo ************* Calling ant ************
 export ANT_OPTS="-DTCK_ROOT=$WORKSPACE -DJAVA_HOME=$JAVA_HOME -DJARPATH=$WORKSPACE"
 export PATH="$ANT_HOME/bin:$JAVA_HOME/bin:$PATH"
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
@@ -176,7 +178,3 @@ if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
 else
 	ant clean dist
 fi
-
-chmod 777 ${WORKSPACE}/dist/*.zip
-cp ${WORKSPACE}/dist/* ${WORKSPACE}/bundles/
-chmod -R 777 ${WORKSPACE}/bundles/
