@@ -23,9 +23,9 @@ TCK_NAME=xml-binding-tck
 cd $WORKSPACE
 
 
-if ls ${WORKSPACE}/bundles/*xml-binding-tck*.zip 1> /dev/null 2>&1; then
+if ls ${WORKSPACE}/dist/*xml-binding-tck*.zip 1> /dev/null 2>&1; then
   echo "Using stashed bundle for xml-binding-tck created during the build phase"
-  unzip -o -q ${WORKSPACE}/bundles/*xml-binding-tck*.zip -d ${WORKSPACE}/
+  unzip -o -q ${WORKSPACE}/dist/*xml-binding-tck*.zip -d ${WORKSPACE}/
 
   sed -i "s#^finder=.*#finder=com.sun.javatest.finder.BinaryTestFinder -binary ${WORKSPACE}/${TCK_NAME}/tests/testsuite.jtd#g" ${WORKSPACE}/${TCK_NAME}/testsuite.jtt
   if [[ "$RUNTIME" == "Glassfish" ]]; then
