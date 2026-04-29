@@ -78,7 +78,6 @@ EXCLUDEDDOCS.sh = \
 	@echo PRJ_DIR               = $(PRJ_DIR)
 	@echo TEMPBUILDAREA         = $(TEMPBUILDAREA)
 	@echo TCKDIR                = $(TCKDIR)
-	@echo TCKZIP                = $(TCKZIP)
 	@echo PRODUCT_BASE          = $(PRODUCT_BASE)
 	@echo PRODUCT               = $(PRODUCT)
 	@echo GENERAL_JAVAHOME      = $(GENERAL_JAVAHOME)
