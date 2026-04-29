@@ -75,7 +75,6 @@ EXCLUDEDDOCS.sh = \
 	@echo SELECTED_DIRS         = $(SELECTED_DIRS)
 	@echo TESTS                 = $(TESTS)
 	@echo BUILDAREA             = $(BUILDAREA)
-	@echo PRJ_DIR               = $(PRJ_DIR)
 	@echo TEMPBUILDAREA         = $(TEMPBUILDAREA)
 	@echo TCKDIR                = $(TCKDIR)
 	@echo PRODUCT_BASE          = $(PRODUCT_BASE)
