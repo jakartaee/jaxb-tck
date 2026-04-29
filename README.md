@@ -1,4 +1,6 @@
-The Jakarta XML Binding TCK is built using Java SE 11 or newer and has been tested against JAXB RI and Eclipse Glassfish.
+The Jakarta XML Binding TCK is built using Java SE 21/25
+and has been tested against [JAXB RI](https://github.com/eclipse-ee4j/jaxb-ri)
+and [Eclipse GlassFish](https://github.com/eclipse-ee4j/glassfish/).
 
 ### Required Software
 
@@ -11,14 +13,14 @@ The Jakarta XML Binding TCK is built using Java SE 11 or newer and has been test
 
 ### Quick Build
 
-* Edit [build_jaxbtck.sh](docker/build_jaxbtck.sh):
+* edit [build_jaxbtck.sh](docker/build_jaxbtck.sh):
   - add `export WORKSPACE=<reporoot>`
   - add `export JDK11_HOME=${JAVA_HOME}`
   - edit `sed` calls to follow the build environment
 * run [build_jaxbtck.sh](docker/build_jaxbtck.sh)
 
 This will:
-* download and configure the right versions of `JAXB RI`, `Jakarta Activation API` and `Glassfish` for use by the build
+* download and configure the right versions of `JAXB RI`, `Jakarta Activation API` and `GlassFish` for use by the build
 * update `Defs.mk` and `Defs.SFBay.mk`
 * clean up possible relicts from previous builds
 * call maven to build java sources and documentation
@@ -27,8 +29,15 @@ This will:
 
 ### Quick Run
 
-* Edit [run_jaxbtck.sh](docker/run_jaxbtck.sh):
+* edit [run_jaxbtck.sh](docker/run_jaxbtck.sh):
   - add `export WORKSPACE=<reporoot>`
   - add `export JDK11_HOME=${JAVA_HOME}`
   - edit `sed` calls to follow the build environment
-* run [run_jaxbtck.sh](docker/run_jaxbtck.sh)
+* run [run_jaxbtck.sh](docker/run_jaxbtck.sh) (assuming build run first)
+
+### Resources
+
+* [Jakarta XML Binding Specification](https://jakarta.ee/specifications/xml-binding/)
+* [XML Binding API project](https://github.com/jakartaee/jaxb-api)
+* [JT Harness documentation](https://wiki.openjdk.org/spaces/CodeTools/pages/18448454/JT+Harness)
+* [JT Harness project](https://github.com/openjdk/jtharness)
