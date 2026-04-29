@@ -65,18 +65,7 @@ PRECOMPILE_JAVAHOME = $(GENERAL_JAVAHOME)
 #
 JAVAHOME_6 = ${JAVA_HOME}
 
-# SQE Utilities
-PKGS_BASEDIR = /java/jct-tools/pkgs
-# CURMUDGEON = $(PKGS_BASEDIR)/htmlcheck/bin/webCurmudgeon
-# HTML2PS = $(PERL) $(PKGS_BASEDIR)/html2ps-1.0b1/bin/html2ps
-HTMLCHECK = $(PKGS_BASEDIR)/htmlcheck_1.2.1/bin/htmlcheck
-LINKLINT = $(PERL) $(PKGS_BASEDIR)/linklint_2.1/linklint
-# DISTILL = /net/swpubs.sfbay/opt/local/framemaker,v7.0/bin/distill
-
-# TODO FMBATCH = /net/swpubs.sfbay/opt/local/framemaker,v7.0/bin/fmbatch
-FMBATCH = /java/jct-tools/pkgs/fm71/bin/fmbatch
-
-ANT_HOME = 
+ANT_HOME =
 #location of misc. tools
 UNZIP = /usr/bin/unzip
 ZIP = /bin/zip
@@ -92,9 +81,6 @@ PERL = /usr/bin/perl
 # JAXP libraries directory
 JAXPLIBS_DIR_SCA.sh = cd /; $(PWD)
 JAXPLIBS_DIR = $(shell $(JAXPLIBS_DIR_SCA.sh))
-
-#Location of Robot chart tools used to create wizard flow chart
-ROBOCHART = /java/jct-tools/pkgs/robochart,v8.1
 
 PARTIAL_TESTS.runtime = \
 	test-runtime-batch-singleJVM.ok

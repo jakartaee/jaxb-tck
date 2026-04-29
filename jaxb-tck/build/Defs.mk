@@ -53,41 +53,6 @@ TCK_MILESTONE=fcs
 
 BUILD_NAME=b11
 
-# JAXB TCK specific tests which use xml_schema repository's shared XSD and
-# XML documents should be located in test's JAXB specific subdirectory 'prj.jaxb'
-# in the repository.
-# This TCK specific subdirectory name should be specified in PROJECT_SUBDIR
-# to process files from these subdirectories correctly along with corresponding
-# XSD and XML documents. Example: PROJECT_SUBDIR="prj.jaxb".
-
-PROJECT_SUBDIR="prj.jaxb"
-
-# xml_schema repository may contain tests specific not only for one TCK (JAXB TCK),
-# but also for example JAXP TCK specific tests which should be located in 'prj.jaxp'
-# subdirectories. To not process tests from other TCK specific subdirectories,
-# all subdirectories should be specified in IGNORE_PROJECT_SUBDIRS.
-# Example: IGNORE_PROJECT_SUBDIRS = "prj.jaxp prj.dom2 prj.dom3".
-
-IGNORE_PROJECT_SUBDIRS=""
-
-NORMALIZE_SUBDIR_NAME = (read d; normalized_d=\`echo $$d | sed -e 's|/*\(.*[^/]\)/*|\1|'\`; echo "/$$normalized_d/")
-
-PRJ_DIR.sh = \
-    s=`echo $(PROJECT_SUBDIR) | $(NORMALIZE_SUBDIR_NAME)` ; \
-    echo $$s
-
-PRJ_DIR = $(shell $(PRJ_DIR.sh))
-
-IGNORE_PRJ_DIRS_FILTER.sh = \
-    s=""; \
-    for i in `echo $(IGNORE_PROJECT_SUBDIRS)` ; do \
-        ni=`echo $$i | $(NORMALIZE_SUBDIR_NAME)` ; \
-        s="$$s | $(GREP) -v '$$ni'" ; \
-    done ; \
-    echo $$s
-
-IGNORE_PRJ_DIRS_FILTER = $(shell $(IGNORE_PRJ_DIRS_FILTER.sh))
-
 #----------------------------------------------------------------------
 
 PSR_COUNT = `/usr/sbin/psrinfo| wc -l`

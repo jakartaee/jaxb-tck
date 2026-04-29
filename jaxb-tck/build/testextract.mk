@@ -245,7 +245,7 @@ $(REPOSITORY_IDENTS:%=%/copy-nongenerated.ok):%/copy-nongenerated.ok:install $$(
 GET_REPOS_ID=(read repos_subdir; echo $$repos_subdir | $(SED) -e 's|^\([^/]*\).*|\1|')
 
 $(ALL_REPOSITORIES_SELECTED_DIRS:%=%/copy-subsuite-nongenerated.ok):%/copy-subsuite-nongenerated.ok:%/files-subsuite-nongenerated.lst $(TEMPTESTSTORAGE)
-	./install `$(CAT) $(foreach preqq,$(shell echo $@|$(GET_REPOS_ID)),$(preqq)/repository.path)` $(TEMPTESTSTORAGE) -rmOutDir $(PRJ_DIR) - < $(@:%/copy-subsuite-nongenerated.ok=%/files-subsuite-nongenerated.lst)
+	./install `$(CAT) $(foreach preqq,$(shell echo $@|$(GET_REPOS_ID)),$(preqq)/repository.path)` $(TEMPTESTSTORAGE) - < $(@:%/copy-subsuite-nongenerated.ok=%/files-subsuite-nongenerated.lst)
 	echo ":-) copied $(@:%/copy-subsuite-nongenerated.ok=%) files at `date`" | $(TEE) $@
 
 ALL_REPO_SEL_FIL_SUB_NON_GEN=$(ALL_REPOSITORIES_SELECTED_DIRS:%=%/files-subsuite-nongenerated.lst)
@@ -262,7 +262,7 @@ $(ALL_REPOSITORIES_SELECTED_DIRS:%=%/files-subsuite-nongenerated.lst): $$(foreac
 # construct the list of all non-generated files for the given REPOSITORY.
 #
 $(REPOSITORY_IDENTS:%=%/files-nongenerated.lst):%/files-nongenerated.lst:%/files.lst 
-	$(GREP) -v '^tests/.*\.jmpp$$' $(@:%/files-nongenerated.lst=%/files.lst) | $(GREP) '^tests/.*$$' $(IGNORE_PRJ_DIRS_FILTER) | $(SELECT_TESTSUITEFILES)> $@ ; \
+	$(GREP) -v '^tests/.*\.jmpp$$' $(@:%/files-nongenerated.lst=%/files.lst) | $(GREP) '^tests/.*$$' | $(SELECT_TESTSUITEFILES)> $@ ; \
 	if [ -r $(TOPDIR)/src/$(PRODUCT)/extras.lst ]; then \
 		for i in `$(CAT) $(TOPDIR)/src/$(PRODUCT)/extras.lst` ; do \
 			extra_file=`$(GREP) $$i $(@:%/files-nongenerated.lst=%/files.lst) | $(CAT)`; \
