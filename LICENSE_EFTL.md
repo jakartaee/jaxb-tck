@@ -1,15 +1,16 @@
-# Eclipse Foundation Technology Compatibility Kit License - v 1.0
+# Eclipse Foundation Technology Compatibility Kit License - v1.1
 
-Copyright (c) 2018, Eclipse Foundation, Inc. and its licensors.
+The accompanying Technology Compatibility Kit is "Copyright (c)
+\[\$date-of-document\], Eclipse Foundation AISBL and its licensors."
 
-Redistribution and use in binary form is permitted provided that the
-following conditions are met:
+Redistribution and use of the TCK (as defined below) in binary form is
+permitted provided that the following conditions are met:
 
 1.  Use of the Technology Compatibility Kit accompanying this license
     (the "TCK") and its documentation is permitted solely for the
     purpose of testing compatibility of an implementation (the
     "Product") of a specification (the "Specification") made available
-    by the Eclipse Foundation, Inc. ("Eclipse").
+    by the Eclipse Foundation AISBL ("Eclipse").
 
 2.  Only those modifications expressly permitted by the TCK and its
     documentation are permitted. Except in these limited circumstances,
@@ -22,18 +23,18 @@ following conditions are met:
 4.  Before any claim of compatibility (or any similar claim suggesting
     compatibility) is made based on the TCK, the testing party must:
 
-    a.  use the TCK to demonstrate that the Product fully and
-	completely meets and satisfies all requirements of the TCK;
+    1.  use the TCK to demonstrate that the Product fully and
+        completely meets and satisfies all requirements of the TCK;
 
-    b.  make TCK test results showing full and complete satisfaction of
-	all requirements of the TCK publicly available on the testing
-	party's website and send a link to such test results to Eclipse
-	at [tck@eclipse.org](mailto:tck@eclipse.org); and
+    2.  make TCK test results showing full and complete satisfaction of
+        all requirements of the TCK publicly available on the testing
+        party's website and send a link to such test results to Eclipse
+        at [tck@eclipse.org](mailto:tck@eclipse.org); and
 
-    c.  comply with any requirements stated in the Specification with
-	regard to subsetting, supersetting, modifying or extending the
-	Specification in any Product claimed to be compatible with the
-	Specification.
+    3.  comply with any requirements stated in the Specification with
+        regard to subsetting, supersetting, modifying or extending the
+        Specification in any Product claimed to be compatible with the
+        Specification.
 
 5.  The test results must be continuously available and the link must
     be live for at least as long as the Product is available in the
