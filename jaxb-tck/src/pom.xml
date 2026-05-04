@@ -80,7 +80,7 @@
         <asciidoctorj.maven.plugin.version>3.2.0</asciidoctorj.maven.plugin.version>
         <asciidoctorj.pdf.version>2.3.23</asciidoctorj.pdf.version>
         <jbake.maven.plugin.version>2.7.0</jbake.maven.plugin.version>
-        <checkstyle.version>13.4.1</checkstyle.version>
+        <checkstyle.version>13.4.2</checkstyle.version>
         <!-- status: DRAFT, BETA, etc., or blank for final -->
         <status></status>
 
