@@ -102,7 +102,7 @@ public class J2XEmitterBase extends MultiTestWriter {
         synchronized( fileManager ) {
             List<String> options = new ArrayList<String>();
             options.add("-classpath");
-            options.add(SEPARATOR + JAXB_JAR_LOC + "/jakarta.activation.jar" + SEPARATOR +
+            options.add(SEPARATOR + JAXB_JAR_LOC + "/jakarta.activation-api.jar" + SEPARATOR +
                         JAXB_JAR_LOC + "/jakarta.xml.bind-api.jar" + SEPARATOR +
                         JAXB_JAR_LOC + "/jaxb-core.jar" + SEPARATOR  +
                         JAXB_JAR_LOC + "/jaxb-impl.jar" + SEPARATOR  +

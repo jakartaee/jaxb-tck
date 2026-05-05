@@ -74,7 +74,7 @@ compiler refers to both the schema compiler and the schema generator.
   c.  Set `jck.env.jaxb.classes.jaxbClasses` property to contain The Checker
       Framework library and all {TechnologyShortName} libraries:
         * checker.jar
-        * +{TechnologyHomeEnv}+/mod/jakarta.activation.jar
+        * +{TechnologyHomeEnv}+/mod/jakarta.activation-api.jar
         * +{TechnologyHomeEnv}+/mod/jakarta.xml.bind-api.jar
         * +{TechnologyHomeEnv}+/mod/jaxb-core.jar
         * +{TechnologyHomeEnv}+/mod/jaxb-impl.jar
@@ -106,7 +106,7 @@ jck.concurrency.concurrency=1
 jck.env.description=multi jvm
 jck.env.envName=multi_jvm
 jck.env.jaxb.classes.jaxbClasses=/data/tck/tmp/checker.jar
-  /data/tck/tmp/jaxb-ri/mod/jakarta.activation.jar
+  /data/tck/tmp/jaxb-ri/mod/jakarta.activation-api.jar
   /data/tck/tmp/jaxb-ri/mod/jakarta.xml.bind-api.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-core.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-impl.jar
