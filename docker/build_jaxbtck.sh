@@ -63,8 +63,8 @@ cd $WORKSPACE
 
 if [ ! -z "$TCK_BUNDLE_BASE_URL" ]; then
   #use pre-built tck bundle from this location to run test
-  mkdir -p ${WORKSPACE}/bundles
-  wget  $WGET_PROPS ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/${TCK_BUNDLE_FILE_NAME}
+  mkdir -p ${WORKSPACE}/dist
+  wget  $WGET_PROPS ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/dist/${TCK_BUNDLE_FILE_NAME}
   exit 0
 fi
 wget $WGET_PROPS $JAF_BUNDLE_URL -O jakarta.activation-api.jar
@@ -167,7 +167,6 @@ unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0 ${WORKSPACE}/jaxb-tck/src/d
 echo ************* Calling make ************
 make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
-mkdir -p ${WORKSPACE}/bundles
 cd $WORKSPACE/jaxb-tck-build
 cd $TCK_ROOT
 echo ************* Calling ant ************
