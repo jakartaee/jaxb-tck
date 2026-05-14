@@ -97,7 +97,7 @@ if [ -z "$GF_BUNDLE_URL" ]; then
   export GF_BUNDLE_URL=$DEFAULT_GF_BUNDLE_URL
 fi
 export TCK_ROOT=${WORKSPACE}
-export  JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8 -DnoSecurityManager=true"
+export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8 -DnoSecurityManager=true -Djdk.xml.elementAttributeLimit=2000"
 
 #wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
 
