@@ -57,7 +57,7 @@ precompile_testsuite_jtt.ok: $(TCKDIR)
 	echo "name=JAXB TCK testsuite" > $(TCKDIR)/testsuite.jtt
 	echo "id=jaxb_tck22" >> $(TCKDIR)/testsuite.jtt
 	echo "classpath=./classes/:$(PRECOMPILEDIR)/classes" >> $(TCKDIR)/testsuite.jtt
-	echo "finder=com.sun.javatest.finder.BinaryTestFinder -binary $(TCKDIR)/tests/testsuite.jtd" >> $(TCKDIR)/testsuite.jtt
+	echo "finder=com.sun.javatest.finder.BinaryTestFinder -binary testsuite.jtd" >> $(TCKDIR)/testsuite.jtt
 	echo "script=com.sun.jaxb_tck.lib.PrecompileJaxbTckScript" >> $(TCKDIR)/testsuite.jtt
 	echo "testsuite.jtt for precompile built at `date`" > $@
 
@@ -82,9 +82,8 @@ $(TCKDIR)/lib/javasoft-singleJVM.jti: precompile-jti-gen.ok $(@D)
 	@ $(RM) $@
 	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar:$(TOPDIR)/src/tools/jti/target/classes \
 	$(GENERAL_JAVA) com.sun.jaxb_tck.util.JtiGen -single \
-	-work $(BUILDAREA)/test/$(TCKVERSION)/batch-singleJVM/work \
-	-testsuite $(UNZIPDIR)/$(TCKVERSION) \
-	-ri_java_home $(PRECOMPILE_JAVAHOME) \
+	-work batch-singleJVM/work \
+	-testsuite . \
 	-tests $(INITIALURLS) > $@
 	@echo "**** javasoft-singleJVM.jti created at `date` ****"
 	
@@ -92,14 +91,11 @@ $(TCKDIR)/lib/javasoft-multiJVM.jti: precompile-jti-gen.ok $(@D)
 	@ $(RM) $@
 	CLASSPATH=classes:$(JAVATEST_JAR_LOC)/javatest.jar:$(TOPDIR)/src/tools/jti/target/classes \
 	$(GENERAL_JAVA) com.sun.jaxb_tck.util.JtiGen -multi \
-	-work $(BUILDAREA)/test/$(TCKVERSION)/batch-multiJVM/work \
-	-testsuite $(UNZIPDIR)/$(TCKVERSION) \
+	-work batch-multiJVM/work \
+	-testsuite . \
 	-tests $(INITIALURLS) \
-	-ri_java_home $(PRECOMPILE_JAVAHOME) \
-	-xsd_compiler "/bin/ksh solaris/bin/xjc.sh" \
-	-schemagen "/bin/ksh solaris/bin/schemagen.sh" \
-	-jaxb `echo $(JAXB_CLASSPATH) | sed 's/:/ /g'` \
-	-otherEnv JAVA_HOME=$(PRECOMPILE_JAVAHOME) `if [ -z "$(JCK_JAXB)" ]; then echo "JAXB_HOME=$(JAXB_HOME)"; fi` > $@
+	-xsd_compiler "/bin/sh linux/bin/xjc.sh" \
+	-schemagen "/bin/sh linux/bin/schemagen.sh" > $@
 	@echo "**** javasoft-multiJVM.jti created at `date` ****"
 
 ZIP.files += $(TCKDIR)/lib/javasoft-multiJVM.jti $(TCKDIR)/lib/javasoft-singleJVM.jti

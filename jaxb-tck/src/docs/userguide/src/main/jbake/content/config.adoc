@@ -114,8 +114,8 @@ jck.env.jaxb.classes.jaxbClasses=/data/tck/tmp/checker.jar
 jck.env.jaxb.schemagen.run.jxcCmd=/bin/sh
   /workspace/XMLB-TCK-4.0/linux/bin/schemagen.sh
 jck.env.jaxb.schemagen.skipJ2XOptional=Yes
-jck.env.jaxb.testExecute.cmdAsFile=/opt/jdk1.8.0_192.jdk/bin/java
-jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=/opt/jdk1.8.0_192.jdk
+jck.env.jaxb.testExecute.cmdAsFile=/opt/jdk11/bin/java
+jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=/opt/jdk11
   JAXB_HOME\=/workspace/jaxb-ri
 jck.env.jaxb.testExecute.otherOpts=
 jck.env.jaxb.xsd_compiler.defaultOperationMode=Yes

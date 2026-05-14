@@ -26,10 +26,10 @@ import com.sun.interview.Interview;
 public class JtiGen extends Interview {
 
     private static final String USAGE =
-        "Usage: java com.sun.jaxp_tck.util.JtiGen -single -work dir "
+        "Usage: java com.sun.jaxb_tck.util.JtiGen -single -work dir "
         + "-testsuite dir -tests testURLs "
         + "\n"
-        + "java com.sun.jaxp_tck.util.JtiGen -multi -work dir "
+        + "java com.sun.jaxb_tck.util.JtiGen -multi -work dir "
         + "-testsuite dir -tests testURLs -jvm file -xsd_compiler file "
         + "-jaxb JAXB_CLASSES -otherEnv name=value -tests testURLs ";
 
@@ -47,6 +47,7 @@ public class JtiGen extends Interview {
 
         this.data.put("jck.concurrency.concurrency", "1");
         this.data.put("jck.env.jaxb.xsd_compiler.defaultOperationMode", "Yes");
+        this.data.put("jck.env.jaxb.testExecute.cmdAsFile", "java");
         this.data.put("jck.env.jaxb.testExecute.otherEnvVars", "");
         this.data.put("jck.env.testPlatform.local", "Yes");
         this.data.put("jck.excludeList.latestAutoCheck", "No");
@@ -73,12 +74,15 @@ public class JtiGen extends Interview {
             this.data.put("jck.env.testPlatform.multiJVM", "No");
             this.data.put("jck.env.jaxb.schemagen.run.schemagenWrapperClass", "com.sun.jaxb_tck.lib.SchemaGen");
         } else {
-            this.data.put("jck.env.jaxb.xsd_compiler.testCompile.xjcCmd", "/bin/ksh solaris/bin/xjc.sh");
+            this.data.put("jck.env.jaxb.xsd_compiler.testCompile.xjcCmd", "/bin/sh linux/bin/xjc.sh");
             this.data.put("jck.env.description", "multi jvm");
             this.data.put("jck.env.envName", "multi_jvm");
             this.data.put("jck.env.testPlatform.multiJVM", "Yes");
             this.data.put("jck.env.jaxb.testExecute.otherOpts", "");
-            this.data.put("jck.env.jaxb.schemagen.run.jxcCmd", "/bin/ksh solaris/bin/schemagen.sh");
+            this.data.put("jck.env.jaxb.schemagen.run.jxcCmd", "/bin/sh linux/bin/schemagen.sh");
+            this.data.put("jck.env.jaxb.classes.needJaxbClasses", "Yes");
+            this.data.put("jck.env.jaxb.classes.jaxbClasses", "");
+
         }
         this.data.putAll(data);
     }

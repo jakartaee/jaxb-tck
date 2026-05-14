@@ -31,7 +31,7 @@ test_run_testsuite_jtt.ok: $(ZIP.files)
 	echo "$(shell $(TEST_SUITE_SCRIPT.sh))" >> $(TCKDIR)/testsuite.jtt
 	echo "$(shell $(TEST_EXECUTE_SCRIPT.sh))" >> $(TCKDIR)/testsuite.jtt
 	echo "$(PWD)"
-	echo "finder=com.sun.javatest.finder.BinaryTestFinder -binary $(TCKDIR)/tests/testsuite.jtd" >> $(TCKDIR)/testsuite.jtt
+	echo "finder=com.sun.javatest.finder.BinaryTestFinder -binary testsuite.jtd" >> $(TCKDIR)/testsuite.jtt
 	echo "interview=com.sun.jaxb_tck.interview.JAXBTCKParameters" >> $(TCKDIR)/testsuite.jtt
 	echo "initial.jtx=lib/$(EXCLUDE_LIST)" >> $(TCKDIR)/testsuite.jtt
 	echo "testsuite.jtt for test run built at `date`" > $@
