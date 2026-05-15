@@ -20,7 +20,8 @@ import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import javasoft.sqe.javatest.Status;
 
@@ -36,6 +37,7 @@ import javasoft.sqe.javatest.Status;
  * @see    Factory
  */
 public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
+
     /**
      * This method is responsible for initiating the testing process.
      * This method does the following tasks
@@ -57,30 +59,28 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * @param ref  PrintWriter to write the reference information.
      *
      */
-    public Status run(String args[], PrintWriter log, PrintWriter ref) {
-    this.log = log;
-    this.ref = ref;
-    //
-    // decodeArgs tries to decode all the arguments passed to AssertionTest
-    // and init will create a new Generator and Reporter based on the param
-    // passed at runtime.
-    //
-    try {
-        decodeAllArgs(args);
-        init();
-    }
-    catch (Fault f) {
-        return Status.failed (f.getMessage());
-    }
-    if (methodTest) {
-        reporter.reportTestStart (methodUnderTest, dataFactories);
-    }
-    else {
-        reporter.reportTestStart (constructorUnderTest, dataFactories);
-    }
-    Status testStat = generator.run(this, dataFactories);
-    reporter.reportTestDone(testStat);
-    return testStat;
+    public Status run(String[] args, PrintWriter log, PrintWriter ref) {
+        this.log = log;
+        this.ref = ref;
+        //
+        // decodeArgs tries to decode all the arguments passed to AssertionTest
+        // and init will create a new Generator and Reporter based on the param
+        // passed at runtime.
+        //
+        try {
+            decodeAllArgs(args);
+            init();
+        } catch (Fault f) {
+            return Status.failed(f.getMessage());
+        }
+        if (methodTest) {
+            reporter.reportTestStart(methodUnderTest, dataFactories);
+        } else {
+            reporter.reportTestStart(constructorUnderTest, dataFactories);
+        }
+        Status testStat = generator.run(this, dataFactories);
+        reporter.reportTestDone(testStat);
+        return testStat;
     }
 
     /**
@@ -92,17 +92,17 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * developer can redefine the method according to his/her requirements.
      * </P>
      * @param args An array of strings passed as parameter at runtime.
-     * @exception Fault raised when an unrecognized parameter is passed at runtime.
+     * @throws Fault raised when an unrecognized parameter is passed at runtime.
      *
      */
     protected final void decodeAllArgs(String[] args) throws Fault {
-    for (int i = 0; i < args.length; ) {
-        int j  = decodeArg(args, i);
-        if (j == 0) {
-        throw new Fault("Argument Unrecognized: " + args[i]);
+        for (int i = 0; i < args.length; ) {
+            int j = decodeArg(args, i);
+            if (j == 0) {
+                throw new Fault("Argument Unrecognized: " + args[i]);
+            }
+            i += j;
         }
-        i += j;
-    }
     }
 
     /**
@@ -113,19 +113,17 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * appropriate Reporter and Generator objects. By default this
      * method will create the PrintReporter and GridGenerator objects.
      *
-     * @exception Fault raised when there is an error in creating the
+     * @throws Fault raised when there is an error in creating the
      *                  generator or reporter.
      */
-    protected void init () throws Fault {
-    try {
-        createReporter (reporterClassName);
-        createGenerator (generatorClassName);
+    protected void init() throws Fault {
+        try {
+            createReporter(reporterClassName);
+            createGenerator(generatorClassName);
+        } catch (Fault f) {
+            throw new Fault(f.getMessage());
+        }
     }
-    catch (Fault f) {
-        throw new Fault (f.getMessage());
-    }
-    }
-
 
     /**
      * The purpose of this method is to decode the set of arguments that
@@ -140,74 +138,60 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      *
      * @param args Command line arguments
      * @param j    index of the argument
-     * @exception Fault raised when there is an error while decoding arguments.
+     * @throws Fault raised when there is an error while decoding arguments.
      */
-    protected int decodeArg (String[] args, int j) throws Fault {
-    int i = j;
-    if (args[i].equals("-generator")) {
-        Vector genArgs = new Vector();
-        generatorClassName = args[++i];
-        try {
-        while (!args[++i].equals("-end")) {
-            genArgs.addElement(args[i]);
+    protected int decodeArg(String[] args, int j) throws Fault {
+        int i = j;
+        if (args[i].equals("-generator")) {
+            List<String> genArgs = new ArrayList<>();
+            generatorClassName = args[++i];
+            try {
+                while (!args[++i].equals("-end")) {
+                    genArgs.add(args[i]);
+                }
+            } catch (ArrayIndexOutOfBoundsException a) {
+                throw new Fault("There is no -end to the generator parameter list");
+            }
+            i += 1; // Go to the next command line argument
+            generatorArgs = genArgs.toArray(new String[0]);
+        } else if (args[i].equals("-reporter")) {
+            List<String> repArgs = new ArrayList<>();
+            reporterClassName = args[++i];
+            try {
+                while (!args[++i].equals("-end")) {
+                    repArgs.add(args[i]);
+                }
+            } catch (ArrayIndexOutOfBoundsException a) {
+                throw new Fault("There is no -end to the reporter parameter list");
+            }
+            i += 1; // Go to the next command line argument
+            reporterArgs = repArgs.toArray(new String[0]);
+        } else {
+            return 0;
         }
-        }
-        catch (ArrayIndexOutOfBoundsException a) {
-        throw new Fault ("There is no -end to the generator parameter list");
-        }
-        i += 1; // Go to the next command line argument
-        generatorArgs = new String[genArgs.size()];
-        genArgs.copyInto (generatorArgs);
+        return i - j;
     }
-    else if (args[i].equals("-reporter")) {
-        Vector repArgs = new Vector();
-        reporterClassName = args[++i];
-        try {
-        while (!args[++i].equals("-end")) {
-            repArgs.addElement(args[i]);
-        }
-        }
-        catch (ArrayIndexOutOfBoundsException a) {
-        throw new Fault ("There is no -end to the reporter parameter list");
-        }
-        i += 1; // Go to the next command line argument
-        reporterArgs = new String[repArgs.size()];
-        repArgs.copyInto (reporterArgs);
-    }
-    else {
-        return 0;
-    }
-    return i - j;
-    }
-
 
     /*
      * This method creates a Generator object and by default creates a
      * GridGenerator object.
      */
-    private void createGenerator (String s) throws Fault {
-    if (s != null) {
-        try {
-        Class c =  Class.forName(s);
-        if (!(Generator.class).isAssignableFrom (c)) {
-            throw new Fault ("This is not a valid generator class");
+    private void createGenerator(String s) throws Fault {
+        if (s != null) {
+            try {
+                @SuppressWarnings({"unchecked"})
+                Class<? extends Generator> c = (Class<? extends Generator>) Class.forName(s);
+                if (!(Generator.class).isAssignableFrom(c)) {
+                    throw new Fault("This is not a valid generator class");
+                }
+                generator = c.getConstructor().newInstance();
+            } catch (ReflectiveOperationException e) {
+                throw new Fault(e.toString());
+            }
+        } else {
+            generator = new GridGenerator();
         }
-        generator =  (Generator) c.newInstance();
-        }
-        catch (ClassNotFoundException e) {
-        throw new Fault (e.toString());
-        }
-        catch (IllegalAccessException i) {
-        throw new Fault (i.toString());
-        }
-        catch (InstantiationException ie) {
-        throw new Fault (ie.toString());
-        }
-    }
-    else {
-        generator = new GridGenerator();
-    }
-    generator.init(generatorArgs);
+        generator.init(generatorArgs);
     }
 
     /*
@@ -215,38 +199,30 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * PrintReporter object.</P>
      */
     private void createReporter(String s) throws Fault {
-    if (s != null) {
-        try {
-        Class  c = Class.forName(s);
-        if (!(Reporter.class).isAssignableFrom(c)) {
-            throw new Fault ("This is not a valid reporter class");
+        if (s != null) {
+            try {
+                @SuppressWarnings({"unchecked"})
+                Class<? extends Reporter> c = (Class<? extends Reporter>) Class.forName(s);
+                if (!(Reporter.class).isAssignableFrom(c)) {
+                    throw new Fault("This is not a valid reporter class");
+                }
+                reporter = c.getConstructor().newInstance();
+            } catch (ReflectiveOperationException e) {
+                throw new Fault(e.toString());
+            }
+        } else {
+            reporter = new PrintReporter();
         }
-        reporter = (Reporter) c.newInstance();
-        }
-        catch (ClassNotFoundException e) {
-        throw new Fault (e.toString());
-        }
-        catch (IllegalAccessException i) {
-        throw new Fault (i.toString());
-        }
-        catch (InstantiationException ie) {
-        throw new Fault (ie.toString());
-        }
-    }
-    else {
-        reporter = new PrintReporter();
-    }
-    reporter.init(reporterArgs, log, ref);
+        reporter.init(reporterArgs, log, ref);
     }
 
     // -------------------------- END OF ALL INITIALIZATION METHODS -------------------
     // -------------------------- START ACTUAL TESTING CODE ---------------------------
 
-
     /**
      * This method executes the method under test or the constructor under test depending
      * upon the testcase.
-     *
+     * <p>
      * This method takes 3 parameters - classInstance (null in case of a constructor test)
      * is the instance of the class on which the method is executed. exeParam is a set of
      * parameters for executing the method/constructor and a exeSignature that represents
@@ -291,65 +267,56 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * @param exeParameters    The execution parameter set
      * @param exeSignature     An array of integers that correspond to the Factory index
      *                         (used by the Reporter object)
-     *
      */
-    public final Status runTest (Object objectUnderTest, Object[] exeParameters, int[] exeSignature) {
+    public final Status runTest(Object objectUnderTest, Object[] exeParameters, int[] exeSignature) {
 
-    this.objectUnderTest = objectUnderTest;
-    this.exeParameters = exeParameters;
-    this.exeSignature = exeSignature;
-    canAssertionBeChecked = false;
-    didAssertionFail = false;
-    Status testStat = Status.passed("Test Started");
+        this.objectUnderTest = objectUnderTest;
+        this.exeParameters = exeParameters;
+        this.exeSignature = exeSignature;
+        canAssertionBeChecked = false;
+        didAssertionFail = false;
+        Status testStat = Status.passed("Test Started");
 
-    reporter.reportTestData (objectUnderTest, exeParameters, exeSignature);
-    try {
-        expectedExceptionSet = predictExceptionSet (exeParameters);
-        if (methodTest)
-        checkExceptionSet(expectedExceptionSet, methodUnderTest.getExceptionTypes());
-        else
-        checkExceptionSet(expectedExceptionSet, constructorUnderTest.getExceptionTypes());
-        savePreState();
+        reporter.reportTestData(objectUnderTest, exeParameters, exeSignature);
         try {
-        if (methodTest) {
-            result = methodUnderTest.invoke (objectUnderTest, exeParameters);
+            expectedExceptionSet = predictExceptionSet(exeParameters);
+            if (methodTest) {
+                checkExceptionSet(expectedExceptionSet, methodUnderTest.getExceptionTypes());
+            } else {
+                checkExceptionSet(expectedExceptionSet, constructorUnderTest.getExceptionTypes());
+            }
+            savePreState();
+            try {
+                if (methodTest) {
+                    result = methodUnderTest.invoke(objectUnderTest, exeParameters);
+                } else {
+                    result = constructorUnderTest.newInstance(exeParameters);
+                }
+                testStat = analyzeNormally();
+            } catch (InvocationTargetException t) {
+                // this is where most expected exceptions get handled
+                Throwable exceptionRaised = t.getTargetException();
+                testStat = analyzeExceptionally(exceptionRaised);
+            } catch (Error e) {
+                // as of JDK1.4, errors thrown from the reflection target
+                // are not caught and wrapped in InvocationTargetException,
+                // so we catch them here explicitly.
+                testStat = analyzeExceptionally(e);
+            } finally {
+                releasePreState();
+            }
+        } catch (Fault fe) {
+            testStat = Status.failed(fe.getMessage());
+        } catch (ThreadDeath td) {
+            reporter.reportException(td);
+            throw td;
+        } catch (Throwable t) {
+            reporter.reportException(t);
+            testStat = Status.failed(t + " raised.");
         }
-        else {
-            result = constructorUnderTest.newInstance (exeParameters);
-        }
-        testStat = analyzeNormally ();
-        }
-        catch (InvocationTargetException t) {
-        // this is where most expected exceptions get handled
-        Throwable exceptionRaised = t.getTargetException();
-        testStat = analyzeExceptionally(exceptionRaised);
-        }
-        catch (Error e) {
-        // as of JDK1.4, errors thrown from the reflection target
-        // are not caught and wrapped in InvocationTargetException,
-        // so we catch them here explicitly.
-        testStat = analyzeExceptionally(e);
-        }
-        finally {
-          releasePreState();
-        }
+        reporter.reportTestResult(result, testStat);
+        return testStat;
     }
-    catch (Fault fe) {
-        testStat = Status.failed (fe.getMessage());
-    }
-    catch (ThreadDeath td) {
-        reporter.reportException (td);
-        throw td;
-    }
-    catch (Throwable t) {
-        reporter.reportException (t);
-        testStat = Status.failed (t.toString() + " raised.");
-    }
-    reporter.reportTestResult(result, testStat);
-    return testStat;
-    }
-
-
 
     //
     // Test has executed normally without raising any exceptions. Check
@@ -360,24 +327,23 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
     //     If yes, then the test passed.
     //
     private Status analyzeNormally() throws Fault {
-    if (expectedExceptionSet.size() == 0) {
-        try {
-        canAssertionBeChecked = true;
-        normalPostCondition();
-        postCondition();
-        canAssertionBeChecked = false;
-        if (didAssertionFail)
-            return Status.failed ("Assertions failed: All Assertions Checked");
-        else
-            return Status.passed ("Test Passed");
+        if (expectedExceptionSet.size() == 0) {
+            try {
+                canAssertionBeChecked = true;
+                normalPostCondition();
+                postCondition();
+                canAssertionBeChecked = false;
+                if (didAssertionFail) {
+                    return Status.failed("Assertions failed: All Assertions Checked");
+                } else {
+                    return Status.passed("Test Passed");
+                }
+            } catch (Fault f) {
+                throw new Fault(f.getMessage());
+            }
+        } else {
+            return Status.failed("An exception was expected but was not raised");
         }
-        catch (Fault f) {
-        throw new Fault(f.getMessage());
-        }
-    }
-    else {
-        return Status.failed ("An exception was expected but was not raised");
-    }
     }
 
     //
@@ -389,33 +355,32 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
     // the test failed.
     //
     private Status analyzeExceptionally(Throwable exception) throws Fault {
-    Throwable exceptionRaised = exception;
-    if (expectedExceptionSet.size() == 0)
-        return Status.failed ("Unexpected Exception: " + exceptionRaised.toString() + " raised");
-    else {
-        if (expectedExceptionSet.contains(exceptionRaised)) {
-        try {
-            ExpectedException[] e = expectedExceptionSet.getExceptionList(exceptionRaised);
-            canAssertionBeChecked = true;
-            for (int k = 0; k < e.length; k++) {
-            e[k].exceptionPostCondition();
+        Throwable exceptionRaised = exception;
+        if (expectedExceptionSet.size() == 0) {
+            return Status.failed("Unexpected Exception: " + exceptionRaised.toString() + " raised");
+        } else {
+            if (expectedExceptionSet.contains(exceptionRaised)) {
+                try {
+                    ExpectedException[] e = expectedExceptionSet.getExceptionList(exceptionRaised);
+                    canAssertionBeChecked = true;
+                    for (ExpectedException expectedException : e) {
+                        expectedException.exceptionPostCondition();
+                    }
+                    postCondition();
+                    canAssertionBeChecked = false;
+                    if (didAssertionFail) {
+                        return Status.failed("Assertions failed: All Assertions Checked");
+                    } else {
+                        return Status.passed("Test Passed");
+                    }
+                } catch (Fault f) {
+                    throw new Fault(f.getMessage());
+                }
+            } else {
+                return Status.failed("Obtained Exception: " + exceptionRaised.toString() +
+                        " is NOT an expected exception.");
             }
-            postCondition();
-            canAssertionBeChecked = false;
-            if (didAssertionFail)
-            return Status.failed("Assertions failed: All Assertions Checked");
-            else
-            return Status.passed ("Test Passed");
         }
-        catch (Fault f) {
-            throw new Fault(f.getMessage());
-        }
-        }
-        else {
-        return Status.failed ("Obtained Exception: " + exceptionRaised.toString() +
-                      " is NOT an expected exception.");
-        }
-    }
     }
 
     //------------------------ END OF CODE THAT DOES THE ACTUAL TESTING -------------------
@@ -426,14 +391,14 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * This method returns the method under test.
      */
     public Method getMethod() {
-    return methodUnderTest;
+        return methodUnderTest;
     }
 
     /**
      * This method returns the constructor under test.
      */
-    public Constructor getConstructor() {
-    return constructorUnderTest;
+    public Constructor<?> getConstructor() {
+        return constructorUnderTest;
     }
 
     //------------------------- END get...() methods / START assert() ------------------
@@ -448,22 +413,21 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      *
      * @param b the boolean expression tested
      * @param s the string associated with this assertion (a comment)
-     * @exception Fault This exception is raised either when a call to hardAssert() fails
-     *                  or when this method is invoked from a incorrect location.
+     * @throws Fault This exception is raised either when a call to hardAssert() fails
+     *                  or when this method is invoked from an incorrect location.
      */
-    public void hardAssert(boolean b, String s) throws Fault  {
-    if (canAssertionBeChecked) {
-        if (!b) {
-        didAssertionFail = true;
-        reporter.reportAssertion (s, b);
-        throw new Fault("Assertion Failed");
+    public void hardAssert(boolean b, String s) throws Fault {
+        if (canAssertionBeChecked) {
+            if (!b) {
+                didAssertionFail = true;
+                reporter.reportAssertion(s, b);
+                throw new Fault("Assertion Failed");
+            }
+            reporter.reportAssertion(s, b);
+        } else {
+            reporter.reportAssertion(s, b);
+            throw new Fault("Assertion checked from a non-postCondition method");
         }
-        reporter.reportAssertion (s, b);
-    }
-    else {
-        reporter.reportAssertion(s, b);
-        throw new Fault ("Assertion checked from a non-postCondition method");
-    }
     }
 
     /**
@@ -474,23 +438,21 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      *
      * @param b the boolean expression tested
      * @param s the string associated with this assertion (a comment)
-     * @exception Fault  This exception is raised when softAssert
+     * @throws Fault  This exception is raised when softAssert
      *            is invoked from a incorrect location.
      */
-    public void softAssert(boolean b, String s) throws Fault  {
-    if (canAssertionBeChecked) {
-        if (!b) {
-        didAssertionFail = true;
-        reporter.reportAssertion (s, b);
+    public void softAssert(boolean b, String s) throws Fault {
+        if (canAssertionBeChecked) {
+            if (!b) {
+                didAssertionFail = true;
+                reporter.reportAssertion(s, b);
+            }
+            reporter.reportAssertion(s, b);
+        } else {
+            reporter.reportAssertion(s, b);
+            throw new Fault("Assertion checked from a non-postCondition method");
         }
-        reporter.reportAssertion (s, b);
     }
-    else {
-        reporter.reportAssertion (s, b);
-        throw new Fault ("Assertion checked from a non-postCondition method");
-    }
-    }
-
 
     // ------------ END assert...() code/START constructors() ------------------
 
@@ -500,9 +462,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * test by calling the set...() methods.
      */
     protected AssertionTest() {
-
     }
-
 
     /**
      * Constructor that takes a Method and the factory[] as
@@ -512,10 +472,10 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * @param methodObj Method under test
      * @param data An array of Factories that represent the test data.
      */
-    protected AssertionTest (Method methodObj, Factory[] data) {
-    methodUnderTest = methodObj;
-    methodTest = true;
-    dataFactories = data;
+    protected AssertionTest(Method methodObj, Factory[] data) {
+        methodUnderTest = methodObj;
+        methodTest = true;
+        dataFactories = data;
     }
 
     /**
@@ -526,10 +486,10 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * @param constructorObj Constructor under test
      * @param data An array of Factories that represent the test data.
      */
-    protected AssertionTest (Constructor constructorObj, Factory[] data) {
-    methodTest = false;
-    constructorUnderTest = constructorObj;
-    dataFactories = data;
+    protected AssertionTest(Constructor<?> constructorObj, Factory[] data) {
+        methodTest = false;
+        constructorUnderTest = constructorObj;
+        dataFactories = data;
     }
 
     //----------------------- END OF CONSTRUCTORS ---------------------------
@@ -543,20 +503,17 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * AssertionTest constructor.
      *
      * @param m the method under test
-     * @exception Fault raised when this method is incorrectly used.
+     * @throws Fault raised when this method is incorrectly used.
      */
-
     protected void setMethodUnderTest(Method m) throws Fault {
-    if (methodUnderTest != null) {
-        throw new Fault("The method under test is already set.");
-    }
-    else if (constructorUnderTest != null) {
-        throw new Fault("A test can test a method or a constructor, but not both");
-    }
-    else {
-        methodTest = true;
-        methodUnderTest = m;
-    }
+        if (methodUnderTest != null) {
+            throw new Fault("The method under test is already set.");
+        } else if (constructorUnderTest != null) {
+            throw new Fault("A test can test a method or a constructor, but not both");
+        } else {
+            methodTest = true;
+            methodUnderTest = m;
+        }
     }
 
     /**
@@ -566,20 +523,17 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * AssertionTest constructor.
      *
      * @param c the constructor under test
-     * @exception Fault raised when this method is incorrectly used.
+     * @throws Fault raised when this method is incorrectly used.
      */
-
-    protected void setConstructorUnderTest(Constructor c) throws Fault {
-    if (constructorUnderTest != null) {
-        throw new Fault("The constructor is already set.");
-    }
-    else if (methodUnderTest != null) {
-        throw new Fault("A test can test a method or a constructor, but not both");
-    }
-    else {
-        methodTest = false;
-        constructorUnderTest = c;
-    }
+    protected void setConstructorUnderTest(Constructor<?> c) throws Fault {
+        if (constructorUnderTest != null) {
+            throw new Fault("The constructor is already set.");
+        } else if (methodUnderTest != null) {
+            throw new Fault("A test can test a method or a constructor, but not both");
+        } else {
+            methodTest = false;
+            constructorUnderTest = c;
+        }
     }
 
     /**
@@ -589,9 +543,8 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      *
      * @param f an array of data factories
      */
-
     protected void setDataFactories(Factory[] f) {
-    dataFactories = f;
+        dataFactories = f;
     }
 
     //----------------------------------- END OF set...() methods --------------
@@ -601,8 +554,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * Any information that pertains to the state of the object under test
      * can be saved by the test developer by overriding this method.
      *
-     * @exception Fault raised when an assertion check using hard/soft assert is placed here.
-     *
+     * @throws Fault raised when an assertion check using hard/soft assert is placed here.
      */
     protected void savePreState() throws  Fault {
     }
@@ -611,7 +563,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * The state information captured at <CODE>savePreState()</CODE> can
      * be released by overriding this method.
      *
-     * @exception Fault raised when an assertion check using hard/soft assert is placed here.
+     * @throws Fault raised when an assertion check using hard/soft assert is placed here.
      */
     protected void releasePreState() throws Fault {
     }
@@ -622,8 +574,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * The purpose of this method is to place all those assertions here by overriding this
      * method.
      *
-     *
-     * @exception Fault raised when a hardAssert() fails within this method.
+     * @throws Fault raised when a hardAssert() fails within this method.
      */
     protected void postCondition() throws Fault {
     }
@@ -634,11 +585,10 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * predicting a set of exceptions that can be raised by
      * the method.
      *
-     * @param exeParam paramters used for executing method/constructor under test.
+     * @param exeParam parameters used for executing method/constructor under test.
      */
     protected ExceptionSet predictExceptionSet(Object[] exeParam) {
-    ExceptionSet e = new ExceptionSet();
-    return e;
+        return new ExceptionSet();
     }
 
     /**
@@ -649,8 +599,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * assertions are checks to ensure that the method/constructor is
      * executed correctly.
      *
-     * @exception Fault will be raised by assert().
-     *
+     * @throws Fault will be raised by assert().
      */
     protected void normalPostCondition() throws Fault {
     }
@@ -658,10 +607,9 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
     /**
      * This method returns the value of the object under test if this test is
      * a method test.
-     *
      */
-    protected Object getObjectUnderTest () {
-    return objectUnderTest;
+    protected Object getObjectUnderTest() {
+        return objectUnderTest;
     }
 
     /**
@@ -669,7 +617,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * used for executing the method or constructor under test.
      */
     protected Object[] getExecutionParameters() {
-    return exeParameters;
+        return exeParameters;
     }
 
     /**
@@ -681,12 +629,11 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * @param index the index of the parameter requested
      */
     protected Object getExecutionParameter(int index) {
-    if (index < exeParameters.length) {
-        return exeParameters[index];
-    }
-    else {
-        return null;
-    }
+        if (index < exeParameters.length) {
+            return exeParameters[index];
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -694,9 +641,8 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * method or constructor under test.
      */
     protected Object getResult() {
-    return result;
+        return result;
     }
-
 
     //------------------------------ HELPER METHODS --------------------------
     /**
@@ -706,25 +652,25 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      *
      * @param e the set of exceptions predicted by the test developer
      * @param methodExceptionSet the set of exceptions that can be thrown by the method/constructor
-     * @exception AssertionTest.Fault raised when the test developer tries to catch an exception that
+     * @throws AssertionTest.Fault raised when the test developer tries to catch an exception that
      *                                will never be raised.
      */
     private void checkExceptionSet(ExceptionSet e, Class[] methodExceptionSet) throws Fault {
-    nextException:
-    for (int i = 0; i < e.size(); ++i) {
-        ExpectedException ee = e.getException(i);
-        Class eeClass = ee.getExceptionClass();
-        for (int j = 0; j < methodExceptionSet.length; ++j) {
-        if (methodExceptionSet[j].isAssignableFrom (eeClass)) {
-            continue nextException;
+        nextException:
+        for (int i = 0; i < e.size(); ++i) {
+            ExpectedException ee = e.getException(i);
+            Class eeClass = ee.getExceptionClass();
+            for (Class aClass : methodExceptionSet) {
+                if (aClass.isAssignableFrom(eeClass)) {
+                    continue nextException;
+                }
+            }
+            if (((RuntimeException.class).isAssignableFrom(eeClass)) ||
+                    ((Error.class).isAssignableFrom(eeClass))) {
+                continue;
+            }
+            throw new Fault(eeClass.getName());
         }
-        }
-        if (((RuntimeException.class).isAssignableFrom (eeClass)) ||
-        ((Error.class).isAssignableFrom (eeClass))) {
-        continue nextException;
-        }
-        throw new Fault (eeClass.getName());
-    }
     }
 
     //----------------------------  END OF HELPER METHODS -------------------------------
@@ -798,7 +744,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
     //
     private Object objectUnderTest;
     private Method methodUnderTest;
-    private Constructor constructorUnderTest;
+    private Constructor<?> constructorUnderTest;
     private Object[] exeParameters;
     private int[] exeSignature;
     private Object result;
@@ -813,64 +759,63 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      */
     public class ExpectedException {
 
-    /**
-     * Constructor - construct an expected exception with an
-     * Exception class type and a message associated with that
-     * exception (useful when the exception name is not good
-     * enough to describe the exception.
-     */
-    public ExpectedException(Class c, String mesg) {
-        message = mesg;
-        if (c != null) {
-        if (!(Throwable.class).isAssignableFrom(c)) {
-            log.println ("Error:" + c.getName() + " is not a subclass of Throwable");
-            return;
+        /**
+         * Constructor - construct an expected exception with an
+         * Exception class type and a message associated with that
+         * exception (useful when the exception name is not good
+         * enough to describe the exception).
+         */
+        public ExpectedException(Class c, String mesg) {
+            message = mesg;
+            if (c != null) {
+                if (!(Throwable.class).isAssignableFrom(c)) {
+                    log.println("Error:" + c.getName() + " is not a subclass of Throwable");
+                    return;
+                }
+            }
+            exceptionClass = c;
         }
+
+        /**
+         * Constructor - construct an expected exception with a class
+         * type.
+         *
+         * @param c The exception class.
+         */
+        public ExpectedException(Class c) {
+            this(c, c.getName());
         }
-        exceptionClass = c;
-    }
 
-    /**
-     * Constructor - construct an expected exception with a class
-     * type.
-     *
-     * @param c The exception class.
-     */
-    public ExpectedException(Class c) {
-        this (c, c.getName());
-    }
+        /**
+         * This method returns the class of the exception. It should be called
+         * getClass() as it returns a class type but getClass() is a final method
+         * in Object - so it is called getExceptionClass().
+         */
+        public Class getExceptionClass() {
+            return exceptionClass;
+        }
 
-    /**
-     * This method returns the class of the exception. It should be called
-     * getClass() as it returns a class type but getClass() is a final method
-     * in Object - so it is called getExceptionClass().
-     *
-     */
-    public Class getExceptionClass() {
-        return exceptionClass;
-    }
+        /**
+         * This method returns the message associated with the exception class.
+         */
+        public String getMessage() {
+            return message;
+        }
 
-    /**
-     * This method returns the message associated with the exception class.
-     */
-    public String getMessage() {
-        return message;
-    }
+        /**
+         * This method is called to check the post condition if an exception
+         * was expected and an exception was raised AND if the exception
+         * raised is the same as the one expected while executing the method
+         * or constructor under test.
+         *
+         * @throws Fault is raised when a fatal assertion is encountered.
+         */
+        protected void exceptionPostCondition() throws Fault {
+        }
 
-    /**
-     * This method is called to check the post condition if an exception
-     * was expected and an exception was raised AND if the exception
-     * raised is the same as the one expected while executing the method
-     * or constructor under test.
-     *
-     * @exception Fault is raised when a fatal assertion is encountered.
-     */
-    protected void exceptionPostCondition() throws Fault {
-    }
-
-    /* ---- Private Members --*/
-    private Class exceptionClass;
-    private String message;
+        /* ---- Private Members --*/
+        private Class exceptionClass;
+        private final String message;
     }
 
     /**
@@ -880,84 +825,80 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * an <CODE>ExceptionSet</CODE> object that contains a list of predicted
      * exceptions.
      */
-
     public class ExceptionSet {
 
-
-    /**
-     * This method adds an expected exception to the ExceptionSet
-     *
-     * @param e An exception that was expected.
-     */
-    public void addException(ExpectedException e) {
-        exceptionSet.addElement((Object) e);
-    }
-
-    /**
-     * This method returns the size of the ExceptionSet - in other
-     * words returns the number of exceptions that can be raised
-     * by this method.
-     */
-    public int size() {
-        return exceptionSet.size();
-    }
-
-    /**
-     * This method returns a  exception from the exception set that
-     * is assignable to the parameter passed.
-     *
-     * @param t a throwable object
-     */
-    public ExpectedException[] getExceptionList(Throwable t) {
-        Vector temp = new Vector();
-        ExpectedException ee = new ExpectedException(null, null);
-        Class eeClass;
-        for (int i = 0; i < exceptionSet.size(); ++i) {
-        ee = getException(i);
-        eeClass = ee.getExceptionClass();
-        if ((eeClass.isAssignableFrom(t.getClass())) ||
-            (((RuntimeException.class).isAssignableFrom (t.getClass()))) ||
-            ((Error.class).isAssignableFrom (t.getClass()))) {
-            temp.addElement(ee);
+        /**
+         * This method adds an expected exception to the ExceptionSet
+         *
+         * @param e An exception that was expected.
+         */
+        public void addException(ExpectedException e) {
+            exceptionSet.add(e);
         }
-        }
-        ExpectedException[] eeList = new ExpectedException[temp.size()];
-        temp.copyInto (eeList);
-        return eeList;
-    }
 
-    /**
-     * This method returns the exception at index i
-     *
-     * @param i index of the element
-     */
-    public ExpectedException getException(int i) {
-        return (ExpectedException) exceptionSet.elementAt(i);
-    }
-
-    /**
-     * This method checks to see if the parameter passed is
-     * contained in this exception set or not.
-     *
-     * @param t A throwable object
-     */
-    public boolean contains(Throwable t) {
-        ExpectedException ee;
-        Class eeClass;
-        for (int i = 0; i < exceptionSet.size(); ++i) {
-        ee = getException(i);
-        eeClass = ee.getExceptionClass();
-        if ((eeClass.isAssignableFrom(t.getClass())) ||
-            ((RuntimeException.class).isAssignableFrom(t.getClass())) ||
-            ((Error.class).isAssignableFrom(t.getClass()))) {
-            return true;
+        /**
+         * This method returns the size of the ExceptionSet - in other
+         * words returns the number of exceptions that can be raised
+         * by this method.
+         */
+        public int size() {
+            return exceptionSet.size();
         }
-        }
-        return false;
-    }
 
-    /* ---- Private Members --------*/
-    private Vector exceptionSet = new Vector();
+        /**
+         * This method returns an exception from the exception set that
+         * is assignable to the parameter passed.
+         *
+         * @param t a throwable object
+         */
+        public ExpectedException[] getExceptionList(Throwable t) {
+            List<ExpectedException> temp = new ArrayList<>();
+            ExpectedException ee = new ExpectedException(null, null);
+            Class eeClass;
+            for (int i = 0; i < exceptionSet.size(); ++i) {
+                ee = getException(i);
+                eeClass = ee.getExceptionClass();
+                if ((eeClass.isAssignableFrom(t.getClass())) ||
+                        (((RuntimeException.class).isAssignableFrom(t.getClass()))) ||
+                        ((Error.class).isAssignableFrom(t.getClass()))) {
+                    temp.add(ee);
+                }
+            }
+            return temp.toArray(new ExpectedException[0]);
+        }
+
+        /**
+         * This method returns the exception at index i
+         *
+         * @param i index of the element
+         */
+        public ExpectedException getException(int i) {
+            return exceptionSet.get(i);
+        }
+
+        /**
+         * This method checks to see if the parameter passed is
+         * contained in this exception set or not.
+         *
+         * @param t A throwable object
+         */
+        public boolean contains(Throwable t) {
+            ExpectedException ee;
+            Class eeClass;
+            for (int i = 0; i < exceptionSet.size(); ++i) {
+                ee = getException(i);
+                eeClass = ee.getExceptionClass();
+                if ((eeClass.isAssignableFrom(t.getClass())) ||
+                        ((RuntimeException.class).isAssignableFrom(t.getClass())) ||
+                        ((Error.class).isAssignableFrom(t.getClass()))) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /* ---- Private Members --------*/
+        private final List<ExpectedException> exceptionSet = new ArrayList<>();
     }
 
     /**
@@ -973,18 +914,16 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
      * say savePreState() or releasePreState() or any other method other
      * than the checkPostCondition() methods.
      */
-
     public static class Fault extends Exception {
 
-    /**
-     * Construct a new Fault object with a message that corresponds
-     * to the assertion failure.
-     *
-     * @param s the string containing a comment that corresponds to the Fault
-     */
-    public Fault(String s) {
-        super(s);
-    }
-
+        /**
+         * Construct a new Fault object with a message that corresponds
+         * to the assertion failure.
+         *
+         * @param s the string containing a comment that corresponds to the Fault
+         */
+        public Fault(String s) {
+            super(s);
+        }
     }
 }
