@@ -2,6 +2,7 @@
 <!DOCTYPE TestGroup SYSTEM "testgenspec.dtd">
 <!--
 
+    Copyright (c) 2026 Contributors to the Eclipse Foundation.
     Copyright (c) 2018, 2020 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
@@ -34,7 +35,7 @@ API Signature verification of the jakarta.xml.bind package and its subpackages
         <Keyword>cttest</Keyword>
         <Keyword>positive</Keyword>
         <ExecuteClass>javasoft.sqe.tests.api.signaturetest.SigTestWrapper</ExecuteClass>
-        <ExecuteArgs>-Package jakarta.xml.bind</ExecuteArgs>
+        <ExecuteArgs>-TestURL $testURL -Package jakarta.xml.bind</ExecuteArgs>
     </TestGroupAttributes>
 
     <TestCase ID="jakarta.xml.bind">
