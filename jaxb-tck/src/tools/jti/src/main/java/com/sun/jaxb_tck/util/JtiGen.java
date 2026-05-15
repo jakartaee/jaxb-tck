@@ -18,8 +18,9 @@ package com.sun.jaxb_tck.util;
 
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.TreeMap;
 
 import com.sun.interview.Interview;
 
@@ -33,7 +34,7 @@ public class JtiGen extends Interview {
         + "-testsuite dir -tests testURLs -jvm file -xsd_compiler file "
         + "-jaxb JAXB_CLASSES -otherEnv name=value -tests testURLs ";
 
-    private HashMap data;
+    private final Map<String, String> data;
 
     private static class InterviewStub extends Interview {
         public InterviewStub() {
@@ -41,53 +42,52 @@ public class JtiGen extends Interview {
         }
     }
 
-    public JtiGen(HashMap data) throws Exception {
+    public JtiGen(Map<String, String> settings) {
         super(new InterviewStub(), "jti_gen");
-        this.data = new HashMap();
+        data = new TreeMap<>();
 
-        this.data.put("jck.concurrency.concurrency", "1");
-        this.data.put("jck.env.jaxb.xsd_compiler.defaultOperationMode", "Yes");
-        this.data.put("jck.env.jaxb.testExecute.cmdAsFile", "java");
-        this.data.put("jck.env.jaxb.testExecute.otherEnvVars", "");
-        this.data.put("jck.env.testPlatform.local", "Yes");
-        this.data.put("jck.excludeList.latestAutoCheck", "No");
-        this.data.put("jck.excludeList.latestAutoCheckInterval", "7");
-        this.data.put("jck.excludeList.latestAutoCheckMode", "everyXDays");
-        this.data.put("jck.excludeList.needExcludeList", "No");
-        this.data.put("jck.keywords.keywords.mode", "expr");
-        this.data.put("jck.keywords.needKeywords", "No");
-        this.data.put("jck.priorStatus.needStatus", "No");
-        this.data.put("jck.priorStatus.status", "");
-        this.data.put("jck.tests.needTests", "No");
-        this.data.put("jck.tests.tests", "");
-        this.data.put("jck.tests.treeOrFile", "tree");
-        this.data.put("jck.timeout.timeout", "1");
+        data.put("jck.concurrency.concurrency", "1");
+        data.put("jck.env.jaxb.xsd_compiler.defaultOperationMode", "Yes");
+        data.put("jck.env.jaxb.testExecute.cmdAsFile", "java");
+        data.put("jck.env.jaxb.testExecute.otherEnvVars", "");
+        data.put("jck.env.testPlatform.local", "Yes");
+        data.put("jck.excludeList.latestAutoCheck", "No");
+        data.put("jck.excludeList.latestAutoCheckInterval", "7");
+        data.put("jck.excludeList.latestAutoCheckMode", "everyXDays");
+        data.put("jck.excludeList.needExcludeList", "No");
+        data.put("jck.keywords.keywords.mode", "expr");
+        data.put("jck.keywords.needKeywords", "No");
+        data.put("jck.priorStatus.needStatus", "No");
+        data.put("jck.priorStatus.status", "");
+        data.put("jck.tests.needTests", "No");
+        data.put("jck.tests.tests", "");
+        data.put("jck.tests.treeOrFile", "tree");
+        data.put("jck.timeout.timeout", "1");
         // the following answer means that schemagen tests will be run
-        this.data.put("jck.env.jaxb.schemagen.skipJ2XOptional", "Yes");
+        data.put("jck.env.jaxb.schemagen.skipJ2XOptional", "Yes");
 
-        if (isModeSame == true){
-            this.data.put("jck.env.jaxb.xsd_compiler.run.compilerWrapperClass", "com.sun.jaxb_tck.lib.SchemaCompiler");
-            this.data.put("jck.env.jaxb.agent.agentPassivePort", "");
-            this.data.put("jck.env.jaxb.agent.agentType", "active");
-            this.data.put("jck.env.description", "same jvm");
-            this.data.put("jck.env.envName", "same_jvm");
-            this.data.put("jck.env.testPlatform.multiJVM", "No");
-            this.data.put("jck.env.jaxb.schemagen.run.schemagenWrapperClass", "com.sun.jaxb_tck.lib.SchemaGen");
+        if (isModeSame) {
+            data.put("jck.env.jaxb.xsd_compiler.run.compilerWrapperClass", "com.sun.jaxb_tck.lib.SchemaCompiler");
+            data.put("jck.env.jaxb.agent.agentPassivePort", "");
+            data.put("jck.env.jaxb.agent.agentType", "active");
+            data.put("jck.env.description", "same jvm");
+            data.put("jck.env.envName", "same_jvm");
+            data.put("jck.env.testPlatform.multiJVM", "No");
+            data.put("jck.env.jaxb.schemagen.run.schemagenWrapperClass", "com.sun.jaxb_tck.lib.SchemaGen");
         } else {
-            this.data.put("jck.env.jaxb.xsd_compiler.testCompile.xjcCmd", "/bin/sh linux/bin/xjc.sh");
-            this.data.put("jck.env.description", "multi jvm");
-            this.data.put("jck.env.envName", "multi_jvm");
-            this.data.put("jck.env.testPlatform.multiJVM", "Yes");
-            this.data.put("jck.env.jaxb.testExecute.otherOpts", "");
-            this.data.put("jck.env.jaxb.schemagen.run.jxcCmd", "/bin/sh linux/bin/schemagen.sh");
-            this.data.put("jck.env.jaxb.classes.needJaxbClasses", "Yes");
-            this.data.put("jck.env.jaxb.classes.jaxbClasses", "");
-
+            data.put("jck.env.jaxb.xsd_compiler.testCompile.xjcCmd", "/bin/sh linux/bin/xjc.sh");
+            data.put("jck.env.description", "multi jvm");
+            data.put("jck.env.envName", "multi_jvm");
+            data.put("jck.env.testPlatform.multiJVM", "Yes");
+            data.put("jck.env.jaxb.testExecute.otherOpts", "");
+            data.put("jck.env.jaxb.schemagen.run.jxcCmd", "/bin/sh linux/bin/schemagen.sh");
+            data.put("jck.env.jaxb.classes.needJaxbClasses", "Yes");
+            data.put("jck.env.jaxb.classes.jaxbClasses", "");
         }
-        this.data.putAll(data);
+        data.putAll(settings);
     }
 
-    public HashMap generate() {
+    public Map<String, String> generate() {
         super.save(data);
         return data;
     }
@@ -96,9 +96,8 @@ public class JtiGen extends Interview {
 
     public static void main(String[] args) {
         try {
-            HashMap data = getData(args);
-            JtiGen jtiGen = new JtiGen(data);
-            data = jtiGen.generate();
+            JtiGen jtiGen = new JtiGen(getData(args));
+            Map<String, String> data = jtiGen.generate();
             print(data);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -110,14 +109,12 @@ public class JtiGen extends Interview {
         }
     }
 
-    private static HashMap getData(String[] args) {
-        HashMap data = new HashMap();
+    private static Map<String, String> getData(String[] args) {
+        Map<String, String> data = new HashMap<>();
         int n = args.length;
-        String msg = "";
 
         if (n == 0) {
-            msg = "Options not specified.";
-            throw new IllegalArgumentException(msg);
+            throw new IllegalArgumentException("Options not specified.");
         }
 
         for (int i = 0; i < n; i++) {
@@ -128,20 +125,18 @@ public class JtiGen extends Interview {
             } else if ("-work".equals(args[i])) {
                 i += 1;
                 if (i >= n || args[i].charAt(0) == '-') {
-                    msg = "Work directory not specified.";
-                    throw new IllegalArgumentException(msg);
+                    throw new IllegalArgumentException("Work directory not specified.");
                 }
                 data.put("WORKDIR", args[i]);
             } else if ("-testsuite".equals(args[i])) {
                 i += 1;
                 if (i >= n || args[i].charAt(0) == '-') {
-                    msg = "testsuite not specified.";
-                    throw new IllegalArgumentException(msg);
+                    throw new IllegalArgumentException("testsuite not specified.");
                 }
                 data.put("TESTSUITE", args[i]);
             } else if ("-tests".equals(args[i])) {
                 i += 1;
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 if (i < n && args[i].charAt(0) != '-') {
                     buffer.append(args[i]);
                     for (i += 1; i < n && args[i].charAt(0) != '-'; i++) {
@@ -159,8 +154,7 @@ public class JtiGen extends Interview {
             } else if ("-xsd_compiler".equals(args[i])) {
                 i += 1;
                 if (isModeSame) {
-                    msg = "'-xsd_compiler' should not be used in singleJVM mode";
-                    throw new IllegalArgumentException(msg);
+                    throw new IllegalArgumentException("'-xsd_compiler' should not be used in singleJVM mode");
                 }
                 if (i >= n || args[i].charAt(0) == '-') {
                     throw new IllegalArgumentException("xsd_compiler command is not specified");
@@ -169,8 +163,7 @@ public class JtiGen extends Interview {
             } else if ("-schemagen".equals(args[i])) {
                 i += 1;
                 if (isModeSame) {
-                    msg = "'-schemagen' should not be used in singleJVM mode";
-                    throw new IllegalArgumentException(msg);
+                    throw new IllegalArgumentException("'-schemagen' should not be used in singleJVM mode");
                 }
                 if (i >= n || args[i].charAt(0) == '-') {
                     throw new IllegalArgumentException("schemagen command is not specified");
@@ -179,14 +172,12 @@ public class JtiGen extends Interview {
             } else if ("-jaxb".equals(args[i])) {
                 i += 1;
                 if (isModeSame) {
-                    msg = "'-jaxb' should not be used in singleJVM mode";
-                    throw new IllegalArgumentException(msg);
+                    throw new IllegalArgumentException("'-jaxb' should not be used in singleJVM mode");
                 }
                 if (i >= n || args[i].charAt(0) == '-') {
-                    msg = "JAXB classes not specified";
-                    throw new IllegalArgumentException(msg);
+                    throw new IllegalArgumentException("JAXB classes not specified");
                 }
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 buffer.append(args[i]);
                 for (i += 1; i < n && args[i].charAt(0) != '-'; i++) {
                     buffer.append(" ").append(args[i]);
@@ -198,14 +189,12 @@ public class JtiGen extends Interview {
             } else if ("-otherEnv".equals(args[i])) {
                 i += 1;
                 if (isModeSame) {
-                    msg = "'-otherEnv' should not be used in singleJVM mode";
-                    throw new IllegalArgumentException(msg);
+                    throw new IllegalArgumentException("'-otherEnv' should not be used in singleJVM mode");
                 }
                 if (i >= n || args[i].charAt(0) == '-') {
-                    msg = "otherEnv not specified";
-                    throw new IllegalArgumentException(msg);
+                    throw new IllegalArgumentException("otherEnv not specified");
                 }
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 buffer.append(args[i]);
                 for (i += 1; i < n && args[i].charAt(0) != '-'; i++) {
                     buffer.append(" ").append(args[i]);
@@ -213,31 +202,30 @@ public class JtiGen extends Interview {
                 --i;
                 data.put("jck.env.jaxb.testExecute.otherEnvVars", buffer.toString());
             } else {
-                msg = "Unknown option: " + args[i];
-                throw new IllegalArgumentException(msg);
+                throw new IllegalArgumentException("Unknown option: " + args[i]);
             }
         }
 
         return data;
     }
 
-    private static void print(HashMap data) {
+    private static void print(Map<String, String> data) {
         System.out.println("#JavaTest Configuration Interview");
-    System.out.print("#");
-    System.out.println(Calendar.getInstance().getTime().toString());
-        for (Iterator i = data.keySet().iterator(); i.hasNext(); ) {
-            Object key = i.next();
-            Object value = data.get(key);
+        System.out.print("#");
+        System.out.println(Calendar.getInstance().getTime());
+        for (String key : data.keySet()) {
+            String value = data.get(key);
             System.out.print(key);
             System.out.print("=");
-            if ("jck.env.jaxb.testExecute.otherEnvVars".equals((String)key)){
-                String str = "";
-                StringTokenizer st = new StringTokenizer((String)value, "=", false);
-                if (st.hasMoreTokens()){
-                    str = st.nextToken();
+            if ("jck.env.jaxb.testExecute.otherEnvVars".equals(key)) {
+                StringBuilder str = new StringBuilder();
+                StringTokenizer st = new StringTokenizer(value, "=", false);
+                if (st.hasMoreTokens()) {
+                    str.append(st.nextToken());
                 }
                 while (st.hasMoreTokens()) {
-                    str += "\\=" + st.nextToken();
+                    str.append("\\=");
+                    str.append(st.nextToken());
                 }
                 System.out.println(str);
             } else {
