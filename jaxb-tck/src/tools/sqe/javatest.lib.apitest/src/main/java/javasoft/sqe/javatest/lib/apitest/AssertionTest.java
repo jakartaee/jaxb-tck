@@ -16,8 +16,6 @@
  */
 package javasoft.sqe.javatest.lib.apitest;
 
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -37,13 +35,7 @@ import javasoft.sqe.javatest.Status;
  * @see    Reporter
  * @see    Factory
  */
-
-//
-// Unfortunately for the time being we are forced to support some amount
-// of backwards compatibility. Hence AssertionTest needs to implement
-// two different Test interfaces. This will go away in a short while.
-//
-public abstract class AssertionTest implements javasoft.sqe.javatest.Test, javasoft.sqe.harness.Test {
+public abstract class AssertionTest implements javasoft.sqe.javatest.Test {
     /**
      * This method is responsible for initiating the testing process.
      * This method does the following tasks
@@ -89,27 +81,6 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test, javas
     Status testStat = generator.run(this, dataFactories);
     reporter.reportTestDone(testStat);
     return testStat;
-    }
-
-
-    //
-    // Support for Backward Compatibility
-    //
-    public javasoft.sqe.harness.Status run (String[] args, PrintStream log, PrintStream ref) {
-    OutputStream osLog = log;
-    PrintWriter pwLog = new PrintWriter (osLog);
-    OutputStream osRef = ref;
-    PrintWriter pwRef = new PrintWriter (osRef);
-    javasoft.sqe.javatest.Status testStat = run (args, pwLog, pwRef);
-    javasoft.sqe.harness.Status thisTestStatus;
-    pwLog.flush();
-    pwRef.flush();
-    if (testStat.getType() == javasoft.sqe.javatest.Status.PASSED) {
-        thisTestStatus = javasoft.sqe.harness.Status.passed ("Test Passed");
-    } else {
-        thisTestStatus = javasoft.sqe.harness.Status.failed ("Test Failed");
-    }
-    return thisTestStatus;
     }
 
     /**
@@ -168,7 +139,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test, javas
      * arguments.
      *
      * @param args Command line arguments
-     * @param i    index of the argument
+     * @param j    index of the argument
      * @exception Fault raised when there is an error while decoding arguments.
      */
     protected int decodeArg (String[] args, int j) throws Fault {
@@ -916,7 +887,7 @@ public abstract class AssertionTest implements javasoft.sqe.javatest.Test, javas
     /**
      * This method adds an expected exception to the ExceptionSet
      *
-     * @param ExpectedException An exception that was expected.
+     * @param e An exception that was expected.
      */
     public void addException(ExpectedException e) {
         exceptionSet.addElement((Object) e);

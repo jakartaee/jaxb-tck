@@ -35,10 +35,6 @@
     <dependencies>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
-            <artifactId>sqe-harness</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
             <artifactId>sqe-javatest</artifactId>
         </dependency>
         <dependency>
