@@ -29,17 +29,11 @@ public class Jxc extends CompositeInvoker {
     private boolean isSetIOAllowed;
 
     {
-        SecurityManager sm = System.getSecurityManager();
-        if (sm == null) {
+        try {
+            new RuntimePermission("setIO").checkGuard(null);
             isSetIOAllowed = true;
-        } else {
-            try {
-                sm.checkPermission(new RuntimePermission("setIO"));
-
-                isSetIOAllowed = true;
-            } catch (SecurityException e) {
-                isSetIOAllowed = false;
-            }
+        } catch (SecurityException e) {
+            isSetIOAllowed = false;
         }
     }
 
@@ -74,7 +68,6 @@ public class Jxc extends CompositeInvoker {
         } finally {
             err.flush();
             out.flush();
-
             if (isSetIOAllowed) {
                 System.setOut(oldSystemOut);
                 System.setErr(oldSystemErr);

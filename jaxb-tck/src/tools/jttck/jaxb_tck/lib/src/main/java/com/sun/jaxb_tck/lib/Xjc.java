@@ -29,16 +29,11 @@ public class Xjc extends CompositeInvoker{
     private boolean isSetIOAllowed;
 
     {
-        SecurityManager sm = System.getSecurityManager();
-        if (sm == null) {
+        try {
+            new RuntimePermission("setIO").checkGuard(null);
             isSetIOAllowed = true;
-        } else {
-            try {
-                sm.checkPermission(new RuntimePermission("setIO"));
-                isSetIOAllowed = true;
-            } catch (SecurityException e) {
-                isSetIOAllowed = false;
-            }
+        } catch (SecurityException e) {
+            isSetIOAllowed = false;
         }
     }
 
@@ -65,8 +60,7 @@ public class Xjc extends CompositeInvoker{
      *  Performs the schema generation
      */
     @Override
-    protected int execute(PrintStream out, PrintStream err) throws Exception
-    {
+    protected int execute(PrintStream out, PrintStream err) throws Exception {
         PrintStream oldSystemOut = System.out;
         PrintStream oldSystemErr = System.err;
         try {
