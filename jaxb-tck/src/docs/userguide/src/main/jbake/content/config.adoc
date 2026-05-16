@@ -71,9 +71,8 @@ compiler refers to both the schema compiler and the schema generator.
   b.  Set `WORKDIR` environment variable to contain {TechnologyShortName}
       TCK software working directory. This directory will contain raw testing
       data and results.
-  c.  Set `jck.env.jaxb.classes.jaxbClasses` property to contain The Checker
-      Framework library and all {TechnologyShortName} libraries:
-        * checker.jar
+  c.  Set `jck.env.jaxb.classes.jaxbClasses` property to contain all
+      {TechnologyShortName} libraries:
         * +{TechnologyHomeEnv}+/mod/jakarta.activation-api.jar
         * +{TechnologyHomeEnv}+/mod/jakarta.xml.bind-api.jar
         * +{TechnologyHomeEnv}+/mod/jaxb-core.jar
@@ -105,7 +104,7 @@ WORKDIR=/workspace/XMLB-TCK-4.1/batch-multiJVM/work
 jck.concurrency.concurrency=1
 jck.env.description=multi jvm
 jck.env.envName=multi_jvm
-jck.env.jaxb.classes.jaxbClasses=/data/tck/tmp/checker.jar
+jck.env.jaxb.classes.jaxbClasses=
   /data/tck/tmp/jaxb-ri/mod/jakarta.activation-api.jar
   /data/tck/tmp/jaxb-ri/mod/jakarta.xml.bind-api.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-core.jar
