@@ -70,8 +70,8 @@ spec:
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   choice(name: 'RUNTIME', choices: 'Glassfish\nStandalone',
            description: 'Run JAXB Tests with Standalone/Glassfish' )
-  choice(name: 'JDK', choices: 'JDK11\nJDK17\nJDK21',
-           description: 'Java SE Version to be used for running TCK either JDK11 or JDK17 or JDK21' )
+  choice(name: 'JDK', choices: 'JDK11\nJDK17\nJDK21\nJDK25',
+           description: 'Java SE Version to be used for running TCK either JDK11, JDK17, JDK21 or JDK25' )
 
   }
   environment {
@@ -87,8 +87,8 @@ spec:
             env
             bash -x ${WORKSPACE}/docker/build_jaxbtck.sh
           """
-          archiveArtifacts artifacts: 'bundles/*.zip'
-          stash includes: 'bundles/*.zip', name: 'jaxb-tck-bundles'
+          archiveArtifacts artifacts: 'dist/*.zip'
+          stash includes: 'dist/*.zip', name: 'jaxb-tck-bundles'
         }
       }
     }
