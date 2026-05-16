@@ -333,8 +333,7 @@ on the system hosting the JavaTest harness:
 include::req-software.inc[]
 * Java SE {SEversion}
 * A CI for {TechnologyShortName} {TechnologyVersion}. One example is {TechnologyRI}.
-* {TechnologyShortName} TCK version {TechnologyVersion}, which includes:
-include::tck-packages.inc[]
+* {TechnologyShortName} TCK version {TechnologyVersion}
 * The {TechnologyShortName} {TechnologyVersion} Vendor Implementation (VI)
 --
 See the documentation for each of these software applications for
