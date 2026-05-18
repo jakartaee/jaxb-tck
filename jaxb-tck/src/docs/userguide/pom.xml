@@ -33,124 +33,93 @@
     <description>Eclipse Foundation Technology Compatibility Kit User's Guide for Jakarta XML Binding for Jakarta EE, Release 4.0</description>
 
     <properties>
-        <site.output.dir>${project.build.directory}/staging</site.output.dir>
-        <doc.pdf>XMLB-TCK-Users-Guide.pdf</doc.pdf>
+        <guide.name>user-guide</guide.name>
+        <revisiondate>November 2020</revisiondate>
     </properties>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>src/main/jbake/content</directory>
-                            <includes>
-                                <include>toc.adoc</include>
-                            </includes>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.glassfish.doc</groupId>
-                <artifactId>glassfish-doc-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>generate-toc</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>toc</goal>
-                        </goals>
-                        <configuration>
-                            <chapterPatterns>
-                                [A-C0-9]+\s.*,Preface.*,Part\s.*
-                            </chapterPatterns>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-book</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>book</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.jbake</groupId>
-                <artifactId>jbake-maven-plugin</artifactId>
-                <configuration>
-                    <outputDirectory>${site.output.dir}</outputDirectory>
-                    <properties>
-                        <status>${status}</status>
-                    </properties>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>build-site</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <configuration>
-                    <sourceDirectory>${project.build.directory}/book</sourceDirectory>
-                    <sourceDocumentName>book.adoc</sourceDocumentName>
-                    <!-- XXX - below depends on running jbake first -->
-                    <imagesDir>${project.build.directory}/staging/</imagesDir>
-                    <backend>pdf</backend>
-                    <outputFile>${doc.pdf}</outputFile>
+                    <sourceDirectory>${project.basedir}/src/main/asciidoc</sourceDirectory>
+                    <sourceDocumentName>user-guide.adoc</sourceDocumentName>
                     <attributes>
-                        <pdf-stylesdir>${project.basedir}/src/theme</pdf-stylesdir>
-                        <pdf-style>jakartaee</pdf-style>
-                        <doctype>book</doctype>
-                        <status>${status}</status>
-                        <compat-mode />
                         <data-uri />
+                        <docinfo1>true</docinfo1>
+                        <doctype>book</doctype>
                         <icons>font</icons>
-                        <pagenums />
-                        <toc />
-                        <icons>font</icons>
-                        <sectanchors>true</sectanchors>
                         <idprefix />
                         <idseparator>-</idseparator>
-                        <docinfo1>true</docinfo1>
-                        <embedAssets>true</embedAssets>
+                        <imagesdir>images</imagesdir>
+                        <revdate>${revisiondate}</revdate>
+                        <sectanchors>true</sectanchors>
+                        <sourceDirectory>${basedir}/src/main/asciidoc</sourceDirectory>
+                        <status>${status}</status>
                     </attributes>
+                    <resources>
+                        <resource>
+                            <directory>${basedir}/src/main/asciidoc</directory>
+                            <excludes>
+                                <exclude>**/*.inc</exclude>
+                                <exclude>README</exclude>
+                                <exclude>images/**</exclude>
+                            </excludes>
+                        </resource>
+                    </resources>
                 </configuration>
                 <executions>
+                    <execution>
+                        <id>generate-html-doc</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>html5</backend>
+                            <outputFile>${guide.name}.html</outputFile>
+                            <attributes>
+                                <docinfo>private-head</docinfo>
+                                <toc>left</toc>
+                            </attributes>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>generate-pdf-doc</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>process-asciidoc</goal>
                         </goals>
+                        <configuration>
+                            <backend>pdf</backend>
+                            <outputFile>${guide.name}.pdf</outputFile>
+                            <attributes>
+                                <embedAssets>true</embedAssets>
+                                <pagenums/>
+                                <pdf-stylesdir>${project.basedir}/src/theme</pdf-stylesdir>
+                                <pdf-style>jakartaee</pdf-style>
+                                <toc/>
+                            </attributes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src/main/assembly/ug-html.xml</descriptor>
-                        <descriptor>src/main/assembly/ug-pdf.xml</descriptor>
-                    </descriptors>
-                </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
