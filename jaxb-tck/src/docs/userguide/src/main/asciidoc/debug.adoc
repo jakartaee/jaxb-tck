@@ -1,13 +1,3 @@
-type=page
-status=published
-title=Debugging Test Problems
-next=faq.html
-prev=using.html
-~~~~~~
-include::attributes.conf[]
-Debugging Test Problems
-=======================
-
 [[GBFUV]]
 
 

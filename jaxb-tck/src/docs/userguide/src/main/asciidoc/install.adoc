@@ -1,13 +1,3 @@
-type=page
-status=published
-title=Installation
-next=config.html
-prev=rules.html
-~~~~~~
-include::attributes.conf[]
-Installation
-============
-
 [[GBFTP]]
 
 

@@ -1,3 +1,20 @@
+:authors: Jakarta XML Binding Team, https://projects.eclipse.org/projects/ee4j.jaxb
+:email: https://dev.eclipse.org/mailman/listinfo/jaxb-dev
+:version-label!:
+:doctype: book
+:docinfo: shared,private
+:license: Eclipse Foundation Specification License - v2.0
+:source-highlighter: coderay
+:toc: left
+:toclevels: 4
+:sectnumlevels: 4
+:sectanchors:
+ifdef::backend-pdf[]
+:numbered:
+:title-logo-image: image:jakarta_ee_logo_schooner_color_stacked_default.png[pdfwidth=4.25in,align=right]
+endif::[]
+:xrefstyle: short
+
 :TechnologyFullName: Jakarta XML Binding
 :TechnologyShortName: XML Binding
 :LegacyAcronym: JAXB
@@ -33,3 +50,26 @@
 // Define this attribute (uncomment it) if the TCK needs the rebuild appendix.
 // :rebuild:
 :JAXBContextJavaDocURL: https://javadoc.io/doc/jakarta.xml.bind/jakarta.xml.bind-api/latest/jakarta.xml.bind/jakarta/xml/bind/JAXBContext.html
+
+= Jakarta XML Binding TCK User's Guide for Technology Implementors
+
+:sectnums!:
+include::title.adoc[]
+
+:sectnums!:
+include::preface.adoc[]
+
+:sectnums:
+include::intro.adoc[]
+
+include::rules.adoc[]
+
+include::install.adoc[]
+
+include::config.adoc[]
+
+include::using.adoc[]
+
+include::debug.adoc[]
+
+include::faq.adoc[]
