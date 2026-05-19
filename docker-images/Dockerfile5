@@ -1,0 +1,35 @@
+FROM  ubuntu:22.04
+
+ARG MAVEN_VERSION=3.9.16
+ARG MAVEN_BASE_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries
+ARG ANT_VERSION=1.10.17
+ARG ANT_BASE_URL=https://dlcdn.apache.org/ant/binaries/
+
+ADD openjdk-25.0.2_linux-x64_bin.tar.gz /opt
+COPY ant-props.jar /opt/
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y git wget tar zip unzip ksh make
+
+RUN mkdir -p /usr/share/maven /usr/share/maven/ref && \
+    wget --no-cache --no-check-certificate ${MAVEN_BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz -O /tmp/apache-maven.tar.gz && \
+    tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1 && \
+    rm -f /tmp/apache-maven.tar.gz && \
+    ln -s /usr/share/maven/bin/mvn /usr/bin/mvn && \
+    mkdir -p /usr/share/ant && \
+    wget --no-cache --no-check-certificate ${ANT_BASE_URL}/apache-ant-${ANT_VERSION}-bin.tar.gz -O /tmp/apache-ant.tar.gz && \
+    tar -xzf /tmp/apache-ant.tar.gz -C /usr/share/ant --strip-components=1 && \
+    ln -s /usr/share/ant/bin/ant /usr/bin/ant && \
+    cp /opt/ant-props.jar /usr/share/ant/lib && \
+    rm -f /opt/*.tar* && \
+    rm -f /opt/ant-props.jar && \
+    mkdir -p /.m2 &&\
+    chgrp -R 0 /opt /root /usr/share /.m2 && \
+    chmod -R g=u /opt /root /usr/share /.m2 && \
+    chmod -R 775 /root /.m2
+
+ENV JAVA_HOME=/opt/jdk-25.0.2
+ENV JDK11_HOME=/opt/jdk-25.0.2
+ENV ANT_HOME=/usr/share/ant
+ENV PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+
+CMD which ant && ant -version
