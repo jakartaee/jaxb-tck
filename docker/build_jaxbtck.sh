@@ -15,7 +15,7 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
-TCK_MVN_VERSION=4.0.3
+TCK_MVN_VERSION=4.1.0-SNAPSHOT
 
 if [ -z "$ANT_HOME" ]; then
   export ANT_HOME=/usr/share/ant/
