@@ -18,9 +18,7 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref && \
     wget --no-cache --no-check-certificate ${ANT_BASE_URL}/apache-ant-${ANT_VERSION}-bin.tar.gz -O /tmp/apache-ant.tar.gz && \
     tar -xzf /tmp/apache-ant.tar.gz -C /usr/share/ant --strip-components=1 && \
     ln -s /usr/share/ant/bin/ant /usr/bin/ant && \
-    cp /opt/ant-props.jar /usr/share/ant/lib && \
     rm -f /opt/*.tar* && \
-    rm -f /opt/ant-props.jar && \
     mkdir -p /.m2 &&\
     chgrp -R 0 /opt /root /usr/share /.m2 && \
     chmod -R g=u /opt /root /usr/share /.m2 && \
