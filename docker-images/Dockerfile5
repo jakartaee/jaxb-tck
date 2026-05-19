@@ -6,7 +6,6 @@ ARG ANT_VERSION=1.10.17
 ARG ANT_BASE_URL=https://dlcdn.apache.org/ant/binaries/
 
 ADD openjdk-25.0.2_linux-x64_bin.tar.gz /opt
-COPY ant-props.jar /opt/
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y git wget tar zip unzip ksh make
 
