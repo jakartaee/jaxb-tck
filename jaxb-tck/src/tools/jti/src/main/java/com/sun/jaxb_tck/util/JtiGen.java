@@ -75,12 +75,12 @@ public class JtiGen extends Interview {
             data.put("jck.env.testPlatform.multiJVM", "No");
             data.put("jck.env.jaxb.schemagen.run.schemagenWrapperClass", "com.sun.jaxb_tck.lib.SchemaGen");
         } else {
-            data.put("jck.env.jaxb.xsd_compiler.testCompile.xjcCmd", "/bin/sh linux/bin/xjc.sh");
+            data.put("jck.env.jaxb.xsd_compiler.testCompile.xjcCmd", "/bin/sh bin/xjc.sh");
             data.put("jck.env.description", "multi jvm");
             data.put("jck.env.envName", "multi_jvm");
             data.put("jck.env.testPlatform.multiJVM", "Yes");
             data.put("jck.env.jaxb.testExecute.otherOpts", "");
-            data.put("jck.env.jaxb.schemagen.run.jxcCmd", "/bin/sh linux/bin/schemagen.sh");
+            data.put("jck.env.jaxb.schemagen.run.jxcCmd", "/bin/sh bin/schemagen.sh");
             data.put("jck.env.jaxb.classes.needJaxbClasses", "Yes");
             data.put("jck.env.jaxb.classes.jaxbClasses", "");
         }

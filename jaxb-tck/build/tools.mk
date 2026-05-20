@@ -38,77 +38,37 @@ jtlegacy.ok:
 ZIP.files += jtlegacy.ok
 
 #----------------------------------------------------------------------
-$(TCKDIR)/solaris/bin:
-	$(TEST) -d $(TCKDIR)/solaris/bin || $(MKDIR) -p $(TCKDIR)/solaris/bin
+$(TCKDIR)/bin:
+	$(TEST) -d $(TCKDIR)/bin || $(MKDIR) -p $(TCKDIR)/bin
 
-$(TCKDIR)/linux/bin:
-	$(TEST) -d $(TCKDIR)/linux/bin || $(MKDIR) -p $(TCKDIR)/linux/bin
-
-$(TCKDIR)/macos/bin:
-	$(TEST) -d $(TCKDIR)/macos/bin || $(MKDIR) -p $(TCKDIR)/macos/bin
-
-$(TCKDIR)/win32/bin:
-	$(TEST) -d $(TCKDIR)/win32/bin || $(MKDIR) -p $(TCKDIR)/win32/bin
-
-gettest.ok: javatest.ok $(TCKDIR)/solaris/bin
-	$(RM) $(TCKDIR)/solaris/bin/gettest
-	$(CP) $(TOPDIR)/src/share/bin/gettest $(TCKDIR)/solaris/bin
-	$(CHMOD) +x $(TCKDIR)/solaris/bin/gettest
+gettest.ok: javatest.ok $(TCKDIR)/bin
+	$(RM) $(TCKDIR)/bin/gettest
+	$(CP) $(TOPDIR)/src/share/bin/gettest $(TCKDIR)/bin
+	$(CHMOD) +x $(TCKDIR)/bin/gettest
 	echo "gettest is copied at " `date` > $@
 
-#ZIP.files += gettest.ok
+ZIP.files += gettest.ok
 
-xjc.sh.ok: javatest.ok $(TCKDIR)/solaris/bin $(TCKDIR)/linux/bin $(TCKDIR)/macos/bin
-	$(RM) $(TCKDIR)/solaris/bin/xjc*.sh ; $(RM) $(TCKDIR)/linux/bin/xjc*.sh ; $(RM) $(TCKDIR)/macos/xjc*.sh
-	$(CP) $(TOPDIR)/src/share/bin/xjc*.sh $(TCKDIR)/solaris/bin
-	$(CP) $(TOPDIR)/src/share/bin/xjc*.sh $(TCKDIR)/linux/bin
-	$(CP) $(TOPDIR)/src/share/bin/xjc*.sh $(TCKDIR)/macos/bin
-	$(CP) $(TOPDIR)/src/share/bin/javatest $(TCKDIR)/macos/bin
-	$(CHMOD) +x $(TCKDIR)/solaris/bin/xjc*.sh
-	$(CHMOD) +x $(TCKDIR)/linux/bin/xjc*.sh
-	$(CHMOD) +x $(TCKDIR)/macos/bin/xjc*.sh
-	echo "xjc.sh is copied at " `date` > $@
+compareER.pl.ok: javatest.ok $(TCKDIR)/bin
+	$(RM) $(TCKDIR)/bin/compareER.pl
+	$(CP) $(TOPDIR)/src/share/bin/compareER.pl $(TCKDIR)/bin
+	$(CHMOD) +x $(TCKDIR)/bin/compareER.pl
+	echo "compareER.pl is copied at " `date` > $@
+
+ZIP.files += compareER.pl.ok
+
+xjc.sh.ok: javatest.ok $(TCKDIR)/bin
+	$(RM) $(TCKDIR)/bin/xjc*
+	$(CP) $(TOPDIR)/src/share/bin/xjc* $(TCKDIR)/bin
+	$(CHMOD) +x $(TCKDIR)/bin/xjc*.sh
+	echo "xjc.sh|bat is copied at " `date` > $@
 
 ZIP.files += xjc.sh.ok
 
-compareER.pl.ok: javatest.ok $(TCKDIR)/solaris/bin
-	$(RM) $(TCKDIR)/solaris/bin/compareER.pl
-	$(CP) $(TOPDIR)/src/share/bin/compareER.pl $(TCKDIR)/solaris/bin
-	$(CHMOD) +x $(TCKDIR)/solaris/bin/compareER.pl
-	echo "compareER.pl is copied at " `date` > $@
-
-#ZIP.files += compareER.pl.ok
-
-#----------------------------------------------------------------------
-
-xjc.bat.ok: javatest.ok $(TCKDIR)/win32/bin
-	$(RM) $(TCKDIR)/win32/bin/xjc*.bat
-	$(CP) $(TOPDIR)/src/share/bin/xjc*.bat $(TCKDIR)/win32/bin/
-	echo "xjc.bat is copied at " `date` > $@
-
-ZIP.files += xjc.bat.ok
-
-#----------------------------------------------------------------------
-#----------------------------------------------------------------------
-
-schemagen.bat.ok: javatest.ok $(TCKDIR)/win32/bin
-	$(RM) $(TCKDIR)/win32/bin/schemagen*.bat
-	$(CP) $(TOPDIR)/src/share/bin/schemagen*.bat $(TCKDIR)/win32/bin/
-	echo "schemagen.bat is copied at " `date` > $@
-
-ZIP.files += schemagen.bat.ok
-
-schemagen.sh.ok: javatest.ok $(TCKDIR)/solaris/bin
-	$(RM) $(TCKDIR)/solaris/bin/schemagen*.sh $(TCKDIR)/linux/bin/schemagen*.sh $(TCKDIR)/macos/bin/schemagen*.sh
-	$(CP) $(TOPDIR)/src/share/bin/schemagen*.sh $(TCKDIR)/solaris/bin/
-	$(CP) $(TOPDIR)/src/share/bin/schemagen*.sh $(TCKDIR)/linux/bin/
-	$(CP) $(TOPDIR)/src/share/bin/schemagen*.sh $(TCKDIR)/macos/bin/
-	$(CHMOD) +x $(TCKDIR)/solaris/bin/schemagen*.sh $(TCKDIR)/linux/bin/schemagen*.sh $(TCKDIR)/macos/bin/schemagen*.sh
-	echo "schemagen.sh is copied at " `date` > $@
+schemagen.sh.ok: javatest.ok $(TCKDIR)/bin
+	$(RM) $(TCKDIR)/solaris/bin/schemagen*
+	$(CP) $(TOPDIR)/src/share/bin/schemagen* $(TCKDIR)/bin/
+	$(CHMOD) +x $(TCKDIR)/bin/schemagen*.sh
+	echo "schemagen.sh|bat is copied at " `date` > $@
 
 ZIP.files += schemagen.sh.ok
-
-#----------------------------------------------------------------------
-#-----------------------------------------------------------------------
-#
-

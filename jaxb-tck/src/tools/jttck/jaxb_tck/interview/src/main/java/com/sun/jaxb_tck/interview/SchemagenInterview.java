@@ -249,14 +249,10 @@ class JXCCmdLineInterview extends MInterview {
     Question q_final = new FinalQuestion(this);
 
     public final String[] jxcCmdSuggestions = { "",
-            "/bin/ksh solaris/bin/schemagen.sh",
-            "/bin/ksh solaris/bin/schemagen9.sh",
-            "/bin/sh linux/bin/schemagen.sh",
-            "/bin/sh linux/bin/schemagen9.sh",
-            "/bin/sh macos/bin/schemagen.sh",
-            "/bin/sh macos/bin/schemagen9.sh",
-            "win32\\bin\\schemagen.bat",
-            "win32\\bin\\schemagen9.bat" };
+            "/bin/sh bin/schemagen.sh",
+            "/bin/sh bin/schemagen9.sh",
+            "bin\\schemagen.bat",
+            "bin\\schemagen9.bat" };
 
     public Question q_jxcCmd = new StringQuestion(this, "jxcCmd") {
         {
