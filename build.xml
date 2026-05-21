@@ -28,7 +28,7 @@
   <property name="BASEDIR" value="${basedir}"/>
   <property name="deliverable.name" value="xml-binding-tck"/>
   <property name="eclipse.deliverable.name" value="jakarta-xml-binding-tck"/>
-  <property name="deliverable.version" value="4.0.3"/>
+  <property name="deliverable.version" value="4.1.0-SNAPSHOT"/>
   <property name="bundle.name"
             value="${deliverable.name}-${deliverable.version}.zip"/>
   <property name="bundle.folder"
@@ -50,7 +50,7 @@
   <target name="build_zip" description="package the distribution">
     <mkdir dir="${dist}"/>
     <zip destfile="${dist}/${dist.zip.name}">
-      <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.0" prefix="${bundle.folder}"/>
+      <zipfileset dir="jaxb-tck-build/XMLB-TCK-4.1" prefix="${bundle.folder}"/>
       <zipfileset dir="." includes="${dist.license}" fullpath="${bundle.folder}/LICENSE.md"/>
     </zip>
   </target>

@@ -40,7 +40,7 @@ TCKMM = $(shell $(TCKMM.sh))
 
 
 # TCK Version and release designation
-TCK.MM_STAND_ALONE = 4.0
+TCK.MM_STAND_ALONE = 4.1
 TCK.MM.sh = \
     if [ -z "$(JCK.MM)" ]; then \
         echo $(TCK.MM_STAND_ALONE) ; \

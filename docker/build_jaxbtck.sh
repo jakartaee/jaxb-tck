@@ -155,13 +155,13 @@ make REPOSITORIES=$TCK_ROOT/xml_schema clean
 mvn -B clean -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 echo ************* Calling Maven ************
 mvn verify -f ${WORKSPACE}/jaxb-tck/src/pom.xml
-mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes
-unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle/target/bundle-${TCK_MVN_VERSION}.jar
-mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes
-unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/src/share/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle.src/target/bundle-src-${TCK_MVN_VERSION}-sources.jar
-mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/docs
-unzip -q -d $WORKSPACE/jaxb-tck-build/XMLB-TCK-4.0/docs ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-${TCK_MVN_VERSION}.zip
-unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0 ${WORKSPACE}/jaxb-tck/src/docs/relnotes/target/tck-relnotes-${TCK_MVN_VERSION}-html.zip
+mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.1/classes
+unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.1/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle/target/bundle-${TCK_MVN_VERSION}.jar
+mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.1/src/share/classes
+unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.1/src/share/classes ${WORKSPACE}/jaxb-tck/src/tools/bundle.src/target/bundle-src-${TCK_MVN_VERSION}-sources.jar
+mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.1/docs
+unzip -q -d $WORKSPACE/jaxb-tck-build/XMLB-TCK-4.1/docs ${WORKSPACE}/jaxb-tck/src/docs/userguide/target/tck-userguide-${TCK_MVN_VERSION}.zip
+unzip -q -d ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.1 ${WORKSPACE}/jaxb-tck/src/docs/relnotes/target/tck-relnotes-${TCK_MVN_VERSION}-html.zip
 echo ************* Calling make ************
 make REPOSITORIES=$TCK_ROOT/xml_schema nightly
 
