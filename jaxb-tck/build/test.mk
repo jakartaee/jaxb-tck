@@ -94,8 +94,8 @@ $(TCKDIR)/lib/javasoft-multiJVM.jti: precompile-jti-gen.ok $(@D)
 	-work batch-multiJVM/work \
 	-testsuite . \
 	-tests $(INITIALURLS) \
-	-xsd_compiler "/bin/sh linux/bin/xjc.sh" \
-	-schemagen "/bin/sh linux/bin/schemagen.sh" > $@
+	-xsd_compiler "/bin/sh bin/xjc.sh" \
+	-schemagen "/bin/sh bin/schemagen.sh" > $@
 	@echo "**** javasoft-multiJVM.jti created at `date` ****"
 
 ZIP.files += $(TCKDIR)/lib/javasoft-multiJVM.jti $(TCKDIR)/lib/javasoft-singleJVM.jti
