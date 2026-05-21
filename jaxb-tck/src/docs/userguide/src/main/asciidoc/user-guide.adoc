@@ -37,7 +37,7 @@ endif::[]
 // for the technology.  Used in config.inc.
 :TechnologyHomeEnv: JAXB_HOME
 // Java SE version required.
-:SEversion: 11+
+:SEversion: 17+
 :JavaTestVersion: 5.0
 :jtiSuffix: .jti
 :jteFileName: ${TS_HOME}/lib/javasoft-multiJVM.jti
