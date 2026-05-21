@@ -295,14 +295,10 @@ class XJCCmdLineInterview extends MInterview {
     Question q_final = new FinalQuestion(this);
 
     public final String[] xjcCmdSuggestions = { "",
-                                                  "/bin/ksh solaris/bin/xjc.sh",
-                                                  "/bin/ksh solaris/bin/xjc9.sh",
-                                                  "/bin/sh linux/bin/xjc.sh",
-                                                  "/bin/sh linux/bin/xjc9.sh",
-                                                  "/bin/sh macos/bin/xjc.sh",
-                                                  "/bin/sh macos/bin/xjc9.sh",
-                                                  "win32\\bin\\xjc.bat",
-                                                  "win32\\bin\\xjc9.bat" };
+                                                  "/bin/sh bin/xjc.sh",
+                                                  "/bin/sh bin/xjc9.sh",
+                                                  "bin\\xjc.bat",
+                                                  "bin\\xjc9.bat" };
 
     public Question q_xjcCmd = new StringQuestion(this, "xjcCmd") {
         {

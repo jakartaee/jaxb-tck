@@ -111,7 +111,7 @@ jck.env.jaxb.classes.jaxbClasses=
   /data/tck/tmp/jaxb-ri/mod/jaxb-impl.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-jxc.jar
 jck.env.jaxb.schemagen.run.jxcCmd=/bin/sh
-  /workspace/XMLB-TCK-4.1/linux/bin/schemagen.sh
+  /workspace/XMLB-TCK-4.1/bin/schemagen.sh
 jck.env.jaxb.schemagen.skipJ2XOptional=Yes
 jck.env.jaxb.testExecute.cmdAsFile=/opt/jdk11/bin/java
 jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=/opt/jdk11
@@ -120,7 +120,7 @@ jck.env.jaxb.testExecute.otherOpts=
 jck.env.jaxb.xsd_compiler.defaultOperationMode=Yes
 jck.env.jaxb.xsd_compiler.skipValidationOptional=Yes
 jck.env.jaxb.xsd_compiler.testCompile.xjcCmd=/bin/sh
-  /workspace/XMLB-TCK-4.1/linux/bin/xjc.sh
+  /workspace/XMLB-TCK-4.1/bin/xjc.sh
 jck.env.testPlatform.local=Yes
 jck.env.testPlatform.multiJVM=Yes
 jck.excludeList.latestAutoCheck=No
@@ -473,18 +473,18 @@ _Enter the command to run the a schema compiler._
 This is the command used to invoke your
 schema compiler. For example, for the
 Eclipse XML Binding implementation on Linux we
-provide a script `$TS_HOME/linux/bin/xjc.sh`,
+provide a script `$TS_HOME/bin/xjc.sh`,
 which compiles schemas into class files.
 The command is as follows:
 
-`/bin/sh /workspace/XMLB-TCK-4.1/linux/bin/xjc.sh`
+`/bin/sh /workspace/XMLB-TCK-4.1/bin/xjc.sh`
 
 For the Eclipse XML Binding implementation on
-Windows, we provide a script `%TS_HOME%\win32\bin\xjc.bat`,
+Windows, we provide a script `%TS_HOME%\bin\xjc.bat`,
 which compiles schemas into class files.
 The command is as follows:
 
-`c:\workspace\XMLB-TCK-4.1\win32\bin\xjc.bat`
+`c:\workspace\XMLB-TCK-4.1\bin\xjc.bat`
 
 The xjc script supports the following
 mandatory command-line options:
@@ -574,18 +574,18 @@ _Enter the command to run the schema generator._
 This is the command used to invoke your
 schema generator. For example, for the
 Eclipse XML Binding implementation on Linux we
-provide a script `$TS_HOME/linux/bin/schemagen.sh`, which
+provide a script `$TS_HOME/bin/schemagen.sh`, which
 generates the schemas from the java files.
 The command is as follows:
 
-`/bin/sh /workspace/XMLB-TCK-4.1/linux/bin/schemagen.sh`
+`/bin/sh /workspace/XMLB-TCK-4.1/bin/schemagen.sh`
 
 For the Eclipse {TechnologyShortName} implementation on
-Windows, we provide a script `%TS_HOME%\win32\bin\schemagen.bat`,
+Windows, we provide a script `%TS_HOME%\bin\schemagen.bat`,
 which compiles the schemas into class files.
 The command is as follows:
 
-`c:\workspace\XMLB-TCK-4.1\win32\bin\schemagen.bat`
+`c:\workspace\XMLB-TCK-4.1\bin\schemagen.bat`
 
 The schemagen script supports the following
 mandatory command-line options:
