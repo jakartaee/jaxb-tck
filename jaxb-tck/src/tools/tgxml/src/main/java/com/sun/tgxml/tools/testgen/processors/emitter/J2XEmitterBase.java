@@ -108,6 +108,11 @@ public class J2XEmitterBase extends MultiTestWriter {
                         JAXB_JAR_LOC + "/jaxb-impl.jar" + SEPARATOR  +
                         JAXB_JAR_LOC + "/jaxb-jxc.jar" + SEPARATOR  +
                         JAXB_JAR_LOC + "/jaxb-xjc.jar" + SEPARATOR);
+            String release = System.getProperty("tck.compiler.release");
+            if (release != null && !release.isBlank()) {
+                options.add("--release");
+                options.add(release);
+            }
             Iterable<? extends JavaFileObject> compilationUnits =
                     fileManager.getJavaFileObjectsFromStrings( sourceFiles );
             new File( outDir ).mkdirs();

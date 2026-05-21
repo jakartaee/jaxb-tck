@@ -77,6 +77,7 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
         		-Dtck.dest.dir=$(J2XRT_DEST_DIR)/tests \
         		-Dtck.source.dir=$(TEMPTESTSTORAGE)/tests \
         		-Dtck.classes.dir=$(BUILDCLASSDIR) \
+        		-Dtck.compiler.release=11 \
         		-Dtck.build.propfile=../tck.properties \
         		-Dtestgen.emitter.TestGroup.XMLSchemaTest.e-lists=jaxb_test_bug.jtx \
         		-Dtestgen.emitter.TestGroup.J2XTest=com.sun.tgxml.tools.testgen.processors.emitter.J2XRuntimeEmitter \
@@ -97,6 +98,7 @@ xml-bundles-extracted.ok: precompile-testemitter-plugin.ok precompile-j2x-testem
         		-Dtck.dest.dir=$(TCKDIR)/tests \
         		-Dtck.source.dir=$(TEMPTESTSTORAGE)/tests \
         		-Dtck.classes.dir=$(BUILDCLASSDIR) \
+				-Dtck.compiler.release=11 \
         		-Dtck.build.propfile=../tck.properties \
         		-Dtestgen.emitter.TestGroup.XMLSchemaTest.e-lists=jaxb_test_bug.jtx \
         		-Dtestgen.emitter.TestGroup.J2XTestWTB.SchemaGenMode=true \
@@ -141,6 +143,7 @@ $(TCKDIR)/tests_j2xrt:
 	-Dtck.dest.dir=$(J2XRT_DEST_DIR)/tests \
 	-Dtck.source.dir=$(TEMPTESTSTORAGE)/tests \
 	-Dtck.classes.dir=$(BUILDCLASSDIR) \
+	-Dtck.compiler.release=11 \
 	-Dtck.build.propfile=../tck.properties \
 	-Dtestgen.emitter.TestGroup.XMLSchemaTest.e-lists=jaxb_test_bug.jtx \
 	-Dtestgen.emitter.TestGroup.J2XTest=com.sun.tgxml.tools.testgen.processors.emitter.J2XRuntimeEmitter \
@@ -161,6 +164,7 @@ $(TCKDIR)/tests_j2xrt:
 	-Dtck.dest.dir=$(TCKDIR)/tests \
 	-Dtck.source.dir=$(TEMPTESTSTORAGE)/tests \
 	-Dtck.classes.dir=$(BUILDCLASSDIR) \
+	-Dtck.compiler.release=11 \
 	-Dtck.build.propfile=../tck.properties \
 	-Dtestgen.emitter.TestGroup.XMLSchemaTest.e-lists=jaxb_test_bug.jtx \
 	-Dtestgen.emitter.TestGroup.J2XTestWTB.SchemaGenMode=true \
