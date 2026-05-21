@@ -17,12 +17,22 @@
 
 package com.sun.jaxb_tck.lib;
 
+import java.io.File;
 import java.io.PrintStream;
-import java.lang.reflect.Method;
+import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
+
+import javax.tools.Diagnostic;
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.StandardLocation;
+import javax.tools.ToolProvider;
 
 /**
- * Wrapper to invoke schema compilation supplied by SUN's Reference
- * Implementation.
+ * Wrapper to invoke schema compilation supplied by JDK's default Java Compiler.
  *
  * @author Leonid Kuskov
  * @version 1.9
@@ -39,7 +49,8 @@ public class JavacInvoker extends Invoker {
     /**
      * Process Javac command line arguments.
      */
-    @Override public void processArguments() throws Invoker.ArgumentException {
+    @Override
+    public void processArguments() throws Invoker.ArgumentException {
         super.processArguments();
         args.clear();
         args.append(new String[]{"-d", outDir.getAbsolutePath()});
@@ -56,14 +67,15 @@ public class JavacInvoker extends Invoker {
      * @param err An additional stream to which to write output.
      * @return The result of the command
      */
-    @Override public int invoke(final PrintStream out, final PrintStream err) throws Exception {
+    @Override
+    public int invoke(final PrintStream out, final PrintStream err) throws Exception {
         final Integer[] _rc = new Integer[]{FAILED};
         // run all the work in another thread.
         final Throwable[] _ex = new Throwable[1];
         Thread th = new Thread() {
             public void run() {
                 try {
-                    _rc[0] = _javac(args.getArgs(),err);
+                    _rc[0] = _javac(args, out, err);
                 } catch( Throwable e ) {
                     _ex[0]=e;
                 }
@@ -84,51 +96,49 @@ public class JavacInvoker extends Invoker {
     /**
      * Static wrapper to call javac in a separate thread.
      */
-    private static int _javac(String[] args, PrintStream err)
-            throws Exception {
+    private static int _javac(Arguments args, PrintStream out, PrintStream err) throws Exception {
         int counter = 3;
-        Class<?> javacClass = null;
-        ClassLoader parentCl = JavacInvoker.class.getClassLoader();
-        if (parentCl == null) {
-            parentCl = ClassLoader.getSystemClassLoader();
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        String destDirOption = args.getValue("-d");
+        if (destDirOption == null) {
+            throw new IllegalArgumentException("Missing '-d' option");
         }
+        File destDir = new File(destDirOption);
+        DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
+        args.removeArgs("-d", 2);
+        StandardJavaFileManager sfm = compiler.getStandardFileManager(diagnostics, null, null);
+        sfm.setLocation(StandardLocation.SOURCE_OUTPUT, Collections.singleton(destDir));
+        sfm.setLocation(StandardLocation.CLASS_OUTPUT, Collections.singleton(destDir));
+        Iterable<? extends JavaFileObject> cUnits = sfm.getJavaFileObjects(args.getArgs());
         try {
-            if (ToolsJarClassLoader.canLoadToolsJar(parentCl)) {
-                javacClass = parentCl.loadClass("com.sun.tools.javac.Main");
-            } else {
-                ClassLoader classLoader = new ToolsJarClassLoader(parentCl);
-                javacClass = classLoader.loadClass("com.sun.tools.javac.Main");
-            }
-
-            Method compileMethod = javacClass.getMethod("compile",
-                    new Class[] { String[].class });
-            while(true){
-                Object result = compileMethod.invoke(null, new Object[] { args });
-                if (result instanceof Integer) {
-                    if( --counter == 0 || ((Integer) result).intValue() == 0)
-                        return ((Integer) result).intValue();
-                    else
-                        err.println("Since on some platforms sources might be not-ready trying to compile one more time");
+            while (true) {
+                JavaCompiler.CompilationTask task = compiler.getTask(new PrintWriter(out), sfm, diagnostics,
+                        List.of(), null, cUnits);
+                boolean result = task.call();
+                for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
+                    err.append(diagnostic.toString());
+                }
+                if (--counter == 0 || result) {
+                    return result ? PASSED : FAILED;
                 } else {
-                    throw new Invoker.InvokeException(
-                            "Unexpected return value from the javac invoker : "
-                                    + result.toString());
+                    err.println("Since on some platforms sources might be not-ready trying to compile one more time");
                 }
             }
         } catch (Throwable ex) {
             String msg = ex.getMessage();
             throw new Exception("The javac invoker com.sun.tools.javac.Main(" +
-                    _toString(args) + ") failed\n" +
+                    _toString(args.getArgs()) + ") failed\n" +
                     (msg != null ? " with the message \"" + msg + "\" " : ""));
         }
     }
 
-    static private String _toString(String[] a){
+    private static String _toString(String[] a) {
         StringBuilder sb = new StringBuilder(" ");
-        for(String s : a){
-                sb.append(s + ", ");
+        for (String s : a) {
+            sb.append(s);
+            sb.append(", ");
         }
-        sb.deleteCharAt(sb.length()-2);
+        sb.deleteCharAt(sb.length() - 2);
         return sb.toString();
     }
 }

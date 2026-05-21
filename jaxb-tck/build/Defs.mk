@@ -21,7 +21,7 @@
 #----------------------------------------------------------------------
 #
 # JAXB Version under test
-TEST_JAXB_VERSION = 4.0
+TEST_JAXB_VERSION = 4.1
 TEST_JAXB_MILESTONE = fcs
 TEST_JAXB_BUILD = b01
 

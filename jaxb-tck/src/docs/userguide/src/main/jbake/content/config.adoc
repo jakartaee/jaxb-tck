@@ -71,9 +71,8 @@ compiler refers to both the schema compiler and the schema generator.
   b.  Set `WORKDIR` environment variable to contain {TechnologyShortName}
       TCK software working directory. This directory will contain raw testing
       data and results.
-  c.  Set `jck.env.jaxb.classes.jaxbClasses` property to contain The Checker
-      Framework library and all {TechnologyShortName} libraries:
-        * checker.jar
+  c.  Set `jck.env.jaxb.classes.jaxbClasses` property to contain all
+      {TechnologyShortName} libraries:
         * +{TechnologyHomeEnv}+/mod/jakarta.activation-api.jar
         * +{TechnologyHomeEnv}+/mod/jakarta.xml.bind-api.jar
         * +{TechnologyHomeEnv}+/mod/jaxb-core.jar
@@ -100,19 +99,19 @@ An example of modified `${TS_HOME}/lib/javasoft-multiJVM.jti` file:
 --
 [source,oac_no_warn]
 ----
-TESTSUITE=/workspace/XMLB-TCK-4.0
-WORKDIR=/workspace/XMLB-TCK-4.0/batch-multiJVM/work
+TESTSUITE=/workspace/XMLB-TCK-4.1
+WORKDIR=/workspace/XMLB-TCK-4.1/batch-multiJVM/work
 jck.concurrency.concurrency=1
 jck.env.description=multi jvm
 jck.env.envName=multi_jvm
-jck.env.jaxb.classes.jaxbClasses=/data/tck/tmp/checker.jar
+jck.env.jaxb.classes.jaxbClasses=
   /data/tck/tmp/jaxb-ri/mod/jakarta.activation-api.jar
   /data/tck/tmp/jaxb-ri/mod/jakarta.xml.bind-api.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-core.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-impl.jar
   /data/tck/tmp/jaxb-ri/mod/jaxb-jxc.jar
 jck.env.jaxb.schemagen.run.jxcCmd=/bin/sh
-  /workspace/XMLB-TCK-4.0/bin/schemagen.sh
+  /workspace/XMLB-TCK-4.1/bin/schemagen.sh
 jck.env.jaxb.schemagen.skipJ2XOptional=Yes
 jck.env.jaxb.testExecute.cmdAsFile=/opt/jdk11/bin/java
 jck.env.jaxb.testExecute.otherEnvVars=JAVA_HOME\=/opt/jdk11
@@ -121,7 +120,7 @@ jck.env.jaxb.testExecute.otherOpts=
 jck.env.jaxb.xsd_compiler.defaultOperationMode=Yes
 jck.env.jaxb.xsd_compiler.skipValidationOptional=Yes
 jck.env.jaxb.xsd_compiler.testCompile.xjcCmd=/bin/sh
-  /workspace/XMLB-TCK-4.0/bin/xjc.sh
+  /workspace/XMLB-TCK-4.1/bin/xjc.sh
 jck.env.testPlatform.local=Yes
 jck.env.testPlatform.multiJVM=Yes
 jck.excludeList.latestAutoCheck=No
@@ -478,14 +477,14 @@ provide a script `$TS_HOME/bin/xjc.sh`,
 which compiles schemas into class files.
 The command is as follows:
 
-`/bin/sh /workspace/XMLB-TCK-4.0/bin/xjc.sh`
+`/bin/sh /workspace/XMLB-TCK-4.1/bin/xjc.sh`
 
 For the Eclipse XML Binding implementation on
 Windows, we provide a script `%TS_HOME%\bin\xjc.bat`,
 which compiles schemas into class files.
 The command is as follows:
 
-`c:\workspace\XMLB-TCK-4.0\bin\xjc.bat`
+`c:\workspace\XMLB-TCK-4.1\bin\xjc.bat`
 
 The xjc script supports the following
 mandatory command-line options:
@@ -559,7 +558,7 @@ a class, then create it and specify it here.
 _Does your implementation provide schema generator which is able to
 generate schemas from Java sources?_
 
-Java Architecture for XML Binding 4.0
+Java Architecture for XML Binding 4.1
 specification does not require any
 implementation, which provides a possibility
 to generate the schemas from the java
@@ -579,14 +578,14 @@ provide a script `$TS_HOME/bin/schemagen.sh`, which
 generates the schemas from the java files.
 The command is as follows:
 
-`/bin/sh /workspace/XMLB-TCK-4.0/bin/schemagen.sh`
+`/bin/sh /workspace/XMLB-TCK-4.1/bin/schemagen.sh`
 
 For the Eclipse {TechnologyShortName} implementation on
 Windows, we provide a script `%TS_HOME%\bin\schemagen.bat`,
 which compiles the schemas into class files.
 The command is as follows:
 
-`c:\workspace\XMLB-TCK-4.0\bin\schemagen.bat`
+`c:\workspace\XMLB-TCK-4.1\bin\schemagen.bat`
 
 The schemagen script supports the following
 mandatory command-line options:
