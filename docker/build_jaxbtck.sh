@@ -152,7 +152,7 @@ cd $TCK_ROOT/jaxb-tck/build
 
 echo ************* Preparing environment ************
 make REPOSITORIES=$TCK_ROOT/xml_schema clean
-mvn clean -f ${WORKSPACE}/jaxb-tck/src/pom.xml
+mvn -B clean -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 echo ************* Calling Maven ************
 mvn verify -f ${WORKSPACE}/jaxb-tck/src/pom.xml
 mkdir -p ${WORKSPACE}/jaxb-tck-build/XMLB-TCK-4.0/classes
