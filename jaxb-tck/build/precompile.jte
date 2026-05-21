@@ -24,6 +24,7 @@ env.precompile.script=com.sun.jaxb_tck.lib.PrecompileJaxbTckScript
 
 env.precompile.command.compile.java=com.sun.javatest.lib.JavaCompileCommand \
         -classpath $java.class.path:$testClassDir:$outDir \
+        --release 11 \
         -d $testClassDir $testSource
 
 
