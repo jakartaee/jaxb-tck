@@ -125,4 +125,4 @@ echo "1 JAXB-TCK ${HOST}" > args.txt
 mkdir -p ${WORKSPACE}/results/junitreports/
 ${JAVA_HOME}/bin/java -Djunit.embed.sysout=true -jar ${WORKSPACE}/docker/JTReportParser/JTReportParser.jar ${WORKSPACE}/args.txt ${WORKSPACE}/JAXB_REPORT ${WORKSPACE}/results/junitreports/
 rm -f args.txt
-tar zcvf jaxbtck-results.tar.gz JAXB_REPORT batch-multiJVM/work results/junitreports/
+tar zcf jaxbtck-results.tar.gz JAXB_REPORT batch-multiJVM/work results/junitreports/
