@@ -51,15 +51,6 @@ testsources.ok: ../tck.properties precompile-testfilter-plugin.ok \
 		$(SHARED_ENV_MK)
 	echo ":-) generated all test sources at `date`" > $@
 
-# workaround for compiler bug: package-info classes that were compiled with Java6 and -target 1.5 are invalid for Java1.5
-package_info.ok: testsources.ok package_info.lst
-	$(TEST) -s package_info.lst && \
-	CLASSPATH=$(TCKDIR)/classes:classes:$(JAVATEST_JAR):$(JAXB_LIBS) \
-	$(GENERAL_JAVAC) -d $(TCKDIR)/classes `find $(TCKDIR)/tests/java2schema -name "package-info.java"`; \
-	echo "package-info classes recompiled as `date`" > $@
-package_info.lst:
-	$(TEST) ! -d $(TCKDIR)/tests/java2schema || find $(TCKDIR)/tests/java2schema -name "package-info.java" > $(@)
-ZIP.files += package_info.ok
 #$(XML_BUNDLESOK):
 #	echo I am here in testing
 .SECONDEXPANSION:
