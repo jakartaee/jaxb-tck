@@ -58,7 +58,7 @@ spec:
            defaultValue: '',
            description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
     string(name: 'TCK_BUNDLE_FILE_NAME', 
-           defaultValue: 'jakarta-xml-binding-tck-4.0.3.zip',
+           defaultValue: 'jakarta-xml-binding-tck-4.0.4.zip',
 	   description: 'Name of bundle file to be appended to the base url' )
     string(name: 'GF_BUNDLE_URL', 
            defaultValue: 'https://download.eclipse.org/ee4j/glassfish/glassfish-7.0.0.zip', 
