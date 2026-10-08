@@ -25,7 +25,7 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>2.0.5</version>
+        <version>2.0.6</version>
         <relativePath/>
     </parent>
 
@@ -78,9 +78,9 @@
         <vendor.name>Eclipse Foundation</vendor.name>
 
         <asciidoctorj.maven.plugin.version>3.2.0</asciidoctorj.maven.plugin.version>
-        <asciidoctorj.pdf.version>2.3.23</asciidoctorj.pdf.version>
+        <asciidoctorj.pdf.version>2.3.27</asciidoctorj.pdf.version>
         <jbake.maven.plugin.version>2.7.0</jbake.maven.plugin.version>
-        <checkstyle.version>13.9.0</checkstyle.version>
+        <checkstyle.version>14.3.0</checkstyle.version>
         <!-- status: DRAFT, BETA, etc., or blank for final -->
         <status></status>
 
@@ -105,7 +105,7 @@
             <dependency>
                 <groupId>org.apache.ant</groupId>
                 <artifactId>ant</artifactId>
-                <version>1.10.17</version>
+                <version>1.10.18</version>
             </dependency>
 
             <dependency>
